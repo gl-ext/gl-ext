@@ -4,8 +4,7 @@
   const DL_API = "https://api.demonlist.org/level/classic/record/list";
   const DL_LEVEL_API = "https://api.demonlist.org/level/classic/get";
   const PC_API = "https://pointercrate.com/api/";
-  // ВАЖНО: замени ТЫ и РЕПО на свой ник и название репозитория на GitHub
-  const LINKS_URL = "https://raw.githubusercontent.com/ТЫ/РЕПО/main/links.json";
+  const LINKS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/links.json";
   const MERGED_ID = "pc-merged-list"; // список с рекордами Pointercrate
   const DL_ID = "pc-dl-list"; // список только с рекордами demonlist (когда экспорт выключен)
   const TOGGLE_ID = "pc-switch-toggle";
