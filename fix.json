@@ -51,6 +51,16 @@
       ]
     },
     {
+      "keep": 2080,
+      "keep_name": "Suniixx",
+      "absorb": [
+        {
+          "id": 20279,
+          "name": "sunixpa"
+        }
+      ]
+    },
+    {
       "keep": 3128,
       "keep_name": "than0sgd",
       "absorb": [
@@ -625,6 +635,10 @@
         {
           "id": 2025,
           "name": "xLiaGD"
+        },
+        {
+          "id": 15097,
+          "name": "Liaxire"
         }
       ]
     },
@@ -1681,6 +1695,16 @@
       ]
     },
     {
+      "keep": 31965,
+      "keep_name": "pendos123",
+      "absorb": [
+        {
+          "id": 23457,
+          "name": "dinamick"
+        }
+      ]
+    },
+    {
       "keep": 32338,
       "keep_name": "Vekooo",
       "absorb": [
@@ -1925,6 +1949,16 @@
       ]
     },
     {
+      "keep": 60709,
+      "keep_name": "mythicjargon",
+      "absorb": [
+        {
+          "id": 34524,
+          "name": "GDZodac"
+        }
+      ]
+    },
+    {
       "keep": 63602,
       "keep_name": "Ikapso",
       "absorb": [
@@ -2105,6 +2139,18 @@
       "shared_with": 2852
     },
     {
+      "user": 14459,
+      "name": "AidanTR",
+      "videos": [
+        "BB4hCDXDsTE",
+        "HZy86sOy3p4",
+        "YGnJWaNf61E",
+        "qK_hgFzGUEk"
+      ],
+      "shared_with": null,
+      "shared_with_pointercrate": 51328
+    },
+    {
       "user": 14558,
       "name": "Luqualizer",
       "videos": [
@@ -2143,6 +2189,14 @@
         "rMGlGQshhQ4"
       ],
       "shared_with": 14266
+    },
+    {
+      "user": 15791,
+      "name": "DiamondSplash",
+      "videos": [
+        "E7uQz9d7llE"
+      ],
+      "shared_with": 14225
     },
     {
       "user": 37351,
