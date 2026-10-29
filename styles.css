@@ -55,3 +55,9 @@ button.pc-native-toggle {
 }
 .pc-switch.active { background-color: #3b82f6; }
 .pc-switch.active .pc-switch-thumb { transform: translateX(18px); }
+
+/* Всегда скрывать стрелки пагинации Global Demonlist */
+div[class^="pagination"],
+div[class*=" pagination"] {
+  display: none !important;
+}
