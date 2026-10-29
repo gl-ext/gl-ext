@@ -1,0 +1,57 @@
+/* Режим включается классами на <html>:
+   pc-active — наши списки построены (оригинальный список и пагинация скрыты в обоих режимах)
+   pc-on     — экспорт Pointercrate включён */
+html.pc-active .pc-hidden-original,
+html.pc-active [data-pc-pag] { display: none !important; }
+html.pc-active.pc-on #pc-dl-list { display: none !important; }
+html.pc-active:not(.pc-on) #pc-merged-list { display: none !important; }
+
+/* Переключатель лежит поверх карточки Records и не влияет на вёрстку заголовка */
+.pc-import-switch-container {
+  position: absolute;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+}
+.pc-switch-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  line-height: 1;
+}
+button.pc-native-toggle {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  outline: none;
+}
+.pc-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background-color: #334155;
+  border-radius: 9999px;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+}
+.pc-switch-thumb {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.pc-switch.active { background-color: #3b82f6; }
+.pc-switch.active .pc-switch-thumb { transform: translateX(18px); }

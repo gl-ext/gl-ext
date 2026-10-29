@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Demonlist + Pointercrate Records",
+  "version": "0.2.0",
+  "description": "Adds Pointercrate records to Global Demonlist level pages.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://api.demonlist.org/*",
+    "https://pointercrate.com/*",
+    "https://raw.githubusercontent.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://demonlist.org/*", "https://www.demonlist.org/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "demonlist-pointercrate-records@example.invalid",
+      "strict_min_version": "115.0"
+    }
+  }
+}
