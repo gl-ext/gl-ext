@@ -5,6 +5,7 @@
   const DL_LEVEL_API = "https://api.demonlist.org/level/classic/get";
   const PC_API = "https://pointercrate.com/api/";
   const LINKS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/links.json";
+  const FIX_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/fix.json";
   const MERGED_ID = "pc-merged-list"; // список с рекордами Pointercrate
   const DL_ID = "pc-dl-list"; // список только с рекордами demonlist (когда экспорт выключен)
   const TOGGLE_ID = "pc-switch-toggle";
@@ -17,7 +18,7 @@
   let lastPath = location.pathname;
   let retries = 0;
   let enabled = false;
-  let stats = { total: 0, hundred: 0 };
+  let stats = { merged: { total: 0, hundred: 0 }, dl: { total: 0, hundred: 0 } };
   let dataCache = null; // { key, dl, pc } — чтобы не качать всё заново при перерисовке
   let pcDemonsPromise = null; // полный список демонов Pointercrate (кеш на сессию страницы)
   let savedTemplate = null; // шаблон карточки, запомненный на уровне с рекордами
@@ -298,15 +299,18 @@
 
   let LINKS = {}; // { pointercrate: { "40436": "14476" }, siteB: { "1": "14476" } }
   let linksPromise = null;
+  let LINK_NAMES = new Map(); // id на demonlist -> "_name" из links.json
 
   function setLinks(data) {
     LINKS = {};
+    LINK_NAMES = new Map();
     for (const [mainId, sites] of Object.entries(data || {})) {
       // старый формат ("14476": 40436 или [40436]) считаем данными Pointercrate
       const entry =
         sites && typeof sites === "object" && !Array.isArray(sites)
           ? sites
           : { pointercrate: sites };
+      if (typeof entry._name === "string" && entry._name) LINK_NAMES.set(String(mainId), entry._name);
       for (const [site, ids] of Object.entries(entry)) {
         if (site.startsWith("_")) continue; // "_name" и т.п. — справочная информация для человека
         LINKS[site] ||= {};
@@ -316,7 +320,7 @@
   }
 
   // Скачиваем links.json с GitHub; если не вышло — берём последнюю сохранённую копию
-  async function loadPlayerLinks() {
+  async function loadLinksOnly() {
     const res = await getJsonRetry(LINKS_URL);
     if (res.ok && res.data) {
       setLinks(res.data);
@@ -330,8 +334,58 @@
     setLinks(saved);
   }
 
+  /* ---------- fix.json: слияние дублей аккаунтов ---------- */
+  // Работает всегда, в том числе при выключенном PC Import.
+  // Второй аккаунт (absorb) считается основным (keep): общий ключ, ник и профиль основного.
+
+  let ABSORB = new Map(); // "id второго аккаунта" -> { keep: "id основного", keepName }
+  let KEEP_NAMES = new Map(); // "id основного аккаунта" -> его ник (keep_name)
+  const DL_NAMES = new Map(); // id на demonlist -> настоящий ник (собираем из записей demonlist по ходу работы)
+
+  function setFix(data) {
+    ABSORB = new Map();
+    KEEP_NAMES = new Map();
+    for (const m of data?.merges || []) {
+      if (m.keep_name) KEEP_NAMES.set(String(m.keep), m.keep_name);
+      for (const a of m.absorb || []) {
+        ABSORB.set(String(a.id), { keep: String(m.keep), keepName: m.keep_name || "" });
+      }
+    }
+  }
+
+  async function loadFix() {
+    const res = await getJsonRetry(FIX_URL);
+    if (res.ok && res.data) {
+      setFix(res.data);
+      try { chrome.storage.local.set({ fixData: { merges: res.data.merges } }); } catch (_) {}
+      return;
+    }
+    const saved = await new Promise((resolve) => {
+      try { chrome.storage.local.get("fixData", (r) => resolve(r?.fixData)); }
+      catch (_) { resolve(null); }
+    });
+    setFix(saved);
+  }
+
+  // links.json и fix.json грузим вместе, один раз
+  async function loadPlayerLinks() {
+    await Promise.all([loadFix(), loadLinksOnly()]);
+  }
+
+  const canonDlId = (id) => ABSORB.get(String(id))?.keep ?? String(id);
+
+  // Ник аккаунта demonlist: fix.json -> ник из записей demonlist -> "_name" из links.json -> запасной
+  const dlNameFor = (dlId, fallback) =>
+    KEEP_NAMES.get(String(dlId)) ||
+    DL_NAMES.get(String(dlId)) ||
+    LINK_NAMES.get(String(dlId)) ||
+    fallback;
+
   // ID на demonlist для аккаунта с данного сайта (или undefined)
-  const dlIdFor = (site, id) => LINKS[site]?.[String(id)];
+  const dlIdFor = (site, id) => {
+    const m = LINKS[site]?.[String(id)];
+    return m ? canonDlId(m) : undefined;
+  };
 
   // Ключ личности: все аккаунты одного человека получают один и тот же ключ
   function getPlayerKey(site, playerId, name, fallback) {
@@ -377,13 +431,14 @@
     };
 
     for (const r of dlRecords) {
-      const name = r.user?.username || "";
+      const rawName = r.user?.username || "";
+      // второй аккаунт из fix.json выдаём за основной (ник, id, профиль)
+      const fixed = r.user?.id != null ? ABSORB.get(String(r.user.id)) : undefined;
+      if (r.user?.id != null && rawName && !fixed) DL_NAMES.set(String(r.user.id), rawName);
+      const name = fixed?.keepName || rawName;
       const norm = normalize(name);
-      const identityKey = getDemonlistPlayerKey(
-        r.user?.id,
-        name,
-        "record:" + order
-      );
+      const dlId = fixed ? fixed.keep : r.user?.id;
+      const identityKey = getDemonlistPlayerKey(dlId, name, "record:" + order);
       const prev = findPrev(identityKey, norm);
       const percent = Number(r.percent ?? 100);
       if (prev && prev.percent >= percent) continue;
@@ -392,20 +447,24 @@
         source: "global",
         name,
         norm,
+        origNorm: normalize(rawName), // ник настоящего аккаунта записи (для поиска флага)
         identityKey,
         percent,
         video: r.video_url || "",
         vid: extractVideoId(r.video_url),
-        dlId: r.user?.id,
+        dlId,
         country: r.user?.country ?? r.user?.country_code ?? r.country ?? null,
-        href: r.user?.id ? `/profile/${r.user.id}` : "#",
+        href: dlId ? `/profile/${dlId}` : "#",
       };
       add(item);
       if (item.vid) dlByVid.set(item.vid, item);
     }
 
     for (const r of pcRecords) {
-      const name = r.player?.name || r.player_name || "Unknown";
+      const pcName = r.player?.name || r.player_name || "Unknown";
+      // если игрок есть в links.json — показываем его ник и профиль с demonlist
+      const mainId = r.player?.id != null ? dlIdFor("pointercrate", r.player.id) : undefined;
+      const name = mainId ? dlNameFor(mainId, pcName) : pcName;
       const norm = normalize(name);
       const identityKey = getPointercratePlayerKey(
         r.player?.id,
@@ -444,9 +503,11 @@
         vid,
         playerId: pid,
         country: pid ? countryCache.get(pid) || null : null,
-        href: pid
-          ? `https://pointercrate.com/demonlist/statsviewer/?player=${encodeURIComponent(pid)}`
-          : "https://pointercrate.com/demonlist/statsviewer/",
+        href: mainId
+          ? `/profile/${mainId}`
+          : pid
+            ? `https://pointercrate.com/demonlist/statsviewer/?player=${encodeURIComponent(pid)}`
+            : "https://pointercrate.com/demonlist/statsviewer/",
       });
     }
 
@@ -568,7 +629,10 @@
     return null;
   }
 
-  const flagFor = (it) => flagCtx.byName.get(it.norm) || resolveFlag(it.country);
+  const flagFor = (it) =>
+    flagCtx.byName.get(it.norm) ||
+    (it.origNorm && flagCtx.byName.get(it.origNorm)) ||
+    resolveFlag(it.country);
 
   // Полное название страны для подсказки: по коду из имени файла флага
   function fullNameOf(f) {
@@ -649,25 +713,44 @@
     return list;
   }
 
+  // Числа в счётчике ("21 всего записей, 21 из которых 100%") — элементы без вложенных тегов.
+  // Меняем только сами числа, остальной текст остаётся на языке сайта.
+  const countNumbers = (el) =>
+    [...el.querySelectorAll("*")].filter(
+      (n) => !n.children.length && /^\d+$/.test(n.textContent.trim())
+    );
+
+  function setNumber(node, value) {
+    const s = String(value);
+    const t = node.firstChild && node.firstChild.nodeType === 3 ? node.firstChild : null;
+    if (t) {
+      if (t.nodeValue !== s) t.nodeValue = s; // правим текстовый узел на месте, чтобы не ломать сайт
+    } else if (node.textContent !== s) {
+      node.textContent = s;
+    }
+  }
+
+  // Счётчик показывает числа нашего списка в обоих режимах (дубли из fix.json уже убраны)
   function updateCount() {
     const el = document.querySelector(".records-count");
     if (!el) return;
-    if (!el.dataset.originalHtml) el.dataset.originalHtml = el.innerHTML;
-    if (!enabled) {
-      el.innerHTML = el.dataset.originalHtml;
-      return;
+    const nums = countNumbers(el);
+    if (nums.length < 2) return;
+    if (!el.dataset.origTotal) {
+      el.dataset.origTotal = nums[0].textContent.trim();
+      el.dataset.origHundred = nums[1].textContent.trim();
     }
-    el.innerHTML = `
-      <span class="text-blue-500 dark:text-blue-400 font-semibold">${stats.total}</span> records in total,
-      <span class="text-green-500 dark:text-green-400 font-semibold">${stats.hundred}</span> of which are 100%`;
+    const s = enabled ? stats.merged : stats.dl;
+    setNumber(nums[0], s.total);
+    setNumber(nums[1], s.hundred);
   }
 
   // Надпись "No records yet" показываем, только если нам самим нечего показать
   function updateEmptyNotice() {
     const e = document.querySelector(".empty-records");
     if (!e) return;
-    const show = !enabled || stats.total === 0;
-    e.style.display = show ? "" : "none";
+    const s = enabled ? stats.merged : stats.dl;
+    e.style.display = s.total === 0 ? "" : "none";
   }
 
   function applyMode() {
@@ -743,7 +826,15 @@
     document.querySelectorAll("[data-pc-pag]").forEach((e) => e.removeAttribute("data-pc-pag"));
     document.querySelector(".empty-records")?.style.removeProperty("display");
     const cnt = document.querySelector(".records-count");
-    if (cnt) { cnt.innerHTML = cnt.dataset.originalHtml || cnt.innerHTML; delete cnt.dataset.originalHtml; }
+    if (cnt) {
+      const nums = countNumbers(cnt);
+      if (nums.length >= 2 && cnt.dataset.origTotal) {
+        setNumber(nums[0], cnt.dataset.origTotal);
+        setNumber(nums[1], cnt.dataset.origHundred);
+      }
+      delete cnt.dataset.origTotal;
+      delete cnt.dataset.origHundred;
+    }
     document.documentElement.classList.remove("pc-on", "pc-active");
     doneKey = null;
     failedKey = null;
@@ -826,7 +917,11 @@
       if (unresolvedCountries.size) {
         console.warn("[Demonlist + Pointercrate] нераспознанные страны:", [...unresolvedCountries]);
       }
-      stats = { total: mergedItems.length, hundred: mergedItems.filter((i) => i.percent === 100).length };
+      const countOf = (arr) => ({
+        total: arr.length,
+        hundred: arr.filter((i) => i.percent === 100).length,
+      });
+      stats = { merged: countOf(mergedItems), dl: countOf(dlItems) };
       ensureSwitch(container);
       applyMode();
       doneKey = key;
@@ -862,6 +957,7 @@
         const hasPage = findRecordCards().length || document.querySelector(".empty-records");
         if (hasPage && failedKey !== location.pathname) doneKey = null;
       } else {
+        updateCount(); // сайт мог перерисовать счётчик (например, при смене языка)
         // Если сайт пересоздал оригинальный список — снова прячем его и пагинацию
         const cards = findRecordCards();
         const c = cards.length
