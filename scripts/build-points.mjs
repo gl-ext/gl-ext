@@ -216,7 +216,10 @@ export function playerDelta({ dlRecords, pcRecords, byIngame, byId, demons, H })
 
 // Итоговый порядок: по очкам (убывание); при равных — выше тот, кто был выше на Demonlist.
 export function rankUsers(users) {
-  return [...users].sort((a, b) => b.points - a.points || a.placement - b.placement);
+  const cmp = (a, b) => (a === b ? 0 : a < b ? -1 : 1);
+  return [...users].sort(
+    (a, b) => b.points - a.points || cmp(a.placement, b.placement) || cmp(Number(a.id), Number(b.id))
+  );
 }
 
 async function main() {
@@ -250,6 +253,18 @@ async function main() {
 
   const users = board.map((u, i) => ({ id: String(u.id), placement: Number(u.placement) || i + 1, base: Number(u.points), points: Number(u.points) }));
   const byUserId = new Map(users.map((u) => [u.id, u]));
+  // Игроков с 0 очков в таблице нет, но записи Pointercrate могут дать им очки и место в рейтинге
+  // (на глобале дают очки и низкие места). Добавляем их с нулевой базой, ниже всех при равенстве.
+  let unranked = 0;
+  for (const id of pcByUser.keys()) {
+    if (!byUserId.has(id)) {
+      const u = { id, placement: Infinity, base: 0, points: 0 };
+      users.push(u);
+      byUserId.set(id, u);
+      unranked++;
+    }
+  }
+  if (unranked) console.log(`Игроков со связями без очков на Demonlist: ${unranked}`);
 
   // кеш записей Demonlist (cache.json); FULL=1 — игнорировать его и перекачать всё
   let cache = { users: {} };
@@ -281,7 +296,9 @@ async function main() {
   for (const [id, e] of Object.entries(cache.users)) if (!newCache.users[id] && pcByUser.has(id)) newCache.users[id] = e;
   await writeFile(new URL("../cache.json", import.meta.url), JSON.stringify(newCache));
 
-  const ranked = rankUsers(users.map((u) => ({ ...u, points: Math.round(u.points * 100) / 100 })));
+  const ranked = rankUsers(
+    users.map((u) => ({ ...u, points: Math.round(u.points * 100) / 100 })).filter((u) => u.points > 0)
+  );
   const out = {
     generated: new Date().toISOString(),
     lowest: H,
