@@ -56,8 +56,23 @@ button.pc-native-toggle {
 .pc-switch.active { background-color: #3b82f6; }
 .pc-switch.active .pc-switch-thumb { transform: translateX(18px); }
 
-/* Всегда скрывать стрелки пагинации Global Demonlist */
-div[class^="pagination"],
-div[class*=" pagination"] {
-  display: none !important;
+/* Страница профиля. Наш список виден только при включённом PC Import;
+   оригинальный список и пагинация прячутся тоже только тогда. */
+html:not(.pc-on) #pc-profile-list { display: none !important; }
+html.pc-profile.pc-on .pc-hidden-original,
+html.pc-profile.pc-on [data-pc-pag] { display: none !important; }
+/* Плашки Pointercrate сверху профиля: видны только при включённом PC Import.
+   Старая плашка Demonlist, которую заменила запись Pointercrate, при этом прячется. */
+html:not(.pc-on) [data-pc-chip],
+html:not(.pc-on) [data-pc-section] { display: none !important; }
+html.pc-on [data-pc-chip-hide] { display: none !important; }
+
+/* Переключатель на странице рейтинга: строка над поиском в списке игроков */
+.pc-lb-switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 4px 10px;
+  user-select: none;
 }
