@@ -222,6 +222,19 @@ export function rankUsers(users) {
   );
 }
 
+// Топ игроков с учётом Pointercrate: место сейчас, прежнее место на Demonlist, очки до и после.
+export function buildTop(ranked, n = 50) {
+  return ranked.slice(0, n).map((u, i) => ({
+    place: i + 1,
+    oldPlace: Number.isFinite(u.placement) ? u.placement : null,
+    id: u.id,
+    name: u.name ?? null,
+    country: u.country ?? null,
+    points: u.points,
+    basePoints: Math.round(u.base * 100) / 100,
+  }));
+}
+
 async function main() {
   const links = JSON.parse(await readFile(new URL("../links.json", import.meta.url), "utf8"));
   let fix = { merges: [] };
@@ -251,7 +264,14 @@ async function main() {
   const byId = new Map(levels.map((l) => [l.id, l]));
   const demons = new Map(demonsArr.map((d) => [d.id, d.level_id]));
 
-  const users = board.map((u, i) => ({ id: String(u.id), placement: Number(u.placement) || i + 1, base: Number(u.points), points: Number(u.points) }));
+  const users = board.map((u, i) => ({
+    id: String(u.id),
+    name: u.username ?? null,
+    country: u.country ?? null,
+    placement: Number(u.placement) || i + 1,
+    base: Number(u.points),
+    points: Number(u.points),
+  }));
   const byUserId = new Map(users.map((u) => [u.id, u]));
   // Игроков с 0 очков в таблице нет, но записи Pointercrate могут дать им очки и место в рейтинге
   // (на глобале дают очки и низкие места). Добавляем их с нулевой базой, ниже всех при равенстве.
@@ -305,6 +325,8 @@ async function main() {
     users: ranked.map((u) => [u.id, u.points]), // порядок в массиве и есть итоговое место
   };
   await writeFile(new URL("../points.json", import.meta.url), JSON.stringify(out));
+  const top = { generated: out.generated, users: buildTop(ranked, Number(process.env.TOP || 50)) };
+  await writeFile(new URL("../top.json", import.meta.url), JSON.stringify(top, null, 1));
   console.log(`points.json: ${out.users.length} игроков`);
 }
 
