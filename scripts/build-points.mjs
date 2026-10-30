@@ -367,8 +367,7 @@ async function main() {
 
   // игроков, которых не удалось обработать, оставляем со старым кешем
   for (const [id, e] of Object.entries(cache.users)) if (!newCache.users[id] && pcByUser.has(id)) newCache.users[id] = e;
-  await writeFile(new URL("../extras.json", import.meta.url),
-    formatExtras({ generated: out.generated, users: extrasOut }));
+  await writeFile(new URL("../cache.json", import.meta.url), JSON.stringify(newCache));
 
   const ranked = rankUsers(
     users.map((u) => ({ ...u, points: Math.round(u.points * 100) / 100 })).filter((u) => u.points > 0)
@@ -376,10 +375,9 @@ async function main() {
   const out = {
     generated: new Date().toISOString(),
     lowest: H,
-    users: ranked.map((u) => [u.id, u.points]), // порядок в массиве и есть итоговое место
+    users: ranked.map((u) => [u.id, u.points]),
   };
   await writeFile(new URL("../points.json", import.meta.url), JSON.stringify(out));
-  // players.json: ник, очки, страна и бейдж в порядке итогового места — для страницы рейтинга в расширении
   const players = {
     generated: out.generated,
     users: ranked.map((u) => [u.id, u.name ?? null, u.points, u.country ?? null, u.badge ?? null]),
@@ -388,8 +386,9 @@ async function main() {
   const top = { generated: out.generated, users: buildTop(ranked, Number(process.env.TOP || 50)) };
   await writeFile(new URL("../top.json", import.meta.url), JSON.stringify(top, null, 1));
   await writeFile(new URL("../extras.json", import.meta.url),
-    JSON.stringify({ generated: out.generated, users: extrasOut }));
+    formatExtras({ generated: out.generated, users: extrasOut }));
   console.log(`points.json: ${out.users.length} игроков`);
+}
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) main().catch((e) => { console.error(e); process.exit(1); });
