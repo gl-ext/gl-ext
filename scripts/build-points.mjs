@@ -267,6 +267,15 @@ export function buildTop(ranked, n = 50) {
   }));
 }
 
+function formatExtras(data) {
+  const blocks = Object.entries(data.users).map(([id, rows]) => {
+    if (!rows.length) return `    ${JSON.stringify(id)}: []`;
+    const lines = rows.map((r) => "      " + JSON.stringify(r)).join(",\n");
+    return `    ${JSON.stringify(id)}: [\n${lines}\n    ]`;
+  });
+  return `{\n  "generated": ${JSON.stringify(data.generated)},\n  "users": {\n${blocks.join(",\n")}\n  }\n}\n`;
+}
+
 async function main() {
   const links = JSON.parse(await readFile(new URL("../links.json", import.meta.url), "utf8"));
   let fix = { merges: [] };
@@ -358,7 +367,8 @@ async function main() {
 
   // игроков, которых не удалось обработать, оставляем со старым кешем
   for (const [id, e] of Object.entries(cache.users)) if (!newCache.users[id] && pcByUser.has(id)) newCache.users[id] = e;
-  await writeFile(new URL("../cache.json", import.meta.url), JSON.stringify(newCache));
+  await writeFile(new URL("../extras.json", import.meta.url),
+    formatExtras({ generated: out.generated, users: extrasOut }));
 
   const ranked = rankUsers(
     users.map((u) => ({ ...u, points: Math.round(u.points * 100) / 100 })).filter((u) => u.points > 0)
