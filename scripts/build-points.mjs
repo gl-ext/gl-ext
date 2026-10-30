@@ -389,6 +389,5 @@ async function main() {
     formatExtras({ generated: out.generated, users: extrasOut }));
   console.log(`points.json: ${out.users.length} игроков`);
 }
-}
 
 if (import.meta.url === `file://${process.argv[1]}`) main().catch((e) => { console.error(e); process.exit(1); });
