@@ -10,14 +10,21 @@ const CONC = Number(process.env.CONCURRENCY || 4);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// Сайты могут отклонять запросы без нормального User-Agent
+const HEADERS = {
+  Accept: "application/json",
+  "User-Agent": "gl-ext-points-builder (+https://github.com/gl-ext/gl-ext)",
+};
+
 async function getJson(url, tries = 6) {
   let last;
   for (let i = 0; i < tries; i++) {
     try {
-      const r = await fetch(url, { headers: { Accept: "application/json" } });
+      const r = await fetch(url, { headers: HEADERS });
       if (r.ok) return await r.json();
-      last = new Error(`${r.status} ${url}`);
-      if (r.status !== 429 && r.status < 500) break; // 404 и т.п. — повторять бессмысленно
+      const body = (await r.text().catch(() => "")).replace(/\s+/g, " ").slice(0, 200);
+      last = new Error(`${r.status} ${url}${body ? " — " + body : ""}`);
+      if (r.status !== 429 && r.status < 500) break; // 403, 404 и т.п. — повторять бессмысленно
     } catch (e) { last = e; }
     await sleep(1000 * 2 ** i);
   }
