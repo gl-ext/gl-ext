@@ -268,22 +268,31 @@ async function main() {
     id: String(u.id),
     name: u.username ?? null,
     country: u.country ?? null,
+    badge: u.badge ?? null, // бейдж берём из таблицы вместе со страной
     placement: Number(u.placement) || i + 1,
     base: Number(u.points),
     points: Number(u.points),
   }));
   const byUserId = new Map(users.map((u) => [u.id, u]));
+
   // Игроков с 0 очков в таблице нет, но записи Pointercrate могут дать им очки и место в рейтинге
   // (на глобале дают очки и низкие места). Добавляем их с нулевой базой, ниже всех при равенстве.
-  let unranked = 0;
-  for (const id of pcByUser.keys()) {
-    if (!byUserId.has(id)) {
-      const u = { id, placement: Infinity, base: 0, points: 0 };
-      users.push(u);
-      byUserId.set(id, u);
-      unranked++;
+  // Страну, бейдж и ник у таких игроков в таблице взять неоткуда, поэтому берём из профиля (user/get).
+  const missing = [...pcByUser.keys()].filter((id) => !byUserId.has(id));
+  await pool(missing, CONC, async (id) => {
+    const u = { id, name: null, country: null, badge: null, placement: Infinity, base: 0, points: 0 };
+    try {
+      const d = await getJson(`${DL}user/get?id=${encodeURIComponent(id)}`);
+      u.name = d?.data?.username ?? null;
+      u.country = d?.data?.country ?? null;
+      u.badge = d?.data?.badge ?? null;
+    } catch (e) {
+      console.warn(`user/get ${id}: ${e.message}`); // не вышло: останутся пустые значения
     }
-  }
+    users.push(u);
+    byUserId.set(id, u);
+  });
+  const unranked = missing.length;
   if (unranked) console.log(`Игроков со связями без очков на Demonlist: ${unranked}`);
 
   // кеш записей Demonlist (cache.json); FULL=1 — игнорировать его и перекачать всё
@@ -325,8 +334,11 @@ async function main() {
     users: ranked.map((u) => [u.id, u.points]), // порядок в массиве и есть итоговое место
   };
   await writeFile(new URL("../points.json", import.meta.url), JSON.stringify(out));
-  // players.json: ники в порядке итогового места — для страницы рейтинга в расширении
-  const players = { generated: out.generated, users: ranked.map((u) => [u.id, u.name ?? null, u.points]) };
+  // players.json: ник, очки, страна и бейдж в порядке итогового места — для страницы рейтинга в расширении
+  const players = {
+    generated: out.generated,
+    users: ranked.map((u) => [u.id, u.name ?? null, u.points, u.country ?? null, u.badge ?? null]),
+  };
   await writeFile(new URL("../players.json", import.meta.url), JSON.stringify(players));
   const top = { generated: out.generated, users: buildTop(ranked, Number(process.env.TOP || 50)) };
   await writeFile(new URL("../top.json", import.meta.url), JSON.stringify(top, null, 1));
