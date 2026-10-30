@@ -325,6 +325,9 @@ async function main() {
     users: ranked.map((u) => [u.id, u.points]), // порядок в массиве и есть итоговое место
   };
   await writeFile(new URL("../points.json", import.meta.url), JSON.stringify(out));
+  // players.json: ники в порядке итогового места — для страницы рейтинга в расширении
+  const players = { generated: out.generated, users: ranked.map((u) => [u.id, u.name ?? null, u.points]) };
+  await writeFile(new URL("../players.json", import.meta.url), JSON.stringify(players));
   const top = { generated: out.generated, users: buildTop(ranked, Number(process.env.TOP || 50)) };
   await writeFile(new URL("../top.json", import.meta.url), JSON.stringify(top, null, 1));
   console.log(`points.json: ${out.users.length} игроков`);
