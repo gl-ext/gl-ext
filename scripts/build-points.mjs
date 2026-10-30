@@ -214,6 +214,38 @@ export function playerDelta({ dlRecords, pcRecords, byIngame, byId, demons, H })
   return delta;
 }
 
+// Записи Pointercrate, которые что-то меняют в профиле: на Demonlist такого уровня нет
+// или процент там ниже. Строка:
+// [id уровня DL|null, место|null, название, процент, видео, старый процент DL|null, позиция на PC, id демона PC]
+export function playerExtras({ dlRecords, pcRecords, byIngame, byId, demons }) {
+  const best = new Map(); // id уровня DL -> лучший принятый процент
+  for (const r of dlRecords) {
+    if (r.status && String(r.status).toLowerCase() !== "accepted") continue;
+    const id = r.level?.id;
+    const pct = Number(r.percent);
+    if (id != null && Number.isFinite(pct) && pct > (best.get(id) ?? -1)) best.set(id, pct);
+  }
+  const pcBest = new Map();
+  for (const r of pcRecords) {
+    const demon = r.demon || {};
+    const ingame = demons.get(demon.id);
+    const lvl = ingame != null ? byIngame.get(String(ingame)) : null;
+    const pct = Number(r.progress);
+    if (!Number.isFinite(pct)) continue;
+    const key = lvl ? "l" + lvl.id : "d" + demon.id;
+    if (pct > (pcBest.get(key)?.pct ?? -1)) pcBest.set(key, { lvl, demon, pct, video: r.video || "" });
+  }
+  const rows = [];
+  for (const { lvl, demon, pct, video } of pcBest.values()) {
+    const old = lvl ? best.get(lvl.id) : undefined;
+    if (old != null && old >= pct) continue; // запись Demonlist не хуже
+    rows.push([lvl?.id ?? null, lvl?.placement ?? null, lvl?.name ?? demon.name ?? "Unknown",
+               pct, video, old ?? null, demon.position ?? null, demon.id ?? null]);
+  }
+  rows.sort((a, b) => (a[1] ?? Infinity) - (b[1] ?? Infinity) || (a[6] ?? Infinity) - (b[6] ?? Infinity));
+  return rows;
+}
+
 // Итоговый порядок: по очкам (убывание); при равных — выше тот, кто был выше на Demonlist.
 export function rankUsers(users) {
   const cmp = (a, b) => (a === b ? 0 : a < b ? -1 : 1);
@@ -302,6 +334,7 @@ async function main() {
   }
   cache.users ||= {};
   const newCache = { users: {} };
+  const extrasOut = {};
 
   const targets = [...pcByUser.entries()].filter(([id]) => byUserId.has(id));
   let done = 0, failed = 0;
@@ -311,7 +344,9 @@ async function main() {
       if (pcLists.some((l) => l === null)) { failed++; return; }
       const { entry, records: dlRecords } = await loadDlRecordsCached(dlId, cache.users[dlId]);
       newCache.users[dlId] = entry;
-      const delta = playerDelta({ dlRecords, pcRecords: pcLists.flat(), byIngame, byId, demons, H });
+      const pcRecords = pcLists.flat();
+      const delta = playerDelta({ dlRecords, pcRecords, byIngame, byId, demons, H });
+      extrasOut[dlId] = playerExtras({ dlRecords, pcRecords, byIngame, byId, demons });
       byUserId.get(dlId).points = Math.round((byUserId.get(dlId).base + delta) * 100) / 100;
     } catch (e) {
       failed++;
@@ -342,6 +377,8 @@ async function main() {
   await writeFile(new URL("../players.json", import.meta.url), JSON.stringify(players));
   const top = { generated: out.generated, users: buildTop(ranked, Number(process.env.TOP || 50)) };
   await writeFile(new URL("../top.json", import.meta.url), JSON.stringify(top, null, 1));
+  await writeFile(new URL("../extras.json", import.meta.url),
+    JSON.stringify({ generated: out.generated, users: extrasOut }));
   console.log(`points.json: ${out.users.length} игроков`);
 }
 
