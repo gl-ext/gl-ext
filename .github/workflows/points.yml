@@ -1,7 +1,7 @@
 name: Update points.json
 on:
   schedule:
-    - cron: "*/30 * * * *"   # раз в 3 часа
+    - cron: "*/15 * * * *"   # каждые 15 минут
   workflow_dispatch:
     inputs:
       full:
@@ -29,5 +29,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add points.json cache.json top.json players.json extras.json
+          git add points.json cache.json top.json players.json pc_extras.json my_extras_out.json
           git diff --cached --quiet || (git commit -m "Update points.json" && git push)
