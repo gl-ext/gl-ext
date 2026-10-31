@@ -33,16 +33,16 @@
       [3441, 30, "FOREST OF SPIKES", 100, "", null, null, null]
     ],
     "16572": [
-      [2050, 69, "Poocubed", 100, "", null, null, null]
-      [1981, 73, "Saul Goodman", 100, "", null, null, null]
-      [2372, 84, "COMBUSTION", 100, "", null, null, null]
-      [3125, 64, "Snowbound", 100, "", null, null, null]
+      [2050, 69, "Poocubed", 100, "", null, null, null],
+      [1981, 73, "Saul Goodman", 100, "", null, null, null],
+      [2372, 84, "COMBUSTION", 100, "", null, null, null],
+      [3125, 64, "Snowbound", 100, "", null, null, null],
     ],
     "45796": [
       [3320, 21, "Penumbral", 92, "", null, null, null]
     ],
     "51317": [
       [2653, 20, "Silent Clubstep", 100, "", null, null, null]
-    ],
+    ]
   }
 }
