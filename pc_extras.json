@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T15:25:21.241Z",
+  "generated": "2026-10-31T15:57:38.006Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -25132,6 +25132,7 @@
       [1981,73,"Saul Goodman",100,"https://www.youtube.com/watch?v=WpHkhb6YyPQ",null,70,496,"pointercrate",96,0]
     ],
     "17526": [
+      [2656,34,"Acheron",100,"https://www.youtube.com/watch?v=OrKV4HAQYPM",55,28,442,"pointercrate",344,93.17],
       [1732,62,"Sakupen Circles",100,"https://www.youtube.com/watch?v=gKHZnzFU-AM",69,49,391,"pointercrate",184,50.18]
     ],
     "17548": [
@@ -26478,6 +26479,9 @@
       [1853,239,"qoUEO",100,"https://www.youtube.com/watch?v=EdpFcOOJ298",null,216,455,"pointercrate",1.4,0],
       [2237,242,"Cognition",100,"https://www.youtube.com/watch?v=K5OJuOInBrA",null,212,247,"pointercrate",1,0]
     ],
+    "26016": [
+      [1746,178,"Aerial Gleam",100,"https://www.youtube.com/watch?v=Tfw7M8GQw54",null,156,412,"pointercrate",3.8,0]
+    ],
     "26049": [
       [2659,28,"Avernus",87,"https://www.youtube.com/watch?v=z_j6ORfOYpA",null,26,486,"pointercrate",162.35,0],
       [1750,45,"Deimos",100,"https://www.youtube.com/watch?v=RRMcgnVC9zQ",null,44,516,"pointercrate",300,0],
@@ -26746,7 +26750,7 @@
       [1698,213,"Keres",100,"https://www.youtube.com/watch?v=36XRt7ECKBY",null,189,377,"pointercrate",2.2,0]
     ],
     "29690": [
-      [2485,61,"Firework",88,"https://www.youtube.com/watch?v=Dzfw3tiU8jA",null,58,379,"pointercrate",84,0]
+      [2485,61,"Firework",100,"https://www.youtube.com/watch?v=1ttPuuKUHM8",null,58,379,"pointercrate",192,0]
     ],
     "29694": [
       [1754,137,"Tartarus",100,"https://www.youtube.com/watch?v=IWQDfnVnlt0",null,121,250,"pointercrate",18,0]
@@ -26851,7 +26855,7 @@
       [null,null,"The JanuS Miracle",100,"https://www.youtube.com/watch?v=IdEwZQfsMh4",null,711,144,"pointercrate",0,0]
     ],
     "32030": [
-      [1748,42,"Slaughterhouse",79,"https://www.youtube.com/watch?v=S-ofJ4FJbhw",null,40,380,"pointercrate",117.95,0]
+      [1748,42,"Slaughterhouse",100,"https://www.youtube.com/watch?v=aoOdbgLtwOY",null,40,380,"pointercrate",312,0]
     ],
     "32149": [
       [1778,384,"The Yandere",53,"https://www.youtube.com/watch?v=jimn9U5JGec",null,299,2,"pointercrate",0,0]
@@ -27010,6 +27014,9 @@
     ],
     "36352": [
       [2655,46,"KOCMOC",100,"https://www.youtube.com/watch?v=Q8Q2aKU83iQ",null,42,501,"pointercrate",296,0]
+    ],
+    "36377": [
+      [2372,84,"COMBUSTION",89,"https://www.youtube.com/watch?v=RBi3ATuDVYM",null,75,526,"pointercrate",30.83,0]
     ],
     "36698": [
       [1746,178,"Aerial Gleam",100,"https://www.youtube.com/watch?v=azEPs6GMlS0",null,156,412,"pointercrate",3.8,0]
