@@ -300,13 +300,13 @@ const SOURCES = {
       });
     },
   },
-    extras2: {
+    myextras: {
       async init() {
         try {
-          const txt = await readFile(new URL("../extras2.json", import.meta.url), "utf8");
+          const txt = await readFile(new URL("../my_extras.json", import.meta.url), "utf8");
           this.data = JSON.parse(txt).users || {};
         } catch (e) {
-          console.warn("extras2.json:", e.message);
+          console.warn("my_extras.json:", e.message);
           this.data = {};
         }
       },
@@ -471,7 +471,7 @@ for (const [mainId, entry] of Object.entries(links)) {
   await writeFile(new URL("../players.json", import.meta.url), JSON.stringify(players));
   const top = { generated: out.generated, users: buildTop(ranked, Number(process.env.TOP || 50)) };
   await writeFile(new URL("../top.json", import.meta.url), JSON.stringify(top, null, 1));
-  await writeFile(new URL("../extras.json", import.meta.url),
+  await writeFile(new URL("../pc_extras.json", import.meta.url),
     formatExtras({ generated: out.generated, users: extrasOut }));
   console.log(`points.json: ${out.users.length} игроков`);
 }
