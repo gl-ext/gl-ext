@@ -291,6 +291,31 @@ const SOURCES = {
       });
     },
   },
+    extras2: {
+      async init() {
+        try {
+          const txt = await readFile(new URL("../extras2.json", import.meta.url), "utf8");
+          this.data = JSON.parse(txt).users || {};
+        } catch (e) {
+          console.warn("extras2.json:", e.message);
+          this.data = {};
+        }
+      },
+      // здесь "аккаунт" = сам ID игрока на Demonlist (ключ в файле)
+      async records(accountId) {
+        return (this.data[accountId] || []).map(
+          ([lvlId, placement, name, percent, video, , pos, srcId]) => ({
+            dlId: lvlId ?? null, // уровень указываем по ID на Demonlist
+            ingame: null,
+            name,
+            percent: Number(percent),
+            video: video || "",
+            pos: pos ?? null,
+            srcId: srcId ?? null,
+          })
+        );
+      },
+    },
 /*
   // Пример нового источника. Подставь адрес и поля из его документации.
   othersite: {
