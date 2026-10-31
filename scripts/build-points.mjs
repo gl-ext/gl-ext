@@ -197,7 +197,8 @@ export function playerDelta({ dlRecords, extRecords, byIngame, byId, H }) {
   // лучший процент по каждому уровню среди ВСЕХ источников сразу
   const extBest = new Map();
   for (const r of extRecords) {
-    const lvl = r.ingame != null ? byIngame.get(r.ingame) : null;
+    const lvl = r.dlId != null ? byId.get(r.dlId)
+      : r.ingame != null ? byIngame.get(r.ingame) : null;
     if (!lvl || !Number.isFinite(r.percent)) continue;
     if (r.percent > (extBest.get(lvl.id)?.percent ?? -1)) extBest.set(lvl.id, { percent: r.percent, level: lvl });
   }
@@ -300,54 +301,48 @@ const SOURCES = {
       });
     },
   },
-    myextras: {
-      async init() {
-        try {
-          const txt = await readFile(new URL("../my_extras.json", import.meta.url), "utf8");
-          this.data = JSON.parse(txt).users || {};
-        } catch (e) {
-          console.warn("my_extras.json:", e.message);
-          this.data = {};
-        }
-      },
-      // здесь "аккаунт" = сам ID игрока на Demonlist (ключ в файле)
-      async records(accountId) {
-        return (this.data[accountId] || []).map(
-          ([lvlId, placement, name, percent, video, , pos, srcId]) => ({
-            dlId: lvlId ?? null, // уровень указываем по ID на Demonlist
-            ingame: null,
-            name,
-            percent: Number(percent),
-            video: video || "",
-            pos: pos ?? null,
-            srcId: srcId ?? null,
-          })
-        );
-      },
-    },
-/*
-  // Пример нового источника. Подставь адрес и поля из его документации.
-  othersite: {
-    async init() {},
-    async records(accountId) {
+
+  my_extras: {
+    async init() {
+      this.data = {};
       try {
-        const d = await getJson(`https://example.com/api/player/${accountId}`);
-        return (d.records || []).map((r) => ({
-          ingame: String(r.level_id),
-          name: r.level_name,
-          percent: Number(r.percent),
-          video: r.video || "",
-          pos: null,
-          srcId: null,
-        }));
+        const txt = await readFile(new URL("../my_extras.json", import.meta.url), "utf8");
+        this.data = JSON.parse(txt).users || {};
       } catch (e) {
-        console.warn(`othersite ${accountId}: ${e.message}`);
-        return null;
+        console.warn("my_extras.json:", e.message);
       }
     },
+    // "аккаунт" здесь = ID игрока на Demonlist (ключ в файле)
+    async records(accountId) {
+      const out = [];
+      for (const [i, row] of (this.data[accountId] || []).entries()) {
+        const [lvlId, , name, percent, video, , pos, srcId] = row;
+        const pct = Number(percent);
+        if (!Array.isArray(row) || !Number.isInteger(lvlId) || !(pct > 0 && pct <= 100)) {
+          console.warn(`my_extras: игрок ${accountId}, строка ${i + 1} пропущена:`, JSON.stringify(row));
+          continue;
+        }
+        out.push({
+          dlId: lvlId,
+          ingame: null,
+          name: name || "Unknown",
+          percent: pct,
+          video: video || "",
+          pos: pos ?? null,
+          srcId: srcId ?? null,
+        });
+      }
+      return out;
+    },
   },
+}; // <-- эта скобка раньше пропадала внутри комментария
+
+// В какие файлы пишем результат каждого источника (НЕ my_extras.json: это входной файл!)
+const OUT_FILE = {
+  pointercrate: "pc_extras.json",
+  my_extras: "my_extras_out.json",
 };
-*/
+
 async function main() {
   const links = JSON.parse(await readFile(new URL("../links.json", import.meta.url), "utf8"));
   let fix = { merges: [] };
@@ -357,71 +352,67 @@ async function main() {
   for (const m of fix.merges || []) for (const a of m.absorb || []) absorb.set(String(a.id), String(m.keep));
   const canon = (id) => absorb.get(String(id)) ?? String(id);
 
-const accByUser = new Map();
-for (const [mainId, entry] of Object.entries(links)) {
-  let sites = entry;
-  if (typeof entry !== "object" || Array.isArray(entry) || entry === null) sites = { pointercrate: [].concat(entry) };
-  const k = canon(mainId);
-  const acc = accByUser.get(k) || {};
-  for (const [site, ids] of Object.entries(sites)) {
-    if (site.startsWith("_") || !SOURCES[site]) continue; // "_name" и неизвестные сайты пропускаем
-    acc[site] = [...new Set([...(acc[site] || []), ...[].concat(ids).map(String)])];
+  // основной ID на Demonlist -> { сайт: [ID аккаунтов] }
+  const accByUser = new Map();
+  for (const [mainId, entry] of Object.entries(links)) {
+    let sites = entry;
+    if (typeof entry !== "object" || Array.isArray(entry) || entry === null) sites = { pointercrate: [].concat(entry) };
+    const k = canon(mainId);
+    const acc = accByUser.get(k) || {};
+    for (const [site, ids] of Object.entries(sites)) {
+      if (site.startsWith("_") || !SOURCES[site]) continue;
+      acc[site] = [...new Set([...(acc[site] || []), ...[].concat(ids).map(String)])];
+    }
+    if (Object.keys(acc).length) accByUser.set(k, acc);
   }
-  if (Object.keys(acc).length) accByUser.set(k, acc);
-}
-  console.log(`Игроков со связями: ${accByUser.size}`);
 
   const [levels, board] = await Promise.all([loadAllLevels(), loadLeaderboard()]);
   await Promise.all(Object.values(SOURCES).map((s) => s.init()));
+
+  // игроки из my_extras обрабатываются, даже если у них нет линков
+  for (const dlId of Object.keys(SOURCES.my_extras.data)) {
+    const k = canon(dlId);
+    const acc = accByUser.get(k) || {};
+    acc.my_extras = [...new Set([...(acc.my_extras || []), String(dlId)])];
+    accByUser.set(k, acc);
+  }
+  console.log(`Игроков со связями: ${accByUser.size}`);
+
   const H = Math.max(...levels.map((l) => Number(l.placement) || 0));
-  console.log(`Уровней: ${levels.length}, H=${H}, демонов PC: ${demonsArr.length}, игроков: ${board.length}`);
+  console.log(`Уровней: ${levels.length}, H=${H}, игроков: ${board.length}`);
 
   const byIngame = new Map(levels.map((l) => [String(l.ingame_id), l]));
   const byId = new Map(levels.map((l) => [l.id, l]));
-  const demons = new Map(demonsArr.map((d) => [d.id, d.level_id]));
 
   const users = board.map((u, i) => ({
     id: String(u.id),
     name: u.username ?? null,
     country: u.country ?? null,
-    badge: u.badge ?? null, // бейдж берём из таблицы вместе со страной
+    badge: u.badge ?? null,
     placement: Number(u.placement) || i + 1,
     base: Number(u.points),
     points: Number(u.points),
   }));
   const byUserId = new Map(users.map((u) => [u.id, u]));
 
-  // Игроков с 0 очков в таблице нет, но записи Pointercrate могут дать им очки и место в рейтинге
-  // (на глобале дают очки и низкие места). Добавляем их с нулевой базой, ниже всех при равенстве.
-  // Страну, бейдж и ник у таких игроков в таблице взять неоткуда, поэтому берём из профиля (user/get).
+  // Игроки с 0 очков на Demonlist, но с записями из источников
   const missing = [...accByUser.keys()].filter((id) => !byUserId.has(id));
-  await pool(targets, CONC, async ([dlId, accounts]) => {
+  await pool(missing, CONC, async (id) => {
+    const u = { id, name: null, country: null, badge: null, placement: Infinity, base: 0, points: 0 };
     try {
-      const lists = await Promise.all(
-        Object.entries(accounts).flatMap(([site, ids]) =>
-          ids.map(async (id) => {
-            const recs = await SOURCES[site].records(id);
-            return recs && recs.map((r) => ({ ...r, source: site })); // помечаем источник
-          })
-        )
-      );
-      if (lists.some((l) => l === null)) { failed++; return; }
-      const { entry, records: dlRecords } = await loadDlRecordsCached(dlId, cache.users[dlId]);
-      newCache.users[dlId] = entry;
-      const extRecords = lists.flat();
-      const delta = playerDelta({ dlRecords, extRecords, byIngame, byId, H });
-      extrasOut[dlId] = playerExtras({ dlRecords, extRecords, byIngame });
-      byUserId.get(dlId).points = Math.round((byUserId.get(dlId).base + delta) * 100) / 100;
+      const d = await getJson(`${DL}user/get?id=${encodeURIComponent(id)}`);
+      u.name = d?.data?.username ?? null;
+      u.country = d?.data?.country ?? null;
+      u.badge = d?.data?.badge ?? null;
     } catch (e) {
-      console.warn(`user/get ${id}: ${e.message}`); // не вышло: останутся пустые значения
+      console.warn(`user/get ${id}: ${e.message}`);
     }
     users.push(u);
     byUserId.set(id, u);
   });
-  const unranked = missing.length;
-  if (unranked) console.log(`Игроков со связями без очков на Demonlist: ${unranked}`);
+  if (missing.length) console.log(`Игроков со связями без очков на Demonlist: ${missing.length}`);
 
-  // кеш записей Demonlist (cache.json); FULL=1 — игнорировать его и перекачать всё
+  // кеш записей Demonlist; FULL=1 — игнорировать его
   let cache = { users: {} };
   if (!process.env.FULL) {
     try { cache = JSON.parse(await readFile(new URL("../cache.json", import.meta.url), "utf8")); } catch (_) {}
@@ -432,15 +423,22 @@ for (const [mainId, entry] of Object.entries(links)) {
 
   const targets = [...accByUser.entries()].filter(([id]) => byUserId.has(id));
   let done = 0, failed = 0;
-  await pool(targets, CONC, async ([dlId, pcIds]) => {
+  await pool(targets, CONC, async ([dlId, accounts]) => {
     try {
-      const pcLists = await Promise.all(pcIds.map(loadPcRecords));
-      if (pcLists.some((l) => l === null)) { failed++; return; }
+      const lists = await Promise.all(
+        Object.entries(accounts).flatMap(([site, ids]) =>
+          ids.map(async (id) => {
+            const recs = await SOURCES[site].records(id);
+            return recs && recs.map((r) => ({ ...r, source: site }));
+          })
+        )
+      );
+      if (lists.some((l) => l === null)) { failed++; return; }
       const { entry, records: dlRecords } = await loadDlRecordsCached(dlId, cache.users[dlId]);
       newCache.users[dlId] = entry;
-      const pcRecords = pcLists.flat();
-      const delta = playerDelta({ dlRecords, pcRecords, byIngame, byId, demons, H });
-      extrasOut[dlId] = playerExtras({ dlRecords, pcRecords, byIngame, byId, demons });
+      const extRecords = lists.flat();
+      const delta = playerDelta({ dlRecords, extRecords, byIngame, byId, H });
+      extrasOut[dlId] = playerExtras({ dlRecords, extRecords, byIngame, byId, H });
       byUserId.get(dlId).points = Math.round((byUserId.get(dlId).base + delta) * 100) / 100;
     } catch (e) {
       failed++;
@@ -450,30 +448,42 @@ for (const [mainId, entry] of Object.entries(links)) {
   });
   console.log(`Готово: ${done}, ошибок: ${failed}`);
 
-  // игроков, которых не удалось обработать, оставляем со старым кешем
   for (const [id, e] of Object.entries(cache.users)) if (!newCache.users[id] && accByUser.has(id)) newCache.users[id] = e;
   await writeFile(new URL("../cache.json", import.meta.url), JSON.stringify(newCache));
 
+  const generated = new Date().toISOString();
   const ranked = rankUsers(
     users.map((u) => ({ ...u, points: Math.round(u.points * 100) / 100 })).filter((u) => u.points > 0)
   );
+
+  // points.json: только базовые очки Demonlist
   const baseTable = {
-    generated: new Date().toISOString(),
+    generated,
+    lowest: H,
     users: users
       .map((u) => [u.id, Math.round(u.base * 100) / 100, Number.isFinite(u.placement) ? u.placement : null])
-      .filter(([, b]) => b > 0 || extrasOut[u[0]]),
+      .filter(([id, b]) => b > 0 || extrasOut[id]),
   };
   await writeFile(new URL("../points.json", import.meta.url), JSON.stringify(baseTable));
+
   const players = {
-    generated: out.generated,
+    generated,
     users: ranked.map((u) => [u.id, u.name ?? null, u.points, u.country ?? null, u.badge ?? null]),
   };
   await writeFile(new URL("../players.json", import.meta.url), JSON.stringify(players));
-  const top = { generated: out.generated, users: buildTop(ranked, Number(process.env.TOP || 50)) };
+  const top = { generated, users: buildTop(ranked, Number(process.env.TOP || 50)) };
   await writeFile(new URL("../top.json", import.meta.url), JSON.stringify(top, null, 1));
-  await writeFile(new URL("../pc_extras.json", import.meta.url),
-    formatExtras({ generated: out.generated, users: extrasOut }));
-  console.log(`points.json: ${out.users.length} игроков`);
+
+  // по одному файлу на источник
+  for (const [site, file] of Object.entries(OUT_FILE)) {
+    const outUsers = {};
+    for (const [dlId, rows] of Object.entries(extrasOut)) {
+      const mine = rows.filter((r) => r[8] === site);
+      if (mine.length) outUsers[dlId] = mine;
+    }
+    await writeFile(new URL(`../${file}`, import.meta.url), formatExtras({ generated, users: outUsers }));
+  }
+  console.log(`points.json: ${baseTable.users.length} игроков`);
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) main().catch((e) => { console.error(e); process.exit(1); });
