@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-31T04:03:17.735Z",
+ "generated": "2026-10-31T07:09:21.432Z",
  "users": [
   {
    "place": 1,
@@ -21,21 +21,21 @@
   },
   {
    "place": 3,
+   "oldPlace": 5,
+   "id": "18454",
+   "name": "zLevii",
+   "country": "New-Zealand",
+   "points": 10071.95,
+   "basePoints": 8482.41
+  },
+  {
+   "place": 4,
    "oldPlace": 3,
    "id": "16579",
    "name": "Netermind",
    "country": "United-States",
    "points": 10010.3,
    "basePoints": 10002.86
-  },
-  {
-   "place": 4,
-   "oldPlace": 5,
-   "id": "18454",
-   "name": "zLevii",
-   "country": "New-Zealand",
-   "points": 9406.37,
-   "basePoints": 8482.41
   },
   {
    "place": 5,
@@ -48,21 +48,21 @@
   },
   {
    "place": 6,
+   "oldPlace": 7,
+   "id": "13506",
+   "name": "SerVax",
+   "country": "Armenia",
+   "points": 7314.41,
+   "basePoints": 6648.83
+  },
+  {
+   "place": 7,
    "oldPlace": 6,
    "id": "13458",
    "name": "Vorten",
    "country": "Russia",
    "points": 7083.33,
    "basePoints": 7083.33
-  },
-  {
-   "place": 7,
-   "oldPlace": 7,
-   "id": "13506",
-   "name": "SerVax",
-   "country": "Armenia",
-   "points": 6648.83,
-   "basePoints": 6648.83
   },
   {
    "place": 8,
