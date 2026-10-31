@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-31T07:09:21.432Z",
+ "generated": "2026-10-31T08:17:42.516Z",
  "users": [
   {
    "place": 1,
@@ -21,21 +21,21 @@
   },
   {
    "place": 3,
-   "oldPlace": 5,
-   "id": "18454",
-   "name": "zLevii",
-   "country": "New-Zealand",
-   "points": 10071.95,
-   "basePoints": 8482.41
-  },
-  {
-   "place": 4,
    "oldPlace": 3,
    "id": "16579",
    "name": "Netermind",
    "country": "United-States",
    "points": 10010.3,
    "basePoints": 10002.86
+  },
+  {
+   "place": 4,
+   "oldPlace": 5,
+   "id": "18454",
+   "name": "zLevii",
+   "country": "New-Zealand",
+   "points": 9406.37,
+   "basePoints": 8482.41
   },
   {
    "place": 5,
