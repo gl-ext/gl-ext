@@ -1,7 +1,7 @@
 name: Update points.json
 on:
   schedule:
-    - cron: "17 */3 * * *"   # раз в 3 часа
+    - cron: "*/30 * * * *"   # раз в 3 часа
   workflow_dispatch:
     inputs:
       full:
