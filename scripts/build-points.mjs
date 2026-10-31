@@ -213,8 +213,8 @@ export function playerDelta({ dlRecords, extRecords, byIngame, byId, H }) {
   return delta;
 }
 
-export function playerExtras({ dlRecords, extRecords, byIngame }) {
-  const best = new Map();
+export function playerExtras({ dlRecords, extRecords, byIngame, byId, H }) {
+  const best = new Map(); // лучший процент игрока на Demonlist по уровню
   for (const r of dlRecords) {
     if (r.status && String(r.status).toLowerCase() !== "accepted") continue;
     const id = r.level?.id;
@@ -224,16 +224,25 @@ export function playerExtras({ dlRecords, extRecords, byIngame }) {
   const extBest = new Map();
   for (const r of extRecords) {
     if (!Number.isFinite(r.percent)) continue;
-    const lvl = r.ingame != null ? byIngame.get(r.ingame) : null;
-    const key = lvl ? "l" + lvl.id : "x:" + r.source + ":" + (r.srcId ?? r.ingame ?? r.name);
+    const lvl = r.dlId != null ? byId.get(r.dlId)
+              : r.ingame != null ? byIngame.get(r.ingame) : null;
+    // ключ включает источник: записи разных источников не сравниваем между собой
+    const key = r.source + ":" + (lvl ? "l" + lvl.id : (r.srcId ?? r.ingame ?? r.name));
     if (r.percent > (extBest.get(key)?.r.percent ?? -1)) extBest.set(key, { lvl, r });
   }
   const rows = [];
   for (const { lvl, r } of extBest.values()) {
     const old = lvl ? best.get(lvl.id) : undefined;
     if (old != null && old >= r.percent) continue;
+    let np = 0, op = 0;
+    if (lvl) {
+      np = recordPoints(lvl.placement, H, r.percent, lvl.list_percent);
+      op = old != null ? recordPoints(lvl.placement, H, old, lvl.list_percent) : 0;
+      if (np == null || op == null) { np = 0; op = 0; } // не хватает данных: очков не даёт
+    }
     rows.push([lvl?.id ?? null, lvl?.placement ?? null, lvl?.name ?? r.name,
-               r.percent, r.video, old ?? null, r.pos, r.srcId, r.source]); // 9-е поле: источник
+               r.percent, r.video, old ?? null, r.pos, r.srcId, r.source,
+               Math.round(np * 100) / 100, Math.round(op * 100) / 100]);
   }
   rows.sort((a, b) => (a[1] ?? Infinity) - (b[1] ?? Infinity) || (a[6] ?? Infinity) - (b[6] ?? Infinity));
   return rows;
@@ -448,12 +457,13 @@ for (const [mainId, entry] of Object.entries(links)) {
   const ranked = rankUsers(
     users.map((u) => ({ ...u, points: Math.round(u.points * 100) / 100 })).filter((u) => u.points > 0)
   );
-  const out = {
+  const baseTable = {
     generated: new Date().toISOString(),
-    lowest: H,
-    users: ranked.map((u) => [u.id, u.points]),
+    users: users
+      .map((u) => [u.id, Math.round(u.base * 100) / 100, Number.isFinite(u.placement) ? u.placement : null])
+      .filter(([, b]) => b > 0 || extrasOut[u[0]]),
   };
-  await writeFile(new URL("../points.json", import.meta.url), JSON.stringify(out));
+  await writeFile(new URL("../points.json", import.meta.url), JSON.stringify(baseTable));
   const players = {
     generated: out.generated,
     users: ranked.map((u) => [u.id, u.name ?? null, u.points, u.country ?? null, u.badge ?? null]),
