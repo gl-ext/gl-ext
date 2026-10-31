@@ -1,14 +1,48 @@
 {
   "users": {
+    "5527": [
+      [3226, 4, "Thinking Space II", 88, "", null, null, null]
+    ],
+    "5564": [
+      [2660, 8, "Tidal Wave", 87, "", null, null, null]
+    ],
+    "5577": [
+      [3320, 21, "Penumbral", 100, "", null, null, null]
+    ],
     "13506": [
       [3409, 7, "Green Bullet", 91, "", null, null, null],
       [2976, 5, "Amethyst", 69, "", null, null, null]
+    ],
+    "14195": [
+      [3096, 33, "Defeated Circles", 100, "", null, null, null]
+    ],
+    "14430": [
+      [3226, 4, "Thinking Space II", 71, "", null, null, null]
+    ],
+    "14433": [
+      [3436, 2, "Artemis 13", 57, "", null, null, null]
+    ],
+    "14549": [
+      [2684, 11, "Nullscapes", 83, "", null, null, null],
+      [2713, 12, "BOOBAWAMBA", 60, "", null, null, null]
     ],
     "15566": [
       [3412, 23, "Ultra Paracosm", 100, "", null, null, null]
     ],
     "16551": [
       [3441, 30, "FOREST OF SPIKES", 100, "", null, null, null]
-    ]
+    ],
+    "16572": [
+      [2050, 69, "Poocubed", 100, "", null, null, null]
+      [1981, 73, "Saul Goodman", 100, "", null, null, null]
+      [2372, 84, "COMBUSTION", 100, "", null, null, null]
+      [3125, 64, "Snowbound", 100, "", null, null, null]
+    ],
+    "45796": [
+      [3320, 21, "Penumbral", 92, "", null, null, null]
+    ],
+    "51317": [
+      [2653, 20, "Silent Clubstep", 100, "", null, null, null]
+    ],
   }
 }
