@@ -305,37 +305,44 @@ const SOURCES = {
   my_extras: {
     async init() {
       this.data = {};
+      this.tp = {};
       try {
-        const txt = await readFile(new URL("../my_extras.json", import.meta.url), "utf8");
-        this.data = JSON.parse(txt).users || {};
+        this.data = JSON.parse(await readFile(new URL("../my_extras.json", import.meta.url), "utf8")).users || {};
       } catch (e) {
         console.warn("my_extras.json:", e.message);
+      }
+      try {
+        this.tp = JSON.parse(await readFile(new URL("../levels_tp.json", import.meta.url), "utf8")).levels || {};
+      } catch (e) {
+        console.warn("levels_tp.json:", e.message);
       }
     },
     // "аккаунт" здесь = ID игрока на Demonlist (ключ в файле)
     async records(accountId) {
       const out = [];
       for (const [i, row] of (this.data[accountId] || []).entries()) {
-        const [lvlId, , name, percent, video, , pos, srcId] = row;
+        const [lvl, percent, video] = Array.isArray(row) ? row : [];
         const pct = Number(percent);
-        if (!Array.isArray(row) || !Number.isInteger(lvlId) || !(pct > 0 && pct <= 100)) {
+        const isX = typeof lvl === "string" && /^x\d+$/.test(lvl);
+        const isGlobal = Number.isInteger(Number(lvl)) && lvl !== null && lvl !== "" && !isX;
+        if ((!isX && !isGlobal) || !(pct > 0 && pct <= 100)) {
           console.warn(`my_extras: игрок ${accountId}, строка ${i + 1} пропущена:`, JSON.stringify(row));
           continue;
         }
-        out.push({
-          dlId: lvlId,
-          ingame: null,
-          name: name || "Unknown",
-          percent: pct,
-          video: video || "",
-          pos: pos ?? null,
-          srcId: srcId ?? null,
-        });
+        if (isX) {
+          const t = this.tp[lvl];
+          if (!t) { console.warn(`my_extras: уровня ${lvl} нет в levels_tp.json`); continue; }
+          out.push({ dlId: null, ingame: null, name: t.name, percent: pct,
+                     video: video || "", pos: null, srcId: lvl });
+        } else {
+          out.push({ dlId: Number(lvl), ingame: null, name: "Unknown", percent: pct,
+                     video: video || "", pos: null, srcId: null });
+        }
       }
       return out;
     },
   },
-}; // <-- эта скобка раньше пропадала внутри комментария
+};
 
 // В какие файлы пишем результат каждого источника (НЕ my_extras.json: это входной файл!)
 const OUT_FILE = {
