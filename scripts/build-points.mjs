@@ -6,7 +6,7 @@ import { readFile, writeFile } from "node:fs/promises";
 
 const DL = "https://api.demonlist.org/";
 const PC = "https://pointercrate.com/api/";
-const CONC = Number(process.env.CONCURRENCY || 4);
+const CONC = Number(process.env.CONCURRENCY || 10);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
