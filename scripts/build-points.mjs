@@ -377,7 +377,9 @@ async function main() {
   await Promise.all(Object.values(SOURCES).map((s) => s.init()));
 
   // игроки из my_extras обрабатываются, даже если у них нет линков
+  // (ключи не из цифр, например pc12345, относятся только к gd-rating.py и здесь пропускаются)
   for (const dlId of Object.keys(SOURCES.my_extras.data)) {
+    if (!/^\d+$/.test(dlId)) continue;
     const k = canon(dlId);
     const acc = accByUser.get(k) || {};
     acc.my_extras = [...new Set([...(acc.my_extras || []), String(dlId)])];
