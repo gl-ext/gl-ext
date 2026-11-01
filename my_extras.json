@@ -12,6 +12,12 @@
     "7665": [
       [3354, 129, "Trickshot", 80, "", null, null, null]
     ],
+    "13501": [
+      [3442, 1, "GRIEF", 66, "", null, null, null]
+    ],
+    "13502": [
+      [3442, 1, "GRIEF", 81, "", null, null, null]
+    ],
     "13506": [
       [3409, 7, "Green Bullet", 91, "", null, null, null],
       [2976, 5, "Amethyst", 69, "", null, null, null]
@@ -31,6 +37,9 @@
     ],
     "15566": [
       [3412, 23, "Ultra Paracosm", 100, "", null, null, null]
+    ],
+    "16498": [
+      [3442, 1, "GRIEF", 82, "", null, null, null]
     ],
     "16551": [
       [3441, 30, "FOREST OF SPIKES", 100, "", null, null, null]
