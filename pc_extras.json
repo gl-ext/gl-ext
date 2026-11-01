@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-01T20:12:21.825Z",
+  "generated": "2026-11-01T20:52:05.632Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -25190,7 +25190,8 @@
       [2082,261,"Call Me Maybe",100,"https://www.youtube.com/watch?v=j30lETagg4c",null,222,634,"pointercrate",0.99,0],
       [2898,269,"Axiom Asterism",100,"https://www.youtube.com/watch?v=lLbSUnxygmc",null,210,611,"pointercrate",0.98,0],
       [1704,274,"Cobwebs",100,"https://www.youtube.com/watch?v=LO8d4fxIDRE",null,239,607,"pointercrate",0.98,0],
-      [1690,287,"Jesse Pinkman",100,"https://www.youtube.com/watch?v=l8IUoJ3rU8k",null,260,418,"pointercrate",0.97,0]
+      [1690,287,"Jesse Pinkman",100,"https://www.youtube.com/watch?v=l8IUoJ3rU8k",null,260,418,"pointercrate",0.97,0],
+      [null,null,"blight",100,"https://www.youtube.com/watch?v=mc6k1DTurwU",null,126,738,"pointercrate",0,0]
     ],
     "18176": [
       [3095,170,"Starlight Summit",100,"https://www.youtube.com/watch?v=adydwvawmK4",null,160,628,"pointercrate",4.2,0]
@@ -27574,6 +27575,20 @@
     ],
     "59055": [
       [3350,67,"NOMAD",100,"https://www.youtube.com/watch?v=9dWFrlcw0MI",null,63,673,"pointercrate",144,0]
+    ],
+    "60193": [
+      [3125,64,"Snowbound",100,"https://www.youtube.com/watch?v=n0A-IIgIWjI",null,56,658,"pointercrate",168,0],
+      [3061,82,"Sevvend Clubstep",100,"https://www.youtube.com/watch?v=izX5g5tm3JM",null,81,630,"pointercrate",73,0],
+      [1653,96,"LIMBO",100,"https://www.youtube.com/watch?v=F5F9GVSU9CE",null,87,467,"pointercrate",59,0],
+      [3337,102,"CHROMACAVE",100,"https://www.youtube.com/watch?v=5XPw-9RmmJM",null,93,672,"pointercrate",53,0],
+      [2843,103,"The Plunge",100,"https://www.youtube.com/watch?v=lt1r4I6pNyg",null,94,610,"pointercrate",52,0],
+      [3284,116,"Wavterminal",100,"https://www.youtube.com/watch?v=Tx6X6Le9EKo",null,95,650,"pointercrate",39,0],
+      [3354,129,"Trickshot",100,"https://www.youtube.com/watch?v=MW3NSpiiRx4",null,109,687,"pointercrate",26,0],
+      [3427,142,"Sanctity",100,"https://www.youtube.com/watch?v=OtXcFHzGe-M",null,130,710,"pointercrate",13,0],
+      [1922,165,"Critical Heat",100,"https://www.youtube.com/watch?v=0FoHBAUmyXk",null,147,478,"pointercrate",4.2,0],
+      [1995,222,"Cold Sweat",100,"https://www.youtube.com/watch?v=2AJ_NB0lD74",null,192,293,"pointercrate",1.8,0],
+      [1563,236,"shimmer",100,"https://www.youtube.com/watch?v=gTngMg1kzhM",null,206,530,"pointercrate",1.4,0],
+      [2898,269,"Axiom Asterism",100,"https://www.youtube.com/watch?v=0-fkAkGv6dI",null,210,611,"pointercrate",0.98,0]
     ],
     "60527": [
       [3096,33,"Defeated Circles",100,"https://www.youtube.com/watch?v=SL9LBTXOOz4",null,25,639,"pointercrate",348,0],
