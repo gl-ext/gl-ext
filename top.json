@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-01T21:26:20.499Z",
+ "generated": "2026-11-01T22:08:59.699Z",
  "users": [
   {
    "place": 1,
@@ -237,21 +237,21 @@
   },
   {
    "place": 27,
-   "oldPlace": 27,
-   "id": "14485",
-   "name": "PoCle",
-   "country": "South-Korea",
-   "points": 4070.29,
-   "basePoints": 3926.24
-  },
-  {
-   "place": 28,
    "oldPlace": 25,
    "id": "14462",
    "name": "turtle",
    "country": "Canada",
    "points": 4036.94,
    "basePoints": 4028.46
+  },
+  {
+   "place": 28,
+   "oldPlace": 27,
+   "id": "14485",
+   "name": "PoCle",
+   "country": "South-Korea",
+   "points": 4032.29,
+   "basePoints": 3926.24
   },
   {
    "place": 29,
