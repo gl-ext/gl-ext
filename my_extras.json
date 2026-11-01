@@ -57,7 +57,7 @@
       [2653, 100, ""]
     ]
   },
-  "comment":
+  "comment": {
     "x1":  {"name": "Element 111 Rg",                   "like": "Slaughterhouse",    "place": 42,  "T": 99, "t": 47},
     "x2":  {"name": "Old Abyss of Darkness",            "like": "Slaughterhouse",    "place": 42,  "T": 98, "t": 53},
     "x3":  {"name": "Endless Travel",                   "like": "Tartarus",          "place": 136, "T": 99, "t": 47},
@@ -80,5 +80,6 @@
     "x20": {"name": "SARY NEVER CLEAR (Optic Sunflow)", "like": "Nullscapes",        "place": 11,  "T": 92, "t": 88},
     "x21": {"name": "Old Orochi",                       "like": "Silent clubstep",   "place": 20,  "T": 99, "t": 50},
     "x22": {"name": "Lost in Time 2",                   "like": "Master of Puppets", "place": 55,  "T": 99, "t": 50}
+  }
 }
 
