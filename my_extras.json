@@ -56,5 +56,29 @@
     "51317": [
       [2653, 100, ""]
     ]
-  }
+  },
+  "comment":
+    "x1":  {"name": "Element 111 Rg",                   "like": "Slaughterhouse",    "place": 42,  "T": 99, "t": 47},
+    "x2":  {"name": "Old Abyss of Darkness",            "like": "Slaughterhouse",    "place": 42,  "T": 98, "t": 53},
+    "x3":  {"name": "Endless Travel",                   "like": "Tartarus",          "place": 136, "T": 99, "t": 47},
+    "x4":  {"name": "True Innards",                     "like": "Firework",          "place": 61,  "T": 98, "t": 49},
+    "x5":  {"name": "Always Miss You",                  "like": "Firework",          "place": 61,  "T": 92, "t": 56},
+    "x6":  {"name": "METROPOLIS",                       "like": "Slaughterhouse",    "place": 42,  "T": 93, "t": 60},
+    "x7":  {"name": "Eternal Silence",                  "like": "Flamewall",         "place": 6,   "T": 98, "t": 27},
+    "x8":  {"name": "Silent Acropolis",                 "like": "Flamewall",         "place": 6,   "T": 99, "t": 50},
+    "x9":  {"name": "Escalator",                        "like": "BOOBAWAMBA",        "place": 12,  "T": 85, "t": 48},
+    "x10": {"name": "IT MEANS EVERYTHING",              "like": "Flamewall",         "place": 6,   "T": 97, "t": 43},
+    "x11": {"name": "Tunnel of Serpent",                "like": "Tidal Wave",        "place": 8,   "T": 87, "t": 44},
+    "x12": {"name": "Silent Circles (Starchman)",       "like": "Tidal Wave",        "place": 8,   "T": 97, "t": 63},
+    "x13": {"name": "Silent Oppenheimer",               "like": "Antarctic Lights",  "place": 10,  "T": 84, "t": 41},
+    "x14": {"name": "Labyrinth",                        "like": "Antarctic Lights",  "place": 10,  "T": 95, "t": 44},
+    "x15": {"name": "Cyberpsychosis",                   "like": "Antarctic Lights",  "place": 10,  "T": 97, "t": 47},
+    "x16": {"name": "Azure Flare",                      "like": "Silent clubstep",   "place": 20,  "T": 97, "t": 51},
+    "x17": {"name": "Sweeping Demon 2",                 "like": "GRIEF",             "place": 1,   "T": 97, "t": 60},
+    "x18": {"name": "Heliopolis",                       "like": "GRIEF",             "place": 1,   "T": 99, "t": 39},
+    "x19": {"name": "KOCMOC UNLEASHED",                 "like": "Artemis 13",        "place": 2,   "T": 98, "t": 49},
+    "x20": {"name": "SARY NEVER CLEAR (Optic Sunflow)", "like": "Nullscapes",        "place": 11,  "T": 92, "t": 88},
+    "x21": {"name": "Old Orochi",                       "like": "Silent clubstep",   "place": 20,  "T": 99, "t": 50},
+    "x22": {"name": "Lost in Time 2",                   "like": "Master of Puppets", "place": 55,  "T": 99, "t": 50}
 }
+
