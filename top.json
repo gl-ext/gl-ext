@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-01T14:22:02.958Z",
+ "generated": "2026-11-01T14:57:08.785Z",
  "users": [
   {
    "place": 1,
@@ -417,6 +417,15 @@
   },
   {
    "place": 47,
+   "oldPlace": 7140,
+   "id": "51087",
+   "name": "sharkyga",
+   "country": "Unknown",
+   "points": 3190.9,
+   "basePoints": 0.97
+  },
+  {
+   "place": 48,
    "oldPlace": 38,
    "id": "14466",
    "name": "ProudGiraffe311",
@@ -425,7 +434,7 @@
    "basePoints": 3140.29
   },
   {
-   "place": 48,
+   "place": 49,
    "oldPlace": 60,
    "id": "45796",
    "name": "Komet01",
@@ -434,22 +443,13 @@
    "basePoints": 2513
   },
   {
-   "place": 49,
+   "place": 50,
    "oldPlace": 51,
    "id": "13671",
    "name": "Jerpaa",
    "country": "Finland",
    "points": 2895.63,
    "basePoints": 2689.06
-  },
-  {
-   "place": 50,
-   "oldPlace": 62,
-   "id": "13461",
-   "name": "l1nxxd",
-   "country": "Ukraine",
-   "points": 2866.89,
-   "basePoints": 2474.89
   }
  ]
 }
