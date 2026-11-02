@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T03:07:48.153Z",
+  "generated": "2026-11-02T03:54:49.241Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -765,12 +765,6 @@
       [1591,180,"Trueffet",100,"https://www.youtube.com/watch?v=RFxicmzqYlY",55,161,361,"pointercrate",3.8,0.99],
       [1626,540,"Erebus",100,"https://www.youtube.com/watch?v=Aj-W4Aqr_bI",null,381,93,"pointercrate",0.82,0]
     ],
-    "3792": [
-      [2305,258,"Lucid Nightmares",100,"https://www.youtube.com/watch?v=7aLoiv-veEU",73,227,112,"pointercrate",0.99,0.36],
-      [2444,446,"Gamma",100,"https://www.youtube.com/watch?v=a6VxfVszPpY",null,332,126,"pointercrate",0.88,0],
-      [1879,557,"Celestial Force",100,"https://www.youtube.com/watch?v=1DBPM60mPg0",null,393,54,"pointercrate",0.81,0],
-      [1689,807,"SubSonic",100,"https://www.youtube.com/watch?v=HOLyPniZgaE",null,498,147,"pointercrate",0.66,0]
-    ],
     "3798": [
       [1754,136,"Tartarus",100,"https://www.youtube.com/watch?v=SMVISZ1w5Ak",null,121,250,"pointercrate",19,0],
       [1740,154,"Oblivion",100,"https://www.youtube.com/watch?v=qU1YBFIlNOw",null,132,425,"pointercrate",4.6,0],
@@ -1103,45 +1097,6 @@
       [2285,282,"Omega Interface",100,"https://www.youtube.com/watch?v=dx3QZ3hX8nY",null,234,338,"pointercrate",0.98,0],
       [1690,287,"Jesse Pinkman",100,"https://www.youtube.com/watch?v=C4-jfJ8sTMk",null,260,418,"pointercrate",0.97,0],
       [2024,295,"Bloodlust",100,"https://www.youtube.com/watch?v=HUcmJIuTGbs",null,257,161,"pointercrate",0.97,0]
-    ],
-    "5889": [
-      [1748,42,"Slaughterhouse",100,"https://www.youtube.com/watch?v=zETEmyw7CGE",null,40,380,"pointercrate",312,0],
-      [2050,69,"poocubed",100,"https://www.youtube.com/watch?v=3l_sChSgew4",null,67,464,"pointercrate",128,0],
-      [3061,82,"Sevvend Clubstep",100,"https://www.youtube.com/watch?v=jEDNbusQMnM",null,81,630,"pointercrate",73,0],
-      [2200,118,"Midnight",100,"https://www.youtube.com/watch?v=4nT_COwrzIA",null,110,549,"pointercrate",37,0],
-      [1733,140,"UNKNOWN",100,"https://www.youtube.com/watch?v=HUerrrjPaZE",null,141,475,"pointercrate",15,0],
-      [1749,141,"Delta",100,"https://www.youtube.com/watch?v=fEvKPJdKyIc",null,124,525,"pointercrate",14,0],
-      [1892,143,"Jigsaw",100,"https://www.youtube.com/watch?v=MaIi-JvVJOA",null,123,555,"pointercrate",12,0],
-      [2236,150,"The Golden",100,"https://www.youtube.com/watch?v=jQZGffEK3uU",null,131,274,"pointercrate",5,0],
-      [1740,154,"Oblivion",100,"https://www.youtube.com/watch?v=KN2l6hTwBLI",null,132,425,"pointercrate",4.6,0],
-      [1589,164,"Shukketsu",100,"https://www.youtube.com/watch?v=FYE3d7qv8h8",null,144,435,"pointercrate",4.2,0],
-      [2493,171,"The Paroxysm of Rage",100,"https://www.youtube.com/watch?v=gXaWKf5HoD4",null,154,572,"pointercrate",3.8,0],
-      [1591,180,"Trueffet",100,"https://www.youtube.com/watch?v=UdUNzd7g-uo",null,161,361,"pointercrate",3.8,0],
-      [2707,194,"Judgement Knights",100,"https://www.youtube.com/watch?v=wgZK1_LaGLQ",null,185,596,"pointercrate",3,0],
-      [1725,210,"Widestep",100,"https://www.youtube.com/watch?v=pMX2z6nhR4M",null,187,494,"pointercrate",2.6,0],
-      [1698,213,"Keres",100,"https://www.youtube.com/watch?v=fnGGEm6Orqw",null,189,377,"pointercrate",2.2,0],
-      [2718,219,"Ascent",100,"https://www.youtube.com/watch?v=gYjivnTq88g",null,194,601,"pointercrate",2.2,0],
-      [1995,222,"Cold Sweat",100,"https://www.youtube.com/watch?v=gM4Xbtkww8U",null,192,293,"pointercrate",1.8,0],
-      [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=71p3ph2Dsks",null,199,239,"pointercrate",1.8,0],
-      [1783,230,"Sky Shredder",100,"https://www.youtube.com/watch?v=JEYGCb4oAUc",null,205,522,"pointercrate",1.8,0],
-      [1563,236,"shimmer",100,"https://www.youtube.com/watch?v=azYKGASxqWQ",null,206,530,"pointercrate",1.4,0],
-      [2307,237,"Crimson Planet",100,"https://www.youtube.com/watch?v=xMwCUfRvalA",null,207,63,"pointercrate",1.4,0],
-      [2237,242,"Cognition",100,"https://www.youtube.com/watch?v=jJeU4F7bfF8",null,212,247,"pointercrate",1,0],
-      [1707,246,"SUPERHATEMEWORLD",100,"https://www.youtube.com/watch?v=_Fw9o01IFgQ",null,231,453,"pointercrate",1,0],
-      [1784,253,"Cosmic Cyclone",100,"https://www.youtube.com/watch?v=oKi1DucU36s",null,215,390,"pointercrate",0.99,0],
-      [2711,260,"Rigel",100,"https://www.youtube.com/watch?v=JWospx6ybAQ",null,220,598,"pointercrate",0.99,0],
-      [2202,268,"Twilight",100,"https://www.youtube.com/watch?v=Qc7I8mXkgpA",null,263,500,"pointercrate",0.98,0],
-      [2018,270,"Shardscapes",100,"https://www.youtube.com/watch?v=xC9bGM5qm5k",null,233,415,"pointercrate",0.98,0],
-      [1704,274,"Cobwebs",100,"https://www.youtube.com/watch?v=GSfsU0BXuTo",null,239,607,"pointercrate",0.98,0],
-      [2285,282,"Omega Interface",100,"https://www.youtube.com/watch?v=fxSOn_Y-0ic",null,234,338,"pointercrate",0.98,0],
-      [2150,298,"Escape Room",100,"https://www.youtube.com/watch?v=S6mBpW6m8ZA",null,251,503,"pointercrate",0.97,0],
-      [2473,311,"Gracefully",100,"https://www.youtube.com/watch?v=eJfbC6nbnKs",null,268,477,"pointercrate",0.96,0],
-      [2402,324,"Nhelv",100,"https://www.youtube.com/watch?v=C8-J1d4coY4",null,287,336,"pointercrate",0.95,0],
-      [2060,330,"Terminux",100,"https://www.youtube.com/watch?v=wvowsIr4Gyg",null,261,395,"pointercrate",0.95,0],
-      [2439,346,"Sigma",100,"https://www.youtube.com/watch?v=jx_SZ2cAZLE",null,272,129,"pointercrate",0.94,0],
-      [2106,347,"Atmos",100,"https://www.youtube.com/watch?v=H4Uw_qcBlC0",null,273,550,"pointercrate",0.94,0],
-      [2334,351,"Pagoda",100,"https://www.youtube.com/watch?v=30mKIzXqb5s",null,277,449,"pointercrate",0.93,0],
-      [2414,481,"Sonic Wave",93,"https://www.youtube.com/watch?v=TOb3JDxOAhs",null,354,118,"pointercrate",0,0]
     ],
     "5890": [
       [3351,39,"Thinking Space II",98,"https://www.youtube.com/watch?v=225objzl8xk",null,39,733,"pointercrate",159.39,0],
@@ -1998,12 +1953,6 @@
       [1784,253,"Cosmic Cyclone",100,"https://www.youtube.com/watch?v=Iu1CPijn_vY",null,215,390,"pointercrate",0.99,0],
       [2018,270,"Shardscapes",100,"https://www.youtube.com/watch?v=J_ID5Z4_5bQ",null,233,415,"pointercrate",0.98,0],
       [2024,295,"Bloodlust",100,"https://www.youtube.com/watch?v=OiJRe0YICOg",null,257,161,"pointercrate",0.97,0]
-    ],
-    "10433": [
-      [2656,34,"Acheron",72,"https://www.youtube.com/watch?v=kd-w_YC7Qbw",61,28,442,"pointercrate",123.63,103.92],
-      [2050,69,"poocubed",100,"https://www.youtube.com/watch?v=PE9dDDLtjNs",null,67,464,"pointercrate",128,0],
-      [1754,136,"Tartarus",100,"https://www.youtube.com/watch?v=QEVsF-qHEoo",60,121,250,"pointercrate",19,5.94],
-      [2870,168,"paranoia",100,"https://www.youtube.com/watch?v=GjSznhjbglM",77,152,664,"pointercrate",4.2,1.42]
     ],
     "10679": [
       [2222,152,"Verdant Landscape",100,"https://www.youtube.com/watch?v=qXtm_ujGXbo",null,137,393,"pointercrate",4.6,0]
@@ -6450,33 +6399,6 @@
       [2180,461,"Macabre",100,"https://www.youtube.com/watch?v=dT6pBY9uyjY",null,345,170,"pointercrate",0.87,0],
       [2153,470,"X0",100,"https://www.youtube.com/watch?v=_5fKyKYRM34",null,364,471,"pointercrate",0.86,0]
     ],
-    "14183": [
-      [1748,42,"Slaughterhouse",100,"https://www.youtube.com/watch?v=FQ2BqixjapA",null,40,380,"pointercrate",312,0],
-      [2485,61,"Firework",100,"https://www.youtube.com/watch?v=NWOMdpBr5Dc",null,59,379,"pointercrate",192,0],
-      [2264,88,"Edge of Destiny",100,"https://www.youtube.com/watch?v=b3NHe2rlYOQ",null,82,485,"pointercrate",67,0],
-      [2418,90,"Solar Flare",100,"",null,85,495,"pointercrate",65,0],
-      [1754,136,"Tartarus",100,"https://www.youtube.com/watch?v=RYqizmoVYbw",null,121,250,"pointercrate",19,0],
-      [1733,140,"UNKNOWN",100,"",null,141,475,"pointercrate",15,0],
-      [2236,150,"The Golden",100,"https://www.youtube.com/watch?v=0K1S0TUd1Zs",null,131,274,"pointercrate",5,0],
-      [2506,167,"Fragile",100,"https://www.youtube.com/watch?v=oOF2nhW4wiw",null,164,335,"pointercrate",4.2,0],
-      [2235,176,"Kenos",100,"https://www.youtube.com/watch?v=eeDg4WqhCMo",null,163,238,"pointercrate",3.8,0],
-      [1746,178,"Aerial Gleam",100,"https://www.youtube.com/watch?v=-TweRhZ2vig",null,156,412,"pointercrate",3.8,0],
-      [1591,180,"Trueffet",100,"https://www.youtube.com/watch?v=Uaxnquo1H6I",null,161,361,"pointercrate",3.8,0],
-      [2707,194,"Judgement Knights",100,"https://www.youtube.com/watch?v=7jvre3n7EME",null,185,596,"pointercrate",3,0],
-      [2449,201,"Zodiac",100,"https://www.youtube.com/watch?v=MQI-0QQA9R0",null,179,219,"pointercrate",2.6,0],
-      [3126,205,"IRIS",100,"https://www.youtube.com/watch?v=mB0U3olM-RU",null,190,632,"pointercrate",2.6,0],
-      [3280,207,"Dark Dimension",100,"https://www.youtube.com/watch?v=G4EOmLOx_i8",null,172,644,"pointercrate",2.6,0],
-      [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=PfY1RYgDqB8",null,199,239,"pointercrate",1.8,0],
-      [1563,236,"shimmer",100,"https://www.youtube.com/watch?v=qliKbs-VYKA",null,206,530,"pointercrate",1.4,0],
-      [2307,237,"Crimson Planet",100,"https://www.youtube.com/watch?v=TJ_uMwnNjfo",null,207,63,"pointercrate",1.4,0],
-      [2473,311,"Gracefully",100,"https://www.youtube.com/watch?v=82TW9cG7MkM",null,268,477,"pointercrate",0.96,0],
-      [1864,340,"kowareta",100,"https://www.youtube.com/watch?v=pcsnuYN4AQY",null,295,207,"pointercrate",0.94,0],
-      [2625,345,"ATOMIC CANNON",100,"https://www.youtube.com/watch?v=MzgFQBUCllk",null,282,401,"pointercrate",0.94,0],
-      [1914,358,"Knights of Thunder",100,"https://www.youtube.com/watch?v=wFqWu__UAb0",null,283,482,"pointercrate",0.93,0],
-      [2011,366,"Frozen Cave",100,"https://www.youtube.com/watch?v=rx2deyFf6CM",null,302,345,"pointercrate",0.93,0],
-      [2438,459,"Cybernetic Crescent",100,"https://www.youtube.com/watch?v=fbrH42VNXTM",null,343,317,"pointercrate",0.87,0],
-      [2242,467,"Eternal Moment",100,"https://www.youtube.com/watch?v=oEykQKK8rMA",null,328,314,"pointercrate",0.87,0]
-    ],
     "14184": [
       [2161,588,"Paroxysm",100,"https://www.youtube.com/watch?v=VOkBXHoeSjM",null,408,86,"pointercrate",0.79,0],
       [2462,727,"distraught",100,"https://www.youtube.com/watch?v=P53dc5VKrLo",null,469,53,"pointercrate",0.71,0]
@@ -6588,36 +6510,6 @@
       [1965,1601,"Incipient",100,"https://www.youtube.com/watch?v=T3Th1sGKPjo",null,624,191,"pointercrate",0.19,0],
       [null,null,"CholeriX",100,"https://www.youtube.com/watch?v=BZREhNMwjsc",null,616,151,"pointercrate",0,0],
       [null,null,"Gammaray",100,"https://www.youtube.com/watch?v=jzPp2tGLoD0",null,643,8,"pointercrate",0,0]
-    ],
-    "14192": [
-      [2653,20,"Silent clubstep",100,"https://www.youtube.com/watch?v=JO9JBDiyWxE",65,18,428,"pointercrate",400,147.69],
-      [2841,40,"Subterminal Point",100,"https://www.youtube.com/watch?v=IA5YKW6FjmY",null,41,612,"pointercrate",320,0],
-      [2335,122,"Diabolic ClubStep",100,"https://www.youtube.com/watch?v=d1sLRyv8SDI",null,117,675,"pointercrate",33,0],
-      [1853,239,"qoUEO",100,"https://www.youtube.com/watch?v=ujX1dPpoTso",null,216,455,"pointercrate",1.4,0],
-      [1975,249,"Neon Skyline",100,"https://www.youtube.com/watch?v=v2Cv9SoiYPA",null,213,483,"pointercrate",1,0],
-      [1704,274,"Cobwebs",100,"https://www.youtube.com/watch?v=kGwP5HmaJ7Q",null,239,607,"pointercrate",0.98,0],
-      [2285,282,"Omega Interface",100,"https://www.youtube.com/watch?v=o_RG0SvfQMw",null,234,338,"pointercrate",0.98,0],
-      [2150,298,"Escape Room",100,"https://www.youtube.com/watch?v=98mKJ_Ar3Lc",null,251,503,"pointercrate",0.97,0],
-      [2523,313,"untitled unmastered",100,"https://www.youtube.com/watch?v=QbeGjSjRsaI",null,276,437,"pointercrate",0.96,0],
-      [2034,319,"Aronia",100,"https://www.youtube.com/watch?v=i9RTTiV84Xw",null,275,270,"pointercrate",0.95,0],
-      [2351,323,"Sazerix",100,"https://www.youtube.com/watch?v=vys0qdUtwao",null,270,474,"pointercrate",0.95,0],
-      [2369,325,"TORN",100,"https://www.youtube.com/watch?v=sG4fbT1DbPo",null,259,513,"pointercrate",0.95,0],
-      [2060,330,"Terminux",100,"https://www.youtube.com/watch?v=rXNwy9BEYvU",null,261,395,"pointercrate",0.95,0],
-      [2676,354,"Pootis Engage XTREME",100,"https://www.youtube.com/watch?v=FfIZePLzXFQ",null,280,580,"pointercrate",0.93,0],
-      [2612,394,"Plasma Pulse Finale",100,"https://www.youtube.com/watch?v=RFt-Os5_wFo",null,301,182,"pointercrate",0.91,0],
-      [1979,408,"Sparkling",100,"https://www.youtube.com/watch?v=XLdk2NTg17g",null,327,406,"pointercrate",0.9,0],
-      [2510,437,"Wasureta",100,"https://www.youtube.com/watch?v=JbTgJkVChZg",null,344,282,"pointercrate",0.88,0],
-      [2055,440,"Edge of the World",100,"https://www.youtube.com/watch?v=YVshpUjg9HE",null,346,488,"pointercrate",0.88,0],
-      [2196,463,"Sink",100,"https://www.youtube.com/watch?v=VsCN897HqaY",null,347,399,"pointercrate",0.87,0],
-      [2015,483,"Edge of the Blade",100,"https://www.youtube.com/watch?v=5EnClgnDdPA",null,365,288,"pointercrate",0.86,0],
-      [1989,560,"Tapwreck",100,"https://www.youtube.com/watch?v=sD4obBsHiwQ",null,394,243,"pointercrate",0.81,0],
-      [2472,581,"Framework",100,"https://www.youtube.com/watch?v=mO7cNhlTFCw",null,402,445,"pointercrate",0.8,0],
-      [2185,582,"Catalyze",100,"https://www.youtube.com/watch?v=NdDAjAcLi8s",null,403,155,"pointercrate",0.8,0],
-      [2436,590,"Photovoltaic II",100,"https://www.youtube.com/watch?v=0PB-6CxUtDk",null,411,5,"pointercrate",0.79,0],
-      [1994,695,"BBBBBBBBBBBBBBBBBBBB",100,"https://www.youtube.com/watch?v=Cbx0eM6WLjI",null,455,94,"pointercrate",0.73,0],
-      [2581,851,"Athanatos",100,"https://www.youtube.com/watch?v=EIePzXlvAPE",null,508,41,"pointercrate",0.64,0],
-      [2290,1073,"Bloodbath",100,"https://www.youtube.com/watch?v=_OzVO0opukM",null,553,69,"pointercrate",0.5,0],
-      [2289,1699,"Cataclysm",100,"https://www.youtube.com/watch?v=agwnURHJPVo",null,648,142,"pointercrate",0.13,0]
     ],
     "14193": [
       [1733,140,"UNKNOWN",100,"https://www.youtube.com/watch?v=_W75tJaLusM",null,141,475,"pointercrate",15,0],
@@ -7784,63 +7676,6 @@
       [2452,753,"Balengu Vortex",100,"https://www.youtube.com/watch?v=8jSYXlXDTuo",null,467,252,"pointercrate",0.7,0],
       [1767,1189,"Esencia",100,"https://www.youtube.com/watch?v=xCWIUXTwi70",null,581,71,"pointercrate",0.44,0],
       [2434,1219,"Mirage",100,"https://www.youtube.com/watch?v=JrODs84vY-c",null,578,290,"pointercrate",0.42,0]
-    ],
-    "14285": [
-      [2449,201,"Zodiac",100,"https://www.youtube.com/watch?v=TK-87fSOW8A",null,179,219,"pointercrate",2.6,0],
-      [1612,756,"Hatred",100,"https://www.youtube.com/watch?v=uR4zeVePukQ",null,478,203,"pointercrate",0.69,0],
-      [1689,807,"SubSonic",100,"https://www.youtube.com/watch?v=pRbODAoSTdI",null,498,147,"pointercrate",0.66,0],
-      [2023,833,"SINGULARITY",100,"https://www.youtube.com/watch?v=kiS2Wg3ylD8",null,504,27,"pointercrate",0.65,0],
-      [2581,851,"Athanatos",100,"https://www.youtube.com/watch?v=MDhBO7pH78o",null,508,41,"pointercrate",0.64,0],
-      [1677,852,"SPEEDRUN",100,"https://www.youtube.com/watch?v=JjhNU3Og3-A",null,512,242,"pointercrate",0.64,0],
-      [1735,965,"Epsilon",100,"https://www.youtube.com/watch?v=PfNrXZNSfbk",null,551,81,"pointercrate",0.57,0],
-      [1542,1059,"Down Bass",100,"https://www.youtube.com/watch?v=J0gdh1ftl9w",null,564,77,"pointercrate",0.51,0],
-      [2290,1073,"Bloodbath",100,"https://www.youtube.com/watch?v=wUbKhuhZd0w",null,553,69,"pointercrate",0.5,0],
-      [2220,1079,"Tempest Tornado",100,"https://www.youtube.com/watch?v=cusn75QB54k",null,571,279,"pointercrate",0.5,0],
-      [2171,1082,"Aurora",100,"https://www.youtube.com/watch?v=k7vD2hB_p50",null,572,36,"pointercrate",0.5,0],
-      [2129,1107,"aftermath",100,"https://www.youtube.com/watch?v=VVosQLzjpj4",null,584,104,"pointercrate",0.48,0],
-      [2243,1132,"Penultimate Phase",100,"https://www.youtube.com/watch?v=XcJrlYnYHpk",null,583,75,"pointercrate",0.47,0],
-      [1877,1154,"Digital Disarray",100,"https://www.youtube.com/watch?v=EB56kwzMZcg",null,613,235,"pointercrate",0.46,0],
-      [2374,1166,"Plasma Pulse III",100,"https://www.youtube.com/watch?v=UGhbpsVKY0M",null,587,76,"pointercrate",0.45,0],
-      [1904,1167,"Novalis",100,"https://www.youtube.com/watch?v=JY_EfMKOLP0",null,588,121,"pointercrate",0.45,0],
-      [2104,1231,"Audio Extraction",100,"https://www.youtube.com/watch?v=vnM-l6UeEFA",null,599,167,"pointercrate",0.41,0],
-      [2303,1249,"Concaved Memories",100,"https://www.youtube.com/watch?v=LYZNu469ThQ",null,605,233,"pointercrate",0.4,0],
-      [2276,1288,"Skrrah",100,"https://www.youtube.com/watch?v=n0JyRnv90lc",null,610,163,"pointercrate",0.38,0],
-      [1764,1361,"Violently X",100,"https://www.youtube.com/watch?v=sULeRwOcY4s",null,623,160,"pointercrate",0.33,0],
-      [1755,1376,"Tech Manifestation",100,"https://www.youtube.com/watch?v=bWppx1Mijho",null,631,58,"pointercrate",0.32,0],
-      [2641,1450,"CYCLONE",100,"https://www.youtube.com/watch?v=oGgr1wsTLtA",null,632,135,"pointercrate",0.28,0],
-      [1565,1462,"The Ultimate Phase",100,"https://www.youtube.com/watch?v=w9rqWRjor2k",null,665,215,"pointercrate",0.27,0],
-      [1597,1490,"Deception Dive",100,"https://www.youtube.com/watch?v=lomaBJCioHc",null,609,164,"pointercrate",0.26,0],
-      [2108,1504,"Awakening Horus",100,"https://www.youtube.com/watch?v=Jo3DvvEPXfo",null,642,115,"pointercrate",0.25,0],
-      [2145,1515,"Volume",100,"https://www.youtube.com/watch?v=1ryYtIFDokc",null,627,136,"pointercrate",0.24,0],
-      [1907,1527,"ElectroLux",100,"https://www.youtube.com/watch?v=pj2UQ5ebB00",null,556,254,"pointercrate",0.23,0],
-      [2038,1541,"Falling Up",100,"https://www.youtube.com/watch?v=wq3IZ5x3nwQ",null,651,116,"pointercrate",0.23,0],
-      [2440,1551,"Breakout",100,"https://www.youtube.com/watch?v=93n9hATvK4k",null,603,138,"pointercrate",0.22,0],
-      [2377,1558,"SUBVERSIVE",100,"https://www.youtube.com/watch?v=xC9tYnt8peY",null,630,60,"pointercrate",0.22,0],
-      [1916,1568,"Instant Execution",100,"https://www.youtube.com/watch?v=8t377B16KtE",null,646,10,"pointercrate",0.21,0],
-      [2490,1575,"The Flawless",100,"https://www.youtube.com/watch?v=sqOy7BxXI-U",null,611,26,"pointercrate",0.21,0],
-      [2198,1580,"Uprise",100,"https://www.youtube.com/watch?v=V53vKZHGAKI",null,641,141,"pointercrate",0.2,0],
-      [2294,1594,"night party",100,"https://www.youtube.com/watch?v=1JIg1hFPAIo",null,645,114,"pointercrate",0.19,0],
-      [1965,1601,"Incipient",100,"https://www.youtube.com/watch?v=y9VF368Eivw",null,624,191,"pointercrate",0.19,0],
-      [1688,1617,"HyperSonic",100,"https://www.youtube.com/watch?v=AB0HkwPFB2g",null,647,214,"pointercrate",0.18,0],
-      [1829,1647,"8o X",100,"https://www.youtube.com/watch?v=xkwXo5fhTiA",null,652,117,"pointercrate",0.16,0],
-      [2381,1664,"AcropoliX",100,"https://www.youtube.com/watch?v=lulf4-aucn0",null,628,192,"pointercrate",0.15,0],
-      [2330,1668,"Cosmorush 21",100,"https://www.youtube.com/watch?v=3piEyNh1Qdw",null,649,186,"pointercrate",0.15,0],
-      [2289,1699,"Cataclysm",100,"https://www.youtube.com/watch?v=gMDXvQZ0HXg",null,648,142,"pointercrate",0.13,0],
-      [2562,1718,"Doop",100,"https://www.youtube.com/watch?v=zvoVWcgHcLo",null,661,131,"pointercrate",0.12,0],
-      [1933,1741,"Insaction",100,"https://www.youtube.com/watch?v=cFyIRBwvSjg",null,618,234,"pointercrate",0.11,0],
-      [2044,1780,"UltraSans",100,"https://www.youtube.com/watch?v=3r6BV24z6LU",null,634,154,"pointercrate",0.08,0],
-      [2380,1811,"Electrosonic",100,"https://www.youtube.com/watch?v=08G8dv0UsRY",null,657,51,"pointercrate",0.06,0],
-      [2291,1821,"ICE Carbon Diablo X",100,"https://www.youtube.com/watch?v=pxDsLP7UfaY",null,673,111,"pointercrate",0.06,0],
-      [1769,1833,"KillerZone",100,"https://www.youtube.com/watch?v=7tP1UQkiF0M",null,619,193,"pointercrate",0.05,0],
-      [null,null,"CholeriX",100,"https://www.youtube.com/watch?v=BSGbzDPyxNw",null,616,151,"pointercrate",0,0],
-      [null,null,"Gammaray",100,"https://www.youtube.com/watch?v=i7Xv5xijvZY",null,643,8,"pointercrate",0,0],
-      [null,null,"Underground",100,"https://www.youtube.com/watch?v=MmQ8RFYSOwo",null,650,187,"pointercrate",0,0],
-      [null,null,"Grimoire Heart",100,"https://www.youtube.com/watch?v=sP6YuLBnCeE",null,654,109,"pointercrate",0,0],
-      [null,null,"Cosmic Calamity",100,"https://www.youtube.com/watch?v=aTWfwdLpF2g",null,658,130,"pointercrate",0,0],
-      [null,null,"Dark RainBow Rebirth",100,"https://www.youtube.com/watch?v=gZLtwjlFm00",null,672,179,"pointercrate",0,0],
-      [null,null,"Crimson Clutter",100,"https://www.youtube.com/watch?v=Wvr73hHLeiU",null,688,56,"pointercrate",0,0],
-      [null,null,"The Secret Box",100,"https://www.youtube.com/watch?v=XpZdSab6B7E",null,696,49,"pointercrate",0,0],
-      [null,null,"Hyperio Technia",100,"https://www.youtube.com/watch?v=Ct-ab_RXP8Q",null,700,97,"pointercrate",0,0]
     ],
     "14287": [
       [2237,242,"Cognition",56,"https://www.youtube.com/watch?v=giKwfN4eMy4",null,212,247,"pointercrate",0.27,0],
@@ -9092,10 +8927,6 @@
       [2169,480,"Sonic Wave Rebirth",100,"https://www.youtube.com/watch?v=gAWQlYFMGzo",null,353,332,"pointercrate",0.86,0],
       [2414,481,"Sonic Wave",100,"https://www.youtube.com/watch?v=sWcvQEy2yNs",null,354,118,"pointercrate",0.86,0],
       [2015,483,"Edge of the Blade",100,"https://www.youtube.com/watch?v=hBO8VSWUTtw",null,365,288,"pointercrate",0.86,0]
-    ],
-    "14519": [
-      [1732,62,"Sakupen Circles",100,"https://www.youtube.com/watch?v=LxXWCKWIyb0",null,49,391,"pointercrate",184,0],
-      [2577,132,"Sonic Wave Infinity",100,"https://www.youtube.com/watch?v=VtpHf9JNbIA",null,120,349,"pointercrate",23,0]
     ],
     "14522": [
       [2688,65,"KOSETSU",100,"https://www.youtube.com/watch?v=k4K4pkbg6lU",null,61,587,"pointercrate",160,0],
@@ -23282,11 +23113,6 @@
       [2278,691,"Quantum Processing",100,"https://www.youtube.com/watch?v=py73TEhNrmA",null,453,68,"pointercrate",0.73,0],
       [2487,944,"Sakupen Hell",100,"https://www.youtube.com/watch?v=_sZfrCtn83o",null,542,30,"pointercrate",0.58,0],
       [2290,1073,"Bloodbath",100,"https://www.youtube.com/watch?v=ZGLo9qi44OA",null,553,69,"pointercrate",0.5,0]
-    ],
-    "16136": [
-      [2581,851,"Athanatos",100,"https://www.youtube.com/watch?v=2ilXlKxHYnQ",null,508,41,"pointercrate",0.64,0],
-      [2290,1073,"Bloodbath",100,"https://www.youtube.com/watch?v=JCF1HN9mSZ0",null,553,69,"pointercrate",0.5,0],
-      [2129,1107,"aftermath",100,"https://www.youtube.com/watch?v=--OR_ll2Ulc",null,584,104,"pointercrate",0.48,0]
     ],
     "16138": [
       [2925,87,"Gaggatrondra",100,"https://www.youtube.com/watch?v=S_dJ1mmeN8Q",null,80,615,"pointercrate",68,0],
