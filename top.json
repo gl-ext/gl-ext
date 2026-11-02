@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02T14:59:54.950Z",
+ "generated": "2026-11-02T15:54:24.345Z",
  "users": [
   {
    "place": 1,
@@ -363,21 +363,21 @@
   },
   {
    "place": 41,
+   "oldPlace": 78,
+   "id": "51317",
+   "name": "Cryostazz",
+   "country": "France",
+   "points": 3411.58,
+   "basePoints": 2014.43
+  },
+  {
+   "place": 42,
    "oldPlace": 47,
    "id": "14192",
    "name": "donley",
    "country": "Canada",
    "points": 3370.96,
    "basePoints": 2744.13
-  },
-  {
-   "place": 42,
-   "oldPlace": 78,
-   "id": "51317",
-   "name": "Cryostazz",
-   "country": "France",
-   "points": 3271.93,
-   "basePoints": 2014.43
   },
   {
    "place": 43,
