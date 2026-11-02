@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T23:20:08.175Z",
+  "generated": "2026-11-02T23:50:26.904Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -4098,6 +4098,13 @@
       [null,null,"Ultraviolet",100,"https://www.youtube.com/watch?v=3WEyWVy7eAM",null,703,48,"pointercrate",0,0],
       [null,null,"Necropolis",100,"https://www.youtube.com/watch?v=LRd-bbFZ3_c",null,710,103,"pointercrate",0,0],
       [null,null,"Catastrophic",100,"https://www.youtube.com/watch?v=y_Xj6Npt92w",null,712,175,"pointercrate",0,0]
+    ],
+    "13949": [
+      [2374,1166,"Plasma Pulse III",51,"https://www.youtube.com/watch?v=aX2iMIH0c-U",null,587,76,"pointercrate",0,0],
+      [2377,1558,"SUBVERSIVE",72,"https://www.youtube.com/watch?v=JlghTaieGtU",null,630,60,"pointercrate",0,0],
+      [2289,1699,"Cataclysm",100,"https://www.youtube.com/watch?v=bpC0oY4Tqu4",null,648,142,"pointercrate",0.13,0],
+      [null,null,"Galatic Fragility",100,"https://www.youtube.com/watch?v=AbFKoW1Zw4c",null,678,17,"pointercrate",0,0],
+      [null,null,"Cyber Chaos",100,"https://www.youtube.com/watch?v=MX3STC8CZ7Y",null,684,227,"pointercrate",0,0]
     ],
     "13950": [
       [null,null,"Galatic Fragility",100,"https://www.youtube.com/watch?v=cNw6kBBKdGg",null,678,17,"pointercrate",0,0],
