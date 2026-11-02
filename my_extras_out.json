@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T16:57:28.305Z",
+  "generated": "2026-11-02T17:53:59.290Z",
   "users": {
     "2": [
       [2656,34,"Acheron",94,"",null,null,null,"my_extras",163.04,0]
@@ -339,6 +339,9 @@
     ],
     "14638": [
       [3303,89,"The Catacombs",100,"",null,null,null,"my_extras",66,0]
+    ],
+    "14643": [
+      [2688,65,"KOSETSU",83,"",null,null,null,"my_extras",65.12,0]
     ],
     "14699": [
       [3282,155,"Heavenly Sakupen",100,"",null,null,null,"my_extras",4.6,0]

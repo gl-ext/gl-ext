@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02T16:57:28.305Z",
+ "generated": "2026-11-02T17:53:59.290Z",
  "users": [
   {
    "place": 1,
@@ -147,21 +147,21 @@
   },
   {
    "place": 17,
-   "oldPlace": 22,
-   "id": "14195",
-   "name": "pizi",
-   "country": "Chile",
-   "points": 5226.39,
-   "basePoints": 4538.02
-  },
-  {
-   "place": 18,
    "oldPlace": 19,
    "id": "5564",
    "name": "roze [GD]",
    "country": "Russia",
    "points": 5085.32,
    "basePoints": 4775.55
+  },
+  {
+   "place": 18,
+   "oldPlace": 22,
+   "id": "14195",
+   "name": "pizi",
+   "country": "Chile",
+   "points": 5076.5,
+   "basePoints": 4538.02
   },
   {
    "place": 19,
@@ -426,7 +426,7 @@
   },
   {
    "place": 48,
-   "oldPlace": 7154,
+   "oldPlace": 7155,
    "id": "51087",
    "name": "sharkyga",
    "country": "Unknown",
