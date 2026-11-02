@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T09:08:34.744Z",
+  "generated": "2026-11-02T10:02:53.635Z",
   "users": {
     "2": [
       [2656,34,"Acheron",94,"",null,null,null,"my_extras",163.04,0]
@@ -58,7 +58,7 @@
     ],
     "5442": [
       [1724,36,"Kyouki",64,"",null,null,null,"my_extras",109.2,0],
-      [1732,62,"Sakupen Circles",69,"",null,null,null,"my_extras",50.18,0]
+      [1732,63,"Sakupen Circles",69,"",null,null,null,"my_extras",48,0]
     ],
     "5527": [
       [3226,4,"Thinking Space II",88,"",null,null,null,"my_extras",368.82,0],
@@ -68,7 +68,7 @@
       [2660,8,"Tidal Wave",59,"",null,null,null,"my_extras",192.56,0]
     ],
     "5532": [
-      [1732,62,"Sakupen Circles",67,"",null,null,null,"my_extras",47.39,0]
+      [1732,63,"Sakupen Circles",67,"",null,null,null,"my_extras",45.33,0]
     ],
     "5534": [
       [2655,46,"KOCMOC",85,"",null,null,null,"my_extras",118.4,0],
@@ -109,7 +109,7 @@
       [2656,34,"Acheron",95,"",null,null,null,"my_extras",164.83,0],
       [1724,36,"Kyouki",100,"",null,null,null,"my_extras",336,0],
       [3443,43,"BASSLINE JUNKIE",100,"",null,null,null,"my_extras",308,0],
-      [1732,62,"Sakupen Circles",100,"",null,null,null,"my_extras",184,0],
+      [1732,63,"Sakupen Circles",100,"",null,null,null,"my_extras",176,0],
       [3355,72,"Calibrate",100,"",null,null,null,"my_extras",104,0],
       [1981,73,"Saul Goodman",100,"",null,null,null,"my_extras",96,0]
     ],
@@ -147,7 +147,7 @@
       [3354,129,"Trickshot",80,"",null,null,null,"my_extras",10.06,0]
     ],
     "7939": [
-      [3432,59,"Wild Roses",100,"",null,null,null,"my_extras",208,0],
+      [3432,60,"Wild Roses",100,"",null,null,null,"my_extras",200,0],
       [2050,69,"poocubed",92,"",null,null,null,"my_extras",59.52,0]
     ],
     "8695": [
@@ -169,7 +169,7 @@
       [2449,201,"Zodiac",100,"",null,null,null,"my_extras",2.6,0]
     ],
     "10783": [
-      [2485,61,"Firework",76,"",null,null,null,"my_extras",70.91,0],
+      [2485,62,"Firework",76,"",null,null,null,"my_extras",67.95,0],
       [2050,69,"poocubed",77,"",null,null,null,"my_extras",49.92,0]
     ],
     "11811": [
@@ -216,7 +216,7 @@
       [2418,90,"Solar Flare",100,"",null,null,null,"my_extras",65,0]
     ],
     "13797": [
-      [2485,61,"Firework",100,"",null,null,null,"my_extras",192,0]
+      [2485,62,"Firework",100,"",null,null,null,"my_extras",184,0]
     ],
     "13833": [
       [3389,25,"KILLSTEALER",100,"",null,null,null,"my_extras",380,0],
@@ -370,7 +370,7 @@
     ],
     "16084": [
       [3281,52,"CHIL",100,"",null,null,null,"my_extras",264,0],
-      [2853,57,"CONVULSION",100,"",null,null,null,"my_extras",224,0],
+      [2853,58,"CONVULSION",100,"",null,null,null,"my_extras",216,0],
       [3350,67,"NOMAD",100,"",null,null,null,"my_extras",144,0],
       [2843,103,"The Plunge",100,"",null,null,null,"my_extras",52,0],
       [2200,118,"Midnight",100,"",null,null,null,"my_extras",37,0]
@@ -396,7 +396,7 @@
       [3441,30,"FOREST OF SPIKES",100,"",null,null,null,"my_extras",360,0]
     ],
     "16572": [
-      [3125,64,"Snowbound",100,"",null,null,null,"my_extras",168,0],
+      [3125,57,"Snowbound",100,"",null,null,null,"my_extras",224,0],
       [2050,69,"poocubed",100,"",null,null,null,"my_extras",128,0],
       [1981,73,"Saul Goodman",100,"",null,null,null,"my_extras",96,0],
       [2372,84,"COMBUSTION",100,"",null,null,null,"my_extras",71,0]
@@ -418,7 +418,7 @@
       [2653,20,"Silent clubstep",51,"",null,null,null,"my_extras",126.15,0]
     ],
     "17214": [
-      [1732,62,"Sakupen Circles",100,"",null,null,null,"my_extras",184,0]
+      [1732,63,"Sakupen Circles",100,"",null,null,null,"my_extras",176,0]
     ],
     "17465": [
       [2656,34,"Acheron",83,"",null,null,null,"my_extras",143.33,0],
@@ -451,7 +451,7 @@
       [2050,69,"poocubed",100,"",null,null,null,"my_extras",128,0]
     ],
     "18706": [
-      [3300,58,"Voltage",100,"",null,null,null,"my_extras",216,0],
+      [3300,59,"Voltage",100,"",null,null,null,"my_extras",208,0],
       [3425,81,"Haunted Ship",100,"",null,null,null,"my_extras",74,0],
       [2898,269,"Axiom Asterism",100,"",null,null,null,"my_extras",0.98,0]
     ],
@@ -514,7 +514,7 @@
       [1748,42,"Slaughterhouse",75,"",null,null,null,"my_extras",110.34,0]
     ],
     "21129": [
-      [2485,61,"Firework",86,"",null,null,null,"my_extras",81.82,0],
+      [2485,62,"Firework",86,"",null,null,null,"my_extras",78.41,0],
       [3094,100,"Operation Evolution",100,"",71,null,null,"my_extras",55,17.88],
       [2024,295,"Bloodlust",100,"",null,null,null,"my_extras",0.97,0]
     ],
@@ -604,7 +604,7 @@
     ],
     "35285": [
       [3430,49,"ace",100,"",null,null,null,"my_extras",284,0],
-      [3125,64,"Snowbound",100,"",null,null,null,"my_extras",168,0]
+      [3125,57,"Snowbound",100,"",null,null,null,"my_extras",224,0]
     ],
     "35482": [
       [3447,153,"frame reframe",100,"",null,null,null,"my_extras",4.6,0]
@@ -658,7 +658,7 @@
       [3061,82,"Sevvend Clubstep",100,"",null,null,null,"my_extras",73,0]
     ],
     "60193": [
-      [3125,64,"Snowbound",100,"",null,null,null,"my_extras",168,0],
+      [3125,57,"Snowbound",100,"",null,null,null,"my_extras",224,0],
       [3061,82,"Sevvend Clubstep",100,"",null,null,null,"my_extras",73,0],
       [1653,96,"LIMBO",100,"",null,null,null,"my_extras",59,0],
       [2843,103,"The Plunge",100,"",null,null,null,"my_extras",52,0],
