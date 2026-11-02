@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02T03:54:49.241Z",
+ "generated": "2026-11-02T04:51:54.515Z",
  "users": [
   {
    "place": 1,
@@ -363,6 +363,15 @@
   },
   {
    "place": 41,
+   "oldPlace": 48,
+   "id": "14192",
+   "name": "donley",
+   "country": "Canada",
+   "points": 3378.96,
+   "basePoints": 2752.13
+  },
+  {
+   "place": 42,
    "oldPlace": 77,
    "id": "51317",
    "name": "Cryostazz",
@@ -371,7 +380,7 @@
    "basePoints": 2022.43
   },
   {
-   "place": 42,
+   "place": 43,
    "oldPlace": 43,
    "id": "4825",
    "name": "Tunax",
@@ -380,7 +389,7 @@
    "basePoints": 2959.73
   },
   {
-   "place": 43,
+   "place": 44,
    "oldPlace": 42,
    "id": "14440",
    "name": "Kaza",
@@ -389,7 +398,7 @@
    "basePoints": 2986.91
   },
   {
-   "place": 44,
+   "place": 45,
    "oldPlace": 66,
    "id": "14223",
    "name": "Johnlikesdiamond",
@@ -398,7 +407,7 @@
    "basePoints": 2337.76
   },
   {
-   "place": 45,
+   "place": 46,
    "oldPlace": 57,
    "id": "11811",
    "name": "XaLVaL",
@@ -407,7 +416,7 @@
    "basePoints": 2579.38
   },
   {
-   "place": 46,
+   "place": 47,
    "oldPlace": 40,
    "id": "15864",
    "name": "MeQ8cNv43s6A",
@@ -416,7 +425,7 @@
    "basePoints": 3106.28
   },
   {
-   "place": 47,
+   "place": 48,
    "oldPlace": 7154,
    "id": "51087",
    "name": "sharkyga",
@@ -425,7 +434,7 @@
    "basePoints": 0.97
   },
   {
-   "place": 48,
+   "place": 49,
    "oldPlace": 46,
    "id": "14524",
    "name": "JesseGamingGD",
@@ -434,22 +443,13 @@
    "basePoints": 2802.79
   },
   {
-   "place": 49,
+   "place": 50,
    "oldPlace": 38,
    "id": "14466",
    "name": "ProudGiraffe311",
    "country": "United-States",
    "points": 3145.89,
    "basePoints": 3140.29
-  },
-  {
-   "place": 50,
-   "oldPlace": 60,
-   "id": "45796",
-   "name": "Komet01",
-   "country": "Poland",
-   "points": 3081.33,
-   "basePoints": 2513
   }
  ]
 }
