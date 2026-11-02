@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T22:39:09.285Z",
+  "generated": "2026-11-02T23:20:08.175Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -4098,13 +4098,6 @@
       [null,null,"Ultraviolet",100,"https://www.youtube.com/watch?v=3WEyWVy7eAM",null,703,48,"pointercrate",0,0],
       [null,null,"Necropolis",100,"https://www.youtube.com/watch?v=LRd-bbFZ3_c",null,710,103,"pointercrate",0,0],
       [null,null,"Catastrophic",100,"https://www.youtube.com/watch?v=y_Xj6Npt92w",null,712,175,"pointercrate",0,0]
-    ],
-    "13949": [
-      [2374,1166,"Plasma Pulse III",51,"https://www.youtube.com/watch?v=aX2iMIH0c-U",null,587,76,"pointercrate",0,0],
-      [2377,1558,"SUBVERSIVE",72,"https://www.youtube.com/watch?v=JlghTaieGtU",null,630,60,"pointercrate",0,0],
-      [2289,1699,"Cataclysm",100,"https://www.youtube.com/watch?v=bpC0oY4Tqu4",null,648,142,"pointercrate",0.13,0],
-      [null,null,"Galatic Fragility",100,"https://www.youtube.com/watch?v=AbFKoW1Zw4c",null,678,17,"pointercrate",0,0],
-      [null,null,"Cyber Chaos",100,"https://www.youtube.com/watch?v=MX3STC8CZ7Y",null,684,227,"pointercrate",0,0]
     ],
     "13950": [
       [null,null,"Galatic Fragility",100,"https://www.youtube.com/watch?v=cNw6kBBKdGg",null,678,17,"pointercrate",0,0],
@@ -24860,6 +24853,18 @@
       [2510,437,"Wasureta",100,"https://www.youtube.com/watch?v=10MXLn0yyow",null,344,282,"pointercrate",0.88,0],
       [2489,472,"Yatagarasu",54,"https://www.youtube.com/watch?v=Jvj6mAcy-x4",null,362,146,"pointercrate",0,0]
     ],
+    "16545": [
+      [2701,38,"Based After Based",100,"https://www.youtube.com/watch?v=BNLP2OAasqM",null,35,668,"pointercrate",328,0],
+      [2854,92,"Collapse",100,"https://www.youtube.com/watch?v=Ft2mVw1wrv0",null,90,606,"pointercrate",63,0],
+      [3284,116,"Wavterminal",100,"https://www.youtube.com/watch?v=0eJfbF1uLHE",null,95,650,"pointercrate",39,0],
+      [3354,129,"Trickshot",100,"https://www.youtube.com/watch?v=P-zT_Wne6ZI",null,109,687,"pointercrate",26,0],
+      [2222,152,"Verdant Landscape",100,"https://www.youtube.com/watch?v=MWabrxHrlZ0",51,137,393,"pointercrate",4.6,1.3],
+      [1740,154,"Oblivion",100,"https://www.youtube.com/watch?v=IAOlLQ2ygs4",59,132,425,"pointercrate",4.6,1.28],
+      [1569,209,"Time Lapse",100,"https://www.youtube.com/watch?v=zYgcYxYSpAM",null,178,657,"pointercrate",2.6,0],
+      [2018,270,"Shardscapes",100,"https://www.youtube.com/watch?v=SDmBmkePwwg",68,233,415,"pointercrate",0.98,0.27],
+      [2439,346,"Sigma",88,"https://www.youtube.com/watch?v=nX9DjapS4m4",null,272,129,"pointercrate",0,0],
+      [2144,385,"Arctic Lights",68,"https://www.youtube.com/watch?v=ppaFPXQfvmM",null,300,128,"pointercrate",0,0]
+    ],
     "16546": [
       [2200,118,"Midnight",100,"https://www.youtube.com/watch?v=Mf9VnP_AAYw",null,110,549,"pointercrate",37,0],
       [2236,150,"The Golden",100,"https://www.youtube.com/watch?v=C3RwIIkwINc",null,131,274,"pointercrate",5,0],
@@ -26699,6 +26704,10 @@
     ],
     "26866": [
       [2449,201,"Zodiac",100,"https://www.youtube.com/watch?v=FJ60aXHOO4Q",null,179,219,"pointercrate",2.6,0]
+    ],
+    "26939": [
+      [2200,118,"Midnight",100,"",null,110,549,"pointercrate",37,0],
+      [3126,205,"IRIS",100,"https://www.youtube.com/watch?v=EqvVbAG2V-w",null,190,632,"pointercrate",2.6,0]
     ],
     "27270": [
       [2050,69,"poocubed",100,"https://www.youtube.com/watch?v=dmDLldMrPRo",null,67,464,"pointercrate",128,0],
