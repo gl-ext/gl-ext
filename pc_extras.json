@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T19:42:31.270Z",
+  "generated": "2026-11-02T20:33:09.267Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -18357,6 +18357,13 @@
       [2290,1073,"Bloodbath",100,"https://www.youtube.com/watch?v=uu12uTttcTc",null,553,69,"pointercrate",0.5,0],
       [2289,1699,"Cataclysm",100,"https://www.youtube.com/watch?v=PDAeB562vq4",null,648,142,"pointercrate",0.13,0]
     ],
+    "15509": [
+      [2435,272,"Ragnarok",100,"https://www.youtube.com/watch?v=RI6f1phJ5K0",null,241,91,"pointercrate",0.98,0],
+      [2024,295,"Bloodlust",100,"https://www.youtube.com/watch?v=Du27u8rgYMc",null,257,161,"pointercrate",0.97,0],
+      [2333,381,"Visible Ray",100,"https://www.youtube.com/watch?v=s9ygrBUDEEg",null,297,127,"pointercrate",0.92,0],
+      [2615,628,"Stalemate Redux",100,"https://www.youtube.com/watch?v=4mUmphXrm8g",null,420,87,"pointercrate",0.77,0],
+      [2290,1073,"Bloodbath",100,"https://www.youtube.com/watch?v=wqYpZr4_WRM",null,553,69,"pointercrate",0.5,0]
+    ],
     "15511": [
       [1687,693,"Artificial Ascent",100,"https://www.youtube.com/watch?v=GaEtlYxU8Y8",null,440,47,"pointercrate",0.73,0]
     ],
@@ -26937,6 +26944,9 @@
     ],
     "29861": [
       [2477,146,"Terminal Rampancy",100,"https://www.youtube.com/watch?v=yCf3ccnWlFk",null,136,497,"pointercrate",9,0]
+    ],
+    "30382": [
+      [1748,42,"Slaughterhouse",100,"https://www.youtube.com/watch?v=a_f6ghvzfB8",93,40,380,"pointercrate",312,144.59]
     ],
     "30397": [
       [2200,118,"Midnight",76,"https://www.youtube.com/watch?v=OiKlebMM7K4",null,110,549,"pointercrate",13.55,0],
