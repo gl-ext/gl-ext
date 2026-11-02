@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T04:51:54.515Z",
+  "generated": "2026-11-02T05:50:42.480Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -4172,6 +4172,16 @@
       [null,null,"Valor",100,"https://www.youtube.com/watch?v=mpiFLXSyOlU",null,698,174,"pointercrate",0,0],
       [null,null,"Geminorum",100,"https://www.youtube.com/watch?v=Gf5FPO95EGE",null,706,110,"pointercrate",0,0],
       [null,null,"Sparklic Ocean",100,"https://www.youtube.com/watch?v=H0_obN6BOUw",null,708,12,"pointercrate",0,0]
+    ],
+    "13972": [
+      [2462,727,"distraught",100,"https://www.youtube.com/watch?v=xym2pDDcwFA",null,469,53,"pointercrate",0.71,0],
+      [1689,807,"SubSonic",100,"https://www.youtube.com/watch?v=fhIroqAaKCw",null,498,147,"pointercrate",0.66,0],
+      [1767,1189,"Esencia",100,"https://www.youtube.com/watch?v=A7W0l5V8GuQ",null,581,71,"pointercrate",0.44,0],
+      [2108,1504,"Awakening Horus",100,"https://www.youtube.com/watch?v=DVSHhug-LSI",null,642,115,"pointercrate",0.25,0],
+      [1688,1617,"HyperSonic",100,"https://www.youtube.com/watch?v=rd7I_FZS-AM",null,647,214,"pointercrate",0.18,0],
+      [1829,1647,"8o X",100,"https://www.youtube.com/watch?v=-QlrSNxtHfw",null,652,117,"pointercrate",0.16,0],
+      [2330,1668,"Cosmorush 21",100,"https://www.youtube.com/watch?v=h735pTknHq8",null,649,186,"pointercrate",0.15,0],
+      [2289,1699,"Cataclysm",100,"https://www.youtube.com/watch?v=z7tsW4UJ1Ko",null,648,142,"pointercrate",0.13,0]
     ],
     "13973": [
       [1735,965,"Epsilon",100,"https://www.youtube.com/watch?v=TxpqvrM24XA",null,551,81,"pointercrate",0.57,0],
