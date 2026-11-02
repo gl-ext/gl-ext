@@ -589,6 +589,16 @@
       ]
     },
     {
+      "keep": 13833,
+      "keep_name": "Wain",
+      "absorb": [
+        {
+          "id": 15979,
+          "name": "1tzBee"
+        }
+      ]
+    },
+    {
       "keep": 13870,
       "keep_name": "HargChucu",
       "absorb": [
