@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T14:01:23.573Z",
+  "generated": "2026-11-02T14:59:54.950Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -3476,6 +3476,7 @@
       [1677,852,"SPEEDRUN",100,"https://www.youtube.com/watch?v=548exYHldvU",null,512,242,"pointercrate",0.64,0]
     ],
     "13797": [
+      [2485,62,"Firework",100,"https://www.youtube.com/watch?v=pf6Js_J2_Y0",null,59,379,"pointercrate",184,0],
       [2535,76,"The Hallucination",100,"https://www.youtube.com/watch?v=2D24ts_q-4k",null,72,427,"pointercrate",79,0],
       [2264,88,"Edge of Destiny",100,"https://www.youtube.com/watch?v=NOzR__SlJv8",null,82,485,"pointercrate",67,0],
       [1749,141,"Delta",100,"https://www.youtube.com/watch?v=cnyBZ5y0HuI",null,124,525,"pointercrate",14,0],
@@ -25428,6 +25429,13 @@
       [3229,179,"azure blast",100,"https://www.youtube.com/watch?v=Of_zkOmo6E8",null,143,641,"pointercrate",3.8,0],
       [1784,253,"Cosmic Cyclone",100,"https://www.youtube.com/watch?v=5AE98Cb7rx0",null,215,390,"pointercrate",0.99,0]
     ],
+    "18649": [
+      [2653,20,"Silent clubstep",65,"https://www.youtube.com/watch?v=6R05bpq8df0",null,18,428,"pointercrate",147.69,0],
+      [3275,22,"Subsuming Vortex",100,"https://www.youtube.com/watch?v=NQU0kpl6YxE",null,23,649,"pointercrate",392,0],
+      [2656,34,"Acheron",89,"https://www.youtube.com/watch?v=b_Nk4A_J_nk",78,28,442,"pointercrate",154.08,134.38],
+      [2372,84,"COMBUSTION",100,"https://www.youtube.com/watch?v=dx68Ipv5Q0E",null,75,526,"pointercrate",71,0],
+      [2024,295,"Bloodlust",100,"https://www.youtube.com/watch?v=995nAXyDU2k",null,257,161,"pointercrate",0.97,0]
+    ],
     "18661": [
       [2418,90,"Solar Flare",100,"https://www.youtube.com/watch?v=E8lA3zt_t1Y",50,85,495,"pointercrate",65,16.89],
       [1754,136,"Tartarus",100,"https://www.youtube.com/watch?v=lqnXs6LZRWY",null,121,250,"pointercrate",19,0],
@@ -27258,6 +27266,9 @@
       [1748,42,"Slaughterhouse",100,"https://www.youtube.com/watch?v=xC3BiIq03ms",95,40,380,"pointercrate",312,148.39],
       [1589,164,"Shukketsu",100,"https://www.youtube.com/watch?v=4nijwbDa364",null,144,435,"pointercrate",4.2,0],
       [1707,246,"SUPERHATEMEWORLD",100,"https://www.youtube.com/watch?v=g-zvZ4Jr3VY",null,231,453,"pointercrate",1,0]
+    ],
+    "35542": [
+      [1748,42,"Slaughterhouse",76,"https://www.youtube.com/watch?v=VxUCs2B27tY",null,40,380,"pointercrate",112.24,0]
     ],
     "35780": [
       [1644,212,"Lotus Flower",100,"https://www.youtube.com/watch?v=TMxtqCCSgOU",null,180,389,"pointercrate",2.2,0],
