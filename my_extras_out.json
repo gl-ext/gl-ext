@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T17:53:59.290Z",
+  "generated": "2026-11-02T18:52:51.326Z",
   "users": {
     "2": [
       [2656,34,"Acheron",94,"",null,null,null,"my_extras",163.04,0]
@@ -432,12 +432,6 @@
     ],
     "16551": [
       [3441,30,"FOREST OF SPIKES",100,"",null,null,null,"my_extras",360,0]
-    ],
-    "16572": [
-      [3125,57,"Snowbound",100,"",null,null,null,"my_extras",224,0],
-      [2050,69,"poocubed",100,"",null,null,null,"my_extras",128,0],
-      [1981,73,"Saul Goodman",100,"",null,null,null,"my_extras",96,0],
-      [2372,84,"COMBUSTION",100,"",null,null,null,"my_extras",71,0]
     ],
     "16574": [
       [3199,6,"Flamewall",47,"",null,null,null,"my_extras",214.29,0]
