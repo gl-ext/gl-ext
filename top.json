@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T12:28:54.439Z",
+ "generated": "2026-11-03T13:45:15.154Z",
  "users": [
   {
    "place": 1,
@@ -237,12 +237,12 @@
   },
   {
    "place": 27,
-   "oldPlace": 28,
+   "oldPlace": 27,
    "id": "14485",
    "name": "PoCle",
    "country": "South-Korea",
    "points": 4054.29,
-   "basePoints": 3948.24
+   "basePoints": 4044.24
   },
   {
    "place": 28,
@@ -255,7 +255,7 @@
   },
   {
    "place": 29,
-   "oldPlace": 27,
+   "oldPlace": 28,
    "id": "14462",
    "name": "turtle",
    "country": "Canada",
@@ -309,12 +309,12 @@
   },
   {
    "place": 35,
-   "oldPlace": 42,
+   "oldPlace": 40,
    "id": "14549",
    "name": "Whizkid05",
    "country": "United-Kingdom",
    "points": 3643.35,
-   "basePoints": 3011.19
+   "basePoints": 3163.19
   },
   {
    "place": 36,
@@ -354,7 +354,7 @@
   },
   {
    "place": 40,
-   "oldPlace": 38,
+   "oldPlace": 39,
    "id": "14430",
    "name": "Cursed",
    "country": "United-Kingdom",
@@ -381,12 +381,12 @@
   },
   {
    "place": 43,
-   "oldPlace": 41,
+   "oldPlace": 38,
    "id": "14440",
    "name": "Kaza",
    "country": "Romania",
    "points": 3271.78,
-   "basePoints": 3036.91
+   "basePoints": 3249.91
   },
   {
    "place": 44,
@@ -399,7 +399,7 @@
   },
   {
    "place": 45,
-   "oldPlace": 40,
+   "oldPlace": 42,
    "id": "15864",
    "name": "MeQ8cNv43s6A",
    "country": "Japan",
@@ -444,7 +444,7 @@
   },
   {
    "place": 50,
-   "oldPlace": 39,
+   "oldPlace": 41,
    "id": "14466",
    "name": "ProudGiraffe311",
    "country": "United-States",
