@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T18:18:19.515Z",
+ "generated": "2026-11-03T19:04:50.389Z",
  "users": [
   {
    "place": 1,
@@ -8,7 +8,7 @@
    "name": "Zoink",
    "country": "United-States",
    "points": 20206.75,
-   "basePoints": 18755.57
+   "basePoints": 19126.78
   },
   {
    "place": 2,
@@ -16,8 +16,8 @@
    "id": "13502",
    "name": "wPopoff",
    "country": "United-States",
-   "points": 14254.73,
-   "basePoints": 14252.76
+   "points": 15254.73,
+   "basePoints": 15252.76
   },
   {
    "place": 3,
@@ -30,16 +30,16 @@
   },
   {
    "place": 4,
-   "oldPlace": 5,
+   "oldPlace": 4,
    "id": "13501",
    "name": "Trick",
    "country": "United-States",
    "points": 9681.03,
-   "basePoints": 9201.67
+   "basePoints": 9451.67
   },
   {
    "place": 5,
-   "oldPlace": 4,
+   "oldPlace": 5,
    "id": "18454",
    "name": "zLevii",
    "country": "New-Zealand",
@@ -426,7 +426,7 @@
   },
   {
    "place": 48,
-   "oldPlace": 7155,
+   "oldPlace": 7156,
    "id": "51087",
    "name": "sharkyga",
    "country": "Unknown",

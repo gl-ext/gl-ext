@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-03T18:18:19.515Z",
+  "generated": "2026-11-03T19:04:50.389Z",
   "users": {
     "2": [
       [2656,34,"Acheron",94,"",null,null,null,"my_extras",163.04,0]
@@ -202,9 +202,6 @@
     ],
     "13459": [
       [1748,42,"Slaughterhouse",63,"",null,null,null,"my_extras",87.51,0]
-    ],
-    "13501": [
-      [3442,1,"GRIEF",66,"",null,null,null,"my_extras",250,0]
     ],
     "13506": [
       [2976,5,"Amethyst",69,"",null,null,null,"my_extras",313.22,0],
@@ -422,9 +419,6 @@
       [2570,123,"Sinister Silence",100,"",null,null,null,"my_extras",32,0],
       [1749,141,"Delta",100,"",null,null,null,"my_extras",14,0],
       [3426,151,"SPIRIT OVERCLOCK",100,"",null,null,null,"my_extras",4.6,0]
-    ],
-    "16498": [
-      [3442,1,"GRIEF",82,"",null,null,null,"my_extras",371.21,0]
     ],
     "16500": [
       [2684,11,"Nullscapes",82,"",78,null,null,"my_extras",240.7,229.1],
