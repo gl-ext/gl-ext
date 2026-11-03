@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T20:35:15.517Z",
+ "generated": "2026-11-03T21:27:09.558Z",
  "users": [
   {
    "place": 1,
@@ -246,16 +246,16 @@
   },
   {
    "place": 28,
-   "oldPlace": 36,
+   "oldPlace": 28,
    "id": "18719",
    "name": "ChopBlox",
    "country": "Germany",
    "points": 4036.72,
-   "basePoints": 3492.81
+   "basePoints": 4015.66
   },
   {
    "place": 29,
-   "oldPlace": 28,
+   "oldPlace": 29,
    "id": "14462",
    "name": "turtle",
    "country": "Canada",
@@ -264,7 +264,7 @@
   },
   {
    "place": 30,
-   "oldPlace": 33,
+   "oldPlace": 34,
    "id": "5577",
    "name": "Serpentical",
    "country": "Unknown",
@@ -273,7 +273,7 @@
   },
   {
    "place": 31,
-   "oldPlace": 34,
+   "oldPlace": 35,
    "id": "14445",
    "name": "iIiLaSeRiIi",
    "country": "United-Kingdom",
@@ -282,7 +282,7 @@
   },
   {
    "place": 32,
-   "oldPlace": 29,
+   "oldPlace": 30,
    "id": "16578",
    "name": "Mizukii",
    "country": "Germany",
@@ -291,7 +291,7 @@
   },
   {
    "place": 33,
-   "oldPlace": 30,
+   "oldPlace": 31,
    "id": "14436",
    "name": "Laniakea",
    "country": "South-Korea",
@@ -300,7 +300,7 @@
   },
   {
    "place": 34,
-   "oldPlace": 31,
+   "oldPlace": 32,
    "id": "14544",
    "name": "Hqmy",
    "country": "United-States",
@@ -309,7 +309,7 @@
   },
   {
    "place": 35,
-   "oldPlace": 40,
+   "oldPlace": 42,
    "id": "14549",
    "name": "Whizkid05",
    "country": "United-Kingdom",
@@ -327,7 +327,7 @@
   },
   {
    "place": 37,
-   "oldPlace": 32,
+   "oldPlace": 33,
    "id": "16529",
    "name": "Albert",
    "country": "United-States",
@@ -336,7 +336,7 @@
   },
   {
    "place": 38,
-   "oldPlace": 45,
+   "oldPlace": 47,
    "id": "14431",
    "name": "Axinity",
    "country": "Denmark",
@@ -345,7 +345,7 @@
   },
   {
    "place": 39,
-   "oldPlace": 35,
+   "oldPlace": 36,
    "id": "14447",
    "name": "Abdieldevil",
    "country": "Peru",
@@ -354,7 +354,7 @@
   },
   {
    "place": 40,
-   "oldPlace": 39,
+   "oldPlace": 40,
    "id": "14430",
    "name": "Cursed",
    "country": "United-Kingdom",
@@ -372,16 +372,16 @@
   },
   {
    "place": 42,
-   "oldPlace": 47,
+   "oldPlace": 38,
    "id": "14192",
    "name": "donley",
    "country": "Canada",
    "points": 3368.96,
-   "basePoints": 2742.13
+   "basePoints": 3347.44
   },
   {
    "place": 43,
-   "oldPlace": 38,
+   "oldPlace": 39,
    "id": "14440",
    "name": "Kaza",
    "country": "Romania",
@@ -390,7 +390,7 @@
   },
   {
    "place": 44,
-   "oldPlace": 43,
+   "oldPlace": 45,
    "id": "4825",
    "name": "Tunax",
    "country": "Norway",
@@ -399,7 +399,7 @@
   },
   {
    "place": 45,
-   "oldPlace": 42,
+   "oldPlace": 44,
    "id": "15864",
    "name": "MeQ8cNv43s6A",
    "country": "Japan",
@@ -408,7 +408,7 @@
   },
   {
    "place": 46,
-   "oldPlace": 57,
+   "oldPlace": 58,
    "id": "11811",
    "name": "XaLVaL",
    "country": "Russia",
@@ -417,16 +417,16 @@
   },
   {
    "place": 47,
-   "oldPlace": 65,
+   "oldPlace": 41,
    "id": "14223",
    "name": "Johnlikesdiamond",
    "country": "United-States",
    "points": 3193.98,
-   "basePoints": 2336.76
+   "basePoints": 3179.68
   },
   {
    "place": 48,
-   "oldPlace": 7156,
+   "oldPlace": 7158,
    "id": "51087",
    "name": "sharkyga",
    "country": "Unknown",
@@ -435,7 +435,7 @@
   },
   {
    "place": 49,
-   "oldPlace": 46,
+   "oldPlace": 48,
    "id": "14524",
    "name": "JesseGamingGD",
    "country": "Netherlands",
@@ -444,7 +444,7 @@
   },
   {
    "place": 50,
-   "oldPlace": 41,
+   "oldPlace": 43,
    "id": "14466",
    "name": "ProudGiraffe311",
    "country": "United-States",
