@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-03T16:28:48.006Z",
+  "generated": "2026-11-03T17:29:45.008Z",
   "users": {
     "2": [
       [2656,34,"Acheron",94,"",null,null,null,"my_extras",163.04,0]
@@ -46,6 +46,9 @@
     "3667": [
       [2659,28,"Avernus",49,"",null,null,null,"my_extras",93.8,0]
     ],
+    "3676": [
+      [3126,205,"IRIS",100,"",null,null,null,"my_extras",2.6,0]
+    ],
     "3683": [
       [1748,42,"Slaughterhouse",95,"",81,null,null,"my_extras",148.39,121.76]
     ],
@@ -57,9 +60,7 @@
       [3096,33,"Defeated Circles",54,"",null,null,null,"my_extras",101.5,0]
     ],
     "3719": [
-      [2692,137,"Waterfall",100,"",null,null,null,"my_extras",18,0],
-      [3282,155,"Heavenly Sakupen",100,"",null,null,null,"my_extras",4.6,0],
-      [1563,236,"shimmer",100,"",null,null,null,"my_extras",1.4,0]
+      [2692,137,"Waterfall",100,"",null,null,null,"my_extras",18,0]
     ],
     "3729": [
       [2659,28,"Avernus",77,"",49,null,null,"my_extras",144.31,93.8]
