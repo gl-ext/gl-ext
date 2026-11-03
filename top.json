@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T21:27:09.558Z",
+ "generated": "2026-11-03T22:18:21.841Z",
  "users": [
   {
    "place": 1,
@@ -309,7 +309,7 @@
   },
   {
    "place": 35,
-   "oldPlace": 42,
+   "oldPlace": 43,
    "id": "14549",
    "name": "Whizkid05",
    "country": "United-Kingdom",
@@ -354,7 +354,7 @@
   },
   {
    "place": 40,
-   "oldPlace": 40,
+   "oldPlace": 41,
    "id": "14430",
    "name": "Cursed",
    "country": "United-Kingdom",
@@ -399,16 +399,16 @@
   },
   {
    "place": 45,
-   "oldPlace": 44,
+   "oldPlace": 40,
    "id": "15864",
    "name": "MeQ8cNv43s6A",
    "country": "Japan",
    "points": 3209.51,
-   "basePoints": 3118.28
+   "basePoints": 3197.28
   },
   {
    "place": 46,
-   "oldPlace": 58,
+   "oldPlace": 59,
    "id": "11811",
    "name": "XaLVaL",
    "country": "Russia",
@@ -417,7 +417,7 @@
   },
   {
    "place": 47,
-   "oldPlace": 41,
+   "oldPlace": 42,
    "id": "14223",
    "name": "Johnlikesdiamond",
    "country": "United-States",
@@ -444,7 +444,7 @@
   },
   {
    "place": 50,
-   "oldPlace": 43,
+   "oldPlace": 44,
    "id": "14466",
    "name": "ProudGiraffe311",
    "country": "United-States",
