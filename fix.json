@@ -713,6 +713,16 @@
       ]
     },
     {
+      "keep": 14224,
+      "keep_name": "Washed",
+      "absorb": [
+        {
+          "id": 55854,
+          "name": "Gnamolor"
+        }
+      ]
+    },
+    {
       "keep": 14225,
       "keep_name": "Technical",
       "absorb": [
