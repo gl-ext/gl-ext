@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T19:04:50.389Z",
+ "generated": "2026-11-03T19:53:14.906Z",
  "users": [
   {
    "place": 1,
@@ -363,7 +363,7 @@
   },
   {
    "place": 41,
-   "oldPlace": 78,
+   "oldPlace": 79,
    "id": "51317",
    "name": "Cryostazz",
    "country": "France",

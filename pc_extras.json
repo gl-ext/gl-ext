@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-03T19:04:50.389Z",
+  "generated": "2026-11-03T19:53:14.906Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -17288,6 +17288,13 @@
       [2213,626,"Omicron",100,"https://www.youtube.com/watch?v=1rgAiU1oteE",null,430,296,"pointercrate",0.77,0],
       [2374,1166,"Plasma Pulse III",100,"https://www.youtube.com/watch?v=gSdxd84Cjs0",null,587,76,"pointercrate",0.45,0]
     ],
+    "15405": [
+      [2024,295,"Bloodlust",100,"https://www.youtube.com/watch?v=KL8EV7TaeIA",null,257,161,"pointercrate",0.97,0],
+      [1626,540,"Erebus",100,"https://www.youtube.com/watch?v=eYHm5FsjnnQ",null,381,93,"pointercrate",0.82,0],
+      [2600,872,"Infernal Abyss",100,"https://www.youtube.com/watch?v=D5BQ-0ATWvM",null,516,38,"pointercrate",0.62,0],
+      [2290,1073,"Bloodbath",100,"https://www.youtube.com/watch?v=ayZms8yQKdw",null,553,69,"pointercrate",0.5,0],
+      [2289,1699,"Cataclysm",100,"https://www.youtube.com/watch?v=tue0-x42gtA",null,648,142,"pointercrate",0.13,0]
+    ],
     "15406": [
       [2237,242,"Cognition",100,"https://www.youtube.com/watch?v=DBrgXN73wMQ",null,212,247,"pointercrate",1,0],
       [1737,448,"Spacial Rend",100,"https://www.youtube.com/watch?v=m_4jQG-NDBw",null,336,92,"pointercrate",0.88,0],
@@ -25652,9 +25659,6 @@
       [2006,254,"RUST",100,"https://www.youtube.com/watch?v=ZFJsgJmh-XU",null,223,358,"pointercrate",0.99,0]
     ],
     "19049": [
-      [2809,26,"Anathema",100,"https://www.youtube.com/watch?v=1MxJUgiJxlY",null,24,602,"pointercrate",376,0],
-      [3096,33,"Defeated Circles",100,"https://www.youtube.com/watch?v=U38Oxrt6gqg",null,25,639,"pointercrate",348,0],
-      [2656,34,"Acheron",100,"https://www.youtube.com/watch?v=HF3N4LJ7WSc",null,28,442,"pointercrate",344,0],
       [2655,46,"KOCMOC",100,"https://www.youtube.com/watch?v=85myHxDHGuA",null,42,501,"pointercrate",296,0],
       [3061,82,"Sevvend Clubstep",100,"https://www.youtube.com/watch?v=WecPMbht4xQ",null,81,630,"pointercrate",73,0],
       [2418,90,"Solar Flare",100,"https://www.youtube.com/watch?v=mARM7-1-ygY",null,85,495,"pointercrate",65,0],
