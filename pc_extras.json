@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04T21:24:57.314Z",
+  "generated": "2026-11-04T22:20:57.026Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -7733,6 +7733,9 @@
       [2290,1073,"Bloodbath",100,"https://www.youtube.com/watch?v=7IF87vpbeww",null,553,69,"pointercrate",0.5,0],
       [1597,1490,"Deception Dive",100,"https://www.youtube.com/watch?v=GuK6rKdxjXc",null,609,164,"pointercrate",0.26,0]
     ],
+    "14280": [
+      [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=HiXRJdwz65w",73,199,239,"pointercrate",1.8,0.63]
+    ],
     "14281": [
       [2296,227,"Renevant",61,"https://www.youtube.com/watch?v=NOva1DNaaR0",57,199,239,"pointercrate",0.5,0.46],
       [2034,319,"Aronia",64,"https://www.youtube.com/watch?v=bspB7JQFnaE",null,275,270,"pointercrate",0.25,0],
@@ -7817,6 +7820,15 @@
       [null,null,"Crimson Clutter",100,"https://www.youtube.com/watch?v=Wvr73hHLeiU",null,688,56,"pointercrate",0,0],
       [null,null,"The Secret Box",100,"https://www.youtube.com/watch?v=XpZdSab6B7E",null,696,49,"pointercrate",0,0],
       [null,null,"Hyperio Technia",100,"https://www.youtube.com/watch?v=Ct-ab_RXP8Q",null,700,97,"pointercrate",0,0]
+    ],
+    "14287": [
+      [2237,242,"Cognition",56,"https://www.youtube.com/watch?v=giKwfN4eMy4",null,212,247,"pointercrate",0.27,0],
+      [2510,437,"Wasureta",100,"https://www.youtube.com/watch?v=-DyteX8Taz8",null,344,282,"pointercrate",0.88,0],
+      [2575,443,"Omega",100,"https://www.youtube.com/watch?v=GjOawttLncY",null,331,261,"pointercrate",0.88,0],
+      [1666,487,"Friday Vortex",100,"https://www.youtube.com/watch?v=-sG-X_0Abtk",null,414,422,"pointercrate",0.85,0],
+      [2124,510,"GONER",100,"https://www.youtube.com/watch?v=0PG6eU4pJPo",null,358,397,"pointercrate",0.84,0],
+      [1686,614,"Digital Descent",100,"https://www.youtube.com/watch?v=fL-Nj3HLpuI",null,419,125,"pointercrate",0.78,0],
+      [1630,653,"Killbot",100,"https://www.youtube.com/watch?v=qB-ZUJWl3Hg",null,429,211,"pointercrate",0.75,0]
     ],
     "14288": [
       [1733,140,"UNKNOWN",100,"https://www.youtube.com/watch?v=kzPy0-mNJQ4",null,141,475,"pointercrate",15,0]
@@ -15951,6 +15963,9 @@
       [2600,872,"Infernal Abyss",100,"https://www.youtube.com/watch?v=19nLpbyCi7s",null,516,38,"pointercrate",0.62,0],
       [2032,931,"Alpha Baa X",100,"https://www.youtube.com/watch?v=RHI2zSsvXw4",null,537,322,"pointercrate",0.59,0],
       [2290,1073,"Bloodbath",100,"https://www.youtube.com/watch?v=sV69s8VmLF0",null,553,69,"pointercrate",0.5,0]
+    ],
+    "15244": [
+      [1687,693,"Artificial Ascent",100,"https://www.youtube.com/watch?v=dxAq4666oLE",null,440,47,"pointercrate",0.73,0]
     ],
     "15245": [
       [2237,242,"Cognition",100,"https://www.youtube.com/watch?v=qkFZbMZgFZI",null,212,247,"pointercrate",1,0],
@@ -26584,6 +26599,7 @@
       [3061,82,"Sevvend Clubstep",100,"https://www.youtube.com/watch?v=y-7xLOvPTW4",null,81,630,"pointercrate",73,0]
     ],
     "25791": [
+      [3441,30,"FOREST OF SPIKES",100,"https://www.youtube.com/watch?v=wSnjj-lw6bU",null,27,715,"pointercrate",360,0],
       [3354,129,"Trickshot",100,"https://www.youtube.com/watch?v=w5-4ljlNIqQ",null,109,687,"pointercrate",26,0],
       [2449,201,"Zodiac",100,"https://www.youtube.com/watch?v=6qEWTU7OUmc",null,179,219,"pointercrate",2.6,0],
       [1578,221,"Thinking Space",100,"https://www.youtube.com/watch?v=8_tDeo5Kb0s",null,196,273,"pointercrate",1.8,0],
