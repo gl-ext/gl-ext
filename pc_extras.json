@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04T16:48:35.162Z",
+  "generated": "2026-11-04T17:42:50.469Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -2048,16 +2048,6 @@
     "13163": [
       [2656,34,"Acheron",98,"https://www.youtube.com/watch?v=03wL3gBD3YE",null,28,442,"pointercrate",170.21,0]
     ],
-    "13457": [
-      [2485,62,"Firework",100,"https://www.youtube.com/watch?v=M5vC4YxZXc0",null,59,379,"pointercrate",184,0],
-      [3287,86,"BRITNEY NO SCLEARS",100,"https://www.youtube.com/watch?v=DsBzvDnnQlA",null,78,684,"pointercrate",69,0],
-      [2675,202,"DISSONANCE",100,"https://www.youtube.com/watch?v=F6YX3QE7RAw",null,176,584,"pointercrate",2.6,0],
-      [3126,205,"IRIS",100,"https://www.youtube.com/watch?v=YZWtd8dh5cU",null,190,632,"pointercrate",2.6,0],
-      [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=slqP-iVrDI0",null,199,239,"pointercrate",1.8,0],
-      [1563,236,"shimmer",100,"https://www.youtube.com/watch?v=-vRpvuJ3EBQ",null,206,530,"pointercrate",1.4,0],
-      [2435,272,"Ragnarok",100,"https://www.youtube.com/watch?v=Ry_T0xVop_o",null,241,91,"pointercrate",0.98,0],
-      [2150,298,"Escape Room",100,"https://www.youtube.com/watch?v=ILav5DvO1a4",null,251,503,"pointercrate",0.97,0]
-    ],
     "13459": [
       [2658,66,"Through The Gates",100,"https://www.youtube.com/watch?v=60IAO5ukXYo",null,60,663,"pointercrate",152,0],
       [2418,90,"Solar Flare",100,"https://www.youtube.com/watch?v=xsv3jmHVj4E",null,85,495,"pointercrate",65,0],
@@ -3608,10 +3598,6 @@
       [1676,1115,"INNARDS",100,"https://www.youtube.com/watch?v=moPllU_KRM8",null,585,209,"pointercrate",0.48,0],
       [2490,1575,"The Flawless",100,"https://www.youtube.com/watch?v=H-cu9uEu0aU",null,611,26,"pointercrate",0.21,0]
     ],
-    "13828": [
-      [2262,456,"Dark Flare",73,"",null,389,198,"pointercrate",0,0],
-      [2185,582,"Catalyze",58,"https://www.youtube.com/watch?v=ZN5vk6RWYiU",null,403,155,"pointercrate",0,0]
-    ],
     "13833": [
       [3389,25,"KILLSTEALER",100,"https://www.youtube.com/watch?v=qHz9qkT6ABw",null,22,696,"pointercrate",380,0],
       [3281,52,"CHIL",100,"https://www.youtube.com/watch?v=NtQjWD4OEqI",null,45,652,"pointercrate",264,0],
@@ -3645,9 +3631,6 @@
       [2435,272,"Ragnarok",100,"https://www.youtube.com/watch?v=ue2NJUj4ckE",null,241,91,"pointercrate",0.98,0],
       [2144,385,"Arctic Lights",100,"https://www.youtube.com/watch?v=TNt1XMkdtj4",null,300,128,"pointercrate",0.91,0],
       [2045,505,"xo",100,"https://www.youtube.com/watch?v=WaHM0eWTYvc",null,369,245,"pointercrate",0.84,0]
-    ],
-    "13836": [
-      [1676,1115,"INNARDS",100,"https://www.youtube.com/watch?v=bhoQDaR7JDg",null,585,209,"pointercrate",0.48,0]
     ],
     "13842": [
       [2307,237,"Crimson Planet",100,"https://www.youtube.com/watch?v=ZzNhcesrBgU",61,207,63,"pointercrate",1.4,0.46],
@@ -4407,13 +4390,6 @@
       [2452,753,"Balengu Vortex",100,"https://www.youtube.com/watch?v=bwi4HN5-cdQ",null,467,252,"pointercrate",0.7,0],
       [1965,1601,"Incipient",100,"https://www.youtube.com/watch?v=XPa7pAHTzYs",null,624,191,"pointercrate",0.19,0]
     ],
-    "14007": [
-      [null,null,"Cyber Chaos",100,"https://www.youtube.com/watch?v=_uVtJXuJ_rw",null,684,227,"pointercrate",0,0],
-      [null,null,"Crimson Clutter",100,"https://www.youtube.com/watch?v=Z61vNEolgWs",null,688,56,"pointercrate",0,0],
-      [null,null,"Plasma Pulse II",100,"https://www.youtube.com/watch?v=Yj4EE5AfkhA",null,692,188,"pointercrate",0,0],
-      [null,null,"Night Terrors",100,"https://www.youtube.com/watch?v=xOXz0D3ZPQ4",null,699,150,"pointercrate",0,0],
-      [null,null,"Ultraviolet",100,"https://www.youtube.com/watch?v=FWD1imz3N_s",null,703,48,"pointercrate",0,0]
-    ],
     "14009": [
       [1688,1617,"HyperSonic",57,"https://www.youtube.com/watch?v=1azOcB3Zg9k",null,647,214,"pointercrate",0,0],
       [null,null,"Sparklic Ocean",100,"https://www.youtube.com/watch?v=eplAbBC3E8k",null,708,12,"pointercrate",0,0]
@@ -4423,9 +4399,6 @@
       [1810,1804,"Final Epilogue",100,"https://www.youtube.com/watch?v=r84hmpMkL0E",null,670,173,"pointercrate",0.07,0],
       [2253,1818,"Excessive Compliment",100,"https://www.youtube.com/watch?v=Jre3UYio6Oc",null,659,183,"pointercrate",0.06,0],
       [null,null,"Asymmetry",100,"https://www.youtube.com/watch?v=kubPi2cuZHM",null,690,225,"pointercrate",0,0]
-    ],
-    "14011": [
-      [null,null,"Duelo Maestro",100,"https://www.youtube.com/watch?v=Juy4xoPztbs",null,636,57,"pointercrate",0,0]
     ],
     "14012": [
       [1905,935,"Betrayal of Fate",48,"https://www.youtube.com/watch?v=kdpXzlqHd1E",null,548,197,"pointercrate",0,0]
