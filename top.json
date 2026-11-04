@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04T05:47:30.557Z",
+ "generated": "2026-11-04T06:49:38.729Z",
  "users": [
   {
    "place": 1,
@@ -435,21 +435,21 @@
   },
   {
    "place": 49,
+   "oldPlace": 81,
+   "id": "51306",
+   "name": "karkito",
+   "country": "South-Korea",
+   "points": 3167.81,
+   "basePoints": 1985
+  },
+  {
+   "place": 50,
    "oldPlace": 48,
    "id": "14524",
    "name": "JesseGamingGD",
    "country": "Netherlands",
    "points": 3141.79,
    "basePoints": 2793.79
-  },
-  {
-   "place": 50,
-   "oldPlace": 44,
-   "id": "14466",
-   "name": "ProudGiraffe311",
-   "country": "United-States",
-   "points": 3136.89,
-   "basePoints": 3131.29
   }
  ]
 }

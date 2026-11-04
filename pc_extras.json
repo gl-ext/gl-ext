@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04T05:47:30.557Z",
+  "generated": "2026-11-04T06:49:38.729Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -6642,6 +6642,7 @@
     "14195": [
       [3412,23,"Ultra Paracosm",100,"https://www.youtube.com/watch?v=56iTfy3l1ug",null,19,704,"pointercrate",388,0],
       [2809,26,"Anathema",85,"https://www.youtube.com/watch?v=YQQu--aafPs",84,24,602,"pointercrate",152.43,149.89],
+      [3096,33,"Defeated Circles",100,"https://www.youtube.com/watch?v=fk9zzIXCng8",null,25,639,"pointercrate",348,0],
       [2485,62,"Firework",100,"https://www.youtube.com/watch?v=_2qt79uketk",null,59,379,"pointercrate",184,0],
       [2636,251,"ATOMIC CANNON Mk II",100,"https://www.youtube.com/watch?v=wgEXKrKE2Pw",null,209,509,"pointercrate",0.99,0],
       [2711,260,"Rigel",100,"https://www.youtube.com/watch?v=zWFp7ZDn8CA",null,220,598,"pointercrate",0.99,0],
@@ -27255,7 +27256,7 @@
     ],
     "35807": [
       [1748,42,"Slaughterhouse",100,"https://www.youtube.com/watch?v=BxxH8jGONBs",86,40,380,"pointercrate",312,131.27],
-      [1750,45,"Deimos",87,"https://www.youtube.com/watch?v=oeTMzIjxnVU",null,44,516,"pointercrate",129.07,0],
+      [1750,45,"Deimos",100,"https://www.youtube.com/watch?v=56NDQwP7GhA",null,44,516,"pointercrate",300,0],
       [3410,64,"NervHell",69,"https://www.youtube.com/watch?v=UqvxMwhlBOA",null,64,705,"pointercrate",59.29,0],
       [3061,82,"Sevvend Clubstep",68,"https://www.youtube.com/watch?v=zOFQ1F9_ulQ",null,81,630,"pointercrate",23.03,0]
     ],
@@ -27578,6 +27579,7 @@
       [2687,29,"Spectre",100,"https://www.youtube.com/watch?v=MZRDj7_hwA0",null,29,592,"pointercrate",364,0],
       [3435,53,"Prismline",100,"https://www.youtube.com/watch?v=1aLVRbGXhFc",null,47,708,"pointercrate",256,0],
       [3125,57,"Snowbound",100,"https://www.youtube.com/watch?v=UTFBhxESBL8",null,56,658,"pointercrate",224,0],
+      [3397,124,"Between Duality",100,"https://www.youtube.com/watch?v=wfb5u-_Mcko",null,115,690,"pointercrate",31,0],
       [3427,142,"Sanctity",100,"https://www.youtube.com/watch?v=_uu0Dn9acBA",null,130,710,"pointercrate",13,0],
       [2707,194,"Judgement Knights",100,"https://www.youtube.com/watch?v=fiI58XaRjx0",null,185,596,"pointercrate",3,0],
       [1995,222,"Cold Sweat",100,"https://www.youtube.com/watch?v=7VjqCxIQnGw",null,192,293,"pointercrate",1.8,0],
