@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04T08:06:00.390Z",
+ "generated": "2026-11-04T08:55:49.185Z",
  "users": [
   {
    "place": 1,
@@ -7,7 +7,7 @@
    "id": "16498",
    "name": "Zoink",
    "country": "United-States",
-   "points": 20206.75,
+   "points": 20207.15,
    "basePoints": 19126.78
   },
   {
@@ -43,8 +43,8 @@
    "id": "18454",
    "name": "zLevii",
    "country": "New-Zealand",
-   "points": 9432.95,
-   "basePoints": 9292.19
+   "points": 9433.35,
+   "basePoints": 9292.59
   },
   {
    "place": 6,
@@ -106,8 +106,8 @@
    "id": "13661",
    "name": "kloone",
    "country": "Finland",
-   "points": 5957.39,
-   "basePoints": 5788.79
+   "points": 5957.79,
+   "basePoints": 5789.19
   },
   {
    "place": 13,
@@ -133,8 +133,8 @@
    "id": "14433",
    "name": "Thnnder",
    "country": "United-States",
-   "points": 5692.12,
-   "basePoints": 5421.79
+   "points": 5692.52,
+   "basePoints": 5422.19
   },
   {
    "place": 16,
@@ -178,8 +178,8 @@
    "id": "14452",
    "name": "Cookie",
    "country": "United-States",
-   "points": 5021.9,
-   "basePoints": 5020.92
+   "points": 5022.3,
+   "basePoints": 5021.32
   },
   {
    "place": 21,
