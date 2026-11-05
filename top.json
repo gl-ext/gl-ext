@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-05T12:50:22.982Z",
+ "generated": "2026-11-05T14:05:22.950Z",
  "users": [
   {
    "place": 1,
@@ -7,8 +7,8 @@
    "id": "16498",
    "name": "Zoink",
    "country": "United-States",
-   "points": 20237.45,
-   "basePoints": 19126.78
+   "points": 20275.33,
+   "basePoints": 19194.96
   },
   {
    "place": 2,
@@ -88,7 +88,7 @@
    "id": "15566",
    "name": "weyolll3",
    "country": "Spain",
-   "points": 6069.08,
+   "points": 6106.84,
    "basePoints": 5062.61
   },
   {
@@ -111,7 +111,7 @@
   },
   {
    "place": 13,
-   "oldPlace": 13,
+   "oldPlace": 14,
    "id": "16551",
    "name": "Rediio",
    "country": "South-Korea",
@@ -129,12 +129,12 @@
   },
   {
    "place": 15,
-   "oldPlace": 14,
+   "oldPlace": 13,
    "id": "14433",
    "name": "Thnnder",
    "country": "United-States",
    "points": 5692.52,
-   "basePoints": 5422.19
+   "basePoints": 5687.72
   },
   {
    "place": 16,
@@ -264,6 +264,15 @@
   },
   {
    "place": 30,
+   "oldPlace": 34,
+   "id": "5577",
+   "name": "Serpentical",
+   "country": "Unknown",
+   "points": 3993.85,
+   "basePoints": 3574.48
+  },
+  {
+   "place": 31,
    "oldPlace": 35,
    "id": "14445",
    "name": "iIiLaSeRiIi",
@@ -272,7 +281,7 @@
    "basePoints": 3534.11
   },
   {
-   "place": 31,
+   "place": 32,
    "oldPlace": 30,
    "id": "16578",
    "name": "Mizukii",
@@ -281,7 +290,7 @@
    "basePoints": 3864.37
   },
   {
-   "place": 32,
+   "place": 33,
    "oldPlace": 31,
    "id": "14436",
    "name": "Laniakea",
@@ -290,7 +299,7 @@
    "basePoints": 3725.43
   },
   {
-   "place": 33,
+   "place": 34,
    "oldPlace": 32,
    "id": "14544",
    "name": "Hqmy",
@@ -299,7 +308,7 @@
    "basePoints": 3658.09
   },
   {
-   "place": 34,
+   "place": 35,
    "oldPlace": 43,
    "id": "14549",
    "name": "Whizkid05",
@@ -308,7 +317,7 @@
    "basePoints": 3163.19
   },
   {
-   "place": 35,
+   "place": 36,
    "oldPlace": 37,
    "id": "14473",
    "name": "LAMINGTON",
@@ -317,22 +326,13 @@
    "basePoints": 3461.46
   },
   {
-   "place": 36,
+   "place": 37,
    "oldPlace": 33,
    "id": "16529",
    "name": "Albert",
    "country": "United-States",
-   "points": 3575.48,
+   "points": 3580.4,
    "basePoints": 3575.48
-  },
-  {
-   "place": 37,
-   "oldPlace": 34,
-   "id": "5577",
-   "name": "Serpentical",
-   "country": "Unknown",
-   "points": 3574.48,
-   "basePoints": 3574.48
   },
   {
    "place": 38,

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-05T12:50:22.982Z",
+  "generated": "2026-11-05T14:05:22.950Z",
   "users": {
     "2": [
       [2656,34,"Acheron",94,"",null,null,null,"my_extras",163.04,0]
@@ -239,9 +239,6 @@
     "14430": [
       [3226,4,"Thinking Space II",71,"",null,null,null,"my_extras",258.82,0]
     ],
-    "14433": [
-      [3436,2,"Artemis 13",57,"",null,null,null,"my_extras",265.53,0]
-    ],
     "14449": [
       [1748,42,"Slaughterhouse",90,"",null,null,null,"my_extras",138.88,0]
     ],
@@ -307,9 +304,6 @@
       [2358,108,"SARYYX NEVER CLEAR",100,"",null,null,null,"my_extras",47,0],
       [2563,112,"ORDINARY",100,"",null,null,null,"my_extras",43,0],
       [2477,146,"Terminal Rampancy",100,"",null,null,null,"my_extras",9,0]
-    ],
-    "16498": [
-      [3442,1,"GRIEF",86,"",82,null,null,"my_extras",401.52,371.21]
     ],
     "16500": [
       [2684,11,"Nullscapes",82,"",78,null,null,"my_extras",240.7,229.1],
