@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-05T22:51:14.897Z",
+  "generated": "2026-11-05T23:35:39.674Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -1600,6 +1600,7 @@
       [2144,385,"Arctic Lights",100,"https://www.youtube.com/watch?v=XuRrqSVbuE8",null,300,128,"pointercrate",0.91,0]
     ],
     "6617": [
+      [3096,33,"Defeated Circles",100,"https://www.youtube.com/watch?v=DPDOHUZlsUc",null,25,639,"pointercrate",348,0],
       [2656,34,"Acheron",100,"https://www.youtube.com/watch?v=ZP2cfZAYyVg",null,28,442,"pointercrate",344,0],
       [3061,82,"Sevvend Clubstep",100,"https://www.youtube.com/watch?v=M_aNPeYOsX8",null,80,630,"pointercrate",73,0],
       [2478,109,"Damascus",100,"https://www.youtube.com/watch?v=2RJpGQh7xy8",null,99,521,"pointercrate",46,0],
@@ -1799,7 +1800,7 @@
       [2144,385,"Arctic Lights",100,"https://www.youtube.com/watch?v=vd9_Too-D6o",null,300,128,"pointercrate",0.91,0]
     ],
     "7201": [
-      [2656,34,"Acheron",72,"https://www.youtube.com/watch?v=Td_xvy_oFw8",53,28,442,"pointercrate",123.63,89.58]
+      [2656,34,"Acheron",100,"https://www.youtube.com/watch?v=EV9sa7qrKH4",53,28,442,"pointercrate",344,89.58]
     ],
     "7235": [
       [2144,385,"Arctic Lights",100,"https://www.youtube.com/watch?v=tteeiMlMjL8",null,300,128,"pointercrate",0.91,0],
@@ -27532,6 +27533,7 @@
       [2052,316,"The Art of the Blade",100,"https://www.youtube.com/watch?v=2dXBeZTuAVM",null,244,440,"pointercrate",0.96,0]
     ],
     "51306": [
+      [2660,8,"Tidal Wave",81,"https://www.youtube.com/watch?v=rbFMLh_Ferw",null,7,562,"pointercrate",284.65,0],
       [2687,29,"Spectre",100,"https://www.youtube.com/watch?v=MZRDj7_hwA0",null,29,592,"pointercrate",364,0],
       [3435,53,"Prismline",100,"https://www.youtube.com/watch?v=1aLVRbGXhFc",null,47,708,"pointercrate",256,0],
       [3125,57,"Snowbound",100,"https://www.youtube.com/watch?v=UTFBhxESBL8",null,56,658,"pointercrate",224,0],
