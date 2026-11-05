@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-05T22:08:32.465Z",
+  "generated": "2026-11-05T22:51:14.897Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -1504,6 +1504,9 @@
       [1631,1239,"Twisted Tranquility",100,"https://www.youtube.com/watch?v=xOEoc56HFBI",null,601,196,"pointercrate",0.41,0],
       [2490,1575,"The Flawless",100,"https://www.youtube.com/watch?v=adcuMwuNu4Q",null,611,26,"pointercrate",0.21,0],
       [2198,1580,"Uprise",100,"https://www.youtube.com/watch?v=e6I2IPkzZRs",null,641,141,"pointercrate",0.2,0]
+    ],
+    "6417": [
+      [2236,150,"The Golden",100,"https://www.youtube.com/watch?v=pSreYnLW6VQ",null,131,274,"pointercrate",5,0]
     ],
     "6419": [
       [2700,138,"BPATA MPAKA",80,"https://www.youtube.com/watch?v=9Xh5K8ij1gg",null,125,599,"pointercrate",6.58,0],
@@ -10656,6 +10659,7 @@
     ],
     "14644": [
       [1892,143,"Jigsaw",100,"https://www.youtube.com/watch?v=ARf4s0n7NLA",null,123,555,"pointercrate",12,0],
+      [2236,150,"The Golden",100,"https://www.youtube.com/watch?v=22-qqWCt4LQ",null,131,274,"pointercrate",5,0],
       [2366,336,"Fog",100,"https://www.youtube.com/watch?v=WKIvM1GsT58",null,267,506,"pointercrate",0.94,0]
     ],
     "14645": [
@@ -26624,6 +26628,7 @@
       [3226,4,"Thinking Space II",89,"https://www.youtube.com/watch?v=HdYQFpXgsv0",null,4,635,"pointercrate",375.29,0],
       [2841,40,"Subterminal Point",92,"https://www.youtube.com/watch?v=AyWvndn_XLg",91,41,612,"pointercrate",147.83,146.09],
       [2655,46,"KOCMOC",100,"https://www.youtube.com/watch?v=nY8XxJfnjm0",null,42,501,"pointercrate",296,0],
+      [2688,65,"KOSETSU",100,"https://www.youtube.com/watch?v=yUkessluK84",null,63,587,"pointercrate",160,0],
       [2513,74,"MINUSdry",77,"https://www.youtube.com/watch?v=atb3H0iczHU",null,71,487,"pointercrate",34.32,0],
       [1563,236,"shimmer",100,"https://www.youtube.com/watch?v=cpzjt-9-bic",null,206,530,"pointercrate",1.4,0]
     ],
@@ -27232,6 +27237,7 @@
       [2372,84,"COMBUSTION",89,"https://www.youtube.com/watch?v=RBi3ATuDVYM",null,75,526,"pointercrate",30.83,0]
     ],
     "36698": [
+      [2236,150,"The Golden",100,"https://www.youtube.com/watch?v=251u8Ta9YbY",null,131,274,"pointercrate",5,0],
       [1746,178,"Aerial Gleam",100,"https://www.youtube.com/watch?v=azEPs6GMlS0",null,156,412,"pointercrate",3.8,0]
     ],
     "37051": [
