@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-05T21:20:50.500Z",
+  "generated": "2026-11-05T22:08:32.465Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -20453,6 +20453,19 @@
       [2290,1073,"Bloodbath",100,"https://www.youtube.com/watch?v=whWW4JS1QZo",null,553,69,"pointercrate",0.5,0],
       [1965,1601,"Incipient",100,"https://www.youtube.com/watch?v=3JJI2zafOwc",null,624,191,"pointercrate",0.19,0]
     ],
+    "15797": [
+      [2612,394,"Plasma Pulse Finale",89,"https://www.youtube.com/watch?v=jFo24srOpOA",null,301,182,"pointercrate",0,0],
+      [1895,589,"Freedom08",100,"https://www.youtube.com/watch?v=4DFuoE0eGTg",null,409,90,"pointercrate",0.79,0],
+      [1738,610,"ZAPHKIEL",100,"https://www.youtube.com/watch?v=Jas7GYk_eoI",null,423,42,"pointercrate",0.78,0],
+      [1766,713,"Void Wave",100,"https://www.youtube.com/watch?v=9lNjYuzwH-o",null,463,259,"pointercrate",0.72,0],
+      [2041,717,"Black Blizzard",100,"https://www.youtube.com/watch?v=1edB3K74W4s",null,473,204,"pointercrate",0.72,0],
+      [2017,742,"Ethereal Artifice",100,"https://www.youtube.com/watch?v=tzIoXJ_Euvg",null,439,255,"pointercrate",0.7,0],
+      [2159,818,"Anoxysm",83,"https://www.youtube.com/watch?v=64wGZZtJ5S4",null,497,231,"pointercrate",0,0],
+      [1854,821,"Mujigae",100,"https://www.youtube.com/watch?v=L5ymCL8PXk4",null,500,326,"pointercrate",0.65,0],
+      [1677,852,"SPEEDRUN",100,"https://www.youtube.com/watch?v=aF4pHeRLAro",null,512,242,"pointercrate",0.64,0],
+      [2290,1073,"Bloodbath",100,"https://www.youtube.com/watch?v=2izARMbzKRM",null,553,69,"pointercrate",0.5,0],
+      [2591,1201,"Disentombed",100,"https://www.youtube.com/watch?v=f-sEAd1XRDQ",null,521,292,"pointercrate",0.43,0]
+    ],
     "15798": [
       [2307,237,"Crimson Planet",100,"https://www.youtube.com/watch?v=AILAHtnWvcY",null,207,63,"pointercrate",1.4,0],
       [2237,242,"Cognition",100,"https://www.youtube.com/watch?v=YRDD8cdA6nU",null,212,247,"pointercrate",1,0],
@@ -20576,6 +20589,10 @@
       [2289,1699,"Cataclysm",100,"https://www.youtube.com/watch?v=l8vu5eVmIHw",null,648,142,"pointercrate",0.13,0],
       [null,null,"Frizzantino Vibes",100,"https://www.youtube.com/watch?v=7aXEoChQuXk",null,656,221,"pointercrate",0,0],
       [null,null,"Crimson Clutter",100,"https://www.youtube.com/watch?v=3grNTYBhspY",null,688,56,"pointercrate",0,0]
+    ],
+    "15800": [
+      [2436,590,"Photovoltaic II",86,"https://www.youtube.com/watch?v=zlbZJnBTBhA",null,411,5,"pointercrate",0,0],
+      [2278,691,"Quantum Processing",73,"https://www.youtube.com/watch?v=qEhjUAD1lu4",null,453,68,"pointercrate",0,0]
     ],
     "15801": [
       [1738,610,"ZAPHKIEL",100,"https://www.youtube.com/watch?v=UZgV96Iu22k",null,423,42,"pointercrate",0.78,0],
