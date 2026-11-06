@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T00:10:45.015Z",
+  "generated": "2026-11-06T01:23:27.723Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -7389,6 +7389,7 @@
       [1706,32,"Abyss of Darkness",100,"https://www.youtube.com/watch?v=9ox-CCwwR24",null,31,413,"pointercrate",352,0],
       [1748,42,"Slaughterhouse",100,"https://www.youtube.com/watch?v=awprxqbQ6a8",null,40,380,"pointercrate",312,0],
       [2050,69,"poocubed",100,"https://www.youtube.com/watch?v=U_nuAXxz0yI",null,69,464,"pointercrate",128,0],
+      [3287,86,"BRITNEY NO SCLEARS",100,"https://www.youtube.com/watch?v=v3JW5H4SZ-8",null,77,684,"pointercrate",69,0],
       [1934,94,"walter white",100,"https://www.youtube.com/watch?v=JT2pYV9yV_0",null,96,429,"pointercrate",61,0],
       [1653,96,"LIMBO",100,"https://www.youtube.com/watch?v=IhHrN58L6To",null,88,467,"pointercrate",59,0],
       [1586,199,"Esfera",100,"https://www.youtube.com/watch?v=bKcge2JyHZs",null,166,420,"pointercrate",3,0],
@@ -25362,6 +25363,9 @@
       [1707,246,"SUPERHATEMEWORLD",100,"https://www.youtube.com/watch?v=_GWSvbkiCmg",null,231,453,"pointercrate",1,0],
       [1704,274,"Cobwebs",100,"https://www.youtube.com/watch?v=GKBG5nAPE6c",null,239,607,"pointercrate",0.98,0]
     ],
+    "18611": [
+      [3125,57,"Snowbound",100,"https://www.youtube.com/watch?v=ifPGHLtKtYg",null,56,658,"pointercrate",224,0]
+    ],
     "18624": [
       [2485,62,"Firework",94,"https://www.youtube.com/watch?v=ZRbAha9jgGg",null,59,379,"pointercrate",86.77,0]
     ],
@@ -25797,6 +25801,7 @@
     "19837": [
       [3287,86,"BRITNEY NO SCLEARS",100,"https://www.youtube.com/watch?v=Rw8hosVBP8A",null,77,684,"pointercrate",69,0],
       [1754,136,"Tartarus",100,"https://www.youtube.com/watch?v=7NtbutMk-hs",null,121,250,"pointercrate",19,0],
+      [2700,138,"BPATA MPAKA",100,"https://www.youtube.com/watch?v=Z3CBCf_gL9c",null,125,599,"pointercrate",17,0],
       [2946,158,"Starlit Stroll",100,"https://www.youtube.com/watch?v=pfwWoTz9Oy8",null,153,618,"pointercrate",4.6,0],
       [2811,169,"VOID",100,"https://www.youtube.com/watch?v=o4Nalf8R5mw",null,158,631,"pointercrate",4.2,0],
       [2515,190,"Hard Machine",100,"https://www.youtube.com/watch?v=ytbhPpiBlRA",null,175,365,"pointercrate",3.4,0],
