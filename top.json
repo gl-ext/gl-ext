@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T21:06:14.064Z",
+ "generated": "2026-11-06T21:38:49.928Z",
  "users": [
   {
    "place": 1,
@@ -318,7 +318,7 @@
   },
   {
    "place": 36,
-   "oldPlace": 45,
+   "oldPlace": 46,
    "id": "14549",
    "name": "Whizkid05",
    "country": "United-Kingdom",
@@ -354,7 +354,7 @@
   },
   {
    "place": 40,
-   "oldPlace": 46,
+   "oldPlace": 47,
    "id": "14466",
    "name": "ProudGiraffe311",
    "country": "United-States",
@@ -363,7 +363,7 @@
   },
   {
    "place": 41,
-   "oldPlace": 43,
+   "oldPlace": 44,
    "id": "14430",
    "name": "Cursed",
    "country": "United-Kingdom",
@@ -373,6 +373,15 @@
   {
    "place": 42,
    "oldPlace": 39,
+   "id": "51317",
+   "name": "Cryostazz",
+   "country": "France",
+   "points": 3355.2,
+   "basePoints": 3341.47
+  },
+  {
+   "place": 43,
+   "oldPlace": 40,
    "id": "4825",
    "name": "Tunax",
    "country": "Norway",
@@ -380,8 +389,8 @@
    "basePoints": 3315.51
   },
   {
-   "place": 43,
-   "oldPlace": 40,
+   "place": 44,
+   "oldPlace": 41,
    "id": "14192",
    "name": "donley",
    "country": "Canada",
@@ -389,8 +398,8 @@
    "basePoints": 3268.44
   },
   {
-   "place": 44,
-   "oldPlace": 41,
+   "place": 45,
+   "oldPlace": 42,
    "id": "14440",
    "name": "Kaza",
    "country": "Romania",
@@ -398,8 +407,8 @@
    "basePoints": 3178.07
   },
   {
-   "place": 45,
-   "oldPlace": 60,
+   "place": 46,
+   "oldPlace": 61,
    "id": "11811",
    "name": "XaLVaL",
    "country": "Russia",
@@ -407,8 +416,8 @@
    "basePoints": 2527.38
   },
   {
-   "place": 46,
-   "oldPlace": 42,
+   "place": 47,
+   "oldPlace": 43,
    "id": "15864",
    "name": "MeQ8cNv43s6A",
    "country": "Japan",
@@ -416,8 +425,8 @@
    "basePoints": 3126.68
   },
   {
-   "place": 47,
-   "oldPlace": 47,
+   "place": 48,
+   "oldPlace": 48,
    "id": "25791",
    "name": "Syrcx",
    "country": "Israel",
@@ -425,7 +434,7 @@
    "basePoints": 2901.38
   },
   {
-   "place": 48,
+   "place": 49,
    "oldPlace": 7208,
    "id": "51087",
    "name": "sharkyga",
@@ -434,22 +443,13 @@
    "basePoints": 0.97
   },
   {
-   "place": 49,
-   "oldPlace": 49,
+   "place": 50,
+   "oldPlace": 50,
    "id": "51306",
    "name": "karkito",
    "country": "South-Korea",
    "points": 3111.01,
    "basePoints": 2816.2
-  },
-  {
-   "place": 50,
-   "oldPlace": 44,
-   "id": "14223",
-   "name": "Johnlikesdiamond",
-   "country": "United-States",
-   "points": 3099.67,
-   "basePoints": 3085.77
   }
  ]
 }
