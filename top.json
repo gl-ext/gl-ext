@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T19:36:43.844Z",
+ "generated": "2026-11-06T20:23:49.378Z",
  "users": [
   {
    "place": 1,
@@ -7,8 +7,8 @@
    "id": "16498",
    "name": "Zoink",
    "country": "United-States",
-   "points": 20835.94,
-   "basePoints": 19755.57
+   "points": 20611.14,
+   "basePoints": 19567.17
   },
   {
    "place": 2,
@@ -16,8 +16,8 @@
    "id": "13502",
    "name": "wPopoff",
    "country": "United-States",
-   "points": 15254.73,
-   "basePoints": 15252.76
+   "points": 15067.11,
+   "basePoints": 15065.14
   },
   {
    "place": 3,
@@ -25,8 +25,8 @@
    "id": "16579",
    "name": "Netermind",
    "country": "United-States",
-   "points": 10052.29,
-   "basePoints": 10044.85
+   "points": 9875.09,
+   "basePoints": 9867.65
   },
   {
    "place": 4,
@@ -34,8 +34,8 @@
    "id": "13501",
    "name": "Trick",
    "country": "United-States",
-   "points": 9681.03,
-   "basePoints": 9451.67
+   "points": 9533.62,
+   "basePoints": 9312.26
   },
   {
    "place": 5,
@@ -43,8 +43,8 @@
    "id": "18454",
    "name": "zLevii",
    "country": "New-Zealand",
-   "points": 9433.35,
-   "basePoints": 9292.59
+   "points": 9245.14,
+   "basePoints": 9106.79
   },
   {
    "place": 6,
@@ -52,8 +52,8 @@
    "id": "13506",
    "name": "SerVax",
    "country": "Armenia",
-   "points": 7307.99,
-   "basePoints": 6642.41
+   "points": 7217.18,
+   "basePoints": 6551.6
   },
   {
    "place": 7,
@@ -61,35 +61,35 @@
    "id": "13458",
    "name": "Vorten",
    "country": "Russia",
-   "points": 7070.33,
-   "basePoints": 7070.33
+   "points": 6949.73,
+   "basePoints": 6949.73
   },
   {
    "place": 8,
-   "oldPlace": 12,
-   "id": "14197",
-   "name": "Sharkified",
-   "country": "United-States",
-   "points": 6293.98,
-   "basePoints": 5725.15
-  },
-  {
-   "place": 9,
    "oldPlace": 8,
    "id": "3695",
    "name": "Nickname",
    "country": "Russia",
-   "points": 6260.23,
-   "basePoints": 6260.23
+   "points": 6160.83,
+   "basePoints": 6160.83
+  },
+  {
+   "place": 9,
+   "oldPlace": 12,
+   "id": "14197",
+   "name": "Sharkified",
+   "country": "United-States",
+   "points": 6147.78,
+   "basePoints": 5592.95
   },
   {
    "place": 10,
-   "oldPlace": 15,
+   "oldPlace": 16,
    "id": "15566",
    "name": "weyolll3",
    "country": "Spain",
-   "points": 6106.84,
-   "basePoints": 5062.61
+   "points": 6001.64,
+   "basePoints": 4970.03
   },
   {
    "place": 11,
@@ -97,8 +97,8 @@
    "id": "13508",
    "name": "w3rty",
    "country": "Russia",
-   "points": 6056.72,
-   "basePoints": 6056.72
+   "points": 5977.92,
+   "basePoints": 5977.92
   },
   {
    "place": 12,
@@ -106,8 +106,8 @@
    "id": "13661",
    "name": "kloone",
    "country": "Finland",
-   "points": 5957.79,
-   "basePoints": 5949.19
+   "points": 5817.36,
+   "basePoints": 5808.76
   },
   {
    "place": 13,
@@ -115,8 +115,8 @@
    "id": "16551",
    "name": "Rediio",
    "country": "South-Korea",
-   "points": 5901.08,
-   "basePoints": 5540.1
+   "points": 5773.99,
+   "basePoints": 5417.01
   },
   {
    "place": 14,
@@ -124,8 +124,8 @@
    "id": "14541",
    "name": "eastshark",
    "country": "Spain",
-   "points": 5858.11,
-   "basePoints": 5856.14
+   "points": 5723.9,
+   "basePoints": 5721.93
   },
   {
    "place": 15,
@@ -133,35 +133,35 @@
    "id": "14433",
    "name": "Thnnder",
    "country": "United-States",
-   "points": 5692.52,
-   "basePoints": 5687.72
+   "points": 5571.67,
+   "basePoints": 5566.87
   },
   {
    "place": 16,
-   "oldPlace": 22,
-   "id": "14195",
-   "name": "pizi",
-   "country": "Chile",
-   "points": 5613.39,
-   "basePoints": 4686.91
-  },
-  {
-   "place": 17,
    "oldPlace": 19,
    "id": "5527",
    "name": "Andreya6",
    "country": "Russia",
-   "points": 5550.81,
-   "basePoints": 4785.99
+   "points": 5488.61,
+   "basePoints": 4727.79
+  },
+  {
+   "place": 17,
+   "oldPlace": 22,
+   "id": "14195",
+   "name": "pizi",
+   "country": "Chile",
+   "points": 5480.56,
+   "basePoints": 4570.11
   },
   {
    "place": 18,
-   "oldPlace": 16,
+   "oldPlace": 15,
    "id": "26548",
    "name": "dovvin_",
    "country": "Poland",
-   "points": 5457.78,
-   "basePoints": 5045.03
+   "points": 5394.38,
+   "basePoints": 4984.77
   },
   {
    "place": 19,
@@ -169,8 +169,8 @@
    "id": "5564",
    "name": "roze [GD]",
    "country": "Russia",
-   "points": 5085.32,
-   "basePoints": 4775.55
+   "points": 5008.12,
+   "basePoints": 4698.35
   },
   {
    "place": 20,
@@ -178,8 +178,8 @@
    "id": "14452",
    "name": "Cookie",
    "country": "United-States",
-   "points": 5022.3,
-   "basePoints": 5021.32
+   "points": 4922.49,
+   "basePoints": 4921.51
   },
   {
    "place": 21,
@@ -187,8 +187,8 @@
    "id": "22114",
    "name": "Bacon",
    "country": "Kazakhstan",
-   "points": 4957.88,
-   "basePoints": 4957.88
+   "points": 4907.48,
+   "basePoints": 4907.48
   },
   {
    "place": 22,
@@ -196,8 +196,8 @@
    "id": "14521",
    "name": "xmercurylamp",
    "country": "Brazil",
-   "points": 4747.71,
-   "basePoints": 4747.71
+   "points": 4645.05,
+   "basePoints": 4645.05
   },
   {
    "place": 23,
@@ -205,8 +205,8 @@
    "id": "16572",
    "name": "Doggie",
    "country": "United-States",
-   "points": 4645.88,
-   "basePoints": 4644.9
+   "points": 4568.47,
+   "basePoints": 4567.49
   },
   {
    "place": 24,
@@ -214,8 +214,8 @@
    "id": "6103",
    "name": "Slaughter",
    "country": "Canada",
-   "points": 4471.9,
-   "basePoints": 4071.5
+   "points": 4352.68,
+   "basePoints": 3958.09
   },
   {
    "place": 25,
@@ -223,8 +223,8 @@
    "id": "13503",
    "name": "Taiago",
    "country": "Portugal",
-   "points": 4422.7,
-   "basePoints": 4422.7
+   "points": 4342.49,
+   "basePoints": 4342.49
   },
   {
    "place": 26,
@@ -232,26 +232,26 @@
    "id": "13505",
    "name": "loliklee",
    "country": "Moldova",
-   "points": 4323.26,
-   "basePoints": 4323.26
+   "points": 4228.46,
+   "basePoints": 4228.46
   },
   {
    "place": 27,
-   "oldPlace": 27,
-   "id": "14485",
-   "name": "PoCle",
-   "country": "South-Korea",
-   "points": 4054.29,
-   "basePoints": 4044.24
-  },
-  {
-   "place": 28,
    "oldPlace": 28,
    "id": "18719",
    "name": "ChopBlox",
    "country": "Germany",
-   "points": 4036.72,
-   "basePoints": 4015.66
+   "points": 3957.52,
+   "basePoints": 3936.46
+  },
+  {
+   "place": 28,
+   "oldPlace": 27,
+   "id": "14485",
+   "name": "PoCle",
+   "country": "South-Korea",
+   "points": 3953.68,
+   "basePoints": 3943.63
   },
   {
    "place": 29,
@@ -259,8 +259,8 @@
    "id": "14462",
    "name": "turtle",
    "country": "Canada",
-   "points": 4019.94,
-   "basePoints": 4011.46
+   "points": 3924.73,
+   "basePoints": 3916.26
   },
   {
    "place": 30,
@@ -268,17 +268,17 @@
    "id": "5577",
    "name": "Serpentical",
    "country": "Unknown",
-   "points": 3993.85,
-   "basePoints": 3970.48
+   "points": 3920.71,
+   "basePoints": 3898.74
   },
   {
    "place": 31,
-   "oldPlace": 35,
+   "oldPlace": 37,
    "id": "14445",
    "name": "iIiLaSeRiIi",
    "country": "United-Kingdom",
-   "points": 3902.05,
-   "basePoints": 3534.11
+   "points": 3817.44,
+   "basePoints": 3453.5
   },
   {
    "place": 32,
@@ -286,8 +286,8 @@
    "id": "16578",
    "name": "Mizukii",
    "country": "Germany",
-   "points": 3864.37,
-   "basePoints": 3864.37
+   "points": 3789.17,
+   "basePoints": 3789.17
   },
   {
    "place": 33,
@@ -295,8 +295,8 @@
    "id": "14436",
    "name": "Laniakea",
    "country": "South-Korea",
-   "points": 3730.57,
-   "basePoints": 3725.43
+   "points": 3647.94,
+   "basePoints": 3642.8
   },
   {
    "place": 34,
@@ -304,26 +304,26 @@
    "id": "14544",
    "name": "Hqmy",
    "country": "United-States",
-   "points": 3659.99,
-   "basePoints": 3658.09
+   "points": 3584.22,
+   "basePoints": 3582.32
   },
   {
    "place": 35,
-   "oldPlace": 45,
-   "id": "14549",
-   "name": "Whizkid05",
-   "country": "United-Kingdom",
-   "points": 3643.35,
-   "basePoints": 3163.19
-  },
-  {
-   "place": 36,
    "oldPlace": 38,
    "id": "14473",
    "name": "LAMINGTON",
    "country": "Australia",
-   "points": 3629.67,
-   "basePoints": 3461.46
+   "points": 3551.63,
+   "basePoints": 3385.86
+  },
+  {
+   "place": 36,
+   "oldPlace": 45,
+   "id": "14549",
+   "name": "Whizkid05",
+   "country": "United-Kingdom",
+   "points": 3543.34,
+   "basePoints": 3064.59
   },
   {
    "place": 37,
@@ -331,26 +331,26 @@
    "id": "16529",
    "name": "Albert",
    "country": "United-States",
-   "points": 3580.4,
-   "basePoints": 3575.48
+   "points": 3519.6,
+   "basePoints": 3515.08
   },
   {
    "place": 38,
-   "oldPlace": 36,
+   "oldPlace": 35,
    "id": "14431",
    "name": "Axinity",
    "country": "Denmark",
-   "points": 3541.33,
-   "basePoints": 3533.27
+   "points": 3494.53,
+   "basePoints": 3486.47
   },
   {
    "place": 39,
-   "oldPlace": 37,
+   "oldPlace": 36,
    "id": "14447",
    "name": "Abdieldevil",
    "country": "Peru",
-   "points": 3530.44,
-   "basePoints": 3527.84
+   "points": 3456.25,
+   "basePoints": 3453.65
   },
   {
    "place": 40,
@@ -358,8 +358,8 @@
    "id": "14466",
    "name": "ProudGiraffe311",
    "country": "United-States",
-   "points": 3496.89,
-   "basePoints": 3131.29
+   "points": 3424.66,
+   "basePoints": 3063.07
   },
   {
    "place": 41,
@@ -367,17 +367,17 @@
    "id": "14430",
    "name": "Cursed",
    "country": "United-Kingdom",
-   "points": 3446.17,
-   "basePoints": 3180.08
+   "points": 3385.63,
+   "basePoints": 3119.55
   },
   {
    "place": 42,
-   "oldPlace": 83,
+   "oldPlace": 82,
    "id": "51317",
    "name": "Cryostazz",
    "country": "France",
-   "points": 3411.58,
-   "basePoints": 2014.43
+   "points": 3355.19,
+   "basePoints": 1987.17
   },
   {
    "place": 43,
@@ -385,8 +385,8 @@
    "id": "4825",
    "name": "Tunax",
    "country": "Norway",
-   "points": 3392.73,
-   "basePoints": 3389.73
+   "points": 3318.51,
+   "basePoints": 3315.51
   },
   {
    "place": 44,
@@ -394,8 +394,8 @@
    "id": "14192",
    "name": "donley",
    "country": "Canada",
-   "points": 3368.96,
-   "basePoints": 3347.44
+   "points": 3289.96,
+   "basePoints": 3268.44
   },
   {
    "place": 45,
@@ -403,26 +403,26 @@
    "id": "14440",
    "name": "Kaza",
    "country": "Romania",
-   "points": 3271.78,
-   "basePoints": 3262.91
+   "points": 3186.54,
+   "basePoints": 3178.07
   },
   {
    "place": 46,
+   "oldPlace": 60,
+   "id": "11811",
+   "name": "XaLVaL",
+   "country": "Russia",
+   "points": 3149.43,
+   "basePoints": 2527.38
+  },
+  {
+   "place": 47,
    "oldPlace": 42,
    "id": "15864",
    "name": "MeQ8cNv43s6A",
    "country": "Japan",
-   "points": 3209.51,
-   "basePoints": 3197.28
-  },
-  {
-   "place": 47,
-   "oldPlace": 61,
-   "id": "11811",
-   "name": "XaLVaL",
-   "country": "Russia",
-   "points": 3197.43,
-   "basePoints": 2571.38
+   "points": 3138.91,
+   "basePoints": 3126.68
   },
   {
    "place": 48,
@@ -430,26 +430,26 @@
    "id": "25791",
    "name": "Syrcx",
    "country": "Israel",
-   "points": 3195.21,
-   "basePoints": 2968.19
+   "points": 3125.72,
+   "basePoints": 2901.38
   },
   {
    "place": 49,
-   "oldPlace": 44,
-   "id": "14223",
-   "name": "Johnlikesdiamond",
-   "country": "United-States",
-   "points": 3193.98,
-   "basePoints": 3179.68
-  },
-  {
-   "place": 50,
-   "oldPlace": 7210,
+   "oldPlace": 7208,
    "id": "51087",
    "name": "sharkyga",
    "country": "Unknown",
-   "points": 3189.9,
+   "points": 3116.9,
    "basePoints": 0.97
+  },
+  {
+   "place": 50,
+   "oldPlace": 49,
+   "id": "51306",
+   "name": "karkito",
+   "country": "South-Korea",
+   "points": 3111.01,
+   "basePoints": 2816.2
   }
  ]
 }
