@@ -1,11 +1,8 @@
 {
-  "generated": "2026-11-06T16:09:38.249Z",
+  "generated": "2026-11-06T16:54:40.276Z",
   "users": {
     "2": [
       [2656,34,"Acheron",94,"",null,null,null,"my_extras",163.04,0]
-    ],
-    "45": [
-      [1706,32,"Abyss of Darkness",94,"",null,null,null,"my_extras",166.43,0]
     ],
     "89": [
       [2657,35,"Tunnel of Despair",69,"",null,null,null,"my_extras",99.17,0]
@@ -129,7 +126,7 @@
       [3096,33,"Defeated Circles",100,"",null,null,null,"my_extras",348,0]
     ],
     "6786": [
-      [3278,13,"Quanteuse processing",72,"",null,null,null,"my_extras",203.73,0],
+      [3278,13,"Quanteuse processing",72,"",49,null,null,"my_extras",203.73,147.27],
       [2653,20,"Silent clubstep",62,"",null,null,null,"my_extras",143.08,0]
     ],
     "6800": [
@@ -143,11 +140,7 @@
       [1591,180,"Trueffet",100,"",null,null,null,"my_extras",3.8,0],
       [1552,193,"NEUTRA",100,"",null,null,null,"my_extras",3,0]
     ],
-    "7201": [
-      [2656,34,"Acheron",100,"",53,null,null,"my_extras",344,89.58]
-    ],
     "7939": [
-      [3432,60,"Wild Roses",100,"",null,null,null,"my_extras",200,0],
       [2050,69,"poocubed",92,"",null,null,null,"my_extras",59.52,0]
     ],
     "8415": [
@@ -359,9 +352,6 @@
     "17731": [
       [1733,140,"UNKNOWN",100,"",null,null,null,"my_extras",15,0]
     ],
-    "17918": [
-      [3432,60,"Wild Roses",100,"",null,null,null,"my_extras",200,0]
-    ],
     "18046": [
       [2660,8,"Tidal Wave",73,"",null,null,null,"my_extras",251.16,0]
     ],
@@ -424,12 +414,10 @@
       [1748,42,"Slaughterhouse",75,"",null,null,null,"my_extras",110.34,0]
     ],
     "21129": [
-      [2485,62,"Firework",86,"",null,null,null,"my_extras",78.41,0],
       [3094,100,"Operation Evolution",100,"",71,null,null,"my_extras",55,17.88],
       [2024,295,"Bloodlust",100,"",null,null,null,"my_extras",0.97,0]
     ],
     "21168": [
-      [2656,34,"Acheron",100,"",null,null,null,"my_extras",344,0],
       [3061,82,"Sevvend Clubstep",100,"",null,null,null,"my_extras",73,0]
     ],
     "21325": [
@@ -458,9 +446,6 @@
     ],
     "25791": [
       [2683,31,"Menace",100,"",85,null,null,"my_extras",356,153.08]
-    ],
-    "25924": [
-      [3441,30,"FOREST OF SPIKES",77,"",null,null,null,"my_extras",133.95,0]
     ],
     "26780": [
       [2656,34,"Acheron",59,"",null,null,null,"my_extras",100.33,0],
@@ -502,9 +487,6 @@
     ],
     "35510": [
       [1740,154,"Oblivion",100,"",null,null,null,"my_extras",4.6,0]
-    ],
-    "41349": [
-      [3226,4,"Thinking Space II",82,"",null,null,null,"my_extras",330,0]
     ],
     "41363": [
       [3226,4,"Thinking Space II",68,"",null,null,null,"my_extras",239.41,0]
