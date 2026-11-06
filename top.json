@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T21:38:49.928Z",
+ "generated": "2026-11-06T22:21:17.768Z",
  "users": [
   {
    "place": 1,
@@ -408,7 +408,7 @@
   },
   {
    "place": 46,
-   "oldPlace": 61,
+   "oldPlace": 63,
    "id": "11811",
    "name": "XaLVaL",
    "country": "Russia",
@@ -435,7 +435,7 @@
   },
   {
    "place": 49,
-   "oldPlace": 7208,
+   "oldPlace": 7210,
    "id": "51087",
    "name": "sharkyga",
    "country": "Unknown",
