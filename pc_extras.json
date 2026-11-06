@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T17:49:33.562Z",
+  "generated": "2026-11-06T18:36:14.951Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -26860,9 +26860,6 @@
     "29861": [
       [2477,146,"Terminal Rampancy",100,"https://www.youtube.com/watch?v=yCf3ccnWlFk",null,136,497,"pointercrate",9,0]
     ],
-    "30382": [
-      [1748,42,"Slaughterhouse",100,"https://www.youtube.com/watch?v=a_f6ghvzfB8",93,40,380,"pointercrate",312,144.59]
-    ],
     "30397": [
       [2200,118,"Midnight",76,"https://www.youtube.com/watch?v=OiKlebMM7K4",null,110,549,"pointercrate",13.55,0],
       [2287,223,"Promethean",100,"https://www.youtube.com/watch?v=dA52Qcsn-Wk",null,195,351,"pointercrate",1.8,0],
@@ -27337,6 +27334,9 @@
     ],
     "42525": [
       [2050,69,"poocubed",100,"https://www.youtube.com/watch?v=UIjzS2Q7oVQ",null,69,464,"pointercrate",128,0]
+    ],
+    "42845": [
+      [1733,140,"UNKNOWN",100,"https://www.youtube.com/watch?v=wVJ0afSPS7Q",null,141,475,"pointercrate",15,0]
     ],
     "42893": [
       [2236,150,"The Golden",100,"https://www.youtube.com/watch?v=axtIWvMlXHw",null,131,274,"pointercrate",5,0]
