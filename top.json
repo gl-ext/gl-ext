@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T14:37:09.422Z",
+ "generated": "2026-11-06T15:21:04.762Z",
  "users": [
   {
    "place": 1,
@@ -372,7 +372,7 @@
   },
   {
    "place": 42,
-   "oldPlace": 81,
+   "oldPlace": 83,
    "id": "51317",
    "name": "Cryostazz",
    "country": "France",
@@ -417,7 +417,7 @@
   },
   {
    "place": 47,
-   "oldPlace": 60,
+   "oldPlace": 61,
    "id": "11811",
    "name": "XaLVaL",
    "country": "Russia",
@@ -444,7 +444,7 @@
   },
   {
    "place": 50,
-   "oldPlace": 7185,
+   "oldPlace": 7184,
    "id": "51087",
    "name": "sharkyga",
    "country": "Unknown",

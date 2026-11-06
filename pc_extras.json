@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T14:37:09.422Z",
+  "generated": "2026-11-06T15:21:04.762Z",
   "users": {
     "1": [
       [2296,227,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -4497,6 +4497,23 @@
       [2017,742,"Ethereal Artifice",60,"https://www.youtube.com/watch?v=hwhDNuHZGZY",null,439,255,"pointercrate",0,0],
       [2641,1450,"CYCLONE",100,"https://www.youtube.com/watch?v=8FZddJsTWos",null,632,135,"pointercrate",0.28,0]
     ],
+    "14024": [
+      [1879,557,"Celestial Force",78,"https://www.youtube.com/watch?v=N8M7nwYxihc",null,393,54,"pointercrate",0,0],
+      [1686,614,"Digital Descent",100,"https://www.youtube.com/watch?v=wU9cHveEROQ",null,419,125,"pointercrate",0.78,0],
+      [1630,653,"Killbot",100,"https://www.youtube.com/watch?v=A1IcQmRGc-w",null,429,211,"pointercrate",0.75,0],
+      [2002,774,"Ziroikapi",100,"https://www.youtube.com/watch?v=nqTVj7uXazA",null,486,82,"pointercrate",0.68,0],
+      [2290,1073,"Bloodbath",100,"https://www.youtube.com/watch?v=KqYU4c1Z2BI",null,553,69,"pointercrate",0.5,0],
+      [1767,1189,"Esencia",100,"https://www.youtube.com/watch?v=t4CS6yvNh2c",null,581,71,"pointercrate",0.44,0],
+      [2233,1242,"Unearthed",100,"https://www.youtube.com/watch?v=z3Um0UZDaI4",null,602,78,"pointercrate",0.4,0],
+      [1964,1478,"Zettabyte",100,"https://www.youtube.com/watch?v=zm9fOKZl29Q",null,639,22,"pointercrate",0.26,0],
+      [1597,1490,"Deception Dive",100,"https://www.youtube.com/watch?v=wDwLJ2xMIE4",null,609,164,"pointercrate",0.26,0],
+      [2198,1580,"Uprise",100,"https://www.youtube.com/watch?v=XHDoXSYecO0",null,641,141,"pointercrate",0.2,0],
+      [2294,1594,"night party",100,"https://www.youtube.com/watch?v=0GYqXkEyzF4",null,645,114,"pointercrate",0.19,0],
+      [1965,1601,"Incipient",100,"https://www.youtube.com/watch?v=9GnSO0eEw8I",null,624,191,"pointercrate",0.19,0],
+      [1688,1617,"HyperSonic",100,"https://www.youtube.com/watch?v=ZGy2ORw1ZDk",null,647,214,"pointercrate",0.18,0],
+      [1829,1647,"8o X",100,"https://www.youtube.com/watch?v=c4wV7GTeu68",null,652,117,"pointercrate",0.16,0],
+      [2044,1780,"UltraSans",100,"https://www.youtube.com/watch?v=jtTxF6YSscQ",null,634,154,"pointercrate",0.08,0]
+    ],
     "14026": [
       [2581,851,"Athanatos",100,"https://www.youtube.com/watch?v=PVFubLzjF2M",null,508,41,"pointercrate",0.64,0],
       [2290,1073,"Bloodbath",100,"https://www.youtube.com/watch?v=O-Ms6FAI8Tk",null,553,69,"pointercrate",0.5,0],
@@ -4525,6 +4542,20 @@
       [2053,412,"Aquatic Auroras",53,"https://www.youtube.com/watch?v=DtUapHRymZk",null,320,276,"pointercrate",0,0],
       [2489,472,"Yatagarasu",63,"https://www.youtube.com/watch?v=M27i6fSd37M",null,362,146,"pointercrate",0,0],
       [1867,746,"Auditory Breaker",100,"https://www.youtube.com/watch?v=j0uMWvW_JHE",null,474,65,"pointercrate",0.7,0]
+    ],
+    "14032": [
+      [1696,224,"Calculator Core",100,"https://www.youtube.com/watch?v=hH1vt3AV4N0",null,198,244,"pointercrate",1.8,0],
+      [1864,340,"kowareta",100,"https://www.youtube.com/watch?v=j5F-no18O-w",null,295,207,"pointercrate",0.94,0],
+      [2055,440,"Edge of the World",100,"https://www.youtube.com/watch?v=-JyCuqh9RiY",null,346,488,"pointercrate",0.88,0],
+      [2414,481,"Sonic Wave",100,"https://www.youtube.com/watch?v=BChUIUefwXE",null,354,118,"pointercrate",0.86,0],
+      [2015,483,"Edge of the Blade",100,"https://www.youtube.com/watch?v=TYopAdZOFeg",null,365,288,"pointercrate",0.86,0],
+      [1839,563,"RELENTLESS",100,"https://www.youtube.com/watch?v=Cl0QXS-DJVE",null,395,381,"pointercrate",0.81,0],
+      [1684,584,"Lucid Chaos",100,"https://www.youtube.com/watch?v=U_nGAVh7LvA",null,406,318,"pointercrate",0.8,0],
+      [1738,610,"ZAPHKIEL",100,"https://www.youtube.com/watch?v=SFWpPqN3Ur0",null,423,42,"pointercrate",0.78,0],
+      [1686,614,"Digital Descent",100,"https://www.youtube.com/watch?v=T_6VviVEfjE",null,419,125,"pointercrate",0.78,0],
+      [2213,626,"Omicron",100,"https://www.youtube.com/watch?v=JPY1WGlA4lU",null,430,296,"pointercrate",0.77,0],
+      [2431,866,"Shock Breaker",100,"https://www.youtube.com/watch?v=8dYz2Z4PyGE",null,514,298,"pointercrate",0.63,0],
+      [1999,960,"Carcano",100,"https://www.youtube.com/watch?v=y6abBWZ47o4",null,489,295,"pointercrate",0.57,0]
     ],
     "14033": [
       [2439,346,"Sigma",65,"https://www.youtube.com/watch?v=ZpAJfpRHAyw",null,272,129,"pointercrate",0,0],
@@ -26182,7 +26213,6 @@
       [2011,366,"Frozen Cave",100,"https://www.youtube.com/watch?v=2M1YZlYCZ7I",null,302,345,"pointercrate",0.93,0]
     ],
     "21427": [
-      [1733,140,"UNKNOWN",100,"https://www.youtube.com/watch?v=yM9djYtrS-c",null,141,475,"pointercrate",15,0],
       [1586,199,"Esfera",100,"https://www.youtube.com/watch?v=go3Z7O2aQlg",null,166,420,"pointercrate",3,0],
       [3126,205,"IRIS",100,"https://www.youtube.com/watch?v=QjrKAgdtbko",null,190,632,"pointercrate",2.6,0],
       [1995,222,"Cold Sweat",100,"https://www.youtube.com/watch?v=GnItUy2NUd8",null,192,293,"pointercrate",1.8,0],
@@ -27510,11 +27540,6 @@
     ],
     "51306": [
       [2660,8,"Tidal Wave",81,"https://www.youtube.com/watch?v=rbFMLh_Ferw",null,7,562,"pointercrate",284.65,0],
-      [2687,29,"Spectre",100,"https://www.youtube.com/watch?v=MZRDj7_hwA0",null,29,592,"pointercrate",364,0],
-      [3435,53,"Prismline",100,"https://www.youtube.com/watch?v=1aLVRbGXhFc",null,47,708,"pointercrate",256,0],
-      [3125,57,"Snowbound",100,"https://www.youtube.com/watch?v=UTFBhxESBL8",null,56,658,"pointercrate",224,0],
-      [3397,124,"Between Duality",100,"https://www.youtube.com/watch?v=wfb5u-_Mcko",null,115,690,"pointercrate",31,0],
-      [3427,142,"Sanctity",100,"https://www.youtube.com/watch?v=_uu0Dn9acBA",null,130,710,"pointercrate",13,0],
       [2707,194,"Judgement Knights",100,"https://www.youtube.com/watch?v=fiI58XaRjx0",null,185,596,"pointercrate",3,0],
       [1995,222,"Cold Sweat",100,"https://www.youtube.com/watch?v=7VjqCxIQnGw",null,192,293,"pointercrate",1.8,0],
       [1563,236,"shimmer",100,"https://www.youtube.com/watch?v=Qr2WeiZBvOU",null,206,530,"pointercrate",1.4,0],
