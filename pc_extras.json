@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T16:52:22.325Z",
+  "generated": "2026-11-07T17:34:47.975Z",
   "users": {
     "1": [
       [2296,228,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -21472,6 +21472,15 @@
       [2286,926,"Blade of Justice",100,"https://www.youtube.com/watch?v=Yniqmo2jSgY",null,546,70,"pointercrate",0.59,0],
       [2487,945,"Sakupen Hell",100,"https://www.youtube.com/watch?v=DrXW69JNyYc",null,542,30,"pointercrate",0.58,0],
       [2290,1074,"Bloodbath",100,"https://www.youtube.com/watch?v=pFsQSfKTYco",null,553,69,"pointercrate",0.5,0]
+    ],
+    "15892": [
+      [2810,236,"Indivine",100,"https://www.youtube.com/watch?v=dGDHHKQqdpc",null,211,604,"pointercrate",1.4,0],
+      [1784,254,"Cosmic Cyclone",100,"https://www.youtube.com/watch?v=iERVNKXsdjM",null,215,390,"pointercrate",0.99,0],
+      [2711,261,"Rigel",100,"https://www.youtube.com/watch?v=634VNF2rpsc",null,220,598,"pointercrate",0.99,0],
+      [2435,273,"Ragnarok",100,"https://www.youtube.com/watch?v=hlxe82RCbeA",null,241,91,"pointercrate",0.98,0],
+      [1690,288,"Jesse Pinkman",100,"https://www.youtube.com/watch?v=doG3onUuVRA",null,260,418,"pointercrate",0.97,0],
+      [1756,291,"The Rupture",100,"https://www.youtube.com/watch?v=M6S9TymZGZ8",null,248,324,"pointercrate",0.97,0],
+      [2369,326,"TORN",100,"https://www.youtube.com/watch?v=t2qhrOvNJM0",null,259,513,"pointercrate",0.95,0]
     ],
     "15895": [
       [2289,1700,"Cataclysm",66,"https://www.youtube.com/watch?v=-usu4M5mdvU",null,648,142,"pointercrate",0,0]
