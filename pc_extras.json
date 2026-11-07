@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T03:34:17.308Z",
+  "generated": "2026-11-07T04:29:11.376Z",
   "users": {
     "1": [
       [2296,228,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -1984,6 +1984,9 @@
       [1784,254,"Cosmic Cyclone",100,"https://www.youtube.com/watch?v=Iu1CPijn_vY",null,215,390,"pointercrate",0.99,0],
       [2018,271,"Shardscapes",100,"https://www.youtube.com/watch?v=J_ID5Z4_5bQ",null,233,415,"pointercrate",0.98,0],
       [2024,296,"Bloodlust",100,"https://www.youtube.com/watch?v=OiJRe0YICOg",null,257,161,"pointercrate",0.97,0]
+    ],
+    "9812": [
+      [2236,151,"The Golden",100,"https://www.youtube.com/watch?v=wXpX5vIStDI",null,131,274,"pointercrate",4.6,0]
     ],
     "10433": [
       [2656,35,"Acheron",72,"https://www.youtube.com/watch?v=kd-w_YC7Qbw",61,28,442,"pointercrate",122.19,102.71],
@@ -25853,6 +25856,9 @@
       [2290,1074,"Bloodbath",94,"https://www.youtube.com/watch?v=es2DE6zCrFA",null,553,69,"pointercrate",0,0],
       [1565,1463,"The Ultimate Phase",100,"https://www.youtube.com/watch?v=PIh_zP0YIcw",null,665,215,"pointercrate",0.27,0]
     ],
+    "20074": [
+      [1748,43,"Slaughterhouse",83,"https://www.youtube.com/watch?v=VdkdakXrw0c",75,40,380,"pointercrate",123.95,108.93]
+    ],
     "20081": [
       [1740,155,"Oblivion",100,"https://www.youtube.com/watch?v=o1SbWvCrPKI",null,132,425,"pointercrate",4.6,0]
     ],
@@ -26499,6 +26505,10 @@
     "23274": [
       [1740,155,"Oblivion",100,"https://www.youtube.com/watch?v=DiJKYXuQiK8",null,132,425,"pointercrate",4.6,0],
       [2006,255,"RUST",100,"https://www.youtube.com/watch?v=4YYyyAqrn6c",null,223,358,"pointercrate",0.99,0]
+    ],
+    "23604": [
+      [1981,74,"Saul Goodman",88,"https://www.youtube.com/watch?v=JjiEsqitmb8",null,76,496,"pointercrate",38.62,0],
+      [1915,136,"The Wonder of You",100,"https://www.youtube.com/watch?v=k_i9ZnT_TR0",null,128,662,"pointercrate",19,0]
     ],
     "23628": [
       [2477,147,"Terminal Rampancy",100,"https://www.youtube.com/watch?v=ix_ClXT9-PE",null,136,497,"pointercrate",8,0]
