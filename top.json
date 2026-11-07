@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-07T11:16:55.665Z",
+ "generated": "2026-11-07T11:55:31.472Z",
  "users": [
   {
    "place": 1,
@@ -399,7 +399,7 @@
   },
   {
    "place": 45,
-   "oldPlace": 60,
+   "oldPlace": 61,
    "id": "18046",
    "name": "ItzDexii",
    "country": "Ukraine",
@@ -417,7 +417,7 @@
   },
   {
    "place": 47,
-   "oldPlace": 63,
+   "oldPlace": 66,
    "id": "11811",
    "name": "XaLVaL",
    "country": "Russia",
