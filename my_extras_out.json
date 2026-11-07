@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T14:57:01.141Z",
+  "generated": "2026-11-07T15:36:28.594Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -99,7 +99,8 @@
       [2659,29,"Avernus",77,"",49,null,null,"my_extras",142.75,92.78]
     ],
     "3801": [
-      [2050,70,"poocubed",100,"",null,null,null,"my_extras",120,0]
+      [2050,70,"poocubed",100,"",null,null,null,"my_extras",120,0],
+      [3061,83,"Sevvend Clubstep",100,"",null,null,null,"my_extras",72,0]
     ],
     "4387": [
       [2050,70,"poocubed",100,"",null,null,null,"my_extras",120,0],
@@ -404,7 +405,8 @@
       [2513,75,"MINUSdry",66,"",null,null,null,"my_extras",26.8,0]
     ],
     "16996": [
-      [1981,74,"Saul Goodman",62,"",null,null,null,"my_extras",25.91,0]
+      [1981,74,"Saul Goodman",62,"",null,null,null,"my_extras",25.91,0],
+      [3061,83,"Sevvend Clubstep",100,"",null,null,null,"my_extras",72,0]
     ],
     "17004": [
       [2050,70,"poocubed",92,"",null,null,null,"my_extras",55.8,0]
