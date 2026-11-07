@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T04:29:11.376Z",
+  "generated": "2026-11-07T05:26:22.535Z",
   "users": {
     "1": [
       [2296,228,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -241,6 +241,10 @@
       [2041,718,"Black Blizzard",100,"https://www.youtube.com/watch?v=2Z8ajnqq1Uo",null,473,204,"pointercrate",0.72,0],
       [1867,747,"Auditory Breaker",100,"https://www.youtube.com/watch?v=Vpg--FI2UlE",null,474,65,"pointercrate",0.7,0],
       [2290,1074,"Bloodbath",100,"https://www.youtube.com/watch?v=Y3xNFjbBgGI",null,553,69,"pointercrate",0.5,0]
+    ],
+    "1143": [
+      [1754,137,"Tartarus",100,"https://www.youtube.com/watch?v=TVv8Yqgg7wY",null,121,250,"pointercrate",18,0],
+      [2236,151,"The Golden",100,"https://www.youtube.com/watch?v=yzdJyq6yIAk",null,131,274,"pointercrate",4.6,0]
     ],
     "1554": [
       [2144,386,"Arctic Lights",91,"https://www.youtube.com/watch?v=LlGuTxzStpk",null,300,128,"pointercrate",0,0]
