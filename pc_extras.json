@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T20:42:35.854Z",
+  "generated": "2026-11-07T21:25:30.781Z",
   "users": {
     "1": [
       [2296,228,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -764,12 +764,6 @@
       [1591,181,"Trueffet",100,"https://www.youtube.com/watch?v=RFxicmzqYlY",55,161,361,"pointercrate",3.4,0.89],
       [1626,541,"Erebus",100,"https://www.youtube.com/watch?v=Aj-W4Aqr_bI",null,381,93,"pointercrate",0.82,0]
     ],
-    "3792": [
-      [2305,259,"Lucid Nightmares",100,"https://www.youtube.com/watch?v=7aLoiv-veEU",73,227,112,"pointercrate",0.99,0.36],
-      [2444,447,"Gamma",100,"https://www.youtube.com/watch?v=a6VxfVszPpY",null,332,126,"pointercrate",0.88,0],
-      [1879,558,"Celestial Force",100,"https://www.youtube.com/watch?v=1DBPM60mPg0",null,393,54,"pointercrate",0.81,0],
-      [1689,808,"SubSonic",100,"https://www.youtube.com/watch?v=HOLyPniZgaE",null,498,147,"pointercrate",0.66,0]
-    ],
     "3798": [
       [1754,137,"Tartarus",100,"https://www.youtube.com/watch?v=SMVISZ1w5Ak",null,121,250,"pointercrate",18,0],
       [1740,155,"Oblivion",100,"https://www.youtube.com/watch?v=qU1YBFIlNOw",null,132,425,"pointercrate",4.6,0],
@@ -783,9 +777,6 @@
       [1690,288,"Jesse Pinkman",100,"https://www.youtube.com/watch?v=moFXcpb4m1Y",null,260,418,"pointercrate",0.97,0],
       [2631,732,"MISFIRE",100,"https://www.youtube.com/watch?v=4_HYqJq0trs",null,379,484,"pointercrate",0.71,0]
     ],
-    "3807": [
-      [2237,243,"Cognition",100,"https://www.youtube.com/watch?v=aNC3uTKcZ8k",69,212,247,"pointercrate",1,0.34]
-    ],
     "4059": [
       [1892,144,"Jigsaw",100,"https://www.youtube.com/watch?v=jnrHwzqcmcw",null,123,555,"pointercrate",11,0]
     ],
@@ -794,9 +785,6 @@
       [1725,211,"Widestep",100,"https://www.youtube.com/watch?v=u52oMseQRiw",null,187,494,"pointercrate",2.2,0],
       [1563,237,"shimmer",100,"https://www.youtube.com/watch?v=GGgbZaraXnc",null,206,530,"pointercrate",1.4,0],
       [2305,259,"Lucid Nightmares",100,"https://www.youtube.com/watch?v=ioVQUzSCfGA",null,227,112,"pointercrate",0.99,0]
-    ],
-    "4825": [
-      [2280,197,"Destruction 19",100,"https://www.youtube.com/watch?v=p2SWQtmvZPc",null,168,573,"pointercrate",3,0]
     ],
     "5285": [
       [2292,1585,"Allegiance",100,"https://www.youtube.com/watch?v=f1aWNPBVby0",null,644,143,"pointercrate",0.2,0],
