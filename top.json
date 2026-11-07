@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-07T09:05:56.862Z",
+ "generated": "2026-11-07T09:46:42.760Z",
  "users": [
   {
    "place": 1,
@@ -399,6 +399,15 @@
   },
   {
    "place": 45,
+   "oldPlace": 60,
+   "id": "18046",
+   "name": "ItzDexii",
+   "country": "Ukraine",
+   "points": 3261.16,
+   "basePoints": 2618
+  },
+  {
+   "place": 46,
    "oldPlace": 42,
    "id": "14440",
    "name": "Kaza",
@@ -407,7 +416,7 @@
    "basePoints": 3178.07
   },
   {
-   "place": 46,
+   "place": 47,
    "oldPlace": 63,
    "id": "11811",
    "name": "XaLVaL",
@@ -416,7 +425,7 @@
    "basePoints": 2527.38
   },
   {
-   "place": 47,
+   "place": 48,
    "oldPlace": 43,
    "id": "15864",
    "name": "MeQ8cNv43s6A",
@@ -425,7 +434,7 @@
    "basePoints": 3126.68
   },
   {
-   "place": 48,
+   "place": 49,
    "oldPlace": 48,
    "id": "25791",
    "name": "Syrcx",
@@ -434,22 +443,13 @@
    "basePoints": 2901.38
   },
   {
-   "place": 49,
+   "place": 50,
    "oldPlace": 7214,
    "id": "51087",
    "name": "sharkyga",
    "country": "Unknown",
    "points": 3116.9,
    "basePoints": 0.97
-  },
-  {
-   "place": 50,
-   "oldPlace": 50,
-   "id": "51306",
-   "name": "karkito",
-   "country": "South-Korea",
-   "points": 3111.01,
-   "basePoints": 2816.2
   }
  ]
 }
