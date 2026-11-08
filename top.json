@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-08T22:27:44.146Z",
+ "generated": "2026-11-08T23:10:34.723Z",
  "users": [
   {
    "place": 1,
@@ -385,7 +385,7 @@
    "id": "51317",
    "name": "Cryostazz",
    "country": "France",
-   "points": 3355.2,
+   "points": 3383.57,
    "basePoints": 3341.47
   },
   {
@@ -444,7 +444,7 @@
   },
   {
    "place": 50,
-   "oldPlace": 7241,
+   "oldPlace": 7242,
    "id": "51087",
    "name": "sharkyga",
    "country": "Unknown",
