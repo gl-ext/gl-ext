@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-08T00:28:32.760Z",
+ "generated": "2026-11-08T01:45:04.140Z",
  "users": [
   {
    "place": 1,
@@ -273,21 +273,21 @@
   },
   {
    "place": 31,
+   "oldPlace": 31,
+   "id": "16578",
+   "name": "Mizukii",
+   "country": "Germany",
+   "points": 3885.17,
+   "basePoints": 3789.17
+  },
+  {
+   "place": 32,
    "oldPlace": 37,
    "id": "14445",
    "name": "iIiLaSeRiIi",
    "country": "United-Kingdom",
    "points": 3817.44,
    "basePoints": 3453.5
-  },
-  {
-   "place": 32,
-   "oldPlace": 31,
-   "id": "16578",
-   "name": "Mizukii",
-   "country": "Germany",
-   "points": 3789.17,
-   "basePoints": 3789.17
   },
   {
    "place": 33,
@@ -345,6 +345,15 @@
   },
   {
    "place": 39,
+   "oldPlace": 42,
+   "id": "14440",
+   "name": "Kaza",
+   "country": "Romania",
+   "points": 3458.54,
+   "basePoints": 3178.07
+  },
+  {
+   "place": 40,
    "oldPlace": 36,
    "id": "14447",
    "name": "Abdieldevil",
@@ -353,7 +362,7 @@
    "basePoints": 3453.65
   },
   {
-   "place": 40,
+   "place": 41,
    "oldPlace": 47,
    "id": "14466",
    "name": "ProudGiraffe311",
@@ -362,7 +371,7 @@
    "basePoints": 3063.07
   },
   {
-   "place": 41,
+   "place": 42,
    "oldPlace": 44,
    "id": "14430",
    "name": "Cursed",
@@ -371,7 +380,7 @@
    "basePoints": 3119.55
   },
   {
-   "place": 42,
+   "place": 43,
    "oldPlace": 39,
    "id": "51317",
    "name": "Cryostazz",
@@ -380,7 +389,7 @@
    "basePoints": 3341.47
   },
   {
-   "place": 43,
+   "place": 44,
    "oldPlace": 40,
    "id": "4825",
    "name": "Tunax",
@@ -389,7 +398,7 @@
    "basePoints": 3315.51
   },
   {
-   "place": 44,
+   "place": 45,
    "oldPlace": 41,
    "id": "14192",
    "name": "donley",
@@ -398,22 +407,13 @@
    "basePoints": 3268.44
   },
   {
-   "place": 45,
+   "place": 46,
    "oldPlace": 61,
    "id": "18046",
    "name": "ItzDexii",
    "country": "Ukraine",
    "points": 3261.16,
    "basePoints": 2618
-  },
-  {
-   "place": 46,
-   "oldPlace": 42,
-   "id": "14440",
-   "name": "Kaza",
-   "country": "Romania",
-   "points": 3186.54,
-   "basePoints": 3178.07
   },
   {
    "place": 47,
