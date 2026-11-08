@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-08T21:08:25.623Z",
+  "generated": "2026-11-08T21:52:27.317Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -226,6 +226,9 @@
     "7607": [
       [1754,137,"Tartarus",100,"",null,null,null,"my_extras",18,0]
     ],
+    "7787": [
+      [2656,35,"Acheron",62,"",null,null,null,"my_extras",104.48,0]
+    ],
     "7939": [
       [2050,70,"poocubed",92,"",null,null,null,"my_extras",55.8,0]
     ],
@@ -358,6 +361,10 @@
     ],
     "14707": [
       [3422,84,"Kintetsu",100,"",null,null,null,"my_extras",71,0]
+    ],
+    "14715": [
+      [2873,25,"andromeda",72,"",null,null,null,"my_extras",134.24,0],
+      [2656,35,"Acheron",98,"",null,null,null,"my_extras",168.23,0]
     ],
     "14800": [
       [2809,27,"Anathema",81,"",null,null,null,"my_extras",140.76,0]
