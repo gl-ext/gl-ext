@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T21:41:12.542Z",
+  "generated": "2026-11-09T22:24:21.569Z",
   "users": {
     "1": [
       [2296,229,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -26253,6 +26253,9 @@
     "23274": [
       [1740,156,"Oblivion",100,"https://www.youtube.com/watch?v=DiJKYXuQiK8",null,132,425,"pointercrate",4.6,0],
       [2006,256,"RUST",100,"https://www.youtube.com/watch?v=4YYyyAqrn6c",null,223,358,"pointercrate",0.99,0]
+    ],
+    "23461": [
+      [1748,44,"Slaughterhouse",75,"https://www.youtube.com/watch?v=_At-gFKqCC0",null,40,380,"pointercrate",107.51,0]
     ],
     "23604": [
       [1981,75,"Saul Goodman",88,"https://www.youtube.com/watch?v=JjiEsqitmb8",null,76,496,"pointercrate",35.11,0],
