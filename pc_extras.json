@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-10T00:40:40.875Z",
+  "generated": "2026-11-10T01:55:55.972Z",
   "users": {
     "1": [
       [2296,229,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -253,6 +253,7 @@
       [2144,387,"Arctic Lights",91,"https://www.youtube.com/watch?v=LlGuTxzStpk",null,300,128,"pointercrate",0,0]
     ],
     "1857": [
+      [3412,24,"Ultra Paracosm",40,"https://www.youtube.com/watch?v=VJ7xitNXsoM",null,19,704,"pointercrate",100.65,0],
       [2843,105,"The Plunge",100,"https://www.youtube.com/watch?v=fMup4YRQ_TE",null,85,610,"pointercrate",50,0]
     ],
     "1915": [
@@ -26628,6 +26629,9 @@
     ],
     "29861": [
       [2477,148,"Terminal Rampancy",100,"https://www.youtube.com/watch?v=yCf3ccnWlFk",null,136,497,"pointercrate",7,0]
+    ],
+    "30068": [
+      [2692,139,"Waterfall",100,"https://www.youtube.com/watch?v=qoUA01AvuKM",null,122,595,"pointercrate",16,0]
     ],
     "30382": [
       [2418,92,"Solar Flare",100,"https://www.youtube.com/watch?v=L3zAr3kUXZo",null,86,495,"pointercrate",63,0]
