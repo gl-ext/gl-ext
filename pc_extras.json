@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-10T19:05:02.784Z",
+  "generated": "2026-11-10T19:51:38.234Z",
   "users": {
     "1": [
       [2296,229,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -10788,10 +10788,6 @@
       [1965,1603,"Incipient",100,"https://www.youtube.com/watch?v=3ZSIfqRbc9o",null,624,191,"pointercrate",0.19,0],
       [1566,1828,"Es Dilar Nos",100,"https://www.youtube.com/watch?v=6xkBCRiu_b4",null,664,149,"pointercrate",0.06,0]
     ],
-    "14694": [
-      [2290,1075,"Bloodbath",100,"https://www.youtube.com/watch?v=eXHgMRlB6pE",null,553,69,"pointercrate",0.5,0],
-      [1597,1492,"Deception Dive",100,"https://www.youtube.com/watch?v=yksH4bHHjag",null,609,164,"pointercrate",0.26,0]
-    ],
     "14695": [
       [1612,758,"Hatred",50,"https://www.youtube.com/watch?v=kBv1pS4ayG0",null,478,203,"pointercrate",0,0],
       [2374,1168,"Plasma Pulse III",100,"https://www.youtube.com/watch?v=cSxQtO1AiK0",null,587,76,"pointercrate",0.45,0],
@@ -10806,9 +10802,6 @@
       [1689,809,"SubSonic",100,"https://www.youtube.com/watch?v=R8tDMi6x3M0",null,498,147,"pointercrate",0.66,0],
       [1904,1169,"Novalis",100,"https://www.youtube.com/watch?v=3dtobDzA2sw",null,588,121,"pointercrate",0.45,0],
       [1965,1603,"Incipient",100,"https://www.youtube.com/watch?v=Pi2U6NhCcVo",null,624,191,"pointercrate",0.19,0]
-    ],
-    "14697": [
-      [2289,1701,"Cataclysm",100,"https://www.youtube.com/watch?v=mAZixhZPBJs",null,648,142,"pointercrate",0.13,0]
     ],
     "14698": [
       [2374,1168,"Plasma Pulse III",100,"https://www.youtube.com/watch?v=lz3upBEnfjQ",null,587,76,"pointercrate",0.45,0],
@@ -13936,6 +13929,7 @@
       [2235,178,"Kenos",100,"https://www.youtube.com/watch?v=RpO_X3kKElQ",null,163,238,"pointercrate",3.8,0]
     ],
     "15005": [
+      [2050,71,"poocubed",100,"https://www.youtube.com/watch?v=tu_KdM39oPk",null,69,464,"pointercrate",112,0],
       [1981,75,"Saul Goodman",100,"https://www.youtube.com/watch?v=yjTsM7UJF6o",null,76,496,"pointercrate",80,0],
       [3061,84,"Sevvend Clubstep",79,"https://www.youtube.com/watch?v=LcgDWKgDXPs",null,80,630,"pointercrate",27.05,0],
       [3354,130,"Trickshot",100,"https://www.youtube.com/watch?v=qhgnPmKEf5Y",null,109,687,"pointercrate",25,0],
