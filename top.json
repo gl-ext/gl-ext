@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T07:48:51.260Z",
+ "generated": "2026-11-10T08:47:40.221Z",
  "users": [
   {
    "place": 1,
@@ -309,7 +309,7 @@
   },
   {
    "place": 35,
-   "oldPlace": 38,
+   "oldPlace": 39,
    "id": "14473",
    "name": "LAMINGTON",
    "country": "Australia",
@@ -354,12 +354,12 @@
   },
   {
    "place": 40,
-   "oldPlace": 42,
+   "oldPlace": 38,
    "id": "14440",
    "name": "Kaza",
    "country": "Romania",
    "points": 3367.33,
-   "basePoints": 3094.86
+   "basePoints": 3358.86
   },
   {
    "place": 41,
@@ -381,7 +381,7 @@
   },
   {
    "place": 43,
-   "oldPlace": 39,
+   "oldPlace": 40,
    "id": "51317",
    "name": "Cryostazz",
    "country": "France",
@@ -399,7 +399,7 @@
   },
   {
    "place": 45,
-   "oldPlace": 40,
+   "oldPlace": 41,
    "id": "4825",
    "name": "Tunax",
    "country": "Norway",
@@ -417,7 +417,7 @@
   },
   {
    "place": 47,
-   "oldPlace": 41,
+   "oldPlace": 42,
    "id": "14192",
    "name": "donley",
    "country": "Canada",
