@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T01:55:55.972Z",
+ "generated": "2026-11-10T02:40:52.352Z",
  "users": [
   {
    "place": 1,
@@ -363,6 +363,15 @@
   },
   {
    "place": 41,
+   "oldPlace": 50,
+   "id": "51306",
+   "name": "karkito",
+   "country": "South-Korea",
+   "points": 3361.61,
+   "basePoints": 2766.8
+  },
+  {
+   "place": 42,
    "oldPlace": 45,
    "id": "14466",
    "name": "ProudGiraffe311",
@@ -371,7 +380,7 @@
    "basePoints": 2996.03
   },
   {
-   "place": 42,
+   "place": 43,
    "oldPlace": 39,
    "id": "51317",
    "name": "Cryostazz",
@@ -380,7 +389,7 @@
    "basePoints": 3296.88
   },
   {
-   "place": 43,
+   "place": 44,
    "oldPlace": 43,
    "id": "14430",
    "name": "Cursed",
@@ -389,7 +398,7 @@
    "basePoints": 3065.14
   },
   {
-   "place": 44,
+   "place": 45,
    "oldPlace": 40,
    "id": "4825",
    "name": "Tunax",
@@ -398,7 +407,7 @@
    "basePoints": 3242.09
   },
   {
-   "place": 45,
+   "place": 46,
    "oldPlace": 59,
    "id": "18046",
    "name": "ItzDexii",
@@ -407,7 +416,7 @@
    "basePoints": 2589
   },
   {
-   "place": 46,
+   "place": 47,
    "oldPlace": 41,
    "id": "14192",
    "name": "donley",
@@ -416,7 +425,7 @@
    "basePoints": 3202.44
   },
   {
-   "place": 47,
+   "place": 48,
    "oldPlace": 66,
    "id": "11811",
    "name": "XaLVaL",
@@ -425,7 +434,7 @@
    "basePoints": 2487.38
   },
   {
-   "place": 48,
+   "place": 49,
    "oldPlace": 44,
    "id": "15864",
    "name": "MeQ8cNv43s6A",
@@ -434,22 +443,13 @@
    "basePoints": 3060.86
   },
   {
-   "place": 49,
+   "place": 50,
    "oldPlace": 48,
    "id": "25791",
    "name": "Syrcx",
    "country": "Israel",
    "points": 3063.63,
    "basePoints": 2841.57
-  },
-  {
-   "place": 50,
-   "oldPlace": 50,
-   "id": "51306",
-   "name": "karkito",
-   "country": "South-Korea",
-   "points": 3061.61,
-   "basePoints": 2766.8
   }
  ]
 }
