@@ -1,0 +1,89 @@
+name: make-links
+
+on:
+  schedule:
+    # Каждые 6 часов (время UTC). Минуты не круглые, чтобы не попадать в пик нагрузки GitHub.
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      args:
+        description: "Дополнительные аргументы make_links.py (например --no-yt-id)"
+        required: false
+        default: ""
+
+# Нужно, чтобы запуск мог сам коммитить в репозиторий
+permissions:
+  contents: write
+
+# Два запуска одновременно не нужны: второй подождёт первого
+concurrency:
+  group: make-links
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350  # лимит GitHub на один запуск 360 минут
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Кэш каналов игроков (YouTube/Twitch/...) переживает запуски: каналы почти не меняются,
+      # а без кэша каждый запуск заново спрашивал бы YouTube про тысячи видео.
+      # Рекорды demonlist и Pointercrate в кэш не кладём: их нужно качать заново каждый раз.
+      - name: Restore channels cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            cache_channels.json
+            cache_level_names.json
+          key: channels-${{ github.run_id }}
+          restore-keys: channels-
+
+      # --refresh стирает кэш рекордов, чтобы данные были свежими (кэш каналов он не трогает).
+      # Путь scripts/make_links.py поменяй, если скрипт лежит в другом месте.
+      - name: Run make_links.py
+        env:
+          EXTRA_ARGS: ${{ github.event.inputs.args }}
+        run: python scripts/make_links.py --refresh --workers=8 $EXTRA_ARGS
+
+      # Кэш каналов сохраняем всегда, даже если запуск упал или не уложился по времени:
+      # так следующий запуск продолжит с места остановки.
+      - name: Save channels cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            cache_channels.json
+            cache_level_names.json
+          key: channels-${{ github.run_id }}
+
+      - name: Commit links.json
+        run: |
+          if git diff --quiet -- links.json; then
+            echo "links.json не изменился, коммитить нечего"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add links.json
+          git commit -m "Auto: update links.json"
+          # Если ты правил файлы руками, пока шёл запуск, подтягиваем их перед отправкой
+          git pull --rebase
+          git push
+
+      # Файлы для проверки глазами (спорные случаи и непонятные ссылки) в репозиторий не коммитим,
+      # их можно скачать на странице запуска во вкладке Actions
+      - name: Upload review files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: |
+            links_review.txt
+            links_other_sites.txt
+          if-no-files-found: ignore
+          retention-days: 14
