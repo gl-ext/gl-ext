@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-11T05:33:15.868Z",
+  "generated": "2026-11-11T06:34:04.873Z",
   "users": {
     "1": [
       [2296,229,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -13011,6 +13011,14 @@
       [2290,1075,"Bloodbath",100,"https://www.youtube.com/watch?v=HV2OSDOe9VY",null,553,69,"pointercrate",0.5,0],
       [1631,1241,"Twisted Tranquility",100,"https://www.youtube.com/watch?v=KQded6_E1uA",null,601,196,"pointercrate",0.41,0]
     ],
+    "14897": [
+      [1818,792,"Dolos",100,"https://www.youtube.com/watch?v=PEE1kbmC7Kc",null,493,249,"pointercrate",0.67,0]
+    ],
+    "14898": [
+      [2490,1577,"The Flawless",51,"https://www.youtube.com/watch?v=11EIqmn5C0k",null,611,26,"pointercrate",0,0],
+      [2289,1701,"Cataclysm",100,"https://www.youtube.com/watch?v=KfBft1tW9yo",null,648,142,"pointercrate",0.13,0],
+      [null,null,"Asymmetry",100,"https://www.youtube.com/watch?v=9tlokmz7b2g",null,690,225,"pointercrate",0,0]
+    ],
     "14899": [
       [1754,138,"Tartarus",100,"https://www.youtube.com/watch?v=mXgTImk7yIk",null,121,250,"pointercrate",17,0],
       [2222,154,"Verdant Landscape",100,"https://www.youtube.com/watch?v=jM0kakTQZfs",null,137,393,"pointercrate",4.6,0],
@@ -13036,6 +13044,13 @@
       [2641,1452,"CYCLONE",100,"https://www.youtube.com/watch?v=6akdE2ao1SM",null,632,135,"pointercrate",0.28,0],
       [1597,1492,"Deception Dive",100,"https://www.youtube.com/watch?v=9tEE5JDl_hw",null,609,164,"pointercrate",0.26,0],
       [2108,1506,"Awakening Horus",100,"https://www.youtube.com/watch?v=WTICvvvwxLk",null,642,115,"pointercrate",0.25,0]
+    ],
+    "14901": [
+      [2041,719,"Black Blizzard",83,"https://www.youtube.com/watch?v=bsG75HQMIU4",null,473,204,"pointercrate",0,0],
+      [1904,1169,"Novalis",100,"https://www.youtube.com/watch?v=_0-AL0gJYsk",null,588,121,"pointercrate",0.45,0],
+      [2029,1207,"Niflheim",57,"https://www.youtube.com/watch?v=9EgJHF7N3sw",null,593,73,"pointercrate",0,0],
+      [2440,1553,"Breakout",100,"https://www.youtube.com/watch?v=kfKp0uNanow",null,603,138,"pointercrate",0.22,0],
+      [1965,1603,"Incipient",100,"https://www.youtube.com/watch?v=H4tgzmouP0U",null,624,191,"pointercrate",0.19,0]
     ],
     "14902": [
       [1689,809,"SubSonic",66,"https://www.youtube.com/watch?v=UdGLYdCSxUo",null,498,147,"pointercrate",0,0],
