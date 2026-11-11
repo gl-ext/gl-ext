@@ -1651,6 +1651,16 @@
       ]
     },
     {
+      "keep": 27900,
+      "keep_name": "Bracus",
+      "absorb": [
+        {
+          "id": 65445,
+          "name": "Matthew_"
+        }
+      ]
+    },
+    {
       "keep": 27933,
       "keep_name": "werchy",
       "absorb": [
