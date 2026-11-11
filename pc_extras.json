@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-11T00:25:43.514Z",
+  "generated": "2026-11-11T01:38:43.293Z",
   "users": {
     "1": [
       [2296,229,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,199,239,"pointercrate",1.8,0]
@@ -19242,6 +19242,9 @@
       [2380,1813,"Electrosonic",100,"https://www.youtube.com/watch?v=lECdi_-6woE",null,657,51,"pointercrate",0.06,0],
       [null,null,"Asymmetry",100,"https://www.youtube.com/watch?v=q17iKYeucic",null,690,225,"pointercrate",0,0]
     ],
+    "15645": [
+      [null,null,"Asymmetry",100,"https://www.youtube.com/watch?v=zqJ_aPZ_AKQ",null,690,225,"pointercrate",0,0]
+    ],
     "15646": [
       [2440,1553,"Breakout",100,"https://www.youtube.com/watch?v=MdBAabAXUIQ",null,603,138,"pointercrate",0.22,0],
       [2198,1582,"Uprise",100,"https://www.youtube.com/watch?v=BrNVrwaR0m8",null,641,141,"pointercrate",0.2,0]
@@ -19431,6 +19434,23 @@
       [1687,695,"Artificial Ascent",100,"https://www.youtube.com/watch?v=F4n16eq3Wgw",null,440,47,"pointercrate",0.73,0],
       [2247,849,"ErebuS",100,"https://www.youtube.com/watch?v=X8CVgrP4GhE",null,481,371,"pointercrate",0.64,0],
       [1677,854,"SPEEDRUN",100,"https://www.youtube.com/watch?v=jmLqIRuemm8",null,512,242,"pointercrate",0.64,0]
+    ],
+    "15679": [
+      [2223,650,"Fabrication",59,"https://www.youtube.com/watch?v=7tt7IhsrX_8",null,438,45,"pointercrate",0,0],
+      [1612,758,"Hatred",50,"https://www.youtube.com/watch?v=Jssosx_vzsw",null,478,203,"pointercrate",0,0],
+      [2104,1233,"Audio Extraction",100,"https://www.youtube.com/watch?v=DytRtSNAmQ8",null,599,167,"pointercrate",0.41,0],
+      [2381,1666,"AcropoliX",100,"https://www.youtube.com/watch?v=zCngaDln_Dk",null,628,192,"pointercrate",0.15,0],
+      [2380,1813,"Electrosonic",100,"https://www.youtube.com/watch?v=o3wf9e-OER8",null,657,51,"pointercrate",0.06,0]
+    ],
+    "15681": [
+      [2489,474,"Yatagarasu",100,"https://www.youtube.com/watch?v=27c__HBoNKo",null,362,146,"pointercrate",0.86,0],
+      [2414,483,"Sonic Wave",100,"https://www.youtube.com/watch?v=16RvlJfqgik",null,354,118,"pointercrate",0.86,0],
+      [1626,542,"Erebus",100,"https://www.youtube.com/watch?v=8qHUUohu7dY",null,381,93,"pointercrate",0.82,0],
+      [1879,559,"Celestial Force",100,"https://www.youtube.com/watch?v=udG7496scAo",null,393,54,"pointercrate",0.81,0],
+      [1686,616,"Digital Descent",100,"https://www.youtube.com/watch?v=DWDMiwCXxGs",null,419,125,"pointercrate",0.78,0],
+      [2223,650,"Fabrication",100,"https://www.youtube.com/watch?v=TNkn_IJrazM",null,438,45,"pointercrate",0.76,0],
+      [1689,809,"SubSonic",100,"https://www.youtube.com/watch?v=IMdcveFYg9g",null,498,147,"pointercrate",0.66,0],
+      [2286,927,"Blade of Justice",100,"https://www.youtube.com/watch?v=EdAW6X9y5As",null,546,70,"pointercrate",0.59,0]
     ],
     "15682": [
       [1684,586,"Lucid Chaos",100,"https://www.youtube.com/watch?v=lYaWEdZzquY",null,406,318,"pointercrate",0.8,0],
