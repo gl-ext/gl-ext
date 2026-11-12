@@ -61,15 +61,18 @@ jobs:
             cache_level_names.json
           key: channels-${{ github.run_id }}
 
+      # Коммитим links.json и журнал склеек по общим каналам (он дописывается при каждой склейке,
+      # поэтому должен жить в репозитории, иначе после запуска он пропадёт)
       - name: Commit links.json
         run: |
-          if git diff --quiet -- links.json; then
-            echo "links.json не изменился, коммитить нечего"
-            exit 0
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add links.json
+          if [ -f links_channel_merges.txt ]; then git add links_channel_merges.txt; fi
+          if git diff --cached --quiet; then
+            echo "ничего не изменилось, коммитить нечего"
+            exit 0
+          fi
           git commit -m "Auto: update links.json"
           # Если ты правил файлы руками, пока шёл запуск, подтягиваем их перед отправкой
           git pull --rebase
@@ -85,5 +88,6 @@ jobs:
           path: |
             links_review.txt
             links_other_sites.txt
+            links_channel_conflicts.txt
           if-no-files-found: ignore
           retention-days: 14
