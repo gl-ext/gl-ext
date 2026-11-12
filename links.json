@@ -6188,7 +6188,10 @@
   "8267": {
     "_name": "Exalium",
     "pointercrate": [
-      51633
+      51633,
+      56530,
+      59027,
+      59479
     ],
     "channels": {
       "youtube": [
@@ -207271,17 +207274,6 @@
       56529
     ]
   },
-  "pc56530": {
-    "_name": "//k",
-    "pointercrate": [
-      56530
-    ],
-    "channels": {
-      "youtube": [
-        "https://www.youtube.com/@Exal395"
-      ]
-    }
-  },
   "pc56531": {
     "_name": "[ETPS] jet",
     "pointercrate": [
@@ -214690,17 +214682,6 @@
       ]
     }
   },
-  "pc59027": {
-    "_name": "ExaliumGMD",
-    "pointercrate": [
-      59027
-    ],
-    "channels": {
-      "youtube": [
-        "https://www.youtube.com/@Exal395"
-      ]
-    }
-  },
   "pc59028": {
     "_name": "zSakuraa",
     "pointercrate": [
@@ -216267,17 +216248,6 @@
     "pointercrate": [
       59478
     ]
-  },
-  "pc59479": {
-    "_name": "ЭксалиумГМД",
-    "pointercrate": [
-      59479
-    ],
-    "channels": {
-      "youtube": [
-        "https://www.youtube.com/@Exal395"
-      ]
-    }
   },
   "pc59480": {
     "_name": "[IQFM] Bird",

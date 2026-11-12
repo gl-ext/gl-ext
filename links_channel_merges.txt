@@ -2685,3 +2685,10 @@
     общие каналы: https://www.youtube.com/@catacube
     поглощено: pc72726 (catacube), pointercrate: [72726]
 
+===== 2026-11-12 13:39:10 UTC: склеено групп 1, поглощено записей 3 =====
+СКЛЕЕНО В 8267 (Exalium)
+    общие каналы: https://www.youtube.com/@Exal395
+    поглощено: pc56530 (//k), pointercrate: [56530]
+    поглощено: pc59027 (ExaliumGMD), pointercrate: [59027]
+    поглощено: pc59479 (ЭксалиумГМД), pointercrate: [59479]
+
