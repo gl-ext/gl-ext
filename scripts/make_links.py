@@ -9,6 +9,11 @@
     Если у одного человека несколько аккаунтов Pointercrate (у них общее видео),
     они лежат в одной записи, а ключ берётся по наименьшему id.
 
+Склейка по каналам: если один и тот же канал (YouTube/Twitch/...) найден у разных записей,
+это один человек, и записи склеиваются (аккаунты Pointercrate и каналы переезжают в главную).
+Главная: запись глобала, а если глобала нет, запись с наименьшим id Pointercrate.
+Две и больше записей ГЛОБАЛА с общим каналом не склеиваются, они попадают в отдельный файл.
+
 Запуск:   python make_links.py
 Скачивание можно прервать в любой момент (Ctrl+C, выключили свет, закрыли окно).
 Прогресс сохраняется в файлы cache_*, и при следующем запуске скрипт продолжит
@@ -57,6 +62,10 @@ CACHE_USERS = "cache_dl_users.json"
 USERS_MAX_AGE = 7 * 24 * 3600  # записи старше недели не используем
 OUT = "links.json"  # готовый результат
 REVIEW = "links_review.txt"  # спорные случаи для ручной проверки
+MERGES_LOG = "links_channel_merges.txt"  # что и когда склеено по общим каналам (дописывается)
+CHANNEL_CONFLICTS = "links_channel_conflicts.txt"  # общие каналы, которые НЕ склеены (пишется заново)
+CHANNELS_IGNORE = "channels_ignore.json"  # список ссылок на каналы, по которым склеивать не надо
+MAX_MERGE_ENTRIES = 3  # больше записей с общим каналом: скорее всего чужой общий канал, не склеиваем
 
 FIX = "fix.json"
 
@@ -1106,6 +1115,134 @@ def report_other_sites(dl, pc, workers=WORKERS):
                 f.write(line + "\n")
 
 
+# ---------- склейка по общим каналам ----------
+
+def norm_channel(link):
+    return str(link).strip().rstrip("/").lower()
+
+
+def merge_by_channels(result):
+    """Склеивает записи, у которых найден один и тот же канал.
+    - одна запись глобала + записи pc...: всё уходит в запись глобала;
+    - только записи pc...: всё уходит в запись с наименьшим id;
+    - две и больше записей глобала с общим каналом: НЕ склеиваем, пишем в CHANNEL_CONFLICTS;
+    - больше MAX_MERGE_ENTRIES записей в одной группе: НЕ склеиваем, пишем туда же.
+    Всё, что склеено, дописывается в MERGES_LOG. Возвращает (поглощено записей, групп,
+    общих каналов у аккаунтов глобала)."""
+    ignore = {norm_channel(x) for x in (load_json(CHANNELS_IGNORE, []) or [])}
+    names = {k: str(e.get("_name") or "") for k, e in result.items()}
+
+    def is_global(k):
+        return not str(k).startswith("pc")
+
+    def order(k):  # сначала записи глобала, потом pc...; внутри по номеру
+        digits = str(k) if is_global(k) else str(k)[2:]
+        return (not is_global(k), int(digits) if digits.isdigit() else 0, str(k))
+
+    # канал -> какие записи его содержат
+    by_channel, shown = defaultdict(set), {}
+    for key, entry in result.items():
+        for platform, links in (entry.get("channels") or {}).items():
+            for link in links:
+                n = norm_channel(link)
+                if n in ignore:
+                    continue
+                by_channel[(platform, n)].add(key)
+                shown.setdefault((platform, n), link)
+
+    parent = {}  # для группировки: у кого общий канал, те в одной группе
+
+    def find(x):
+        parent.setdefault(x, x)
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    global_overlaps, eligible = [], []
+    for ch, keys in by_channel.items():
+        if len(keys) < 2:
+            continue
+        ks = sorted(keys, key=order)
+        if sum(is_global(k) for k in ks) >= 2:
+            global_overlaps.append((ch, ks))
+            continue
+        eligible.append((ch, ks))
+        for k in ks[1:]:
+            parent[find(k)] = find(ks[0])
+
+    comps, comp_ch = defaultdict(list), defaultdict(list)
+    for k in list(parent):
+        comps[find(k)].append(k)
+    for ch, ks in eligible:
+        comp_ch[find(ks[0])].append(shown[ch])
+
+    moved, merged_log, chains, too_big = {}, [], [], []
+    absorbed = 0
+    for root, keys in sorted(comps.items(), key=lambda kv: order(min(kv[1], key=order))):
+        keys.sort(key=order)
+        chans = sorted(set(comp_ch[root]))
+        if sum(is_global(k) for k in keys) >= 2:
+            chains.append((keys, chans))  # два глобала связаны через запись pc...
+            continue
+        if len(keys) > MAX_MERGE_ENTRIES:
+            too_big.append((keys, chans))
+            continue
+        primary = keys[0]  # запись глобала, а если её нет, pc... с наименьшим id
+        main = result[primary]
+        lines = [f"СКЛЕЕНО В {primary} ({names[primary]})", "    общие каналы: " + ", ".join(chans)]
+        for k in keys[1:]:
+            other = result.pop(k)
+            cur = main.setdefault("pointercrate", [])
+            for pid in other.get("pointercrate", []):
+                if pid not in cur:
+                    cur.append(pid)
+            for platform, links in (other.get("channels") or {}).items():
+                lst = main.setdefault("channels", {}).setdefault(platform, [])
+                for link in links:
+                    if link not in lst:
+                        lst.append(link)
+            moved[k] = primary
+            absorbed += 1
+            lines.append(f"    поглощено: {k} ({names[k]}), pointercrate: {other.get('pointercrate', [])}")
+        merged_log.append("\n".join(lines))
+
+    if merged_log:
+        stamp = time.strftime("%Y-%m-%d %H:%M:%S UTC", time.gmtime())
+        with open(MERGES_LOG, "a", encoding="utf-8") as f:
+            f.write(f"===== {stamp}: склеено групп {len(merged_log)}, поглощено записей {absorbed} =====\n")
+            f.write("\n\n".join(merged_log) + "\n\n")
+
+    def who(keys):  # записи, поглощённые выше, показываем под тем ключом, куда они ушли
+        out = []
+        for k in keys:
+            k = moved.get(k, k)
+            if k not in out:
+                out.append(k)
+        return ", ".join(f"{k} ({names.get(k, '')})" for k in out)
+
+    with open(CHANNEL_CONFLICTS, "w", encoding="utf-8") as f:
+        f.write("Общие каналы, которые скрипт НЕ склеил. Файл пишется заново при каждом запуске.\n")
+        f.write(f"Если канал общий, но люди разные (командный канал), впиши его ссылку в {CHANNELS_IGNORE}\n")
+        f.write("(список строк в кавычках), и такой канал больше не будет склеивать записи.\n")
+        f.write("Уже склеенные записи это не разделит, их надо разделить в links.json вручную.\n")
+        f.write(f"\n########## ГЛОБАЛ: один канал у нескольких аккаунтов глобала ({len(global_overlaps)}) ##########\n")
+        f.write("Склейка аккаунтов глобала делается через fix.json (merges).\n")
+        for (platform, _), ks in sorted(global_overlaps, key=lambda x: order(x[1][0])):
+            f.write(f"\n{shown[(platform, _)]}  [{platform}]\n    {who(ks)}\n")
+        if chains:
+            f.write(f"\n########## Два аккаунта глобала связаны через запись pc..., не склеены ({len(chains)}) ##########\n")
+            for keys, chans in chains:
+                f.write(f"\n{who(keys)}\n    каналы: {', '.join(chans)}\n")
+        if too_big:
+            f.write(f"\n########## Слишком много записей с общим каналом (больше {MAX_MERGE_ENTRIES}), не склеены ({len(too_big)}) ##########\n")
+            for keys, chans in too_big:
+                f.write(f"\n{who(keys)}\n    каналы: {', '.join(chans)}\n")
+        if not (global_overlaps or chains or too_big):
+            f.write("\nКонфликтов нет.\n")
+    return absorbed, len(merged_log), len(global_overlaps)
+
+
 # ---------- основная логика ----------
 
 def main():
@@ -1390,6 +1527,9 @@ def main():
         print("Ищу каналы игроков (YouTube/Twitch/Bilibili/...)")
         added_channels = add_channels(result, dl, pc, workers)
 
+    # Один и тот же канал у разных записей: это один человек, склеиваем
+    absorbed, merged_groups, global_shared = merge_by_channels(result)
+
     save_tmp = OUT + ".tmp"
     with open(save_tmp, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
@@ -1409,6 +1549,8 @@ def main():
           f"аккаунтов дописано в существующие записи: {joined_pc}")
     if added_channels is not None:
         print(f"  добавлено новых ссылок на каналы: {added_channels}")
+    print(f"  склейка по общим каналам: групп {merged_groups}, поглощено записей {absorbed} (подробности в {MERGES_LOG})")
+    print(f"  общих каналов у нескольких аккаунтов глобала: {global_shared} (список в {CHANNEL_CONFLICTS})")
     if taken:
         print(f"  пропущено, аккаунт Pointercrate уже записан у другого игрока: {taken}")
         for line in taken_list:  # выводим каждый случай в консоль
