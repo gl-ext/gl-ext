@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       args:
-        description: "Дополнительные аргументы make_links.py (например --no-yt-id)"
+        description: "Дополнительные аргументы make_links.py (например --no-yt-id или --all-videos)"
         required: false
         default: ""
 
