@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12T05:49:21.964Z",
+  "generated": "2026-11-12T06:51:02.651Z",
   "users": {
     "2": [
       [2656,36,"Acheron",94,"",null,null,null,"my_extras",159.25,0]
@@ -70,12 +70,6 @@
     "3648": [
       [2296,229,"Renevant",100,"",null,null,null,"my_extras",1.8,0],
       [2018,272,"Shardscapes",100,"",null,null,null,"my_extras",0.98,0]
-    ],
-    "3666": [
-      [2656,36,"Acheron",100,"",null,null,null,"my_extras",336,0],
-      [2236,152,"The Golden",100,"",75,null,null,"my_extras",4.6,1.74],
-      [2449,203,"Zodiac",100,"",80,null,null,"my_extras",2.6,1.01],
-      [2307,239,"Crimson Planet",100,"",66,null,null,"my_extras",1.4,0.49]
     ],
     "3667": [
       [2659,30,"Avernus",49,"",null,null,null,"my_extras",91.76,0]
@@ -157,9 +151,6 @@
     ],
     "5781": [
       [1788,175,"THE ROCK HOUSE",100,"",null,null,null,"my_extras",3.8,0]
-    ],
-    "5782": [
-      [1981,76,"Saul Goodman",100,"",null,null,null,"my_extras",79,0]
     ],
     "5818": [
       [1724,38,"Kyouki",90,"",null,null,null,"my_extras",149.24,0]
@@ -350,9 +341,6 @@
     ],
     "14247": [
       [3275,23,"Subsuming Vortex",96,"",73,null,null,"my_extras",185.44,119.82]
-    ],
-    "14248": [
-      [2222,154,"Verdant Landscape",100,"",null,null,null,"my_extras",4.6,0]
     ],
     "14375": [
       [1748,44,"Slaughterhouse",75,"",null,null,null,"my_extras",107.51,0]
