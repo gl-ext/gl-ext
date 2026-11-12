@@ -2692,3 +2692,40 @@
     поглощено: pc59027 (ExaliumGMD), pointercrate: [59027]
     поглощено: pc59479 (ЭксалиумГМД), pointercrate: [59479]
 
+===== 2026-11-12 18:36:09 UTC: склеено групп 9, поглощено записей 9 =====
+СКЛЕЕНО В 2688 (fluxy)
+    общие каналы: https://www.youtube.com/@fluxy2307
+    поглощено: pc56508 (fluxy), pointercrate: [56508]
+
+СКЛЕЕНО В 6773 (Flaminick)
+    общие каналы: https://www.youtube.com/@karol_one
+    поглощено: pc59704 (karol1), pointercrate: [59704]
+
+СКЛЕЕНО В 14176 (SrGuillester)
+    общие каналы: https://www.youtube.com/@Findexi
+    поглощено: pc759 (Findexi), pointercrate: [759]
+
+СКЛЕЕНО В 14466 (ProudGiraffe311)
+    общие каналы: https://www.youtube.com/@IconicGD
+    поглощено: pc53013 (Iconic), pointercrate: [53013]
+
+СКЛЕЕНО В 14782 (nainteils)
+    общие каналы: https://www.youtube.com/@nainteils
+    поглощено: pc473 (nainteils), pointercrate: [473]
+
+СКЛЕЕНО В 16177 (Nathan10nathan)
+    общие каналы: https://www.youtube.com/@darreldash
+    поглощено: pc676 (VeryAngryBird), pointercrate: [676]
+
+СКЛЕЕНО В 16537 (WariX)
+    общие каналы: https://www.youtube.com/@l3xi_con
+    поглощено: pc52021 (l3xicon), pointercrate: [52021]
+
+СКЛЕЕНО В 20074 (rgaix6fm)
+    общие каналы: https://www.youtube.com/@mistik6837
+    поглощено: pc4100 (ItzRedStyles), pointercrate: [4100]
+
+СКЛЕЕНО В pc73115 (jf)
+    общие каналы: https://www.youtube.com/@jackaliciousf
+    поглощено: pc73203 (jackf), pointercrate: [73203]
+
