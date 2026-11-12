@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12T21:44:56.802Z",
+  "generated": "2026-11-12T22:40:16.211Z",
   "users": {
     "1": [
       [2296,229,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,200,239,"pointercrate",1.8,0]
@@ -955,6 +955,18 @@
       [1542,1061,"Down Bass",100,"https://www.youtube.com/watch?v=zcHtq6edDiQ",null,565,77,"pointercrate",0.51,0],
       [2290,1075,"Bloodbath",100,"https://www.youtube.com/watch?v=S33Fxot3Qi0",null,554,69,"pointercrate",0.5,0]
     ],
+    "5597": [
+      [1631,1241,"Twisted Tranquility",100,"https://www.youtube.com/watch?v=UlEJShk4Kog",null,602,196,"pointercrate",0.41,0]
+    ],
+    "5598": [
+      [2237,244,"Cognition",100,"https://www.youtube.com/watch?v=qve1yR5vodM",null,213,247,"pointercrate",1,0]
+    ],
+    "5601": [
+      [2237,244,"Cognition",100,"https://www.youtube.com/watch?v=xMIc3cJzZBI",null,213,247,"pointercrate",1,0],
+      [1864,342,"kowareta",100,"https://www.youtube.com/watch?v=qLiCkWVI0tA",null,296,207,"pointercrate",0.94,0],
+      [1914,360,"Knights of Thunder",100,"https://www.youtube.com/watch?v=OPF3gBki798",null,284,482,"pointercrate",0.93,0],
+      [2144,387,"Arctic Lights",100,"https://www.youtube.com/watch?v=ART23JJ2kpI",null,301,128,"pointercrate",0.91,0]
+    ],
     "5602": [
       [1740,156,"Oblivion",100,"https://www.youtube.com/watch?v=PbQpp7Bqm1Q",null,133,425,"pointercrate",4.6,0]
     ],
@@ -1462,6 +1474,9 @@
     ],
     "6314": [
       [2144,387,"Arctic Lights",90,"https://www.youtube.com/watch?v=pbJm4jZjU5Q",null,301,128,"pointercrate",0,0]
+    ],
+    "6348": [
+      [2854,94,"Collapse",100,"https://www.youtube.com/watch?v=HLvutmtik-I",null,92,606,"pointercrate",61,0]
     ],
     "6354": [
       [2237,244,"Cognition",67,"https://www.youtube.com/watch?v=jGtZdTRku9s",null,213,247,"pointercrate",0.33,0],
@@ -27255,6 +27270,9 @@
       [2369,327,"TORN",100,"https://www.youtube.com/watch?v=lv1jEbtRi3Y",null,260,513,"pointercrate",0.95,0],
       [2644,361,"Dump",100,"https://www.youtube.com/watch?v=ctZ5c6k8gJg",null,297,493,"pointercrate",0.93,0]
     ],
+    "19167": [
+      [2414,483,"Sonic Wave",72,"https://www.youtube.com/watch?v=3e6JxS_2GqU",null,355,118,"pointercrate",0,0]
+    ],
     "19219": [
       [2506,169,"Fragile",100,"https://www.youtube.com/watch?v=aXjL3pviMEo",null,165,335,"pointercrate",4.2,0]
     ],
@@ -28858,7 +28876,8 @@
       [2510,439,"Wasureta",100,"https://www.youtube.com/watch?v=G90Rzr1VlK8",null,345,282,"pointercrate",0.88,0]
     ],
     "29405": [
-      [2050,72,"poocubed",100,"https://www.youtube.com/watch?v=7R7B8uBBGXQ",null,70,464,"pointercrate",104,0]
+      [2050,72,"poocubed",100,"https://www.youtube.com/watch?v=7R7B8uBBGXQ",null,70,464,"pointercrate",104,0],
+      [3355,75,"Calibrate",100,"https://www.youtube.com/watch?v=FG3ywe-OQ7g",null,71,683,"pointercrate",80,0]
     ],
     "29407": [
       [2264,90,"Edge of Destiny",74,"https://www.youtube.com/watch?v=TP4aOUtVXh4",null,82,485,"pointercrate",23.05,0],
@@ -29257,6 +29276,9 @@
       [null,null,"Night Terrors",100,"https://www.youtube.com/watch?v=uEIeJ9ucalg",null,700,150,"pointercrate",0,0],
       [null,null,"Sparklic Ocean",100,"https://www.youtube.com/watch?v=Rljp9_Bo-Bs",null,709,12,"pointercrate",0,0],
       [null,null,"The JanuS Miracle",100,"https://www.youtube.com/watch?v=IdEwZQfsMh4",null,712,144,"pointercrate",0,0]
+    ],
+    "32030": [
+      [1748,44,"Slaughterhouse",100,"https://www.youtube.com/watch?v=aoOdbgLtwOY",null,40,380,"pointercrate",304,0]
     ],
     "32078": [
       [2050,72,"poocubed",67,"https://www.youtube.com/watch?v=3bOLxP9iptc",null,70,464,"pointercrate",35.36,0]
@@ -30437,6 +30459,9 @@
     "59808": [
       [2870,170,"paranoia",100,"https://www.youtube.com/watch?v=YvKJ3nbgiNI",null,153,664,"pointercrate",4.2,0],
       [2707,196,"Judgement Knights",100,"https://www.youtube.com/watch?v=cZDRbOFzIYI",null,186,596,"pointercrate",3,0]
+    ],
+    "60056": [
+      [1787,164,"Levigo",100,"https://www.youtube.com/watch?v=aNUC6T27PzE",null,139,665,"pointercrate",4.2,0]
     ],
     "60152": [
       [1733,142,"UNKNOWN",100,"https://www.youtube.com/watch?v=0zSePDz3pqc",null,142,475,"pointercrate",13,0],
