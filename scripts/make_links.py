@@ -3,6 +3,12 @@
 Собирает links.json: находит игроков, у которых на demonlist и Pointercrate
 одно и то же видео, но разные аккаунты.
 
+В links.json попадают ВСЕ аккаунты:
+  - каждый аккаунт глобала (ключ = его id), даже если Pointercrate у него нет;
+  - каждый игрок Pointercrate, которого нет в глобале, под ключом "pc<id на Pointercrate>".
+    Если у одного человека несколько аккаунтов Pointercrate (у них общее видео),
+    они лежат в одной записи, а ключ берётся по наименьшему id.
+
 Запуск:   python make_links.py
 Скачивание можно прервать в любой момент (Ctrl+C, выключили свет, закрыли окно).
 Прогресс сохраняется в файлы cache_*, и при следующем запуске скрипт продолжит
@@ -44,6 +50,7 @@ PROGRESS_DL = "cache_dl_progress.json"  # {id уровня: рекорды}, п�
 PROGRESS_PC = "cache_pc_progress.json"  # {"after": ..., "records": [...]}
 CACHE_DL = "cache_dl_records.json"  # итог: все рекорды demonlist
 CACHE_PC = "cache_pc_records.json"  # итог: все рекорды Pointercrate
+CACHE_PC_PLAYERS = "cache_pc_players.json"  # все игроки Pointercrate (id -> ник), даже без рекордов
 # Рекорды отдельных игроков из глобала, их пишет top_missing.py (user/record/list).
 # Здесь они только дополняют данные по уровням, но не заменяют их.
 CACHE_USERS = "cache_dl_users.json"
@@ -257,11 +264,27 @@ def merge_verifiers(dl):
     info = load_level_info()
     names = {r["u"]: r["n"] for r in dl if r.get("n")}
     have = {(r["u"], r["v"]) for r in dl}
+    known = {r["u"] for r in dl}  # у кого уже есть хоть одна запись
     out = list(dl)
     added = 0
     for lid, i in info.items():
         u, v = i.get("verifier_id"), i.get("vurl")
-        if u is None or not v or (u, v) in have:
+        if u is None:
+            continue
+        if not v:
+            # Видео верификации нет, но аккаунт существует. Запись без видео ни на что
+            # не влияет, зато игрок попадёт в links.json.
+            if u not in known:
+                known.add(u)
+                out.append({
+                    "u": u,
+                    "n": i.get("verifier") or names.get(u),
+                    "v": None,
+                    "src": "verifier",
+                    "lvl": int(lid) if str(lid).isdigit() else lid,
+                })
+            continue
+        if (u, v) in have:
             continue
         have.add((u, v))
         out.append({
@@ -530,6 +553,46 @@ def load_pc(workers=WORKERS):
     save_json(CACHE_PC, out)
     print(f"  pointercrate готов: {len(out)} рекордов")
     return out
+
+
+def fetch_pc_players():
+    """Все игроки Pointercrate: {id: ник}. В списке рекордов есть только те, у кого есть
+    одобренные рекорды, а здесь все, в том числе без рекордов и забаненные.
+    Второй проход с banned=true на случай, если сервер по умолчанию забаненных не отдаёт.
+    None, если сервер не ответил."""
+    players = {}
+    for extra in ({}, {"banned": "true"}):
+        after = 0
+        while True:
+            q = {"limit": 100, "after": after, **extra}
+            d = get_json_patient(PC + "v1/players/?" + urllib.parse.urlencode(q))
+            if d is None:
+                return None
+            if not isinstance(d, list) or not d:
+                break
+            for p in d:
+                if p.get("id") is not None:
+                    players.setdefault(p["id"], p.get("name"))
+            last = max(int(p.get("id") or 0) for p in d)
+            if len(d) < 100 or last <= after:
+                break
+            after = last
+    return players
+
+
+def load_pc_players():
+    done = load_json(CACHE_PC_PLAYERS)
+    if done is not None:
+        print(f"игроки pointercrate: беру готовое из {CACHE_PC_PLAYERS}")
+        return {int(k): v for k, v in done.items()}
+    print("  скачиваю список всех игроков Pointercrate...")
+    players = fetch_pc_players()
+    if players is None:
+        print("Pointercrate не отдал список игроков. Запусти скрипт позже.")
+        sys.exit(1)
+    save_json(CACHE_PC_PLAYERS, {str(k): v for k, v in players.items()})
+    print(f"  игроков Pointercrate: {len(players)}")
+    return players
 
 
 # ---------- каналы игроков ----------
@@ -1054,13 +1117,15 @@ def main():
         elif a in ("--workers", "-w") and i + 1 < len(argv) and argv[i + 1].isdigit():
             workers = max(1, int(argv[i + 1]))
     if "--refresh" in sys.argv:
-        for p in (CACHE_LEVELS, CACHE_LEVEL_INFO, PROGRESS_DL, PROGRESS_PC, CACHE_DL, CACHE_PC):
+        for p in (CACHE_LEVELS, CACHE_LEVEL_INFO, PROGRESS_DL, PROGRESS_PC, CACHE_DL, CACHE_PC,
+                  CACHE_PC_PLAYERS):
             if os.path.exists(p):
                 os.remove(p)
         print("Старые данные удалены, качаю заново.")
 
     print("1/3 pointercrate")
     pc = load_pc(workers)
+    pc_players = load_pc_players()
     print("2/3 demonlist")
     dl = load_dl(workers)
     dl = merge_user_cache(dl)
@@ -1226,6 +1291,100 @@ def main():
             else:  # ничего не добавилось, пустую запись не создаём
                 del result[key]
 
+    # ---- Все остальные аккаунты ----
+    # 1) Каждый аккаунт глобала получает запись, даже если Pointercrate у него нет.
+    dl_all = {}  # id -> ник
+    for r in dl:
+        if r["u"] is not None and (r["n"] or r["u"] not in dl_all):
+            dl_all[r["u"]] = r["n"]
+    added_dl_only = 0
+    for uid, name in sorted(dl_all.items()):
+        key = str(uid)
+        if key not in result:
+            result[key] = {"_name": str(name or ""), "pointercrate": []}
+            added_dl_only += 1
+
+    # 2) Игроки Pointercrate, которых нет в глобале, получают запись с ключом "pc<id>".
+    # Аккаунты с общим видео считаем одним человеком (так же, как при сопоставлении с
+    # глобалом) и кладём в одну запись. Новый аккаунт, у которого общее видео с уже
+    # существующей записью "pc...", дописывается в неё.
+    pc_all = dict(pc_players)  # id -> ник; рекорды дополняют список на всякий случай
+    for r in pc:
+        if r["p"] is not None and r["p"] not in pc_all:
+            pc_all[r["p"]] = r["n"]
+
+    def is_fake(key):
+        return str(key).startswith("pc")
+
+    # в обработку идут свободные аккаунты и те, что уже лежат в записях "pc..."
+    pool = [p for p in pc_all if p not in pc_owner or is_fake(pc_owner[p])]
+    pool_set = set(pool)
+    parent = {p: p for p in pool}  # для склейки: у кого общее видео, те в одной группе
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    pid_vids = defaultdict(set)  # аккаунт Pointercrate -> его видео
+    for v, users in pc_by_vid.items():
+        ids = [p for p in users if p in pool_set]
+        for p in ids:
+            pid_vids[p].add(v)
+        for other in ids[1:]:
+            parent[find(other)] = find(ids[0])
+
+    def shared(comp):
+        out = set()
+        for i, a in enumerate(comp):
+            for b in comp[i + 1:]:
+                out |= pid_vids[a] & pid_vids[b]
+        return out
+
+    def fake_entry(pids):
+        key = f"pc{pids[0]}"  # pids отсортированы: ключ по наименьшему id
+        entry = result.setdefault(key, {"_name": str(pc_all.get(pids[0]) or ""), "pointercrate": []})
+        for p in pids:
+            if p not in entry["pointercrate"]:
+                entry["pointercrate"].append(p)
+            pc_owner[p] = key
+        return key
+
+    comps = defaultdict(list)
+    for p in pool:
+        comps[find(p)].append(p)
+    added_pc_only = joined_pc = 0
+    for comp in comps.values():
+        comp.sort()
+        free = [p for p in comp if p not in pc_owner]
+        if not free:
+            continue  # все уже разложены по записям
+        owners = {pc_owner[p] for p in comp if p in pc_owner}
+        who = ", ".join(f"{p} ({pc_all.get(p)})" for p in comp)
+        if len(owners) == 1 and len(result[next(iter(owners))]["pointercrate"]) + len(free) <= MAX_ACCOUNTS:
+            key = next(iter(owners))
+            result[key]["pointercrate"].extend(free)
+            for p in free:
+                pc_owner[p] = key
+            joined_pc += len(free)
+            review.append(f"PC БЕЗ ГЛОБАЛА, добавлено к записи {key}: {who}\n" + vurls(shared(comp)))
+        elif not owners and len(free) <= MAX_ACCOUNTS:
+            fake_entry(free)
+            added_pc_only += 1
+            if len(free) > 1:
+                review.append(f"PC БЕЗ ГЛОБАЛА, склеены по общим видео: {who}\n" + vurls(shared(comp)))
+        else:
+            why = (
+                f"СЛИШКОМ МНОГО PC-АККАУНТОВ С ОБЩИМИ ВИДЕО ({len(free)})"
+                if not owners
+                else "PC-АККАУНТЫ С ОБЩИМИ ВИДЕО, а запись уже есть или в ней нет места"
+            )
+            review.append(f"{why}, НЕ склеены (каждый отдельной записью): {who}\n" + vurls(shared(comp)))
+            for p in free:
+                fake_entry([p])
+                added_pc_only += 1
+
     added_channels = None
     if "--no-channels" not in sys.argv:
         print("Ищу каналы игроков (YouTube/Twitch/Bilibili/...)")
@@ -1245,6 +1404,9 @@ def main():
     print(f"Общих видео на обоих сайтах:     {len(set(dl_by_vid) & set(pc_by_vid))}")
     print(f"Всего игроков в {OUT}:  {len(result)}")
     print(f"  добавлено новых игроков: {added_players}, новых ссылок на Pointercrate: {added_links}")
+    print(f"  аккаунтов глобала без Pointercrate (новых записей): {added_dl_only}")
+    print(f"  игроков Pointercrate без глобала: новых записей pc...: {added_pc_only}, "
+          f"аккаунтов дописано в существующие записи: {joined_pc}")
     if added_channels is not None:
         print(f"  добавлено новых ссылок на каналы: {added_channels}")
     if taken:
