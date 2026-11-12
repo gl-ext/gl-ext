@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12T04:45:01.116Z",
+  "generated": "2026-11-12T05:49:21.964Z",
   "users": {
     "2": [
       [2656,36,"Acheron",94,"",null,null,null,"my_extras",159.25,0]
@@ -9,6 +9,9 @@
     ],
     "89": [
       [2657,37,"Tunnel of Despair",69,"",null,null,null,"my_extras",96.83,0]
+    ],
+    "396": [
+      [3449,26,"Azure Flare",49,"",null,null,null,"my_extras",102.55,0]
     ],
     "637": [
       [2656,36,"Acheron",61,"",null,null,null,"my_extras",101.5,0]
@@ -431,6 +434,9 @@
     ],
     "16500": [
       [2684,11,"Nullscapes",82,"",78,null,null,"my_extras",240.7,229.1]
+    ],
+    "16542": [
+      [3449,26,"Azure Flare",66,"",null,null,null,"my_extras",131.6,0]
     ],
     "16551": [
       [3441,32,"FOREST OF SPIKES",100,"",null,null,null,"my_extras",352,0]
