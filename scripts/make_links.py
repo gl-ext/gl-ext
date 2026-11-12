@@ -65,7 +65,6 @@ REVIEW = "links_review.txt"  # спорные случаи для ручной �
 MERGES_LOG = "links_channel_merges.txt"  # что и когда склеено по общим каналам (дописывается)
 CHANNEL_CONFLICTS = "links_channel_conflicts.txt"  # общие каналы, которые НЕ склеены (пишется заново)
 CHANNELS_IGNORE = "channels_ignore.json"  # список ссылок на каналы, по которым склеивать не надо
-MAX_MERGE_ENTRIES = 3  # больше записей с общим каналом: скорее всего чужой общий канал, не склеиваем
 
 FIX = "fix.json"
 
@@ -1126,7 +1125,7 @@ def merge_by_channels(result):
     - одна запись глобала + записи pc...: всё уходит в запись глобала;
     - только записи pc...: всё уходит в запись с наименьшим id;
     - две и больше записей глобала с общим каналом: НЕ склеиваем, пишем в CHANNEL_CONFLICTS;
-    - больше MAX_MERGE_ENTRIES записей в одной группе: НЕ склеиваем, пишем туда же.
+    Сколько аккаунтов Pointercrate окажется у человека после склейки, не ограничивается.
     Всё, что склеено, дописывается в MERGES_LOG. Возвращает (поглощено записей, групп,
     общих каналов у аккаунтов глобала)."""
     ignore = {norm_channel(x) for x in (load_json(CHANNELS_IGNORE, []) or [])}
@@ -1177,16 +1176,13 @@ def merge_by_channels(result):
     for ch, ks in eligible:
         comp_ch[find(ks[0])].append(shown[ch])
 
-    moved, merged_log, chains, too_big = {}, [], [], []
+    moved, merged_log, chains = {}, [], []
     absorbed = 0
     for root, keys in sorted(comps.items(), key=lambda kv: order(min(kv[1], key=order))):
         keys.sort(key=order)
         chans = sorted(set(comp_ch[root]))
         if sum(is_global(k) for k in keys) >= 2:
             chains.append((keys, chans))  # два глобала связаны через запись pc...
-            continue
-        if len(keys) > MAX_MERGE_ENTRIES:
-            too_big.append((keys, chans))
             continue
         primary = keys[0]  # запись глобала, а если её нет, pc... с наименьшим id
         main = result[primary]
@@ -1234,11 +1230,7 @@ def merge_by_channels(result):
             f.write(f"\n########## Два аккаунта глобала связаны через запись pc..., не склеены ({len(chains)}) ##########\n")
             for keys, chans in chains:
                 f.write(f"\n{who(keys)}\n    каналы: {', '.join(chans)}\n")
-        if too_big:
-            f.write(f"\n########## Слишком много записей с общим каналом (больше {MAX_MERGE_ENTRIES}), не склеены ({len(too_big)}) ##########\n")
-            for keys, chans in too_big:
-                f.write(f"\n{who(keys)}\n    каналы: {', '.join(chans)}\n")
-        if not (global_overlaps or chains or too_big):
+        if not (global_overlaps or chains):
             f.write("\nКонфликтов нет.\n")
     return absorbed, len(merged_log), len(global_overlaps)
 
