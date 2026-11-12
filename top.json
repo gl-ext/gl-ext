@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-12T03:41:05.048Z",
+ "generated": "2026-11-12T04:45:01.116Z",
  "users": [
   {
    "place": 1,
@@ -138,15 +138,6 @@
   },
   {
    "place": 16,
-   "oldPlace": 19,
-   "id": "5527",
-   "name": "Andreya6",
-   "country": "Russia",
-   "points": 5444.61,
-   "basePoints": 4683.79
-  },
-  {
-   "place": 17,
    "oldPlace": 23,
    "id": "14195",
    "name": "pizi",
@@ -155,7 +146,7 @@
    "basePoints": 4449.1
   },
   {
-   "place": 18,
+   "place": 17,
    "oldPlace": 15,
    "id": "26548",
    "name": "dovvin_",
@@ -164,7 +155,25 @@
    "basePoints": 4928.52
   },
   {
+   "place": 18,
+   "oldPlace": 19,
+   "id": "5527",
+   "name": "Andreya6",
+   "country": "Russia",
+   "points": 5091.44,
+   "basePoints": 4683.79
+  },
+  {
    "place": 19,
+   "oldPlace": 18,
+   "id": "14452",
+   "name": "Cookie",
+   "country": "United-States",
+   "points": 4938.11,
+   "basePoints": 4824.11
+  },
+  {
+   "place": 20,
    "oldPlace": 20,
    "id": "5564",
    "name": "roze [GD]",
@@ -173,22 +182,13 @@
    "basePoints": 4617.35
   },
   {
-   "place": 20,
+   "place": 21,
    "oldPlace": 17,
    "id": "22114",
    "name": "Bacon",
    "country": "Kazakhstan",
    "points": 4852.48,
    "basePoints": 4852.48
-  },
-  {
-   "place": 21,
-   "oldPlace": 18,
-   "id": "14452",
-   "name": "Cookie",
-   "country": "United-States",
-   "points": 4825.09,
-   "basePoints": 4824.11
   },
   {
    "place": 22,

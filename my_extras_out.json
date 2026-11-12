@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12T03:41:05.048Z",
+  "generated": "2026-11-12T04:45:01.116Z",
   "users": {
     "2": [
       [2656,36,"Acheron",94,"",null,null,null,"my_extras",159.25,0]
@@ -87,7 +87,7 @@
       [2485,64,"Firework",94,"",null,null,null,"my_extras",79.23,0]
     ],
     "3686": [
-      [2873,25,"andromeda",56,"",null,null,null,"my_extras",101.2,0],
+      [2873,25,"andromeda",57,"",null,null,null,"my_extras",103.26,0],
       [1748,44,"Slaughterhouse",95,"",null,null,null,"my_extras",144.59,0]
     ],
     "3700": [
@@ -113,8 +113,7 @@
       [1733,142,"UNKNOWN",94,"",null,null,null,"my_extras",6.07,0]
     ],
     "5527": [
-      [3226,4,"Thinking Space II",88,"",null,null,null,"my_extras",368.82,0],
-      [3320,22,"Penumbral",100,"",null,null,null,"my_extras",392,0]
+      [3226,4,"Thinking Space II",94,"",null,null,null,"my_extras",407.65,0]
     ],
     "5531": [
       [2660,8,"Tidal Wave",74,"",null,null,null,"my_extras",255.35,0]
@@ -197,6 +196,7 @@
     ],
     "6565": [
       [3061,84,"Sevvend Clubstep",100,"",null,null,null,"my_extras",71,0],
+      [2843,105,"The Plunge",100,"",65,null,null,"my_extras",50,14.37],
       [2537,123,"Climax",100,"",null,null,null,"my_extras",32,0]
     ],
     "6607": [
@@ -261,7 +261,7 @@
       [2050,72,"poocubed",92,"",null,null,null,"my_extras",48.36,0]
     ],
     "8166": [
-      [1750,47,"Deimos",59,"",null,null,null,"my_extras",78.09,0],
+      [1750,47,"Deimos",60,"",null,null,null,"my_extras",79.79,0],
       [2264,90,"Edge of Destiny",82,"",null,null,null,"my_extras",26.08,0]
     ],
     "8415": [
@@ -336,6 +336,9 @@
       [3096,35,"Defeated Circles",100,"",null,null,null,"my_extras",340,0],
       [2655,48,"KOCMOC",100,"",null,null,null,"my_extras",288,0]
     ],
+    "14206": [
+      [3401,97,"Make Paul Dance",100,"",null,null,null,"my_extras",58,0]
+    ],
     "14211": [
       [2656,36,"Acheron",89,"",86,null,null,"my_extras",150.5,145.25]
     ],
@@ -360,8 +363,14 @@
     "14430": [
       [3226,4,"Thinking Space II",71,"",null,null,null,"my_extras",258.82,0]
     ],
+    "14442": [
+      [1724,38,"Kyouki",100,"",83,null,null,"my_extras",328,137.76]
+    ],
     "14449": [
       [1748,44,"Slaughterhouse",90,"",null,null,null,"my_extras",135.32,0]
+    ],
+    "14452": [
+      [2660,8,"Tidal Wave",84,"",57,null,null,"my_extras",297.21,184.19]
     ],
     "14460": [
       [2659,30,"Avernus",57,"",null,null,null,"my_extras",105.88,0]
@@ -377,6 +386,9 @@
     ],
     "14520": [
       [2501,131,"arcturus",100,"",null,null,null,"my_extras",24,0]
+    ],
+    "14525": [
+      [3304,9,"ORBIT",73,"",null,null,null,"my_extras",227.86,0]
     ],
     "14549": [
       [2684,11,"Nullscapes",83,"",null,null,null,"my_extras",243.6,0],
@@ -437,7 +449,7 @@
       [2513,77,"MINUSdry",66,"",null,null,null,"my_extras",26.13,0]
     ],
     "16971": [
-      [2050,72,"poocubed",61,"",null,null,null,"my_extras",32.24,0]
+      [2050,72,"poocubed",71,"",null,null,null,"my_extras",37.44,0]
     ],
     "16996": [
       [1981,76,"Saul Goodman",62,"",null,null,null,"my_extras",23.26,0],
@@ -450,6 +462,7 @@
       [2928,18,"Every End",61,"",null,null,null,"my_extras",134.69,0]
     ],
     "17075": [
+      [1915,137,"The Wonder of You",100,"",null,null,null,"my_extras",18,0],
       [1740,156,"Oblivion",100,"",null,null,null,"my_extras",4.6,0],
       [1746,180,"Aerial Gleam",100,"",null,null,null,"my_extras",3.8,0]
     ],
@@ -477,7 +490,7 @@
       [3096,35,"Defeated Circles",87,"",null,null,null,"my_extras",151.11,0]
     ],
     "17620": [
-      [2657,37,"Tunnel of Despair",81,"",null,null,null,"my_extras",124.5,0]
+      [2657,37,"Tunnel of Despair",92,"",null,null,null,"my_extras",149.86,0]
     ],
     "17731": [
       [1733,142,"UNKNOWN",100,"",null,null,null,"my_extras",13,0]
@@ -518,7 +531,7 @@
       [2513,77,"MINUSdry",100,"",null,null,null,"my_extras",78,0]
     ],
     "18649": [
-      [2713,12,"BOOBAWAMBA",58,"",null,null,null,"my_extras",162.86,0]
+      [2713,12,"BOOBAWAMBA",54,"",null,null,null,"my_extras",151.43,0]
     ],
     "18651": [
       [1923,103,"ETERNALtheory",92,"",54,null,null,"my_extras",24.18,14.3]
@@ -541,14 +554,14 @@
       [2692,139,"Waterfall",100,"",null,null,null,"my_extras",16,0]
     ],
     "19032": [
-      [3320,22,"Penumbral",95,"",null,null,null,"my_extras",187.48,0],
+      [3320,22,"Penumbral",96,"",null,null,null,"my_extras",189.61,0],
       [1706,34,"Abyss of Darkness",98,"",null,null,null,"my_extras",170.13,0]
     ],
     "19066": [
       [1724,38,"Kyouki",98,"",null,null,null,"my_extras",162.36,0]
     ],
     "19107": [
-      [2656,36,"Acheron",95,"",null,null,null,"my_extras",161,0]
+      [2656,36,"Acheron",100,"",null,null,null,"my_extras",336,0]
     ],
     "19207": [
       [2449,203,"Zodiac",100,"",null,null,null,"my_extras",2.6,0]
@@ -595,7 +608,7 @@
     ],
     "20649": [
       [1706,34,"Abyss of Darkness",82,"",null,null,null,"my_extras",140.22,0],
-      [2656,36,"Acheron",58,"",null,null,null,"my_extras",96.25,0],
+      [2656,36,"Acheron",72,"",null,null,null,"my_extras",120.75,0],
       [1748,44,"Slaughterhouse",75,"",null,null,null,"my_extras",107.51,0]
     ],
     "20796": [
@@ -744,7 +757,7 @@
     ],
     "29486": [
       [3432,62,"Wild Roses",50,"",null,null,null,"my_extras",46.92,0],
-      [2902,82,"Fracture",72,"",null,null,null,"my_extras",26.44,0]
+      [2902,82,"Fracture",100,"",null,null,null,"my_extras",73,0]
     ],
     "29533": [
       [1732,65,"Sakupen Circles",100,"",null,null,null,"my_extras",160,0]
