@@ -607,6 +607,9 @@ def load_pc_players():
 
 CACHE_CH = "cache_channels.json"  # {"yt:ID видео": "ссылка на канал", "ytid:ID видео": "UC..."}, чтобы не спрашивать дважды
 MAX_CHECKS = 3  # сколько видео игрока проверять на YouTube и на Bilibili (больше = дольше)
+# Флаг --all-videos снимает это ограничение: проверяются ВСЕ видео всех игроков. Запускай
+# один раз (при ручном запуске в Actions впиши в поле args). Уже проверенное берётся из
+# кэша, а найденные каналы остаются в links.json и обычными запусками не удаляются.
 
 # Сайты, где имя канала уже лежит прямо в ссылке на видео. Запросы не нужны.
 # (платформа, как найти имя в ссылке, как собрать ссылку на канал)
@@ -807,6 +810,9 @@ def add_channels(result, dl, pc, workers):
         if r["p"] is not None and r["v"]:
             pc_vids[r["p"]].append(str(r["v"]))
 
+    all_videos = "--all-videos" in sys.argv
+    if all_videos:
+        print(f"  режим --all-videos: проверяю ВСЕ видео игроков (без лимита {MAX_CHECKS} на игрока)")
     cache = load_json(CACHE_CH, {}) or {}
     found = {}   # id игрока -> счётчик {(платформа, ссылка на канал): сколько видео}
     wanted = {}  # id игрока -> ключи кэша, которые нужны для его видео
@@ -838,7 +844,7 @@ def add_channels(result, dl, pc, workers):
                     prefix, fn, arg = "short", resolve_short, u
                 else:
                     continue
-            if checks[prefix] >= MAX_CHECKS:
+            if checks[prefix] >= MAX_CHECKS and not all_videos:
                 continue
             checks[prefix] += 1
             if prefix == "yt":
@@ -862,34 +868,60 @@ def add_channels(result, dl, pc, workers):
                     todo_b[f"bili:{bid}"] = (bili_channel, bid)
     run_jobs(todo_b, cache, workers)
 
-    # 3б. YouTube, второй проход: постоянный номер канала. Только для видео, которые
-    # живы (на первом проходе нашёлся канал) и номер которых мы ещё не узнали.
-    todo_id = {
-        f"ytid:{v}": (yt_id, v)
-        for v in yt_videos
-        if cache.get(f"yt:{v}") and f"ytid:{v}" not in cache
-    }
-    print(f"  YouTube, номеров каналов для проверки: {len(todo_id)}")
-    if todo_id and "--no-yt-id" in sys.argv:
-        print("  пропускаю (флаг --no-yt-id)")
+    # 3б. YouTube, второй проход: постоянный номер канала (UC...). Он один на весь канал,
+    # поэтому спрашиваем про одно видео на канал, а остальным видео этого канала копируем
+    # ответ. Если по видео номер не отдался, пробуем другое видео того же канала.
+    by_chan = defaultdict(list)  # ссылка на канал -> его видео среди проверяемых
+    for v in sorted(yt_videos):
+        link = cache.get(f"yt:{v}")
+        if link:
+            by_chan[link].append(v)
+
+    def share_ids():  # известный номер канала раздаём всем его видео
+        for vids in by_chan.values():
+            known = next((cache[f"ytid:{v}"] for v in vids if cache.get(f"ytid:{v}")), None)
+            if known:
+                for v in vids:
+                    cache.setdefault(f"ytid:{v}", known)
+
+    share_ids()
+    tried = set()
+    for rnd in range(3):
         todo_id = {}
-    if todo_id:
-        # Пробуем 5 видео. Если YouTube не отдал номер ни по одному, остальное бессмысленно:
-        # иначе потратим часы на запросы, которые все закончатся ничем.
-        got = 0
-        for ck, (fn, arg) in list(todo_id.items())[:5]:
-            res = fn(arg)
-            if res:
-                cache[ck] = res
-                got += 1
-                del todo_id[ck]
-        save_json(CACHE_CH, cache)
-        if got == 0:
-            print("  YouTube не отдал номер канала ни по одному из 5 пробных видео.")
-            print("  Второй проход пропускаю, чтобы не тратить время. Это не поломка скрипта,")
-            print("  сайт отвечает иначе, чем ожидалось (нужна диагностика, см. переписку).")
-            todo_id = {}
-    run_jobs(todo_id, cache, workers)
+        for vids in by_chan.values():
+            if any(cache.get(f"ytid:{v}") for v in vids):
+                continue  # номер этого канала уже известен
+            nxt = next((v for v in vids if v not in tried), None)
+            if nxt:
+                tried.add(nxt)
+                todo_id[f"ytid:{nxt}"] = (yt_id, nxt)
+        if rnd == 0:
+            print(f"  YouTube, номеров каналов для проверки: {len(todo_id)}")
+        if not todo_id:
+            break
+        if "--no-yt-id" in sys.argv:
+            if rnd == 0:
+                print("  пропускаю (флаг --no-yt-id)")
+            break
+        if rnd == 0:
+            # Пробуем 5 видео. Если YouTube не отдал номер ни по одному, остальное бессмысленно:
+            # иначе потратим часы на запросы, которые все закончатся ничем.
+            got = 0
+            for ck, (fn, arg) in list(todo_id.items())[:5]:
+                res = fn(arg)
+                if res:
+                    cache[ck] = res
+                    got += 1
+                    del todo_id[ck]
+            save_json(CACHE_CH, cache)
+            if got == 0:
+                print("  YouTube не отдал номер канала ни по одному из 5 пробных видео.")
+                print("  Второй проход пропускаю, чтобы не тратить время. Это не поломка скрипта,")
+                print("  сайт отвечает иначе, чем ожидалось (нужна диагностика, см. переписку).")
+                break
+        run_jobs(todo_id, cache, workers)
+        share_ids()
+    save_json(CACHE_CH, cache)
 
     # 4. Собираем ответы и дописываем в result
     added = 0
