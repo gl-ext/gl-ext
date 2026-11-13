@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T15:53:11.995Z",
+ "generated": "2026-11-13T17:22:31.275Z",
  "users": [
   {
    "place": 1,
@@ -255,21 +255,21 @@
   },
   {
    "place": 29,
+   "oldPlace": 29,
+   "id": "5577",
+   "name": "Serpentical",
+   "country": "Unknown",
+   "points": 3854.38,
+   "basePoints": 3833.41
+  },
+  {
+   "place": 30,
    "oldPlace": 28,
    "id": "14485",
    "name": "PoCle",
    "country": "South-Korea",
    "points": 3846.25,
    "basePoints": 3836.2
-  },
-  {
-   "place": 30,
-   "oldPlace": 29,
-   "id": "5577",
-   "name": "Serpentical",
-   "country": "Unknown",
-   "points": 3833.41,
-   "basePoints": 3833.41
   },
   {
    "place": 31,
