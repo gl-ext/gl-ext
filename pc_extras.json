@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-13T12:04:42.211Z",
+  "generated": "2026-11-13T13:22:17.622Z",
   "users": {
     "1": [
       [2296,229,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,200,239,"pointercrate",1.8,0]
@@ -12474,13 +12474,6 @@
       [2242,469,"Eternal Moment",100,"https://www.youtube.com/watch?v=Lro4au80T7c",null,329,314,"pointercrate",0.86,0],
       [1692,491,"Infinite Iniquity",100,"https://www.youtube.com/watch?v=Iab_8mRh6vo",null,356,370,"pointercrate",0.85,0]
     ],
-    "14775": [
-      [1738,612,"ZAPHKIEL",64,"https://www.youtube.com/watch?v=MfV8wXRSGQ0",null,424,42,"pointercrate",0,0],
-      [1689,809,"SubSonic",100,"https://www.youtube.com/watch?v=Bb9Ke0g4o60",null,499,147,"pointercrate",0.66,0]
-    ],
-    "14776": [
-      [1864,342,"kowareta",100,"https://www.youtube.com/watch?v=jetOGU8oADw",null,296,207,"pointercrate",0.94,0]
-    ],
     "14778": [
       [1892,145,"Jigsaw",100,"https://www.youtube.com/watch?v=Vfrg1ECh2dQ",null,124,555,"pointercrate",10,0],
       [2024,297,"Bloodlust",77,"https://www.youtube.com/watch?v=xUpSUNpxv48",null,258,161,"pointercrate",0.36,0],
@@ -12795,12 +12788,6 @@
       [1907,1529,"ElectroLux",100,"https://www.youtube.com/watch?v=9vEcE6LymDU",null,557,254,"pointercrate",0.23,0],
       [2377,1560,"SUBVERSIVE",100,"https://www.youtube.com/watch?v=oxy4yuktJ_k",null,631,60,"pointercrate",0.22,0],
       [2198,1582,"Uprise",100,"https://www.youtube.com/watch?v=hu6L7lUFXOE",null,642,141,"pointercrate",0.2,0]
-    ],
-    "14802": [
-      [2444,448,"Gamma",100,"https://www.youtube.com/watch?v=1RdzKj_WiOY",null,333,126,"pointercrate",0.88,0],
-      [1737,450,"Spacial Rend",73,"https://www.youtube.com/watch?v=7qiQbvctIeo",null,337,92,"pointercrate",0,0],
-      [1692,491,"Infinite Iniquity",100,"https://www.youtube.com/watch?v=3wvzMZY6jT8",null,356,370,"pointercrate",0.85,0],
-      [1626,542,"Erebus",100,"https://www.youtube.com/watch?v=IFqCNIUxdPg",null,382,93,"pointercrate",0.82,0]
     ],
     "14803": [
       [2444,448,"Gamma",93,"https://www.youtube.com/watch?v=UXnJPvczzsM",null,333,126,"pointercrate",0,0],
@@ -17711,6 +17698,13 @@
       [1553,674,"Occult Outcry",100,"https://www.youtube.com/watch?v=aEyp1f_Kp40",null,446,287,"pointercrate",0.74,0],
       [2460,682,"Missing Benefits",100,"https://www.youtube.com/watch?v=tP3AjuwcOSM",null,450,44,"pointercrate",0.74,0],
       [1770,711,"Rate Demon",100,"https://www.youtube.com/watch?v=D47qrdrTe4k",null,463,43,"pointercrate",0.72,0]
+    ],
+    "15345": [
+      [1737,450,"Spacial Rend",80,"https://www.youtube.com/watch?v=0xR5ek_JGBc",null,337,92,"pointercrate",0,0],
+      [2600,874,"Infernal Abyss",100,"https://www.youtube.com/watch?v=9ab1Uk1M0Lw",null,517,38,"pointercrate",0.62,0],
+      [2290,1075,"Bloodbath",100,"https://www.youtube.com/watch?v=juOoOkSsSKA",null,554,69,"pointercrate",0.5,0],
+      [2129,1109,"aftermath",100,"https://www.youtube.com/watch?v=hSSXuWAJUAY",null,585,104,"pointercrate",0.48,0],
+      [2289,1701,"Cataclysm",100,"https://www.youtube.com/watch?v=Pc-eGMbFTqw",null,649,142,"pointercrate",0.13,0]
     ],
     "15354": [
       [2287,225,"Promethean",100,"https://www.youtube.com/watch?v=L8DO_g0sqU8",null,196,351,"pointercrate",1.8,0],
