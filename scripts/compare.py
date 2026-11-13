@@ -1,5 +1,6 @@
 import os
 import re
+import sys
 import json
 import time
 import argparse
@@ -19,6 +20,7 @@ import urllib.request
 # Файлы по умолчанию: cbd.txt (рейтинг CoreBoard, ники без ID) и gdr.txt (рейтинг
 # gd-rating.py, запущенный с --ids: ID записан в [скобках] в конце строки).
 # ID игроков всегда берутся из gdr, ники из cbd. Другие файлы: --cbd и --gdr.
+# Соответствие ник -> ID (gdr-ids.json) всегда скачивается с GitHub, локальный файл не читается.
 #
 # Команды /fulladd и /try здесь больше не создаются:
 # их делает add-video-links.py (он берёт missing_achievements.json отсюда).
@@ -36,8 +38,6 @@ parser.add_argument("--cbd", default="cbd.txt",
 parser.add_argument("--gdr", default="gdr.txt",
                     help="файл gd-rating (ID в [скобках] в конце строки, делается с --ids). "
                          "По умолчанию gdr.txt")
-parser.add_argument("--ids", default="gdr-ids.json",
-                    help="файл с ID игроков (ник -> ID)")
 parser.add_argument("--levels", default="levels_tp.json",
                     help="файл с уровнями (название -> ID уровня)")
 parser.add_argument("--out-dir", default="compare",
@@ -54,7 +54,6 @@ else:
     NAME1, FILE1 = "gdr", args.gdr
     NAME2, FILE2 = "cbd", args.cbd
 
-IDS_FILE = args.ids
 LEVELS_FILE = args.levels
 
 # True, если у файла ID записан прямо в строке [в скобках]: это всегда gdr
@@ -81,6 +80,9 @@ NOT_IN_FILE1 = out_path(f"{NAME2}_not_in_{NAME1}.txt")
 NICK_KEY_PREFIX = "nick:"
 
 API_TRIES = 4  # сколько раз пробовать запрос к API, прежде чем сдаться
+
+# gdr-ids.json (ник -> ID игрока) берётся только отсюда, локальный файл не используется
+IDS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/gdr-ids.json"
 
 # Полный список уровней глобала (нужен, чтобы найти ID уровня по названию)
 GLOBAL_LIST_URL = "https://api.demonlist.org/level/classic/list?limit={limit}&offset={offset}"
@@ -227,23 +229,6 @@ def save_json(filename, result):
 
 
 # =========================
-# Загружаем ID игроков (ник -> ID)
-# =========================
-
-with open(IDS_FILE, encoding="utf-8") as f:
-    raw_ids = json.load(f)
-
-nick_to_id = {
-    normalize_nick(nick): normalize_id(player_id)
-    for nick, player_id in raw_ids.items()
-}
-
-# Все ID, которые есть в gdr-ids.json (нужны, чтобы понять, что у игрока
-# есть пара "ник - ID" в этом файле)
-known_ids = set(nick_to_id.values())
-
-
-# =========================
 # Загружаем уровни
 # =========================
 
@@ -307,6 +292,26 @@ def fetch_json(url):
             time.sleep(2 * attempt)  # пауза растёт: 2, 4, 6... секунд
 
     raise last_error
+
+
+# =========================
+# Загружаем ID игроков (ник -> ID): gdr-ids.json ТОЛЬКО с GitHub
+# =========================
+
+print("gdr-ids.json: беру с GitHub (raw кешируется до ~5 минут после правки)")
+
+try:
+    raw_ids = fetch_json(IDS_URL)
+except Exception as error:
+    sys.exit(f"gdr-ids.json: не удалось загрузить с GitHub ({error}). Останавливаюсь.")
+
+if not isinstance(raw_ids, dict) or not raw_ids:
+    sys.exit("gdr-ids.json: с GitHub пришёл не словарь или пустой файл. Останавливаюсь.")
+
+nick_to_id = {
+    normalize_nick(nick): normalize_id(player_id)
+    for nick, player_id in raw_ids.items()
+}
 
 
 # Список уровней глобала: {нормализованное название: ID}.
