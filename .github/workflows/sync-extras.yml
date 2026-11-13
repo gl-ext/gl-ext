@@ -8,7 +8,7 @@ on:
         required: false
         default: ""
   schedule:
-    - cron: "0 5 * * *"   # раз в сутки, 05:00 UTC
+    - cron: "*/30 * * * *" 
 
 permissions:
   contents: write
@@ -26,5 +26,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Run sync_extras.py
-        run: python scripts/sync_extras.py --commit ${{ github.event.inputs.args }}
+      - name: Run sync-extras.py
+        run: python scripts/sync-extras.py --commit ${{ github.event.inputs.args }}
