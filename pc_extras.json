@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12T23:42:49.254Z",
+  "generated": "2026-11-13T00:51:03.955Z",
   "users": {
     "1": [
       [2296,229,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,200,239,"pointercrate",1.8,0]
@@ -1128,6 +1128,7 @@
       [1724,38,"Kyouki",90,"https://www.youtube.com/watch?v=7G0A14Tcuyw",null,33,468,"pointercrate",149.24,0]
     ],
     "5858": [
+      [2492,80,"Stellar Night",100,"https://www.youtube.com/watch?v=h0G9gp77hYQ",null,79,674,"pointercrate",75,0],
       [2369,327,"TORN",100,"https://www.youtube.com/watch?v=U1ZxHtQ45DU",null,260,513,"pointercrate",0.95,0]
     ],
     "5881": [
@@ -6302,7 +6303,7 @@
       [2364,633,"Delta Interface",100,"https://www.youtube.com/watch?v=5JdZcZ4yWrg",null,429,153,"pointercrate",0.77,0]
     ],
     "14129": [
-      [3402,46,"BEING HOME",81,"https://www.youtube.com/watch?v=HSbbApOgGuQ",null,43,679,"pointercrate",112.95,0],
+      [3402,46,"BEING HOME",100,"https://www.youtube.com/watch?v=FlE9mYAizlU",null,43,679,"pointercrate",296,0],
       [2478,111,"Damascus",100,"https://www.youtube.com/watch?v=qt6WrdIMZmw",null,100,521,"pointercrate",44,0],
       [2018,272,"Shardscapes",100,"https://www.youtube.com/watch?v=2xq59lhABf8",null,234,415,"pointercrate",0.98,0],
       [2024,297,"Bloodlust",100,"https://www.youtube.com/watch?v=bxiqul8avr8",null,258,161,"pointercrate",0.97,0],
@@ -26615,6 +26616,9 @@
       [1707,248,"SUPERHATEMEWORLD",100,"https://www.youtube.com/watch?v=RFh2oWk9OnI",null,232,453,"pointercrate",1,0],
       [2024,297,"Bloodlust",100,"https://www.youtube.com/watch?v=TvNvWMZyzZA",null,258,161,"pointercrate",0.97,0]
     ],
+    "16996": [
+      [3061,84,"Sevvend Clubstep",100,"https://www.youtube.com/watch?v=w_WY-t7shzY",null,81,630,"pointercrate",71,0]
+    ],
     "17021": [
       [2296,229,"Renevant",100,"https://www.youtube.com/watch?v=cwsFdlJGkzY",null,200,239,"pointercrate",1.8,0]
     ],
@@ -27256,6 +27260,9 @@
       [2296,229,"Renevant",100,"https://www.youtube.com/watch?v=cYrPf9ZlVX0",null,200,239,"pointercrate",1.8,0],
       [1707,248,"SUPERHATEMEWORLD",100,"https://www.youtube.com/watch?v=pptjHOUNN7Y",null,232,453,"pointercrate",1,0],
       [1704,276,"Cobwebs",100,"https://www.youtube.com/watch?v=Lhp5dyCseI4",null,240,607,"pointercrate",0.98,0]
+    ],
+    "19104": [
+      [1733,142,"UNKNOWN",100,"https://www.youtube.com/watch?v=f5TCwTe11G8",null,142,475,"pointercrate",13,0]
     ],
     "19116": [
       [1981,76,"Saul Goodman",100,"https://www.youtube.com/watch?v=KQb6Q0P1mNs",null,77,496,"pointercrate",79,0],
