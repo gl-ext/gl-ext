@@ -1467,6 +1467,9 @@ def main():
     dl = merge_verifiers(dl)
     fix = load_fix()
     rules = load_json(DIFFERENT, {}) or {}
+    print(f"  {DIFFERENT}: {os.path.abspath(DIFFERENT)}, "
+          f"{'найден' if os.path.exists(DIFFERENT) else 'НЕ НАЙДЕН'}, "
+          f"unlink: {len(rules.get('unlink', []))}, add_channels: {len(rules.get('add_channels', []))}")
     resolve, keep_names = make_resolver(fix)
     removals = {}
     for r in fix.get("removals", []):
