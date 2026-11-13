@@ -28,7 +28,8 @@
 levels_tp.json: перед сравнением скрипт скачивает https://coreboard.pythonanywhere.com/main/levels
 (User-Agent gl-ext-top6) и перезаписывает levels_tp.json в корне репозитория: основные уровни
 (<li id="level-N">Имя (T=.., t=..)</li>) и алиасы ("Имя = Уровень (T=.., t=..)" -> ключ "xИмя").
-ID уровней на странице нет: для известных имён берутся из старого файла, новым выдаётся max+1.
+ID уровней (ключи) - это ID глобала. На странице их нет: для известных имён берутся из старого файла,
+для новых ищутся по имени в api.demonlist.org; не найденные пропускаются с предупреждением.
 
 Скрипты coreboard_parse.py, gd-rating.py и compare.py должны лежать рядом с этим файлом
 (допустимы и имена через дефис: coreboard-parse.py и т.д.).
@@ -63,6 +64,7 @@ args = ap.parse_args()
 
 LEVELS_URL = "https://coreboard.pythonanywhere.com/main/levels"
 LEVELS_UA = "gl-ext-top6"
+GLOBAL_API = "https://api.demonlist.org/level/classic/list"
 NUM = r"\d+(?:\.\d+)?"
 LEVEL_RE = re.compile(r"^(.*?) \(T=(" + NUM + r"), t=(" + NUM + r")\)$")
 
@@ -99,17 +101,39 @@ def fetch_levels_html():
         sys.exit(f"Не удалось скачать {LEVELS_URL}: {e}. levels_tp.json не тронут.")
 
 
+def fetch_global_ids():
+    """Список уровней глобала (api.demonlist.org) -> {имя в нижнем регистре: ID}. Берём топ с запасом."""
+    out, offset = {}, 0
+    try:
+        while True:
+            req = urllib.request.Request(f"{GLOBAL_API}?limit=100&offset={offset}",
+                                         headers={"User-Agent": LEVELS_UA})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                arr = ((json.load(r).get("data") or {}).get("levels")) or []
+            if not arr:
+                break
+            for l in arr:
+                out.setdefault(str(l["name"]).strip().lower(), str(l["id"]))
+            if float(arr[-1]["placement"]) > 400:
+                break
+            offset += 100
+    except Exception as e:
+        print(f"ВНИМАНИЕ: не удалось получить список уровней глобала ({e}); новые уровни будут пропущены.")
+    return out
+
+
 def parse_levels(page, old):
     """Разбирает страницу /main/levels. Возвращает список (key, запись) в порядке файла.
 
     Основные уровни: <li id="level-N">Имя (T=99, t=66)</li>  -> place = N.
     Алиасы:          <li>Имя = Уровень (T=97, t=47)</li>      -> ключ "xИмя", place берётся у «Уровня».
-    ID уровня на странице нет, поэтому для известных имён берём ID из старого levels_tp.json,
-    а новым даём следующие свободные числа (max+1, в порядке мест).
+    ID уровня на странице нет (ключ - ID уровня в глобале, api.demonlist.org): для известных имён берём
+    его из старого levels_tp.json, для новых ищем по имени в списке глобала. Не нашли - уровень
+    пропускаем с предупреждением (выдумывать ID нельзя).
     """
     old_levels = old.get("levels", {})
     name2id = {v["name"]: k for k, v in old_levels.items() if not k.startswith("x")}
-    next_id = max([int(k) for k in old_levels if k.isdigit()] or [0]) + 1
+    gl = None  # имя (в нижнем регистре) -> ID глобала; качаем только если появился неизвестный уровень
 
     main = []  # (place, name, T, t)
     for m in re.finditer(r'<li id="level-(\d+)">(.*?)</li>', page, re.S):
@@ -121,12 +145,16 @@ def parse_levels(page, old):
     main.sort()
     name2place = {name: place for place, name, _, _ in main}
 
-    out, new_names = [], []
+    out, new_names, skipped = [], [], []
     for place, name, T, t in main:
         key = name2id.get(name)
         if key is None:
-            key = str(next_id)
-            next_id += 1
+            if gl is None:
+                gl = fetch_global_ids()
+            key = gl.get(name.lower())
+            if key is None:
+                skipped.append(f"{place}. {name}")
+                continue
             new_names.append(f"{place}. {name} -> id {key}")
         out.append((key, {"place": place, "name": name, "T": T, "t": t}))
 
@@ -145,8 +173,12 @@ def parse_levels(page, old):
                 break
 
     if new_names:
-        print("ВНИМАНИЕ: уровни, которых не было в levels_tp.json (ID на странице нет, выдан следующий свободный):")
+        print("Новые уровни (ID найден в глобале по имени):")
         for s in new_names:
+            print("  " + s)
+    if skipped:
+        print("ВНИМАНИЕ: не нашёл ID в глобале, эти уровни НЕ записаны (допиши вручную или проверь написание):")
+        for s in skipped:
             print("  " + s)
     return out, len(main), n_alias
 
