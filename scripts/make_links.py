@@ -81,9 +81,9 @@ CHANNELS_IGNORE = "channels_ignore.json"  # список ссылок на ка�
 #   "shared_ok": [{"channel": "https://www.youtube.com/@w", "accounts": [555, 666]}]
 #       канал у этих людей общий осознанно (они разные): его не склеиваем и в конфликты не пишем
 # }
-DIFFERENT = "different_people.json"
-
-FIX = "fix.json"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # папка выше scripts/
+DIFFERENT = os.path.join(ROOT, "different_people.json")
+FIX = os.path.join(ROOT, "fix.json")
 
 # Видео YouTube (ID всегда 11 символов). Остальные ссылки сравнивать ненадёжно.
 YT = re.compile(
