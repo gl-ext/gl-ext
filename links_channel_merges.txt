@@ -2729,3 +2729,12 @@
     общие каналы: https://www.youtube.com/@jackaliciousf
     поглощено: pc73203 (jackf), pointercrate: [73203]
 
+===== 2026-11-13 01:34:12 UTC: склеено групп 2, поглощено записей 2 =====
+СКЛЕЕНО В 55341 (meylow)
+    общие каналы: https://www.youtube.com/@meylowGd
+    поглощено: pc71950 (meylowW), pointercrate: [71950]
+
+СКЛЕЕНО В 61637 (matek2448)
+    общие каналы: https://www.youtube.com/@matek24488
+    поглощено: pc73137 (matek2448), pointercrate: [73137]
+
