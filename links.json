@@ -264895,5 +264895,41 @@
     "pointercrate": [
       73256
     ]
+  },
+  "62101": {
+    "_name": "El_Fissure",
+    "pointercrate": [],
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@osmanelgod-ng9el"
+      ]
+    }
+  },
+  "62102": {
+    "_name": "Orikad",
+    "pointercrate": [],
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@Orikad1"
+      ]
+    }
+  },
+  "62104": {
+    "_name": "deogoated",
+    "pointercrate": [],
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@deogoated"
+      ]
+    }
+  },
+  "62105": {
+    "_name": "zhyjok",
+    "pointercrate": [],
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@Slenty123"
+      ]
+    }
   }
 }
