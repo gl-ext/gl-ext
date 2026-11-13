@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T21:24:43.402Z",
+ "generated": "2026-11-13T22:20:57.144Z",
  "users": [
   {
    "place": 1,
@@ -129,6 +129,15 @@
   },
   {
    "place": 15,
+   "oldPlace": 19,
+   "id": "5527",
+   "name": "Andreya6",
+   "country": "Russia",
+   "points": 5563.79,
+   "basePoints": 4683.79
+  },
+  {
+   "place": 16,
    "oldPlace": 13,
    "id": "14433",
    "name": "Thnnder",
@@ -137,7 +146,7 @@
    "basePoints": 5449.21
   },
   {
-   "place": 16,
+   "place": 17,
    "oldPlace": 23,
    "id": "14195",
    "name": "pizi",
@@ -146,22 +155,13 @@
    "basePoints": 4449.1
   },
   {
-   "place": 17,
+   "place": 18,
    "oldPlace": 15,
    "id": "26548",
    "name": "dovvin_",
    "country": "Poland",
    "points": 5337.33,
    "basePoints": 4928.52
-  },
-  {
-   "place": 18,
-   "oldPlace": 19,
-   "id": "5527",
-   "name": "Andreya6",
-   "country": "Russia",
-   "points": 5091.44,
-   "basePoints": 4683.79
   },
   {
    "place": 19,
@@ -309,6 +309,15 @@
   },
   {
    "place": 35,
+   "oldPlace": 39,
+   "id": "14440",
+   "name": "Kaza",
+   "country": "Romania",
+   "points": 3543.47,
+   "basePoints": 3352.86
+  },
+  {
+   "place": 36,
    "oldPlace": 34,
    "id": "16529",
    "name": "Albert",
@@ -317,7 +326,7 @@
    "basePoints": 3517.08
   },
   {
-   "place": 36,
+   "place": 37,
    "oldPlace": 40,
    "id": "51317",
    "name": "Cryostazz",
@@ -326,7 +335,7 @@
    "basePoints": 3297.88
   },
   {
-   "place": 37,
+   "place": 38,
    "oldPlace": 35,
    "id": "14544",
    "name": "Hqmy",
@@ -335,7 +344,7 @@
    "basePoints": 3508.94
   },
   {
-   "place": 38,
+   "place": 39,
    "oldPlace": 36,
    "id": "14431",
    "name": "Axinity",
@@ -344,7 +353,7 @@
    "basePoints": 3449.47
   },
   {
-   "place": 39,
+   "place": 40,
    "oldPlace": 47,
    "id": "14549",
    "name": "Whizkid05",
@@ -353,7 +362,7 @@
    "basePoints": 2963.74
   },
   {
-   "place": 40,
+   "place": 41,
    "oldPlace": 38,
    "id": "14447",
    "name": "Abdieldevil",
@@ -362,22 +371,13 @@
    "basePoints": 3383.26
   },
   {
-   "place": 41,
+   "place": 42,
    "oldPlace": 41,
    "id": "4825",
    "name": "Tunax",
    "country": "Norway",
    "points": 3375.09,
    "basePoints": 3244.09
-  },
-  {
-   "place": 42,
-   "oldPlace": 39,
-   "id": "14440",
-   "name": "Kaza",
-   "country": "Romania",
-   "points": 3361.33,
-   "basePoints": 3352.86
   },
   {
    "place": 43,
