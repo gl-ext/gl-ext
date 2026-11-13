@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T08:58:37.786Z",
+ "generated": "2026-11-13T10:33:31.080Z",
  "users": [
   {
    "place": 1,
@@ -345,7 +345,7 @@
   },
   {
    "place": 39,
-   "oldPlace": 46,
+   "oldPlace": 47,
    "id": "14549",
    "name": "Whizkid05",
    "country": "United-Kingdom",
@@ -381,7 +381,7 @@
   },
   {
    "place": 43,
-   "oldPlace": 50,
+   "oldPlace": 51,
    "id": "51306",
    "name": "karkito",
    "country": "South-Korea",
@@ -408,12 +408,12 @@
   },
   {
    "place": 46,
-   "oldPlace": 58,
+   "oldPlace": 46,
    "id": "18046",
    "name": "ItzDexii",
    "country": "Ukraine",
    "points": 3232.16,
-   "basePoints": 2589
+   "basePoints": 2981
   },
   {
    "place": 47,
@@ -444,7 +444,7 @@
   },
   {
    "place": 50,
-   "oldPlace": 48,
+   "oldPlace": 49,
    "id": "25791",
    "name": "Syrcx",
    "country": "Israel",
