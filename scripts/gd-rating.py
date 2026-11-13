@@ -1,5 +1,5 @@
 # Рейтинг по геометрическому среднему N лучших записей (меньше = лучше).
-# 100% = h (место уровня); иначе f = h*a*(T/c)^(ln(b/a)/ln(T/t)), T и t из levels_tp.json.
+# 100% = h (место уровня); иначе f = h*a*(T/c)^(ln(b/a)/ln(T/t)), T и t из levels_tp.json (только с GitHub).
 # Источники: глобал (всегда), pointercrate (напрямую, в т.ч. игроки без линка, помечены [PC]), my_extras.
 # Для игроков, которые есть только в Pointercrate, флаг берётся из их профиля на Pointercrate.
 #
@@ -42,7 +42,7 @@ p.add_argument("--cap-place", dest="cap_place", type=float, default=300, help="�
 p.add_argument("--levels", type=int, default=0, help="только первые N уровней (быстрый тест)")
 p.add_argument("--show", type=int, default=50, help="сколько игроков печатать")
 p.add_argument("--long", action="store_true", help="подробный вывод (по строке на запись)")
-p.add_argument("--conc", type=int, default=10, help="параллельных запросов")
+p.add_argument("--conc", type=int, default=20, help="параллельных запросов")
 p.add_argument("--save", type=int, default=10, help="сохранять кеш каждые N задач")
 p.add_argument("--ttl", type=int, default=3600, help="секунд, пока кеш уровня свежий")
 p.add_argument("--add", action="append", default=[], help="своя запись: ID_игрока:ID_уровня:процент")
@@ -52,7 +52,10 @@ p.add_argument("--min-score", dest="min_score", type=float, default=None,
 p.add_argument("--max-score", dest="max_score", type=float, default=None,
                help="показывать игроков с очками не больше этого, например 160; "
                     "подсчёт рекордов только с Pointercrate тогда тоже идёт только по ним")
-p.add_argument("--who", default="", help="диагностика: показать все аккаунты, в имени которых есть эта строка")
+p.add_argument("--pc-conc", dest="pc_conc", type=int, default=20,
+               help="сколько запросов к Pointercrate одновременно (при 429 уменьшите)")
+p.add_argument("--fresh-country", dest="fresh_country", action="store_true",
+               help="не брать страны Pointercrate из кеша (перезапросить)")
 args = p.parse_args()
 
 N = args.n
@@ -126,7 +129,16 @@ def load_repo_json(name):
 
 
 def load_tp():
-    return load_repo_json("levels_tp.json").get("levels", {})
+    """levels_tp.json берём ТОЛЬКО с GitHub (локальный файл не используется).
+    Без него T/t были бы запасными для всех уровней и рейтинг получился бы неверным, поэтому при сбое выходим."""
+    print("levels_tp.json: беру с GitHub (raw кешируется до ~5 минут после правки)")
+    try:
+        levels = get_json(RAW + "levels_tp.json").get("levels", {})
+    except Exception as e:
+        raise SystemExit(f"levels_tp.json: не удалось загрузить с GitHub ({e}). Останавливаюсь.")
+    if not levels:
+        raise SystemExit("levels_tp.json: на GitHub пустой список уровней. Останавливаюсь.")
+    return levels
 
 
 def load_links():
@@ -149,8 +161,21 @@ def load_links():
         return i
 
     pc_map, alias = {}, {}
+    people = {}  # главный ID -> {"dl": [все аккаунты Demonlist, главный первым], "pc": [аккаунты Pointercrate]}
+
+    def grp(main):
+        return people.setdefault(main, {"dl": [], "pc": []})
+
+    def add_uniq(lst, x):
+        x = str(x)
+        if x not in lst:
+            lst.append(x)
+
     for main_id, entry in links.items():
         main = canon0(main_id)
+        g = grp(main)
+        add_uniq(g["dl"], main)
+        add_uniq(g["dl"], main_id)
         sites = entry if isinstance(entry, dict) else {"pointercrate": entry}
         for site, ids in sites.items():
             for x in (ids if isinstance(ids, list) else [ids]):
@@ -158,10 +183,22 @@ def load_links():
                     continue
                 if site == "pointercrate":
                     pc_map[str(x)] = main
+                    add_uniq(g["pc"], x)
                 elif any(s in str(site).lower() for s in ("demonlist", "global")):
                     alias[str(x)] = main  # доп. аккаунты того же человека на Demonlist
+                    add_uniq(g["dl"], x)
     for main_id in links:
         alias.setdefault(str(main_id), canon0(main_id))
+    # аккаунты, склеенные через fix.json, тоже считаются аккаунтами этого человека
+    for a in absorb:
+        main = canon0(a)
+        g = grp(main)
+        add_uniq(g["dl"], main)
+        add_uniq(g["dl"], a)
+
+    def accounts(uid):
+        """Все известные аккаунты человека: {"dl": [...], "pc": [...]} (главный Demonlist-аккаунт первым)."""
+        return people.get(canon(uid), {"dl": [str(uid)], "pc": []})
 
     def canon(uid):
         uid = str(uid)
@@ -178,7 +215,7 @@ def load_links():
           f"игроков с удалением видео {len(removals)}")
     if not links:
         print("  ВНИМАНИЕ: links.json пустой или не загрузился - склейки аккаунтов не будет!")
-    return (lambda pid: pc_map.get(str(pid))), canon, removals
+    return (lambda pid: pc_map.get(str(pid))), canon, removals, accounts
 
 
 def is_removed(removals, uid, video):
@@ -378,13 +415,19 @@ def verifier_of(lvl):
     return None
 
 
+def clean_country(c):
+    """'Unknown' и пустое значение на глобале означают 'страны нет'."""
+    c = (c or "").strip()
+    return None if c.lower() in ("", "unknown") else c
+
+
 def dl_profile(uid):
     """Профиль игрока на глобале: GET user/get?id=<id> -> data.username, data.country.
     Возвращает (ник, страна) или None, если профиля нет. Кешируется на 30 дней."""
     key = "u" + str(uid)
     c = cache.get(key)
     if c and time.time() - c["at"] < 30 * 86400 and c.get("n"):
-        return (c["n"], c.get("c"))
+        return (c["n"], clean_country(c.get("c")))
     try:
         d = get_json(f"{DL}user/get?id={uid}").get("data") or {}
     except urllib.error.HTTPError as e:
@@ -397,7 +440,7 @@ def dl_profile(uid):
     country = d.get("country")
     with lock:
         cache[key] = {"at": time.time(), "n": name, "c": country}
-    return (name, country)
+    return (name, clean_country(country))
 
 
 # ---------- Pointercrate ----------
@@ -441,16 +484,82 @@ def pc_records(demon_id):
     return out
 
 
+pc_sem = threading.Semaphore(max(1, args.pc_conc))  # не заваливаем Pointercrate запросами
+pc_style = ["/"]   # какой вариант URL работает: со слэшем в конце или без
+
+
+def pc_fetch(url, tries=4):
+    """GET к Pointercrate. Возвращает (HTTP-код, текст ответа).
+    429 и 5xx повторяем (с учётом Retry-After); остальные коды возвращаем как есть.
+    Исключение - только если сеть не отвечала все попытки."""
+    last = None
+    for i in range(tries):
+        try:
+            with pc_sem:
+                req = urllib.request.Request(url, headers={"User-Agent": "gl-ext-top6",
+                                                           "Accept": "application/json"})
+                with urllib.request.urlopen(req, timeout=30) as r:
+                    return r.status, r.read().decode("utf-8", "replace")
+        except urllib.error.HTTPError as e:   # сюда попадаем уже ВНЕ семафора
+            try:
+                body = e.read().decode("utf-8", "replace")
+            except Exception:
+                body = ""
+            if e.code == 429 or e.code >= 500:
+                last = (e.code, body)
+                try:
+                    wait = float(e.headers.get("Retry-After"))
+                except (TypeError, ValueError):
+                    wait = 3 * (i + 1)
+                time.sleep(min(wait, 60))
+                continue
+            return e.code, body
+        except Exception as e:
+            last = e
+            time.sleep(min(2 ** i, 10))
+    if isinstance(last, tuple):
+        return last
+    raise last
+
+
 def pc_player_country(pid):
-    """Код страны (ISO-2) игрока Pointercrate или None. Кешируется на 30 дней."""
-    key = "pcn" + str(pid)
+    """Код страны (ISO-2) игрока Pointercrate или None. Кешируется на 30 дней.
+    Если запрос не удался - бросает исключение (и ничего не кеширует)."""
+    pid = str(pid)
+    key = "pcn3" + pid  # новый ключ: старые pcn/pcn2 могли хранить "страны нет" от кривого ответа
     c = cache.get(key)
-    if c and time.time() - c["at"] < 30 * 86400:
+    if c and not args.fresh_country and time.time() - c["at"] < 30 * 86400:
         return c["c"]
-    d = get_json(f"{PC}v1/players/{pid}")
-    if isinstance(d, dict):
-        d = d.get("data", d)
-    code = ((d or {}).get("nationality") or {}).get("country_code")
+
+    variants = [f"{PC}v1/players/{pid}/", f"{PC}v1/players/{pid}"]
+    if pc_style[0] == "":
+        variants.reverse()
+    status, body, errs = None, "", []
+    for u in variants:
+        try:
+            st, bd = pc_fetch(u)
+        except Exception as e:
+            errs.append(f"{u} -> сеть: {str(e)[:60]}")
+            status = None
+            continue
+        errs.append(f"{u} -> HTTP {st}")
+        status, body = st, bd
+        if st == 200:
+            pc_style[0] = "/" if u.endswith("/") else ""
+            break
+    if status != 200:
+        raise RuntimeError("; ".join(errs))
+
+    try:
+        d = json.loads(body)
+    except ValueError:
+        raise RuntimeError("ответ не JSON")
+    if isinstance(d, dict) and isinstance(d.get("data"), dict):
+        d = d["data"]
+    if not isinstance(d, dict) or "id" not in d:
+        return None  # структура не та - НЕ кешируем, чтобы не запомнить ложное "страны нет"
+    nat = d.get("nationality")
+    code = nat.get("country_code") if isinstance(nat, dict) else None
     with lock:
         cache[key] = {"at": time.time(), "c": code}
     return code
@@ -599,7 +708,7 @@ def main():
         print("Свои записи:", ", ".join(args.add))
 
     print("Загружаю список уровней...")
-    pc_to_dl, canon_id, removals = load_links()
+    pc_to_dl, canon_id, removals, accounts_of = load_links()
     # качаем только до --cap-place (по умолчанию топ-300), остальные уровни нигде не используются
     levels = load_paged("level/classic/list", "levels", 100, stop=levels_past_cap)
     extras = load_extras()
@@ -646,6 +755,7 @@ def main():
     for l, recs in fetched:
         k = str(l["id"])
         for uid, name, country, pct, video in recs or []:
+            country = clean_country(country)
             if is_removed(removals, uid, video):
                 removed_n += 1
                 continue
@@ -704,6 +814,10 @@ def main():
             print(f"Страна найдена у {got} из {len(pids)}")
 
     for uid, m in extras.items():
+        # my_extras мог записать игрока как "pc<ID Pointercrate>", когда линка ещё не было.
+        # Если линк в links.json с тех пор появился, переводим на его главный ID глобала.
+        if uid.startswith("pc") and pc_to_dl(uid[2:]):
+            uid = pc_to_dl(uid[2:])
         b = best_by.setdefault(uid, {})
         for k, pct in m.items():
             b[k] = max(b.get(k, -1), pct)
@@ -713,22 +827,7 @@ def main():
 
     # Склеиваем аккаунты одного человека (links.json + fix.json) после сбора всех источников
     before = len(best_by)
-    if args.who:
-        w = args.who.lower()
-        print(f"\n--who '{args.who}' ДО склейки:")
-        for uid in best_by:
-            nm = str(info.get(uid, ("", None))[0])
-            if w in nm.lower() or w == uid:
-                print(f"  id={uid:<8} имя={nm:<24} -> после склейки id={canon_id(uid)}  "
-                      f"{'(только Pointercrate, нет линка)' if uid in pc_only else ''}")
     best_by, info = merge_accounts(best_by, info, canon_id)
-    if args.who:
-        print(f"--who '{args.who}' ПОСЛЕ склейки:")
-        for uid in best_by:
-            nm = str(info.get(uid, ("", None))[0])
-            if w in nm.lower() or w == uid:
-                print(f"  id={uid:<8} имя={nm}")
-        print()
     print(f"Склейка аккаунтов: {before} -> {len(best_by)}")
 
     # Рекорды (игрок + уровень), которые есть только на Pointercrate. Считаем после склейки
@@ -772,6 +871,52 @@ def main():
         if need and got == 0:
             print("  ВНИМАНИЕ: ни один профиль не загрузился. Ники и флаги этих игроков "
                   "могут быть из Pointercrate или пустыми.")
+
+    # Если у главного аккаунта страны нет - ищем её у остальных аккаунтов этого человека:
+    # сначала по всем аккаунтам Demonlist (главный первым), затем по аккаунтам Pointercrate.
+    # Белый флаг остаётся только если страны нет нигде.
+    country_errors = []
+
+    def find_country(uid):
+        acc = accounts_of(uid)
+        for d in acc["dl"]:
+            if str(d).startswith("pc"):
+                continue
+            try:
+                prof = dl_profile(d)
+            except Exception as e:
+                country_errors.append(f"DL {d} (игрок {uid}): {str(e)[:80]}")
+                continue
+            if prof and clean_country(prof[1]):
+                return prof[1]
+        for pid in acc["pc"]:
+            try:
+                code = pc_player_country(pid)
+            except Exception as e:
+                country_errors.append(f"PC {pid} (игрок {uid}): {str(e)[:80]}")
+                continue
+            if code:
+                return code
+        return None
+
+    no_flag = [u for u in best_by if u not in pc_only
+               and flag((info.get(u) or ("", None))[1]) == "🏳️"]
+    if no_flag:
+        print("Поиск страны по другим аккаунтам игроков без флага:")
+        res = run_tasks([(u,) for u in no_flag], lambda it: find_country(it[0]), "игроков (страна)")
+        got = 0
+        for (u,), code in res:
+            if code:
+                info[u] = (info[u][0], code)
+                got += 1
+        print(f"Страна найдена у {got} из {len(no_flag)}")
+        still = [u for u in no_flag if not info[u][1]]
+        if still:
+            print(f"  Без страны остались {len(still)}")
+        if country_errors:
+            print(f"  Ошибок запросов при поиске страны: {len(country_errors)} (первые 5):")
+            for msg in country_errors[:5]:
+                print(f"    {msg}")
 
     result = []
     for uid, best in best_by.items():
