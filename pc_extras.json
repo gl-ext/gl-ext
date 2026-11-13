@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-13T02:04:02.220Z",
+  "generated": "2026-11-13T03:22:55.912Z",
   "users": {
     "1": [
       [2296,229,"Renevant",100,"https://www.youtube.com/watch?v=baqddDlKpB4",null,200,239,"pointercrate",1.8,0]
@@ -9335,7 +9335,7 @@
       [2333,383,"Visible Ray",59,"https://www.youtube.com/watch?v=-16-9apP__E",null,298,127,"pointercrate",0,0]
     ],
     "14473": [
-      [2656,36,"Acheron",72,"https://www.youtube.com/watch?v=scVtuRoblRU",null,28,442,"pointercrate",120.75,0],
+      [2656,36,"Acheron",100,"https://www.youtube.com/watch?v=Blfu4WxKLoU",null,28,442,"pointercrate",336,0],
       [3354,130,"Trickshot",100,"https://www.youtube.com/watch?v=Ph5pxJ9dsko",null,110,687,"pointercrate",25,0],
       [2296,229,"Renevant",100,"https://www.youtube.com/watch?v=FGqBr6xu_jo",null,200,239,"pointercrate",1.8,0],
       [2636,253,"ATOMIC CANNON Mk II",100,"https://www.youtube.com/watch?v=H_-flvGWdBk",null,210,509,"pointercrate",0.99,0],
@@ -30241,6 +30241,9 @@
       [2304,277,"Amalgam",100,"https://www.youtube.com/watch?v=7xGAS2hb1kU",null,236,543,"pointercrate",0.98,0],
       [2144,387,"Arctic Lights",100,"https://www.youtube.com/watch?v=aNnh4JsJYVI",null,301,128,"pointercrate",0.91,0]
     ],
+    "55341": [
+      [1748,44,"Slaughterhouse",80,"https://www.youtube.com/watch?v=rUANfsWSdqE",75,40,380,"pointercrate",116.78,107.51]
+    ],
     "55608": [
       [1705,532,"Kuzureta",100,"https://www.youtube.com/watch?v=Pp3-yrZSYjA",null,381,368,"pointercrate",0.83,0]
     ],
@@ -30452,6 +30455,9 @@
       [2024,297,"Bloodlust",100,"https://www.youtube.com/watch?v=KqrGELw1XAc",null,258,161,"pointercrate",0.97,0],
       [2670,304,"Ykds1479ymdppr",100,"https://www.youtube.com/watch?v=RwmNqB6Alys",null,241,574,"pointercrate",0.96,0],
       [2107,305,"Silent Club",100,"https://www.youtube.com/watch?v=F-y2bP99Utw",null,251,337,"pointercrate",0.96,0]
+    ],
+    "61637": [
+      [2577,134,"Sonic Wave Infinity",100,"https://www.youtube.com/watch?v=-vHpa7Ou1D0",null,121,349,"pointercrate",21,0]
     ],
     "62722": [
       [null,null,"blight",100,"https://www.youtube.com/watch?v=XB7VfbRSRFc",null,127,738,"pointercrate",0,0]
