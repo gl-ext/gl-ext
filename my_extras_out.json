@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-13T10:33:31.080Z",
+  "generated": "2026-11-13T12:04:42.211Z",
   "users": {
     "2": [
       [2656,36,"Acheron",94,"",null,null,null,"my_extras",159.25,0]
@@ -368,9 +368,6 @@
     ],
     "14462": [
       [2687,31,"Spectre",100,"",null,null,null,"my_extras",356,0]
-    ],
-    "14473": [
-      [2656,36,"Acheron",100,"",null,null,null,"my_extras",336,0]
     ],
     "14495": [
       [2687,31,"Spectre",85,"",null,null,null,"my_extras",143.39,0]
