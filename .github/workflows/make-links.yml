@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       args:
-        description: "Дополнительные аргументы make_links.py (например --no-yt-id или --all-videos)"
+        description: "Дополнительные аргументы make-links.py (например --no-yt-id или --all-videos)"
         required: false
         default: ""
 
@@ -44,11 +44,11 @@ jobs:
           restore-keys: channels-
 
       # --refresh стирает кэш рекордов, чтобы данные были свежими (кэш каналов он не трогает).
-      # Путь scripts/make_links.py поменяй, если скрипт лежит в другом месте.
-      - name: Run make_links.py
+      # Путь scripts/make-links.py поменяй, если скрипт лежит в другом месте.
+      - name: Run make-links.py
         env:
           EXTRA_ARGS: ${{ github.event.inputs.args }}
-        run: python scripts/make_links.py --refresh --workers=8 $EXTRA_ARGS
+        run: python scripts/make-links.py --refresh --workers=8 $EXTRA_ARGS
 
       # Кэш каналов сохраняем всегда, даже если запуск упал или не уложился по времени:
       # так следующий запуск продолжит с места остановки.
