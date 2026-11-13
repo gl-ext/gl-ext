@@ -1,0 +1,4 @@
+scripts/cbd*
+scripts/gdr*.txt
+scripts/gdr*.json
+scripts/levelcache.json
