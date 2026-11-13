@@ -1327,6 +1327,16 @@
       ]
     },
     {
+      "keep": 15867,
+      "keep_name": "patos",
+      "absorb": [
+        {
+          "id": 15937,
+          "name": "p"
+        }
+      ]
+    },
+    {
       "keep": 16013,
       "keep_name": "ElectroLight7",
       "absorb": [
