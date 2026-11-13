@@ -1,0 +1,36 @@
+{
+  "unlink": [
+    {"channel": "https://www.youtube.com/@movistargd8849", "owner": [14756], "accounts": [2801], "note": "в пометке было delete: пока только отвязка канала (уточнить, нужно ли удалять записи с видео)"},
+    {"channel": "https://www.youtube.com/@3000PtsKing", "owner": [13463], "accounts": [3674], "note": "Кинт продал этот канал, теперь он принадлежит SeNX302; рекорды Кинта к 13463 не относить"},
+    {"channel": "https://www.youtube.com/@skzyl", "owner": [14543], "accounts": [3701], "note": "у 3701 нет видео с этого канала, откуда взялся канал, выяснить"},
+    {"channel": "https://www.youtube.com/@Eiriley", "owner": [5917], "accounts": [6831]},
+    {"channel": "https://www.youtube.com/@MullsyD", "owner": [13681], "accounts": [6580], "note": "в пометке было delete: пока только отвязка канала (уточнить, нужно ли удалять записи с видео)"},
+    {"channel": "https://www.youtube.com/@Plusxenon", "owner": [16041], "accounts": [6580], "note": "в пометке было delete: пока только отвязка канала (уточнить, нужно ли удалять записи с видео)"},
+    {"channel": "https://www.youtube.com/@lolavev", "owner": [14750], "accounts": [6588], "note": "видео RUmeWxeq6Vo принадлежит 14750 (amber), у 6588 не учитывается"},
+    {"channel": "https://www.youtube.com/@patos3313", "owner": [15867, 15937], "accounts": [13738], "note": "у 13738 удалено видео 9C49OwKZ_iI"},
+    {"channel": "https://www.youtube.com/@TrusTa", "owner": [13891], "accounts": [14791], "note": "в пометке было 'unlink 2 all': пока только отвязка этого канала (уточнить)"},
+    {"channel": "https://www.youtube.com/@tamsus_juodas", "owner": [16479], "accounts": [14019]},
+    {"channel": "https://www.youtube.com/@NexusGD10", "owner": [14090], "accounts": [14394]},
+    {"channel": "https://www.youtube.com/@franzy7468", "owner": [14179], "accounts": [14243]},
+    {"channel": "https://www.youtube.com/@dan2d491", "owner": [14240], "accounts": [29618]},
+    {"channel": "https://www.youtube.com/@orangestorm9720", "owner": [14266], "accounts": [15788]},
+    {"channel": "https://www.youtube.com/@veikkies4638", "owner": [14805], "accounts": [16000]},
+    {"channel": "https://www.youtube.com/@ARtumanka", "owner": [14971], "accounts": [16292]},
+    {"channel": "https://www.youtube.com/@Cersia", "owner": [15021], "accounts": [55949]},
+    {"channel": "https://www.youtube.com/@itzapexgd", "owner": [15072], "accounts": [53682]},
+    {"channel": "https://www.youtube.com/@azuvygd", "owner": [16317], "accounts": [15187]},
+    {"channel": "https://www.youtube.com/@latezk5739", "owner": [15345], "accounts": [23088]},
+    {"channel": "https://www.youtube.com/@BillzerGD", "owner": [63460], "accounts": [16266]},
+    {"channel": "https://www.youtube.com/@kkoniichan", "owner": [18824], "accounts": [21079]},
+    {"channel": "https://www.youtube.com/@notged25", "owner": [28493], "accounts": [21814]},
+    {"channel": "https://www.youtube.com/@AranyaDeCueva", "owner": [44920], "accounts": [27253]}
+  ],
+  "placeholder_channels": [
+    "https://www.youtube.com/@justagdplayer",
+    "https://www.youtube.com/@NewlyRatedExtremes"
+  ],
+  "placeholder_accounts": [15353],
+  "add_channels": [
+    {"account": 3674, "channel": "https://www.youtube.com/@kkintt"}
+  ]
+}
