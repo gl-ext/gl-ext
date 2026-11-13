@@ -22,7 +22,6 @@
   --force         игнорировать --max
   --skip-fetch    не запускать coreboard_parse и gd-rating, взять готовые cbd.txt и gdr.txt
                   (удобно, чтобы быстро перепроверить сравнение)
-  --ids PATH      файл ник -> ID (по умолчанию gdr-ids.json в корне репозитория)
   --skip-levels   не обновлять levels_tp.json (при --skip-fetch он тоже не обновляется)
 
 levels_tp.json: перед сравнением скрипт скачивает https://coreboard.pythonanywhere.com/main/levels
@@ -58,7 +57,6 @@ ap.add_argument("--commit", action="store_true", help="закоммитить и
 ap.add_argument("--max", type=int, default=300, help="максимум новых записей за раз (защита)")
 ap.add_argument("--force", action="store_true", help="игнорировать --max")
 ap.add_argument("--skip-fetch", action="store_true", help="не качать cbd и gdr заново")
-ap.add_argument("--ids", default=str(ROOT / "gdr-ids.json"), help="файл ник -> ID игрока")
 ap.add_argument("--skip-levels", action="store_true", help="не обновлять levels_tp.json")
 args = ap.parse_args()
 
@@ -323,17 +321,7 @@ def main():
         if not f.exists() or f.stat().st_size == 0:
             sys.exit(f"Нет файла {f.name} (или он пустой). Останавливаюсь.")
 
-    ids = Path(args.ids)
     work = Path(tempfile.mkdtemp(prefix="extras_sync_"))
-    if not ids.exists():
-        # запасной вариант: ник -> ID берём из самого gdr.json (сработают только совпадающие ники)
-        gj = HERE / "gdr.json"
-        print(f"ВНИМАНИЕ: {ids} не найден, строю ник -> ID из gdr.json (совпадут только одинаковые ники).")
-        if not gj.exists():
-            sys.exit("Нет ни gdr-ids.json, ни gdr.json: сопоставлять игроков нечем.")
-        ids = work / "gdr-ids.json"
-        ids.write_text(json.dumps({p["name"]: p["id"] for p in json.loads(gj.read_text("utf-8"))
-                                   if p.get("name") and not p.get("pc_only")}, ensure_ascii=False), "utf-8")
 
     # levels_tp.json обновляем до compare, чтобы он работал по свежему списку уровней
     levels_for_compare = LEVELS
@@ -347,7 +335,7 @@ def main():
             levels_changed = update_levels(LEVELS)
 
     run([sys.executable, cmp_script, "in-cbd-not-in-gdr", "--cbd", cbd_txt, "--gdr", gdr_txt,
-         "--ids", ids, "--levels", levels_for_compare, "--out-dir", work], "compare: in-cbd-not-in-gdr")
+         "--levels", levels_for_compare, "--out-dir", work], "compare: in-cbd-not-in-gdr")
 
     found_file = work / "missing_achievements.json"
     if not found_file.exists():
