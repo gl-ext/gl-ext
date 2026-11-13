@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T00:51:03.955Z",
+ "generated": "2026-11-13T02:04:02.220Z",
  "users": [
   {
    "place": 1,
@@ -363,6 +363,15 @@
   },
   {
    "place": 41,
+   "oldPlace": 41,
+   "id": "4825",
+   "name": "Tunax",
+   "country": "Norway",
+   "points": 3375.09,
+   "basePoints": 3244.09
+  },
+  {
+   "place": 42,
    "oldPlace": 38,
    "id": "14440",
    "name": "Kaza",
@@ -371,7 +380,7 @@
    "basePoints": 3352.86
   },
   {
-   "place": 42,
+   "place": 43,
    "oldPlace": 50,
    "id": "51306",
    "name": "karkito",
@@ -380,7 +389,7 @@
    "basePoints": 2759.8
   },
   {
-   "place": 43,
+   "place": 44,
    "oldPlace": 45,
    "id": "14466",
    "name": "ProudGiraffe311",
@@ -389,22 +398,13 @@
    "basePoints": 2981.03
   },
   {
-   "place": 44,
+   "place": 45,
    "oldPlace": 43,
    "id": "14430",
    "name": "Cursed",
    "country": "United-Kingdom",
    "points": 3332.22,
    "basePoints": 3066.14
-  },
-  {
-   "place": 45,
-   "oldPlace": 41,
-   "id": "4825",
-   "name": "Tunax",
-   "country": "Norway",
-   "points": 3247.09,
-   "basePoints": 3244.09
   },
   {
    "place": 46,
@@ -439,7 +439,7 @@
    "id": "15864",
    "name": "MeQ8cNv43s6A",
    "country": "Japan",
-   "points": 3061.08,
+   "points": 3048.86,
    "basePoints": 3048.86
   },
   {
