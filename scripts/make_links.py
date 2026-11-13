@@ -14,6 +14,12 @@
 Главная: запись глобала, а если глобала нет, запись с наименьшим id Pointercrate.
 Две и больше записей ГЛОБАЛА с общим каналом не склеиваются, они попадают в отдельный файл.
 
+fix.json: читаются merges (склейка аккаунтов глобала, в том числе в уже готовом links.json:
+записи поглощённых аккаунтов переезжают в запись основного) и removals (видео, которые у
+этого игрока не учитываются при поиске связей и каналов).
+
+different_people.json: случаи, где канал общий, но люди РАЗНЫЕ (см. make_links.py, DIFFERENT).
+
 Запуск:   python make_links.py
 Скачивание можно прервать в любой момент (Ctrl+C, выключили свет, закрыли окно).
 Прогресс сохраняется в файлы cache_*, и при следующем запуске скрипт продолжит
@@ -65,6 +71,17 @@ REVIEW = "links_review.txt"  # спорные случаи для ручной �
 MERGES_LOG = "links_channel_merges.txt"  # что и когда склеено по общим каналам (дописывается)
 CHANNEL_CONFLICTS = "links_channel_conflicts.txt"  # общие каналы, которые НЕ склеены (пишется заново)
 CHANNELS_IGNORE = "channels_ignore.json"  # список ссылок на каналы, по которым склеивать не надо
+# Случаи, где общий канал у реально РАЗНЫХ людей. Формат:
+# {
+#   "unlink": [{"channel": "https://www.youtube.com/@x", "owner": [111], "accounts": [222], "note": "..."}],
+#       канал остаётся у owner и убирается у accounts (id глобала), потом сам не вернётся;
+#   "placeholder_channels": ["https://www.youtube.com/@y"],   канал-заглушка: его нет ни у кого;
+#   "placeholder_accounts": [333],   аккаунт-заглушка: без видео, каналов и аккаунтов Pointercrate;
+#   "add_channels": [{"account": 444, "channel": "https://www.youtube.com/@z"}],   добавить вручную
+#   "shared_ok": [{"channel": "https://www.youtube.com/@w", "accounts": [555, 666]}]
+#       канал у этих людей общий осознанно (они разные): его не склеиваем и в конфликты не пишем
+# }
+DIFFERENT = "different_people.json"
 
 FIX = "fix.json"
 
@@ -1146,13 +1163,160 @@ def report_other_sites(dl, pc, workers=WORKERS):
                 f.write(line + "\n")
 
 
+# ---------- fix.json и different_people.json ----------
+
+def make_resolver(fix):
+    """id аккаунта глобала -> id основного аккаунта по fix.json merges (цепочки тоже).
+    Всё в строках. Возвращает (resolve, {id основного: keep_name})."""
+    to_keep, names = {}, {}
+    for m in fix.get("merges", []):
+        keep = str(m["keep"])
+        if m.get("keep_name"):
+            names[keep] = m["keep_name"]
+        for a in m.get("absorb", []):
+            to_keep[str(a["id"])] = keep
+
+    def resolve(uid):
+        uid, seen = str(uid), set()
+        while uid in to_keep and uid not in seen:
+            seen.add(uid)
+            uid = to_keep[uid]
+        return uid
+
+    return resolve, names
+
+
+def blank_videos(dl, removals, placeholders):
+    """У записей из fix.json removals (видео этого игрока) и у аккаунтов-заглушек убирает ссылку
+    на видео. Сама запись остаётся, чтобы аккаунт не пропал из links.json.
+    Возвращает (новый список, сколько видео убрано)."""
+    out, n = [], 0
+    for r in dl:
+        u = str(r["u"]) if r["u"] is not None else None
+        if r["v"] and u is not None and (u in placeholders or video_id(r["v"]) in removals.get(u, ())):
+            r = {**r, "v": None}
+            n += 1
+        out.append(r)
+    return out, n
+
+
+def fold_fix_merges(result, resolve, names):
+    """В готовом links.json могли остаться записи аккаунтов, которые fix.json уже поглотил.
+    Переносим их аккаунты Pointercrate и каналы в запись основного аккаунта.
+    keep_name из fix.json становится ником записи. Возвращает, сколько записей перенесено."""
+    folded = 0
+    for key in list(result):
+        if not str(key).isdigit():
+            continue
+        keeper = resolve(key)
+        if keeper == str(key):
+            continue
+        entry = result.pop(key)
+        main = result.setdefault(keeper, {"_name": str(entry.get("_name") or ""), "pointercrate": []})
+        cur = main.setdefault("pointercrate", [])
+        for pid in entry.get("pointercrate", []):
+            if pid not in cur:
+                cur.append(pid)
+        for platform, links in (entry.get("channels") or {}).items():
+            lst = main.setdefault("channels", {}).setdefault(platform, [])
+            for link in links:
+                if link not in lst:
+                    lst.append(link)
+        folded += 1
+    for k, nm in names.items():
+        if k in result:
+            result[k]["_name"] = nm
+    return folded
+
+
+def apply_account_rules(result, rules, resolve):
+    """Аккаунты-заглушки (placeholder_accounts): у них нет ни каналов, ни аккаунтов Pointercrate.
+    Освободившиеся аккаунты Pointercrate получат свои записи ниже."""
+    n = 0
+    for acc in rules.get("placeholder_accounts", []):
+        entry = result.get(resolve(acc))
+        if entry and (entry.get("pointercrate") or entry.get("channels")):
+            entry["pointercrate"] = []
+            entry.pop("channels", None)
+            n += 1
+    return n
+
+
+def channel_ucs():
+    """Ссылка на канал (нормализованная) -> его номера UC. Берётся из кэша каналов."""
+    cache = load_json(CACHE_CH, {}) or {}
+    uc_of = defaultdict(set)
+    for k, link in cache.items():
+        if k.startswith("yt:") and link:
+            uc = cache.get("ytid:" + k[3:])
+            if uc:
+                uc_of[norm_channel(link)].add(uc)
+    return uc_of
+
+
+def apply_channel_rules(result, rules, resolve):
+    """Правила из different_people.json для каналов. Вызывается после поиска каналов, поэтому
+    убранный канал не возвращается, даже если скрипт снова найдёт его по видео.
+    Вместе с @именем убирается и номер канала (UC...), он берётся из кэша каналов.
+    Возвращает (сколько ссылок убрано, сколько добавлено вручную)."""
+    uc_of = channel_ucs()
+
+    def strip(entry, link):
+        n = norm_channel(link)
+        ucs = uc_of.get(n, set())
+        chans = entry.get("channels")
+        if not chans:
+            return 0
+        removed = 0
+        for platform in list(chans):
+            kept = [l for l in chans[platform]
+                    if not (norm_channel(l) == n or (platform == "youtube_id" and l in ucs))]
+            removed += len(chans[platform]) - len(kept)
+            if kept:
+                chans[platform] = kept
+            else:
+                del chans[platform]
+        if not chans:
+            del entry["channels"]
+        return removed
+
+    removed = added = 0
+    for link in rules.get("placeholder_channels", []):
+        for entry in result.values():
+            removed += strip(entry, link)
+    for case in rules.get("unlink", []):
+        for acc in case.get("accounts", []):
+            entry = result.get(resolve(acc))
+            if entry:
+                removed += strip(entry, case["channel"])
+    for item in rules.get("add_channels", []):
+        entry = result.get(resolve(item["account"]))
+        url = item["channel"]
+        if not entry:
+            print(f"  add_channels: аккаунта {item['account']} нет в links.json, пропускаю")
+            continue
+        if "youtube.com" in url:
+            platform = "youtube"
+        else:
+            hit = offline_channel(url)
+            platform, url = hit if hit else (None, url)
+        if not platform:
+            print(f"  add_channels: не понял, что за ссылка {url}")
+            continue
+        lst = entry.setdefault("channels", {}).setdefault(platform, [])
+        if not any(norm_channel(x) == norm_channel(url) for x in lst):
+            lst.append(url)
+            added += 1
+    return removed, added
+
+
 # ---------- склейка по общим каналам ----------
 
 def norm_channel(link):
     return str(link).strip().rstrip("/").lower()
 
 
-def merge_by_channels(result):
+def merge_by_channels(result, rules=None, resolve=None):
     """Склеивает записи, у которых найден один и тот же канал.
     - одна запись глобала + записи pc...: всё уходит в запись глобала;
     - только записи pc...: всё уходит в запись с наименьшим id;
@@ -1161,6 +1325,14 @@ def merge_by_channels(result):
     Всё, что склеено, дописывается в MERGES_LOG. Возвращает (поглощено записей, групп,
     общих каналов у аккаунтов глобала)."""
     ignore = {norm_channel(x) for x in (load_json(CHANNELS_IGNORE, []) or [])}
+    resolve = resolve or str
+    ok_sets = {}  # канал -> аккаунты глобала, у которых он общий осознанно (different_people.json)
+    uc_of = channel_ucs()
+    for case in (rules or {}).get("shared_ok", []):
+        n = norm_channel(case["channel"])
+        accounts = {resolve(a) for a in case.get("accounts", [])}
+        for key in {n} | {norm_channel(u) for u in uc_of.get(n, ())}:  # и @имя, и номер канала
+            ok_sets[key] = accounts
     names = {k: str(e.get("_name") or "") for k, e in result.items()}
 
     def is_global(k):
@@ -1194,6 +1366,8 @@ def merge_by_channels(result):
     for ch, keys in by_channel.items():
         if len(keys) < 2:
             continue
+        if ch[1] in ok_sets and all(k in ok_sets[ch[1]] for k in keys if is_global(k)):
+            continue  # осознанно общий канал разных людей
         ks = sorted(keys, key=order)
         if sum(is_global(k) for k in ks) >= 2:
             global_overlaps.append((ch, ks))
@@ -1251,9 +1425,9 @@ def merge_by_channels(result):
 
     with open(CHANNEL_CONFLICTS, "w", encoding="utf-8") as f:
         f.write("Общие каналы, которые скрипт НЕ склеил. Файл пишется заново при каждом запуске.\n")
-        f.write(f"Если канал общий, но люди разные (командный канал), впиши его ссылку в {CHANNELS_IGNORE}\n")
-        f.write("(список строк в кавычках), и такой канал больше не будет склеивать записи.\n")
-        f.write("Уже склеенные записи это не разделит, их надо разделить в links.json вручную.\n")
+        f.write(f"Если люди РАЗНЫЕ, впиши случай в {DIFFERENT} (раздел unlink: у кого канал остаётся, у кого убрать).\n")
+        f.write(f"Если это один человек, добавь склейку в fix.json (merges). Если канал-заглушка, впиши его в\n")
+        f.write(f"placeholder_channels. Ссылку, по которой склеивать нельзя совсем, можно добавить в {CHANNELS_IGNORE}.\n")
         f.write(f"\n########## ГЛОБАЛ: один канал у нескольких аккаунтов глобала ({len(global_overlaps)}) ##########\n")
         f.write("Склейка аккаунтов глобала делается через fix.json (merges).\n")
         for (platform, _), ks in sorted(global_overlaps, key=lambda x: order(x[1][0])):
@@ -1291,7 +1465,18 @@ def main():
     dl = load_dl(workers)
     dl = merge_user_cache(dl)
     dl = merge_verifiers(dl)
-    dl = apply_fix(dl, load_fix())
+    fix = load_fix()
+    rules = load_json(DIFFERENT, {}) or {}
+    resolve, keep_names = make_resolver(fix)
+    removals = {}
+    for r in fix.get("removals", []):
+        removals.setdefault(str(r["user"]), set()).update(str(v) for v in r.get("videos", []) if v)
+    placeholders = {str(a) for a in rules.get("placeholder_accounts", [])}
+    placeholders |= {resolve(a) for a in placeholders}
+    dl, blanked1 = blank_videos(dl, removals, placeholders)  # по id, как они записаны на глобале
+    dl = apply_fix(dl, fix)
+    dl, blanked2 = blank_videos(dl, removals, placeholders)  # по id основных аккаунтов
+    print(f"  removals и аккаунты-заглушки: у записей убрано видео: {blanked1 + blanked2}")
 
     print("3/3 сопоставление")
     dl_by_vid = defaultdict(dict)  # видео -> {id игрока: ник}
@@ -1413,6 +1598,9 @@ def main():
             print(f"Не могу прочитать {OUT}, чтобы не затереть его, останавливаюсь.")
             print("Проверь файл (или переименуй его) и запусти снова.")
             sys.exit(1)
+
+    folded = fold_fix_merges(result, resolve, keep_names)
+    placeholder_cleared = apply_account_rules(result, rules, resolve)
 
     # какие аккаунты Pointercrate уже закреплены за кем-то
     pc_owner = {}
@@ -1551,8 +1739,11 @@ def main():
         print("Ищу каналы игроков (YouTube/Twitch/Bilibili/...)")
         added_channels = add_channels(result, dl, pc, workers)
 
+    # Правила из different_people.json: убрать канал у тех, кому он не принадлежит
+    rule_removed, rule_added = apply_channel_rules(result, rules, resolve)
+
     # Один и тот же канал у разных записей: это один человек, склеиваем
-    absorbed, merged_groups, global_shared = merge_by_channels(result)
+    absorbed, merged_groups, global_shared = merge_by_channels(result, rules, resolve)
 
     save_tmp = OUT + ".tmp"
     with open(save_tmp, "w", encoding="utf-8") as f:
@@ -1573,6 +1764,9 @@ def main():
           f"аккаунтов дописано в существующие записи: {joined_pc}")
     if added_channels is not None:
         print(f"  добавлено новых ссылок на каналы: {added_channels}")
+    print(f"  fix.json: записей перенесено в основные аккаунты: {folded}")
+    print(f"  different_people.json: убрано ссылок на каналы {rule_removed}, добавлено вручную {rule_added}, "
+          f"аккаунтов-заглушек очищено {placeholder_cleared}")
     print(f"  склейка по общим каналам: групп {merged_groups}, поглощено записей {absorbed} (подробности в {MERGES_LOG})")
     print(f"  общих каналов у нескольких аккаунтов глобала: {global_shared} (список в {CHANNEL_CONFLICTS})")
     if taken:
