@@ -83,6 +83,7 @@ CHANNELS_IGNORE = "channels_ignore.json"  # список ссылок на ка�
 # }
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # папка выше scripts/
 DIFFERENT = os.path.join(ROOT, "different_people.json")
+
 FIX = os.path.join(ROOT, "fix.json")
 
 # Видео YouTube (ID всегда 11 символов). Остальные ссылки сравнивать ненадёжно.
@@ -324,12 +325,38 @@ def merge_verifiers(dl):
     return out
 
 
+def load_rules_file(path, label):
+    """Читает JSON-файл правил и ПОДРОБНО говорит, что с ним не так."""
+    full = os.path.abspath(path)
+    if not os.path.exists(full):
+        print(f"  {label}: ФАЙЛ НЕ НАЙДЕН по пути {full}")
+        print(f"    текущая папка: {os.getcwd()}")
+        print(f"    скрипт лежит:  {os.path.dirname(os.path.abspath(__file__))}")
+        return {}
+    try:
+        with open(full, encoding="utf-8") as f:
+            data = json.load(f)
+    except json.JSONDecodeError as e:
+        print(f"  {label}: ФАЙЛ ПОВРЕЖДЁН, ошибка JSON в строке {e.lineno}, столбце {e.colno}: {e.msg}")
+        print(f"    путь: {full}")
+        return {}
+    except Exception as e:
+        print(f"  {label}: не удалось прочитать ({e}), путь: {full}")
+        return {}
+    if not isinstance(data, dict):
+        print(f"  {label}: в корне файла должен быть объект {{...}}, а там {type(data).__name__}")
+        return {}
+    if not data:
+        print(f"  {label}: файл найден ({full}), но он пустой")
+        return {}
+    counts = ", ".join(f"{k}: {len(v)}" for k, v in data.items() if isinstance(v, (list, dict)))
+    print(f"  {label}: прочитан из {full} ({counts})")
+    return data
+
+
 def load_fix():
-    """Читает fix.json. Если файла нет, работаем без него."""
-    fix = load_json(FIX, {})
-    if not fix:
-        print(f"  {FIX} не найден, работаю без него")
-    return fix
+    """Читает fix.json. Если файла нет или он битый, работаем без него (и говорим почему)."""
+    return load_rules_file(FIX, "fix.json")
 
 
 def apply_fix(dl, fix):
@@ -1466,10 +1493,7 @@ def main():
     dl = merge_user_cache(dl)
     dl = merge_verifiers(dl)
     fix = load_fix()
-    rules = load_json(DIFFERENT, {}) or {}
-    print(f"  {DIFFERENT}: {os.path.abspath(DIFFERENT)}, "
-          f"{'найден' if os.path.exists(DIFFERENT) else 'НЕ НАЙДЕН'}, "
-          f"unlink: {len(rules.get('unlink', []))}, add_channels: {len(rules.get('add_channels', []))}")
+    rules = load_rules_file(DIFFERENT, "different_people.json")
     resolve, keep_names = make_resolver(fix)
     removals = {}
     for r in fix.get("removals", []):
