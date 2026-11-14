@@ -9,8 +9,9 @@
   3. compare.py in-cbd-not-in-gdr -> missing_achievements.json;
   4. дописывает найденное в my_extras.json (по каждому игроку и уровню остаётся лучший процент,
      старое не удаляется и не понижается);
-  5. add-video-links.py ищет видео и пишет missing_achievements.json в корень репозитория:
-     [ID уровня, процент, ссылка на видео] (ссылки те же, что в командах /fulladd и /try; не нашлась - "");
+  5. пишет missing_achievements.json в корень репозитория: [ID уровня, процент, ссылка на видео].
+     По умолчанию видео НЕ ищутся (ссылки пустые, ""). С флагом --videos add-video-links.py ищет их
+     (ссылки те же, что в командах /fulladd и /try; не нашлась - "");
   6. с флагом --commit коммитит и пушит my_extras.json, missing_achievements.json и levels_tp.json.
 
 Запуск (из любой папки, пути считаются от места скрипта):
@@ -25,6 +26,7 @@
   --skip-fetch    не запускать coreboard_parse и gd-rating, взять готовые cbd.txt и gdr_gl_pc.txt
                   (удобно, чтобы быстро перепроверить сравнение)
   --skip-levels   не обновлять levels_tp.json (при --skip-fetch он тоже не обновляется)
+  --videos        искать видео для missing_achievements.json (по умолчанию не ищет, так быстрее)
 
 levels_tp.json: перед сравнением скрипт скачивает https://coreboard.pythonanywhere.com/main/levels
 (User-Agent gl-ext-top6) и перезаписывает levels_tp.json в корне репозитория: основные уровни
@@ -61,6 +63,8 @@ ap.add_argument("--max", type=int, default=300, help="максимум новы�
 ap.add_argument("--force", action="store_true", help="игнорировать --max")
 ap.add_argument("--skip-fetch", action="store_true", help="не качать cbd и gdr заново")
 ap.add_argument("--skip-levels", action="store_true", help="не обновлять levels_tp.json")
+ap.add_argument("--videos", action="store_true",
+                help="искать видео через add-video-links.py (долго, по умолчанию выключено)")
 args = ap.parse_args()
 
 LEVELS_URL = "https://coreboard.pythonanywhere.com/main/levels"
@@ -470,9 +474,10 @@ def main():
     total = sum(len(v) for v in found.values())
     print(f"\ncompare нашёл: игроков {len(found)}, записей {total}")
 
-    # ссылки на видео (те же, что попадают в commands.txt): их кладём третьим полем в missing_achievements.json
+    # ссылки на видео ищутся только с флагом --videos (долго: по запросу на каждую запись);
+    # без него missing_achievements.json пишется с пустыми ссылками
     with_links = found
-    if total:
+    if total and args.videos:
         avl_script = find_script("add-video-links.py", "add_video_links.py")
         ids_file = work / "gdr-ids.json"
         try:
