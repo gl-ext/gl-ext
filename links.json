@@ -100892,7 +100892,9 @@
   },
   "34984": {
     "_name": "merccry",
-    "pointercrate": [],
+    "pointercrate": [
+      73230
+    ],
     "channels": {
       "youtube": [
         "https://www.youtube.com/@wmercuryz"
@@ -227649,7 +227651,8 @@
     ],
     "channels": {
       "youtube": [
-        "https://www.youtube.com/@Noobyguy1"
+        "https://www.youtube.com/@Noobyguy1",
+        "https://www.youtube.com/@noobyguy11"
       ]
     }
   },
@@ -245482,7 +245485,12 @@
     "_name": "KvakoGD",
     "pointercrate": [
       67617
-    ]
+    ],
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@KvakoGD"
+      ]
+    }
   },
   "pc67618": {
     "_name": "kziuma",
@@ -263992,7 +264000,12 @@
     "_name": "Suv123",
     "pointercrate": [
       73113
-    ]
+    ],
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@Suv1230"
+      ]
+    }
   },
   "pc73115": {
     "_name": "jf",
@@ -264430,12 +264443,6 @@
     "_name": "Focus Lucis",
     "pointercrate": [
       73223
-    ]
-  },
-  "pc73230": {
-    "_name": "merccry",
-    "pointercrate": [
-      73230
     ]
   },
   "pc73232": {
@@ -265018,6 +265025,33 @@
     "_name": "LuffyfraxGD",
     "pointercrate": [
       73273
+    ]
+  },
+  "43378": {
+    "_name": "Enter324",
+    "pointercrate": [],
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@sdfsdf-u3c"
+      ]
+    }
+  },
+  "pc73274": {
+    "_name": "IHATEPOINTERCRATE",
+    "pointercrate": [
+      73274
+    ]
+  },
+  "pc73275": {
+    "_name": "ThethetheJ",
+    "pointercrate": [
+      73275
+    ]
+  },
+  "pc73276": {
+    "_name": "高木さん⁩",
+    "pointercrate": [
+      73276
     ]
   }
 }
