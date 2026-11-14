@@ -20,22 +20,6 @@ fix.json: читаются merges (склейка аккаунтов глоба�
 
 different_people.json: случаи, где канал общий, но люди РАЗНЫЕ (см. make_links.py, DIFFERENT).
 
-World Mobile List (WML): третий источник. Топ и рекорды игроков качает wml.py (он должен лежать рядом).
-Аккаунт WML привязывается к записи links.json, если у них есть общее видео с аккаунтом глобала или
-Pointercrate этой записи.
-
-Формат записи links.json (аккаунты на других листах лежат в одном блоке other_lists):
-  "123":  {"_name": "Ник", "other_lists": {"pointercrate": [500], "wml": [10]}, "channels": {...}}
-Ключ из цифр = аккаунт глобала, "pc7" = игрок Pointercrate без глобала, "wml5" = игрок WML, которого нет
-ни в глобале, ни на Pointercrate. Название блока задаётся одной константой (OTHER). Файл старого формата
-("pointercrate" прямо в записи) при запуске переписывается в новый сам.
-Игрок WML без пары получает свою запись под ключом "wml<ID на WML>" (как "pc<id>" у Pointercrate).
-Если у нескольких таких аккаунтов общие видео, это один человек: они лежат в одной записи, ключ по
-наименьшему id. Аккаунт WML с общими видео сразу у нескольких записей тоже становится записью wml...,
-а подробности уходят в links_review.txt. Если у записи wml... найден тот же канал, что у записи глобала
-или pc..., записи склеиваются (главная: глобал, потом pc..., потом wml...). Видео игроков WML участвуют
-в поиске каналов. Игроки WML, чей ник совпал с ником существующей записи, выписаны в links_wml_hints.txt.
-
 Запуск:   python make_links.py
 Скачивание можно прервать в любой момент (Ctrl+C, выключили свет, закрыли окно).
 Прогресс сохраняется в файлы cache_*, и при следующем запуске скрипт продолжит
@@ -47,7 +31,6 @@ Pointercrate этой записи.
   --refresh     удалить всё скачанное и начать заново
   --no-channels не искать каналы игроков (YouTube/Twitch/Bilibili/...), только аккаунты
   --no-yt-id    не искать постоянные номера каналов YouTube (UC...), остальные каналы искать
-  --no-wml      не использовать World Mobile List (уже записанные "wml" в links.json остаются)
 Нужен только Python, ничего устанавливать не надо.
 """
 
@@ -83,20 +66,6 @@ CACHE_PC_PLAYERS = "cache_pc_players.json"  # все игроки Pointercrate (
 # Здесь они только дополняют данные по уровням, но не заменяют их.
 CACHE_USERS = "cache_dl_users.json"
 USERS_MAX_AGE = 7 * 24 * 3600  # записи старше недели не используем
-# World Mobile List. Качается кодом из wml.py, который лежит рядом с этим файлом.
-CACHE_WML = "cache_wml.json"  # итог: {"players": {id: {"n": ник, "r": место}}, "records": [{"w", "n", "v", "l"}]}
-PROGRESS_WML = "cache_wml_progress.json"  # {"players": {...}, "done": {id игрока: [рекорды]}}, пополняется по ходу
-WML_HINTS = "links_wml_hints.txt"  # игроки WML с отдельной записью wml..., у которых ник совпал с ником другой записи
-WML_WORKERS = 3  # к WML ходим бережнее, чем к API demonlist и Pointercrate
-WML_PAUSE = 0.4  # пауза после каждого запроса к WML
-WML_MAX_FAILED = 20  # столько игроков WML можно не скачать и всё равно продолжить
-HERE = os.path.dirname(os.path.abspath(__file__))  # папка со скриптами (там же лежит wml.py)
-# Аккаунты записи на ДРУГИХ листах (не глобал) лежат в одном блоке под этим названием.
-# Чтобы переименовать: впиши новое название в OTHER, а прежнее добавь в LEGACY_OTHER. При запуске
-# блок переедет под новое название сам, ничего не потеряется.
-OTHER = "other_lists"
-LEGACY_OTHER = ()  # прежние названия блока, например ("other_lists",)
-LISTS = ("pointercrate", "wml")  # какие листы бывают в блоке
 OUT = "links.json"  # готовый результат
 REVIEW = "links_review.txt"  # спорные случаи для ручной проверки
 MERGES_LOG = "links_channel_merges.txt"  # что и когда склеено по общим каналам (дописывается)
@@ -354,50 +323,6 @@ def merge_verifiers(dl):
         added += 1
     print(f"  вериферов добавлено: {added} (уровней в списке: {len(info)})")
     return out
-
-
-def other_accounts(entry):
-    """Блок аккаунтов записи на других листах: {"pointercrate": [...], "wml": [...]}.
-    Если блока нет, создаёт его (оба списка пустые). Списки можно менять на месте."""
-    block = entry.setdefault(OTHER, {})
-    for name in LISTS:
-        block.setdefault(name, [])
-    return block
-
-
-def new_entry(name, pointercrate=None, wml=None):
-    """Новая запись links.json."""
-    return {"_name": str(name or ""),
-            OTHER: {"pointercrate": list(pointercrate or []), "wml": list(wml or [])}}
-
-
-def migrate_links(result):
-    """Приводит записи к текущему формату: "pointercrate" и "wml" из корня записи переезжают в блок OTHER.
-    Порядок ключей: _name, блок, остальное (channels и т.д.). Возвращает, у скольких записей формат изменился."""
-    changed = 0
-    for key in list(result):
-        entry = result[key]
-        if not isinstance(entry, dict):
-            continue
-        old = [n for n in LISTS if n in entry]  # списки прямо в корне записи (старый формат)
-        legacy = [n for n in LEGACY_OTHER if n != OTHER and isinstance(entry.get(n), dict)]
-        block = entry.get(OTHER)
-        if not old and not legacy and isinstance(block, dict) and all(n in block for n in LISTS):
-            continue
-        block = {n: list(v) for n, v in block.items()} if isinstance(block, dict) else {}
-        sources = [(n, entry[n]) for n in old] + [
-            (n, v) for lg in legacy for n, v in entry[lg].items() if n in LISTS]  # (лист, его аккаунты)
-        for n, accounts in sources:
-            lst = block.setdefault(n, [])
-            for x in accounts or []:
-                if x not in lst:
-                    lst.append(x)
-        for n in LISTS:
-            block.setdefault(n, [])
-        rest = {k: v for k, v in entry.items() if k not in ("_name", OTHER, *LISTS, *LEGACY_OTHER)}
-        result[key] = {"_name": entry.get("_name") or "", OTHER: block, **rest}
-        changed += 1
-    return changed
 
 
 def load_rules_file(path, label):
@@ -722,313 +647,6 @@ def load_pc_players():
     return players
 
 
-# ---------- World Mobile List ----------
-
-def wml_module():
-    """Подключает wml.py (лежит рядом с этим файлом). None, если не вышло: тогда WML пропускаем."""
-    if HERE not in sys.path:
-        sys.path.insert(0, HERE)
-    try:
-        import wml
-        return wml
-    except Exception as e:
-        print(f"  WML: не удалось подключить wml.py ({e}), World Mobile List пропускаю")
-        return None
-
-
-def fetch_wml_players(w):
-    """Топ WML: {id (строкой): {"n": ник, "r": место}}. Забаненные пропускаются, как в wml.py.
-    None, если сайт не ответил или топ пустой."""
-    players, seen, after = {}, set(), 0
-    try:
-        for _ in range(400):  # защита от бесконечного цикла
-            items = w.items_of(w.get_json(w.RANKING_URL.format(after=after)))
-            new = 0
-            for it in items:
-                if not isinstance(it, dict):
-                    continue
-                p = w.normalize_player(it)
-                pid = str(p["id"]) if p["id"] is not None else None
-                if pid is None or pid in seen:
-                    continue
-                seen.add(pid)
-                new += 1
-                if not p["banned"]:
-                    players[pid] = {"n": str(p["name"] or ""), "r": p["rank"]}
-            if not new:
-                break
-            after += w.PAGE_SIZE
-            time.sleep(WML_PAUSE)
-    except Exception as e:
-        print(f"  WML: топ не скачался: {e}")
-        return None
-    return players or None
-
-
-def fetch_wml_player(w, pid):
-    """Рекорды одного игрока WML: [{"v": видео, "l": уровень}].
-    [] если у игрока нет страницы (404), None при сбое (спросим в следующий раз)."""
-    try:
-        page = w.http_get(w.PLAYER_URL.format(id=pid))
-    except urllib.error.HTTPError as e:
-        return [] if e.code == 404 else None
-    except Exception:
-        return None
-    time.sleep(WML_PAUSE)
-    data = w.parse_panel(page)
-    if data is None:
-        return None
-    return [{"v": r.get("video") or None, "l": r.get("level")} for r in data["records"]]
-
-
-def load_wml(workers=WML_WORKERS):
-    """Игроки WML и их видео: {"players": ..., "records": [...]}.
-    None, если WML недоступен: тогда в этом запуске ссылки на WML не обновляются, старые остаются."""
-    done = load_json(CACHE_WML)
-    if done is not None:
-        print(f"WML: беру готовое из {CACHE_WML}")
-        return done
-    w = wml_module()
-    if w is None:
-        return None
-
-    state = load_json(PROGRESS_WML, {}) or {}
-    if not state.get("players"):
-        print("  WML: скачиваю топ игроков...")
-        players = fetch_wml_players(w)
-        if players is None:
-            print("  WML не ответил, пропускаю его в этом запуске.")
-            return None
-        state = {"players": players, "done": {}}
-        save_json(PROGRESS_WML, state)
-    players, got = state["players"], state.setdefault("done", {})
-    print(f"  WML: игроков {len(players)}, уже скачано {len(got)}, осталось {len(players) - len(got)}")
-
-    for round_no in range(3):
-        todo = [pid for pid in players if pid not in got]
-        if not todo:
-            break
-        if round_no:
-            wait = 30 * round_no
-            print(f"  WML: не скачано игроков: {len(todo)}, жду {wait} с и пробую снова ({round_no}/3)")
-            time.sleep(wait)
-        ex = ThreadPoolExecutor(max_workers=max(1, min(workers, WML_WORKERS)))
-        futures = {ex.submit(fetch_wml_player, w, pid): pid for pid in todo}
-        count = 0
-        try:
-            for fut in as_completed(futures):
-                recs = fut.result()
-                if recs is not None:
-                    got[futures[fut]] = recs
-                count += 1
-                if count % 25 == 0:
-                    save_json(PROGRESS_WML, state)
-                    print(f"  WML: {len(got)}/{len(players)} игроков")
-        except KeyboardInterrupt:
-            print("\nОстанавливаюсь, сохраняю прогресс (подожди пару секунд)...")
-            ex.shutdown(wait=False, cancel_futures=True)
-            save_json(PROGRESS_WML, state)
-            print("Сохранено. Запусти скрипт снова, чтобы продолжить.")
-            sys.exit(1)
-        ex.shutdown()
-        save_json(PROGRESS_WML, state)
-
-    left = [pid for pid in players if pid not in got]
-    if len(left) > WML_MAX_FAILED:
-        print(f"  WML: не скачано игроков: {len(left)}. Прогресс сохранён, WML в этом запуске пропускаю, "
-              f"в следующий раз докачается.")
-        return None
-
-    records = []
-    for pid, recs in got.items():
-        if pid not in players:
-            continue
-        for r in recs:
-            if r.get("v"):
-                records.append({"w": pid, "n": players[pid]["n"], "v": r["v"], "l": r.get("l")})
-    out = {"players": players, "records": records}
-    if left:
-        shown = ", ".join(f"{pid} ({players[pid]['n']})" for pid in left)
-        print(f"  WML: не скачано {len(left)} игроков (повторю в следующий раз): {shown}")
-    else:
-        save_json(CACHE_WML, out)  # итоговый кэш только когда скачано всё
-    print(f"  WML готов: игроков {len(players)}, рекордов с видео {len(records)}")
-    return out
-
-
-def wml_clean_nick(nick):
-    """Ник без клана в начале: '[67] Kristage' -> 'Kristage'."""
-    return re.sub(r"^\[[^\]]*\]\s*", "", str(nick or "").strip()).strip()
-
-
-def wml_nick_key(nick):
-    """Ник для сравнения: без клана, без лишних пробелов, без учёта регистра."""
-    return " ".join(wml_clean_nick(nick).split()).casefold()
-
-
-def link_wml(result, dl, pc, wml, review, max_accounts=3):
-    """Раскладывает аккаунты WML по записям links.json (по общим видео, как Pointercrate).
-    Видео записи = видео её аккаунта глобала, её аккаунтов Pointercrate и её уже привязанных аккаунтов WML.
-      1) общие видео ровно с одной записью: аккаунт дописывается в entry[OTHER]["wml"] (повторяем, пока
-         находятся новые привязки: привязка одного аккаунта может открыть следующий);
-      2) остальные (нет пары, конфликт между записями, у записи уже max_accounts аккаунтов WML) получают
-         запись "wml<id>". Аккаунты WML с общим видео друг с другом считаются одним человеком и лежат
-         в одной записи (если их не больше max_accounts), ключ по наименьшему id.
-    Уже привязанные аккаунты (в том числе твои ручные правки) не трогаем.
-    Возвращает (привязано к существующим записям, создано новых записей wml...)."""
-    players = wml["players"]
-    wml_vids = defaultdict(set)
-    for r in wml["records"]:
-        v = video_id(r["v"])
-        if v:
-            wml_vids[str(r["w"])].add(v)
-    dl_vids, pc_vids = defaultdict(set), defaultdict(set)
-    for r in dl:
-        v = video_id(r["v"]) if r["v"] else None
-        if v and r["u"] is not None:
-            dl_vids[str(r["u"])].add(v)
-    for r in pc:
-        v = video_id(r["v"]) if r["v"] else None
-        if v and r["p"] is not None:
-            pc_vids[r["p"]].add(v)
-
-    key_vids, vid_keys, owner = {}, defaultdict(set), {}
-    for key, entry in result.items():
-        vids = set(dl_vids.get(key, ()))
-        for p in other_accounts(entry)["pointercrate"]:
-            vids |= pc_vids.get(p, set())
-        for wid in other_accounts(entry)["wml"]:
-            owner[str(wid)] = key  # уже привязан
-            vids |= wml_vids.get(str(wid), set())
-        key_vids[key] = vids
-        for v in vids:
-            vid_keys[v].add(key)
-
-    by_nick = defaultdict(list)  # подсказки: ник записи -> её ключи (только записи, которые были ДО этого запуска)
-    for key, entry in result.items():
-        nk = wml_nick_key(entry.get("_name"))
-        if nk:
-            by_nick[nk].append(key)
-
-    def sort_id(x):
-        return (not x.isdigit(), int(x) if x.isdigit() else 0, x)
-
-    def label(wid):
-        return f"WML {wid} ({players[wid]['n']})"
-
-    # 1) привязка к существующим записям
-    pending = sorted((w for w in players if w not in owner), key=sort_id)
-    linked = 0
-    while True:
-        changed, rest = False, []
-        conflict, full = {}, {}
-        for wid in pending:
-            mine = wml_vids.get(wid, set())
-            hits = Counter(k for v in mine for k in vid_keys.get(v, ()))
-            if not hits:
-                rest.append(wid)
-                continue
-            if len(hits) > 1:
-                conflict[wid] = hits
-                rest.append(wid)
-                continue
-            key = next(iter(hits))
-            if len(other_accounts(result[key])["wml"]) >= max_accounts:
-                full[wid] = (key, hits[key])
-                rest.append(wid)
-                continue
-            other_accounts(result[key])["wml"].append(int(wid) if wid.isdigit() else wid)
-            owner[wid] = key
-            key_vids[key] |= mine
-            for v in mine:
-                vid_keys[v].add(key)
-            linked += 1
-            changed = True
-        pending = rest
-        if not changed:
-            break
-
-    for wid, hits in sorted(conflict.items(), key=lambda kv: sort_id(kv[0])):
-        mine = wml_vids.get(wid, set())
-        block = [f"{label(wid)} совпал с несколькими записями links.json, получает отдельную запись wml{wid}:"]
-        for k in sorted(hits, key=lambda x: (not str(x).isdigit(), str(x))):
-            block.append(f"    {k} ({result[k].get('_name', '')}), общих видео: {hits[k]}")
-            block.append(vurls(mine & key_vids[k]))
-        review.append("\n".join(block))
-    for wid, (key, n) in sorted(full.items(), key=lambda kv: sort_id(kv[0])):
-        mine = wml_vids.get(wid, set())
-        review.append(
-            f"СЛИШКОМ МНОГО WML-АККАУНТОВ ({max_accounts}) у записи {key} ({result[key].get('_name', '')}), "
-            f"{label(wid)} получает отдельную запись wml{wid}, общих видео: {n}\n" + vurls(mine & key_vids[key]))
-
-    # 2) записи wml... для остальных. Общее видео между самими аккаунтами WML = один человек.
-    parent = {w: w for w in pending}
-
-    def find(x):
-        while parent[x] != x:
-            parent[x] = parent[parent[x]]
-            x = parent[x]
-        return x
-
-    by_video = defaultdict(list)
-    for w in pending:
-        for v in wml_vids.get(w, ()):
-            by_video[v].append(w)
-    for ws in by_video.values():
-        for other in ws[1:]:
-            parent[find(other)] = find(ws[0])
-    comps = defaultdict(list)
-    for w in pending:
-        comps[find(w)].append(w)
-
-    def shared(comp):
-        out = set()
-        for i, a in enumerate(comp):
-            for b in comp[i + 1:]:
-                out |= wml_vids.get(a, set()) & wml_vids.get(b, set())
-        return out
-
-    def fake_entry(ws):
-        key = f"wml{ws[0]}"  # ws отсортированы: ключ по наименьшему id
-        entry = result.setdefault(key, new_entry(wml_clean_nick(players[ws[0]]["n"])))
-        lst = other_accounts(entry)["wml"]
-        for w in ws:
-            if (int(w) if w.isdigit() else w) not in lst:
-                lst.append(int(w) if w.isdigit() else w)
-        return key
-
-    created, hints = 0, []
-    for comp in sorted(comps.values(), key=lambda c: sort_id(min(c, key=sort_id))):
-        comp.sort(key=sort_id)
-        if len(comp) <= max_accounts:
-            groups = [comp]
-            if len(comp) > 1:
-                review.append("WML БЕЗ ПАРЫ, склеены по общим видео: " + ", ".join(label(w) for w in comp)
-                              + "\n" + vurls(shared(comp)))
-        else:
-            groups = [[w] for w in comp]
-            review.append(f"СЛИШКОМ МНОГО WML-АККАУНТОВ С ОБЩИМИ ВИДЕО ({len(comp)}), НЕ склеены (каждый отдельной "
-                          f"записью): " + ", ".join(label(w) for w in comp) + "\n" + vurls(shared(comp)))
-        for ws in groups:
-            fake_entry(ws)
-            created += 1
-            for w in ws:
-                maybe = by_nick.get(wml_nick_key(players[w]["n"]))
-                if maybe:
-                    hints.append((players[w].get("r"), w, players[w]["n"], maybe))
-
-    hints.sort(key=lambda t: (t[0] is None, t[0] if isinstance(t[0], (int, float)) else 0))
-    with open(WML_HINTS, "w", encoding="utf-8") as f:
-        f.write("Игроки WML с отдельной записью wml..., у которых ник совпал с ником другой записи links.json.\n")
-        f.write("Совпадение ника НЕ доказательство (скрипт склеивает только по видео и каналам). Файл пишется заново.\n\n")
-        for rank, wid, nick, maybe in hints:
-            f.write(f"#{rank} {nick} (WML {wid}) -> wml{wid} | такой же ник: "
-                    + ", ".join(f"{k} ({result[k].get('_name', '')})" for k in maybe) + "\n")
-        if not hints:
-            f.write("Совпадений ников нет.\n")
-    return linked, created
-
-
 # ---------- каналы игроков ----------
 
 CACHE_CH = "cache_channels.json"  # {"yt:ID видео": "ссылка на канал", "ytid:ID видео": "UC..."}, чтобы не спрашивать дважды
@@ -1223,7 +841,7 @@ def run_jobs(todo, cache, workers):
     save_json(CACHE_CH, cache)
 
 
-def add_channels(result, dl, pc, workers, wml=None):
+def add_channels(result, dl, pc, workers):
     """Для каждого игрока из result находит каналы по его видео и дописывает в
     result[id]["channels"] = {"youtube": [...], "twitch": [...], ...}.
     Уже записанное (в том числе твои ручные правки) не трогает, только дополняет."""
@@ -1235,10 +853,6 @@ def add_channels(result, dl, pc, workers, wml=None):
     for r in pc:
         if r["p"] is not None and r["v"]:
             pc_vids[r["p"]].append(str(r["v"]))
-    wml_vids = defaultdict(list)  # видео игроков World Mobile List (лежат после видео глобала и Pointercrate)
-    for r in (wml or {}).get("records", []):
-        if r.get("w") is not None and r.get("v"):
-            wml_vids[str(r["w"])].append(str(r["v"]))
 
     all_videos = "--all-videos" in sys.argv
     if all_videos:
@@ -1252,10 +866,8 @@ def add_channels(result, dl, pc, workers, wml=None):
     # 2. Разбираем ссылки: что видно сразу, а про что надо спросить сайт
     for key, entry in result.items():
         urls = list(dl_vids.get(key, []))
-        for p in other_accounts(entry)["pointercrate"]:
+        for p in entry.get("pointercrate", []):
             urls += pc_vids.get(p, [])
-        for wid in other_accounts(entry)["wml"]:
-            urls += wml_vids.get(str(wid), [])
         urls = list(dict.fromkeys(urls))  # убрали повторы, порядок сохранили
 
         found[key], wanted[key] = Counter(), []
@@ -1627,12 +1239,11 @@ def fold_fix_merges(result, resolve, names):
         if keeper == str(key):
             continue
         entry = result.pop(key)
-        main = result.setdefault(keeper, new_entry(entry.get("_name")))
-        for name in LISTS:  # аккаунты на других листах переезжают к основному
-            cur = other_accounts(main)[name]
-            for acc in other_accounts(entry)[name]:
-                if acc not in cur:
-                    cur.append(acc)
+        main = result.setdefault(keeper, {"_name": str(entry.get("_name") or ""), "pointercrate": []})
+        cur = main.setdefault("pointercrate", [])
+        for pid in entry.get("pointercrate", []):
+            if pid not in cur:
+                cur.append(pid)
         for platform, links in (entry.get("channels") or {}).items():
             lst = main.setdefault("channels", {}).setdefault(platform, [])
             for link in links:
@@ -1651,9 +1262,8 @@ def apply_account_rules(result, rules, resolve):
     n = 0
     for acc in rules.get("placeholder_accounts", []):
         entry = result.get(resolve(acc))
-        if entry and (any(other_accounts(entry).values()) or entry.get("channels")):
-            for name in LISTS:
-                other_accounts(entry)[name] = []
+        if entry and (entry.get("pointercrate") or entry.get("channels")):
+            entry["pointercrate"] = []
             entry.pop("channels", None)
             n += 1
     return n
@@ -1735,8 +1345,8 @@ def norm_channel(link):
 
 def merge_by_channels(result, rules=None, resolve=None):
     """Склеивает записи, у которых найден один и тот же канал.
-    - одна запись глобала + записи pc... и wml...: всё уходит в запись глобала;
-    - только записи pc... и wml...: всё уходит в pc... с наименьшим id, а если pc... нет, в wml... с наименьшим id;
+    - одна запись глобала + записи pc...: всё уходит в запись глобала;
+    - только записи pc...: всё уходит в запись с наименьшим id;
     - две и больше записей глобала с общим каналом: НЕ склеиваем, пишем в CHANNEL_CONFLICTS;
     Сколько аккаунтов Pointercrate окажется у человека после склейки, не ограничивается.
     Всё, что склеено, дописывается в MERGES_LOG. Возвращает (поглощено записей, групп,
@@ -1752,14 +1362,12 @@ def merge_by_channels(result, rules=None, resolve=None):
             ok_sets[key] = accounts
     names = {k: str(e.get("_name") or "") for k, e in result.items()}
 
-    def is_global(k):  # глобал: ключ начинается с цифры (pc7, wml5 и прочее сюда не входит)
-        return str(k)[:1].isdigit()
+    def is_global(k):
+        return not str(k).startswith("pc")
 
-    def order(k):  # сначала записи глобала, потом pc..., потом wml..., потом всё остальное; внутри по номеру
-        s = str(k)
-        kind = 0 if is_global(s) else 1 if s.startswith("pc") else 2 if s.startswith("wml") else 3
-        digits = s if kind == 0 else s[2:] if kind == 1 else s[3:] if kind == 2 else ""
-        return (kind, int(digits) if digits.isdigit() else 0, s)
+    def order(k):  # сначала записи глобала, потом pc...; внутри по номеру
+        digits = str(k) if is_global(k) else str(k)[2:]
+        return (not is_global(k), int(digits) if digits.isdigit() else 0, str(k))
 
     # канал -> какие записи его содержат
     by_channel, shown = defaultdict(set), {}
@@ -1814,11 +1422,10 @@ def merge_by_channels(result, rules=None, resolve=None):
         lines = [f"СКЛЕЕНО В {primary} ({names[primary]})", "    общие каналы: " + ", ".join(chans)]
         for k in keys[1:]:
             other = result.pop(k)
-            for name in LISTS:  # аккаунты на других листах переезжают в главную запись
-                cur = other_accounts(main)[name]
-                for acc in other_accounts(other)[name]:
-                    if acc not in cur:
-                        cur.append(acc)
+            cur = main.setdefault("pointercrate", [])
+            for pid in other.get("pointercrate", []):
+                if pid not in cur:
+                    cur.append(pid)
             for platform, links in (other.get("channels") or {}).items():
                 lst = main.setdefault("channels", {}).setdefault(platform, [])
                 for link in links:
@@ -1826,7 +1433,7 @@ def merge_by_channels(result, rules=None, resolve=None):
                         lst.append(link)
             moved[k] = primary
             absorbed += 1
-            lines.append(f"    поглощено: {k} ({names[k]}), pointercrate: {other_accounts(other)['pointercrate']}, wml: {other_accounts(other)['wml']}")
+            lines.append(f"    поглощено: {k} ({names[k]}), pointercrate: {other.get('pointercrate', [])}")
         merged_log.append("\n".join(lines))
 
     if merged_log:
@@ -1853,7 +1460,7 @@ def merge_by_channels(result, rules=None, resolve=None):
         for (platform, _), ks in sorted(global_overlaps, key=lambda x: order(x[1][0])):
             f.write(f"\n{shown[(platform, _)]}  [{platform}]\n    {who(ks)}\n")
         if chains:
-            f.write(f"\n########## Два аккаунта глобала связаны через запись pc... или wml..., не склеены ({len(chains)}) ##########\n")
+            f.write(f"\n########## Два аккаунта глобала связаны через запись pc..., не склеены ({len(chains)}) ##########\n")
             for keys, chans in chains:
                 f.write(f"\n{who(keys)}\n    каналы: {', '.join(chans)}\n")
         if not (global_overlaps or chains):
@@ -1873,7 +1480,7 @@ def main():
             workers = max(1, int(argv[i + 1]))
     if "--refresh" in sys.argv:
         for p in (CACHE_LEVELS, CACHE_LEVEL_INFO, PROGRESS_DL, PROGRESS_PC, CACHE_DL, CACHE_PC,
-                  CACHE_PC_PLAYERS, CACHE_WML, PROGRESS_WML):
+                  CACHE_PC_PLAYERS):
             if os.path.exists(p):
                 os.remove(p)
         print("Старые данные удалены, качаю заново.")
@@ -1897,11 +1504,6 @@ def main():
     dl = apply_fix(dl, fix)
     dl, blanked2 = blank_videos(dl, removals, placeholders)  # по id основных аккаунтов
     print(f"  removals и аккаунты-заглушки: у записей убрано видео: {blanked1 + blanked2}")
-
-    wml = None
-    if "--no-wml" not in sys.argv:
-        print("2б/3 World Mobile List")
-        wml = load_wml(workers)
 
     print("3/3 сопоставление")
     dl_by_vid = defaultdict(dict)  # видео -> {id игрока: ник}
@@ -2024,16 +1626,13 @@ def main():
             print("Проверь файл (или переименуй его) и запусти снова.")
             sys.exit(1)
 
-    migrated = migrate_links(result)
-    if migrated:
-        print(f"  формат {OUT}: у {migrated} записей аккаунты Pointercrate/WML перенесены в блок \"{OTHER}\"")
     folded = fold_fix_merges(result, resolve, keep_names)
     placeholder_cleared = apply_account_rules(result, rules, resolve)
 
     # какие аккаунты Pointercrate уже закреплены за кем-то
     pc_owner = {}
     for k, v in result.items():
-        for p in other_accounts(v)["pointercrate"]:
+        for p in v.get("pointercrate", []):
             pc_owner[p] = k
 
     added_players = added_links = taken = 0
@@ -2043,9 +1642,9 @@ def main():
         entry = result.get(key)
         is_new = entry is None
         if is_new:
-            entry = new_entry(dl_names[uid])
+            entry = {"_name": str(dl_names[uid] or ""), "pointercrate": []}
             result[key] = entry
-        cur = other_accounts(entry)["pointercrate"]
+        cur = entry.setdefault("pointercrate", [])
         for p in sorted(set(pids)):
             if p in cur:
                 continue
@@ -2078,7 +1677,7 @@ def main():
     for uid, name in sorted(dl_all.items()):
         key = str(uid)
         if key not in result:
-            result[key] = new_entry(name)
+            result[key] = {"_name": str(name or ""), "pointercrate": []}
             added_dl_only += 1
 
     # 2) Игроки Pointercrate, которых нет в глобале, получают запись с ключом "pc<id>".
@@ -2121,10 +1720,10 @@ def main():
 
     def fake_entry(pids):
         key = f"pc{pids[0]}"  # pids отсортированы: ключ по наименьшему id
-        entry = result.setdefault(key, new_entry(pc_all.get(pids[0])))
+        entry = result.setdefault(key, {"_name": str(pc_all.get(pids[0]) or ""), "pointercrate": []})
         for p in pids:
-            if p not in other_accounts(entry)["pointercrate"]:
-                other_accounts(entry)["pointercrate"].append(p)
+            if p not in entry["pointercrate"]:
+                entry["pointercrate"].append(p)
             pc_owner[p] = key
         return key
 
@@ -2139,9 +1738,9 @@ def main():
             continue  # все уже разложены по записям
         owners = {pc_owner[p] for p in comp if p in pc_owner}
         who = ", ".join(f"{p} ({pc_all.get(p)})" for p in comp)
-        if len(owners) == 1 and len(other_accounts(result[next(iter(owners))])["pointercrate"]) + len(free) <= MAX_ACCOUNTS:
+        if len(owners) == 1 and len(result[next(iter(owners))]["pointercrate"]) + len(free) <= MAX_ACCOUNTS:
             key = next(iter(owners))
-            other_accounts(result[key])["pointercrate"].extend(free)
+            result[key]["pointercrate"].extend(free)
             for p in free:
                 pc_owner[p] = key
             joined_pc += len(free)
@@ -2162,14 +1761,10 @@ def main():
                 fake_entry([p])
                 added_pc_only += 1
 
-    # World Mobile List: привязываем аккаунты WML к записям по общим видео (до поиска каналов,
-    # чтобы видео WML тоже участвовали в нём)
-    wml_stats = link_wml(result, dl, pc, wml, review, MAX_ACCOUNTS) if wml else None
-
     added_channels = None
     if "--no-channels" not in sys.argv:
         print("Ищу каналы игроков (YouTube/Twitch/Bilibili/...)")
-        added_channels = add_channels(result, dl, pc, workers, wml)
+        added_channels = add_channels(result, dl, pc, workers)
 
     # Правила из different_people.json: убрать канал у тех, кому он не принадлежит
     rule_removed, rule_added = apply_channel_rules(result, rules, resolve)
@@ -2194,11 +1789,6 @@ def main():
     print(f"  аккаунтов глобала без Pointercrate (новых записей): {added_dl_only}")
     print(f"  игроков Pointercrate без глобала: новых записей pc...: {added_pc_only}, "
           f"аккаунтов дописано в существующие записи: {joined_pc}")
-    if wml_stats:
-        print(f"  World Mobile List: игроков {len(wml['players'])}, привязано к существующим записям {wml_stats[0]}, "
-              f"создано новых записей wml... {wml_stats[1]} (совпадения ников: {WML_HINTS})")
-    elif wml is None and "--no-wml" not in sys.argv:
-        print("  World Mobile List: в этом запуске не использован (см. сообщения выше)")
     if added_channels is not None:
         print(f"  добавлено новых ссылок на каналы: {added_channels}")
     print(f"  fix.json: записей перенесено в основные аккаунты: {folded}")
