@@ -6,6 +6,9 @@
 /fulladd Sangkan, Stellar Night, https://www.youtube.com/watch?v=h0G9gp77hYQ
 /try Sangkan, Stellar Night
 
+/fulladd qAz123, Apocalyptic Trilogy 93%,
+/try qAz123, Apocalyptic Trilogy 93%
+
 Видео: Pointercrate
 /fulladd voicechatping, BEING HOME, https://www.youtube.com/watch?v=FlE9mYAizlU
 /try voicechatping, BEING HOME
@@ -18,20 +21,9 @@
 /fulladd AidanTR, UNKNOWN, https://www.youtube.com/watch?v=sFfGDHjltHM
 /try AidanTR, UNKNOWN
 
-/fulladd TRSouLess, arcturus,
-/try TRSouLess, arcturus
-
-/fulladd Astley, Lucid Nightmares,
-/try Astley, Lucid Nightmares
-
-/fulladd Lazer, Zodiac,
-/try Lazer, Zodiac
-
-/fulladd notmrsooty, SPIRIT OVERCLOCK,
-/try notmrsooty, SPIRIT OVERCLOCK
-
-/fulladd notmrsooty, UNKNOWN,
-/try notmrsooty, UNKNOWN
+Видео: GlobalList
+/fulladd Lazer, Dry Out Copyable 2, https://www.youtube.com/watch?v=F4ObK3pNpsA
+/try Lazer, Dry Out Copyable 2
 
 Видео: GlobalList (статус: waiting)
 /fulladd Fexty, DreamStep, https://www.youtube.com/watch?v=Cb1Y3NB-BjQ
@@ -40,9 +32,6 @@
 Видео: GlobalList (статус: waiting)
 /fulladd MateoGD04, Calibrate, https://www.youtube.com/watch?v=FG3ywe-OQ7g
 /try MateoGD04, Calibrate
-
-/fulladd Syzygy, Jigsaw,
-/try Syzygy, Jigsaw
 
 Видео: Pointercrate
 /fulladd Trixsm, Firework, https://www.youtube.com/watch?v=tVL_U3TuhsI
