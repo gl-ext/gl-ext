@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-14T01:27:45.344Z",
+ "generated": "2026-11-14T02:28:01.918Z",
  "users": [
   {
    "place": 1,
@@ -48,21 +48,21 @@
   },
   {
    "place": 6,
+   "oldPlace": 6,
+   "id": "13458",
+   "name": "Vorten",
+   "country": "Russia",
+   "points": 7312.73,
+   "basePoints": 6832.73
+  },
+  {
+   "place": 7,
    "oldPlace": 7,
    "id": "13506",
    "name": "SerVax",
    "country": "Armenia",
    "points": 7137.18,
    "basePoints": 6471.6
-  },
-  {
-   "place": 7,
-   "oldPlace": 6,
-   "id": "13458",
-   "name": "Vorten",
-   "country": "Russia",
-   "points": 6832.73,
-   "basePoints": 6832.73
   },
   {
    "place": 8,
