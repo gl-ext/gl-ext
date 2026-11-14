@@ -19,8 +19,6 @@ parser.add_argument("--out-dir", default="compare",
                          "Чтобы работать в текущей папке: --out-dir .")
 parser.add_argument("--ids", default="gdr-ids.json",
                     help="файл с ID игроков (ник -> ID), нужен для команд. По умолчанию gdr-ids.json")
-parser.add_argument("--levels", default="levels_tp.json",
-                    help="файл с названиями уровней, нужен для команд. По умолчанию levels_tp.json")
 args = parser.parse_args()
 
 OUT_DIR = Path(args.out_dir)
@@ -32,7 +30,7 @@ NOT_FOUND_FILE = str(OUT_DIR / "missing_video_links.txt")
 SOURCES_FILE = str(OUT_DIR / "video_link_sources.txt")  # откуда взято каждое найденное видео
 COMMANDS_FILE = str(OUT_DIR / "commands.txt")           # команды /fulladd и /try
 IDS_FILE = args.ids        # ник -> ID игрока (нужен для команд), лежит в текущей папке
-LEVELS_FILE = args.levels  # названия уровней (нужны для команд), лежит в текущей папке
+LEVELS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/levels_tp.json"  # названия уровней (нужны для команд), только GitHub
 
 # Особые названия: ID уровня в глобале -> как его надо писать в командах.
 # Для этих уровней API не спрашивается, берётся название отсюда.
@@ -490,12 +488,13 @@ def load_id_to_nick():
 
 
 def load_level_names():
-    """Читает levels_tp.json и возвращает {ID уровня: название}."""
+    """Скачивает levels_tp.json с GitHub и возвращает {ID уровня: название}."""
+    print("levels_tp.json: беру с GitHub (raw кешируется до ~5 минут после правки)")
     try:
-        with open(LEVELS_FILE, encoding="utf-8") as file:
-            levels_data = json.load(file)["levels"]
-    except FileNotFoundError:
-        print(f"ВНИМАНИЕ: не найден {LEVELS_FILE}, названия уровней возьмутся из API")
+        levels_data = get_json(LEVELS_URL)[0]["levels"]
+    except Exception as error:
+        print(f"ВНИМАНИЕ: не удалось загрузить levels_tp.json с GitHub ({error}), "
+              f"названия уровней возьмутся из API")
         return {}
 
     names = {}
