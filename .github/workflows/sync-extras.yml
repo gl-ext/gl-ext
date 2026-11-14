@@ -1,20 +1,29 @@
-name: sync-extras
+name: auto-update
+
+# Один workflow на оба обновления:
+#   1. sync-extras.py: что есть в CoreBoard, а у нас нет  -> my_extras.json, levels_tp.json
+#   2. cbd-update.py:  что есть у нас, а в CoreBoard нет  -> cbd/ (missing_achievements, with_nicks, commands)
+# Старый sync-extras.yml нужно удалить, иначе sync-extras будет запускаться дважды.
 
 on:
   workflow_dispatch:
     inputs:
-      args:
-        description: "Доп. аргументы (например --dry-run или --force)"
+      extras_args:
+        description: "Аргументы для sync-extras.py (например --dry-run или --force)"
+        required: false
+        default: ""
+      cbd_args:
+        description: "Аргументы для cbd-update.py (например --no-videos, но тогда без коммита)"
         required: false
         default: ""
   schedule:
-    - cron: "*/30 * * * *" 
+    - cron: "*/30 * * * *"
 
 permissions:
   contents: write
 
 concurrency:
-  group: sync-extras
+  group: auto-update
   cancel-in-progress: false
 
 jobs:
@@ -26,5 +35,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install requests
+        run: pip install requests
+
       - name: Run sync-extras.py
-        run: python scripts/sync-extras.py --commit ${{ github.event.inputs.args }}
+        id: extras
+        run: python scripts/sync-extras.py --commit ${{ github.event.inputs.extras_args }}
+
+      # Выполняется и после сбоя первого шага, чтобы одно обновление не блокировало другое.
+      # Если sync-extras прошёл, он уже скачал cbd.txt и gdr.txt, и второй шаг берёт их готовыми.
+      - name: Run cbd-update.py
+        if: ${{ !cancelled() }}
+        env:
+          EXTRAS_OUTCOME: ${{ steps.extras.outcome }}
+          CBD_ARGS: ${{ github.event.inputs.cbd_args }}
+        run: |
+          if [ "$EXTRAS_OUTCOME" = "success" ] && [ -s scripts/cbd.txt ] && [ -s scripts/gdr.txt ]; then
+            python scripts/cbd-update.py --commit --skip-fetch $CBD_ARGS
+          else
+            python scripts/cbd-update.py --commit $CBD_ARGS
+          fi
