@@ -167,13 +167,12 @@ def main():
         (out / name).unlink(missing_ok=True)
 
     work = Path(tempfile.mkdtemp(prefix="cbd_update_"))
-    levels, ids = work / "levels_tp.json", work / "gdr-ids.json"
-    print("\nlevels_tp.json и gdr-ids.json: беру с GitHub (raw кешируется до ~5 минут после правки)")
-    download_github("levels_tp.json", levels)
+    ids = work / "gdr-ids.json"
+    print("\ngdr-ids.json: беру с GitHub (levels_tp.json compare и add-video-links берут с GitHub сами; raw кешируется до ~5 минут)")
     download_github("gdr-ids.json", ids)
 
     run([sys.executable, cmp_script, "in-gdr-not-in-cbd", "--cbd", cbd_txt, "--gdr", gdr_txt,
-         "--levels", levels, "--out-dir", out], "compare: in-gdr-not-in-cbd")
+         "--out-dir", out], "compare: in-gdr-not-in-cbd")
 
     found_file = out / "missing_achievements.json"
     if not found_file.exists() or not (out / "missing_achievements_with_nicks.json").exists():
@@ -187,7 +186,7 @@ def main():
         return
 
     if total:
-        run([sys.executable, avl_script, "--out-dir", out, "--ids", ids, "--levels", levels],
+        run([sys.executable, avl_script, "--out-dir", out, "--ids", ids],
             "Видео и команды (add-video-links)")
         if not (out / "commands.txt").exists():
             sys.exit("add-video-links.py не создал commands.txt.")
