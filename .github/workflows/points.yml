@@ -1,39 +1,74 @@
-name: Update points.json
+name: auto-update
+
+# Один workflow на оба обновления:
+#   1. sync-extras.py: что есть в CoreBoard, а у нас нет  -> my_extras.json, levels_tp.json
+#   2. cbd-update.py:  что есть у нас, а в CoreBoard нет  -> cbd/ (missing_achievements, with_nicks, commands)
+# Старый sync-extras.yml нужно удалить, иначе sync-extras будет запускаться дважды.
+
 on:
-  schedule:
-    - cron: "*/15 * * * *"   # каждые 15 минут
   workflow_dispatch:
     inputs:
-      full:
-        description: "Игнорировать кеш и перекачать всё"
-        type: boolean
-        default: false
+      extras_args:
+        description: "Аргументы для sync-extras.py (например --dry-run или --force)"
+        required: false
+        default: ""
+      cbd_args:
+        description: "Аргументы для cbd-update.py (например --no-videos, но тогда без коммита)"
+        required: false
+        default: ""
+  schedule:
+    - cron: "*/10 * * * *"
+
 permissions:
   contents: write
+
 concurrency:
-  group: points
+  group: auto-update
   cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-python@v5
         with:
-          node-version: 20
-      - run: node scripts/build-points.mjs
+          python-version: "3.12"
+      - name: Install requests
+        run: pip install requests
+
+      # Кеш gd-rating (профили игроков, страны, записи уровней). Без него каждый запуск
+      # заново качает всё, в том числе страну у тысяч игроков по одному запросу.
+      - name: Restore gd-rating cache
+        uses: actions/cache/restore@v4
+        with:
+          path: scripts/levelcache.json
+          key: levelcache-${{ github.run_id }}
+          restore-keys: levelcache-
+
+      - name: Run sync-extras.py
+        id: extras
+        run: python scripts/sync-extras.py --commit ${{ github.event.inputs.extras_args }}
+
+      # Выполняется и после сбоя первого шага, чтобы одно обновление не блокировало другое.
+      # Если sync-extras прошёл, он уже скачал cbd.txt и gdr.txt, и второй шаг берёт их готовыми.
+      - name: Run cbd-update.py
+        if: ${{ !cancelled() }}
         env:
-          FULL: ${{ inputs.full && '1' || '' }}
-      - name: Commit points.json
+          EXTRAS_OUTCOME: ${{ steps.extras.outcome }}
+          CBD_ARGS: ${{ github.event.inputs.cbd_args }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add points.json cache.json top.json players.json pc_extras.json my_extras_out.json
-          git diff --cached --quiet && exit 0
-          git commit -m "Update points.json"
-          for i in 1 2 3; do
-            git pull --rebase -X theirs origin main && git push && exit 0
-            sleep 5
-          done
-          exit 1
+          if [ "$EXTRAS_OUTCOME" = "success" ] && [ -s scripts/cbd.txt ] && [ -s scripts/gdr.txt ]; then
+            python scripts/cbd-update.py --commit --skip-fetch $CBD_ARGS
+          else
+            python scripts/cbd-update.py --commit $CBD_ARGS
+          fi
+
+      # Сохраняем и после сбоя, чтобы долгий первый прогон не пропал зря.
+      - name: Save gd-rating cache
+        if: ${{ !cancelled() && hashFiles('scripts/levelcache.json') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: scripts/levelcache.json
+          key: levelcache-${{ github.run_id }}
