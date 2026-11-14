@@ -5,7 +5,7 @@
 
 Что делает по шагам:
   1. coreboard_parse.py all   -> cbd.txt (оба топа CoreBoard вместе);
-  2. gd-rating.py --src all --ids -> gdr.txt (наш рейтинг, ID игроков в [скобках]);
+  2. gd-rating.py --src pointercrate --ids -> gdr_gl_pc.txt (наш рейтинг, ID игроков в [скобках]);
   3. compare.py in-cbd-not-in-gdr -> missing_achievements.json;
   4. дописывает найденное в my_extras.json (по каждому игроку и уровню остаётся лучший процент,
      старое не удаляется и не понижается);
@@ -20,7 +20,7 @@
   --max N         защита: если новых записей больше N, ничего не пишем (по умолчанию 300).
                   Огромный список почти всегда значит сбой парсинга, а не реальные рекорды.
   --force         игнорировать --max
-  --skip-fetch    не запускать coreboard_parse и gd-rating, взять готовые cbd.txt и gdr.txt
+  --skip-fetch    не запускать coreboard_parse и gd-rating, взять готовые cbd.txt и gdr_gl_pc.txt
                   (удобно, чтобы быстро перепроверить сравнение)
   --skip-levels   не обновлять levels_tp.json (при --skip-fetch он тоже не обновляется)
 
@@ -397,7 +397,7 @@ def main():
     cb = find_script("coreboard_parse.py", "coreboard-parse.py")
     gdr_script = find_script("gd-rating.py", "gd_rating.py")
     cmp_script = find_script("compare.py")
-    cbd_txt, gdr_txt = HERE / "cbd.txt", HERE / "gdr.txt"
+    cbd_txt, gdr_txt = HERE / "cbd.txt", HERE / "gdr_gl_pc.txt"
 
     work = Path(tempfile.mkdtemp(prefix="extras_sync_"))
 
@@ -417,7 +417,8 @@ def main():
     # 2. Потом оба рейтинга
     if not args.skip_fetch:
         run([sys.executable, cb, "all", "-r"], "CoreBoard: оба топа -> cbd.txt")
-        run([sys.executable, gdr_script, "--src", "all", "--ids", *tp_args], "Наш рейтинг -> gdr.txt")
+        run([sys.executable, gdr_script, "--src", "pointercrate", "--ids", *tp_args],
+            "Наш рейтинг (глобал + pointercrate) -> gdr_gl_pc.txt")
     for f in (cbd_txt, gdr_txt):
         if not f.exists() or f.stat().st_size == 0:
             sys.exit(f"Нет файла {f.name} (или он пустой). Останавливаюсь.")
