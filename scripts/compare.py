@@ -38,8 +38,6 @@ parser.add_argument("--cbd", default="cbd.txt",
 parser.add_argument("--gdr", default="gdr.txt",
                     help="файл gd-rating (ID в [скобках] в конце строки, делается с --ids). "
                          "По умолчанию gdr.txt")
-parser.add_argument("--levels", default="levels_tp.json",
-                    help="файл с уровнями (название -> ID уровня)")
 parser.add_argument("--out-dir", default="compare",
                     help="папка для всех создаваемых файлов (создаётся сама, рядом с тем местом, "
                          "откуда запущен скрипт). По умолчанию compare. Чтобы писать в текущую папку: --out-dir .")
@@ -53,8 +51,6 @@ if args.mode == "in-cbd-not-in-gdr":
 else:
     NAME1, FILE1 = "gdr", args.gdr
     NAME2, FILE2 = "cbd", args.cbd
-
-LEVELS_FILE = args.levels
 
 # True, если у файла ID записан прямо в строке [в скобках]: это всегда gdr
 FILE1_HAS_ID = (NAME1 == "gdr")
@@ -82,6 +78,7 @@ NICK_KEY_PREFIX = "nick:"
 API_TRIES = 4  # сколько раз пробовать запрос к API, прежде чем сдаться
 
 # gdr-ids.json (ник -> ID игрока) берётся только отсюда, локальный файл не используется
+LEVELS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/levels_tp.json"
 IDS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/gdr-ids.json"
 
 # Полный список уровней глобала (нужен, чтобы найти ID уровня по названию)
@@ -229,32 +226,6 @@ def save_json(filename, result):
 
 
 # =========================
-# Загружаем уровни
-# =========================
-
-with open(LEVELS_FILE, encoding="utf-8") as f:
-    levels_data = json.load(f)["levels"]
-
-level_names = {}           # название (нормализованное) -> ID уровня
-
-for level_id, data in levels_data.items():
-    name = data.get("name")
-
-    if not name:
-        continue
-
-    if str(level_id).startswith("x"):
-        output_id = str(level_id)
-    else:
-        output_id = int(level_id)
-
-    normalized_name = normalize(name)
-
-    if normalized_name not in level_names:
-        level_names[normalized_name] = output_id
-
-
-# =========================
 # Запросы к API и поиск ID уровня по названию
 # =========================
 
@@ -312,6 +283,39 @@ nick_to_id = {
     normalize_nick(nick): normalize_id(player_id)
     for nick, player_id in raw_ids.items()
 }
+
+
+# =========================
+# Загружаем уровни: levels_tp.json ТОЛЬКО с GitHub
+# =========================
+
+print("levels_tp.json: беру с GitHub (raw кешируется до ~5 минут после правки)")
+
+try:
+    levels_data = fetch_json(LEVELS_URL)["levels"]
+except Exception as error:
+    sys.exit(f"levels_tp.json: не удалось загрузить с GitHub ({error}). Останавливаюсь.")
+
+if not isinstance(levels_data, dict) or not levels_data:
+    sys.exit("levels_tp.json: на GitHub пустой список уровней. Останавливаюсь.")
+
+level_names = {}           # название (нормализованное) -> ID уровня
+
+for level_id, data in levels_data.items():
+    name = data.get("name")
+
+    if not name:
+        continue
+
+    if str(level_id).startswith("x"):
+        output_id = str(level_id)
+    else:
+        output_id = int(level_id)
+
+    normalized_name = normalize(name)
+
+    if normalized_name not in level_names:
+        level_names[normalized_name] = output_id
 
 
 # Список уровней глобала: {нормализованное название: ID}.
