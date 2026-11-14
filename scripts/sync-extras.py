@@ -399,18 +399,12 @@ def main():
     cmp_script = find_script("compare.py")
     cbd_txt, gdr_txt = HERE / "cbd.txt", HERE / "gdr.txt"
 
-    if not args.skip_fetch:
-        run([sys.executable, cb, "all", "-r"], "CoreBoard: оба топа -> cbd.txt")
-        run([sys.executable, gdr_script, "--src", "all", "--ids"], "Наш рейтинг -> gdr.txt")
-    for f in (cbd_txt, gdr_txt):
-        if not f.exists() or f.stat().st_size == 0:
-            sys.exit(f"Нет файла {f.name} (или он пустой). Останавливаюсь.")
-
     work = Path(tempfile.mkdtemp(prefix="extras_sync_"))
 
-    # levels_tp.json обновляем до compare, чтобы он работал по свежему списку уровней
+    # 1. Сначала levels_tp.json: и рейтинг (gd-rating), и сравнение (compare) должны работать по свежему списку
     levels_for_compare = LEVELS
     levels_changed = False
+    tp_args = []  # свежий файл для gd-rating, иначе он берёт levels_tp.json с GitHub (там может быть старый)
     if not (args.skip_fetch or args.skip_levels):
         if args.dry_run:
             levels_for_compare = work / "levels_tp.json"
@@ -418,6 +412,17 @@ def main():
             print("--dry-run: levels_tp.json в репозитории не записан.")
         else:
             levels_changed = update_levels(LEVELS)
+        tp_args = ["--tp-file", levels_for_compare]
+
+    # 2. Потом оба рейтинга
+    if not args.skip_fetch:
+        run([sys.executable, cb, "all", "-r"], "CoreBoard: оба топа -> cbd.txt")
+        run([sys.executable, gdr_script, "--src", "all", "--ids", *tp_args], "Наш рейтинг -> gdr.txt")
+    for f in (cbd_txt, gdr_txt):
+        if not f.exists() or f.stat().st_size == 0:
+            sys.exit(f"Нет файла {f.name} (или он пустой). Останавливаюсь.")
+
+    # 3. И сравнение
 
     run([sys.executable, cmp_script, "in-cbd-not-in-gdr", "--cbd", cbd_txt, "--gdr", gdr_txt,
          "--levels", levels_for_compare, "--out-dir", work], "compare: in-cbd-not-in-gdr")
