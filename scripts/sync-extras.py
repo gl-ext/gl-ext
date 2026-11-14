@@ -9,7 +9,9 @@
   3. compare.py in-cbd-not-in-gdr -> missing_achievements.json;
   4. дописывает найденное в my_extras.json (по каждому игроку и уровню остаётся лучший процент,
      старое не удаляется и не понижается);
-  5. с флагом --commit коммитит и пушит my_extras.json.
+  5. пишет missing_achievements.json в корень репозитория (то, что нашёл compare; у каждой записи
+     ссылка пустая: [уровень, процент, ""]);
+  6. с флагом --commit коммитит и пушит my_extras.json, missing_achievements.json и levels_tp.json.
 
 Запуск (из любой папки, пути считаются от места скрипта):
   python scripts/sync_extras.py --dry-run      только показать, что добавилось бы, ничего не писать
@@ -50,6 +52,7 @@ HERE = Path(__file__).resolve().parent          # scripts/
 ROOT = HERE.parent                              # корень репозитория
 EXTRAS = ROOT / "my_extras.json"
 LEVELS = ROOT / "levels_tp.json"
+MISSING = ROOT / "missing_achievements.json"
 
 ap = argparse.ArgumentParser(description="Дописывает находки compare.py в my_extras.json")
 ap.add_argument("--dry-run", action="store_true", help="ничего не писать, только показать")
@@ -367,6 +370,37 @@ def save_extras(extras):
     os.replace(tmp, EXTRAS)
 
 
+def save_missing(found):
+    """missing_achievements.json в корень репозитория: игрок -> записи [уровень, процент, ""] по одной на строку,
+    ссылка всегда пустая строка в кавычках. Возвращает True, если файл изменился."""
+    users = {}
+    for uid, rows in found.items():
+        recs = []
+        for r in rows:
+            pct = float(r[1])
+            recs.append([r[0], int(pct) if pct == int(pct) else pct, ""])
+        if recs:
+            users[str(uid)] = recs
+    items = sorted(users.items(), key=lambda kv: (not kv[0].isdigit(),
+                                                  int(kv[0]) if kv[0].isdigit() else 0, kv[0]))
+    out = ['{', '  "users": {']
+    for i, (uid, rows) in enumerate(items):
+        out.append(f'    {json.dumps(uid, ensure_ascii=False)}: [')
+        for j, r in enumerate(rows):
+            out.append(f'      {json.dumps(r, ensure_ascii=False)}' + ("," if j < len(rows) - 1 else ""))
+        out.append('    ]' + ("," if i < len(items) - 1 else ""))
+    out += ['  }', '}', '']
+    text = "\n".join(out)
+    before = MISSING.read_text("utf-8") if MISSING.exists() else ""
+    if text == before:
+        return False
+    tmp = MISSING.with_suffix(".json.tmp")
+    tmp.write_text(text, "utf-8")
+    os.replace(tmp, MISSING)
+    print(f"{MISSING.name} записан.")
+    return True
+
+
 def git(*a, check=True):
     r = subprocess.run(["git", *a], cwd=ROOT, text=True, capture_output=True)
     if check and r.returncode != 0:
@@ -444,8 +478,10 @@ def main():
 
     if not (added or improved):
         print("В my_extras.json менять нечего.")
-        if args.commit and levels_changed:
-            commit_and_push("levels_tp: обновление списка уровней (авто, CoreBoard)", [LEVELS])
+        if not args.dry_run:
+            save_missing(found)
+        if args.commit and not args.dry_run:
+            commit_and_push("levels_tp / missing_achievements: обновление (авто, CoreBoard)", [LEVELS, MISSING])
         return
     if added > args.max and not args.force:
         if levels_changed:
@@ -457,12 +493,13 @@ def main():
         return
 
     save_extras(extras)
+    save_missing(found)
     print(f"\n{EXTRAS.name} обновлён.")
     if args.commit:
         msg = f"my_extras: +{added} записей, {improved} улучшений (авто, CoreBoard)"
         if levels_changed:
             msg += "; levels_tp обновлён"
-        commit_and_push(msg, [EXTRAS, LEVELS])
+        commit_and_push(msg, [EXTRAS, LEVELS, MISSING])
 
 
 main()
