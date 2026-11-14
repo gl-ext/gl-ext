@@ -1,11 +1,8 @@
 {
-  "generated": "2026-11-13T23:52:49.509Z",
+  "generated": "2026-11-14T01:27:45.344Z",
   "users": {
     "2": [
       [2656,36,"Acheron",94,"",null,null,null,"my_extras",159.25,0]
-    ],
-    "9": [
-      [1748,44,"Slaughterhouse",93,"",null,null,null,"my_extras",140.88,0]
     ],
     "89": [
       [2657,37,"Tunnel of Despair",69,"",null,null,null,"my_extras",96.83,0]
@@ -65,6 +62,7 @@
     ],
     "3631": [
       [2050,72,"poocubed",100,"",55,null,null,"my_extras",104,29.12],
+      [1754,138,"Tartarus",100,"",null,null,null,"my_extras",17,0],
       [2692,139,"Waterfall",100,"",null,null,null,"my_extras",16,0],
       [2024,297,"Bloodlust",100,"",null,null,null,"my_extras",0.97,0]
     ],
@@ -491,7 +489,7 @@
       [2050,72,"poocubed",100,"",69,null,null,"my_extras",104,36.4]
     ],
     "17526": [
-      [3096,35,"Defeated Circles",87,"",null,null,null,"my_extras",151.11,0]
+      [3096,35,"Defeated Circles",84,"",null,null,null,"my_extras",146.39,0]
     ],
     "17620": [
       [2657,37,"Tunnel of Despair",92,"",null,null,null,"my_extras",149.86,0]
