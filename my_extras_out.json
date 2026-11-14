@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-14T13:17:46.232Z",
+  "generated": "2026-11-14T14:53:09.699Z",
   "users": {
     "2": [
       [2656,36,"Acheron",94,"",null,null,null,"my_extras",159.25,0]
@@ -24,11 +24,8 @@
     "951": [
       [2685,109,"The Yangire",100,"",null,null,null,"my_extras",46,0]
     ],
-    "980": [
-      [1733,142,"UNKNOWN",100,"",null,null,null,"my_extras",13,0]
-    ],
     "1491": [
-      [2843,105,"The Plunge",90,"",null,null,null,"my_extras",22.19,0]
+      [2843,105,"The Plunge",87,"",null,null,null,"my_extras",21.25,0]
     ],
     "1675": [
       [2657,37,"Tunnel of Despair",100,"",64,null,null,"my_extras",332,85.31]
@@ -44,8 +41,6 @@
       [3430,51,"ace",86,"",null,null,null,"my_extras",117.19,0]
     ],
     "3132": [
-      [2843,105,"The Plunge",100,"",null,null,null,"my_extras",50,0],
-      [2236,152,"The Golden",100,"",null,null,null,"my_extras",4.6,0],
       [1740,156,"Oblivion",100,"",null,null,null,"my_extras",4.6,0]
     ],
     "3232": [
@@ -65,18 +60,12 @@
       [1754,138,"Tartarus",100,"",null,null,null,"my_extras",17,0],
       [2024,297,"Bloodlust",100,"",null,null,null,"my_extras",0.97,0]
     ],
-    "3640": [
-      [2236,152,"The Golden",100,"",null,null,null,"my_extras",4.6,0]
-    ],
     "3648": [
       [2296,229,"Renevant",100,"",null,null,null,"my_extras",1.8,0],
       [2018,272,"Shardscapes",100,"",null,null,null,"my_extras",0.98,0]
     ],
     "3667": [
       [2659,30,"Avernus",49,"",null,null,null,"my_extras",91.76,0]
-    ],
-    "3676": [
-      [3126,207,"IRIS",100,"",null,null,null,"my_extras",2.6,0]
     ],
     "3683": [
       [1748,44,"Slaughterhouse",95,"",81,null,null,"my_extras",144.59,118.63]
@@ -103,12 +92,15 @@
     ],
     "4387": [
       [2050,72,"poocubed",100,"",null,null,null,"my_extras",104,0],
-      [2513,77,"MINUSdry",98,"",64,null,null,"my_extras",38.61,25.35],
       [2563,114,"ORDINARY",100,"",null,null,null,"my_extras",41,0]
     ],
     "5442": [
       [2656,36,"Acheron",86,"",66,null,null,"my_extras",145.25,110.25],
       [1733,142,"UNKNOWN",94,"",null,null,null,"my_extras",6.07,0]
+    ],
+    "5469": [
+      [2656,36,"Acheron",89,"",null,null,null,"my_extras",150.5,0],
+      [1963,87,"Deadlier Clubstep",64,"",null,null,null,"my_extras",21.34,0]
     ],
     "5527": [
       [3226,4,"Thinking Space II",100,"",null,null,null,"my_extras",880,0]
@@ -156,9 +148,6 @@
     "5782": [
       [2458,197,"Crackhead Circles",100,"",null,null,null,"my_extras",3,0]
     ],
-    "5818": [
-      [1724,38,"Kyouki",90,"",null,null,null,"my_extras",149.24,0]
-    ],
     "5827": [
       [2843,105,"The Plunge",100,"",null,null,null,"my_extras",50,0],
       [1783,232,"Sky Shredder",100,"",null,null,null,"my_extras",1.4,0],
@@ -166,9 +155,6 @@
     ],
     "5879": [
       [1732,65,"Sakupen Circles",76,"",68,null,null,"my_extras",52.12,42.42]
-    ],
-    "5890": [
-      [3351,41,"Thinking Space II",100,"",null,null,null,"my_extras",316,0]
     ],
     "5963": [
       [1748,44,"Slaughterhouse",64,"",null,null,null,"my_extras",87.12,0]
@@ -178,9 +164,6 @@
     ],
     "6094": [
       [3401,97,"Make Paul Dance",100,"",null,null,null,"my_extras",58,0]
-    ],
-    "6348": [
-      [2854,94,"Collapse",100,"",null,null,null,"my_extras",61,0]
     ],
     "6350": [
       [2485,64,"Firework",55,"",null,null,null,"my_extras",42,0],
@@ -238,10 +221,7 @@
       [2307,239,"Crimson Planet",100,"",null,null,null,"my_extras",1.4,0]
     ],
     "6978": [
-      [2843,105,"The Plunge",84,"",67,null,null,"my_extras",20.31,15]
-    ],
-    "7021": [
-      [2050,72,"poocubed",100,"",null,null,null,"my_extras",104,0]
+      [2843,105,"The Plunge",82,"",67,null,null,"my_extras",19.69,15]
     ],
     "7146": [
       [2050,72,"poocubed",92,"",null,null,null,"my_extras",48.36,0]
@@ -250,7 +230,7 @@
       [1586,201,"Esfera",100,"",null,null,null,"my_extras",2.6,0]
     ],
     "7215": [
-      [2658,68,"Through The Gates",93,"",null,null,null,"my_extras",59.84,0]
+      [2837,69,"Apocalyptic Trilogy",93,"",null,null,null,"my_extras",59.2,0]
     ],
     "7607": [
       [1754,138,"Tartarus",100,"",null,null,null,"my_extras",17,0]
@@ -340,11 +320,7 @@
       [1706,34,"Abyss of Darkness",77,"",null,null,null,"my_extras",130.87,0]
     ],
     "14179": [
-      [3096,35,"Defeated Circles",100,"",null,null,null,"my_extras",340,0],
       [2655,48,"KOCMOC",100,"",null,null,null,"my_extras",288,0]
-    ],
-    "14185": [
-      [2050,72,"poocubed",100,"",null,null,null,"my_extras",104,0]
     ],
     "14206": [
       [3401,97,"Make Paul Dance",100,"",null,null,null,"my_extras",58,0]
@@ -392,8 +368,7 @@
       [2687,31,"Spectre",85,"",null,null,null,"my_extras",143.39,0]
     ],
     "14520": [
-      [1750,47,"Deimos",87,"",null,null,null,"my_extras",125.63,0],
-      [2501,131,"arcturus",100,"",null,null,null,"my_extras",24,0]
+      [1750,47,"Deimos",87,"",null,null,null,"my_extras",125.63,0]
     ],
     "14525": [
       [3304,9,"ORBIT",73,"",null,null,null,"my_extras",227.86,0]
@@ -401,15 +376,6 @@
     "14549": [
       [2684,11,"Nullscapes",83,"",null,null,null,"my_extras",243.6,0],
       [2713,12,"BOOBAWAMBA",60,"",null,null,null,"my_extras",168.57,0]
-    ],
-    "14557": [
-      [1750,47,"Deimos",100,"",null,null,null,"my_extras",292,0]
-    ],
-    "14603": [
-      [2653,21,"Silent clubstep",60,"",null,null,null,"my_extras",138.6,0]
-    ],
-    "14606": [
-      [2305,260,"Lucid Nightmares",100,"",null,null,null,"my_extras",0.99,0]
     ],
     "14643": [
       [2688,67,"KOSETSU",83,"",null,null,null,"my_extras",58.6,0]
@@ -419,11 +385,7 @@
       [2656,36,"Acheron",98,"",null,null,null,"my_extras",166.25,0]
     ],
     "14800": [
-      [2809,28,"Anathema",81,"",null,null,null,"my_extras",139.24,0],
       [2050,72,"poocubed",100,"",null,null,null,"my_extras",104,0]
-    ],
-    "14935": [
-      [2449,203,"Zodiac",100,"",null,null,null,"my_extras",2.6,0]
     ],
     "15022": [
       [2928,18,"Every End",82,"",null,null,null,"my_extras",181.84,0]
@@ -433,10 +395,6 @@
     ],
     "15791": [
       [2809,28,"Anathema",83,"",null,null,null,"my_extras",144.22,0]
-    ],
-    "15920": [
-      [2006,256,"RUST",100,"",null,null,null,"my_extras",0.99,0],
-      [1704,276,"Cobwebs",100,"",null,null,null,"my_extras",0.98,0]
     ],
     "16500": [
       [2684,11,"Nullscapes",82,"",78,null,null,"my_extras",240.7,229.1]
@@ -457,15 +415,10 @@
     "16903": [
       [2485,64,"Firework",79,"",null,null,null,"my_extras",64.91,0],
       [2688,67,"KOSETSU",70,"",null,null,null,"my_extras",47.72,0],
-      [1981,76,"Saul Goodman",68,"",null,null,null,"my_extras",25.89,0],
-      [2513,77,"MINUSdry",66,"",null,null,null,"my_extras",26.13,0]
+      [1981,76,"Saul Goodman",68,"",null,null,null,"my_extras",25.89,0]
     ],
     "16971": [
       [2050,72,"poocubed",71,"",null,null,null,"my_extras",37.44,0]
-    ],
-    "16996": [
-      [1981,76,"Saul Goodman",62,"",null,null,null,"my_extras",23.26,0],
-      [3061,84,"Sevvend Clubstep",100,"",null,null,null,"my_extras",71,0]
     ],
     "17004": [
       [2050,72,"poocubed",92,"",null,null,null,"my_extras",48.36,0]
@@ -482,10 +435,6 @@
       [2050,72,"poocubed",60,"",null,null,null,"my_extras",31.72,0],
       [1981,76,"Saul Goodman",88,"",null,null,null,"my_extras",34.67,0],
       [2535,78,"The Hallucination",81,"",null,null,null,"my_extras",32.08,0]
-    ],
-    "17121": [
-      [2485,64,"Firework",87,"",null,null,null,"my_extras",72.55,0],
-      [1754,138,"Tartarus",100,"",98,null,null,"my_extras",17,8.42]
     ],
     "17204": [
       [2653,21,"Silent clubstep",51,"",null,null,null,"my_extras",124.89,0]
@@ -517,7 +466,6 @@
       [2307,239,"Crimson Planet",100,"",null,null,null,"my_extras",1.4,0]
     ],
     "17910": [
-      [2050,72,"poocubed",50,"",null,null,null,"my_extras",26.52,0],
       [1733,142,"UNKNOWN",100,"",null,null,null,"my_extras",13,0],
       [1591,182,"Trueffet",100,"",null,null,null,"my_extras",3.4,0],
       [1563,238,"shimmer",100,"",null,null,null,"my_extras",1.4,0],
@@ -548,15 +496,8 @@
     "18651": [
       [1923,103,"ETERNALtheory",92,"",54,null,null,"my_extras",24.18,14.3]
     ],
-    "18675": [
-      [3061,84,"Sevvend Clubstep",100,"",null,null,null,"my_extras",71,0],
-      [1733,142,"UNKNOWN",100,"",null,null,null,"my_extras",13,0]
-    ],
     "18721": [
       [2653,21,"Silent clubstep",66,"",null,null,null,"my_extras",147.74,0]
-    ],
-    "18816": [
-      [2656,36,"Acheron",100,"",67,null,null,"my_extras",336,112]
     ],
     "18903": [
       [2843,105,"The Plunge",100,"",null,null,null,"my_extras",50,0],
@@ -605,8 +546,7 @@
       [2684,11,"Nullscapes",76,"",null,null,null,"my_extras",223.3,0]
     ],
     "19838": [
-      [2873,25,"andromeda",74,"",null,null,null,"my_extras",138.37,0],
-      [3061,84,"Sevvend Clubstep",100,"",null,null,null,"my_extras",71,0]
+      [2873,25,"andromeda",74,"",null,null,null,"my_extras",138.37,0]
     ],
     "20016": [
       [2656,36,"Acheron",100,"",null,null,null,"my_extras",336,0],
@@ -642,13 +582,6 @@
     "21325": [
       [2684,11,"Nullscapes",59,"",null,null,null,"my_extras",174,0]
     ],
-    "21431": [
-      [1748,44,"Slaughterhouse",100,"",null,null,null,"my_extras",304,0],
-      [2485,64,"Firework",100,"",null,null,null,"my_extras",168,0]
-    ],
-    "21434": [
-      [1748,44,"Slaughterhouse",100,"",null,null,null,"my_extras",304,0]
-    ],
     "21519": [
       [1740,156,"Oblivion",100,"",62,null,null,"my_extras",4.6,1.35]
     ],
@@ -661,7 +594,6 @@
       [2264,90,"Edge of Destiny",75,"",null,null,null,"my_extras",23.43,0]
     ],
     "21715": [
-      [2655,48,"KOCMOC",68,"",null,null,null,"my_extras",80.23,0],
       [1981,76,"Saul Goodman",100,"",null,null,null,"my_extras",79,0],
       [1740,156,"Oblivion",100,"",null,null,null,"my_extras",4.6,0]
     ],
@@ -669,7 +601,6 @@
       [2928,18,"Every End",52,"",null,null,null,"my_extras",114.49,0]
     ],
     "22288": [
-      [1591,182,"Trueffet",100,"",null,null,null,"my_extras",3.4,0],
       [2707,196,"Judgement Knights",100,"",null,null,null,"my_extras",3,0],
       [2296,229,"Renevant",100,"",null,null,null,"my_extras",1.8,0],
       [1783,232,"Sky Shredder",100,"",null,null,null,"my_extras",1.4,0]
@@ -687,7 +618,6 @@
       [1707,248,"SUPERHATEMEWORLD",100,"",null,null,null,"my_extras",1,0]
     ],
     "23154": [
-      [1754,138,"Tartarus",100,"",null,null,null,"my_extras",17,0],
       [3353,190,"ROCKBOTTOM",100,"",null,null,null,"my_extras",3.4,0]
     ],
     "23458": [
@@ -706,8 +636,6 @@
       [1563,238,"shimmer",100,"",null,null,null,"my_extras",1.4,0]
     ],
     "24400": [
-      [2050,72,"poocubed",100,"",null,null,null,"my_extras",104,0],
-      [2236,152,"The Golden",100,"",null,null,null,"my_extras",4.6,0],
       [2237,244,"Cognition",100,"",null,null,null,"my_extras",1,0],
       [1704,276,"Cobwebs",100,"",null,null,null,"my_extras",0.98,0]
     ],
@@ -718,20 +646,8 @@
     "24820": [
       [2656,36,"Acheron",89,"",null,null,null,"my_extras",150.5,0]
     ],
-    "25260": [
-      [1740,156,"Oblivion",100,"",66,null,null,"my_extras",4.6,1.46],
-      [1563,238,"shimmer",100,"",null,null,null,"my_extras",1.4,0]
-    ],
-    "25791": [
-      [2683,33,"Menace",100,"",85,null,null,"my_extras",348,149.64]
-    ],
     "26005": [
       [2372,86,"COMBUSTION",100,"",null,null,null,"my_extras",69,0]
-    ],
-    "26120": [
-      [2692,139,"Waterfall",100,"",null,null,null,"my_extras",16,0],
-      [1892,145,"Jigsaw",100,"",null,null,null,"my_extras",10,0],
-      [1704,276,"Cobwebs",100,"",null,null,null,"my_extras",0.98,0]
     ],
     "26550": [
       [2050,72,"poocubed",75,"",null,null,null,"my_extras",39.52,0]
@@ -768,15 +684,9 @@
     "28956": [
       [1748,44,"Slaughterhouse",78,"",null,null,null,"my_extras",113.07,0]
     ],
-    "29481": [
-      [2656,36,"Acheron",73,"",53,null,null,"my_extras",122.5,87.5]
-    ],
     "29486": [
       [3432,62,"Wild Roses",50,"",null,null,null,"my_extras",46.92,0],
       [2902,82,"Fracture",100,"",null,null,null,"my_extras",73,0]
-    ],
-    "29533": [
-      [1732,65,"Sakupen Circles",100,"",null,null,null,"my_extras",160,0]
     ],
     "29768": [
       [3355,75,"Calibrate",100,"",null,null,null,"my_extras",80,0]
@@ -797,9 +707,6 @@
       [1591,182,"Trueffet",100,"",null,null,null,"my_extras",3.4,0],
       [1563,238,"shimmer",100,"",null,null,null,"my_extras",1.4,0]
     ],
-    "33625": [
-      [1748,44,"Slaughterhouse",81,"",null,null,null,"my_extras",118.63,0]
-    ],
     "34092": [
       [3061,84,"Sevvend Clubstep",100,"",null,null,null,"my_extras",71,0]
     ],
@@ -807,7 +714,6 @@
       [3432,62,"Wild Roses",50,"",null,null,null,"my_extras",46.92,0]
     ],
     "34984": [
-      [1915,137,"The Wonder of You",100,"",null,null,null,"my_extras",18,0],
       [1563,238,"shimmer",100,"",null,null,null,"my_extras",1.4,0]
     ],
     "35285": [
@@ -815,7 +721,6 @@
       [3125,59,"Snowbound",100,"",null,null,null,"my_extras",208,0]
     ],
     "35482": [
-      [2050,72,"poocubed",100,"",null,null,null,"my_extras",104,0],
       [2222,154,"Verdant Landscape",100,"",null,null,null,"my_extras",4.6,0]
     ],
     "35575": [
@@ -824,15 +729,14 @@
       [2843,105,"The Plunge",100,"",null,null,null,"my_extras",50,0],
       [2692,139,"Waterfall",100,"",null,null,null,"my_extras",16,0]
     ],
-    "35950": [
-      [2513,77,"MINUSdry",100,"",null,null,null,"my_extras",78,0],
-      [2237,244,"Cognition",100,"",null,null,null,"my_extras",1,0]
-    ],
     "35989": [
       [1732,65,"Sakupen Circles",100,"",null,null,null,"my_extras",160,0],
       [2689,141,"Checked Steam",100,"",null,null,null,"my_extras",14,0],
       [2544,250,"FACESHOPPING",100,"",null,null,null,"my_extras",1,0],
       [2018,272,"Shardscapes",100,"",null,null,null,"my_extras",0.98,0]
+    ],
+    "36180": [
+      [3125,59,"Snowbound",82,"",null,null,null,"my_extras",84.78,0]
     ],
     "41363": [
       [3226,4,"Thinking Space II",68,"",null,null,null,"my_extras",239.41,0]
@@ -845,9 +749,6 @@
     "45796": [
       [3320,22,"Penumbral",92,"",null,null,null,"my_extras",181.09,0]
     ],
-    "46877": [
-      [2653,21,"Silent clubstep",100,"",65,null,null,"my_extras",396,146.22]
-    ],
     "51317": [
       [1706,34,"Abyss of Darkness",100,"",80,null,null,"my_extras",344,136.48]
     ],
@@ -856,8 +757,7 @@
     ],
     "64612": [
       [2684,11,"Nullscapes",63,"",null,null,null,"my_extras",185.6,0],
-      [1748,44,"Slaughterhouse",95,"",null,null,null,"my_extras",144.59,0],
-      [1981,76,"Saul Goodman",100,"",null,null,null,"my_extras",79,0]
+      [1748,44,"Slaughterhouse",95,"",null,null,null,"my_extras",144.59,0]
     ],
     "65437": [
       [3429,10,"Antarctic Lights",67,"",null,null,null,"my_extras",185.71,0]
