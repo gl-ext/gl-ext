@@ -7,8 +7,8 @@
   1. coreboard_parse.py all   -> cbd.txt (оба топа CoreBoard вместе);
   2. gd-rating.py --src pointercrate --ids -> gdr_gl_pc.txt (наш рейтинг, ID игроков в [скобках]);
   3. compare.py in-cbd-not-in-gdr -> missing_achievements.json;
-  4. дописывает найденное в my_extras.json (по каждому игроку и уровню остаётся лучший процент,
-     старое не удаляется и не понижается);
+  4. ПОЛНОСТЬЮ перезаписывает my_extras.json найденным (процент может понижаться, записи, которые
+     уже есть в нашем рейтинге или пропали с CoreBoard, удаляются; сохраняются только ссылки на видео);
   5. пишет missing_achievements.json в корень репозитория: [ID уровня, процент, ссылка на видео].
      По умолчанию видео НЕ ищутся (ссылки пустые, ""). С флагом --videos add-video-links.py ищет их
      (ссылки те же, что в командах /fulladd и /try; не нашлась - "");
@@ -20,8 +20,8 @@
   python scripts/sync_extras.py --commit       записать, закоммитить и запушить
 
 Параметры:
-  --max N         защита: если новых записей больше N, ничего не пишем (по умолчанию 300).
-                  Огромный список почти всегда значит сбой парсинга, а не реальные рекорды.
+  --max N         защита: если изменений (новых + повышенных + пониженных + убранных) больше N,
+                  ничего не пишем (по умолчанию 300). Огромное число почти всегда значит сбой парсинга.
   --force         игнорировать --max
   --skip-fetch    не запускать coreboard_parse и gd-rating, взять готовые cbd.txt и gdr_gl_pc.txt
                   (удобно, чтобы быстро перепроверить сравнение)
@@ -59,7 +59,7 @@ MISSING = ROOT / "missing_achievements.json"
 ap = argparse.ArgumentParser(description="Дописывает находки compare.py в my_extras.json")
 ap.add_argument("--dry-run", action="store_true", help="ничего не писать, только показать")
 ap.add_argument("--commit", action="store_true", help="закоммитить и запушить my_extras.json")
-ap.add_argument("--max", type=int, default=300, help="максимум новых записей за раз (защита)")
+ap.add_argument("--max", type=int, default=300, help="максимум изменений за раз (защита)")
 ap.add_argument("--force", action="store_true", help="игнорировать --max")
 ap.add_argument("--skip-fetch", action="store_true", help="не качать cbd и gdr заново")
 ap.add_argument("--skip-levels", action="store_true", help="не обновлять levels_tp.json")
@@ -322,40 +322,63 @@ def load_extras():
     return data
 
 
-def merge_found(extras, found):
-    """Добавляет найденное в extras (на месте). Возвращает (новых записей, улучшенных, подробности)."""
-    users = extras["users"]
-    added = improved = 0
+def replace_found(extras, found):
+    """ПОЛНОСТЬЮ заменяет содержимое extras результатом compare (на месте).
+
+    my_extras.json теперь всегда равен тому, что compare нашёл прямо сейчас:
+      - рекорд на CoreBoard упал       -> процент понижается;
+      - рекорд появился в нашем рейтинге -> запись пропадает из my_extras (она там больше не нужна);
+      - рекорда нет на CoreBoard        -> запись пропадает.
+    Единственное, что переносится из старых записей, - ссылка на видео (3-й элемент),
+    если запись с тем же игроком и уровнем осталась.
+    Возвращает (новых, повышенных, понижённых, удалённых, подробности)."""
+    old_users = extras["users"]
+    new_users = {}
+    added = improved = lowered = removed = 0
     details = []
+    found_ids = {str(u) for u in found}
+
     for uid, rows in found.items():
         uid = str(uid)
-        cur = users.setdefault(uid, [])
-        index = {}
-        for i, r in enumerate(cur):
+        # старые записи этого игрока: ID уровня -> запись
+        old_index = {}
+        for r in old_users.get(uid, []):
             if isinstance(r, list) and len(r) >= 2:
-                index[str(r[0])] = i
-        # длина строки как у уже существующих записей, иначе как в compare: [уровень, процент, ""]
-        width = len(cur[0]) if cur and isinstance(cur[0], list) else 3
+                old_index[str(r[0])] = r
+        cur = []
         for r in rows:
             lvl, pct = r[0], float(r[1])
             pct = int(pct) if pct == int(pct) else pct
-            k = str(lvl)
-            if k in index:
-                old = cur[index[k]]
-                if pct > float(old[1]):
-                    details.append(f"  {uid}: уровень {lvl}: {old[1]}% -> {pct}%")
-                    old[1] = pct
-                    improved += 1
-            else:
-                new = [lvl, pct, ""][:max(width, 2)]
-                new += [""] * (max(width, 2) - len(new))
-                cur.append(new)
-                index[k] = len(cur) - 1
+            old = old_index.pop(str(lvl), None)  # pop: что останется в old_index, то нужно удалить
+            if old is None:
+                cur.append([lvl, pct, ""])
                 details.append(f"  {uid}: уровень {lvl}: новая запись {pct}%")
                 added += 1
-        if not cur:
-            del users[uid]
-    return added, improved, details
+            else:
+                if float(old[1]) < pct:
+                    details.append(f"  {uid}: уровень {lvl}: {old[1]}% -> {pct}%")
+                    improved += 1
+                elif float(old[1]) > pct:
+                    details.append(f"  {uid}: уровень {lvl}: ПОНИЖЕН {old[1]}% -> {pct}%")
+                    lowered += 1
+                link = old[2] if len(old) > 2 and isinstance(old[2], str) else ""
+                cur.append([lvl, pct, link])
+        for old in old_index.values():  # были раньше, а compare их больше не находит
+            details.append(f"  {uid}: уровень {old[0]}: запись {old[1]}% убрана")
+            removed += 1
+        if cur:
+            new_users[uid] = cur
+
+    for uid, rows in old_users.items():  # игроков, которых compare вообще не вернул, убираем целиком
+        if str(uid) in found_ids:
+            continue
+        for r in rows:
+            if isinstance(r, list) and len(r) >= 2:
+                details.append(f"  {uid}: уровень {r[0]}: запись {r[1]}% убрана")
+                removed += 1
+
+    extras["users"] = new_users
+    return added, improved, lowered, removed, details
 
 
 def save_extras(extras):
@@ -495,24 +518,26 @@ def main():
             print("ВНИМАНИЕ: add-video-links.py не создал missing_achievements_with_videos.json, ссылки будут пустыми.")
 
     extras = load_extras()
-    added, improved, details = merge_found(extras, found)
-    print(f"Из них новых для {EXTRAS.name}: {added}, улучшений процента: {improved}")
+    added, improved, lowered, removed, details = replace_found(extras, found)
+    changes = added + improved + lowered + removed
+    print(f"{EXTRAS.name}: новых {added}, повышено {improved}, понижено {lowered}, убрано {removed}")
     for line in details[:50]:
         print(line)
     if len(details) > 50:
         print(f"  ... и ещё {len(details) - 50}")
 
-    if not (added or improved):
+    if not changes:
         print("В my_extras.json менять нечего.")
         if not args.dry_run:
             save_missing(with_links)
         if args.commit and not args.dry_run:
             commit_and_push("levels_tp / missing_achievements: обновление (авто, CoreBoard)", [LEVELS, MISSING])
         return
-    if added > args.max and not args.force:
+    # защита: теперь файл перезаписывается целиком, поэтому считаем ВСЕ изменения, а не только новые
+    if changes > args.max and not args.force:
         if levels_changed:
-            print(f"levels_tp.json уже записан, но не закоммичен (my_extras.json упёрся в лимит).")
-        sys.exit(f"Новых записей {added}, больше лимита --max {args.max}. my_extras.json не записан. "
+            print("levels_tp.json уже записан, но не закоммичен (my_extras.json упёрся в лимит).")
+        sys.exit(f"Изменений {changes}, больше лимита --max {args.max}. my_extras.json не записан. "
                  f"Если это нормально, запусти с --force (или подними --max).")
     if args.dry_run:
         print("\n--dry-run: файл не записан.")
@@ -522,10 +547,9 @@ def main():
     save_missing(with_links)
     print(f"\n{EXTRAS.name} обновлён.")
     if args.commit:
-        msg = f"my_extras: +{added} записей, {improved} улучшений (авто, CoreBoard)"
+        msg = f"my_extras: +{added} новых, {improved} повышено, {lowered} понижено, {removed} убрано (авто, CoreBoard)"
         if levels_changed:
             msg += "; levels_tp обновлён"
         commit_and_push(msg, [EXTRAS, LEVELS, MISSING])
-
 
 main()
