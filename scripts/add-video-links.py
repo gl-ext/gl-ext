@@ -641,13 +641,14 @@ def write_commands(command_records, filename):
             print(" ", level_id)
 
 
-def add_links_to_nicks_file(command_records, filename):
+def add_links_to_file(command_records, filename, index):
     """
-    Дописывает в missing_achievements_with_nicks.json четвёртым пунктом ссылку
-    (ту же, что в командах /fulladd, то есть приведённую к youtube.com/watch?v=ID).
-    Запись становится [ID уровня, процент, название, ссылка]; не нашлась - "".
+    Записывает в файл ссылку на видео (ту же, что в командах /fulladd, то есть
+    приведённую к youtube.com/watch?v=ID); не нашлась - "".
+      index=3: missing_achievements_with_nicks.json -> [ID уровня, процент, название, ссылка]
+      index=2: missing_achievements.json            -> [ID уровня, процент, ссылка]
     Записи ищутся по (игрок, уровень, процент), а не по порядку. Повторный запуск
-    просто перезаписывает 4-й пункт, ничего не дублируется.
+    просто перезаписывает пункт со ссылкой, ничего не дублируется.
     """
     path = Path(filename)
     if not path.exists():
@@ -669,14 +670,14 @@ def add_links_to_nicks_file(command_records, filename):
 
         for record in records:
             total += 1
-            while len(record) < 3:
+            while len(record) < index:
                 record.append("")
 
             percent = parse_percent(record[1])
             link = link_map.get((player_id, str(record[0]), percent), "")
 
-            if len(record) >= 4:
-                record[3] = link
+            if len(record) > index:
+                record[index] = link
             else:
                 record.append(link)
 
@@ -684,7 +685,7 @@ def add_links_to_nicks_file(command_records, filename):
                 filled += 1
 
     save_json(users, filename)
-    print(f"Ссылки добавлены в {filename}: {filled} из {total}")
+    print(f"Ссылки добавлены в {filename} (пункт {index + 1}): {filled} из {total}")
 
 
 def main():
@@ -807,7 +808,8 @@ def main():
     save_json(output_users, OUTPUT_FILE)
     save_sources(global_lines, pointer_lines, SOURCES_FILE)
     write_commands(command_records, COMMANDS_FILE)
-    add_links_to_nicks_file(command_records, NICKS_FILE)
+    add_links_to_file(command_records, NICKS_FILE, 3)
+    add_links_to_file(command_records, INPUT_FILE, 2)
     Path(NOT_FOUND_FILE).write_text(
         "\n".join(not_found) + ("\n" if not_found else ""),
         encoding="utf-8"
@@ -825,6 +827,7 @@ def main():
     print(f"TXT (источники видео): {SOURCES_FILE}")
     print(f"TXT (команды): {COMMANDS_FILE}")
     print(f"JSON (с никами и ссылками): {NICKS_FILE}")
+    print(f"JSON (обычный, со ссылками): {INPUT_FILE}")
 
 
 if __name__ == "__main__":
