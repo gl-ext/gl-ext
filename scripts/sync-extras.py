@@ -62,6 +62,7 @@ args = ap.parse_args()
 
 LEVELS_URL = "https://coreboard.pythonanywhere.com/main/levels"
 LEVELS_UA = "gl-ext-top6"
+LEVELS_RAW = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/levels_tp.json"
 GLOBAL_API = "https://api.demonlist.org/level/classic/list"
 NUM = r"\d+(?:\.\d+)?"
 LEVEL_RE = re.compile(r"^(.*?) \(T=(" + NUM + r"), t=(" + NUM + r")\)$")
@@ -281,18 +282,19 @@ def save_levels(entries, path):
 def update_levels(target):
     """Скачивает список уровней CoreBoard и пишет его в target. Возвращает True, если файл изменился."""
     print(f"\n=== CoreBoard: список уровней -> {target.name} ===", flush=True)
-    old = {"levels": {}}
-    if LEVELS.exists():
-        try:
-            old = json.loads(LEVELS.read_text("utf-8"))
-        except Exception as e:
-            sys.exit(f"Не могу прочитать {LEVELS.name} ({e}). Чтобы не затереть его, останавливаюсь.")
+    # прежний список берём с GitHub, а не из папки
+    try:
+        req = urllib.request.Request(LEVELS_RAW, headers={"User-Agent": LEVELS_UA})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            before = r.read().decode("utf-8")
+        old = json.loads(before)
+    except Exception as e:
+        sys.exit(f"Не могу загрузить levels_tp.json с GitHub ({e}). Чтобы не затереть его, останавливаюсь.")
     entries, n_main, n_alias = parse_levels(fetch_levels_html(), old)
     old_main = sum(1 for k in old.get("levels", {}) if not k.startswith("x"))
     if n_main < 100 or (old_main and n_main < old_main * 0.8):
         sys.exit(f"Со страницы разобрано только {n_main} уровней (в файле было {old_main}) - "
                  f"похоже на сбой парсинга. {LEVELS.name} не тронут.")
-    before = LEVELS.read_text("utf-8") if LEVELS.exists() else ""
     save_levels(entries, target)
     changed = target.read_text("utf-8") != before
     print(f"Уровней: {n_main}, алиасов: {n_alias}. " + ("Есть изменения." if changed else "Без изменений."))
@@ -401,23 +403,20 @@ def main():
 
     work = Path(tempfile.mkdtemp(prefix="extras_sync_"))
 
-    # 1. Сначала levels_tp.json: и рейтинг (gd-rating), и сравнение (compare) должны работать по свежему списку
-    levels_for_compare = LEVELS
+    # 1. Сначала levels_tp.json (в репозиторий). gd-rating и compare сами берут его с GitHub, поэтому
+    #    свежая правка станет видна им только после push и истечения кеша raw (~5 минут)
     levels_changed = False
-    tp_args = []  # свежий файл для gd-rating, иначе он берёт levels_tp.json с GitHub (там может быть старый)
     if not (args.skip_fetch or args.skip_levels):
         if args.dry_run:
-            levels_for_compare = work / "levels_tp.json"
-            update_levels(levels_for_compare)
+            update_levels(work / "levels_tp.json")
             print("--dry-run: levels_tp.json в репозитории не записан.")
         else:
             levels_changed = update_levels(LEVELS)
-        tp_args = ["--tp-file", levels_for_compare]
 
     # 2. Потом оба рейтинга
     if not args.skip_fetch:
         run([sys.executable, cb, "all", "-r"], "CoreBoard: оба топа -> cbd.txt")
-        run([sys.executable, gdr_script, "--src", "pointercrate", "--ids", *tp_args],
+        run([sys.executable, gdr_script, "--src", "pointercrate", "--ids"],
             "Наш рейтинг (глобал + pointercrate) -> gdr_gl_pc.txt")
     for f in (cbd_txt, gdr_txt):
         if not f.exists() or f.stat().st_size == 0:
@@ -426,7 +425,7 @@ def main():
     # 3. И сравнение
 
     run([sys.executable, cmp_script, "in-cbd-not-in-gdr", "--cbd", cbd_txt, "--gdr", gdr_txt,
-         "--levels", levels_for_compare, "--out-dir", work], "compare: in-cbd-not-in-gdr")
+         "--out-dir", work], "compare: in-cbd-not-in-gdr")
 
     found_file = work / "missing_achievements.json"
     if not found_file.exists():
