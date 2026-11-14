@@ -318,6 +318,7 @@
     "xLost in Time 2": {"name": "Lost in Time 2", "like": "Master of Puppets", "place": 57, "T": 99, "t": 50},
     "xMarks": {"name": "Marks", "like": "Sinister Silence", "place": 124, "T": 99, "t": 50},
     "xblight": {"name": "blight", "like": "Natural Disaster", "place": 150, "T": 99, "t": 50},
-    "xMETROPOLIS": {"name": "METROPOLIS", "like": "Every End", "place": 18, "T": 93, "t": 60}
+    "xMETROPOLIS": {"name": "METROPOLIS", "like": "Every End", "place": 18, "T": 93, "t": 60},
+    "xFIBERGLASS": {"name": "FIBERGLASS", "like": "Kyouki", "place": 38, "T": 99, "t": 50}
   }
 }
