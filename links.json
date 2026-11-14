@@ -13312,12 +13312,10 @@
     "_name": "AidanTR",
     "pointercrate": [
       41687,
-      51328
     ],
     "channels": {
       "youtube": [
         "https://www.youtube.com/@aidantr",
-        "https://www.youtube.com/@aidangd4084",
         "https://www.youtube.com/@aidannotaydan_"
       ]
     }
@@ -189263,6 +189261,17 @@
     "pointercrate": [
       51327
     ]
+  },
+  "pc51328": {
+    "_name": "Aidan混合種族",
+    "pointercrate": [
+      51328
+    ],
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@aidangd4084"
+      ]
+    }
   },
   "pc51329": {
     "_name": "PolygonGMD",
