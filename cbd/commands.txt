@@ -44,9 +44,6 @@
 /fulladd Syzygy, Jigsaw,
 /try Syzygy, Jigsaw
 
-/fulladd Nessid, Bloodlust,
-/try Nessid, Bloodlust
-
 Видео: Pointercrate
 /fulladd Trixsm, Firework, https://www.youtube.com/watch?v=tVL_U3TuhsI
 /try Trixsm, Firework
@@ -54,9 +51,6 @@
 Видео: Pointercrate
 /fulladd Trixsm, Spectre, https://www.youtube.com/watch?v=8rLGy6MqjX8
 /try Trixsm, Spectre
-
-/fulladd Zaro7, Cognition,
-/try Zaro7, Cognition
 
 Видео: Pointercrate
 /fulladd Arouvis, The Golden, https://www.youtube.com/watch?v=Uvl0_N649xI
@@ -81,15 +75,3 @@
 Видео: Pointercrate
 /fulladd sorrow, Heavenly Sakupen, https://www.youtube.com/watch?v=PLqx1EtVsG8
 /try sorrow, Heavenly Sakupen
-
-/fulladd worstplayer4, Cobwebs,
-/try worstplayer4, Cobwebs
-
-/fulladd wingtiplet, Shardscapes,
-/try wingtiplet, Shardscapes
-
-/fulladd nines, SUPERHATEMEWORLD,
-/try nines, SUPERHATEMEWORLD
-
-/fulladd Xerahh, Cognition,
-/try Xerahh, Cognition
