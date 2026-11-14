@@ -2,9 +2,6 @@
 /fulladd agatha, Sakupen Circles 69%, https://www.youtube.com/watch?v=T9F_Vi9oW04
 /try agatha, Sakupen Circles 69%
 
-/fulladd wmcooler, Waterfall,
-/try wmcooler, Waterfall
-
 Видео: Pointercrate
 /fulladd Sangkan, Stellar Night, https://www.youtube.com/watch?v=h0G9gp77hYQ
 /try Sangkan, Stellar Night
@@ -17,7 +14,8 @@
 /fulladd AidanTR, Trueffet, https://www.youtube.com/watch?v=WMTY8nRbHR0
 /try AidanTR, Trueffet
 
-/fulladd AidanTR, UNKNOWN,
+Видео: Pointercrate
+/fulladd AidanTR, UNKNOWN, https://www.youtube.com/watch?v=sFfGDHjltHM
 /try AidanTR, UNKNOWN
 
 /fulladd TRSouLess, arcturus,
@@ -60,7 +58,8 @@
 /fulladd Zaro7, Cognition,
 /try Zaro7, Cognition
 
-/fulladd Arouvis, The Golden,
+Видео: Pointercrate
+/fulladd Arouvis, The Golden, https://www.youtube.com/watch?v=Uvl0_N649xI
 /try Arouvis, The Golden
 
 Видео: Pointercrate
@@ -79,7 +78,8 @@
 /fulladd salv, paranoia, https://www.youtube.com/watch?v=rvnEDabJb6g
 /try salv, paranoia
 
-/fulladd sorrow, Heavenly Sakupen,
+Видео: Pointercrate
+/fulladd sorrow, Heavenly Sakupen, https://www.youtube.com/watch?v=PLqx1EtVsG8
 /try sorrow, Heavenly Sakupen
 
 /fulladd worstplayer4, Cobwebs,
