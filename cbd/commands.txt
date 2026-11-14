@@ -10,14 +10,6 @@
 /fulladd voicechatping, BEING HOME, https://www.youtube.com/watch?v=FlE9mYAizlU
 /try voicechatping, BEING HOME
 
-Видео: Pointercrate
-/fulladd AidanTR, Trueffet, https://www.youtube.com/watch?v=WMTY8nRbHR0
-/try AidanTR, Trueffet
-
-Видео: Pointercrate
-/fulladd AidanTR, UNKNOWN, https://www.youtube.com/watch?v=sFfGDHjltHM
-/try AidanTR, UNKNOWN
-
 Видео: GlobalList
 /fulladd Lazer, Dry Out Copyable 2, https://www.youtube.com/watch?v=F4ObK3pNpsA
 /try Lazer, Dry Out Copyable 2
