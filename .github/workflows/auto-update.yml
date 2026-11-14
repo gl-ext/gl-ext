@@ -38,6 +38,15 @@ jobs:
       - name: Install requests
         run: pip install requests
 
+      # Кеш gd-rating (профили игроков, страны, записи уровней). Без него каждый запуск
+      # заново качает всё, в том числе страну у тысяч игроков по одному запросу.
+      - name: Restore gd-rating cache
+        uses: actions/cache/restore@v4
+        with:
+          path: scripts/levelcache.json
+          key: levelcache-${{ github.run_id }}
+          restore-keys: levelcache-
+
       - name: Run sync-extras.py
         id: extras
         run: python scripts/sync-extras.py --commit ${{ github.event.inputs.extras_args }}
@@ -55,3 +64,11 @@ jobs:
           else
             python scripts/cbd-update.py --commit $CBD_ARGS
           fi
+
+      # Сохраняем и после сбоя, чтобы долгий первый прогон не пропал зря.
+      - name: Save gd-rating cache
+        if: ${{ !cancelled() && hashFiles('scripts/levelcache.json') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: scripts/levelcache.json
+          key: levelcache-${{ github.run_id }}
