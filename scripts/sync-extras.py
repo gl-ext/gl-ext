@@ -9,8 +9,8 @@
   3. compare.py in-cbd-not-in-gdr -> missing_achievements.json;
   4. дописывает найденное в my_extras.json (по каждому игроку и уровню остаётся лучший процент,
      старое не удаляется и не понижается);
-  5. пишет missing_achievements.json в корень репозитория (то, что нашёл compare; у каждой записи
-     ссылка пустая: [уровень, процент, ""]);
+  5. add-video-links.py ищет видео и пишет missing_achievements.json в корень репозитория:
+     [ID уровня, процент, ссылка на видео] (ссылки те же, что в командах /fulladd и /try; не нашлась - "");
   6. с флагом --commit коммитит и пушит my_extras.json, missing_achievements.json и levels_tp.json.
 
 Запуск (из любой папки, пути считаются от места скрипта):
@@ -32,7 +32,7 @@ levels_tp.json: перед сравнением скрипт скачивает 
 ID уровней (ключи) - это ID глобала. На странице CoreBoard их нет: известные берутся из старого файла и СВЕРЯЮТСЯ с глобалом по названию (съехавшие исправляются),
 новые ищутся по имени в api.demonlist.org; неоднозначные и не найденные пропускаются с предупреждением.
 
-Скрипты coreboard_parse.py, gd-rating.py и compare.py должны лежать рядом с этим файлом
+Скрипты coreboard_parse.py, gd-rating.py, compare.py и add-video-links.py должны лежать рядом с этим файлом
 (допустимы и имена через дефис: coreboard-parse.py и т.д.).
 Нужен только Python, ничего устанавливать не надо.
 """
@@ -65,6 +65,7 @@ args = ap.parse_args()
 
 LEVELS_URL = "https://coreboard.pythonanywhere.com/main/levels"
 LEVELS_UA = "gl-ext-top6"
+IDS_RAW = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/gdr-ids.json"
 LEVELS_RAW = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/levels_tp.json"
 GLOBAL_API = "https://api.demonlist.org/level/classic/list"
 NUM = r"\d+(?:\.\d+)?"
@@ -370,15 +371,16 @@ def save_extras(extras):
     os.replace(tmp, EXTRAS)
 
 
-def save_missing(found):
-    """missing_achievements.json в корень репозитория: игрок -> записи [уровень, процент, ""] по одной на строку,
-    ссылка всегда пустая строка в кавычках. Возвращает True, если файл изменился."""
+def save_missing(with_links):
+    """missing_achievements.json в корень репозитория: игрок -> записи [ID уровня, процент, ссылка на видео]
+    по одной на строку (ссылки те же, что в commands.txt; не нашлась - пустая строка). True, если файл изменился."""
     users = {}
     for uid, rows in found.items():
         recs = []
         for r in rows:
             pct = float(r[1])
-            recs.append([r[0], int(pct) if pct == int(pct) else pct, ""])
+            link = r[2] if len(r) > 2 and isinstance(r[2], str) and r[2].startswith("http") else ""
+            recs.append([r[0], int(pct) if pct == int(pct) else pct, link])
         if recs:
             users[str(uid)] = recs
     items = sorted(users.items(), key=lambda kv: (not kv[0].isdigit(),
@@ -468,6 +470,25 @@ def main():
     total = sum(len(v) for v in found.values())
     print(f"\ncompare нашёл: игроков {len(found)}, записей {total}")
 
+    # ссылки на видео (те же, что попадают в commands.txt): их кладём третьим полем в missing_achievements.json
+    with_links = found
+    if total:
+        avl_script = find_script("add-video-links.py", "add_video_links.py")
+        ids_file = work / "gdr-ids.json"
+        try:
+            req = urllib.request.Request(IDS_RAW, headers={"User-Agent": LEVELS_UA})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                ids_file.write_bytes(r.read())
+        except Exception as e:
+            sys.exit(f"Не могу загрузить gdr-ids.json с GitHub ({e}). Останавливаюсь.")
+        run([sys.executable, avl_script, "--out-dir", work, "--ids", ids_file],
+            "Видео и команды (add-video-links)")
+        vf = work / "missing_achievements_with_videos.json"
+        if vf.exists():
+            with_links = json.loads(vf.read_text("utf-8")).get("users", {})
+        else:
+            print("ВНИМАНИЕ: add-video-links.py не создал missing_achievements_with_videos.json, ссылки будут пустыми.")
+
     extras = load_extras()
     added, improved, details = merge_found(extras, found)
     print(f"Из них новых для {EXTRAS.name}: {added}, улучшений процента: {improved}")
@@ -479,7 +500,7 @@ def main():
     if not (added or improved):
         print("В my_extras.json менять нечего.")
         if not args.dry_run:
-            save_missing(found)
+            save_missing(with_links)
         if args.commit and not args.dry_run:
             commit_and_push("levels_tp / missing_achievements: обновление (авто, CoreBoard)", [LEVELS, MISSING])
         return
@@ -493,7 +514,7 @@ def main():
         return
 
     save_extras(extras)
-    save_missing(found)
+    save_missing(with_links)
     print(f"\n{EXTRAS.name} обновлён.")
     if args.commit:
         msg = f"my_extras: +{added} записей, {improved} улучшений (авто, CoreBoard)"
