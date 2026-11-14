@@ -26,6 +26,7 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 INPUT_FILE = str(OUT_DIR / "missing_achievements.json")
 OUTPUT_FILE = str(OUT_DIR / "missing_achievements_with_videos.json")
+NICKS_FILE = str(OUT_DIR / "missing_achievements_with_nicks.json")  # его делает compare.py; сюда 4-м пунктом дописывается ссылка
 NOT_FOUND_FILE = str(OUT_DIR / "missing_video_links.txt")
 SOURCES_FILE = str(OUT_DIR / "video_link_sources.txt")  # откуда взято каждое найденное видео
 COMMANDS_FILE = str(OUT_DIR / "commands.txt")           # команды /fulladd и /try
@@ -640,6 +641,52 @@ def write_commands(command_records, filename):
             print(" ", level_id)
 
 
+def add_links_to_nicks_file(command_records, filename):
+    """
+    Дописывает в missing_achievements_with_nicks.json четвёртым пунктом ссылку
+    (ту же, что в командах /fulladd, то есть приведённую к youtube.com/watch?v=ID).
+    Запись становится [ID уровня, процент, название, ссылка]; не нашлась - "".
+    Записи ищутся по (игрок, уровень, процент), а не по порядку. Повторный запуск
+    просто перезаписывает 4-й пункт, ничего не дублируется.
+    """
+    path = Path(filename)
+    if not path.exists():
+        print(f"ВНИМАНИЕ: нет {filename}, ссылки туда не добавлены")
+        return
+
+    link_map = {}
+    for _player_key, player_id, level_id, percent, link, _site in command_records:
+        link_map[(normalize_id(player_id), str(level_id), percent)] = normalize_link(link)
+
+    with path.open("r", encoding="utf-8") as file:
+        data = json.load(file)
+
+    users = data.get("users", data)
+    filled = total = 0
+
+    for player_key, records in users.items():
+        player_id = normalize_id(player_id_from_key(player_key))
+
+        for record in records:
+            total += 1
+            while len(record) < 3:
+                record.append("")
+
+            percent = parse_percent(record[1])
+            link = link_map.get((player_id, str(record[0]), percent), "")
+
+            if len(record) >= 4:
+                record[3] = link
+            else:
+                record.append(link)
+
+            if link:
+                filled += 1
+
+    save_json(users, filename)
+    print(f"Ссылки добавлены в {filename}: {filled} из {total}")
+
+
 def main():
     input_path = Path(INPUT_FILE)
     if not input_path.exists():
@@ -760,6 +807,7 @@ def main():
     save_json(output_users, OUTPUT_FILE)
     save_sources(global_lines, pointer_lines, SOURCES_FILE)
     write_commands(command_records, COMMANDS_FILE)
+    add_links_to_nicks_file(command_records, NICKS_FILE)
     Path(NOT_FOUND_FILE).write_text(
         "\n".join(not_found) + ("\n" if not_found else ""),
         encoding="utf-8"
@@ -776,6 +824,7 @@ def main():
     print(f"TXT (не найдено): {NOT_FOUND_FILE}")
     print(f"TXT (источники видео): {SOURCES_FILE}")
     print(f"TXT (команды): {COMMANDS_FILE}")
+    print(f"JSON (с никами и ссылками): {NICKS_FILE}")
 
 
 if __name__ == "__main__":
