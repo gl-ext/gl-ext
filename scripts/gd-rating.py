@@ -40,8 +40,6 @@ p.add_argument("--n", type=int, default=6, help="сколько лучших з�
 p.add_argument("--cap", type=float, default=300, help="макс. стоимость записи; недостающие добираются этим значением")
 p.add_argument("--cap-place", dest="cap_place", type=float, default=300, help="проверять уровни до этого места")
 p.add_argument("--levels", type=int, default=0, help="только первые N уровней (быстрый тест)")
-p.add_argument("--tp-file", dest="tp_file", default="",
-               help="путь к свежему levels_tp.json (его передаёт sync-extras.py); по умолчанию файл берётся с GitHub")
 p.add_argument("--show", type=int, default=50, help="сколько игроков печатать")
 p.add_argument("--long", action="store_true", help="подробный вывод (по строке на запись)")
 p.add_argument("--conc", type=int, default=20, help="параллельных запросов")
@@ -131,18 +129,13 @@ def load_repo_json(name):
 
 
 def load_tp():
-    """levels_tp.json берём ТОЛЬКО с GitHub. Исключение - ключ --tp-file: его передаёт sync-extras.py,
-    который только что обновил список уровней, а GitHub (raw кешируется ~5 минут) отдал бы старый.
-    Без файла T/t были бы запасными для всех уровней и рейтинг получился бы неверным, поэтому при сбое выходим."""
+    """levels_tp.json берём ТОЛЬКО с GitHub (локальный файл не используется).
+    Без него T/t были бы запасными для всех уровней и рейтинг получился бы неверным, поэтому при сбое выходим."""
+    print("levels_tp.json: беру с GitHub (raw кешируется до ~5 минут после правки)")
     try:
-        if args.tp_file:
-            print(f"levels_tp.json: беру свежий файл {args.tp_file} (передан из sync-extras)")
-            levels = json.loads(Path(args.tp_file).read_text("utf-8")).get("levels", {})
-        else:
-            print("levels_tp.json: беру с GitHub (raw кешируется до ~5 минут после правки)")
-            levels = get_json(RAW + "levels_tp.json").get("levels", {})
+        levels = get_json(RAW + "levels_tp.json").get("levels", {})
     except Exception as e:
-        raise SystemExit(f"levels_tp.json: не удалось загрузить ({e}). Останавливаюсь.")
+        raise SystemExit(f"levels_tp.json: не удалось загрузить с GitHub ({e}). Останавливаюсь.")
     if not levels:
         raise SystemExit("levels_tp.json: на GitHub пустой список уровней. Останавливаюсь.")
     return levels
