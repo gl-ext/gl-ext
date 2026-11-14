@@ -27,8 +27,8 @@
 levels_tp.json: перед сравнением скрипт скачивает https://coreboard.pythonanywhere.com/main/levels
 (User-Agent gl-ext-top6) и перезаписывает levels_tp.json в корне репозитория: основные уровни
 (<li id="level-N">Имя (T=.., t=..)</li>) и алиасы ("Имя = Уровень (T=.., t=..)" -> ключ "xИмя").
-ID уровней (ключи) - это ID глобала. На странице их нет: для известных имён берутся из старого файла,
-для новых ищутся по имени в api.demonlist.org; не найденные пропускаются с предупреждением.
+ID уровней (ключи) - это ID глобала. На странице CoreBoard их нет: известные берутся из старого файла и СВЕРЯЮТСЯ с глобалом по названию (съехавшие исправляются),
+новые ищутся по имени в api.demonlist.org; неоднозначные и не найденные пропускаются с предупреждением.
 
 Скрипты coreboard_parse.py, gd-rating.py и compare.py должны лежать рядом с этим файлом
 (допустимы и имена через дефис: coreboard-parse.py и т.д.).
@@ -99,9 +99,24 @@ def fetch_levels_html():
         sys.exit(f"Не удалось скачать {LEVELS_URL}: {e}. levels_tp.json не тронут.")
 
 
-def fetch_global_ids():
-    """Список уровней глобала (api.demonlist.org) -> {имя в нижнем регистре: ID}. Берём топ с запасом."""
-    out, offset = {}, 0
+# Особые названия: ID уровня в глобале -> как он называется у нас (в API у него другое/такое же, как у соседа).
+# ВАЖНО: такие же списки лежат в compare.py и add-video-links.py. Дописали сюда - допишите и туда.
+SPECIAL_LEVEL_NAMES = {
+    "3299": "Sakupen circles (Nick24)",
+    "3351": "Thinking Space II (Legacy)",
+    "2234": "Deimos (Endlevel)",
+}
+
+
+def norm(s):
+    return " ".join(str(s).split()).casefold()
+
+
+def fetch_global_levels():
+    """Список уровней глобала (api.demonlist.org), топ с запасом.
+    Возвращает (id2name, name2ids, id2place, place2id): ID -> наше название (с учётом SPECIAL_LEVEL_NAMES),
+    нормализованное название -> список ID, ID -> место в глобале и место -> ID. При сбое возвращает None."""
+    id2name, name2ids, id2place, place2id, offset = {}, {}, {}, {}, 0
     try:
         while True:
             req = urllib.request.Request(f"{GLOBAL_API}?limit=100&offset={offset}",
@@ -111,13 +126,27 @@ def fetch_global_ids():
             if not arr:
                 break
             for l in arr:
-                out.setdefault(str(l["name"]).strip().lower(), str(l["id"]))
-            if float(arr[-1]["placement"]) > 400:
+                lid = str(l["id"])
+                if lid in id2name:
+                    continue
+                name = SPECIAL_LEVEL_NAMES.get(lid, str(l["name"]).strip())
+                id2name[lid] = name
+                name2ids.setdefault(norm(name), []).append(lid)
+                pl = int(float(l["placement"]))
+                id2place[lid] = pl
+                place2id.setdefault(pl, lid)
+            if float(arr[-1]["placement"]) > 600:
                 break
             offset += 100
     except Exception as e:
-        print(f"ВНИМАНИЕ: не удалось получить список уровней глобала ({e}); новые уровни будут пропущены.")
-    return out
+        print(f"ВНИМАНИЕ: не удалось получить список уровней глобала ({e}). "
+              f"ID уровней не проверены, новые уровни будут пропущены.")
+        return None
+    if len(id2name) < 300:
+        print(f"ВНИМАНИЕ: из глобала пришло только {len(id2name)} уровней - список неполный, "
+              f"ID уровней не проверены, новые уровни будут пропущены.")
+        return None
+    return id2name, name2ids, id2place, place2id
 
 
 def parse_levels(page, old):
@@ -125,13 +154,21 @@ def parse_levels(page, old):
 
     Основные уровни: <li id="level-N">Имя (T=99, t=66)</li>  -> place = N.
     Алиасы:          <li>Имя = Уровень (T=97, t=47)</li>      -> ключ "xИмя", place берётся у «Уровня».
-    ID уровня на странице нет (ключ - ID уровня в глобале, api.demonlist.org): для известных имён берём
-    его из старого levels_tp.json, для новых ищем по имени в списке глобала. Не нашли - уровень
-    пропускаем с предупреждением (выдумывать ID нельзя).
+    ID уровня на странице нет (ключ - ID уровня в глобале, api.demonlist.org). Для каждого уровня:
+      1) ищем в глобале уровень с ТАКИМ ЖЕ НАЗВАНИЕМ. Он один - берём его ID (если старый ID был другим,
+         пишем в лог, что исправили). Само по себе место для этого не используется: стоит в глобале
+         вставить или убрать уровень, и все места после него съедут на одну позицию;
+      2) таких названий несколько (одноимённые уровни) - выбираем того, чьё место в глобале равно месту
+         на CoreBoard;
+      3) такого названия в глобале нет (уровень переименован) - оставляем старый ID, только если он же стоит
+         в глобале на этом месте (два независимых признака); иначе ID остаётся с пометкой "не подтверждён";
+      4) старого ID нет и найти не удалось - уровень пропускаем (выдумывать ID нельзя).
+    Если глобал недоступен, сверки нет: ID берутся из старого файла как есть.
     """
     old_levels = old.get("levels", {})
     name2id = {v["name"]: k for k, v in old_levels.items() if not k.startswith("x")}
-    gl = None  # имя (в нижнем регистре) -> ID глобала; качаем только если появился неизвестный уровень
+    gl = fetch_global_levels()
+    id2name, name2ids, id2place, place2id = gl if gl else ({}, {}, {}, {})
 
     main = []  # (place, name, T, t)
     for m in re.finditer(r'<li id="level-(\d+)">(.*?)</li>', page, re.S):
@@ -143,18 +180,50 @@ def parse_levels(page, old):
     main.sort()
     name2place = {name: place for place, name, _, _ in main}
 
-    out, new_names, skipped = [], [], []
+    rows, new_names, skipped, fixed, unverified, renamed, used = [], [], [], [], [], [], {}
     for place, name, T, t in main:
         key = name2id.get(name)
+        weak = False  # ID не подтверждён глобалом: при споре за ID уступает подтверждённым
+        if gl:
+            cands = name2ids.get(norm(name), [])
+            if len(cands) > 1:  # одноимённые уровни: выбираем по месту
+                same = [c for c in cands if id2place.get(c) == place]
+                if len(same) == 1:
+                    cands = same
+            if len(cands) == 1:
+                if key is None:
+                    new_names.append(f"{place}. {name} -> id {cands[0]}")
+                elif key != cands[0]:
+                    fixed.append(f"{place}. {name}: был ID {key} "
+                                 f"({id2name.get(key, 'нет в глобале')!r}), стал {cands[0]}")
+                key = cands[0]
+            elif key is not None:
+                if not cands and place2id.get(place) == key:
+                    renamed.append(f"{place}. {name}: в глобале этот ID называется {id2name.get(key)!r}")
+                else:
+                    why = "в глобале несколько уровней с таким названием" if cands else "в глобале нет такого названия"
+                    unverified.append(f"{place}. {name}: ID {key} ({id2name.get(key, 'нет в глобале')!r}) - {why}")
+                    weak = True
         if key is None:
-            if gl is None:
-                gl = fetch_global_ids()
-            key = gl.get(name.lower())
-            if key is None:
-                skipped.append(f"{place}. {name}")
+            skipped.append(f"{place}. {name}")
+            continue
+        rows.append((place, name, T, t, key, weak))
+
+    # Один ID - один уровень. Подтверждённые уровни занимают ID первыми, неподтверждённые уступают.
+    accepted = set()
+    for weak_pass in (False, True):
+        for i, (place, name, T, t, key, weak) in enumerate(rows):
+            if weak != weak_pass:
                 continue
-            new_names.append(f"{place}. {name} -> id {key}")
-        out.append((key, {"place": place, "name": name, "T": T, "t": t}))
+            if key in used:
+                skipped.append(f"{place}. {name}: ID {key} уже занят уровнем «{used[key]}»")
+                if weak:
+                    unverified[:] = [u for u in unverified if not u.startswith(f"{place}. {name}:")]
+                continue
+            used[key] = name
+            accepted.add(i)
+    out = [(key, {"place": place, "name": name, "T": T, "t": t})
+           for i, (place, name, T, t, key, weak) in enumerate(rows) if i in accepted]
 
     n_alias = 0
     for m in re.finditer(r"<li>(.*?)</li>", page, re.S):
@@ -170,12 +239,28 @@ def parse_levels(page, old):
                 n_alias += 1
                 break
 
+    if gl:
+        confirmed = len(out) - len(fixed) - len(new_names) - len(unverified) - len(renamed)
+        print(f"ID сверены с глобалом: подтверждено {confirmed}, исправлено {len(fixed)}, новых {len(new_names)}, "
+              f"переименованных {len(renamed)}, не подтверждено {len(unverified)}")
+    if renamed:
+        print("Название на CoreBoard отличается от глобала (ID подтверждён по месту):")
+        for s in renamed:
+            print("  " + s)
+    if fixed:
+        print("ИСПРАВЛЕНЫ ID (старый ID относился к другому уровню):")
+        for s in fixed:
+            print("  " + s)
     if new_names:
         print("Новые уровни (ID найден в глобале по имени):")
         for s in new_names:
             print("  " + s)
+    if unverified:
+        print("Не подтверждены глобалом (ID оставлен как был, проверь вручную):")
+        for s in unverified:
+            print("  " + s)
     if skipped:
-        print("ВНИМАНИЕ: не нашёл ID в глобале, эти уровни НЕ записаны (допиши вручную или проверь написание):")
+        print("ВНИМАНИЕ: эти уровни НЕ записаны (нет ID или ID занят другим уровнем; допиши вручную):")
         for s in skipped:
             print("  " + s)
     return out, len(main), n_alias
