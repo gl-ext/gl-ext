@@ -375,7 +375,7 @@ def save_missing(with_links):
     """missing_achievements.json в корень репозитория: игрок -> записи [ID уровня, процент, ссылка на видео]
     по одной на строку (ссылки те же, что в commands.txt; не нашлась - пустая строка). True, если файл изменился."""
     users = {}
-    for uid, rows in found.items():
+    for uid, rows in with_links.items():
         recs = []
         for r in rows:
             pct = float(r[1])
