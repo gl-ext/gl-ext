@@ -62,6 +62,7 @@ class PageSource(Source):
     ttl = 7 * 86400    # через сколько страницу игрока качать заново, даже если версия не менялась
     max_failed = 20    # сколько игроков можно не скачать и всё равно продолжить
     save_every = 25
+    rev = 1            # ревизия разбора страницы игрока: поправил парсер, увеличь число, и кеш листа перекачается сам
 
     def top(self):
         """-> [{"id": строка, "nick": ник, "rank": место или None, "version": что угодно или None}].
@@ -92,6 +93,7 @@ class PageSource(Source):
         for p in top:
             c = store.get(self._key(p["id"]))
             if (c and c.get("recs") is not None and p.get("version") is not None
+                    and c.get("rev", 1) == self.rev
                     and c.get("ver") == p["version"] and now - c.get("at", 0) < self.ttl):
                 entries[p["id"]] = c
             else:
@@ -103,14 +105,15 @@ class PageSource(Source):
             key = self._key(p["id"])
             try:
                 data = self.player(p["id"])
-                entry = {"at": time.time(), "ver": p.get("version"), "c": data.get("country"),
+                entry = {"at": time.time(), "ver": p.get("version"), "rev": self.rev, "c": data.get("country"),
                          "recs": [[r["level"], r["percent"], r.get("video")] for r in data["records"]]}
                 store.put(key, entry)
                 self.downloaded += 1
                 return p, entry
             except Exception:
                 old = store.get(key)  # сайт не ответил: берём старый кеш игрока, даже просроченный
-                return p, (old if old and old.get("recs") is not None else None)
+                # (но не разобранный старым парсером: в нём могут быть неверные записи)
+                return p, (old if old and old.get("recs") is not None and old.get("rev", 1) == self.rev else None)
             finally:
                 time.sleep(self.pause)
 
