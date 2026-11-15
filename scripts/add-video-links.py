@@ -379,17 +379,24 @@ def get_list_index():
     global list_index
     if list_index is None:
         tp = {}
+        loaded = True
         try:
             tp = (get_json(LEVELS_URL)[0] or {}).get("levels", {})
         except Exception as error:
+            loaded = False
             print(f"    levels_tp.json для листов не загрузился: {error}")
-        list_index = levelsearch.LevelIndex.build(
+        index = levelsearch.LevelIndex.build(
             tp=tp,
             global_loader=lambda: levelsearch.fetch_global_levels(
                 lambda url: get_json(url)[0],
                 GLOBAL_API + "/level/classic/list?limit={limit}&offset={offset}",
             ),
         )
+        if not loaded:
+            # Не запоминаем неполный индекс: иначе весь запуск искал бы уровни без levels_tp.json,
+            # и видео с других листов терялись бы. При следующем вызове попробуем скачать заново.
+            return index
+        list_index = index
     return list_index
 
 
@@ -468,6 +475,7 @@ def find_video(player_id, level_id, percent, links):
             ingame_note = "у уровня отсутствует ingame_id"
     except Exception as error:
         ingame_note = f"ошибка получения ingame_id: {error}"
+        request_errors.append("ingame_id")
 
     if ingame_id is not None:
         for pointer_id in pointer_ids:
@@ -492,9 +500,6 @@ def find_video(player_id, level_id, percent, links):
                 print(f"    {src.tag} {account}: {error}")
                 request_errors.append(f"{src.tag} {account}")
 
-    if ingame_note:
-        return "", ingame_note
-
     if request_errors:
         # Видео могло существовать, но проверить не удалось - стоит запустить ещё раз.
         return "", (
@@ -502,7 +507,31 @@ def find_video(player_id, level_id, percent, links):
             f"({', '.join(request_errors)}), запустите ещё раз"
         )
 
+    if ingame_note:
+        return "", ingame_note
+
     return "", f"видео с {percent}% не найдено"
+
+
+# Сколько раз перепроверять запись, если видео не нашлось из-за сбоя запросов (а не потому, что его нет),
+# и базовая пауза между такими проходами (секунд, растёт с каждым проходом: 15, 30, 45...).
+RECHECK_ROUNDS = 3
+RECHECK_PAUSE = 15
+
+
+def find_video_retry(player_id, level_id, percent, links):
+    """find_video + дополнительные проходы. Если видео не нашлось именно из-за ошибок запросов
+    («НЕ ПРОВЕРЕНО»), ждём и спрашиваем снова: сервер часто отвечает со второго-третьего раза.
+    Если видео просто нет, повторять незачем."""
+    video, source = find_video(player_id, level_id, percent, links)
+    for n in range(1, RECHECK_ROUNDS + 1):
+        if video or not source.startswith("НЕ ПРОВЕРЕНО"):
+            break
+        pause = RECHECK_PAUSE * n
+        print(f"    сбой запросов, перепроверка {n}/{RECHECK_ROUNDS} через {pause} с")
+        time.sleep(pause)
+        video, source = find_video(player_id, level_id, percent, links)
+    return video, source
 
 
 # ---------------- OUTPUT ----------------
@@ -841,7 +870,7 @@ def add_videos_to_players(links):
             video, source_name = "", ""
             try:
                 if percent is not None and str(level_id).strip().isdigit():
-                    video, source_name = find_video(player_id, level_id, percent, links)
+                    video, source_name = find_video_retry(player_id, level_id, percent, links)
                     time.sleep(DELAY)
                 else:
                     source_name = "непонятный процент или ID уровня"
@@ -854,7 +883,7 @@ def add_videos_to_players(links):
                 print(f"  {level_id} {raw_percent}%: найдено ({source_name})")
             else:
                 not_found.append(f"{key} | {info.get('nick')} | level_id={level_id} | {raw_percent}% | {source_name}")
-                print(f"  {level_id} {raw_percent}%: не найдено")
+                print(f"  {level_id} {raw_percent}%: не найдено ({source_name})")
 
     save_players_json(users, PLAYERS_FILE)
     Path(PLAYERS_NOT_FOUND_FILE).write_text(
@@ -931,7 +960,7 @@ def main():
             link, site = "", ""  # если видео не найдём, в команде ссылка будет пустой
 
             try:
-                video, source_name = find_video(player_id, level_id, percent, links)
+                video, source_name = find_video_retry(player_id, level_id, percent, links)
 
                 if video:
                     updated[2] = video
@@ -962,7 +991,7 @@ def main():
                         f"{player_key} | {level_name} | level_id={level_id} "
                         f"| {percent}% | {source_name}"
                     )
-                    print(f"  [{processed}/{total}] {level_name}: не найдено")
+                    print(f"  [{processed}/{total}] {level_name}: не найдено ({source_name})")
 
             except Exception as error:
                 not_found.append(
