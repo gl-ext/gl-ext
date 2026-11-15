@@ -99,13 +99,11 @@ import lists_core as L  # метки листов ([PC], [WML]) у ников и
 SPECIAL_LEVEL_NAMES = levelsearch.SPECIAL_LEVEL_NAMES
 normalize = levelsearch.normalize
 
+FLAG_RE = re.compile(r'^(?:[\U0001F1E6-\U0001F1FF]{2}|[\U0001F3F3\U0001F3F4]\uFE0F?)\s*')
+
 
 def normalize_nick(nick):
-    nick = re.sub(
-        r'^[\U0001F1E6-\U0001F1FF]{2}\s*',
-        '',
-        nick.strip()
-    )
+    nick = FLAG_RE.sub('', nick.strip())
     return normalize(nick)
 
 
@@ -118,20 +116,51 @@ def read_lines(filename):
         return [line.strip() for line in f if line.strip()]
 
 
-def parse_nick(line):
-    match = re.match(r'^\s*\d+\)\s*(.*?)\s*\(', line)
-
-    if not match:
-        return None
-
-    nick = match.group(1).strip()
-
-    nick = re.sub(
-        r'^[\U0001F1E6-\U0001F1FF]{2}\s*',
-        '',
-        nick
+def split_line_parts(line):
+    """
+    Разбирает строку вида:
+      17) 🇷🇺 ROZE (Sakupen circles (Nick24), Tidal Wave 87%) - 22.47 [12345]
+    Ищет закрывающую ')' перед '- очки' и идёт влево по балансу скобок до её парной '('.
+    Возвращает (nick, achievements_str, score) или (None, None, None).
+    """
+    tail_match = re.search(
+        r'\)\s*-\s*(\d+(?:\.\d+)?)(?:\s+\[[^\]]+\])?\s*$',
+        line
     )
+    if not tail_match:
+        return None, None, None
 
+    score = float(tail_match.group(1))
+    close_paren_idx = tail_match.start()  # индекс ')' прямо перед '- очки'
+
+    depth = 0
+    open_paren_idx = None
+    for idx in range(close_paren_idx, -1, -1):
+        ch = line[idx]
+        if ch == ')':
+            depth += 1
+        elif ch == '(':
+            depth -= 1
+            if depth == 0:
+                open_paren_idx = idx
+                break
+
+    if open_paren_idx is None:
+        return None, None, score
+
+    prefix = line[:open_paren_idx]
+    achievements_str = line[open_paren_idx + 1:close_paren_idx]
+
+    head_match = re.match(r'^\s*\d+\)\s*(.*?)\s*$', prefix)
+    if not head_match:
+        return None, achievements_str, score
+
+    nick = FLAG_RE.sub('', head_match.group(1).strip())
+    return (nick or None), achievements_str, score
+
+
+def parse_nick(line):
+    nick, _, _ = split_line_parts(line)
     return nick
 
 
@@ -141,28 +170,19 @@ def parse_id(line):
 
 
 def parse_score(line):
-    match = re.search(
-        r'\)\s*.*?\s-\s*(\d+(?:\.\d+)?)'
-        r'(?:\s+\[[^\]]+\])?\s*$',
-        line
-    )
-
-    return float(match.group(1)) if match else None
+    _, _, score = split_line_parts(line)
+    return score
 
 
 def parse_achievements(line):
-    match = re.search(
-        r'\((.*)\)\s*-\s*\d+(?:\.\d+)?'
-        r'(?:\s+\[[^\]]+\])?\s*$',
-        line
-    )
+    _, achievements_str, _ = split_line_parts(line)
 
-    if not match:
+    if achievements_str is None:
         return {}
 
     achievements = {}
 
-    for item in match.group(1).split(","):
+    for item in achievements_str.split(","):
         item = item.strip()
 
         if not item or item == "No":  # No: пустой слот рекорда (только точно так)
