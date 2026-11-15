@@ -1,7 +1,0 @@
-Видео: WML
-/fulladd Tombstone, Sinister Silence, /demonlist/4
-/try Tombstone, Sinister Silence
-
-Видео: WML
-/fulladd Zoink Doink, Voltage, /demonlist/262
-/try Zoink Doink, Voltage
