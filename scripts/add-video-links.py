@@ -939,9 +939,11 @@ def load_previous_players_links():
     except (OSError, ValueError):
         return cache
     for key, info in (data.get("users", data) or {}).items():
+        # Ключ файла может быть ID CoreBoard; наш ID лежит в gdr_id (в старых файлах ключ и есть наш ID)
+        owner = normalize_id((info.get("gdr_id") if isinstance(info, dict) else None) or key)
         for record in (info.get("records", []) if isinstance(info, dict) else []):
             if len(record) >= 3 and record[2]:
-                cache[(normalize_id(key), str(record[0]), parse_percent(record[1]))] = record[2]
+                cache[(owner, str(record[0]), parse_percent(record[1]))] = record[2]
     return cache
 
 
@@ -960,8 +962,9 @@ def add_videos_to_players(links):
     total = reused = found = 0
     not_found = []
     for key, info in users.items():
-        player_id = player_id_from_key(key)
-        print(f"\nНовый игрок: {key} ({info.get('nick')})")
+        # Ключ - ID на CoreBoard (или наш, если ID CoreBoard нет); видео ищем по нашему ID из gdr_id
+        player_id = info.get("gdr_id") or player_id_from_key(key)
+        print(f"\nНовый игрок: {key} ({info.get('nick')}), наш ID {player_id}")
 
         for record in info.get("records", []):
             total += 1
