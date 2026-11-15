@@ -1,7 +1,2 @@
-Видео: Pointercrate
-/fulladd maxidlo147, Trickshot, https://www.youtube.com/watch?v=mVCEvoU_Do0
-/try maxidlo147, Trickshot
-
-Видео: Pointercrate
-/fulladd choko, Sanctity, https://www.youtube.com/watch?v=CGwj-VqHwpQ
-/try choko, Sanctity
+/fulladd Tombstone, Sinister Silence,
+/try Tombstone, Sinister Silence
