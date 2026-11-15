@@ -2,6 +2,10 @@
 /fulladd Dice88, ORDINARY, https://www.youtube.com/watch?v=u0oDPi3bRVA
 /try Dice88, ORDINARY
 
+Видео: GlobalList (статус: waiting)
+/fulladd cardy, UNKNOWN, https://www.youtube.com/watch?v=F_vDG41Zifs
+/try cardy, UNKNOWN
+
 Видео: Pointercrate
 /fulladd Syzygy, poocubed, https://www.youtube.com/watch?v=gOyo9DLRr_k
 /try Syzygy, poocubed
