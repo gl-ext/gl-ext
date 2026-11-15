@@ -3718,3 +3718,12 @@
     общие каналы: https://www.youtube.com/@zunexi
     поглощено: wml5343 (Zunexi), аккаунты: {'wml': [5343]}
 
+===== 2026-11-15 19:17:42 UTC: склеено групп 2, поглощено записей 2 =====
+СКЛЕЕНО В 6159 (H30n41k_GmD)
+    общие каналы: https://www.youtube.com/@Heonchik_GmD
+    поглощено: wml5359 (H30n41k), аккаунты: {'wml': [5359]}
+
+СКЛЕЕНО В 56922 (Pookowski)
+    общие каналы: https://www.youtube.com/@pookowski
+    поглощено: pc72113 ([CHEET] Pookowski), аккаунты: {'pointercrate': [72113]}
+
