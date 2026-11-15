@@ -51,6 +51,7 @@ GLOBAL_API = "https://api.demonlist.org"
 POINTERCRATE_API = "https://pointercrate.com/api/v1"
 POINTERCRATE_DEMONS_API = "https://pointercrate.com/api/v2/demons"
 LINKS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/refs/heads/main/links.json"
+FIX_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/fix.json"  # склейки аккаунтов глобала (merges)
 
 LIMIT = 100
 DELAY = 0.15
@@ -65,6 +66,8 @@ session.headers.update({
 })
 
 global_records_cache = {}
+links_dl_extra = {}   # ID человека из links.json -> его дополнительные аккаунты на глобале
+fix_absorbed = None   # ID главного аккаунта -> ID аккаунтов, склеенных в него (fix.json); None пока не загружен
 global_level_cache = {}
 pointer_demon_cache = {}
 pointer_records_cache = {}
@@ -163,9 +166,23 @@ def get_links():
     data, _ = get_json(LINKS_URL)
     links = {}
 
+    list_names = set(L.list_names())
+    links_dl_extra.clear()
     for global_id, entry in data.items():
         if isinstance(entry, dict):
             links[str(global_id)] = L.accounts_of(entry)
+            # Доп. аккаунты того же человека на глобале: в links.json под сайтом, в названии которого
+            # есть demonlist/global (так же их читает gd-rating).
+            blocks = [{k: v for k, v in entry.items() if k not in ("_name", "channels", L.OTHER_BLOCK)}]
+            if isinstance(entry.get(L.OTHER_BLOCK), dict):
+                blocks.append(entry[L.OTHER_BLOCK])
+            for block in blocks:
+                for site, ids in block.items():
+                    if site in list_names or not any(w in str(site).lower() for w in ("demonlist", "global")):
+                        continue
+                    ids = ids if isinstance(ids, list) else [ids]
+                    bucket = links_dl_extra.setdefault(str(global_id), [])
+                    bucket.extend(str(x) for x in ids if x is not None and str(x) not in bucket)
     return links
 
 
@@ -256,6 +273,78 @@ def find_global_video(user_id, level_id, percent):
         return video, status or "accepted"
 
     return waiting if waiting else ("", "")
+
+
+def load_fix_absorbed():
+    """fix.json -> {главный ID: [ID склеенных в него аккаунтов]}. При сбое не запоминаем (попробуем снова)."""
+    global fix_absorbed
+    if fix_absorbed is not None:
+        return fix_absorbed
+    try:
+        data, _ = get_json(FIX_URL)
+    except Exception as error:
+        print(f"    fix.json не загрузился: {error}")
+        return {}
+    absorbed = {}
+    for merge in (data or {}).get("merges", []):
+        keep = str(merge.get("keep"))
+        for item in merge.get("absorb", []):
+            absorbed.setdefault(keep, []).append(str(item.get("id")))
+    fix_absorbed = absorbed
+    return absorbed
+
+
+def global_accounts(player_id):
+    """Все аккаунты человека на глобале: главный, склеенные в него по fix.json (в том числе по цепочке)
+    и дополнительные из links.json. Видео рекорда может лежать на любом из них."""
+    absorbed = load_fix_absorbed()
+    group, queue = [], [str(player_id)]
+    while queue:
+        account = queue.pop(0)
+        if account in group:
+            continue
+        group.append(account)
+        queue.extend(absorbed.get(account, []))
+    result = []
+    for account in group:
+        for item in [account] + links_dl_extra.get(account, []):
+            if item not in result:
+                result.append(item)
+    return result
+
+
+def find_global_video_any(player_id, level_id, percent):
+    """Видео на глобале у любого из аккаунтов человека. Порядок: принятый рекорд, затем видео верификации
+    уровня (верификация в списке рекордов не лежит, видео у самого уровня), затем рекорд в ожидании.
+    Если ни одного видео нет, а часть запросов упала, поднимаем ошибку: «не нашли» и «не смогли проверить» разные вещи."""
+    accounts = global_accounts(player_id)
+    waiting, first_error = None, None
+
+    for account in accounts:
+        try:
+            video, status = find_global_video(account, level_id, percent)
+        except Exception as error:
+            first_error = first_error or error
+            continue
+        if video and status != "waiting":
+            return video, status
+        if video and waiting is None:
+            waiting = (video, status)
+
+    if percent == 100:
+        try:
+            verification = get_global_level(level_id).get("verification") or {}
+            video = get_video(verification)
+            if video and str(verification.get("user_id")) in accounts:
+                return video, "accepted"
+        except Exception as error:
+            first_error = first_error or error
+
+    if waiting:
+        return waiting
+    if first_error is not None:
+        raise first_error
+    return "", ""
 
 
 # ---------------- POINTERCRATE ----------------
@@ -474,7 +563,7 @@ def find_video(player_id, level_id, percent, links):
 
         # Сначала проверяем Global Demonlist.
         try:
-            video, status = find_global_video(player_id, level_id, percent)
+            video, status = find_global_video_any(player_id, level_id, percent)
             if video:
                 if status == "waiting":
                     return video, "GlobalList (статус: waiting)"
