@@ -1,10 +1,15 @@
 import argparse
 import json
 import re
+import sys
 import time
 from pathlib import Path
 
 import requests
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # levels.py лежит рядом с этим файлом
+import levels as levelsearch  # общий поиск уровней и особые названия
+import lists_core as L  # реестр листов (WML и любые будущие): по нему ищем видео и на них
 
 # Папку по умолчанию выбираем такую же, как у compare.py: он кладёт туда
 # missing_achievements.json, а этот скрипт читает его оттуда и складывает рядом
@@ -33,15 +38,9 @@ COMMANDS_FILE = str(OUT_DIR / "commands.txt")           # команды /fullad
 IDS_FILE = args.ids        # ник -> ID игрока (нужен для команд), лежит в текущей папке
 LEVELS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/levels_tp.json"  # названия уровней (нужны для команд), только GitHub
 
-# Особые названия: ID уровня в глобале -> как его надо писать в командах.
-# Для этих уровней API не спрашивается, берётся название отсюда.
-# ВАЖНО: такой же список лежит в compare.py. Если дописываете сюда новый
-# уровень - допишите и туда.
-SPECIAL_LEVEL_NAMES = {
-    "3299": "Sakupen circles (Nick24)",
-    "3351": "Thinking Space II (Legacy)",
-    "2234": "Deimos (Endlevel)"
-}
+# Особые названия уровней (ID в глобале -> как их писать в командах) лежат в levels.py, общем для всех
+# скриптов. Для этих уровней API не спрашивается, берётся название оттуда. Дописали там - работает здесь.
+SPECIAL_LEVEL_NAMES = levelsearch.SPECIAL_LEVEL_NAMES
 
 GLOBAL_API = "https://api.demonlist.org"
 POINTERCRATE_API = "https://pointercrate.com/api/v1"
@@ -154,15 +153,14 @@ def is_pc(player_id):
 
 
 def get_links():
+    """links.json -> {ID глобала: {лист: [ID аккаунтов]}}, например {"123": {"pointercrate": ["7"], "wml": ["5"]}}.
+    Формат записи (новый с блоком other_lists или старый) разбирает lists_core.accounts_of."""
     data, _ = get_json(LINKS_URL)
     links = {}
 
     for global_id, entry in data.items():
         if isinstance(entry, dict):
-            links[str(global_id)] = [
-                str(value).strip()
-                for value in entry.get("pointercrate", [])
-            ]
+            links[str(global_id)] = L.accounts_of(entry)
     return links
 
 
@@ -365,16 +363,82 @@ def find_pointer_video(pointer_player_id, ingame_id, percent):
     return ""
 
 
+# ---------------- ДРУГИЕ ЛИСТЫ (WML и любые будущие, см. lists_core.py) ----------------
+
+list_records_cache = {}  # (лист, аккаунт) -> записи игрока на листе
+list_index = None        # название уровня на листе -> ключ уровня (levels.py), строится один раз
+
+
+def get_list_index():
+    """Поиск уровня по названию, общий с gd-rating (levels.py): levels_tp.json, особые названия, глобал."""
+    global list_index
+    if list_index is None:
+        tp = {}
+        try:
+            tp = (get_json(LEVELS_URL)[0] or {}).get("levels", {})
+        except Exception as error:
+            print(f"    levels_tp.json для листов не загрузился: {error}")
+        list_index = levelsearch.LevelIndex.build(
+            tp=tp,
+            global_loader=lambda: levelsearch.fetch_global_levels(
+                lambda url: get_json(url)[0],
+                GLOBAL_API + "/level/classic/list?limit={limit}&offset={offset}",
+            ),
+        )
+    return list_index
+
+
+def find_list_video(src, account, level_id, percent):
+    """Видео записи игрока на другом листе: ищем у аккаунта запись с тем же уровнем и процентом."""
+    key = (src.name, str(account))
+    if key not in list_records_cache:
+        data = src.player(str(account))
+        list_records_cache[key] = (data or {}).get("records") or []
+        time.sleep(getattr(src, "pause", 0))
+
+    index = get_list_index()
+    for record in list_records_cache[key]:
+        try:
+            if int(float(record.get("percent"))) != percent:
+                continue
+        except (TypeError, ValueError):
+            continue
+        video = (record.get("video") or "").strip()
+        if video and index.find(record.get("level")) == str(level_id):
+            return video
+    return ""
+
+
+def list_sources_with_accounts(accounts):
+    """Листы из реестра, у которых человек имеет аккаунты и которые умеют отдавать страницу игрока."""
+    return [
+        (src, accounts[src.name])
+        for src in L.sources()
+        if accounts.get(src.name) and callable(getattr(src, "player", None))
+    ]
+
+
+def site_of(source_name):
+    """Как подписывать источник в команде («Видео: ...»): Pointercrate и листы - одним словом, без ID аккаунта."""
+    if source_name.startswith("Pointercrate"):
+        return "Pointercrate"
+    for src in L.all_lists():
+        if source_name.startswith(src.tag + " "):
+            return src.tag
+    return source_name
+
+
 def find_video(player_id, level_id, percent, links):
     # Сюда складываем ошибки запросов, чтобы отличить
     # "видео нет" от "не смогли проверить из-за сбоя".
     request_errors = []
 
-    # Для pc-ID сразу используем Pointercrate.
-    if is_pc(player_id):
-        pointer_ids = [player_id[2:]]
+    # Ключ вида pc7 / wml5 (игрок без глобала): лист и аккаунт названы самим ключом, глобал не нужен.
+    key_src, key_rest = L.key_parts(str(player_id).casefold())
+    if key_src is not None:
+        accounts = {key_src.name: [key_rest]}
     else:
-        pointer_ids = links.get(str(player_id), [])
+        accounts = links.get(str(player_id), {})
 
         # Сначала проверяем Global Demonlist.
         try:
@@ -387,25 +451,44 @@ def find_video(player_id, level_id, percent, links):
             print(f"    GlobalList API error: {error}")
             request_errors.append("GlobalList")
 
+    pointer_ids = accounts.get("pointercrate", [])
+
     # Для Pointercrate нужен ingame_id уровня из Global API.
+    ingame_note = ""
+    ingame_id = None
     try:
         level = get_global_level(level_id)
         ingame_id = level.get("ingame_id")
         if ingame_id is None:
-            return "", "у уровня отсутствует ingame_id"
+            ingame_note = "у уровня отсутствует ingame_id"
     except Exception as error:
-        return "", f"ошибка получения ingame_id: {error}"
+        ingame_note = f"ошибка получения ingame_id: {error}"
 
-    for pointer_id in pointer_ids:
-        try:
-            video = find_pointer_video(pointer_id, ingame_id, percent)
-            if video:
-                return video, f"Pointercrate {pointer_id}"
-        except Exception as error:
-            print(f"    Pointercrate {pointer_id}: {error}")
-            request_errors.append(f"Pointercrate {pointer_id}")
+    if ingame_id is not None:
+        for pointer_id in pointer_ids:
+            try:
+                video = find_pointer_video(pointer_id, ingame_id, percent)
+                if video:
+                    return video, f"Pointercrate {pointer_id}"
+            except Exception as error:
+                print(f"    Pointercrate {pointer_id}: {error}")
+                request_errors.append(f"Pointercrate {pointer_id}")
 
-        time.sleep(DELAY)
+            time.sleep(DELAY)
+
+    # Другие листы (WML и т.д.). Новому листу здесь ничего дописывать не нужно: он берётся из реестра.
+    for src, account_ids in list_sources_with_accounts(accounts):
+        for account in account_ids:
+            try:
+                video = find_list_video(src, account, level_id, percent)
+                if video:
+                    return video, f"{src.tag} {account}"
+            except Exception as error:
+                print(f"    {src.tag} {account}: {error}")
+                request_errors.append(f"{src.tag} {account}")
+
+    if ingame_note:
+        return "", ingame_note
 
     if request_errors:
         # Видео могло существовать, но проверить не удалось - стоит запустить ещё раз.
@@ -454,8 +537,8 @@ def format_found_line(player_key, level_id, level_name, percent, video, source_n
     )
 
 
-def save_sources(global_lines, pointer_lines, filename):
-    """Пишет найденные видео двумя блоками: из GlobalList и из Pointercrate."""
+def save_sources(global_lines, pointer_lines, filename, other_lines=None):
+    """Пишет найденные видео блоками: GlobalList, Pointercrate и каждый другой лист (WML и т.д.)."""
     with open(filename, "w", encoding="utf-8") as file:
         file.write(f"=== GlobalList ({len(global_lines)}) ===\n")
         for line in global_lines:
@@ -464,6 +547,11 @@ def save_sources(global_lines, pointer_lines, filename):
         file.write(f"\n=== Pointercrate ({len(pointer_lines)}) ===\n")
         for line in pointer_lines:
             file.write(line + "\n")
+
+        for tag, lines in (other_lines or {}).items():
+            file.write(f"\n=== {tag} ({len(lines)}) ===\n")
+            for line in lines:
+                file.write(line + "\n")
 
 
 # ---------------- КОМАНДЫ /fulladd И /try ----------------
@@ -709,6 +797,7 @@ def main():
     not_found = []
     global_lines = []   # видео, найденные в Global
     pointer_lines = []  # видео, найденные в Pointercrate
+    other_lines = {}    # видео, найденные на других листах: метка листа -> строки
     command_records = []  # всё, из чего потом сделаем команды /fulladd и /try
 
     total = sum(len(records) for records in users.values())
@@ -760,11 +849,7 @@ def main():
                 if video:
                     updated[2] = video
                     link = video
-                    site = (
-                        "Pointercrate"
-                        if source_name.startswith("Pointercrate")
-                        else source_name
-                    )
+                    site = site_of(source_name)
                     found_count += 1
 
                     line = format_found_line(
@@ -775,9 +860,11 @@ def main():
                     if source_name.startswith("GlobalList"):
                         global_count += 1
                         global_lines.append(line)
-                    else:
+                    elif site == "Pointercrate":
                         pointer_count += 1
                         pointer_lines.append(line)
+                    else:  # WML и любой другой лист
+                        other_lines.setdefault(site, []).append(line)
 
                     print(
                         f"  [{processed}/{total}] {level_name}: "
@@ -806,7 +893,7 @@ def main():
         output_users[player_key] = output_achievements
 
     save_json(output_users, OUTPUT_FILE)
-    save_sources(global_lines, pointer_lines, SOURCES_FILE)
+    save_sources(global_lines, pointer_lines, SOURCES_FILE, other_lines)
     write_commands(command_records, COMMANDS_FILE)
     add_links_to_file(command_records, NICKS_FILE, 3)
     add_links_to_file(command_records, INPUT_FILE, 2)
@@ -821,6 +908,8 @@ def main():
     print(f"Найдено видео: {found_count}")
     print(f"  GlobalList: {global_count}")
     print(f"  Pointercrate: {pointer_count}")
+    for tag, lines in other_lines.items():
+        print(f"  {tag}: {len(lines)}")
     print(f"Не найдено / ошибки: {len(not_found)}")
     print(f"\nJSON: {OUTPUT_FILE}")
     print(f"TXT (не найдено): {NOT_FOUND_FILE}")

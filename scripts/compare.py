@@ -7,6 +7,9 @@ import argparse
 import urllib.error
 import urllib.request
 
+# levels.py лежит рядом с этим файлом (скрипт могут запускать из любой папки)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 # =========================
 # Аргументы командной строки
 # =========================
@@ -84,19 +87,13 @@ IDS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/gdr-ids.json"
 # Полный список уровней глобала (нужен, чтобы найти ID уровня по названию)
 GLOBAL_LIST_URL = "https://api.demonlist.org/level/classic/list?limit={limit}&offset={offset}"
 
-# Особые названия: ID уровня в глобале -> как он называется.
-# Нужны, чтобы найти ID уровня по названию из файла.
-# ВАЖНО: такой же список лежит в add-video-links.py (там он нужен для команд).
-# Если дописываете сюда новый уровень - допишите и туда.
-SPECIAL_LEVEL_NAMES = {
-    "3299": "Sakupen circles (Nick24)",
-    "3351": "Thinking Space II (Legacy)",
-    "2234": "Deimos (Endlevel)"
-}
+# Особые названия уровней (ID в глобале -> как он называется) и сравнение названий лежат в levels.py,
+# общем для всех скриптов (gd-rating, sync-extras, add-video-links и т.д.). Дописали название там,
+# и оно работает здесь.
+import levels as levelsearch
 
-
-def normalize(value):
-    return re.sub(r"\s+", " ", str(value).strip()).casefold()
+SPECIAL_LEVEL_NAMES = levelsearch.SPECIAL_LEVEL_NAMES
+normalize = levelsearch.normalize
 
 
 def normalize_nick(nick):

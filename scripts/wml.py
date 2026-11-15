@@ -31,6 +31,8 @@ import time
 import urllib.error
 import urllib.request
 
+import levels
+
 SITE = "https://worldmobilelist.com"
 RANKING_URL = SITE + "/api/v1/players/ranking/?after={after}"   # по 50 игроков за запрос
 PAGE_SIZE = 50
@@ -43,12 +45,7 @@ GLOBAL_LIST_URL = "https://api.demonlist.org/level/classic/list?limit={limit}&of
 
 API_TRIES = 4
 
-# ВАЖНО: такой же список лежит в compare.py и add-video-links.py. Дописали здесь - допишите и там.
-SPECIAL_LEVEL_NAMES = {
-    "3299": "Sakupen circles (Nick24)",
-    "3351": "Thinking Space II (Legacy)",
-    "2234": "Deimos (Endlevel)",
-}
+# Особые названия уровней и сам поиск уровней по названию лежат в levels.py (общий для всех скриптов).
 
 
 # =========================
@@ -266,55 +263,28 @@ def step_records(players, out_dir, url_template, limit, delay):
 # =========================
 
 class LevelResolver:
-    """Название уровня -> ID: levels_tp.json, особые названия, глобал (список качается один раз, если понадобится)."""
+    """Название уровня -> ID. Сам поиск лежит в levels.py (общий для всех скриптов), здесь обёртка:
+    числовые ID отдаются числами, а x... строками, как и раньше.
+    Порядок поиска: levels_tp.json, особые названия, глобал (список качается один раз, если понадобится)."""
 
     def __init__(self, levels_data):
-        self.by_name = {}
-        for level_id, data in levels_data.items():
-            name = data.get("name")
-            if not name:
-                continue
-            out_id = str(level_id) if str(level_id).startswith("x") else int(level_id)
-            self.by_name.setdefault(normalize(name), out_id)
-        self.special = {normalize(n): int(i) for i, n in SPECIAL_LEVEL_NAMES.items()}
-        self.global_levels = None
-        self.stats = {"levels_tp.json": 0, "особые названия": 0, "глобал": 0}
+        self.index = levels.LevelIndex(global_loader=self._load_global)
+        self.index.add_tp(levels_data)
+        self.index.add_special()
 
-    def _load_global(self):
-        result, offset = {}, 0
-        print("\nЗагружаю список уровней глобала (для названий, которых нет в levels_tp.json)...")
-        try:
-            while True:
-                levels = (get_json(GLOBAL_LIST_URL.format(limit=100, offset=offset)).get("data") or {}).get("levels") or []
-                if not levels:
-                    break
-                added = 0
-                for lv in levels:
-                    if lv.get("name") and lv.get("id") is not None and normalize(lv["name"]) not in result:
-                        result[normalize(lv["name"])] = int(lv["id"])
-                        added += 1
-                if added == 0:
-                    break
-                offset += 100
-            print(f"  Уровней загружено из глобала: {len(result)}")
-        except Exception as e:
-            print(f"  Не удалось загрузить список глобала: {e}")
-        self.global_levels = result
+    @staticmethod
+    def _load_global():
+        return levels.fetch_global_levels(get_json, GLOBAL_LIST_URL)
+
+    @property
+    def stats(self):
+        return self.index.stats
 
     def find(self, name):
-        key = normalize(name)
-        if key in self.by_name:
-            self.stats["levels_tp.json"] += 1
-            return self.by_name[key]
-        if key in self.special:
-            self.stats["особые названия"] += 1
-            return self.special[key]
-        if self.global_levels is None:
-            self._load_global()
-        if key in self.global_levels:
-            self.stats["глобал"] += 1
-            return self.global_levels[key]
-        return None
+        key = self.index.find(name)
+        if key is None:
+            return None
+        return int(key) if key.isdigit() else key
 
 
 def player_id_sort_key(player_key):

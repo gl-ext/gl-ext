@@ -1,9 +1,17 @@
 # Рейтинг по геометрическому среднему N лучших записей (меньше = лучше).
 # 100% = h (место уровня); иначе f = h*a*(T/c)^(ln(b/a)/ln(T/t)), T и t из levels_tp.json (только с GitHub).
-# Источники: глобал (всегда), pointercrate (напрямую, в т.ч. игроки без линка, помечены [PC]), my_extras.
-# Для игроков, которые есть только в Pointercrate, флаг берётся из их профиля на Pointercrate.
+# Источники: глобал (всегда), pointercrate (напрямую, в т.ч. игроки без линка, помечены [PC]),
+# другие листы из реестра (сейчас wml; игроки без линка помечены [WML]), my_extras.
+# Новый лист добавляется одним файлом list_<название>.py (см. lists_core.py), здесь менять ничего не нужно:
+# --src <название>, метка, имя файла и склейка по links.json появятся сами.
+# Названия уровней на других листах ищет levels.py (общий для всех скриптов).
+# Для игроков, которых нет в глобале, флаг берётся с Pointercrate / из данных листа.
+# links.json: аккаунты человека на других листах лежат в блоке other_lists ({"pointercrate": [...], "wml": [...]}).
+# Ключ записи из цифр = аккаунт глобала, pc7 / wml5 = человек без глобала (префикс задаёт лист).
+# Старый формат links.json (списки прямо в записи) тоже читается.
 #
 #   python gd-rating.py --src all
+#   python gd-rating.py --src pointercrate,wml
 #   python gd-rating.py --src pointercrate --levels 50
 #   python gd-rating.py --add 13506:3409:91 --add 13506:x1:95
 #   python gd-rating.py --long                 подробный вывод (по строке на запись)
@@ -11,6 +19,7 @@ import argparse
 import json
 import math
 import os
+import sys
 import threading
 import time
 import urllib.error
@@ -18,24 +27,27 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
+import levels as levelsearch  # поиск уровней по названию (общий для всех скриптов)
+import lists_core as L  # реестр листов
+
 HERE = Path(__file__).resolve().parent
 DL = "https://api.demonlist.org/"
 PC = "https://pointercrate.com/api/"
 RAW = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/"
 FILE_SOURCES = {}
-ALL_SOURCES = {"pointercrate", "my_extras"}
+LIST_SOURCES = [s.name for s in L.sources()]  # листы из реестра, которые умеют качать данные сами (wml и т.д.)
+ALL_SOURCES = {"pointercrate", "my_extras", *LIST_SOURCES}
+SOURCE_ORDER = ["pointercrate", *LIST_SOURCES, "my_extras"]  # порядок в имени файла
+SOURCE_SHORT = {"my_extras": "my", **{s.name: s.short for s in L.all_lists()}}
+OTHER = "other_lists"  # блок аккаунтов человека на других листах в links.json
 A, B = 2, 4
 
-# Особые названия: ID уровня в глобале -> как его писать в рейтинге.
-# Эти названия подставляются вместо тех, что приходят из API.
-# Чтобы добавить ещё один, допишите новую строку по тому же образцу.
-SPECIAL_LEVEL_NAMES = {
-    "3351": "Thinking Space II (Legacy)",
-    "2234": "Deimos (EndLevel)",
-}
+# Особые названия уровней (ID уровня в глобале -> как писать в рейтинге) лежат в levels.py, общем для всех скриптов.
+SPECIAL_LEVEL_NAMES = levelsearch.SPECIAL_LEVEL_NAMES
 
 p = argparse.ArgumentParser()
-p.add_argument("--src", default="global", help="pointercrate, my_extras или all (через запятую)")
+p.add_argument("--src", default="global",
+               help="pointercrate, " + ", ".join(LIST_SOURCES) + ", my_extras или all (через запятую)")
 p.add_argument("--n", type=int, default=6, help="сколько лучших записей берём")
 p.add_argument("--cap", type=float, default=300, help="макс. стоимость записи; недостающие добираются этим значением")
 p.add_argument("--cap-place", dest="cap_place", type=float, default=300, help="проверять уровни до этого места")
@@ -56,6 +68,10 @@ p.add_argument("--pc-conc", dest="pc_conc", type=int, default=20,
                help="сколько запросов к Pointercrate одновременно (при 429 уменьшите)")
 p.add_argument("--fresh-country", dest="fresh_country", action="store_true",
                help="не брать страны Pointercrate из кеша (перезапросить)")
+p.add_argument("--list-conc", dest="list_conc", type=int, default=3,
+               help="сколько страниц игроков других листов (wml и т.д.) качать одновременно (ходим бережнее)")
+p.add_argument("--list-ttl", dest="list_ttl", type=int, default=7 * 86400,
+               help="секунд, пока страница игрока другого листа считается свежей, даже если его версия не менялась")
 args = p.parse_args()
 
 N = args.n
@@ -141,10 +157,32 @@ def load_tp():
     return levels
 
 
+is_global = L.is_global  # аккаунт глобала: ID начинается с цифры (pc7, wml5 и т.п. глобалом не считаются)
+
+
+def link_sites(entry):
+    """{"pointercrate": [...], "wml": [...], ...} из записи links.json.
+    Новый формат: аккаунты на других листах лежат в блоке other_lists. Старый тоже понимаем:
+    списки прямо в записи (поля _name и channels пропускаем) или голый список (это Pointercrate)."""
+    if not isinstance(entry, dict):
+        return {"pointercrate": entry}
+    sources = [{k: v for k, v in entry.items() if k not in ("_name", "channels", OTHER)}]
+    if isinstance(entry.get(OTHER), dict):
+        sources.append(entry[OTHER])
+    sites = {}
+    for src in sources:
+        for site, ids in src.items():
+            ids = ids if isinstance(ids, list) else [ids]
+            sites.setdefault(site, []).extend(x for x in ids if x is not None)
+    return sites
+
+
 def load_links():
-    """Возвращает две функции:
-    pc_to_dl(pid)  - ID игрока Pointercrate -> главный ID на Demonlist (или None);
-    canon(uid)     - любой ID Demonlist -> главный ID (склейки fix.json + доп. аккаунты из links.json).
+    """Возвращает функции и данные:
+    owner(site, acc_id) - ID аккаунта на листе (pointercrate, wml, ...) -> главный ID человека (цифры, pc... и т.п.) или None;
+    canon(uid)          - любой ID человека -> главный ID (склейки fix.json + доп. аккаунты из links.json);
+    removals            - видео, которые у игрока не учитываются;
+    accounts(uid)       - все аккаунты человека: {"dl": [...], "pointercrate": [...], "wml": [...], ...}.
     """
     links = load_repo_json("links.json")
     fix = load_repo_json("fix.json")
@@ -160,11 +198,17 @@ def load_links():
             i = absorb[i]
         return i
 
-    pc_map, alias = {}, {}
-    people = {}  # главный ID -> {"dl": [все аккаунты Demonlist, главный первым], "pc": [аккаунты Pointercrate]}
+    names = L.list_names()
+    site_map = {n: {} for n in names}  # лист -> {ID аккаунта на листе: главный ID человека}
+    alias = {}
+
+    def empty():
+        return {"dl": [], **{n: [] for n in names}}
+
+    people = {}  # главный ID -> {"dl": [аккаунты глобала, главный первым], "pointercrate": [...], "wml": [...]}
 
     def grp(main):
-        return people.setdefault(main, {"dl": [], "pc": []})
+        return people.setdefault(main, empty())
 
     def add_uniq(lst, x):
         x = str(x)
@@ -174,16 +218,15 @@ def load_links():
     for main_id, entry in links.items():
         main = canon0(main_id)
         g = grp(main)
-        add_uniq(g["dl"], main)
-        add_uniq(g["dl"], main_id)
-        sites = entry if isinstance(entry, dict) else {"pointercrate": entry}
-        for site, ids in sites.items():
-            for x in (ids if isinstance(ids, list) else [ids]):
-                if x is None:
-                    continue
-                if site == "pointercrate":
-                    pc_map[str(x)] = main
-                    add_uniq(g["pc"], x)
+        if is_global(main):
+            add_uniq(g["dl"], main)
+        if is_global(main_id):
+            add_uniq(g["dl"], main_id)
+        for site, ids in link_sites(entry).items():
+            for x in ids:
+                if site in site_map:
+                    site_map[site][str(x)] = main
+                    add_uniq(g[site], x)
                 elif any(s in str(site).lower() for s in ("demonlist", "global")):
                     alias[str(x)] = main  # доп. аккаунты того же человека на Demonlist
                     add_uniq(g["dl"], x)
@@ -196,13 +239,26 @@ def load_links():
         add_uniq(g["dl"], main)
         add_uniq(g["dl"], a)
 
-    def accounts(uid):
-        """Все известные аккаунты человека: {"dl": [...], "pc": [...]} (главный Demonlist-аккаунт первым)."""
-        return people.get(canon(uid), {"dl": [str(uid)], "pc": []})
-
     def canon(uid):
         uid = str(uid)
         return canon0(alias.get(uid, uid))
+
+    def accounts(uid):
+        """Все известные аккаунты человека (главный аккаунт глобала первым).
+        Если человека нет в links.json, ключи вида pc<id>, wml<id> и т.п. понимаем сами."""
+        c = canon(uid)
+        if c in people:
+            return people[c]
+        src, rest = L.key_parts(c)
+        acc = empty()
+        if src:
+            acc[src.name] = [rest]
+        else:
+            acc["dl"] = [c]
+        return acc
+
+    def owner(site, acc_id):
+        return site_map.get(site, {}).get(str(acc_id))
 
     # removals: ключ - ID глобала, videos - ID ютуб-видео, записи с ними у этого игрока не учитываются.
     # shared_with игнорируем.
@@ -210,12 +266,16 @@ def load_links():
     for r in fix.get("removals", []):
         removals.setdefault(str(r["user"]), []).extend(str(v) for v in r.get("videos", []) if v)
 
-    print(f"links.json: людей {len(links)}, аккаунтов Pointercrate {len(pc_map)}, "
+    counts = ", ".join(f"аккаунтов {n} {len(m)}" for n, m in site_map.items())
+    print(f"links.json: записей {len(links)}, {counts}, "
           f"доп. аккаунтов Demonlist {len(alias) - len(links)}, склеек fix.json {len(absorb)}, "
           f"игроков с удалением видео {len(removals)}")
     if not links:
         print("  ВНИМАНИЕ: links.json пустой или не загрузился - склейки аккаунтов не будет!")
-    return (lambda pid: pc_map.get(str(pid))), canon, removals, accounts
+    elif not any(site_map.values()):
+        print("  ВНИМАНИЕ: в links.json не нашлось ни одного аккаунта на других листах - "
+              "проверь формат файла (ожидается блок other_lists).")
+    return owner, canon, removals, accounts
 
 
 def is_removed(removals, uid, video):
@@ -570,7 +630,7 @@ def fmt_time(sec):
     return f"{sec // 3600}ч {sec % 3600 // 60}м" if sec >= 3600 else f"{sec // 60}м {sec % 60}с"
 
 
-def run_tasks(items, fn, label):
+def run_tasks(items, fn, label, workers=None):
     total = len(items)
     state = {"done": 0}
     errors = []
@@ -602,7 +662,7 @@ def run_tasks(items, fn, label):
         progress()
         return item, res
 
-    ex = ThreadPoolExecutor(args.conc)
+    ex = ThreadPoolExecutor(workers or args.conc)
     try:
         results = list(ex.map(wrap, items))
         ex.shutdown()
@@ -708,7 +768,7 @@ def main():
         print("Свои записи:", ", ".join(args.add))
 
     print("Загружаю список уровней...")
-    pc_to_dl, canon_id, removals, accounts_of = load_links()
+    owner_of, canon_id, removals, accounts_of = load_links()
     # качаем только до --cap-place (по умолчанию топ-300), остальные уровни нигде не используются
     levels = load_paged("level/classic/list", "levels", 100, stop=levels_past_cap)
     extras = load_extras()
@@ -783,41 +843,88 @@ def main():
         for (_, d, l), recs in pc_results:
             k = str(l["id"])
             for pid, pname, pct, video in recs or []:
-                dl_id = pc_to_dl(pid)
-                if dl_id and is_removed(removals, dl_id, video):
+                main_id = owner_of("pointercrate", pid)
+                if main_id and is_removed(removals, main_id, video):
                     removed_n += 1
                     continue
-                if dl_id:
-                    uid = dl_id
+                uid = main_id or "pc" + pid  # человек из links.json (цифры, pc..., wml...) или игрок без линка
+                if is_global(uid):
                     info.setdefault(uid, (pname, None))
                 else:
-                    uid = "pc" + pid
-                    pc_only.add(uid)
-                    info[uid] = ((pname or "?") + " [PC]", None)
+                    pc_only.add(uid)  # человека нет в глобале: метку [PC] добавим при выводе
+                    info.setdefault(uid, (pname or "?", None))
                 m = best_by.setdefault(uid, {})
                 m[k] = max(m.get(k, -1), pct)
                 pc_pairs[(uid, k)] = max(pc_pairs.get((uid, k), -1), pct)
         print(f"Игроков Pointercrate без линка: {len(pc_only)}")
 
-        # Флаги для игроков, которых нет в глобале: берём страну из профиля Pointercrate
-        if pc_only:
-            print("Страны игроков Pointercrate:")
-            pids = [u[2:] for u in pc_only]  # убираем префикс "pc"
-            res = run_tasks([(pid,) for pid in pids],
-                            lambda it: pc_player_country(it[0]), "игроков PC (страна)")
-            got = 0
-            for (pid,), code in res:
-                if code:
-                    nm, _ = info["pc" + pid]
-                    info["pc" + pid] = (nm, code)
-                    got += 1
-            print(f"Страна найдена у {got} из {len(pids)}")
+        # Страны игроков, которых нет в глобале, ищет find_country ниже (по их аккаунтам Pointercrate и WML)
+
+    # Другие листы из реестра (wml и т.д.): данные качает адаптер листа, уровни ищет levels.py
+    list_pairs = {}      # лист -> {(ID человека, ключ уровня): лучший процент}
+    list_countries = {}  # лист -> {ID аккаунта: страна}
+    list_players = {}    # лист -> сколько игроков в данных
+    wanted_lists = [src for src in L.sources() if src.name in SOURCES]
+    if wanted_lists:
+        index = levelsearch.LevelIndex.build(tp=tp, levels=levels)  # названия уровней -> ключи уровней
+        by_ingame = {str(l["ingame_id"]): str(l["id"]) for l in levels if l.get("ingame_id") is not None}
+    for src in wanted_lists:
+        print(f"\n{src.name}:")
+        src.ttl = args.list_ttl
+        data = src.fetch(L.DictStore(cache, lock, save_cache), workers=args.list_conc)
+        if not data:
+            print(f"Лист {src.name} недоступен, источник в этом запуске пропускаю")
+            continue
+        pairs = list_pairs.setdefault(src.name, {})
+        countries = list_countries.setdefault(src.name, {})
+        list_players[src.name] = len(data["players"])
+        linked_n = free_n = n_recs = 0
+        for aid, pl in data["players"].items():
+            main_id = owner_of(src.name, aid)
+            uid = main_id or src.prefix + aid  # человек из links.json или игрок листа без линка
+            nick = src.display_nick(pl["n"]) or pl["n"]
+            countries[aid] = pl.get("c")
+            if main_id:
+                linked_n += 1
+                info.setdefault(uid, (nick, None))
+            else:
+                free_n += 1  # метку [тег] добавим при выводе
+                info[uid] = (nick, pl.get("c"))
+        unresolved, found = {}, {}
+        for r in data["records"]:
+            aid = str(r["a"])
+            main_id = owner_of(src.name, aid)
+            uid = main_id or src.prefix + aid
+            name = r["l"]
+            if name not in found:  # поиск по названию делаем один раз на название
+                found[name] = by_ingame.get(str(r["i"])) if r.get("i") is not None else None
+                found[name] = found[name] or index.find(name)
+            k = found[name]
+            if k is None:
+                unresolved[name] = unresolved.get(name, 0) + 1
+                continue
+            if main_id and is_removed(removals, main_id, r.get("v")):
+                removed_n += 1
+                continue
+            pct = float(r["p"])
+            m = best_by.setdefault(uid, {})
+            m[k] = max(m.get(k, -1), pct)
+            pairs[(uid, k)] = max(pairs.get((uid, k), -1), pct)
+            n_recs += 1
+        print(f"Игроков {src.name} с линком в links.json: {linked_n}, без линка [{src.tag}]: {free_n}; записей: {n_recs}")
+        if unresolved:
+            top = sorted(unresolved.items(), key=lambda kv: -kv[1])[:10]
+            print(f"  уровней {src.name} без пары в списке (всего названий {len(unresolved)}), чаще всего: "
+                  + ", ".join(f"{n} ({c})" for n, c in top))
+        if index.stats:
+            print("  названия найдены: " + ", ".join(f"{k} {v}" for k, v in index.stats.items()))
 
     for uid, m in extras.items():
-        # my_extras мог записать игрока как "pc<ID Pointercrate>", когда линка ещё не было.
-        # Если линк в links.json с тех пор появился, переводим на его главный ID глобала.
-        if uid.startswith("pc") and pc_to_dl(uid[2:]):
-            uid = pc_to_dl(uid[2:])
+        # my_extras мог записать игрока как "pc<ID Pointercrate>", "wml<ID WML>" и т.п., когда линка ещё не было.
+        # Если линк в links.json с тех пор появился, переводим на его главный ID.
+        src, rest = L.key_parts(uid)  # pc<id>, wml<id> и т.п.: ищем человека в links.json
+        if src and owner_of(src.name, rest):
+            uid = owner_of(src.name, rest)
         b = best_by.setdefault(uid, {})
         for k, pct in m.items():
             b[k] = max(b.get(k, -1), pct)
@@ -833,17 +940,22 @@ def main():
     # Рекорды (игрок + уровень), которые есть только на Pointercrate. Считаем после склейки
     # аккаунтов: если у человека есть этот уровень на глобале (хоть с другого аккаунта),
     # это уже не "только Pointercrate".
-    only_pc_set = set()
-    if "pointercrate" in SOURCES:
-        def canon_pairs(d):
-            out = {}
-            for (u, k), pct in d.items():
-                cu = canon_id(u)
-                out[(cu, k)] = max(out.get((cu, k), -1), pct)
-            return out
+    def canon_pairs(d):
+        out = {}
+        for (u, k), pct in d.items():
+            cu = canon_id(u)
+            out[(cu, k)] = max(out.get((cu, k), -1), pct)
+        return out
 
-        dlp, pcp = canon_pairs(dl_pairs), canon_pairs(pc_pairs)
-        only_pc_set = {key for key in pcp if key not in dlp}
+    dlp, pcp = canon_pairs(dl_pairs), canon_pairs(pc_pairs)
+    # "только на листе" = рекорд (игрок + уровень) есть на этом листе, но нет на глобале и на других подключённых листах
+    all_pairs = {"pointercrate": pcp, **{n: canon_pairs(pr) for n, pr in list_pairs.items()}}
+    only_sets = {}
+    for lname, pr in all_pairs.items():
+        others = [dlp] + [o for n, o in all_pairs.items() if n != lname]
+        only_sets[lname] = {key for key in pr if not any(key in o for o in others)}
+    only_pc_set = only_sets["pointercrate"]
+    if "pointercrate" in SOURCES:
         no_link = sum(1 for (u, _) in only_pc_set if u.startswith("pc"))
         better = sum(1 for key, pct in pcp.items() if key in dlp and pct > dlp[key])
         print(f"Рекордов только на Pointercrate (игрок + уровень, по всем игрокам): {len(only_pc_set)}")
@@ -858,7 +970,7 @@ def main():
 
     # Вся информация об игроке (ник, страна) - с глобала, если он там есть.
     # Из Pointercrate остаются только те, кого на глобале нет (pc-only).
-    need = [u for u in best_by if not u.startswith("pc") and u not in dl_seen]
+    need = [u for u in best_by if is_global(u) and u not in dl_seen]
     if need:
         print("Профили игроков на глобале:")
         res = run_tasks([(u,) for u in need], lambda it: dl_profile(it[0]), "профилей")
@@ -880,7 +992,7 @@ def main():
     def find_country(uid):
         acc = accounts_of(uid)
         for d in acc["dl"]:
-            if str(d).startswith("pc"):
+            if not is_global(d):
                 continue
             try:
                 prof = dl_profile(d)
@@ -889,7 +1001,7 @@ def main():
                 continue
             if prof and clean_country(prof[1]):
                 return prof[1]
-        for pid in acc["pc"]:
+        for pid in acc["pointercrate"]:
             try:
                 code = pc_player_country(pid)
             except Exception as e:
@@ -897,10 +1009,13 @@ def main():
                 continue
             if code:
                 return code
+        for lname, countries in list_countries.items():  # страна из данных других листов (уже скачаны выше)
+            for aid in acc.get(lname, []):
+                if countries.get(str(aid)):
+                    return countries[str(aid)]
         return None
 
-    no_flag = [u for u in best_by if u not in pc_only
-               and flag((info.get(u) or ("", None))[1]) == "🏳️"]
+    no_flag = [u for u in best_by if flag((info.get(u) or ("", None))[1]) == "🏳️"]
     if no_flag:
         print("Поиск страны по другим аккаунтам игроков без флага:")
         res = run_tasks([(u,) for u in no_flag], lambda it: find_country(it[0]), "игроков (страна)")
@@ -936,6 +1051,7 @@ def main():
         while len(top) < N:
             top.append({"level": "-", "place": None, "percent": None, "f": args.cap, "special": False})
         name, country = info[uid]
+        name = f"{name}{L.tag_of(uid)}"  # человека нет в глобале: помечаем, откуда он ([PC], [WML], ...)
         result.append({"id": uid, "name": name, "country": country, "pc_only": uid in pc_only,
                        "score": geo_mean([r["f"] for r in top]), "records": top})
 
@@ -959,6 +1075,8 @@ def main():
     for r in result:
         r["pc_only_in_top"] = sum(1 for rec in r["records"]
                                   if rec.get("key") and (r["id"], rec["key"]) in only_pc_set)
+        r["only_in_top"] = {lname: sum(1 for rec in r["records"] if rec.get("key") and (r["id"], rec["key"]) in only)
+                            for lname, only in only_sets.items() if lname in list_pairs}
 
     print(f"\nТоп по {N} лучшим записям (меньше = лучше), игроков: {len(result)}\n")
     if "pointercrate" in SOURCES:
@@ -978,6 +1096,17 @@ def main():
         print(f"Для сравнения, вообще всех записей у этих игроков: {total_all}, "
               f"из них только на Pointercrate: {total_pc}{share_all}\n")
 
+    for lname in list_pairs:  # другие листы: сколько записей есть только на них
+        only = only_sets[lname]
+        ids = {r["id"] for r in result}
+        total_l = sum(1 for (u, _) in only if u in ids)
+        in_top_l = sum(r["only_in_top"][lname] for r in result)
+        with_l = sum(1 for r in result if r["only_in_top"][lname])
+        top_all_l = sum(1 for r in result for rec in r["records"] if rec.get("place") is not None)
+        share_l = f" ({in_top_l * 100 / top_all_l:.1f}%)" if top_all_l else ""
+        print(f"Записей, которые есть только на {lname} (нет на глобале и на других подключённых листах): "
+              f"всего у этих игроков {total_l}, в {N} лучших {in_top_l}{share_l}, игроков с такими записями: {with_l}\n")
+
     # в консоль: первые --show игроков
     for r in result[: args.show]:
         i = r["rank"]
@@ -990,13 +1119,13 @@ def main():
             print(line_short(i, r, args.ids))
 
     # в txt: весь топ целиком (или весь отфильтрованный)
-    # Имя файла по набору источников: gdr_gl, gdr_gl_pc, gdr_gl_my, а когда подключено всё, просто gdr
-    base = {
-        frozenset(): "gdr_gl",
-        frozenset({"pointercrate"}): "gdr_gl_pc",
-        frozenset({"my_extras"}): "gdr_gl_my",
-        frozenset({"pointercrate", "my_extras"}): "gdr",
-    }.get(frozenset(SOURCES), "gdr_" + "_".join(["gl", *sorted(SOURCES)]))
+    # Имя файла по набору источников: gdr_gl (только глобал), gdr_gl_pc, gdr_gl_wml, gdr_gl_my,
+    # их сочетания (gdr_gl_pc_wml и т.п.), а когда подключено всё, просто gdr
+    if SOURCES == ALL_SOURCES:
+        base = "gdr"
+    else:
+        order = sorted(SOURCES, key=lambda x: (SOURCE_ORDER.index(x) if x in SOURCE_ORDER else 99, x))
+        base = "gdr_gl" + "".join("_" + SOURCE_SHORT.get(x, x) for x in order)
     txt = HERE / f"{base}{suffix}.txt"
     txt.write_text("\n".join(line_short(r["rank"], r, args.ids) for r in result), "utf-8")
     print(f"\nТекст для копирования (весь топ, {len(result)} игроков): {txt.name}")

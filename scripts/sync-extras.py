@@ -51,6 +51,10 @@ import urllib.request
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent          # scripts/
+if str(HERE) not in sys.path:
+    sys.path.insert(0, str(HERE))
+import levels as levelsearch  # общий поиск уровней по названию (особые названия, нормализация)
+
 ROOT = HERE.parent                              # корень репозитория
 EXTRAS = ROOT / "my_extras.json"
 LEVELS = ROOT / "levels_tp.json"
@@ -108,17 +112,10 @@ def fetch_levels_html():
         sys.exit(f"Не удалось скачать {LEVELS_URL}: {e}. levels_tp.json не тронут.")
 
 
-# Особые названия: ID уровня в глобале -> как он называется у нас (в API у него другое/такое же, как у соседа).
-# ВАЖНО: такие же списки лежат в compare.py и add-video-links.py. Дописали сюда - допишите и туда.
-SPECIAL_LEVEL_NAMES = {
-    "3299": "Sakupen circles (Nick24)",
-    "3351": "Thinking Space II (Legacy)",
-    "2234": "Deimos (Endlevel)",
-}
-
-
-def norm(s):
-    return " ".join(str(s).split()).casefold()
+# Особые названия уровней (ID в глобале -> как он называется у нас) и сравнение названий лежат в levels.py,
+# общем для всех скриптов: дописали название там, и оно работает здесь.
+norm = levelsearch.normalize
+SPECIAL_LEVEL_NAMES = levelsearch.SPECIAL_LEVEL_NAMES
 
 
 def fetch_global_levels():
@@ -479,6 +476,9 @@ def main():
     # 2. Потом оба рейтинга
     if not args.skip_fetch:
         run([sys.executable, cb, "all", "-r"], "CoreBoard: оба топа -> cbd.txt")
+        # Только глобал + pointercrate, БЕЗ других листов (WML и т.д.): my_extras.json читает расширение,
+        # а оно про эти листы не знает. Если сравнивать с рейтингом, где уже есть WML, записи, которые есть
+        # только там, пропали бы из my_extras. Имя файла gdr_gl_pc.txt от этого набора и зависит.
         run([sys.executable, gdr_script, "--src", "pointercrate", "--ids"],
             "Наш рейтинг (глобал + pointercrate) -> gdr_gl_pc.txt")
     for f in (cbd_txt, gdr_txt):

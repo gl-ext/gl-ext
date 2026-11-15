@@ -20,6 +20,25 @@ fix.json: читаются merges (склейка аккаунтов глоба�
 
 different_people.json: случаи, где канал общий, но люди РАЗНЫЕ (см. make_links.py, DIFFERENT).
 
+Другие листы (WML и любые будущие): подключаются через lists_core.py, см. описание там. Каждый лист живёт в
+своём файле list_<название>.py; чтобы добавить новый, ничего в этом скрипте менять не нужно.
+Аккаунт другого листа привязывается к записи links.json, если у них есть общее видео с любым аккаунтом
+этой записи (глобал, Pointercrate или уже привязанные аккаунты других листов).
+
+Формат записи links.json (аккаунты на других листах лежат в одном блоке other_lists):
+  "123":  {"_name": "Ник", "other_lists": {"pointercrate": [500], "wml": [10]}, "channels": {...}}
+Ключ из цифр = аккаунт глобала, "pc7" = игрок Pointercrate без глобала, "wml5" = игрок WML без глобала и
+Pointercrate (у каждого листа свой префикс). Название блока задаётся одной константой (OTHER). Файл старого
+формата ("pointercrate" прямо в записи) при запуске переписывается в новый сам.
+
+Игрок другого листа без пары получает свою запись под ключом "<префикс><ID>" (как "pc<id>" у Pointercrate).
+Если у нескольких таких аккаунтов одного листа общие видео, это один человек: они лежат в одной записи, ключ
+по наименьшему id. Аккаунт с общими видео сразу у нескольких записей тоже становится отдельной записью,
+а подробности уходят в links_review.txt. Если у записи другого листа найден тот же канал, что у записи
+глобала или pc..., записи склеиваются (главная: глобал, потом pc..., потом остальные листы в порядке
+регистрации). Видео игроков всех листов участвуют в поиске каналов. Игроки с отдельной записью, чей ник
+совпал с ником другой записи, выписаны в links_<лист>_hints.txt.
+
 Запуск:   python make_links.py
 Скачивание можно прервать в любой момент (Ctrl+C, выключили свет, закрыли окно).
 Прогресс сохраняется в файлы cache_*, и при следующем запуске скрипт продолжит
@@ -28,9 +47,12 @@ different_people.json: случаи, где канал общий, но люди
 
 Параметры:
   --workers=N   сколько запросов делать одновременно (по умолчанию 5)
-  --refresh     удалить всё скачанное и начать заново
+  --refresh     удалить скачанное (рекорды demonlist и Pointercrate) и начать заново; кеш других листов остаётся
+  --refresh-lists  стереть ещё и кеш других листов (страницы игроков WML и т.д.), качать их заново
   --no-channels не искать каналы игроков (YouTube/Twitch/Bilibili/...), только аккаунты
   --no-yt-id    не искать постоянные номера каналов YouTube (UC...), остальные каналы искать
+  --no-<лист>   не использовать лист, например --no-wml (уже записанные аккаунты в links.json остаются)
+  --no-lists    не использовать никакие другие листы
 Нужен только Python, ничего устанавливать не надо.
 """
 
@@ -45,6 +67,8 @@ import urllib.parse
 import urllib.request
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
+import lists_core as L  # реестр листов (WML и т.д.)
 
 DL = "https://api.demonlist.org/"
 PC = "https://pointercrate.com/api/"
@@ -66,6 +90,16 @@ CACHE_PC_PLAYERS = "cache_pc_players.json"  # все игроки Pointercrate (
 # Здесь они только дополняют данные по уровням, но не заменяют их.
 CACHE_USERS = "cache_dl_users.json"
 USERS_MAX_AGE = 7 * 24 * 3600  # записи старше недели не используем
+HERE = os.path.dirname(os.path.abspath(__file__))
+CACHE_LIST = "cache_list_{name}.json"  # кеш каждого листа (кроме Pointercrate): страницы игроков, пополняется по ходу
+HINTS_FILE = "links_{name}_hints.txt"  # игроки листа с отдельной записью, у которых ник совпал с ником другой записи
+LIST_WORKERS = 3  # к другим листам ходим бережнее, чем к API demonlist и Pointercrate
+# Аккаунты записи на ДРУГИХ листах (не глобал) лежат в одном блоке под этим названием.
+# Чтобы переименовать: впиши новое название в OTHER, а прежнее добавь в LEGACY_OTHER. При запуске
+# блок переедет под новое название сам, ничего не потеряется.
+OTHER = "other_lists"
+LEGACY_OTHER = ()  # прежние названия блока, например ("other_lists",)
+LISTS = L.list_names()  # какие листы бывают в блоке: pointercrate и всё, что описано в list_*.py
 OUT = "links.json"  # готовый результат
 REVIEW = "links_review.txt"  # спорные случаи для ручной проверки
 MERGES_LOG = "links_channel_merges.txt"  # что и когда склеено по общим каналам (дописывается)
@@ -323,6 +357,49 @@ def merge_verifiers(dl):
         added += 1
     print(f"  вериферов добавлено: {added} (уровней в списке: {len(info)})")
     return out
+
+
+def other_accounts(entry):
+    """Блок аккаунтов записи на других листах: {"pointercrate": [...], "wml": [...]}.
+    Если блока нет, создаёт его (оба списка пустые). Списки можно менять на месте."""
+    block = entry.setdefault(OTHER, {})
+    for name in LISTS:
+        block.setdefault(name, [])
+    return block
+
+
+def new_entry(name, **accounts):
+    """Новая запись links.json. accounts: аккаунты на других листах, например new_entry("Ник", pointercrate=[7])."""
+    return {"_name": str(name or ""), OTHER: {n: list(accounts.get(n) or []) for n in LISTS}}
+
+
+def migrate_links(result):
+    """Приводит записи к текущему формату: "pointercrate" и "wml" из корня записи переезжают в блок OTHER.
+    Порядок ключей: _name, блок, остальное (channels и т.д.). Возвращает, у скольких записей формат изменился."""
+    changed = 0
+    for key in list(result):
+        entry = result[key]
+        if not isinstance(entry, dict):
+            continue
+        old = [n for n in LISTS if n in entry]  # списки прямо в корне записи (старый формат)
+        legacy = [n for n in LEGACY_OTHER if n != OTHER and isinstance(entry.get(n), dict)]
+        block = entry.get(OTHER)
+        if not old and not legacy and isinstance(block, dict) and all(n in block for n in LISTS):
+            continue
+        block = {n: list(v) for n, v in block.items()} if isinstance(block, dict) else {}
+        sources = [(n, entry[n]) for n in old] + [
+            (n, v) for lg in legacy for n, v in entry[lg].items() if n in LISTS]  # (лист, его аккаунты)
+        for n, accounts in sources:
+            lst = block.setdefault(n, [])
+            for x in accounts or []:
+                if x not in lst:
+                    lst.append(x)
+        for n in LISTS:
+            block.setdefault(n, [])
+        rest = {k: v for k, v in entry.items() if k not in ("_name", OTHER, *LISTS, *LEGACY_OTHER)}
+        result[key] = {"_name": entry.get("_name") or "", OTHER: block, **rest}
+        changed += 1
+    return changed
 
 
 def load_rules_file(path, label):
@@ -647,6 +724,186 @@ def load_pc_players():
     return players
 
 
+# ---------- другие листы (WML и любые будущие, см. lists_core.py) ----------
+
+def nick_key(nick):
+    """Ник для сравнения: без лишних пробелов и без учёта регистра."""
+    return " ".join(str(nick or "").split()).casefold()
+
+
+def account_videos(dl, pc, lists_data):
+    """Видео (id) каждого аккаунта: {"pointercrate": {id: {видео}}, "wml": {...}, ...} и отдельно по аккаунтам глобала."""
+    dl_vids = defaultdict(set)
+    for r in dl:
+        v = video_id(r["v"]) if r["v"] else None
+        if v and r["u"] is not None:
+            dl_vids[str(r["u"])].add(v)
+    acc = {name: defaultdict(set) for name in LISTS}
+    for r in pc:
+        v = video_id(r["v"]) if r["v"] else None
+        if v and r["p"] is not None:
+            acc["pointercrate"][str(r["p"])].add(v)
+    for name, data in lists_data.items():
+        for r in data["records"]:
+            v = video_id(r["v"]) if r.get("v") else None
+            if v and r.get("a") is not None:
+                acc[name][str(r["a"])].add(v)
+    return dl_vids, acc
+
+
+def link_source(src, data, result, dl, pc, lists_data, review, max_accounts=3):
+    """Раскладывает аккаунты листа src по записям links.json (по общим видео, как Pointercrate к глобалу).
+    Видео записи = видео её аккаунта глобала и всех её аккаунтов на всех листах (в том числе уже привязанных).
+      1) общие видео ровно с одной записью: аккаунт дописывается в entry[OTHER][src.name] (повторяем, пока
+         находятся новые привязки: привязка одного аккаунта может открыть следующий);
+      2) остальные (нет пары, конфликт между записями, у записи уже max_accounts аккаунтов этого листа)
+         получают запись "<префикс><id>". Аккаунты с общим видео друг с другом считаются одним человеком и лежат
+         в одной записи (если их не больше max_accounts), ключ по наименьшему id.
+    Уже привязанные аккаунты (в том числе твои ручные правки) не трогаем.
+    Возвращает (привязано к существующим записям, создано новых записей)."""
+    name, tag, prefix = src.name, src.tag, src.prefix
+    players = data["players"]
+    dl_vids, acc_vids = account_videos(dl, pc, lists_data)
+    mine_vids = acc_vids[name]  # видео аккаунтов этого листа
+
+    key_vids, vid_keys, owner = {}, defaultdict(set), {}
+    for key, entry in result.items():
+        block = other_accounts(entry)
+        vids = set(dl_vids.get(key, ()))
+        for lst in LISTS:
+            for a_id in block[lst]:
+                vids |= acc_vids[lst].get(str(a_id), set())
+        for a_id in block[name]:
+            owner[str(a_id)] = key  # уже привязан
+        key_vids[key] = vids
+        for v in vids:
+            vid_keys[v].add(key)
+
+    by_nick = defaultdict(list)  # подсказки: ник записи -> её ключи (только записи, которые были ДО этого запуска)
+    for key, entry in result.items():
+        nk = nick_key(entry.get("_name"))
+        if nk:
+            by_nick[nk].append(key)
+
+    def sort_id(x):
+        return (not x.isdigit(), int(x) if x.isdigit() else 0, x)
+
+    def label(wid):
+        return f"{tag} {wid} ({players[wid]['n']})"
+
+    # 1) привязка к существующим записям
+    pending = sorted((w for w in players if w not in owner), key=sort_id)
+    linked = 0
+    while True:
+        changed, rest = False, []
+        conflict, full = {}, {}
+        for wid in pending:
+            mine = mine_vids.get(wid, set())
+            hits = Counter(k for v in mine for k in vid_keys.get(v, ()))
+            if not hits:
+                rest.append(wid)
+                continue
+            if len(hits) > 1:
+                conflict[wid] = hits
+                rest.append(wid)
+                continue
+            key = next(iter(hits))
+            if len(other_accounts(result[key])[name]) >= max_accounts:
+                full[wid] = (key, hits[key])
+                rest.append(wid)
+                continue
+            other_accounts(result[key])[name].append(int(wid) if wid.isdigit() else wid)
+            owner[wid] = key
+            key_vids[key] |= mine
+            for v in mine:
+                vid_keys[v].add(key)
+            linked += 1
+            changed = True
+        pending = rest
+        if not changed:
+            break
+
+    for wid, hits in sorted(conflict.items(), key=lambda kv: sort_id(kv[0])):
+        mine = mine_vids.get(wid, set())
+        block = [f"{label(wid)} совпал с несколькими записями links.json, получает отдельную запись {prefix}{wid}:"]
+        for k in sorted(hits, key=lambda x: (not str(x).isdigit(), str(x))):
+            block.append(f"    {k} ({result[k].get('_name', '')}), общих видео: {hits[k]}")
+            block.append(vurls(mine & key_vids[k]))
+        review.append("\n".join(block))
+    for wid, (key, n) in sorted(full.items(), key=lambda kv: sort_id(kv[0])):
+        mine = mine_vids.get(wid, set())
+        review.append(
+            f"СЛИШКОМ МНОГО АККАУНТОВ {tag} ({max_accounts}) у записи {key} ({result[key].get('_name', '')}), "
+            f"{label(wid)} получает отдельную запись {prefix}{wid}, общих видео: {n}\n" + vurls(mine & key_vids[key]))
+
+    # 2) отдельные записи для остальных. Общее видео между самими аккаунтами = один человек.
+    parent = {w: w for w in pending}
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    by_video = defaultdict(list)
+    for w in pending:
+        for v in mine_vids.get(w, ()):
+            by_video[v].append(w)
+    for ws in by_video.values():
+        for other in ws[1:]:
+            parent[find(other)] = find(ws[0])
+    comps = defaultdict(list)
+    for w in pending:
+        comps[find(w)].append(w)
+
+    def shared(comp):
+        out = set()
+        for i, a_id in enumerate(comp):
+            for b_id in comp[i + 1:]:
+                out |= mine_vids.get(a_id, set()) & mine_vids.get(b_id, set())
+        return out
+
+    def fake_entry(ws):
+        key = f"{prefix}{ws[0]}"  # ws отсортированы: ключ по наименьшему id
+        entry = result.setdefault(key, new_entry(src.display_nick(players[ws[0]]["n"])))
+        lst = other_accounts(entry)[name]
+        for w in ws:
+            if (int(w) if w.isdigit() else w) not in lst:
+                lst.append(int(w) if w.isdigit() else w)
+        return key
+
+    created, hints = 0, []
+    for comp in sorted(comps.values(), key=lambda c: sort_id(min(c, key=sort_id))):
+        comp.sort(key=sort_id)
+        if len(comp) <= max_accounts:
+            groups = [comp]
+            if len(comp) > 1:
+                review.append(f"{tag} БЕЗ ПАРЫ, склеены по общим видео: " + ", ".join(label(w) for w in comp)
+                              + "\n" + vurls(shared(comp)))
+        else:
+            groups = [[w] for w in comp]
+            review.append(f"СЛИШКОМ МНОГО АККАУНТОВ {tag} С ОБЩИМИ ВИДЕО ({len(comp)}), НЕ склеены (каждый отдельной "
+                          f"записью): " + ", ".join(label(w) for w in comp) + "\n" + vurls(shared(comp)))
+        for ws in groups:
+            fake_entry(ws)
+            created += 1
+            for w in ws:
+                maybe = by_nick.get(nick_key(src.display_nick(players[w]["n"])))
+                if maybe:
+                    hints.append((players[w].get("r"), w, players[w]["n"], maybe))
+
+    hints.sort(key=lambda t: (t[0] is None, t[0] if isinstance(t[0], (int, float)) else 0))
+    with open(HINTS_FILE.format(name=name), "w", encoding="utf-8") as f:
+        f.write(f"Игроки {tag} с отдельной записью {prefix}..., у которых ник совпал с ником другой записи links.json.\n")
+        f.write("Совпадение ника НЕ доказательство (скрипт склеивает только по видео и каналам). Файл пишется заново.\n\n")
+        for rank, wid, nick, maybe in hints:
+            f.write(f"#{rank} {nick} ({tag} {wid}) -> {prefix}{wid} | такой же ник: "
+                    + ", ".join(f"{k} ({result[k].get('_name', '')})" for k in maybe) + "\n")
+        if not hints:
+            f.write("Совпадений ников нет.\n")
+    return linked, created
+
+
 # ---------- каналы игроков ----------
 
 CACHE_CH = "cache_channels.json"  # {"yt:ID видео": "ссылка на канал", "ytid:ID видео": "UC..."}, чтобы не спрашивать дважды
@@ -841,7 +1098,7 @@ def run_jobs(todo, cache, workers):
     save_json(CACHE_CH, cache)
 
 
-def add_channels(result, dl, pc, workers):
+def add_channels(result, dl, pc, workers, lists_data=None):
     """Для каждого игрока из result находит каналы по его видео и дописывает в
     result[id]["channels"] = {"youtube": [...], "twitch": [...], ...}.
     Уже записанное (в том числе твои ручные правки) не трогает, только дополняет."""
@@ -853,6 +1110,12 @@ def add_channels(result, dl, pc, workers):
     for r in pc:
         if r["p"] is not None and r["v"]:
             pc_vids[r["p"]].append(str(r["v"]))
+    list_urls = {}  # видео игроков других листов (лежат после видео глобала и Pointercrate): лист -> аккаунт -> ссылки
+    for lname, data in (lists_data or {}).items():
+        list_urls[lname] = defaultdict(list)
+        for r in data["records"]:
+            if r.get("a") is not None and r.get("v"):
+                list_urls[lname][str(r["a"])].append(str(r["v"]))
 
     all_videos = "--all-videos" in sys.argv
     if all_videos:
@@ -866,8 +1129,11 @@ def add_channels(result, dl, pc, workers):
     # 2. Разбираем ссылки: что видно сразу, а про что надо спросить сайт
     for key, entry in result.items():
         urls = list(dl_vids.get(key, []))
-        for p in entry.get("pointercrate", []):
+        for p in other_accounts(entry)["pointercrate"]:
             urls += pc_vids.get(p, [])
+        for lname, by_acc in list_urls.items():
+            for acc in other_accounts(entry)[lname]:
+                urls += by_acc.get(str(acc), [])
         urls = list(dict.fromkeys(urls))  # убрали повторы, порядок сохранили
 
         found[key], wanted[key] = Counter(), []
@@ -1239,11 +1505,12 @@ def fold_fix_merges(result, resolve, names):
         if keeper == str(key):
             continue
         entry = result.pop(key)
-        main = result.setdefault(keeper, {"_name": str(entry.get("_name") or ""), "pointercrate": []})
-        cur = main.setdefault("pointercrate", [])
-        for pid in entry.get("pointercrate", []):
-            if pid not in cur:
-                cur.append(pid)
+        main = result.setdefault(keeper, new_entry(entry.get("_name")))
+        for name in LISTS:  # аккаунты на других листах переезжают к основному
+            cur = other_accounts(main)[name]
+            for acc in other_accounts(entry)[name]:
+                if acc not in cur:
+                    cur.append(acc)
         for platform, links in (entry.get("channels") or {}).items():
             lst = main.setdefault("channels", {}).setdefault(platform, [])
             for link in links:
@@ -1262,8 +1529,9 @@ def apply_account_rules(result, rules, resolve):
     n = 0
     for acc in rules.get("placeholder_accounts", []):
         entry = result.get(resolve(acc))
-        if entry and (entry.get("pointercrate") or entry.get("channels")):
-            entry["pointercrate"] = []
+        if entry and (any(other_accounts(entry).values()) or entry.get("channels")):
+            for name in LISTS:
+                other_accounts(entry)[name] = []
             entry.pop("channels", None)
             n += 1
     return n
@@ -1345,8 +1613,8 @@ def norm_channel(link):
 
 def merge_by_channels(result, rules=None, resolve=None):
     """Склеивает записи, у которых найден один и тот же канал.
-    - одна запись глобала + записи pc...: всё уходит в запись глобала;
-    - только записи pc...: всё уходит в запись с наименьшим id;
+    - одна запись глобала + записи других листов (pc..., wml...): всё уходит в запись глобала;
+    - только записи других листов: всё уходит в запись листа, зарегистрированного раньше (pc..., потом wml... и т.д.), с наименьшим id;
     - две и больше записей глобала с общим каналом: НЕ склеиваем, пишем в CHANNEL_CONFLICTS;
     Сколько аккаунтов Pointercrate окажется у человека после склейки, не ограничивается.
     Всё, что склеено, дописывается в MERGES_LOG. Возвращает (поглощено записей, групп,
@@ -1362,12 +1630,14 @@ def merge_by_channels(result, rules=None, resolve=None):
             ok_sets[key] = accounts
     names = {k: str(e.get("_name") or "") for k, e in result.items()}
 
-    def is_global(k):
-        return not str(k).startswith("pc")
+    is_global = L.is_global  # глобал: ключ начинается с цифры (pc7, wml5 и прочее сюда не входит)
+    kinds = {src.name: i for i, src in enumerate(L.all_lists(), start=1)}  # pc..., потом листы в порядке регистрации
 
-    def order(k):  # сначала записи глобала, потом pc...; внутри по номеру
-        digits = str(k) if is_global(k) else str(k)[2:]
-        return (not is_global(k), int(digits) if digits.isdigit() else 0, str(k))
+    def order(k):  # сначала записи глобала, потом pc..., потом остальные листы, потом всё прочее; внутри по номеру
+        s = str(k)
+        src, rest = L.key_parts(s)
+        kind = 0 if is_global(s) else kinds[src.name] if src else len(kinds) + 1
+        return (kind, int(rest) if rest.isdigit() else 0, s)
 
     # канал -> какие записи его содержат
     by_channel, shown = defaultdict(set), {}
@@ -1422,10 +1692,11 @@ def merge_by_channels(result, rules=None, resolve=None):
         lines = [f"СКЛЕЕНО В {primary} ({names[primary]})", "    общие каналы: " + ", ".join(chans)]
         for k in keys[1:]:
             other = result.pop(k)
-            cur = main.setdefault("pointercrate", [])
-            for pid in other.get("pointercrate", []):
-                if pid not in cur:
-                    cur.append(pid)
+            for name in LISTS:  # аккаунты на других листах переезжают в главную запись
+                cur = other_accounts(main)[name]
+                for acc in other_accounts(other)[name]:
+                    if acc not in cur:
+                        cur.append(acc)
             for platform, links in (other.get("channels") or {}).items():
                 lst = main.setdefault("channels", {}).setdefault(platform, [])
                 for link in links:
@@ -1433,7 +1704,7 @@ def merge_by_channels(result, rules=None, resolve=None):
                         lst.append(link)
             moved[k] = primary
             absorbed += 1
-            lines.append(f"    поглощено: {k} ({names[k]}), pointercrate: {other.get('pointercrate', [])}")
+            lines.append(f"    поглощено: {k} ({names[k]}), аккаунты: {({n: v for n, v in other_accounts(other).items() if v})}")
         merged_log.append("\n".join(lines))
 
     if merged_log:
@@ -1460,7 +1731,7 @@ def merge_by_channels(result, rules=None, resolve=None):
         for (platform, _), ks in sorted(global_overlaps, key=lambda x: order(x[1][0])):
             f.write(f"\n{shown[(platform, _)]}  [{platform}]\n    {who(ks)}\n")
         if chains:
-            f.write(f"\n########## Два аккаунта глобала связаны через запись pc..., не склеены ({len(chains)}) ##########\n")
+            f.write(f"\n########## Два аккаунта глобала связаны через запись другого листа (pc..., wml...), не склеены ({len(chains)}) ##########\n")
             for keys, chans in chains:
                 f.write(f"\n{who(keys)}\n    каналы: {', '.join(chans)}\n")
         if not (global_overlaps or chains):
@@ -1478,11 +1749,18 @@ def main():
             workers = max(1, int(a.split("=", 1)[1]))
         elif a in ("--workers", "-w") and i + 1 < len(argv) and argv[i + 1].isdigit():
             workers = max(1, int(argv[i + 1]))
+    # Кеш листов (cache_list_<лист>.json) --refresh НЕ трогает: он сам проверяет свежесть (страница игрока
+    # качается заново, когда у игрока изменилась версия, например очки, и не реже раза в ttl). Иначе каждый
+    # запуск по расписанию заново качал бы страницы всех игроков листа. Стереть его: --refresh-lists.
+    wipe = []
     if "--refresh" in sys.argv:
-        for p in (CACHE_LEVELS, CACHE_LEVEL_INFO, PROGRESS_DL, PROGRESS_PC, CACHE_DL, CACHE_PC,
-                  CACHE_PC_PLAYERS):
-            if os.path.exists(p):
-                os.remove(p)
+        wipe += [CACHE_LEVELS, CACHE_LEVEL_INFO, PROGRESS_DL, PROGRESS_PC, CACHE_DL, CACHE_PC, CACHE_PC_PLAYERS]
+    if "--refresh-lists" in sys.argv:
+        wipe += [CACHE_LIST.format(name=src.name) for src in L.sources()]
+    for p in wipe:
+        if os.path.exists(p):
+            os.remove(p)
+    if wipe:
         print("Старые данные удалены, качаю заново.")
 
     print("1/3 pointercrate")
@@ -1504,6 +1782,18 @@ def main():
     dl = apply_fix(dl, fix)
     dl, blanked2 = blank_videos(dl, removals, placeholders)  # по id основных аккаунтов
     print(f"  removals и аккаунты-заглушки: у записей убрано видео: {blanked1 + blanked2}")
+
+    lists_data = {}  # название листа -> его данные (игроки и записи с видео)
+    skipped_lists = []
+    for src in L.sources():
+        if "--no-lists" in sys.argv or f"--no-{src.name}" in sys.argv:
+            continue
+        print(f"2б/3 {src.name}")
+        data = src.fetch(L.JsonStore(CACHE_LIST.format(name=src.name)), workers=min(workers, LIST_WORKERS))
+        if data:
+            lists_data[src.name] = data
+        else:
+            skipped_lists.append(src.name)
 
     print("3/3 сопоставление")
     dl_by_vid = defaultdict(dict)  # видео -> {id игрока: ник}
@@ -1626,13 +1916,16 @@ def main():
             print("Проверь файл (или переименуй его) и запусти снова.")
             sys.exit(1)
 
+    migrated = migrate_links(result)
+    if migrated:
+        print(f"  формат {OUT}: у {migrated} записей аккаунты других листов перенесены в блок \"{OTHER}\"")
     folded = fold_fix_merges(result, resolve, keep_names)
     placeholder_cleared = apply_account_rules(result, rules, resolve)
 
     # какие аккаунты Pointercrate уже закреплены за кем-то
     pc_owner = {}
     for k, v in result.items():
-        for p in v.get("pointercrate", []):
+        for p in other_accounts(v)["pointercrate"]:
             pc_owner[p] = k
 
     added_players = added_links = taken = 0
@@ -1642,9 +1935,9 @@ def main():
         entry = result.get(key)
         is_new = entry is None
         if is_new:
-            entry = {"_name": str(dl_names[uid] or ""), "pointercrate": []}
+            entry = new_entry(dl_names[uid])
             result[key] = entry
-        cur = entry.setdefault("pointercrate", [])
+        cur = other_accounts(entry)["pointercrate"]
         for p in sorted(set(pids)):
             if p in cur:
                 continue
@@ -1677,7 +1970,7 @@ def main():
     for uid, name in sorted(dl_all.items()):
         key = str(uid)
         if key not in result:
-            result[key] = {"_name": str(name or ""), "pointercrate": []}
+            result[key] = new_entry(name)
             added_dl_only += 1
 
     # 2) Игроки Pointercrate, которых нет в глобале, получают запись с ключом "pc<id>".
@@ -1720,10 +2013,10 @@ def main():
 
     def fake_entry(pids):
         key = f"pc{pids[0]}"  # pids отсортированы: ключ по наименьшему id
-        entry = result.setdefault(key, {"_name": str(pc_all.get(pids[0]) or ""), "pointercrate": []})
+        entry = result.setdefault(key, new_entry(pc_all.get(pids[0])))
         for p in pids:
-            if p not in entry["pointercrate"]:
-                entry["pointercrate"].append(p)
+            if p not in other_accounts(entry)["pointercrate"]:
+                other_accounts(entry)["pointercrate"].append(p)
             pc_owner[p] = key
         return key
 
@@ -1738,9 +2031,9 @@ def main():
             continue  # все уже разложены по записям
         owners = {pc_owner[p] for p in comp if p in pc_owner}
         who = ", ".join(f"{p} ({pc_all.get(p)})" for p in comp)
-        if len(owners) == 1 and len(result[next(iter(owners))]["pointercrate"]) + len(free) <= MAX_ACCOUNTS:
+        if len(owners) == 1 and len(other_accounts(result[next(iter(owners))])["pointercrate"]) + len(free) <= MAX_ACCOUNTS:
             key = next(iter(owners))
-            result[key]["pointercrate"].extend(free)
+            other_accounts(result[key])["pointercrate"].extend(free)
             for p in free:
                 pc_owner[p] = key
             joined_pc += len(free)
@@ -1761,10 +2054,17 @@ def main():
                 fake_entry([p])
                 added_pc_only += 1
 
+    # Другие листы: привязываем их аккаунты к записям по общим видео (до поиска каналов,
+    # чтобы видео этих листов тоже участвовали в нём). Порядок листов = порядок регистрации.
+    list_stats = {}
+    for src in L.sources():
+        if src.name in lists_data:
+            list_stats[src.name] = link_source(src, lists_data[src.name], result, dl, pc, lists_data, review, MAX_ACCOUNTS)
+
     added_channels = None
     if "--no-channels" not in sys.argv:
         print("Ищу каналы игроков (YouTube/Twitch/Bilibili/...)")
-        added_channels = add_channels(result, dl, pc, workers)
+        added_channels = add_channels(result, dl, pc, workers, lists_data)
 
     # Правила из different_people.json: убрать канал у тех, кому он не принадлежит
     rule_removed, rule_added = apply_channel_rules(result, rules, resolve)
@@ -1789,6 +2089,13 @@ def main():
     print(f"  аккаунтов глобала без Pointercrate (новых записей): {added_dl_only}")
     print(f"  игроков Pointercrate без глобала: новых записей pc...: {added_pc_only}, "
           f"аккаунтов дописано в существующие записи: {joined_pc}")
+    for src in L.sources():
+        if src.name in list_stats:
+            linked_n, created_n = list_stats[src.name]
+            print(f"  {src.name}: игроков {len(lists_data[src.name]['players'])}, привязано к существующим записям {linked_n}, "
+                  f"создано новых записей {src.prefix}... {created_n} (совпадения ников: {HINTS_FILE.format(name=src.name)})")
+        elif src.name in skipped_lists:
+            print(f"  {src.name}: в этом запуске не использован (см. сообщения выше)")
     if added_channels is not None:
         print(f"  добавлено новых ссылок на каналы: {added_channels}")
     print(f"  fix.json: записей перенесено в основные аккаунты: {folded}")
