@@ -24,6 +24,9 @@ parser.add_argument("--out-dir", default="compare",
                          "Чтобы работать в текущей папке: --out-dir .")
 parser.add_argument("--ids", default="gdr-ids.json",
                     help="файл с ID игроков (ник -> ID), нужен для команд. По умолчанию gdr-ids.json")
+parser.add_argument("--prev-players", default="",
+                    help="прошлый опубликованный missing_players.json (cbd/missing_players.json): ссылки, уже найденные "
+                         "в нём, берутся оттуда и заново не ищутся, так запуск каждые 30 минут не повторяет поиск")
 args = parser.parse_args()
 
 OUT_DIR = Path(args.out_dir)
@@ -35,6 +38,8 @@ NICKS_FILE = str(OUT_DIR / "missing_achievements_with_nicks.json")  # его д�
 NOT_FOUND_FILE = str(OUT_DIR / "missing_video_links.txt")
 SOURCES_FILE = str(OUT_DIR / "video_link_sources.txt")  # откуда взято каждое найденное видео
 COMMANDS_FILE = str(OUT_DIR / "commands.txt")           # команды /fulladd и /try
+PLAYERS_FILE = str(OUT_DIR / "missing_players.json")    # новые игроки (делает compare.py); сюда дописываются ссылки
+PLAYERS_NOT_FOUND_FILE = str(OUT_DIR / "missing_players_video_links.txt")  # где видео не нашлось
 IDS_FILE = args.ids        # ник -> ID игрока (нужен для команд), лежит в текущей папке
 LEVELS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/levels_tp.json"  # названия уровней (нужны для команд), только GitHub
 
@@ -776,6 +781,88 @@ def add_links_to_file(command_records, filename, index):
     print(f"Ссылки добавлены в {filename} (пункт {index + 1}): {filled} из {total}")
 
 
+def save_players_json(players, filename):
+    with open(filename, "w", encoding="utf-8") as file:
+        file.write('{\n  "users": {\n')
+        items = list(players.items())
+        for index, (player, info) in enumerate(items):
+            file.write("    " + json.dumps(player, ensure_ascii=False) + ": " + json.dumps(info, ensure_ascii=False))
+            file.write(",\n" if index < len(items) - 1 else "\n")
+        file.write("  }\n}\n")
+
+
+def load_previous_players_links():
+    """Ссылки из прошлого опубликованного missing_players.json: (игрок, уровень, процент) -> ссылка."""
+    cache = {}
+    if not args.prev_players:
+        return cache
+    try:
+        data = json.loads(Path(args.prev_players).read_text("utf-8"))
+    except (OSError, ValueError):
+        return cache
+    for key, info in (data.get("users", data) or {}).items():
+        for record in (info.get("records", []) if isinstance(info, dict) else []):
+            if len(record) >= 3 and record[2]:
+                cache[(normalize_id(key), str(record[0]), parse_percent(record[1]))] = record[2]
+    return cache
+
+
+def add_videos_to_players(links):
+    """Дописывает ссылки на видео в missing_players.json (третий пункт каждой записи; не нашлась - ""),
+    команд для новых игроков не создаёт."""
+    path = Path(PLAYERS_FILE)
+    if not path.exists():
+        print(f"Нет {PLAYERS_FILE}: новых игроков нет, пропускаю")
+        return
+
+    data = json.loads(path.read_text("utf-8"))
+    users = data.get("users", data)
+    previous = load_previous_players_links()
+
+    total = reused = found = 0
+    not_found = []
+    for key, info in users.items():
+        player_id = player_id_from_key(key)
+        print(f"\nНовый игрок: {key} ({info.get('nick')})")
+
+        for record in info.get("records", []):
+            total += 1
+            while len(record) < 3:
+                record.append("")
+            level_id, raw_percent = record[0], record[1]
+            percent = parse_percent(raw_percent)
+
+            cached = previous.get((normalize_id(player_id), str(level_id), percent))
+            if cached:
+                record[2] = cached
+                reused += 1
+                continue
+
+            video, source_name = "", ""
+            try:
+                if percent is not None and str(level_id).strip().isdigit():
+                    video, source_name = find_video(player_id, level_id, percent, links)
+                    time.sleep(DELAY)
+                else:
+                    source_name = "непонятный процент или ID уровня"
+            except Exception as error:
+                source_name = f"ОШИБКА: {error}"
+
+            record[2] = normalize_link(video) if video else ""
+            if record[2]:
+                found += 1
+                print(f"  {level_id} {raw_percent}%: найдено ({source_name})")
+            else:
+                not_found.append(f"{key} | {info.get('nick')} | level_id={level_id} | {raw_percent}% | {source_name}")
+                print(f"  {level_id} {raw_percent}%: не найдено")
+
+    save_players_json(users, PLAYERS_FILE)
+    Path(PLAYERS_NOT_FOUND_FILE).write_text(
+        "\n".join(not_found) + ("\n" if not_found else ""), encoding="utf-8")
+    print(f"\nНовые игроки: записей {total}, из прошлого файла {reused}, найдено видео {found}, "
+          f"без видео {len(not_found)}. JSON: {PLAYERS_FILE}")
+
+
 def main():
     input_path = Path(INPUT_FILE)
     if not input_path.exists():
@@ -917,6 +1004,8 @@ def main():
     print(f"TXT (команды): {COMMANDS_FILE}")
     print(f"JSON (с никами и ссылками): {NICKS_FILE}")
     print(f"JSON (обычный, со ссылками): {INPUT_FILE}")
+
+    add_videos_to_players(links)
 
 
 if __name__ == "__main__":
