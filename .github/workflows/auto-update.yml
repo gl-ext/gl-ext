@@ -19,6 +19,9 @@ on:
   schedule:
     - cron: "*/30 * * * *"
 
+# Листы (WML и любые будущие), которые автообновление НЕ трогает (через запятую, пусто = все включены).
+# cbd-update.py берёт рейтинг с --src all, поэтому новый лист попадает в него сам: пока лист проверяется,
+# впиши его сюда, а когда убедишься, что всё работает, убери название.
 env:
   GL_LISTS_OFF: ""
 
@@ -68,9 +71,10 @@ jobs:
             python scripts/cbd-update.py --commit $CBD_ARGS
           fi
 
-      # Сохраняем и после сбоя, чтобы долгий первый прогон не пропал зря.
+      # Сохраняем и после сбоя, и если запуск не уложился в timeout-minutes (при таймауте задание считается
+      # отменённым, и !cancelled() его пропустил бы: кеш пропал бы, и следующий запуск начал бы всё заново).
       - name: Save gd-rating cache
-        if: ${{ !cancelled() && hashFiles('scripts/levelcache.json') != '' }}
+        if: ${{ always() && hashFiles('scripts/levelcache.json') != '' }}
         uses: actions/cache/save@v4
         with:
           path: scripts/levelcache.json
