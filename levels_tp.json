@@ -304,7 +304,6 @@
     "xEndless Travel": {"name": "Endless Travel", "like": "Tartarus", "place": 138, "T": 99, "t": 47},
     "xTrue Innards": {"name": "True Innards", "like": "Firework", "place": 64, "T": 98, "t": 49},
     "xEternal Silence": {"name": "Eternal Silence", "like": "Flamewall", "place": 6, "T": 98, "t": 27},
-    "xSilent Acropolis": {"name": "Silent Acropolis", "like": "Flamewall", "place": 6, "T": 99, "t": 50},
     "xEscalator": {"name": "Escalator", "like": "BOOBAWAMBA", "place": 12, "T": 85, "t": 48},
     "xIT MEANS EVERYTHING": {"name": "IT MEANS EVERYTHING", "like": "Flamewall", "place": 6, "T": 97, "t": 43},
     "xTunnel of Serpent": {"name": "Tunnel of Serpent", "like": "Tidal Wave", "place": 8, "T": 87, "t": 44},
@@ -319,6 +318,7 @@
     "xMarks": {"name": "Marks", "like": "Sinister Silence", "place": 124, "T": 99, "t": 50},
     "xblight": {"name": "blight", "like": "Natural Disaster", "place": 150, "T": 99, "t": 50},
     "xMETROPOLIS": {"name": "METROPOLIS", "like": "Every End", "place": 18, "T": 93, "t": 60},
-    "xFIBERGLASS": {"name": "FIBERGLASS", "like": "Kyouki", "place": 38, "T": 99, "t": 50}
+    "xFIBERGLASS": {"name": "FIBERGLASS", "like": "Kyouki", "place": 38, "T": 99, "t": 50},
+    "xSilent Acropolis": {"name": "Silent Acropolis", "like": "Thinking Space II", "place": 4, "T": 99, "t": 50}
   }
 }
