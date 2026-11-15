@@ -2820,3 +2820,892 @@
     общие каналы: https://www.youtube.com/@kitgd-h6d
     поглощено: pc72132 (KitGD29), pointercrate: [72132]
 
+===== 2026-11-15 07:56:23 UTC: склеено групп 219, поглощено записей 231 =====
+СКЛЕЕНО В 96 (FrostSpark)
+    общие каналы: https://www.youtube.com/@FrostSparkGD
+    поглощено: wml2341 (FrostSpark), аккаунты: {'wml': [2341]}
+
+СКЛЕЕНО В 1015 (XDman50)
+    общие каналы: https://www.youtube.com/@xdman05
+    поглощено: wml4642 (XDman50), аккаунты: {'wml': [4642]}
+
+СКЛЕЕНО В 2811 (АNONE)
+    общие каналы: https://www.youtube.com/@noneGMD
+    поглощено: wml250 (ANONE), аккаунты: {'wml': [250]}
+
+СКЛЕЕНО В 2965 (BABA GD)
+    общие каналы: https://www.youtube.com/@BABA_GD
+    поглощено: wml1713 (BABA), аккаунты: {'wml': [1713]}
+
+СКЛЕЕНО В 3568 (OsTIK)
+    общие каналы: https://www.youtube.com/@OsTIK9
+    поглощено: wml5047 (OsTIK), аккаунты: {'wml': [5047]}
+
+СКЛЕЕНО В 3603 (Yogoo)
+    общие каналы: https://www.youtube.com/@YogooLive
+    поглощено: wml2292 (YOGOO), аккаунты: {'wml': [2292]}
+
+СКЛЕЕНО В 3667 (noxell)
+    общие каналы: https://www.youtube.com/@noxell.
+    поглощено: wml4570 (noxell), аккаунты: {'wml': [4570]}
+
+СКЛЕЕНО В 3673 (Ershov)
+    общие каналы: https://www.youtube.com/@ash333s
+    поглощено: wml2293 (Ershov), аккаунты: {'wml': [2293]}
+
+СКЛЕЕНО В 3701 (Tombstone)
+    общие каналы: https://www.youtube.com/@GDTombstone
+    поглощено: wml4795 (Tombstone), аккаунты: {'wml': [4795]}
+
+СКЛЕЕНО В 5052 (ChoLuWick)
+    общие каналы: https://www.youtube.com/@ChoLuWick
+    поглощено: wml5111 (ChoLuWick), аккаунты: {'wml': [5111]}
+
+СКЛЕЕНО В 5340 (arnaf)
+    общие каналы: https://www.youtube.com/@arnaflol148
+    поглощено: wml1964 (Xervyn), аккаунты: {'wml': [1964]}
+
+СКЛЕЕНО В 5459 (ItzKoteyka)
+    общие каналы: https://www.youtube.com/@Itzkoteyka
+    поглощено: wml1310 (ItzKoteyka), аккаунты: {'wml': [1310]}
+
+СКЛЕЕНО В 5462 (Mishanya)
+    общие каналы: https://www.youtube.com/@Mishanya..
+    поглощено: wml3754 (Mishanya), аккаунты: {'wml': [3754]}
+
+СКЛЕЕНО В 5466 (ra1n1337)
+    общие каналы: https://www.youtube.com/@ra1n1337gg
+    поглощено: wml4835 (ra1n1337), аккаунты: {'wml': [4835]}
+
+СКЛЕЕНО В 5533 (sydno)
+    общие каналы: https://www.youtube.com/@sydnogd
+    поглощено: wml534 (sydno), аккаунты: {'wml': [534]}
+
+СКЛЕЕНО В 5547 (tryotherpies)
+    общие каналы: https://www.youtube.com/@tryotherpies1488
+    поглощено: wml4891 (TryOtherPies), аккаунты: {'wml': [4891]}
+
+СКЛЕЕНО В 5578 (LordVadercraft)
+    общие каналы: https://www.youtube.com/@LordVadercraft
+    поглощено: wml2445 (LordVadercraft), аккаунты: {'wml': [2445]}
+
+СКЛЕЕНО В 5600 (truegaymer)
+    общие каналы: https://www.youtube.com/@TGMgmdPOZER
+    поглощено: wml2064 (truegaymer), аккаунты: {'wml': [2064]}
+
+СКЛЕЕНО В 5603 (hellbellone)
+    общие каналы: https://www.youtube.com/@hellbellone
+    поглощено: wml546 (hellbellone), аккаунты: {'wml': [546]}
+
+СКЛЕЕНО В 5814 (dibilizm)
+    общие каналы: https://www.youtube.com/@dibilizm7
+    поглощено: wml1018 (dibilizm), аккаунты: {'wml': [1018]}
+
+СКЛЕЕНО В 5866 (ItzLips)
+    общие каналы: https://www.youtube.com/@LipsGD
+    поглощено: wml2506 (Lips), аккаунты: {'wml': [2506]}
+
+СКЛЕЕНО В 5886 (Vergus)
+    общие каналы: https://www.youtube.com/@vergus8188
+    поглощено: wml2066 (Vergus), аккаунты: {'wml': [2066]}
+
+СКЛЕЕНО В 6259 (Netrosky)
+    общие каналы: https://www.youtube.com/@netrosky2581
+    поглощено: wml4775 (Netrosky), аккаунты: {'wml': [4775]}
+
+СКЛЕЕНО В 6472 (Sqwore)
+    общие каналы: https://www.youtube.com/@Sallyfffec
+    поглощено: wml507 (Sally), аккаунты: {'wml': [507]}
+
+СКЛЕЕНО В 6686 (imasssaya)
+    общие каналы: https://www.youtube.com/@imasssaya
+    поглощено: wml2062 (imasssaya), аккаунты: {'wml': [2062]}
+
+СКЛЕЕНО В 6704 (DimanDash)
+    общие каналы: https://www.youtube.com/@DimanDash
+    поглощено: wml4802 (DimanDash), аккаунты: {'wml': [4802]}
+
+СКЛЕЕНО В 6716 (tedecti)
+    общие каналы: https://www.youtube.com/@tedecti
+    поглощено: wml2404 (tedecti), аккаунты: {'wml': [2404]}
+
+СКЛЕЕНО В 6841 (JsTocii)
+    общие каналы: https://www.youtube.com/@jstocii8665
+    поглощено: wml2130 (JsTocii), аккаунты: {'wml': [2130]}
+
+СКЛЕЕНО В 7349 (Sl1ch)
+    общие каналы: https://www.youtube.com/@slichgd
+    поглощено: wml2422 (Slich), аккаунты: {'wml': [2422]}
+
+СКЛЕЕНО В 7743 (Xedra)
+    общие каналы: https://www.youtube.com/@xedra272
+    поглощено: wml2235 (Xedra), аккаунты: {'wml': [2235]}
+
+СКЛЕЕНО В 7991 (Gamemode1H)
+    общие каналы: https://www.youtube.com/@fakefogdplayer, https://www.youtube.com/@ivan.relme2
+    поглощено: pc70987 (Diegodasher), аккаунты: {'pointercrate': [70987], 'wml': [3529]}
+    поглощено: wml239 (Selina), аккаунты: {'wml': [239]}
+    поглощено: wml973 (KorseuzZ), аккаунты: {'wml': [973]}
+    поглощено: wml1001 (Primxito), аккаунты: {'wml': [1001]}
+    поглощено: wml1974 (NoverbelL), аккаунты: {'wml': [1974]}
+    поглощено: wml2380 (Gamemode1H), аккаунты: {'wml': [2380]}
+    поглощено: wml2388 (mera), аккаунты: {'wml': [2388]}
+    поглощено: wml2892 (Culazo), аккаунты: {'wml': [2892]}
+    поглощено: wml3558 (kKl4us), аккаунты: {'wml': [3558]}
+    поглощено: wml5022 (TiroOo), аккаунты: {'wml': [5022]}
+    поглощено: wml5077 (MegUm), аккаунты: {'wml': [5077]}
+    поглощено: wml5262 (Bugii), аккаунты: {'wml': [5262]}
+
+СКЛЕЕНО В 8406 (NN4ik575)
+    общие каналы: https://www.youtube.com/@NN4ik575
+    поглощено: wml2252 (SoSorry), аккаунты: {'wml': [2252]}
+
+СКЛЕЕНО В 8813 (HeHeoH)
+    общие каналы: https://www.youtube.com/@HeHeoHGD
+    поглощено: wml4201 (HeHeoH), аккаунты: {'wml': [4201]}
+
+СКЛЕЕНО В 10350 (quilinz)
+    общие каналы: https://www.youtube.com/@quzili
+    поглощено: wml296 (quilinz), аккаунты: {'wml': [296]}
+
+СКЛЕЕНО В 13462 (Bleamer)
+    общие каналы: https://www.youtube.com/@BleamerGD
+    поглощено: wml2275 (Bleamer), аккаунты: {'wml': [2275]}
+
+СКЛЕЕНО В 13471 (Moraye)
+    общие каналы: https://www.youtube.com/@moraye5056
+    поглощено: wml995 (Moraye), аккаунты: {'wml': [995]}
+
+СКЛЕЕНО В 13882 (EliaSoverini)
+    общие каналы: https://www.youtube.com/@eliasoverinii
+    поглощено: wml2761 (Elia Soverini), аккаунты: {'wml': [2761]}
+
+СКЛЕЕНО В 13897 (VitorSouza21)
+    общие каналы: https://www.youtube.com/@vslegendGD
+    поглощено: wml5080 (VS LEGEND), аккаунты: {'wml': [5080]}
+
+СКЛЕЕНО В 14006 (IH32)
+    общие каналы: https://www.youtube.com/@IH32
+    поглощено: wml1159 (IH32), аккаунты: {'wml': [1159]}
+
+СКЛЕЕНО В 14024 (TheRealMap)
+    общие каналы: https://www.youtube.com/@TheRealMap-xogml, https://www.youtube.com/@TheRealMapg__g
+    поглощено: wml993 (TheRealMap), аккаунты: {'wml': [993]}
+
+СКЛЕЕНО В 14101 (Seadawg)
+    общие каналы: https://www.youtube.com/@SeaDawg02
+    поглощено: wml2050 (Seadawg), аккаунты: {'wml': [2050]}
+
+СКЛЕЕНО В 14384 (Ballcat)
+    общие каналы: https://www.youtube.com/@ballcat0286
+    поглощено: wml391 (Ballcat), аккаунты: {'wml': [391]}
+
+СКЛЕЕНО В 14437 (Stefan Boss)
+    общие каналы: https://www.youtube.com/@Stefanbosss
+    поглощено: wml142 (Stefan Boss), аккаунты: {'wml': [142]}
+
+СКЛЕЕНО В 14479 (Just Igorlan)
+    общие каналы: https://www.youtube.com/@justigorlan
+    поглощено: wml2261 (JustIgorlan), аккаунты: {'wml': [2261]}
+
+СКЛЕЕНО В 14517 (abb2k)
+    общие каналы: https://www.youtube.com/@abb2k
+    поглощено: wml5241 (abb2k), аккаунты: {'wml': [5241]}
+
+СКЛЕЕНО В 14627 (WSCKR)
+    общие каналы: https://www.youtube.com/@snowf911_
+    поглощено: wml352 (Seolha), аккаунты: {'wml': [352]}
+
+СКЛЕЕНО В 14657 (SkyRealmYT)
+    общие каналы: https://www.youtube.com/@skyrealm1
+    поглощено: wml2760 (SkyRealm), аккаунты: {'wml': [2760]}
+
+СКЛЕЕНО В 14675 (Volt7)
+    общие каналы: https://www.youtube.com/@volt7963
+    поглощено: wml3866 (Volt7), аккаунты: {'wml': [3866]}
+
+СКЛЕЕНО В 14678 (StarKilleur136)
+    общие каналы: https://www.youtube.com/@starkilleur1368
+    поглощено: wml2575 (StarKilleur136), аккаунты: {'wml': [2575]}
+
+СКЛЕЕНО В 14834 (lenthire)
+    общие каналы: https://www.youtube.com/@gmdlenthire
+    поглощено: wml2274 (lenthire), аккаунты: {'wml': [2274]}
+
+СКЛЕЕНО В 14844 (DPG)
+    общие каналы: https://www.youtube.com/@albinosnail
+    поглощено: wml4799 (AlbinoSnail), аккаунты: {'wml': [4799]}
+
+СКЛЕЕНО В 14955 (SubZeroV)
+    общие каналы: https://www.youtube.com/@subzerovv
+    поглощено: wml2035 (SubZeroV), аккаунты: {'wml': [2035]}
+
+СКЛЕЕНО В 15140 (kwdash)
+    общие каналы: https://www.youtube.com/@kwdash
+    поглощено: wml359 (kwdash), аккаунты: {'wml': [359]}
+
+СКЛЕЕНО В 15155 (pyh4476)
+    общие каналы: https://www.youtube.com/@pyh4476
+    поглощено: wml1175 (pyh4476), аккаунты: {'wml': [1175]}
+
+СКЛЕЕНО В 15195 (GMDomy)
+    общие каналы: https://www.youtube.com/@GMDomy
+    поглощено: wml2925 (GMDomy), аккаунты: {'wml': [2925]}
+
+СКЛЕЕНО В 15202 (ButterFish)
+    общие каналы: https://www.youtube.com/@ButterFish
+    поглощено: wml3872 (ButterFish), аккаунты: {'wml': [3872]}
+
+СКЛЕЕНО В 15308 (MineFord)
+    общие каналы: https://www.youtube.com/@MineFord
+    поглощено: wml2027 (MineFord), аккаунты: {'wml': [2027]}
+
+СКЛЕЕНО В 15324 (1qawsz)
+    общие каналы: https://www.youtube.com/@1qawsz822
+    поглощено: wml351 (1qawsz), аккаунты: {'wml': [351]}
+
+СКЛЕЕНО В 15638 (Hilo)
+    общие каналы: https://www.youtube.com/@hilo01
+    поглощено: wml543 (Hilo), аккаунты: {'wml': [543]}
+
+СКЛЕЕНО В 15653 (electric)
+    общие каналы: https://www.youtube.com/@electrex299
+    поглощено: wml2623 (Electryx), аккаунты: {'wml': [2623]}
+
+СКЛЕЕНО В 15654 (BiPolarBearr)
+    общие каналы: https://www.youtube.com/@BiPolarBearrGD
+    поглощено: wml969 (BiPolarBearr), аккаунты: {'wml': [969]}
+
+СКЛЕЕНО В 15693 (Easterbuny)
+    общие каналы: https://www.youtube.com/@EasterbunyGD
+    поглощено: wml4796 (Easterbuny), аккаунты: {'wml': [4796]}
+
+СКЛЕЕНО В 15730 (Terracopter)
+    общие каналы: https://www.youtube.com/@terracopter5576
+    поглощено: wml557 (Terracopter), аккаунты: {'wml': [557]}
+
+СКЛЕЕНО В 15732 (Robianny)
+    общие каналы: https://www.youtube.com/@robianny
+    поглощено: wml1934 (robianny), аккаунты: {'wml': [1934]}
+
+СКЛЕЕНО В 15740 (takmaster)
+    общие каналы: https://www.youtube.com/@takmaster2
+    поглощено: wml2273 (takma), аккаунты: {'wml': [2273]}
+
+СКЛЕЕНО В 15793 (Vengeance)
+    общие каналы: https://www.youtube.com/@LAGAMING458
+    поглощено: wml2694 (LA), аккаунты: {'wml': [2694]}
+
+СКЛЕЕНО В 15879 (Hangookin)
+    общие каналы: https://www.youtube.com/@Ohdaehee06
+    поглощено: wml2470 (Ohdaehee06), аккаунты: {'wml': [2470]}
+
+СКЛЕЕНО В 15887 (Crashix)
+    общие каналы: https://www.youtube.com/@crash1x_
+    поглощено: wml4828 (Crash1x), аккаунты: {'wml': [4828]}
+
+СКЛЕЕНО В 15925 (Audile)
+    общие каналы: https://www.youtube.com/@audilederp
+    поглощено: wml2315 (Audile), аккаунты: {'wml': [2315]}
+
+СКЛЕЕНО В 16027 (lsj612)
+    общие каналы: https://www.youtube.com/@%EC%8A%B9%EC%A3%BC-x3r
+    поглощено: wml2474 (lsj612), аккаунты: {'wml': [2474]}
+
+СКЛЕЕНО В 16152 (Speedyfriend67)
+    общие каналы: https://www.youtube.com/@speedyfriend67
+    поглощено: wml555 (Speedyfriend67), аккаунты: {'wml': [555]}
+
+СКЛЕЕНО В 16226 (Itz0pimy)
+    общие каналы: https://www.youtube.com/@itz0pimy
+    поглощено: wml5169 (0pimy), аккаунты: {'wml': [5169]}
+
+СКЛЕЕНО В 16258 (Dark Angel)
+    общие каналы: https://www.youtube.com/@GD_Angel
+    поглощено: wml2418 (Angel), аккаунты: {'wml': [2418]}
+
+СКЛЕЕНО В 16380 (ApofiX)
+    общие каналы: https://www.youtube.com/@apofix_
+    поглощено: wml2142 (ApofiX), аккаунты: {'wml': [2142]}
+
+СКЛЕЕНО В 16485 (Hito73)
+    общие каналы: https://www.youtube.com/@hitoza
+    поглощено: wml2460 (Hitoza), аккаунты: {'wml': [2460]}
+
+СКЛЕЕНО В 16528 (Gaminlife123)
+    общие каналы: https://www.youtube.com/@Ablazin123
+    поглощено: wml4176 (Ablazin), аккаунты: {'wml': [4176]}
+
+СКЛЕЕНО В 16534 (DNM121)
+    общие каналы: https://www.youtube.com/@DNM12191
+    поглощено: wml5057 (DNM121), аккаунты: {'wml': [5057]}
+
+СКЛЕЕНО В 16709 (Dvadie)
+    общие каналы: https://www.youtube.com/@Verianha
+    поглощено: wml1178 (TwoPointD), аккаунты: {'wml': [1178]}
+
+СКЛЕЕНО В 17021 (LoTuSGmD)
+    общие каналы: https://www.youtube.com/@lotus13598
+    поглощено: wml2342 (Lotus), аккаунты: {'wml': [2342]}
+
+СКЛЕЕНО В 17114 (Sayfex)
+    общие каналы: https://www.youtube.com/@Sayf3x
+    поглощено: wml2253 (Sayfex), аккаунты: {'wml': [2253]}
+
+СКЛЕЕНО В 17580 (ZNXXT)
+    общие каналы: https://www.youtube.com/@ZNXXT
+    поглощено: wml1678 (ZNXXT), аккаунты: {'wml': [1678]}
+
+СКЛЕЕНО В 17918 (kirce)
+    общие каналы: https://www.youtube.com/@kirce17
+    поглощено: wml2055 (kirce), аккаунты: {'wml': [2055]}
+
+СКЛЕЕНО В 18275 (amia瑞希)
+    общие каналы: https://www.youtube.com/@amiamizukli
+    поглощено: wml4554 (amiamizukli), аккаунты: {'wml': [4554]}
+
+СКЛЕЕНО В 18446 (HyperYtiuk)
+    общие каналы: https://www.youtube.com/@HyperYtiuk
+    поглощено: wml2611 (HyperYtiuk), аккаунты: {'wml': [2611]}
+
+СКЛЕЕНО В 18572 (pontion)
+    общие каналы: https://www.youtube.com/@Pont1on
+    поглощено: wml2699 (Pontion), аккаунты: {'wml': [2699]}
+
+СКЛЕЕНО В 18620 (Ayli)
+    общие каналы: https://www.youtube.com/@ayligd
+    поглощено: wml2270 (Ayli), аккаунты: {'wml': [2270]}
+
+СКЛЕЕНО В 19032 (steelik)
+    общие каналы: https://www.youtube.com/@steelikk
+    поглощено: wml2161 (steelik), аккаунты: {'wml': [2161]}
+
+СКЛЕЕНО В 19270 (Noella)
+    общие каналы: https://www.youtube.com/@nowelllla
+    поглощено: wml5183 (Noella), аккаунты: {'wml': [5183]}
+
+СКЛЕЕНО В 19654 (Helix3r)
+    общие каналы: https://www.youtube.com/@Helix3r
+    поглощено: wml2409 (Helix3r), аккаунты: {'wml': [2409]}
+
+СКЛЕЕНО В 19695 (Surpl3x)
+    общие каналы: https://www.youtube.com/@Surpl3x
+    поглощено: wml761 (Surpl3x), аккаунты: {'wml': [761]}
+
+СКЛЕЕНО В 20492 (TsunT)
+    общие каналы: https://www.youtube.com/@tsuntgd
+    поглощено: wml2303 (TSunT), аккаунты: {'wml': [2303]}
+
+СКЛЕЕНО В 20637 (agushka)
+    общие каналы: https://www.youtube.com/@agusha9506
+    поглощено: wml4568 (AGUSHA), аккаунты: {'wml': [4568]}
+
+СКЛЕЕНО В 20833 (Elickzxt)
+    общие каналы: https://www.youtube.com/@Elickzxt
+    поглощено: wml2534 (Elickzxt), аккаунты: {'wml': [2534]}
+
+СКЛЕЕНО В 21371 (GMDZitraX)
+    общие каналы: https://www.youtube.com/@ztrx6
+    поглощено: wml1284 (ztrx), аккаунты: {'wml': [1284]}
+
+СКЛЕЕНО В 21499 (syntaxx)
+    общие каналы: https://www.youtube.com/@syntaxx1337
+    поглощено: wml2364 (syntaxx), аккаунты: {'wml': [2364]}
+
+СКЛЕЕНО В 21615 (Maktraher42)
+    общие каналы: https://www.youtube.com/@Maktraher42
+    поглощено: wml421 (Maktraher42), аккаунты: {'wml': [421]}
+
+СКЛЕЕНО В 21816 (Anirium)
+    общие каналы: https://www.youtube.com/@Anirium2510
+    поглощено: wml2672 (Anirium), аккаунты: {'wml': [2672]}
+
+СКЛЕЕНО В 22274 (MrChespin)
+    общие каналы: https://www.youtube.com/@Kezhitooo
+    поглощено: wml2565 (MrChespin), аккаунты: {'wml': [2565]}
+
+СКЛЕЕНО В 22303 (tyhhkyfv)
+    общие каналы: https://www.youtube.com/@tyhhkyfv
+    поглощено: wml2610 (tyhhkyfv), аккаунты: {'wml': [2610]}
+
+СКЛЕЕНО В 22868 (Rengo GD)
+    общие каналы: https://www.youtube.com/@rengogd4790
+    поглощено: wml2269 (Rengo GD), аккаунты: {'wml': [2269]}
+
+СКЛЕЕНО В 24070 (CosmoReator)
+    общие каналы: https://www.youtube.com/@CosmoReator
+    поглощено: wml290 (CosmoReator), аккаунты: {'wml': [290]}
+
+СКЛЕЕНО В 25011 (toxicblxde)
+    общие каналы: https://www.youtube.com/@toxicblxde37
+    поглощено: wml2117 (toxicblxde), аккаунты: {'wml': [2117]}
+
+СКЛЕЕНО В 25076 (ikkyseen)
+    общие каналы: https://www.youtube.com/@ikkyseen
+    поглощено: wml2751 (icosin), аккаунты: {'wml': [2751]}
+    поглощено: wml3988 (ikkyseen), аккаунты: {'wml': [3988]}
+
+СКЛЕЕНО В 25441 (omgdafleviangel)
+    общие каналы: https://www.youtube.com/@BuByBaBa-y5r
+    поглощено: wml3701 (LEVi), аккаунты: {'wml': [3701]}
+
+СКЛЕЕНО В 25600 (Erixen)
+    общие каналы: https://www.youtube.com/@%EA%B0%93%EB%AF%88%EC%97%90%EB%A6%AD%EC%84%BC
+    поглощено: wml2483 (Erixen), аккаунты: {'wml': [2483]}
+
+СКЛЕЕНО В 28054 (7w7y_)
+    общие каналы: https://www.youtube.com/@7w7y
+    поглощено: wml4908 (7w7y), аккаунты: {'wml': [4908]}
+
+СКЛЕЕНО В 28216 (Coolgamr202)
+    общие каналы: https://www.youtube.com/@Coolgamr202
+    поглощено: wml5100 (Coolgamr202), аккаунты: {'wml': [5100]}
+
+СКЛЕЕНО В 28403 (Penis)
+    общие каналы: https://www.youtube.com/@cnekgdpslover33
+    поглощено: wml1061 (njacked), аккаунты: {'wml': [1061]}
+
+СКЛЕЕНО В 28940 (neyney)
+    общие каналы: https://www.youtube.com/@neyneyneyneyneyney
+    поглощено: wml2242 (NOT Kurisu), аккаунты: {'wml': [2242]}
+
+СКЛЕЕНО В 29246 (Ozone)
+    общие каналы: https://www.youtube.com/@Ozone2505
+    поглощено: wml1005 (Ozone), аккаунты: {'wml': [1005]}
+
+СКЛЕЕНО В 29638 (sharksurcool)
+    общие каналы: https://www.youtube.com/@sharksurcool
+    поглощено: wml2536 (sharksurcool), аккаунты: {'wml': [2536]}
+
+СКЛЕЕНО В 31772 (nathanf0987)
+    общие каналы: https://www.youtube.com/@BobertTheSnail
+    поглощено: wml3803 (NathanF0987), аккаунты: {'wml': [3803]}
+
+СКЛЕЕНО В 31927 (WardenGD)
+    общие каналы: https://www.youtube.com/@WardenGD564
+    поглощено: wml300 (Warden GD), аккаунты: {'wml': [300]}
+
+СКЛЕЕНО В 32865 (aTTempT)
+    общие каналы: https://www.youtube.com/@attempt1374
+    поглощено: wml4756 (aTTempT), аккаунты: {'wml': [4756]}
+
+СКЛЕЕНО В 32954 (COBRA)
+    общие каналы: https://www.youtube.com/@gmd_COBRA
+    поглощено: wml5318 (COBRA), аккаунты: {'wml': [5318]}
+
+СКЛЕЕНО В 33150 (MemochelGD)
+    общие каналы: https://www.youtube.com/@MemochelGMD
+    поглощено: wml5149 (MemochelGD), аккаунты: {'wml': [5149]}
+
+СКЛЕЕНО В 33695 (Ju4nch0)
+    общие каналы: https://www.youtube.com/@Ju4nch0_6
+    поглощено: wml5126 (Ju4nch0_6), аккаунты: {'wml': [5126]}
+
+СКЛЕЕНО В 34260 (VETI)
+    общие каналы: https://www.youtube.com/@xxvetixx3858
+    поглощено: wml2244 (XxVETIxX), аккаунты: {'wml': [2244]}
+
+СКЛЕЕНО В 34888 (hellixscream)
+    общие каналы: https://www.youtube.com/@hellixscream
+    поглощено: wml2276 (HelliXScream), аккаунты: {'wml': [2276]}
+
+СКЛЕЕНО В 35015 (NixonJCM12)
+    общие каналы: https://www.youtube.com/@NixonJCM
+    поглощено: wml5050 (NixonJCM), аккаунты: {'wml': [5050]}
+
+СКЛЕЕНО В 38134 (S1rvv_yule)
+    общие каналы: https://www.youtube.com/@s1rv-r7t
+    поглощено: wml4691 (Serevv03), аккаунты: {'wml': [4691]}
+
+СКЛЕЕНО В 41744 (Amgistyo)
+    общие каналы: https://www.youtube.com/@AmgIstyo
+    поглощено: wml4586 (Amglstyo), аккаунты: {'wml': [4586]}
+
+СКЛЕЕНО В 42816 (Worb1x_gd)
+    общие каналы: https://www.youtube.com/@Worb1x_gd
+    поглощено: wml5317 (Worb1x), аккаунты: {'wml': [5317]}
+
+СКЛЕЕНО В 45577 (Moondrop63)
+    общие каналы: https://www.youtube.com/@itzacar63
+    поглощено: wml3717 (moondrop), аккаунты: {'wml': [3717]}
+
+СКЛЕЕНО В 46201 (Davemuha)
+    общие каналы: https://www.youtube.com/@Davemuhagd
+    поглощено: wml5028 (Davemuha), аккаунты: {'wml': [5028]}
+
+СКЛЕЕНО В 48015 (vFai)
+    общие каналы: https://www.youtube.com/@divineFaid
+    поглощено: wml5313 (dvfaid), аккаунты: {'wml': [5313]}
+
+СКЛЕЕНО В 54676 (GleenMobileGD)
+    общие каналы: https://www.youtube.com/@SkiGlee-j7g
+    поглощено: wml5026 (Skiglee), аккаунты: {'wml': [5026]}
+
+СКЛЕЕНО В 55361 (melkoslav)
+    общие каналы: https://www.youtube.com/@melkoslav
+    поглощено: wml4711 (Melcoslav), аккаунты: {'wml': [4711]}
+
+СКЛЕЕНО В 55939 (yulan0731)
+    общие каналы: https://www.youtube.com/@%EC%9C%A0%EB%9E%800731
+    поглощено: wml4783 (yulan0731), аккаунты: {'wml': [4783]}
+
+СКЛЕЕНО В 56309 (meowblade)
+    общие каналы: https://www.youtube.com/@seqhw
+    поглощено: wml5096 (seqhaww69), аккаунты: {'wml': [5096]}
+
+СКЛЕЕНО В 58726 (FelipeLealBr)
+    общие каналы: https://www.youtube.com/@felipeleal6098
+    поглощено: wml2162 (FelipeLeal), аккаунты: {'wml': [2162]}
+
+СКЛЕЕНО В 59575 (Joseptia)
+    общие каналы: https://www.youtube.com/@joseptia72
+    поглощено: wml2607 (Joseptia72GD), аккаунты: {'wml': [2607]}
+
+СКЛЕЕНО В 65422 (SILVER062)
+    общие каналы: https://www.youtube.com/@%E8%B6%85%E5%A4%A7%E6%B3%95%E5%9C%8B%E9%BA%B5%E5%8C%85-SILVER062
+    поглощено: wml2647 (SILVER062), аккаунты: {'wml': [2647]}
+
+СКЛЕЕНО В pc358 (Kyle The Child)
+    общие каналы: https://www.youtube.com/@michs_slopelly
+    поглощено: wml5056 (Kyle Chung), аккаунты: {'wml': [5056]}
+
+СКЛЕЕНО В pc1240 (HugeDoge)
+    общие каналы: https://www.youtube.com/@kclooey
+    поглощено: wml2189 (HugeDoge), аккаунты: {'wml': [2189]}
+
+СКЛЕЕНО В pc1287 (Genesis9876)
+    общие каналы: https://www.youtube.com/@GMDGenesis
+    поглощено: wml2120 (Genesis9876), аккаунты: {'wml': [2120]}
+
+СКЛЕЕНО В pc3560 ([TRIGO] water667)
+    общие каналы: https://www.youtube.com/@water6677
+    поглощено: wml2674 (water667), аккаунты: {'wml': [2674]}
+
+СКЛЕЕНО В pc5442 (Azerty1)
+    общие каналы: https://www.youtube.com/@itsAzerty
+    поглощено: wml542 (Azerty), аккаунты: {'wml': [542]}
+
+СКЛЕЕНО В pc5973 (MaksPunch)
+    общие каналы: https://www.youtube.com/@makspunch7119
+    поглощено: wml2254 (MaksPunch), аккаунты: {'wml': [2254]}
+
+СКЛЕЕНО В pc31551 (AthyXray)
+    общие каналы: https://www.youtube.com/@AthyXray
+    поглощено: wml2443 (AthyXray), аккаунты: {'wml': [2443]}
+
+СКЛЕЕНО В pc32863 (Spidermations)
+    общие каналы: https://www.youtube.com/@spidermations
+    поглощено: wml2369 (Spidermations), аккаунты: {'wml': [2369]}
+
+СКЛЕЕНО В pc33892 (JustDont)
+    общие каналы: https://www.youtube.com/@justdont1358
+    поглощено: wml2476 (Just1234), аккаунты: {'wml': [2476]}
+
+СКЛЕЕНО В pc34506 (Retroboy)
+    общие каналы: https://www.youtube.com/@retroboy2576
+    поглощено: wml1922 (RetroBoy), аккаунты: {'wml': [1922]}
+
+СКЛЕЕНО В pc34729 (1kb)
+    общие каналы: https://www.youtube.com/@1kbbb_
+    поглощено: wml1960 (1kb), аккаунты: {'wml': [1960]}
+
+СКЛЕЕНО В pc34912 (Sheryn)
+    общие каналы: https://www.youtube.com/@Sherynjri
+    поглощено: wml1920 (Sheryn), аккаунты: {'wml': [1920]}
+
+СКЛЕЕНО В pc35047 (Ben The Cool)
+    общие каналы: https://www.youtube.com/@Jonc6615
+    поглощено: wml1950 (Ben The Cool), аккаунты: {'wml': [1950]}
+
+СКЛЕЕНО В pc35436 (xogml777)
+    общие каналы: https://www.youtube.com/@xogml777
+    поглощено: wml2473 (xogml777), аккаунты: {'wml': [2473]}
+
+СКЛЕЕНО В pc35879 (Daz)
+    общие каналы: https://www.youtube.com/@Daziryx
+    поглощено: wml2051 (Daziryx), аккаунты: {'wml': [2051]}
+
+СКЛЕЕНО В pc38520 (RAYTOPIN)
+    общие каналы: https://www.youtube.com/@raytheboss4650
+    поглощено: wml1006 (RayTheBoss), аккаунты: {'wml': [1006]}
+
+СКЛЕЕНО В pc39538 (BrentBeni)
+    общие каналы: https://www.youtube.com/@BrentBeni
+    поглощено: wml2318 (BrentBeni), аккаунты: {'wml': [2318]}
+
+СКЛЕЕНО В pc39990 (Luk231)
+    общие каналы: https://www.youtube.com/@LuzAwawawa
+    поглощено: wml4726 (LuzAwawawa), аккаунты: {'wml': [4726]}
+
+СКЛЕЕНО В pc40571 (ChizuruGD)
+    общие каналы: https://www.youtube.com/@cJuniorr5
+    поглощено: wml539 (Juniorr), аккаунты: {'wml': [539]}
+
+СКЛЕЕНО В pc41771 (kayser)
+    общие каналы: https://www.youtube.com/@elkaysergd
+    поглощено: wml1144 (Kayser), аккаунты: {'wml': [1144]}
+
+СКЛЕЕНО В pc42285 (ElectricKLLR)
+    общие каналы: https://www.youtube.com/@electrickllr1690
+    поглощено: wml2441 (ElectricKLLR), аккаунты: {'wml': [2441]}
+
+СКЛЕЕНО В pc42613 (Sam3ggo GD)
+    общие каналы: https://www.youtube.com/@sam3ggogd254
+    поглощено: wml5072 (Sam3ggo), аккаунты: {'wml': [5072]}
+
+СКЛЕЕНО В pc50545 (BadoZ)
+    общие каналы: https://www.youtube.com/@BadoZGD
+    поглощено: wml2178 (BadoZ), аккаунты: {'wml': [2178]}
+
+СКЛЕЕНО В pc50839 ([ILUV] Guraud)
+    общие каналы: https://www.youtube.com/@Guraud1
+    поглощено: wml2481 (Guraud), аккаунты: {'wml': [2481]}
+
+СКЛЕЕНО В pc51119 (opt1ss)
+    общие каналы: https://www.youtube.com/@opt1ss
+    поглощено: wml2686 (opt1ss), аккаунты: {'wml': [2686]}
+
+СКЛЕЕНО В pc51120 (Itspexx07 [GD])
+    общие каналы: https://www.youtube.com/@itspexx07
+    поглощено: wml2405 (Itspexx07), аккаунты: {'wml': [2405]}
+
+СКЛЕЕНО В pc51251 ([YAHO] Rina1n)
+    общие каналы: https://www.youtube.com/@Rina1n
+    поглощено: wml2688 (Rina1n), аккаунты: {'wml': [2688]}
+
+СКЛЕЕНО В pc51528 (HGL)
+    общие каналы: https://www.youtube.com/@cbdowo
+    поглощено: wml3341 (HGLowo), аккаунты: {'wml': [3341]}
+
+СКЛЕЕНО В pc51906 ([ILUV] funfire34)
+    общие каналы: https://www.youtube.com/@funfire34
+    поглощено: wml4993 (funfire34), аккаунты: {'wml': [4993]}
+
+СКЛЕЕНО В pc52341 (Itsdz)
+    общие каналы: https://www.youtube.com/@itsdz28
+    поглощено: wml925 (itsdz), аккаунты: {'wml': [925]}
+
+СКЛЕЕНО В pc52360 (mimikyu632)
+    общие каналы: https://www.youtube.com/@mimikyu632
+    поглощено: wml1164 (mimikyu632), аккаунты: {'wml': [1164]}
+
+СКЛЕЕНО В pc52485 (VowTz)
+    общие каналы: https://www.youtube.com/@wmp.
+    поглощено: wml996 (vowtz), аккаунты: {'wml': [996]}
+
+СКЛЕЕНО В pc52789 (FBCB)
+    общие каналы: https://www.youtube.com/@FBCB_
+    поглощено: wml5104 (FBCB), аккаунты: {'wml': [5104]}
+
+СКЛЕЕНО В pc54273 ([A$AP] Renoi_fatiguew)
+    общие каналы: https://www.youtube.com/@shaggy712
+    поглощено: wml5109 (shaggy712), аккаунты: {'wml': [5109]}
+
+СКЛЕЕНО В pc54868 (Enter8909)
+    общие каналы: https://www.youtube.com/@Enter8909
+    поглощено: wml1180 (Enter8909), аккаунты: {'wml': [1180]}
+
+СКЛЕЕНО В pc56238 (Tipito)
+    общие каналы: https://www.youtube.com/@TipitoGD
+    поглощено: wml292 (Tipito), аккаунты: {'wml': [292]}
+
+СКЛЕЕНО В pc56391 (fronly)
+    общие каналы: https://www.youtube.com/@fronly
+    поглощено: wml506 (fronly), аккаунты: {'wml': [506]}
+
+СКЛЕЕНО В pc56437 ([tq] Pumben)
+    общие каналы: https://www.youtube.com/@pumben
+    поглощено: wml2696 (pumben), аккаунты: {'wml': [2696]}
+
+СКЛЕЕНО В pc56501 (Chris1219)
+    общие каналы: https://www.youtube.com/@christiangd
+    поглощено: wml571 (Christian110), аккаунты: {'wml': [571]}
+
+СКЛЕЕНО В pc56560 (Mario Domínguez)
+    общие каналы: https://www.youtube.com/@mariango05
+    поглощено: wml972 (Mario Dominguez), аккаунты: {'wml': [972]}
+
+СКЛЕЕНО В pc57012 ([KSZ] BockXO)
+    общие каналы: https://www.youtube.com/@GDBock
+    поглощено: wml2152 (BockXO), аккаунты: {'wml': [2152]}
+
+СКЛЕЕНО В pc57754 (Galingasis)
+    общие каналы: https://www.youtube.com/@galingasis3
+    поглощено: wml5274 (Tonasll1), аккаунты: {'wml': [5274]}
+
+СКЛЕЕНО В pc58927 (anibalplkz)
+    общие каналы: https://www.youtube.com/@AnibalZzz
+    поглощено: wml1914 (AnibalPLKZ), аккаунты: {'wml': [1914]}
+
+СКЛЕЕНО В pc59808 (GAGER ZUBRILOV)
+    общие каналы: https://www.youtube.com/@gagerzubrilov7848
+    поглощено: wml2250 (GAGER ZUBRILOV), аккаунты: {'wml': [2250]}
+
+СКЛЕЕНО В pc60185 (Josephone)
+    общие каналы: https://www.youtube.com/@Josephonee
+    поглощено: wml1241 (josephone), аккаунты: {'wml': [1241]}
+
+СКЛЕЕНО В pc60265 (BriboAmiibo)
+    общие каналы: https://www.youtube.com/@BriboAmiibo
+    поглощено: wml1162 (BriboAmiibo), аккаунты: {'wml': [1162]}
+
+СКЛЕЕНО В pc60865 (Aleryna)
+    общие каналы: https://www.youtube.com/@Aleryna
+    поглощено: wml1949 (Aleryna), аккаунты: {'wml': [1949]}
+
+СКЛЕЕНО В pc60985 (TheLox7)
+    общие каналы: https://www.youtube.com/@K9Haruki
+    поглощено: wml2030 (TheLox7), аккаунты: {'wml': [2030]}
+
+СКЛЕЕНО В pc61032 (niiro)
+    общие каналы: https://www.youtube.com/@niiro2998
+    поглощено: wml4579 (niiro), аккаунты: {'wml': [4579]}
+
+СКЛЕЕНО В pc61324 ([FULEX] EpicEver)
+    общие каналы: https://www.youtube.com/@ReallyThiccYoshi
+    поглощено: wml2335 (EpicEver), аккаунты: {'wml': [2335]}
+
+СКЛЕЕНО В pc61343 (zillix)
+    общие каналы: https://www.youtube.com/@zZillix
+    поглощено: wml1929 (Zillix), аккаунты: {'wml': [1929]}
+
+СКЛЕЕНО В pc61401 (Dragon210725)
+    общие каналы: https://www.youtube.com/@SiorixGD
+    поглощено: wml4760 (siorix), аккаунты: {'wml': [4760]}
+
+СКЛЕЕНО В pc61455 ([JRJR] angelcathedral)
+    общие каналы: https://www.youtube.com/@angelcathedral
+    поглощено: wml2129 (angelcathedral), аккаунты: {'wml': [2129]}
+
+СКЛЕЕНО В pc62084 (iruseu)
+    общие каналы: https://www.youtube.com/@iruseu
+    поглощено: wml3337 (iruseu), аккаунты: {'wml': [3337]}
+
+СКЛЕЕНО В pc63261 (fonkime)
+    общие каналы: https://www.youtube.com/@fonkimegd
+    поглощено: wml5060 (fonkime), аккаунты: {'wml': [5060]}
+
+СКЛЕЕНО В pc63764 (kingdart)
+    общие каналы: https://www.youtube.com/@kingdart999
+    поглощено: wml734 (King Dart), аккаунты: {'wml': [734]}
+
+СКЛЕЕНО В pc63873 (wheelbarrow)
+    общие каналы: https://www.youtube.com/@Wheelbarrowdash
+    поглощено: wml2604 (Wheelbarrow), аккаунты: {'wml': [2604]}
+
+СКЛЕЕНО В pc63937 (ramquze)
+    общие каналы: https://www.youtube.com/@ramquze
+    поглощено: wml2902 (ramquze), аккаунты: {'wml': [2902]}
+
+СКЛЕЕНО В pc64274 ([TETO] Kyuruga)
+    общие каналы: https://www.youtube.com/@kyurugawr
+    поглощено: wml2766 (Kyuruga), аккаунты: {'wml': [2766]}
+
+СКЛЕЕНО В pc64294 (xjabse)
+    общие каналы: https://www.youtube.com/@xjabse
+    поглощено: wml2423 (xjabse), аккаунты: {'wml': [2423]}
+
+СКЛЕЕНО В pc64324 (NaGD)
+    общие каналы: https://www.youtube.com/@%EB%82%98%EC%A7%80%EB%94%94
+    поглощено: wml2458 (NaGD), аккаунты: {'wml': [2458]}
+
+СКЛЕЕНО В pc64653 ([FLAT] Alice Margatroid)
+    общие каналы: https://www.youtube.com/@alephnull858
+    поглощено: wml2309 (al3phz3r0), аккаунты: {'wml': [2309]}
+
+СКЛЕЕНО В pc65466 (Mornye06)
+    общие каналы: https://www.youtube.com/@iRonova_548
+    поглощено: wml2487 (Mornye06), аккаунты: {'wml': [2487]}
+
+СКЛЕЕНО В pc65810 (Moonl1ght)
+    общие каналы: https://www.youtube.com/@SkweeZy4ka
+    поглощено: wml2268 (MoonLight), аккаунты: {'wml': [2268]}
+
+СКЛЕЕНО В pc66831 ([YOK] dennisgd)
+    общие каналы: https://www.youtube.com/@dnzzngd
+    поглощено: wml509 (dnzzn), аккаунты: {'wml': [509]}
+
+СКЛЕЕНО В pc68761 (CyroxWTF)
+    общие каналы: https://www.youtube.com/@CyroxWTF
+    поглощено: wml5036 (Cyrox), аккаунты: {'wml': [5036]}
+
+СКЛЕЕНО В pc68863 ([MMB] Nachikoru)
+    общие каналы: https://www.youtube.com/@Nachikoru
+    поглощено: wml3073 (Nachikoru), аккаунты: {'wml': [3073]}
+
+СКЛЕЕНО В pc69398 (xBlueGMD)
+    общие каналы: https://www.youtube.com/@xBlueGMD
+    поглощено: wml1938 (xBlue), аккаунты: {'wml': [1938]}
+
+СКЛЕЕНО В pc69503 (Thinman)
+    общие каналы: https://www.youtube.com/@thinman436
+    поглощено: wml759 (Thinman), аккаунты: {'wml': [759]}
+
+СКЛЕЕНО В pc69775 (RUFFLE)
+    общие каналы: https://www.youtube.com/@ruffle_0128
+    поглощено: wml3702 (Ruffle), аккаунты: {'wml': [3702]}
+
+СКЛЕЕНО В pc69817 ([COMET] skylar)
+    общие каналы: https://www.youtube.com/@skylaltgd
+    поглощено: wml4856 (skylar), аккаунты: {'wml': [4856]}
+
+СКЛЕЕНО В pc70083 (Anicon)
+    общие каналы: https://www.youtube.com/@aniconctl
+    поглощено: wml2311 (Anicon), аккаунты: {'wml': [2311]}
+
+СКЛЕЕНО В pc70267 (xquiu)
+    общие каналы: https://www.youtube.com/@xquiuGD
+    поглощено: wml1947 (Xquiu), аккаунты: {'wml': [1947]}
+
+СКЛЕЕНО В pc70988 (Crum8)
+    общие каналы: https://www.youtube.com/@Crum8GD
+    поглощено: wml2382 (Crum8), аккаунты: {'wml': [2382]}
+
+СКЛЕЕНО В pc71118 (loiuls1)
+    общие каналы: https://www.youtube.com/@loiuls1750
+    поглощено: wml2765 (loiuls1), аккаунты: {'wml': [2765]}
+
+СКЛЕЕНО В pc71564 (Uler)
+    общие каналы: https://www.youtube.com/@ulergmd
+    поглощено: wml2639 (Uler), аккаунты: {'wml': [2639]}
+
+СКЛЕЕНО В pc72228 ([j] Poison)
+    общие каналы: https://www.youtube.com/@PoisonGMD
+    поглощено: wml2608 (Poison), аккаунты: {'wml': [2608]}
+
+СКЛЕЕНО В pc73147 (Pan Nieznany)
+    общие каналы: https://www.youtube.com/@1dkwhatt0puth3re
+    поглощено: wml2616 (Sanctuary), аккаунты: {'wml': [2616]}
+
+СКЛЕЕНО В wml522 (Hypno)
+    общие каналы: https://www.youtube.com/@HypnoticalRico
+    поглощено: wml2811 (HypnoRico), аккаунты: {'wml': [2811]}
+
+СКЛЕЕНО В wml1074 ()
+    общие каналы: https://www.youtube.com/@buniigmd
+    поглощено: wml3061 (BuniiGMD), аккаунты: {'wml': [3061]}
+
+СКЛЕЕНО В wml2110 (ZizOhNo)
+    общие каналы: https://www.youtube.com/@zizohno9336
+    поглощено: wml4578 (Ziyad Hassan), аккаунты: {'wml': [4578]}
+
+СКЛЕЕНО В wml2322 (Cristhian)
+    общие каналы: https://www.youtube.com/@Cirsta
+    поглощено: wml4729 (Cirsta), аккаунты: {'wml': [4729]}
+
+СКЛЕЕНО В wml2490 (Yoo)
+    общие каналы: https://www.youtube.com/@Yoo-s3j
+    поглощено: wml4996 (heheheh), аккаунты: {'wml': [4996]}
+
+СКЛЕЕНО В wml2558 (Qwerty)
+    общие каналы: https://www.youtube.com/@lili-x2r5m
+    поглощено: wml4580 (Kimkn7006), аккаунты: {'wml': [4580]}
+
+СКЛЕЕНО В wml2727 (gya)
+    общие каналы: https://www.youtube.com/@hypervn39
+    поглощено: wml4902 (HyperVN), аккаунты: {'wml': [4902]}
+
+СКЛЕЕНО В wml4734 (xlzv)
+    общие каналы: https://www.youtube.com/@xlzvii
+    поглощено: wml4777 (xzlv), аккаунты: {'wml': [4777]}
+
