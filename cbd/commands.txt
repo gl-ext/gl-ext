@@ -1,4 +1,8 @@
 Видео: Pointercrate
+/fulladd Dice88, ORDINARY, https://www.youtube.com/watch?v=u0oDPi3bRVA
+/try Dice88, ORDINARY
+
+Видео: Pointercrate
 /fulladd Syzygy, poocubed, https://www.youtube.com/watch?v=gOyo9DLRr_k
 /try Syzygy, poocubed
 
@@ -13,6 +17,10 @@
 Видео: Pointercrate
 /fulladd NJGhost9, Sakupen Circles, https://www.youtube.com/watch?v=WZGjstLULrk
 /try NJGhost9, Sakupen Circles
+
+Видео: Pointercrate
+/fulladd Trappp, Climax, https://www.youtube.com/watch?v=Yv1KHbaCr7M
+/try Trappp, Climax
 
 Видео: Pointercrate
 /fulladd ChromeGD, Trickshot, https://www.youtube.com/watch?v=Y9J4rPhDNu4
