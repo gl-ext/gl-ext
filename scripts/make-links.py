@@ -142,6 +142,11 @@ NO_QUERY_HOSTS = {
 DISPLAY = {}  # ключ видео (не YouTube) -> ссылка в том виде, как её дали
 
 
+# Сайты рейтингов: ссылка на их страницу (уровня, игрока) не видео. Одна и та же страница у разных людей
+# (например, у соавторов уровня) иначе считалась бы общим видео и склеивала бы их в одного человека.
+NON_VIDEO_HOSTS = {"worldmobilelist.com", "pointercrate.com", "demonlist.org"}
+
+
 def other_video_key(url):
     """Ключ для ссылок не с YouTube: сайт + путь без мусора. None, если это не ссылка на видео."""
     u = str(url or "").strip()
@@ -163,6 +168,8 @@ def other_video_key(url):
         host = "x.com"
     if not host or host.endswith("youtube.com") or host == "youtu.be":
         return None  # YouTube без нормального ID (канал, плейлист) не считаем
+    if host in NON_VIDEO_HOSTS:
+        return None  # страница сайта рейтинга, а не видео
     path = sp.path.rstrip("/")
     if len(path) < 2:
         return None  # главная страница сайта, а не видео
