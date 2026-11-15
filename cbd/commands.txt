@@ -1,4 +1,12 @@
 Видео: Pointercrate
+/fulladd Dice88, The Catacombs, https://www.youtube.com/watch?v=tTMH06jP1qg
+/try Dice88, The Catacombs
+
+Видео: Pointercrate
+/fulladd Acacia, UNKNOWN, https://www.youtube.com/watch?v=6T3vj-Z_-LU
+/try Acacia, UNKNOWN
+
+Видео: Pointercrate
 /fulladd Decin, The Golden, https://www.youtube.com/watch?v=w37CTHN4uxg
 /try Decin, The Golden
 
