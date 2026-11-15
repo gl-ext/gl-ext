@@ -1530,6 +1530,43 @@ def fold_fix_merges(result, resolve, names):
     return folded
 
 
+def move_pc_entry(result, pc_key, key):
+    """Человек был игроком Pointercrate без глобала (запись \"pc<id>\"), а теперь у него есть аккаунт глобала.
+    Переносим всё из записи pc в запись глобала (аккаунты других листов и каналы), запись pc удаляем."""
+    old = result.pop(pc_key)
+    main = result[key]
+    for name in LISTS:
+        cur = other_accounts(main)[name]
+        for acc in other_accounts(old)[name]:
+            if acc not in cur:
+                cur.append(acc)
+    for platform, links in (old.get("channels") or {}).items():
+        lst = main.setdefault("channels", {}).setdefault(platform, [])
+        for link in links:
+            if link not in lst:
+                lst.append(link)
+
+
+def update_gdr_ids(moved, path=os.path.join(ROOT, "gdr-ids.json")):
+    """В gdr-ids.json у игрока без глобала стоит ID вида \"pc59696\". Когда у него появился глобал,
+    меняем его на настоящий ID. Правим текст точечно: файл не перезаписываем целиком (в нём есть
+    повторяющиеся ключи, а json их бы склеил). moved = {\"pc59696\": \"12345\"}. Возвращает, сколько ID заменено."""
+    if not moved or not os.path.exists(path):
+        return 0
+    with open(path, encoding="utf-8") as f:
+        text = f.read()
+    changed = 0
+    for old, new in moved.items():
+        text, n = re.subn(r'(:\s*)"' + re.escape(old) + r'"', lambda m: m.group(1) + '"' + new + '"', text)
+        changed += n
+    if changed:
+        tmp = path + ".tmp"
+        with open(tmp, "w", encoding="utf-8", newline="") as f:
+            f.write(text)
+        os.replace(tmp, path)
+    return changed
+
+
 def apply_account_rules(result, rules, resolve):
     """Аккаунты-заглушки (placeholder_accounts): у них нет ни каналов, ни аккаунтов Pointercrate.
     Освободившиеся аккаунты Pointercrate получат свои записи ниже."""
@@ -1937,6 +1974,8 @@ def main():
 
     added_players = added_links = taken = 0
     taken_list = []  # сюда записываем подробности о каждом пропущенном случае
+    pc_moved = {}  # \"pc<id>\" -> ключ глобала: те, кто был без глобала и получил его в этом запуске
+    links_owner = {pid: uid for uid, pids in links.items() for pid in pids}  # аккаунт Pointercrate -> его глобал
     for uid, pids in sorted(links.items()):
         key = str(uid)
         entry = result.get(key)
@@ -1949,6 +1988,21 @@ def main():
             if p in cur:
                 continue
             owner = pc_owner.get(p, key)  # кто уже владеет этим аккаунтом
+            # Аккаунт лежит в записи pc<id> (человек был без глобала), а теперь глобал у него есть:
+            # переносим запись pc в глобал. Только если ВСЕ аккаунты Pointercrate из записи pc
+            # привязаны к этому же аккаунту глобала и в записи хватит места.
+            if owner != key and str(owner).startswith("pc") and owner in result:
+                pc_accs = other_accounts(result[owner])["pointercrate"]
+                same_person = all(links_owner.get(a, uid) == uid for a in pc_accs)
+                room = len(set(cur) | set(pc_accs)) <= MAX_ACCOUNTS
+                if same_person and room:
+                    for a in pc_accs:
+                        if a not in cur:
+                            cur.append(a)
+                        pc_owner[a] = key
+                    move_pc_entry(result, owner, key)
+                    pc_moved[owner] = key
+                    continue  # аккаунт p уже добавлен в cur вместе с остальными из записи pc
             if owner != key:
                 taken += 1  # этот аккаунт Pointercrate уже записан у другого игрока
                 owner_name = result.get(owner, {}).get("_name", "")
@@ -1966,6 +2020,12 @@ def main():
                 added_players += 1
             else:  # ничего не добавилось, пустую запись не создаём
                 del result[key]
+
+    if pc_moved:
+        fixed_ids = update_gdr_ids({k: v for k, v in pc_moved.items()})
+        print(f"  игроков без глобала, у которых он появился: {len(pc_moved)}; ID заменено в gdr-ids.json: {fixed_ids}")
+        for old_key, new_key in sorted(pc_moved.items()):
+            print(f"    {old_key} -> {new_key}")
 
     # ---- Все остальные аккаунты ----
     # 1) Каждый аккаунт глобала получает запись, даже если Pointercrate у него нет.
