@@ -180,6 +180,9 @@ SECTION = re.compile(
 CHIP = re.compile(
     r'<a class="chip[^"]*" href="(?P<video>[^"]*)"[^>]*>'
     r'<i>#(?P<pos>\d+)</i><span>(?P<name>.*?)</span>(?:<em>(?P<pct>\d+)%</em>)?</a>', re.S)
+# Блоки панели игрока, которые не рекорды и в записи не попадают (названия в нижнем регистре).
+# "Created" - уровни, которые человек создал, а не прошёл. Появится ещё такой блок: допиши его сюда.
+SKIP_SECTIONS = {"created"}
 NAME = re.compile(r'<div class="pf-name"><h2>(.*?)</h2>', re.S)
 COUNTRY = re.compile(r'<div class="pf-id">.*?<span data-cc="([A-Z]{2})"', re.S)
 
@@ -197,6 +200,8 @@ def parse_panel(page):
         chips = list(CHIP.finditer(sec["body"]))
         if title.lower() == "first victories":  # лишь пометка к уже перечисленным прохождениям
             first = {int(c["pos"]) for c in chips}
+            continue
+        if title.lower() in SKIP_SECTIONS:  # Created: уровни, которые игрок СОЗДАЛ, а не прошёл
             continue
         for c in chips:
             progress = c["pct"] is not None
