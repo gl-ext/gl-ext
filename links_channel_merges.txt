@@ -3709,3 +3709,12 @@
     общие каналы: https://www.youtube.com/@xlzvii
     поглощено: wml4777 (xzlv), аккаунты: {'wml': [4777]}
 
+===== 2026-11-15 13:22:21 UTC: склеено групп 2, поглощено записей 2 =====
+СКЛЕЕНО В 30575 (Sunlight)
+    общие каналы: https://www.youtube.com/@sunlight36gg
+    поглощено: wml5155 (Sunlight), аккаунты: {'wml': [5155]}
+
+СКЛЕЕНО В pc58322 (Zunexi)
+    общие каналы: https://www.youtube.com/@zunexi
+    поглощено: wml5343 (Zunexi), аккаунты: {'wml': [5343]}
+
