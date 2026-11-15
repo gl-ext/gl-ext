@@ -181,8 +181,9 @@ CHIP = re.compile(
     r'<a class="chip[^"]*" href="(?P<video>[^"]*)"[^>]*>'
     r'<i>#(?P<pos>\d+)</i><span>(?P<name>.*?)</span>(?:<em>(?P<pct>\d+)%</em>)?</a>', re.S)
 # Блоки панели игрока, которые не рекорды и в записи не попадают (названия в нижнем регистре).
-# "Created" - уровни, которые человек создал, а не прошёл. Появится ещё такой блок: допиши его сюда.
-SKIP_SECTIONS = {"created"}
+# "Created" - уровни, которые человек создал, а не прошёл; "First victories" - лишь пометка к тем, что
+# уже есть в Main / Extended / Unbounded list (уникального там ничего нет). Появится ещё такой блок: допиши его сюда.
+SKIP_SECTIONS = {"created", "first victories"}
 NAME = re.compile(r'<div class="pf-name"><h2>(.*?)</h2>', re.S)
 COUNTRY = re.compile(r'<div class="pf-id">.*?<span data-cc="([A-Z]{2})"', re.S)
 
@@ -194,26 +195,19 @@ def parse_panel(page):
     if not name and "pf-group" not in pane:
         return None
 
-    records, first = [], set()
+    # Какой из блоков Main / Extended / Unbounded list не важен: берём уровень, процент и видео.
+    # In progress отличается процентом (меньше 100). Пропускаем блоки, где нет рекордов (SKIP_SECTIONS).
+    records = []
     for sec in SECTION.finditer(pane):
-        title = html.unescape(sec["title"]).strip()
-        chips = list(CHIP.finditer(sec["body"]))
-        if title.lower() == "first victories":  # лишь пометка к уже перечисленным прохождениям
-            first = {int(c["pos"]) for c in chips}
+        title = html.unescape(sec["title"]).strip().lower()
+        if title in SKIP_SECTIONS:
             continue
-        if title.lower() in SKIP_SECTIONS:  # Created: уровни, которые игрок СОЗДАЛ, а не прошёл
-            continue
-        for c in chips:
-            progress = c["pct"] is not None
+        for c in CHIP.finditer(sec["body"]):
             records.append({
-                "list": title,                       # Main list / Extended list / Unbounded list / In progress
-                "level_pos": int(c["pos"]),          # место уровня в списке сайта (меняется со временем)
                 "level": html.unescape(c["name"]).strip(),
-                "percent": int(c["pct"]) if progress else 100,
+                "percent": int(c["pct"]) if c["pct"] is not None else 100,
                 "video": html.unescape(c["video"]).strip(),
             })
-    for r in records:
-        r["first_victory"] = r["percent"] == 100 and r["level_pos"] in first
 
     cc = COUNTRY.search(pane)
     return {
