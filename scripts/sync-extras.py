@@ -5,7 +5,7 @@
 
 Что делает по шагам:
   1. coreboard_parse.py all   -> cbd.txt (оба топа CoreBoard вместе);
-  2. gd-rating.py --src pointercrate --ids -> gdr_gl_pc.txt (наш рейтинг, ID игроков в [скобках]);
+  2. gd-rating.py --src pointercrate,wml --ids -> gdr_gl_pc_wml.txt (наш рейтинг, ID игроков в [скобках]);
   3. compare.py in-cbd-not-in-gdr -> missing_achievements.json;
   4. ПОЛНОСТЬЮ перезаписывает my_extras.json найденным (процент может понижаться, записи, которые
      уже есть в нашем рейтинге или пропали с CoreBoard, удаляются; сохраняются только ссылки на видео);
@@ -23,7 +23,7 @@
   --max N         защита: если изменений (новых + повышенных + пониженных + убранных) больше N,
                   ничего не пишем (по умолчанию 300). Огромное число почти всегда значит сбой парсинга.
   --force         игнорировать --max
-  --skip-fetch    не запускать coreboard_parse и gd-rating, взять готовые cbd.txt и gdr_gl_pc.txt
+  --skip-fetch    не запускать coreboard_parse и gd-rating, взять готовые cbd.txt и gdr_gl_pc_wml.txt
                   (удобно, чтобы быстро перепроверить сравнение)
   --skip-levels   не обновлять levels_tp.json (при --skip-fetch он тоже не обновляется)
   --videos        искать видео для missing_achievements.json (по умолчанию не ищет, так быстрее)
@@ -459,7 +459,7 @@ def main():
     cb = find_script("coreboard_parse.py", "coreboard-parse.py")
     gdr_script = find_script("gd-rating.py", "gd_rating.py")
     cmp_script = find_script("compare.py")
-    cbd_txt, gdr_txt = HERE / "cbd.txt", HERE / "gdr_gl_pc.txt"
+    cbd_txt, gdr_txt = HERE / "cbd.txt", HERE / "gdr_gl_pc_wml.txt"
 
     work = Path(tempfile.mkdtemp(prefix="extras_sync_"))
 
@@ -476,11 +476,8 @@ def main():
     # 2. Потом оба рейтинга
     if not args.skip_fetch:
         run([sys.executable, cb, "all", "-r"], "CoreBoard: оба топа -> cbd.txt")
-        # Только глобал + pointercrate, БЕЗ других листов (WML и т.д.): my_extras.json читает расширение,
-        # а оно про эти листы не знает. Если сравнивать с рейтингом, где уже есть WML, записи, которые есть
-        # только там, пропали бы из my_extras. Имя файла gdr_gl_pc.txt от этого набора и зависит.
-        run([sys.executable, gdr_script, "--src", "pointercrate", "--ids"],
-            "Наш рейтинг (глобал + pointercrate) -> gdr_gl_pc.txt")
+        run([sys.executable, gdr_script, "--src", "pointercrate,wml", "--ids"],
+            "Наш рейтинг (глобал + pointercrate + wml) -> gdr_gl_pc_wml.txt")
     for f in (cbd_txt, gdr_txt):
         if not f.exists() or f.stat().st_size == 0:
             sys.exit(f"Нет файла {f.name} (или он пустой). Останавливаюсь.")
