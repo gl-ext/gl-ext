@@ -20,6 +20,12 @@ my_extras.json этот скрипт не трогает.
 
 levels_tp.json и gdr-ids.json всегда скачиваются с GitHub (локальные копии не читаются).
 
+ID CoreBoard. Когда в ссылках на игроков CoreBoard появятся числовые ID, coreboard_parse.py сам сохранит их в
+cbd_ids.json (ник -> ID), и тогда JSON для CoreBoard выходят с ЕГО ID: в missing_achievements*.json вместо наших ID
+стоят ID CoreBoard, а новые игроки в missing_players.json получают ID по порядку после самого большого на CoreBoard
+(плюс страна; наш ID остаётся в поле gdr_id). Пока ID на сайте нет, всё работает как раньше. Проверить заранее
+можно по CSV от автора CoreBoard: --cbd-csv table.csv.
+
 Запуск (из любой папки, пути считаются от места скрипта):
   python scripts/cbd-update.py                  полный прогон, результат в scripts/cbd-update/
   python scripts/cbd-update.py --commit         то же + копия в cbd/, коммит и пуш
@@ -31,6 +37,7 @@ levels_tp.json и gdr-ids.json всегда скачиваются с GitHub (л
   --out-dir PATH  рабочая папка с полными результатами (по умолчанию cbd-update рядом со скриптом)
   --skip-fetch    не запускать coreboard_parse и gd-rating, взять готовые cbd.txt и gdr.txt
   --no-videos     остановиться после compare, видео и команды не делать (с --commit нельзя)
+  --cbd-csv PATH  взять ID игроков CoreBoard из CSV автора (колонки: ID, место, ник, ...), если на сайте их ещё нет
 
 В рабочей папке кроме трёх файлов лежат missing_achievements_with_videos.json,
 missing_video_links.txt (где видео не нашлось), video_link_sources.txt и служебные файлы compare.
@@ -67,6 +74,7 @@ ap.add_argument("--commit", action="store_true", help="скопировать р
 ap.add_argument("--out-dir", default=str(HERE / "cbd-update"), help="рабочая папка с результатами")
 ap.add_argument("--skip-fetch", action="store_true", help="не качать cbd и gdr заново")
 ap.add_argument("--no-videos", action="store_true", help="только compare, без видео и команд")
+ap.add_argument("--cbd-csv", default="", help="CSV автора CoreBoard: взять ID игроков оттуда (если на сайте их ещё нет)")
 args = ap.parse_args()
 if args.no_videos and args.commit:
     ap.error("--no-videos нельзя вместе с --commit: в cbd/ попал бы устаревший commands.txt")
@@ -113,15 +121,56 @@ def git(*a, check=True):
     return r
 
 
+RECORDS_FILES = ("missing_achievements.json", "missing_achievements_with_nicks.json")
+
+
+def cb_sort_key(key):
+    """Ключи с числовым ID по возрастанию, остальные после них."""
+    head = str(key).split(" — ", 1)[0].strip()
+    return (0, int(head), "") if head.isdigit() else (1, 0, head)
+
+
+def convert_records(src, dst, mapping):
+    """missing_achievements*.json: наши ID игроков -> ID CoreBoard (ключ 'ID' или 'ID — ник').
+    Игрока, которого в карте нет, оставляем под нашим ID, чтобы не потерять записи (и предупреждаем)."""
+    users = json.loads(src.read_text("utf-8")).get("users", {})
+    converted, kept = {}, []
+    for key, records in users.items():
+        our_id, sep, rest = key.partition(" — ")
+        cb_id = mapping.get(our_id.strip().casefold())
+        if cb_id is None:
+            kept.append(key)
+            converted[key] = records
+        else:
+            converted[cb_id + sep + rest] = records
+    with open(dst, "w", encoding="utf-8") as f:
+        f.write('{\n  "users": {\n')
+        items = sorted(converted.items(), key=lambda item: cb_sort_key(item[0]))
+        for i, (key, records) in enumerate(items):
+            f.write(f'    {json.dumps(key, ensure_ascii=False)}: [\n')
+            for j, record in enumerate(records):
+                f.write(f'      {json.dumps(record, ensure_ascii=False)}{"," if j < len(records) - 1 else ""}\n')
+            f.write(f'    ]{"," if i < len(items) - 1 else ""}\n')
+        f.write('  }\n}\n')
+    if kept:
+        print(f"{src.name}: нет ID CoreBoard у {len(kept)} игроков, оставил наши ID: {', '.join(kept[:5])}"
+              + (" ..." if len(kept) > 5 else ""))
+
+
 def publish(out, message):
-    """Копирует три файла из рабочей папки в cbd/, коммитит и пушит."""
+    """Копирует файлы из рабочей папки в cbd/ (записи переводит на ID CoreBoard), коммитит и пушит."""
     CBD_DIR.mkdir(exist_ok=True)
+    mapping_file = out / "gdr_to_cb_ids.json"
+    mapping = json.loads(mapping_file.read_text("utf-8")) if mapping_file.exists() else {}
     rels = []
     for name in PUBLISHED:
         src, dst = out / name, CBD_DIR / name
         if not src.exists():
             sys.exit(f"Нет {src}, нечего публиковать.")
-        shutil.copyfile(src, dst)
+        if mapping and name in RECORDS_FILES:
+            convert_records(src, dst, mapping)
+        else:
+            shutil.copyfile(src, dst)
         rels.append(str(dst.relative_to(ROOT)))
 
     git("config", "user.name", os.environ.get("GIT_AUTHOR_NAME", "github-actions[bot]"))
@@ -161,13 +210,25 @@ def main():
         if not f.exists() or f.stat().st_size == 0:
             sys.exit(f"Нет файла {f.name} (или он пустой). Останавливаюсь.")
 
+    cbd_ids = HERE / "cbd_ids.json"
+    if args.cbd_csv:
+        csv_path = Path(args.cbd_csv).resolve()
+        if not csv_path.exists():
+            sys.exit(f"Нет файла {csv_path} (--cbd-csv).")
+        run([sys.executable, cb, "--csv", csv_path, "--out", "cbd_csv.json"], "CoreBoard: ID игроков из CSV")
+        csv_ids = HERE / "cbd_csv_ids.json"
+        if not csv_ids.exists():
+            sys.exit("В CSV не нашлось ни одного числового ID.")
+        shutil.copyfile(csv_ids, cbd_ids)
+    print(f"\nID CoreBoard: {'есть (' + str(cbd_ids.name) + ')' if cbd_ids.exists() else 'нет, ключи остаются нашими'}")
+
     out = Path(args.out_dir).resolve()
     out.mkdir(parents=True, exist_ok=True)
     # результаты прошлого запуска убираем, чтобы старые команды не приняли за новые
     for name in ("missing_achievements.json", "missing_achievements_with_nicks.json",
                  "missing_achievements_with_videos.json", "missing_video_links.txt",
                  "video_link_sources.txt", "commands.txt", "missing_players.json",
-                 "missing_players_skipped.txt", "missing_players_video_links.txt"):
+                 "missing_players_skipped.txt", "missing_players_video_links.txt", "gdr_to_cb_ids.json"):
         (out / name).unlink(missing_ok=True)
 
     work = Path(tempfile.mkdtemp(prefix="cbd_update_"))
@@ -175,8 +236,11 @@ def main():
     print("\ngdr-ids.json: беру с GitHub (levels_tp.json compare и add-video-links берут с GitHub сами; raw кешируется до ~5 минут)")
     download_github("gdr-ids.json", ids)
 
-    run([sys.executable, cmp_script, "in-gdr-not-in-cbd", "--cbd", cbd_txt, "--gdr", gdr_txt,
-         "--out-dir", out], "compare: in-gdr-not-in-cbd")
+    cmp_cmd = [sys.executable, cmp_script, "in-gdr-not-in-cbd", "--cbd", cbd_txt, "--gdr", gdr_txt,
+               "--out-dir", out]
+    if cbd_ids.exists():
+        cmp_cmd += ["--cbd-ids", cbd_ids]
+    run(cmp_cmd, "compare: in-gdr-not-in-cbd")
 
     found_file = out / "missing_achievements.json"
     if not found_file.exists() or not (out / "missing_achievements_with_nicks.json").exists():
