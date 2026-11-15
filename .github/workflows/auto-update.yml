@@ -20,7 +20,7 @@ on:
     - cron: "*/30 * * * *"
 
 env:
-  GL_LISTS_OFF: ""
+  GL_LISTS_OFF: "wml"
 
 permissions:
   contents: write
