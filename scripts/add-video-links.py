@@ -440,6 +440,26 @@ def site_of(source_name):
     return source_name
 
 
+def accounts_of_key_player(player_id, key_src, key_rest, links):
+    """Аккаунты игрока без глобала (ключ вида pc40667 / wml5).
+    Ключ называет только ОДИН аккаунт, а у человека их может быть несколько (например, два в Pointercrate),
+    и нужное видео лежит на другом. Поэтому к аккаунту из ключа добавляем всё, что links.json знает о человеке:
+    запись с этим ключом и любая запись, где этот аккаунт значится (так же делает gd-rating)."""
+    accounts = {key_src.name: [key_rest]}
+    wanted = str(player_id).casefold()
+    for link_key, per_list in links.items():
+        same_key = str(link_key).casefold() == wanted
+        has_account = key_rest in (per_list.get(key_src.name) or [])
+        if not (same_key or has_account):
+            continue
+        for list_name, ids in per_list.items():
+            bucket = accounts.setdefault(list_name, [])
+            for account in ids:
+                if account not in bucket:
+                    bucket.append(account)
+    return accounts
+
+
 def find_video(player_id, level_id, percent, links):
     # Сюда складываем ошибки запросов, чтобы отличить
     # "видео нет" от "не смогли проверить из-за сбоя".
@@ -448,7 +468,7 @@ def find_video(player_id, level_id, percent, links):
     # Ключ вида pc7 / wml5 (игрок без глобала): лист и аккаунт названы самим ключом, глобал не нужен.
     key_src, key_rest = L.key_parts(str(player_id).casefold())
     if key_src is not None:
-        accounts = {key_src.name: [key_rest]}
+        accounts = accounts_of_key_player(player_id, key_src, key_rest, links)
     else:
         accounts = links.get(str(player_id), {})
 
