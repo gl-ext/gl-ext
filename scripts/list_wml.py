@@ -12,6 +12,7 @@ class WML(PageSource):
     prefix = "wml"    # игрок без глобала получает ключ wml<id>
     tag = "WML"       # метка [WML] в рейтинге
     short = "wml"     # gdr_gl_wml.txt
+    rev = 2           # ревизия разбора страницы игрока. 2: блок «Created» (созданные уровни) больше не читается
 
     def display_nick(self, nick):
         return site.strip_clan(nick) or nick  # '[67] Kristage' -> 'Kristage'
