@@ -19,6 +19,14 @@
   [{"rank": 1, "name": "Bacon", "country": "Казахстан", "flag": "KZ", "points": 13.39,
     "records": [{"level": "Tidal Wave", "percent": 100}, ...], "raw": "Tidal Wave, ..."}]
 
+ID игроков. Пока ссылки на игроков идут по нику (/main/world/player/SerVax), ID нет: поле "id" пустое, а
+сопоставление с нашим рейтингом идёт по нику, как раньше. Когда автор сайта заменит ник в ссылке на ID
+(/main/world/player/123), он подхватится сам: ID берётся из последней части ссылки, если это число.
+CSV от автора (--csv table.csv) тоже даёт ID. В cbd.txt (его читает compare.py) ID НЕ пишется: формат файла
+прежний. ID лежат в cbd.json (поле "id") и в cbd_ids.json (ник -> ID).
+Слово No в списке рекордов значит "уровня нет" и в записи не попадает; всё остальное (в том числе
+UNKNOWN) названия уровней.
+
 Разбор не привязан к конкретным тегам: берутся строки таблицы и в них ячейки. Игрок это
 ячейка со ссылкой (class="player"), очки это ячейка class="pts", записи это class="rec",
 место это class="rank". Если классов нет, берётся порядок колонок: место, игрок, страна,
@@ -46,9 +54,12 @@ ap.add_argument("pages", nargs="*", help="world, rc или all (оба топа 
 ap.add_argument("-f", "--file", help="разобрать этот HTML-файл, ничего не качая")
 ap.add_argument("-r", "--refresh", action="store_true", help="скачать заново")
 ap.add_argument("--ttl", type=int, default=3600, help="сколько секунд считать скачанную страницу свежей")
+ap.add_argument("--csv", help="разобрать CSV от автора CoreBoard (колонки: ID, место, ник, 6 рекордов, очки, страна), "
+                              "ничего не качая; ID берётся оттуда")
 ap.add_argument("-o", "--out", help="имя файла результата (когда результат один)")
 args = ap.parse_args()
 
+NO_LEVEL = "No"  # пустой слот рекорда (только точно так; всё остальное, даже UNKNOWN, это название уровня)
 PCT = re.compile(r"^(.*?)(?:\s+(\d+(?:\.\d+)?)%)?$")
 
 
@@ -101,11 +112,20 @@ def parse_records(raw):
     out = []
     for part in raw.split(", "):
         part = part.strip()
-        if not part:
+        if not part or part == NO_LEVEL:
             continue
         m = PCT.match(part)
         out.append({"level": m.group(1).strip(), "percent": float(m.group(2)) if m.group(2) else 100})
     return out
+
+
+def id_from_href(href):
+    """/main/world/player/123 -> "123"; ссылка по нику (/main/world/player/SerVax) -> None."""
+    if not href:
+        return None
+    path = href.split("?", 1)[0].split("#", 1)[0].rstrip("/")
+    last = path.rsplit("/", 1)[-1]
+    return last if last.isdigit() else None
 
 
 def to_float(s):
@@ -136,9 +156,32 @@ def parse_page(page):
             continue
         cname, flag = split_country(country_c["text"]) if country_c else ("", "")
         raw = re.sub(r"\s+", " ", rec_c["text"]).strip()
+        raw = ", ".join(x for x in raw.split(", ") if x.strip() != NO_LEVEL)  # No = пустой слот, в строку не берём
         players.append({
-            "rank": int(rank), "name": player_c["text"], "href": player_c["href"],
+            "rank": int(rank), "id": id_from_href(player_c["href"]),
+            "name": player_c["text"], "href": player_c["href"],
             "country": cname, "flag": flag, "points": points,
+            "records": parse_records(raw), "raw": raw,
+        })
+    return players
+
+
+def parse_csv(text):
+    """CSV автора: ID, место, ник, 6 рекордов, очки, страна. Пустой слот рекорда: No."""
+    import csv
+    import io
+    players = []
+    for row in csv.reader(io.StringIO(text.lstrip("\ufeff"))):
+        if len(row) < 11:
+            continue
+        pid, place, name = row[0].strip(), row[1].strip(), row[2].strip()
+        points = to_float(row[-2])
+        if not name or points is None or not place.isdigit():
+            continue
+        raw = ", ".join(x.strip() for x in row[3:-2] if x.strip() and x.strip() != NO_LEVEL)
+        players.append({
+            "rank": int(place), "id": pid if pid.isdigit() else None, "name": name, "href": None,
+            "country": row[-1].strip(), "flag": "", "points": points,
             "records": parse_records(raw), "raw": raw,
         })
     return players
@@ -183,10 +226,13 @@ def merge(world, rc):
         for r in rows:
             p = people.get(r["name"].lower())
             if p is None:
-                p = {"name": r["name"], "country": r["country"], "flag": r["flag"], "points": r["points"],
+                p = {"name": r["name"], "id": r.get("id"), "country": r["country"], "flag": r["flag"],
+                     "points": r["points"],
                      "world_rank": None, "rc_rank": None, "records": r["records"], "raw": r["raw"]}
                 people[r["name"].lower()] = p
             p[src_name + "_rank"] = r["rank"]
+            if not p.get("id") and r.get("id"):
+                p["id"] = r["id"]
             if src_name == "rc" and p["world_rank"] is not None:
                 # игрок уже взят из основного топа: если в Топе РК данные другие, отмечаем
                 if abs(p["points"] - r["points"]) > 0.005:
@@ -208,6 +254,12 @@ def save(rows, out_name):
         lines.append(f"{r.get('rank', i)}) {emoji + ' ' if emoji else ''}{r['name']} "
                      f"({r['raw']}) - {r['points']:.2f}")
     out.with_suffix(".txt").write_text("\n".join(lines), "utf-8")
+    ids = {r["name"]: r["id"] for r in rows if r.get("id")}
+    ids_file = out.with_name(out.stem + "_ids.json")
+    if ids:
+        ids_file.write_text(json.dumps(ids, ensure_ascii=False, indent=1), "utf-8")
+    elif ids_file.exists():
+        ids_file.unlink()  # ID пропали (сайт вернул ссылки по нику): старый файл не оставляем
     return out
 
 
@@ -224,6 +276,17 @@ def report(rows, page=None):
 
 
 def main():
+    if args.csv:
+        rows = parse_csv(Path(args.csv).read_text("utf-8"))
+        if not rows:
+            print("В CSV ни одной строки не разобрано.")
+            return
+        out = save(rows, args.out or f"cbd_{Path(args.csv).stem}.json")
+        with_id = sum(1 for r in rows if r.get("id"))
+        print(f"Игроков разобрано {len(rows)} (с ID {with_id}), сохранено {out.name} и {out.with_suffix('.txt').name}")
+        report(rows)
+        return
+
     if args.file:
         page = Path(args.file).read_text("utf-8")
         rows = parse_page(page)
