@@ -44,6 +44,9 @@ parser.add_argument("--gdr", default="gdr.txt",
 parser.add_argument("--out-dir", default="compare",
                     help="папка для всех создаваемых файлов (создаётся сама, рядом с тем местом, "
                          "откуда запущен скрипт). По умолчанию compare. Чтобы писать в текущую папку: --out-dir .")
+parser.add_argument("--new-max-score", type=float, default=250.0,
+                    help="in-gdr-not-in-cbd: в missing_players.json идут игроки gdr, которых нет в cbd, "
+                         "с очками МЕНЬШЕ этого числа (по умолчанию 250, для всех стран)")
 args = parser.parse_args()
 
 # Внутри скрипта 1-й файл это ИСТОЧНИК (из него берём достижения),
@@ -91,6 +94,7 @@ GLOBAL_LIST_URL = "https://api.demonlist.org/level/classic/list?limit={limit}&of
 # общем для всех скриптов (gd-rating, sync-extras, add-video-links и т.д.). Дописали название там,
 # и оно работает здесь.
 import levels as levelsearch
+import lists_core as L  # метки листов ([PC], [WML]) у ников игроков, которых нет в глобале
 
 SPECIAL_LEVEL_NAMES = levelsearch.SPECIAL_LEVEL_NAMES
 normalize = levelsearch.normalize
@@ -161,7 +165,7 @@ def parse_achievements(line):
     for item in match.group(1).split(","):
         item = item.strip()
 
-        if not item:
+        if not item or item == "No":  # No: пустой слот рекорда (только точно так)
             continue
 
         percent_match = re.search(r'\s+(\d+)%$', item)
@@ -625,6 +629,88 @@ for player_id in common_ids:
 
 
 # =========================
+# Новые игроки: есть в gdr, нет в cbd
+# =========================
+# Только в режиме in-gdr-not-in-cbd. Берём игроков gdr, которых нет в cbd, с очками меньше
+# --new-max-score (по умолчанию 250), для ВСЕХ стран. Результат: missing_players.json
+#   {"users": {"<ID игрока>": {"nick": "Ник", "records": [[ID уровня, процент, ссылка], ...]}}}
+# ID игрока наш (глобал, pcN или wmlN). Ссылки на видео потом дописывает add-video-links.py.
+# Игрок НЕ попадает в файл (а пишется в missing_players_skipped.txt с причиной), если:
+#   - его ник совпал с ником игрока cbd, которого мы не смогли сопоставить, или у них почти одни и те же
+#     уровни (скорее всего это тот же человек под другим ником, дубль на CoreBoard не нужен);
+#   - хотя бы один его уровень не нашёлся (иначе у него было бы меньше записей, чем есть на самом деле).
+NEW_PLAYERS_FILE = out_path("missing_players.json")
+SKIPPED_PLAYERS_FILE = out_path("missing_players_skipped.txt")
+SAME_LEVELS_MIN = 4  # столько общих уровней с несопоставленным игроком cbd = подозрение на тот же человек
+
+new_players = {}
+skipped_players = []
+
+
+def clean_nick(player_id, nick):
+    """Ник без метки листа: 'Name [WML]' -> 'Name'."""
+    nick = (nick or "").strip()
+    tag = L.tag_of(player_id).strip()
+    if tag and nick.endswith(tag):
+        nick = nick[: -len(tag)].strip()
+    return nick
+
+
+if args.mode == "in-gdr-not-in-cbd":
+    unmapped_cbd = [p for pid, p in players2.items() if pid.startswith(NICK_KEY_PREFIX)]
+    unmapped_cbd_nicks = {normalize_nick(p["nick"]) for p in unmapped_cbd if p["nick"]}
+
+    for player_id in players_in_file_order(ids_only_in_1, players1):
+        p1 = players1[player_id]
+        if p1["score"] >= args.new_max_score:
+            continue
+
+        nick = clean_nick(player_id, p1["nick"])
+        names = set(p1["achievements"])
+
+        if normalize_nick(nick) in unmapped_cbd_nicks:
+            skipped_players.append(f"{player_id} | {nick} | {p1['score']} | такой ник уже есть в cbd, но не сопоставился по gdr-ids.json")
+            continue
+        twin = next((p for p in unmapped_cbd if len(names & set(p["achievements"])) >= SAME_LEVELS_MIN), None)
+        if twin is not None:
+            skipped_players.append(f"{player_id} | {nick} | {p1['score']} | похож на игрока cbd {twin['nick']} (общих уровней: "
+                                   f"{len(names & set(twin['achievements']))}), возможно тот же человек под другим ником")
+            continue
+
+        records, unresolved = [], []
+        for achievement_name, achievement in p1["achievements"].items():
+            level_id, found_in = find_level_id(achievement_name)
+            if level_id is None:
+                unresolved.append(achievement["name"])
+                unknown_levels.add(achievement["name"])
+                continue
+            if found_in != "levels_tp.json":
+                levels_found_elsewhere[achievement["name"]] = (level_id, found_in)
+            records.append([level_id, achievement["percent"], ""])
+
+        if unresolved or not records:
+            skipped_players.append(f"{player_id} | {nick} | {p1['score']} | не найден уровень: {', '.join(unresolved) or 'нет записей'}")
+            continue
+        new_players[player_id] = {"nick": nick, "records": records}
+
+
+def save_players_json(players, filename):
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write('{\n  "users": {\n')
+        items = list(players.items())
+        for i, (pid, info) in enumerate(items):
+            f.write("    " + json.dumps(pid, ensure_ascii=False) + ": " + json.dumps(info, ensure_ascii=False))
+            f.write(",\n" if i < len(items) - 1 else "\n")
+        f.write("  }\n}\n")
+
+
+if args.mode == "in-gdr-not-in-cbd":
+    save_players_json(new_players, NEW_PLAYERS_FILE)
+    with open(SKIPPED_PLAYERS_FILE, "w", encoding="utf-8") as f:
+        f.write("\n".join(skipped_players) + ("\n" if skipped_players else ""))
+
+
+# =========================
 # Сохраняем оба JSON
 # =========================
 
@@ -655,6 +741,11 @@ print(f"Совпадений по ID: {len(common_ids)}")
 print(f"Игроков {NAME1}, которых нет в {NAME2}: {len(ids_only_in_1)}")
 print(f"Игроков {NAME2}, которых нет в {NAME1}: {len(ids_only_in_2)}")
 
+if args.mode == "in-gdr-not-in-cbd":
+    print(f"\n=== Новые игроки (очков меньше {args.new_max_score:g}) ===")
+    print(f"В missing_players.json: {len(new_players)}")
+    print(f"Пропущено (причины в missing_players_skipped.txt): {len(skipped_players)}")
+
 print("\n=== Результат ===")
 print(f"Игроков сопоставлено: {checked}")
 print(f"У кого очков в {NAME1} меньше, чем в {NAME2}: {lower_score}")
@@ -678,5 +769,6 @@ if unknown_levels:
 
 print("\nСозданы файлы:")
 for name in (OUTPUT_FILE, OUTPUT_NICKS_FILE, INVALID_FILE1,
-             INVALID_FILE2, NOT_IN_FILE2, NOT_IN_FILE1):
+             INVALID_FILE2, NOT_IN_FILE2, NOT_IN_FILE1,
+             *((NEW_PLAYERS_FILE, SKIPPED_PLAYERS_FILE) if args.mode == "in-gdr-not-in-cbd" else ())):
     print(f"  {name}")
