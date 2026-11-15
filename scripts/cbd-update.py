@@ -14,6 +14,8 @@ my_extras.json этот скрипт не трогает.
        cbd/missing_achievements.json
        cbd/missing_achievements_with_nicks.json
        cbd/commands.txt
+       cbd/missing_players.json   (новые игроки: есть у нас с очками меньше 250, на CoreBoard их нет;
+                                   для них команд нет, только JSON с никами, записями и ссылками на видео)
      Если добавлять в CoreBoard больше нечего, файлы в cbd/ обновятся на пустые.
 
 levels_tp.json и gdr-ids.json всегда скачиваются с GitHub (локальные копии не читаются).
@@ -55,7 +57,8 @@ ROOT = HERE.parent                              # корень репозито�
 CBD_DIR = ROOT / "cbd"                          # сюда копируются результаты при --commit
 RAW = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/"
 UA = "gl-ext-top6"
-PUBLISHED = ("missing_achievements.json", "missing_achievements_with_nicks.json", "commands.txt")
+PUBLISHED = ("missing_achievements.json", "missing_achievements_with_nicks.json", "commands.txt",
+             "missing_players.json")
 
 ap = argparse.ArgumentParser(
     description="cbd-update: достижения из нашего рейтинга, которых нет в CoreBoard, "
@@ -163,7 +166,8 @@ def main():
     # результаты прошлого запуска убираем, чтобы старые команды не приняли за новые
     for name in ("missing_achievements.json", "missing_achievements_with_nicks.json",
                  "missing_achievements_with_videos.json", "missing_video_links.txt",
-                 "video_link_sources.txt", "commands.txt"):
+                 "video_link_sources.txt", "commands.txt", "missing_players.json",
+                 "missing_players_skipped.txt", "missing_players_video_links.txt"):
         (out / name).unlink(missing_ok=True)
 
     work = Path(tempfile.mkdtemp(prefix="cbd_update_"))
@@ -179,14 +183,20 @@ def main():
         sys.exit("compare.py не создал missing_achievements.json / missing_achievements_with_nicks.json.")
     found = json.loads(found_file.read_text("utf-8")).get("users", {})
     total = sum(len(v) for v in found.values())
-    print(f"\ncompare нашёл: игроков {len(found)}, записей {total}")
+    players_file = out / "missing_players.json"
+    if not players_file.exists():
+        sys.exit("compare.py не создал missing_players.json.")
+    new_players = len(json.loads(players_file.read_text("utf-8")).get("users", {}))
+    print(f"\ncompare нашёл: игроков {len(found)}, записей {total}; новых игроков (нет на CoreBoard) {new_players}")
 
     if args.no_videos:
         print(f"--no-videos: видео и команды не делаю. Результат: {found_file}")
         return
 
-    if total:
-        run([sys.executable, avl_script, "--out-dir", out, "--ids", ids],
+    if total or new_players:
+        # --prev-players: ссылки, уже найденные в опубликованном cbd/missing_players.json, заново не ищутся
+        run([sys.executable, avl_script, "--out-dir", out, "--ids", ids,
+             "--prev-players", CBD_DIR / "missing_players.json"],
             "Видео и команды (add-video-links)")
         if not (out / "commands.txt").exists():
             sys.exit("add-video-links.py не создал commands.txt.")
@@ -198,7 +208,7 @@ def main():
     if total:
         print(f"Не нашлось видео: {out / 'missing_video_links.txt'}")
     if args.commit:
-        publish(out, f"cbd: {len(found)} игроков, {total} записей (авто, gdr-not-in-cbd)")
+        publish(out, f"cbd: {len(found)} игроков, {total} записей, новых игроков {new_players} (авто, gdr-not-in-cbd)")
 
 
 main()
