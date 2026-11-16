@@ -319,6 +319,6 @@
     "xblight": {"name": "blight", "like": "Natural Disaster", "place": 150, "T": 99, "t": 50},
     "xFIBERGLASS": {"name": "FIBERGLASS", "like": "Kyouki", "place": 38, "T": 99, "t": 50},
     "xSilent Acropolis": {"name": "Silent Acropolis", "like": "Thinking Space II", "place": 4, "T": 99, "t": 44},
-    "xMETROPOLIS": {"name": "METROPOLIS", "like": "Acheron", "place": 36, "T": 99, "t": 50}
+    "xMETROPOLIS": {"name": "METROPOLIS", "like": "Acheron", "place": 36, "T": 93, "t": 60}
   }
 }
