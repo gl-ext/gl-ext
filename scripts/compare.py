@@ -245,7 +245,7 @@ def save_json(filename, result):
     with open(filename, "w", encoding="utf-8") as f:
         f.write('{\n  "users": {\n')
 
-        users = sorted(result.items(), key=lambda item: player_id_sort_key(item[0]))
+        users = list(result.items())  # порядок задан при сборке: по очкам игрока (от меньшего к большему)
 
         for i, (player_id, records) in enumerate(users):
             f.write(
@@ -676,7 +676,8 @@ lower_score = 0
 players_with_missing = 0
 
 # Сравниваем только игроков, которые есть в обоих файлах.
-for player_id in common_ids:
+# В порядке очков (от меньшего к большему, при равных очках как в файле): в этом порядке игроки лягут в JSON.
+for player_id in sorted(common_ids, key=lambda i: (players1[i]["score"], players1[i]["order"])):
     p1 = players1[player_id]
     p2 = players2[player_id]
 
