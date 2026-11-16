@@ -1,35 +1,3 @@
 Видео: Pointercrate
-/fulladd Cuatrocientos, Prismline, https://www.youtube.com/watch?v=NZDYAc-ZViQ
-/try Cuatrocientos, Prismline
-
-Видео: Pointercrate
-/fulladd devan24, BEING HOME, https://www.youtube.com/watch?v=K1uXfkmR1fE
-/try devan24, BEING HOME
-
-Видео: Pointercrate
-/fulladd RainGMD, poocubed, https://www.youtube.com/watch?v=kcWXLrpaCpc
-/try RainGMD, poocubed
-
-Видео: Pointercrate
-/fulladd bob_vi, The Plunge, https://www.youtube.com/watch?v=yioMzCMOP8A
-/try bob_vi, The Plunge
-
-Видео: Pointercrate
-/fulladd aatosliina, KOSETSU, https://www.youtube.com/watch?v=XlIk-FcBw6k
-/try aatosliina, KOSETSU
-
-Видео: Pointercrate
-/fulladd TheJaco9, Menace, https://www.youtube.com/watch?v=ZRNtBoztKRg
-/try TheJaco9, Menace
-
-Видео: Pointercrate
-/fulladd Merio, poocubed, https://www.youtube.com/watch?v=Leq9TdUoa0U
-/try Merio, poocubed
-
-Видео: Pointercrate
-/fulladd Popcat8bit, The Golden, https://www.youtube.com/watch?v=ZCklcRZLlZU
-/try Popcat8bit, The Golden
-
-Видео: Pointercrate
-/fulladd AsunaGD, Jigsaw, https://www.youtube.com/watch?v=VFSTmN6naio
-/try AsunaGD, Jigsaw
+/fulladd DTDom, Delta, https://www.youtube.com/watch?v=L2mzGPEUo84
+/try DTDom, Delta
