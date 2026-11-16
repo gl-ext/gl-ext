@@ -59,7 +59,7 @@ ROOT = HERE.parent                              # корень репозито�
 EXTRAS = ROOT / "my_extras.json"
 LEVELS = ROOT / "levels_tp.json"
 MISSING = ROOT / "missing_achievements.json"
-WAITING = ROOT / "waiting_records.json"   # непринятые записи глобала, попадающие в топ игрока (делает gd-rating --waiting)
+WAITING = ROOT / "cbd" / "waiting_records.json"   # непринятые записи глобала, попадающие в топ игрока (делает gd-rating --waiting)
 
 ap = argparse.ArgumentParser(description="Дописывает находки compare.py в my_extras.json")
 ap.add_argument("--dry-run", action="store_true", help="ничего не писать, только показать")
@@ -429,9 +429,10 @@ def save_missing(with_links):
 
 
 def publish_waiting():
-    """Копирует waiting_records.json из scripts/ в корень репозитория (если gd-rating его сделал)."""
+    """Копирует waiting_records.json из scripts/ в папку cbd/ репозитория (если gd-rating его сделал)."""
     src = HERE / "waiting_records.json"
     if src.exists():
+        WAITING.parent.mkdir(exist_ok=True)  # папка cbd/ может ещё не существовать
         text = src.read_text("utf-8")
         if not WAITING.exists() or WAITING.read_text("utf-8") != text:
             WAITING.write_text(text, "utf-8")
@@ -451,7 +452,7 @@ def commit_and_push(message, files):
                                                "41898282+github-actions[bot]@users.noreply.github.com"))
     for f in files:
         if f.exists():
-            git("add", f.name)
+            git("add", str(f.relative_to(ROOT)))  # путь от корня репозитория: нужен для файлов в подпапках (cbd/...)
     if git("diff", "--cached", "--quiet", check=False).returncode == 0:
         print("Нечего коммитить: файлы не изменились.")
         return
