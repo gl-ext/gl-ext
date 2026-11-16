@@ -948,8 +948,8 @@ def load_previous_players_links():
 
 
 def add_videos_to_players(links):
-    """Дописывает ссылки на видео в missing_players.json (третий пункт каждой записи; не нашлась - ""),
-    команд для новых игроков не создаёт."""
+    """Дописывает ссылку на видео в missing_players.json только у ПЕРВОЙ записи каждого игрока (третий пункт записи;
+    не нашлась - ""), у остальных записей ссылка пустая и видео для них не ищутся. Команд для новых игроков не создаёт."""
     path = Path(PLAYERS_FILE)
     if not path.exists():
         print(f"Нет {PLAYERS_FILE}: новых игроков нет, пропускаю")
@@ -966,10 +966,13 @@ def add_videos_to_players(links):
         player_id = info.get("gdr_id") or player_id_from_key(key)
         print(f"\nНовый игрок: {key} ({info.get('nick')}), наш ID {player_id}")
 
-        for record in info.get("records", []):
-            total += 1
+        for record_index, record in enumerate(info.get("records", [])):
             while len(record) < 3:
                 record.append("")
+            if record_index > 0:  # видео только у первой записи
+                record[2] = ""
+                continue
+            total += 1
             level_id, raw_percent = record[0], record[1]
             percent = parse_percent(raw_percent)
 
@@ -1000,7 +1003,7 @@ def add_videos_to_players(links):
     save_players_json(users, PLAYERS_FILE)
     Path(PLAYERS_NOT_FOUND_FILE).write_text(
         "\n".join(not_found) + ("\n" if not_found else ""), encoding="utf-8")
-    print(f"\nНовые игроки: записей {total}, из прошлого файла {reused}, найдено видео {found}, "
+    print(f"\nНовые игроки: первых записей {total}, из прошлого файла {reused}, найдено видео {found}, "
           f"без видео {len(not_found)}. JSON: {PLAYERS_FILE}")
 
 
