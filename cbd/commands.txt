@@ -1,4 +1,8 @@
 Видео: Pointercrate
+/fulladd TheFireInside, NervHell, https://www.youtube.com/watch?v=0NH_AunAF7E
+/try TheFireInside, NervHell
+
+Видео: Pointercrate
 /fulladd Arouvis, The Plunge, https://www.youtube.com/watch?v=x87JHzJqJxU
 /try Arouvis, The Plunge
 
