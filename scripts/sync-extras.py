@@ -484,8 +484,11 @@ def main():
 
     # 3. И сравнение
 
-    run([sys.executable, cmp_script, "in-cbd-not-in-gdr", "--cbd", cbd_txt, "--gdr", gdr_txt,
-         "--out-dir", work], "compare: in-cbd-not-in-gdr")
+    # --include-absent: игроки CoreBoard, которых нет в gdr совсем, но чей ID находится через gdr-ids.json или
+    # coreboard_id_map.json, сравниваются с пустым gdr: их записи попадают в my_extras и не пропадают при пересборке
+    cmp_cmd = [sys.executable, cmp_script, "in-cbd-not-in-gdr", "--cbd", cbd_txt, "--gdr", gdr_txt,
+               "--out-dir", work, "--include-absent"]
+    run(cmp_cmd, "compare: in-cbd-not-in-gdr")
 
     found_file = work / "missing_achievements.json"
     if not found_file.exists():
