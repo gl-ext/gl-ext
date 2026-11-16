@@ -59,6 +59,7 @@ ROOT = HERE.parent                              # корень репозито�
 EXTRAS = ROOT / "my_extras.json"
 LEVELS = ROOT / "levels_tp.json"
 MISSING = ROOT / "missing_achievements.json"
+WAITING = ROOT / "waiting_records.json"   # непринятые записи глобала, попадающие в топ игрока (делает gd-rating --waiting)
 
 ap = argparse.ArgumentParser(description="Дописывает находки compare.py в my_extras.json")
 ap.add_argument("--dry-run", action="store_true", help="ничего не писать, только показать")
@@ -427,6 +428,16 @@ def save_missing(with_links):
     return True
 
 
+def publish_waiting():
+    """Копирует waiting_records.json из scripts/ в корень репозитория (если gd-rating его сделал)."""
+    src = HERE / "waiting_records.json"
+    if src.exists():
+        text = src.read_text("utf-8")
+        if not WAITING.exists() or WAITING.read_text("utf-8") != text:
+            WAITING.write_text(text, "utf-8")
+            print(f"{WAITING.name} обновлён.")
+
+
 def git(*a, check=True):
     r = subprocess.run(["git", *a], cwd=ROOT, text=True, capture_output=True)
     if check and r.returncode != 0:
@@ -476,7 +487,7 @@ def main():
     # 2. Потом оба рейтинга
     if not args.skip_fetch:
         run([sys.executable, cb, "all", "-r"], "CoreBoard: оба топа -> cbd.txt")
-        run([sys.executable, gdr_script, "--src", "pointercrate,wml", "--ids"],
+        run([sys.executable, gdr_script, "--src", "pointercrate,wml", "--ids", "--waiting"],
             "Наш рейтинг (глобал + pointercrate + wml) -> gdr_gl_pc_wml.txt")
     for f in (cbd_txt, gdr_txt):
         if not f.exists() or f.stat().st_size == 0:
@@ -517,6 +528,8 @@ def main():
         else:
             print("ВНИМАНИЕ: add-video-links.py не создал missing_achievements_with_videos.json, ссылки будут пустыми.")
 
+    if not args.dry_run:
+        publish_waiting()
     extras = load_extras()
     added, improved, lowered, removed, details = replace_found(extras, found)
     changes = added + improved + lowered + removed
@@ -531,7 +544,7 @@ def main():
         if not args.dry_run:
             save_missing(with_links)
         if args.commit and not args.dry_run:
-            commit_and_push("levels_tp / missing_achievements: обновление (авто, CoreBoard)", [LEVELS, MISSING])
+            commit_and_push("levels_tp / missing_achievements: обновление (авто, CoreBoard)", [LEVELS, MISSING, WAITING])
         return
     # защита: теперь файл перезаписывается целиком, поэтому считаем ВСЕ изменения, а не только новые
     if changes > args.max and not args.force:
@@ -550,6 +563,6 @@ def main():
         msg = f"my_extras: +{added} новых, {improved} повышено, {lowered} понижено, {removed} убрано (авто, CoreBoard)"
         if levels_changed:
             msg += "; levels_tp обновлён"
-        commit_and_push(msg, [EXTRAS, LEVELS, MISSING])
+        commit_and_push(msg, [EXTRAS, LEVELS, MISSING, WAITING])
 
 main()
