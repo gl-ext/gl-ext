@@ -1,0 +1,77 @@
+name: mobile-auto-update
+
+# Автообновление МОБИЛЬНОГО рейтинга (отдельно от auto-update): записи только с WML, топ с coreboard .../mobile/world.
+# Всё лежит в папке mobile/ в корне репозитория (скрипты, levels_mobile.json, ids_mobile.json, my_extras.json, cbd/).
+# Один шаг делает всё: топ CoreBoard -> уровни -> рейтинг по WML -> my_extras.json (чего нет у нас) -> cbd/ (чего нет у них).
+# Этот файл должен лежать именно в .github/workflows/: GitHub не запускает workflow из других папок.
+
+on:
+  workflow_dispatch:
+    inputs:
+      update_args:
+        description: "Аргументы для mobile-update.py (например --force или --skip-fetch)"
+        required: false
+        default: ""
+  schedule:
+    # Со сдвигом от основного auto-update (там */30), чтобы два workflow не пушили в одну минуту
+    - cron: "15,45 * * * *"
+
+permissions:
+  contents: write
+
+# Своя группа: мобильный и основной workflow друг друга не ждут. Если оба запушат одновременно,
+# mobile-update.py сам делает pull --rebase и повторяет push.
+concurrency:
+  group: mobile-auto-update
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Кеш страниц игроков WML (иначе каждый запуск качает всех игроков заново).
+      - name: Restore WML cache
+        uses: actions/cache/restore@v4
+        with:
+          path: mobile/scripts/wmlcache.json
+          key: wmlcache-mobile-${{ github.run_id }}
+          restore-keys: wmlcache-mobile-
+
+      - name: Run mobile-update.py
+        env:
+          UPDATE_ARGS: ${{ github.event.inputs.update_args }}
+        run: python mobile/scripts/mobile-update.py --commit $UPDATE_ARGS
+
+      # Промежуточные файлы в репозиторий не коммитятся. Чтобы их посмотреть, скачай артефакт "mobile-debug-files":
+      # Actions -> нужный запуск -> внизу раздел Artifacts.
+      - name: Upload debug files
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-debug-files
+          path: |
+            mobile/scripts/gdr.txt
+            mobile/scripts/gdr.json
+            mobile/scripts/gdr_videos.json
+            mobile/scripts/cbd.txt
+            mobile/scripts/cbd.json
+            mobile/scripts/cbd_ids.json
+            mobile/scripts/mobile_levels_not_found.txt
+            mobile/scripts/cbd-update/
+            mobile/scripts/cbd-update-extras/
+          if-no-files-found: ignore
+          retention-days: 3
+
+      # Сохраняем и после сбоя, и после таймаута (при таймауте задание считается отменённым).
+      - name: Save WML cache
+        if: ${{ always() && hashFiles('mobile/scripts/wmlcache.json') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: mobile/scripts/wmlcache.json
+          key: wmlcache-mobile-${{ github.run_id }}
