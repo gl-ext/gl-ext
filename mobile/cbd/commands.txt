@@ -67,10 +67,6 @@
 /try Aguzz, Shardscapes 67%
 
 Видео: WML
-/fulladd Guser, Cybernetic Crescent, https://www.youtube.com/watch?v=HNEq6r_Syog
-/try Guser, Cybernetic Crescent
-
-Видео: WML
 /fulladd NiQSaIL, Jesse Pinkman, https://www.youtube.com/watch?v=goMsu0vJ0Sk
 /try NiQSaIL, Jesse Pinkman
 
