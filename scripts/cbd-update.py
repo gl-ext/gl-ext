@@ -20,8 +20,10 @@ my_extras.json этот скрипт не трогает.
 
 levels_tp.json и gdr-ids.json всегда скачиваются с GitHub (локальные копии не читаются).
 
-ID CoreBoard берутся из scripts/coreboard_id_map.json ({"<ID>": {"nick": ..., "gdr_id": ...}}), который лежит в
-репозитории рядом со скриптами (в ссылках на сайте CoreBoard ID не читаются). JSON для CoreBoard выходят с ЕГО ID:
+ID CoreBoard. Пока в ссылках на игроков сайта только ники, ID берутся из scripts/coreboard_id_map.json
+({"<ID>": {"nick": ..., "gdr_id": ...}}) в репозитории. Когда в ссылках появятся числовые ID, coreboard_parse.py
+сам сохранит их в cbd_ids.json (ник -> ID), и они главнее карты: игрок сопоставляется по ID сайта через карту,
+новые ID идут после самого большого из обоих источников. JSON для CoreBoard выходят с ЕГО ID:
 в missing_achievements*.json вместо наших ID стоят ID CoreBoard, а новые игроки в missing_players.json получают ID по
 порядку после самого большого в coreboard_id_map.json (игрок, уже записанный в карте, сохраняет свой ID). В
 missing_players.json только код страны (country_code), без названия; наш ID остаётся в поле gdr_id. Файла карты нет:
@@ -209,8 +211,10 @@ def main():
         if not f.exists() or f.stat().st_size == 0:
             sys.exit(f"Нет файла {f.name} (или он пустой). Останавливаюсь.")
 
+    cbd_ids = HERE / "cbd_ids.json"   # ник -> ID с сайта; делает coreboard_parse, когда в ссылках появятся ID
     id_map = HERE / "coreboard_id_map.json"
-    print(f"\nID CoreBoard: {'есть (' + id_map.name + ')' if id_map.exists() else 'нет ' + id_map.name + ', ключи остаются нашими'}")
+    print(f"\nID CoreBoard: с сайта {'есть' if cbd_ids.exists() else 'нет'}, "
+          f"{id_map.name} {'есть' if id_map.exists() else 'нет'}")
 
     out = Path(args.out_dir).resolve()
     out.mkdir(parents=True, exist_ok=True)
@@ -228,6 +232,8 @@ def main():
 
     cmp_cmd = [sys.executable, cmp_script, "in-gdr-not-in-cbd", "--cbd", cbd_txt, "--gdr", gdr_txt,
                "--out-dir", out]
+    if cbd_ids.exists():
+        cmp_cmd += ["--cbd-ids", cbd_ids]
     if id_map.exists():
         cmp_cmd += ["--id-map", id_map]
     run(cmp_cmd, "compare: in-gdr-not-in-cbd")
