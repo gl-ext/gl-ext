@@ -847,9 +847,9 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, o
     Запись считается подходящей, если она лучше принятой у человека на этом уровне (или принятой нет) и уровень остаётся
     в его топ-N после добавления. Записи группируются по аккаунту глобала, с которого они поданы.
     Сравнение идёт со ВСЕМИ записями человека: глобал, Pointercrate, другие листы и my_extras (его подгружаем всегда).
-    Два файла в формате missing_achievements.json / missing_achievements_with_nicks.json, в каждом два раздела:
-    "players" - записи БОЛЬШЕ всех, что у человека есть; "players_included" - записи, которые равны или меньше
-    уже имеющейся (принятой или из экстрасов), то есть уже учтены."""
+    Два файла в формате missing_achievements.json / missing_achievements_with_nicks.json ({"users": {...}}).
+    В них только записи БОЛЬШЕ всех, что у человека уже есть (глобал, Pointercrate, другие листы, my_extras):
+    записи, которые равны или меньше имеющихся, ничего не добавляют и в файлы не попадают."""
     print("\nСтатусы записей глобала: " + (", ".join(f"{s} {n}" for s, n in sorted(status_seen.items())) or "нет данных"))
     if not any(s in status_seen for s in WAITING_STATUSES):
         print(f"  ВНИМАНИЕ: записей со статусом {sorted(WAITING_STATUSES)} не найдено. Проверь названия статусов выше "
@@ -892,36 +892,35 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, o
                 best[lvl_id] = (pct, link)
         return best
 
-    # person -> {"nick", "rank", "new": [(уровень, процент, видео)], "included": [...]}
+    # person -> {"nick", "rank", "new": [(уровень, процент, видео)]}
     people = {}
     for person, accs in by_person.items():
         base = dict(best_by.get(person, {}))
         for k, pct in extras_all.get(person, {}).items():  # лучшее из всего, включая my_extras
             base[k] = max(base.get(k, -1), pct)
-        new, included = [], []
+        new = []
         for acc, items in accs.items():
             for lvl_id, name, pct, video in items:
                 best = base.get(lvl_id)
-                if best is not None and pct <= best:  # равна или меньше того, что уже есть
-                    included.append((lvl_id, pct, video))
+                if best is not None and pct <= best:  # равна или меньше того, что уже есть: ничего не добавляет
                     continue
                 top = top_of({**base, lvl_id: pct})
                 if any(t[2] == lvl_id and t[3] == pct for t in top):  # попадает в топ-N
                     new.append((lvl_id, pct, video))
-        if not new and not included:
+        if not new:
             continue
         nick = (info.get(person) or (None, None))[0] or next(
             (n for items in accs.values() for _, n, _, _ in items if n), person)
-        people[person] = {"nick": nick, "rank": ranks.get(person), "new": new, "included": included}
+        people[person] = {"nick": nick, "rank": ranks.get(person), "new": new}
 
     order = sorted(people, key=lambda u: (people[u]["rank"] is None, people[u]["rank"] or 0, u))
 
-    def build(kind, with_nicks):
-        """Разделы как в missing_achievements(.json / _with_nicks.json): ID (или 'ID — ник') -> [[ID уровня, процент, X]],
+    def build(with_nicks):
+        """Как в missing_achievements(.json / _with_nicks.json): ID (или 'ID — ник') -> [[ID уровня, процент, X]],
         где X - ссылка на видео, а в файле с никами - название уровня. Записи внутри игрока по названию уровня."""
         out = {}
         for u in order:
-            best = pick_best(people[u][kind])
+            best = pick_best(people[u]["new"])
             if not best:
                 continue
             rows = sorted(best.items(), key=lambda kv: normalize_level_name(meta[kv[0]]["name"]))
@@ -929,26 +928,22 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, o
             out[key] = [[lvl, fmt_pct(pct), meta[lvl]["name"] if with_nicks else link] for lvl, (pct, link) in rows]
         return out
 
-    def write(path, sections):
-        lines = ["{"]
-        for si, (sname, users) in enumerate(sections):
-            lines.append(f'  {json.dumps(sname)}: {{')
-            items = list(users.items())
-            for i, (key, rows) in enumerate(items):
-                lines.append(f'    {json.dumps(key, ensure_ascii=False)}: [')
-                for j, r in enumerate(rows):
-                    lines.append(f'      {json.dumps(r, ensure_ascii=False)}' + ("," if j < len(rows) - 1 else ""))
-                lines.append("    ]" + ("," if i < len(items) - 1 else ""))
-            lines.append("  }" + ("," if si < len(sections) - 1 else ""))
-        lines += ["}", ""]
+    def write(path, users):
+        lines = ['{', '  "users": {']
+        items = list(users.items())
+        for i, (key, rows) in enumerate(items):
+            lines.append(f'    {json.dumps(key, ensure_ascii=False)}: [')
+            for j, r in enumerate(rows):
+                lines.append(f'      {json.dumps(r, ensure_ascii=False)}' + ("," if j < len(rows) - 1 else ""))
+            lines.append("    ]" + ("," if i < len(items) - 1 else ""))
+        lines += ['  }', '}', '']
         path.write_text("\n".join(lines), "utf-8")
 
     for fname, with_nicks in (("waiting_records.json", False), ("waiting_records_with_nicks.json", True)):
-        write(HERE / fname, [("players", build("new", with_nicks)), ("players_included", build("included", with_nicks))])
-    n_new = len(build("new", False))
-    n_inc = len(build("included", False))
-    print(f"waiting_records.json и waiting_records_with_nicks.json: игроков с новыми записями {n_new} "
-          f"(топ-{N}, больше всех), с уже учтёнными (равны или меньше) {n_inc}")
+        write(HERE / fname, build(with_nicks))
+    n_rec = sum(len(r) for r in build(False).values())
+    print(f"waiting_records.json и waiting_records_with_nicks.json: игроков {len(people)}, новых записей {n_rec} "
+          f"(топ-{N}, больше всех имеющихся)")
 
 
 def main():
