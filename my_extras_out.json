@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T14:10:33.540Z",
+  "generated": "2026-11-16T16:12:31.859Z",
   "users": {
     "2": [
       [2656,36,"Acheron",94,"",null,null,null,"my_extras",159.25,0]
@@ -53,6 +53,9 @@
       [2050,72,"poocubed",100,"",55,null,null,"my_extras",104,29.12],
       [1754,138,"Tartarus",100,"",null,null,null,"my_extras",17,0],
       [2024,297,"Bloodlust",100,"",null,null,null,"my_extras",0.97,0]
+    ],
+    "3640": [
+      [1591,182,"Trueffet",100,"",null,null,null,"my_extras",3.4,0]
     ],
     "3648": [
       [2296,229,"Renevant",100,"",null,null,null,"my_extras",1.8,0],
