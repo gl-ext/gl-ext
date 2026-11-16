@@ -879,6 +879,28 @@ if args.mode == "in-gdr-not-in-cbd":
         new_players[key] = info
 
 
+def level_name_for_missing_player(level_id):
+    """Название уровня для missing_players.json вместо ID, включая особые названия."""
+    level_id = str(level_id)
+
+    # Особые названия имеют приоритет над обычным названием из levels_tp.json.
+    special_name = SPECIAL_LEVEL_NAMES.get(level_id)
+    if special_name:
+        return special_name
+
+    level = levels_data.get(level_id)
+    if level and level.get("name"):
+        return level["name"]
+
+    # Уровень мог быть найден только в глобальном API.
+    for name, global_id in (global_levels_by_name or {}).items():
+        if str(global_id) == level_id:
+            return name
+
+    # Не должно происходить для успешно найденных уровней, но не теряем запись.
+    return level_id
+
+
 def save_players_json(players, filename):
     with open(filename, "w", encoding="utf-8") as f:
         f.write('{\n  "users": {\n')
@@ -892,6 +914,12 @@ def save_players_json(players, filename):
 GDR_TO_CB_FILE = out_path("gdr_to_cb_ids.json")
 
 if args.mode == "in-gdr-not-in-cbd":
+    # Только в missing_players.json заменяем ID уровней на названия.
+    # Остальные JSON-файлы compare.py сохраняют прежний формат с ID.
+    for player in new_players.values():
+        for record in player["records"]:
+            record[0] = level_name_for_missing_player(record[0])
+
     save_players_json(new_players, NEW_PLAYERS_FILE)
     # Наш ID -> ID на CoreBoard для игроков, которые есть в обоих рейтингах (по нему cbd-update переводит
     # missing_achievements*.json на ID CoreBoard). Нет ID CoreBoard: файла нет, переводить нечего.
