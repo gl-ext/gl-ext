@@ -3745,3 +3745,28 @@
     общие каналы: https://www.youtube.com/@NoCuBbe4GD
     поглощено: wml5380 (NoCuBbe4), аккаунты: {'wml': [5380]}
 
+===== 2026-11-16 19:23:47 UTC: склеено групп 6, поглощено записей 6 =====
+СКЛЕЕНО В 3648 (hotoboklol)
+    общие каналы: https://www.youtube.com/@hotoboklolgmd1677
+    поглощено: wml5403 (hotoboklol), аккаунты: {'wml': [5403]}
+
+СКЛЕЕНО В 4624 (MuralovTY)
+    общие каналы: https://www.youtube.com/@MuralovTY
+    поглощено: wml5399 (MuralovYT), аккаунты: {'wml': [5399]}
+
+СКЛЕЕНО В 6254 (ItzLohich)
+    общие каналы: https://www.youtube.com/@itzlohich
+    поглощено: wml5402 (ItzLohich), аккаунты: {'wml': [5402]}
+
+СКЛЕЕНО В 7039 (MainFox)
+    общие каналы: https://www.youtube.com/@gmdmainfox
+    поглощено: wml5407 (MainFox), аккаунты: {'wml': [5407]}
+
+СКЛЕЕНО В 25425 (hoooli)
+    общие каналы: https://www.youtube.com/@hoooligd
+    поглощено: wml5174 (hoooli), аккаунты: {'wml': [5174]}
+
+СКЛЕЕНО В 66217 (GrenadeofTacos)
+    общие каналы: https://www.youtube.com/@GrenadeofTacos
+    поглощено: pc2284 (GrenadeofTacos), аккаунты: {'pointercrate': [2284]}
+
