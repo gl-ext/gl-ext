@@ -44,7 +44,7 @@ parser.add_argument("--gdr", default="gdr.txt",
                          "По умолчанию gdr.txt")
 parser.add_argument("--id-map", default="",
                     help="in-gdr-not-in-cbd: JSON с ID игроков CoreBoard (coreboard_id_map.json: ID -> {nick, gdr_id}). "
-                         "По умолчанию coreboard_id_map.json рядом с этим скриптом. Новые игроки получают ID по порядку "
+                         "По умолчанию coreboard_id_map.json в корне репозитория (или рядом со скриптом). Новые игроки получают ID по порядку "
                          "после самого большого в этом файле. Нет файла: ключи JSON наши")
 parser.add_argument("--cbd-ids", default="",
                     help="JSON ник -> ID игрока на CoreBoard (делает coreboard-parse.py, когда в ссылках на игроков появятся ID). "
@@ -331,7 +331,7 @@ nick_to_id = {
 # Два источника, ID С САЙТА ГЛАВНЕЕ:
 #   1. cbd_ids.json (ник -> ID): делает coreboard-parse.py, когда в ссылках на игроков стоят числовые ID.
 #      Пока ссылки идут по нику, файла нет.
-#   2. coreboard_id_map.json ({"<ID>": {"nick", "gdr_id"}}) в репозитории рядом со скриптами: ID -> наш ID.
+#   2. coreboard_id_map.json ({"<ID>": {"nick", "gdr_id"}}) в корне репозитория: ID -> наш ID.
 # Если ID игрока на сайте есть в карте, игрок сопоставляется с gdr по ID (а не по нику). Без ID сайта работает
 # сопоставление по нику через gdr-ids.json, как раньше. Новым игрокам ID выдаются после самого большого из обоих
 # источников. Нет ни того, ни другого: ключи JSON наши.
@@ -356,7 +356,12 @@ if cb_id_by_nick:
     max_cb_id = max(int(v) for v in cb_id_by_nick.values())
     print(f"ID CoreBoard с сайта: {len(cb_id_by_nick)} игроков ({cb_ids_file})")
 
-id_map_file = args.id_map or os.path.join(os.path.dirname(os.path.abspath(__file__)), "coreboard_id_map.json")
+# По умолчанию карта лежит в корне репозитория (папка выше scripts/); если там её нет, ищем рядом со скриптом
+_here = os.path.dirname(os.path.abspath(__file__))
+id_map_file = args.id_map or next(
+    (p for p in (os.path.join(os.path.dirname(_here), "coreboard_id_map.json"),
+                 os.path.join(_here, "coreboard_id_map.json")) if os.path.exists(p)),
+    os.path.join(os.path.dirname(_here), "coreboard_id_map.json"))
 if os.path.exists(id_map_file):
     try:
         with open(id_map_file, encoding="utf-8") as f:
