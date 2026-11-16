@@ -20,11 +20,12 @@ my_extras.json этот скрипт не трогает.
 
 levels_tp.json и gdr-ids.json всегда скачиваются с GitHub (локальные копии не читаются).
 
-ID CoreBoard. Когда в ссылках на игроков CoreBoard появятся числовые ID, coreboard_parse.py сам сохранит их в
-cbd_ids.json (ник -> ID), и тогда JSON для CoreBoard выходят с ЕГО ID: в missing_achievements*.json вместо наших ID
-стоят ID CoreBoard, а новые игроки в missing_players.json получают ID по порядку после самого большого на CoreBoard
-(плюс страна; наш ID остаётся в поле gdr_id). Пока ID на сайте нет, всё работает как раньше. Проверить заранее
-можно по CSV от автора CoreBoard: --cbd-csv table.csv.
+ID CoreBoard берутся из scripts/coreboard_id_map.json ({"<ID>": {"nick": ..., "gdr_id": ...}}), который лежит в
+репозитории рядом со скриптами (в ссылках на сайте CoreBoard ID не читаются). JSON для CoreBoard выходят с ЕГО ID:
+в missing_achievements*.json вместо наших ID стоят ID CoreBoard, а новые игроки в missing_players.json получают ID по
+порядку после самого большого в coreboard_id_map.json (игрок, уже записанный в карте, сохраняет свой ID). В
+missing_players.json только код страны (country_code), без названия; наш ID остаётся в поле gdr_id. Файла карты нет:
+всё работает как раньше, ключи наши.
 
 Запуск (из любой папки, пути считаются от места скрипта):
   python scripts/cbd-update.py                  полный прогон, результат в scripts/cbd-update/
@@ -37,7 +38,6 @@ cbd_ids.json (ник -> ID), и тогда JSON для CoreBoard выходят 
   --out-dir PATH  рабочая папка с полными результатами (по умолчанию cbd-update рядом со скриптом)
   --skip-fetch    не запускать coreboard_parse и gd-rating, взять готовые cbd.txt и gdr.txt
   --no-videos     остановиться после compare, видео и команды не делать (с --commit нельзя)
-  --cbd-csv PATH  взять ID игроков CoreBoard из CSV автора (колонки: ID, место, ник, ...), если на сайте их ещё нет
 
 В рабочей папке кроме трёх файлов лежат missing_achievements_with_videos.json,
 missing_video_links.txt (где видео не нашлось), video_link_sources.txt и служебные файлы compare.
@@ -74,7 +74,6 @@ ap.add_argument("--commit", action="store_true", help="скопировать р
 ap.add_argument("--out-dir", default=str(HERE / "cbd-update"), help="рабочая папка с результатами")
 ap.add_argument("--skip-fetch", action="store_true", help="не качать cbd и gdr заново")
 ap.add_argument("--no-videos", action="store_true", help="только compare, без видео и команд")
-ap.add_argument("--cbd-csv", default="", help="CSV автора CoreBoard: взять ID игроков оттуда (если на сайте их ещё нет)")
 args = ap.parse_args()
 if args.no_videos and args.commit:
     ap.error("--no-videos нельзя вместе с --commit: в cbd/ попал бы устаревший commands.txt")
@@ -210,17 +209,8 @@ def main():
         if not f.exists() or f.stat().st_size == 0:
             sys.exit(f"Нет файла {f.name} (или он пустой). Останавливаюсь.")
 
-    cbd_ids = HERE / "cbd_ids.json"
-    if args.cbd_csv:
-        csv_path = Path(args.cbd_csv).resolve()
-        if not csv_path.exists():
-            sys.exit(f"Нет файла {csv_path} (--cbd-csv).")
-        run([sys.executable, cb, "--csv", csv_path, "--out", "cbd_csv.json"], "CoreBoard: ID игроков из CSV")
-        csv_ids = HERE / "cbd_csv_ids.json"
-        if not csv_ids.exists():
-            sys.exit("В CSV не нашлось ни одного числового ID.")
-        shutil.copyfile(csv_ids, cbd_ids)
-    print(f"\nID CoreBoard: {'есть (' + str(cbd_ids.name) + ')' if cbd_ids.exists() else 'нет, ключи остаются нашими'}")
+    id_map = HERE / "coreboard_id_map.json"
+    print(f"\nID CoreBoard: {'есть (' + id_map.name + ')' if id_map.exists() else 'нет ' + id_map.name + ', ключи остаются нашими'}")
 
     out = Path(args.out_dir).resolve()
     out.mkdir(parents=True, exist_ok=True)
@@ -238,8 +228,8 @@ def main():
 
     cmp_cmd = [sys.executable, cmp_script, "in-gdr-not-in-cbd", "--cbd", cbd_txt, "--gdr", gdr_txt,
                "--out-dir", out]
-    if cbd_ids.exists():
-        cmp_cmd += ["--cbd-ids", cbd_ids]
+    if id_map.exists():
+        cmp_cmd += ["--id-map", id_map]
     run(cmp_cmd, "compare: in-gdr-not-in-cbd")
 
     found_file = out / "missing_achievements.json"
