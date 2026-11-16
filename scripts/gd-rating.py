@@ -839,7 +839,7 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals):
 
     items = sorted(players.items(), key=lambda kv: (kv[1]["rank"] is None, kv[1]["rank"] or 0, kv[0]))
     out = HERE / "waiting_records.json"
-    out.write_text(json.dumps({"top_n": N, "players": dict(items)}, ensure_ascii=False, indent=1), "utf-8")
+    out.write_text(json.dumps({"players": dict(items)}, ensure_ascii=False, indent=1), "utf-8")
     n_rec = sum(len(v) for _, p in items for v in p["accounts"].values())
     print(f"Непринятых записей, попадающих в топ-{N}: {n_rec}, игроков {len(items)}: {out.name}")
 
