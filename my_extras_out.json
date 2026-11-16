@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T22:03:07.239Z",
+  "generated": "2026-11-16T22:55:26.385Z",
   "users": {
     "2": [
       [2656,36,"Acheron",94,"",null,null,null,"my_extras",159.25,0]
@@ -307,6 +307,9 @@
     ],
     "13462": [
       [2685,109,"The Yangire",100,"",null,null,null,"my_extras",46,0]
+    ],
+    "13502": [
+      [3409,7,"Green Bullet",100,"",null,null,null,"my_extras",760,0]
     ],
     "13506": [
       [2976,5,"Amethyst",69,"",null,null,null,"my_extras",313.22,0],
