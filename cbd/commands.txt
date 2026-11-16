@@ -9,3 +9,7 @@
 Видео: Pointercrate
 /fulladd DTDom, Delta, https://www.youtube.com/watch?v=L2mzGPEUo84
 /try DTDom, Delta
+
+Видео: Pointercrate
+/fulladd Imbeemed, Avernus 70%, https://www.youtube.com/watch?v=CHJwSeIcpUI
+/try Imbeemed, Avernus 70%
