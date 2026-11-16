@@ -20,8 +20,8 @@ my_extras.json этот скрипт не трогает.
 
 levels_tp.json и gdr-ids.json всегда скачиваются с GitHub (локальные копии не читаются).
 
-ID CoreBoard. Пока в ссылках на игроков сайта только ники, ID берутся из scripts/coreboard_id_map.json
-({"<ID>": {"nick": ..., "gdr_id": ...}}) в репозитории. Когда в ссылках появятся числовые ID, coreboard_parse.py
+ID CoreBoard. Пока в ссылках на игроков сайта только ники, ID берутся из coreboard_id_map.json в корне репозитория
+({"<ID>": {"nick": ..., "gdr_id": ...}}). Когда в ссылках появятся числовые ID, coreboard_parse.py
 сам сохранит их в cbd_ids.json (ник -> ID), и они главнее карты: игрок сопоставляется по ID сайта через карту,
 новые ID идут после самого большого из обоих источников. JSON для CoreBoard выходят с ЕГО ID:
 в missing_achievements*.json вместо наших ID стоят ID CoreBoard, а новые игроки в missing_players.json получают ID по
@@ -212,7 +212,8 @@ def main():
             sys.exit(f"Нет файла {f.name} (или он пустой). Останавливаюсь.")
 
     cbd_ids = HERE / "cbd_ids.json"   # ник -> ID с сайта; делает coreboard_parse, когда в ссылках появятся ID
-    id_map = HERE / "coreboard_id_map.json"
+    id_map = next((p for p in (ROOT / "coreboard_id_map.json", HERE / "coreboard_id_map.json") if p.exists()),
+                  ROOT / "coreboard_id_map.json")   # корень репозитория, запасной вариант рядом со скриптом
     print(f"\nID CoreBoard: с сайта {'есть' if cbd_ids.exists() else 'нет'}, "
           f"{id_map.name} {'есть' if id_map.exists() else 'нет'}")
 
