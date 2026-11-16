@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16T17:24:04.075Z",
+ "generated": "2026-11-16T18:20:20.245Z",
  "users": [
   {
    "place": 1,
@@ -75,6 +75,15 @@
   },
   {
    "place": 9,
+   "oldPlace": 10,
+   "id": "13661",
+   "name": "kloone",
+   "country": "Finland",
+   "points": 6057.74,
+   "basePoints": 5661.74
+  },
+  {
+   "place": 10,
    "oldPlace": 19,
    "id": "5527",
    "name": "Andreya6",
@@ -83,22 +92,13 @@
    "basePoints": 4683.79
   },
   {
-   "place": 10,
+   "place": 11,
    "oldPlace": 9,
    "id": "13508",
    "name": "w3rty",
    "country": "Russia",
    "points": 5904.91,
    "basePoints": 5904.91
-  },
-  {
-   "place": 11,
-   "oldPlace": 10,
-   "id": "13661",
-   "name": "kloone",
-   "country": "Finland",
-   "points": 5661.74,
-   "basePoints": 5661.74
   },
   {
    "place": 12,
