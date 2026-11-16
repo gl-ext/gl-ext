@@ -3727,3 +3727,8 @@
     общие каналы: https://www.youtube.com/@pookowski
     поглощено: pc72113 ([CHEET] Pookowski), аккаунты: {'pointercrate': [72113]}
 
+===== 2026-11-16 09:10:35 UTC: склеено групп 1, поглощено записей 1 =====
+СКЛЕЕНО В 18058 (grechka084)
+    общие каналы: https://www.youtube.com/@grechka084
+    поглощено: pc73251 (grechka084), аккаунты: {'pointercrate': [73251]}
+
