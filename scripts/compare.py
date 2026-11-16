@@ -42,10 +42,13 @@ parser.add_argument("--cbd", default="cbd.txt",
 parser.add_argument("--gdr", default="gdr.txt",
                     help="файл gd-rating (ID в [скобках] в конце строки, делается с --ids). "
                          "По умолчанию gdr.txt")
+parser.add_argument("--id-map", default="",
+                    help="in-gdr-not-in-cbd: JSON с ID игроков CoreBoard (coreboard_id_map.json: ID -> {nick, gdr_id}). "
+                         "По умолчанию coreboard_id_map.json рядом с этим скриптом. Новые игроки получают ID по порядку "
+                         "после самого большого в этом файле. Нет файла: ключи JSON наши")
 parser.add_argument("--cbd-ids", default="",
-                    help="in-gdr-not-in-cbd: JSON ник -> ID игрока на CoreBoard (делает coreboard-parse.py, когда в ссылках "
-                         "на игроков есть ID). По умолчанию cbd_ids.json рядом с файлом --cbd, если он есть. "
-                         "Нет ID: всё как раньше (ключи JSON наши)")
+                    help="JSON ник -> ID игрока на CoreBoard (делает coreboard-parse.py, когда в ссылках на игроков появятся ID). "
+                         "По умолчанию cbd_ids.json рядом с файлом --cbd, если он есть. ID с сайта главнее coreboard_id_map.json")
 parser.add_argument("--out-dir", default="compare",
                     help="папка для всех создаваемых файлов (создаётся сама, рядом с тем местом, "
                          "откуда запущен скрипт). По умолчанию compare. Чтобы писать в текущую папку: --out-dir .")
@@ -323,41 +326,54 @@ nick_to_id = {
 
 
 # =========================
-# ID игроков на CoreBoard (только in-gdr-not-in-cbd)
+# ID игроков на CoreBoard
 # =========================
-# cbd_ids.json (ник -> ID) делает coreboard-parse.py, когда в ссылках на игроков стоят числовые ID.
-# Если файла нет, работаем как раньше: ключи JSON наши. cbd.json (рядом с cbd.txt) нужен только для названий
-# стран новых игроков: в нём у игроков CoreBoard страна записана словами, а у нас в рейтинге только флаг.
-cb_id_by_nick = {}
-cbd_country_by_nick = {}
+# Два источника, ID С САЙТА ГЛАВНЕЕ:
+#   1. cbd_ids.json (ник -> ID): делает coreboard-parse.py, когда в ссылках на игроков стоят числовые ID.
+#      Пока ссылки идут по нику, файла нет.
+#   2. coreboard_id_map.json ({"<ID>": {"nick", "gdr_id"}}) в репозитории рядом со скриптами: ID -> наш ID.
+# Если ID игрока на сайте есть в карте, игрок сопоставляется с gdr по ID (а не по нику). Без ID сайта работает
+# сопоставление по нику через gdr-ids.json, как раньше. Новым игрокам ID выдаются после самого большого из обоих
+# источников. Нет ни того, ни другого: ключи JSON наши.
+cb_id_by_nick = {}   # нормализованный ник cbd -> ID CoreBoard (с сайта)
+gdr_by_cb_id = {}    # ID CoreBoard -> наш ID (карта)
+cb_id_by_gdr = {}    # наш ID (нормализованный) -> ID CoreBoard (карта)
+max_cb_id = 0
 
-if args.mode == "in-gdr-not-in-cbd":
-    cbd_dir = os.path.dirname(os.path.abspath(args.cbd))
-    cb_ids_file = args.cbd_ids or os.path.join(cbd_dir, "cbd_ids.json")
-    if os.path.exists(cb_ids_file):
-        try:
-            with open(cb_ids_file, encoding="utf-8") as f:
-                cb_id_by_nick = {
-                    normalize_nick(nick): str(cb_id).strip()
-                    for nick, cb_id in json.load(f).items()
-                    if str(cb_id).strip().isdigit()
-                }
-        except (OSError, ValueError, AttributeError) as error:
-            print(f"{cb_ids_file}: не удалось прочитать ({error}), ID CoreBoard не используются")
-    if cb_id_by_nick:
-        print(f"ID CoreBoard: {len(cb_id_by_nick)} игроков ({cb_ids_file})")
-    else:
-        print("ID CoreBoard не найдены (нет cbd_ids.json): ключи в missing_players.json остаются нашими")
+cbd_dir = os.path.dirname(os.path.abspath(args.cbd))
+cb_ids_file = args.cbd_ids or os.path.join(cbd_dir, "cbd_ids.json")
+if os.path.exists(cb_ids_file):
+    try:
+        with open(cb_ids_file, encoding="utf-8") as f:
+            cb_id_by_nick = {
+                normalize_nick(nick): str(cb_id).strip()
+                for nick, cb_id in json.load(f).items()
+                if str(cb_id).strip().isdigit()
+            }
+    except (OSError, ValueError, AttributeError) as error:
+        print(f"{cb_ids_file}: не удалось прочитать ({error}), ID с сайта не используются")
+if cb_id_by_nick:
+    max_cb_id = max(int(v) for v in cb_id_by_nick.values())
+    print(f"ID CoreBoard с сайта: {len(cb_id_by_nick)} игроков ({cb_ids_file})")
 
-    cbd_json = os.path.join(cbd_dir, "cbd.json")
-    if os.path.exists(cbd_json):
-        try:
-            with open(cbd_json, encoding="utf-8") as f:
-                for row in json.load(f):
-                    if row.get("name") and row.get("country"):
-                        cbd_country_by_nick[normalize_nick(row["name"])] = row["country"]
-        except (OSError, ValueError, AttributeError, TypeError) as error:
-            print(f"{cbd_json}: не удалось прочитать ({error}), названия стран не определятся")
+id_map_file = args.id_map or os.path.join(os.path.dirname(os.path.abspath(__file__)), "coreboard_id_map.json")
+if os.path.exists(id_map_file):
+    try:
+        with open(id_map_file, encoding="utf-8") as f:
+            for cb_id, row in json.load(f).items():
+                cb_id = str(cb_id).strip()
+                if not cb_id.isdigit():
+                    continue
+                max_cb_id = max(max_cb_id, int(cb_id))
+                gdr_id = row.get("gdr_id") if isinstance(row, dict) else None
+                if gdr_id:
+                    gdr_by_cb_id[cb_id] = normalize_id(gdr_id)
+                    cb_id_by_gdr[normalize_id(gdr_id)] = cb_id
+    except (OSError, ValueError, AttributeError) as error:
+        sys.exit(f"{id_map_file}: не удалось прочитать ({error}). Останавливаюсь.")
+    print(f"coreboard_id_map.json: {len(cb_id_by_gdr)} игроков, самый большой ID {max_cb_id}")
+if not (cb_id_by_nick or cb_id_by_gdr):
+    print("ID CoreBoard не найдены (нет ни cbd_ids.json, ни coreboard_id_map.json): ключи в missing_players.json остаются нашими")
 
 
 # =========================
@@ -532,7 +548,11 @@ def read_players(filename, id_in_line, invalid_filename):
             if not nick:
                 reasons.append("не удалось найти ник")
             else:
-                player_id = nick_to_id.get(normalize_nick(nick))
+                # ID с сайта главнее: если он есть в карте, игрок сопоставляется по нему, иначе по нику
+                site_id = cb_id_by_nick.get(normalize_nick(nick))
+                player_id = gdr_by_cb_id.get(site_id) if site_id else None
+                if not player_id:
+                    player_id = nick_to_id.get(normalize_nick(nick))
 
                 if not player_id:
                     stats["missing_id"] += 1
@@ -707,9 +727,9 @@ for player_id in common_ids:
 # =========================
 # Только в режиме in-gdr-not-in-cbd. Берём игроков gdr, которых нет в cbd, с очками меньше
 # --new-max-score (по умолчанию 250), для ВСЕХ стран. Результат: missing_players.json
-#   {"users": {"<ID>": {"nick": "Ник", "country": "United States", "country_code": "US",
+#   {"users": {"<ID>": {"nick": "Ник", "country_code": "US",
 #                       "gdr_id": "<наш ID>", "records": [[ID уровня, процент, ссылка], ...]}}}
-# ID-ключ: если есть ID CoreBoard (cbd_ids.json), это НОВЫЕ ID по порядку после самого большого на CoreBoard;
+# ID-ключ: если есть ID CoreBoard (сайт или coreboard_id_map.json), это НОВЫЕ ID по порядку после самого большого;
 # иначе наш ID (глобал, pcN или wmlN). Наш ID всегда лежит в gdr_id. Ссылки на видео дописывает add-video-links.py.
 # Игрок НЕ попадает в файл (а пишется в missing_players_skipped.txt с причиной), если:
 #   - его ник совпал с ником игрока cbd, которого мы не смогли сопоставить, или у них почти одни и те же
@@ -723,18 +743,6 @@ new_players = {}
 skipped_players = []
 
 
-def build_country_names():
-    """Код страны (US) -> название, как его пишет CoreBoard (United States). Берём из игроков, которые есть в обоих
-    рейтингах: флаг у нас, слова у них. Побеждает самое частое название. Таблица стран не нужна."""
-    votes = {}
-    for pid in common_ids:
-        code = parse_flag(players1[pid]["line"])
-        name = cbd_country_by_nick.get(normalize_nick(players2[pid]["nick"] or ""))
-        if code and name:
-            votes.setdefault(code, collections.Counter())[name] += 1
-    return {code: counter.most_common(1)[0][0] for code, counter in votes.items()}
-
-
 def clean_nick(player_id, nick):
     """Ник без метки листа: 'Name [WML]' -> 'Name'."""
     nick = (nick or "").strip()
@@ -745,9 +753,9 @@ def clean_nick(player_id, nick):
 
 
 if args.mode == "in-gdr-not-in-cbd":
-    country_names = build_country_names()
-    # Новым игрокам CoreBoard-ID даём по порядку, начиная со следующего за самым большим (в порядке рейтинга gdr)
-    next_cb_id = max((int(v) for v in cb_id_by_nick.values()), default=0) + 1
+    # Новым игрокам CoreBoard-ID даём по порядку, начиная со следующего за самым большим (на сайте или в coreboard_id_map.json)
+    # (в порядке рейтинга gdr). Если игрок уже есть в карте (а на CoreBoard его нет), он сохраняет свой ID.
+    next_cb_id = max_cb_id + 1
     unmapped_cbd = [p for pid, p in players2.items() if pid.startswith(NICK_KEY_PREFIX)]
     unmapped_cbd_nicks = {normalize_nick(p["nick"]) for p in unmapped_cbd if p["nick"]}
 
@@ -785,14 +793,15 @@ if args.mode == "in-gdr-not-in-cbd":
         code = parse_flag(p1["line"])
         info = {
             "nick": nick,
-            "country": country_names.get(code),
             "country_code": code or None,
             "gdr_id": player_id,  # наш ID: по нему add-video-links ищет видео
             "records": records,
         }
-        if cb_id_by_nick:
-            key = str(next_cb_id)
-            next_cb_id += 1
+        if cb_id_by_gdr or cb_id_by_nick:
+            key = cb_id_by_gdr.get(normalize_id(player_id))
+            if key is None or key in new_players:
+                key = str(next_cb_id)
+                next_cb_id += 1
         else:
             key = player_id
         new_players[key] = info
@@ -816,7 +825,7 @@ if args.mode == "in-gdr-not-in-cbd":
     # missing_achievements*.json на ID CoreBoard). Нет ID CoreBoard: файла нет, переводить нечего.
     gdr_to_cb = {}
     for pid in common_ids:
-        cb_id = cb_id_by_nick.get(normalize_nick(players2[pid]["nick"] or ""))
+        cb_id = cb_id_by_nick.get(normalize_nick(players2[pid]["nick"] or "")) or cb_id_by_gdr.get(normalize_id(pid))
         if cb_id:
             gdr_to_cb[pid] = cb_id
     if os.path.exists(GDR_TO_CB_FILE):
@@ -824,10 +833,9 @@ if args.mode == "in-gdr-not-in-cbd":
     if gdr_to_cb:
         with open(GDR_TO_CB_FILE, "w", encoding="utf-8") as f:
             json.dump(gdr_to_cb, f, ensure_ascii=False, indent=1)
-    if cb_id_by_nick:
-        no_country = sum(1 for v in new_players.values() if not v["country"])
+    if cb_id_by_gdr or cb_id_by_nick:
         print(f"ID CoreBoard: сопоставлено игроков {len(gdr_to_cb)} из {len(common_ids)}; "
-              f"новым игрокам выдано ID {len(new_players)}; без названия страны: {no_country}")
+              f"новым игрокам выдано ID {len(new_players)}")
     with open(SKIPPED_PLAYERS_FILE, "w", encoding="utf-8") as f:
         f.write("\n".join(skipped_players) + ("\n" if skipped_players else ""))
 
