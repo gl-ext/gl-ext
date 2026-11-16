@@ -59,6 +59,8 @@ p.add_argument("--save", type=int, default=10, help="сохранять кеш �
 p.add_argument("--ttl", type=int, default=3600, help="секунд, пока кеш уровня свежий")
 p.add_argument("--add", action="append", default=[], help="своя запись: ID_игрока:ID_уровня:процент")
 p.add_argument("--ids", action="store_true", help="добавлять ID игрока в конец строки")
+p.add_argument("--waiting", action="store_true",
+               help="записать waiting_records.json: непринятые записи глобала (статус waiting), которые вошли бы в топ-N игрока")
 p.add_argument("--min-score", dest="min_score", type=float, default=None,
                help="показывать игроков с очками не меньше этого (меньше = лучше)")
 p.add_argument("--max-score", dest="max_score", type=float, default=None,
@@ -415,6 +417,10 @@ def apply_corrections(best_by, info, canon):
 CACHE_FILE = HERE / "levelcache.json"
 cache = json.loads(CACHE_FILE.read_text("utf-8")) if CACHE_FILE.exists() else {}
 lock = threading.Lock()
+# Статусы записей глобала, которые считаются "ждут проверки". Все статусы, которые видит скрипт, печатаются в логе.
+WAITING_STATUSES = {"waiting"}
+waiting_raw = {}   # ID уровня -> [[ID аккаунта, ник, процент, видео], ...] (записи в статусе waiting)
+status_seen = {}   # статус -> сколько записей
 
 
 def save_cache():
@@ -435,7 +441,11 @@ def level_records(lvl_id):
     c = cache.get(str(lvl_id))
     # len(x) >= 5: в старом кеше не было ссылки на видео - такие уровни перекачиваем
     if (c and c["total"] == total and time.time() - c["at"] < args.ttl
-            and all(len(x) >= 5 for x in c["recs"])):
+            and "wait" in c and all(len(x) >= 5 for x in c["recs"])):
+        with lock:
+            waiting_raw[str(lvl_id)] = c["wait"]
+            for st, n in (c.get("st") or {}).items():
+                status_seen[st] = status_seen.get(st, 0) + n
         return c["recs"]
     records = list(first)
     while len(records) < total:
@@ -443,18 +453,26 @@ def level_records(lvl_id):
         if not more:
             break
         records += more
-    out = []
+    out, wait, st_count = [], [], {}
     for r in records:
-        if str(r.get("status") or "accepted").lower() != "accepted":
-            continue
+        status = str(r.get("status") or "accepted").lower()
+        st_count[status] = st_count.get(status, 0) + 1
         u = r.get("user") or {}
+        if status in WAITING_STATUSES and u.get("id") is not None:
+            pct = r.get("percent")
+            wait.append([str(u["id"]), u.get("username"), float(pct if pct is not None else 100), r.get("video_url")])
+        if status != "accepted":
+            continue
         if u.get("id") is None:
             continue
         pct = r.get("percent")
         out.append([str(u["id"]), u.get("username"), u.get("country"),
                     float(pct if pct is not None else 100), r.get("video_url")])
     with lock:
-        cache[str(lvl_id)] = {"total": total, "at": time.time(), "recs": out}
+        cache[str(lvl_id)] = {"total": total, "at": time.time(), "recs": out, "wait": wait, "st": st_count}
+        waiting_raw[str(lvl_id)] = wait
+        for st, n in st_count.items():
+            status_seen[st] = status_seen.get(st, 0) + n
     return out
 
 
@@ -762,6 +780,70 @@ def fmt_record(r):
     return f"    #{int(r['place']):<4} {(r['level'] + tag):<34} {pct:>7}  {r['f']:8.2f}"
 
 
+def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals):
+    """waiting_records.json: для каждого человека с аккаунтом глобала (аккаунты из links.json и fix.json считаются его)
+    все непринятые записи (статус waiting), которые, будь они приняты, попали бы в его топ-N лучших записей.
+    Запись считается подходящей, если она лучше принятой у человека на этом уровне (или принятой нет) и уровень остаётся
+    в его топ-N после добавления. Записи группируются по аккаунту глобала, с которого они поданы."""
+    print("\nСтатусы записей глобала: " + (", ".join(f"{s} {n}" for s, n in sorted(status_seen.items())) or "нет данных"))
+    if not any(s in status_seen for s in WAITING_STATUSES):
+        print(f"  ВНИМАНИЕ: записей со статусом {sorted(WAITING_STATUSES)} не найдено. Проверь названия статусов выше "
+              f"и константу WAITING_STATUSES.")
+
+    def top_of(best):
+        recs = []
+        for k, pct in best.items():
+            lv = meta.get(k)
+            if not lv:
+                continue
+            f = score(lv["place"], pct, lv["T"], lv["t"])
+            if f is not None and f <= args.cap:
+                recs.append((f, k.startswith("x"), k, pct))
+        recs.sort(key=lambda r: (r[0], r[1]))
+        return recs[:N]
+
+    by_person = {}  # главный ID человека -> {ID аккаунта глобала: [(ID уровня, ник, процент, видео)]}
+    for lvl_id, recs in waiting_raw.items():
+        if lvl_id not in meta:
+            continue
+        for uid, name, pct, video in recs:
+            if is_removed(removals, uid, video):
+                continue
+            by_person.setdefault(canon_id(uid), {}).setdefault(uid, []).append((lvl_id, name, pct, video))
+
+    ranks = {r["id"]: r["rank"] for r in result}
+    players = {}
+    for person, accs in by_person.items():
+        base = best_by.get(person, {})
+        acc_out = {}
+        for acc, items in accs.items():
+            rows = []
+            for lvl_id, name, pct, video in items:
+                if pct <= base.get(lvl_id, -1):
+                    continue  # не лучше принятой записи человека на этом уровне
+                top = top_of({**base, lvl_id: pct})
+                pos = next((i for i, t in enumerate(top) if t[2] == lvl_id and t[3] == pct), None)
+                if pos is None:
+                    continue  # в топ-N не попадает
+                rows.append({"level_id": lvl_id, "level": meta[lvl_id]["name"], "percent": pct,
+                             "cost": round(top[pos][0], 2), "top_place": pos + 1, "video": video})
+            if rows:
+                rows.sort(key=lambda x: x["cost"])
+                acc_out[acc] = rows
+        if not acc_out:
+            continue
+        nick = (info.get(person) or (None, None))[0] or next(
+            (n for items in accs.values() for _, n, _, _ in items if n), person)
+        players[person] = {"nick": nick, "rank": ranks.get(person),
+                           "accounts_global": accounts_of(person)["dl"], "accounts": acc_out}
+
+    items = sorted(players.items(), key=lambda kv: (kv[1]["rank"] is None, kv[1]["rank"] or 0, kv[0]))
+    out = HERE / "waiting_records.json"
+    out.write_text(json.dumps({"top_n": N, "players": dict(items)}, ensure_ascii=False, indent=1), "utf-8")
+    n_rec = sum(len(v) for _, p in items for v in p["accounts"].values())
+    print(f"Непринятых записей, попадающих в топ-{N}: {n_rec}, игроков {len(items)}: {out.name}")
+
+
 def main():
     print("Источники: global" + "".join(" + " + s for s in sorted(SOURCES)))
     if args.add:
@@ -1058,6 +1140,9 @@ def main():
     result.sort(key=lambda r: r["score"])
     for i, r in enumerate(result, 1):
         r["rank"] = i  # место во всём рейтинге; фильтр по очкам его не меняет
+
+    if args.waiting:
+        save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals)
 
     # Фильтр по очкам (меньше = лучше): оставляем игроков с очками от --min-score до --max-score
     suffix = ""
