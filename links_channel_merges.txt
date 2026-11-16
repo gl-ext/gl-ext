@@ -3732,3 +3732,16 @@
     общие каналы: https://www.youtube.com/@grechka084
     поглощено: pc73251 (grechka084), аккаунты: {'pointercrate': [73251]}
 
+===== 2026-11-16 15:32:59 UTC: склеено групп 3, поглощено записей 3 =====
+СКЛЕЕНО В 5530 (ItzDeimax)
+    общие каналы: https://www.youtube.com/@itzdeimax89rus
+    поглощено: wml5383 (ItzDeimax), аккаунты: {'wml': [5383]}
+
+СКЛЕЕНО В 6596 (Ordacan)
+    общие каналы: https://www.youtube.com/@Ordacan
+    поглощено: wml5384 (Ordi), аккаунты: {'wml': [5384]}
+
+СКЛЕЕНО В 18675 (NoCuBbe4)
+    общие каналы: https://www.youtube.com/@NoCuBbe4GD
+    поглощено: wml5380 (NoCuBbe4), аккаунты: {'wml': [5380]}
+
