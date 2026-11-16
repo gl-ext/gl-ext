@@ -1,3 +1,4 @@
+import math
 import os
 import re
 import sys
@@ -845,14 +846,22 @@ if args.mode == "in-gdr-not-in-cbd":
         if unresolved or not records:
             skipped_players.append(f"{player_id} | {nick} | {p1['score']} | не найден уровень: {', '.join(unresolved) or 'нет записей'}")
             continue
-        # Записи новых игроков: сначала самый сложный уровень (меньше место в levels_tp.json), он будет первым
-        # и получит ссылку на видео в add-video-links.py. Уровни без места в levels_tp.json идут в конце.
-        def level_place(record):
+        # Записи новых игроков: сначала с наименьшей стоимостью f (как в gd-rating, меньше = сложнее). Первая запись
+        # получит ссылку на видео в add-video-links.py. Нет T/t у уровня в levels_tp.json или запись не даёт очков: в конец.
+        def record_cost(record):
+            lv = levels_data.get(str(record[0])) or {}
             try:
-                return float((levels_data.get(str(record[0])) or {}).get("place"))
-            except (TypeError, ValueError):
-                return float("inf")
-        records.sort(key=level_place)
+                place, T, t, c = float(lv["place"]), float(lv["T"]), float(lv["t"]), float(record[1])
+                if c >= 100:
+                    f = place
+                elif not (t < T) or c < t or c <= 0:
+                    return (float("inf"), place)
+                else:
+                    f = place * 2 * (T / c) ** (math.log(4 / 2) / math.log(T / t))
+                return (f, place)
+            except (KeyError, TypeError, ValueError):
+                return (float("inf"), float("inf"))
+        records.sort(key=record_cost)
         code = parse_flag(p1["line"])
         info = {
             "nick": unique_nick(player_id, nick),
