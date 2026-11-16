@@ -60,6 +60,7 @@ EXTRAS = ROOT / "my_extras.json"
 LEVELS = ROOT / "levels_tp.json"
 MISSING = ROOT / "missing_achievements.json"
 WAITING = ROOT / "cbd" / "waiting_records.json"   # непринятые записи глобала, попадающие в топ игрока (делает gd-rating --waiting)
+WAITING_NICKS = ROOT / "cbd" / "waiting_records_with_nicks.json"  # то же, но ключ "ID — ник" и название уровня в записях
 
 ap = argparse.ArgumentParser(description="Дописывает находки compare.py в my_extras.json")
 ap.add_argument("--dry-run", action="store_true", help="ничего не писать, только показать")
@@ -429,14 +430,15 @@ def save_missing(with_links):
 
 
 def publish_waiting():
-    """Копирует waiting_records.json из scripts/ в папку cbd/ репозитория (если gd-rating его сделал)."""
-    src = HERE / "waiting_records.json"
-    if src.exists():
-        WAITING.parent.mkdir(exist_ok=True)  # папка cbd/ может ещё не существовать
-        text = src.read_text("utf-8")
-        if not WAITING.exists() or WAITING.read_text("utf-8") != text:
-            WAITING.write_text(text, "utf-8")
-            print(f"{WAITING.name} обновлён.")
+    """Копирует waiting_records.json и waiting_records_with_nicks.json из scripts/ в папку cbd/ (если gd-rating их сделал)."""
+    for dst in (WAITING, WAITING_NICKS):
+        src = HERE / dst.name
+        if src.exists():
+            dst.parent.mkdir(exist_ok=True)  # папка cbd/ может ещё не существовать
+            text = src.read_text("utf-8")
+            if not dst.exists() or dst.read_text("utf-8") != text:
+                dst.write_text(text, "utf-8")
+                print(f"{dst.name} обновлён.")
 
 
 def git(*a, check=True):
@@ -545,7 +547,7 @@ def main():
         if not args.dry_run:
             save_missing(with_links)
         if args.commit and not args.dry_run:
-            commit_and_push("levels_tp / missing_achievements: обновление (авто, CoreBoard)", [LEVELS, MISSING, WAITING])
+            commit_and_push("levels_tp / missing_achievements: обновление (авто, CoreBoard)", [LEVELS, MISSING, WAITING, WAITING_NICKS])
         return
     # защита: теперь файл перезаписывается целиком, поэтому считаем ВСЕ изменения, а не только новые
     if changes > args.max and not args.force:
@@ -564,6 +566,6 @@ def main():
         msg = f"my_extras: +{added} новых, {improved} повышено, {lowered} понижено, {removed} убрано (авто, CoreBoard)"
         if levels_changed:
             msg += "; levels_tp обновлён"
-        commit_and_push(msg, [EXTRAS, LEVELS, MISSING, WAITING])
+        commit_and_push(msg, [EXTRAS, LEVELS, MISSING, WAITING, WAITING_NICKS])
 
 main()
