@@ -61,6 +61,8 @@ p.add_argument("--add", action="append", default=[], help="своя запись
 p.add_argument("--ids", action="store_true", help="добавлять ID игрока в конец строки")
 p.add_argument("--waiting", action="store_true",
                help="записать waiting_records.json: непринятые записи глобала (статус waiting), которые вошли бы в топ-N игрока")
+p.add_argument("--waiting-ttl", dest="waiting_ttl", type=int, default=3 * 3600,
+               help="секунд, пока список waiting-записей игрока в кеше считается свежим")
 p.add_argument("--min-score", dest="min_score", type=float, default=None,
                help="показывать игроков с очками не меньше этого (меньше = лучше)")
 p.add_argument("--max-score", dest="max_score", type=float, default=None,
@@ -419,7 +421,7 @@ cache = json.loads(CACHE_FILE.read_text("utf-8")) if CACHE_FILE.exists() else {}
 lock = threading.Lock()
 # Статусы записей глобала, которые считаются "ждут проверки". Все статусы, которые видит скрипт, печатаются в логе.
 WAITING_STATUSES = {"waiting"}
-waiting_raw = {}   # ID уровня -> [[ID аккаунта, ник, процент, видео], ...] (записи в статусе waiting)
+waiting_raw = {}   # ID уровня -> [[ID аккаунта, ник (или None), процент, видео], ...] (записи waiting; заполняет load_waiting)
 status_seen = {}   # статус -> сколько записей
 
 
@@ -441,11 +443,7 @@ def level_records(lvl_id):
     c = cache.get(str(lvl_id))
     # len(x) >= 5: в старом кеше не было ссылки на видео - такие уровни перекачиваем
     if (c and c["total"] == total and time.time() - c["at"] < args.ttl
-            and "wait" in c and all(len(x) >= 5 for x in c["recs"])):
-        with lock:
-            waiting_raw[str(lvl_id)] = c["wait"]
-            for st, n in (c.get("st") or {}).items():
-                status_seen[st] = status_seen.get(st, 0) + n
+            and all(len(x) >= 5 for x in c["recs"])):
         return c["recs"]
     records = list(first)
     while len(records) < total:
@@ -453,14 +451,10 @@ def level_records(lvl_id):
         if not more:
             break
         records += more
-    out, wait, st_count = [], [], {}
+    out = []
     for r in records:
         status = str(r.get("status") or "accepted").lower()
-        st_count[status] = st_count.get(status, 0) + 1
         u = r.get("user") or {}
-        if status in WAITING_STATUSES and u.get("id") is not None:
-            pct = r.get("percent")
-            wait.append([str(u["id"]), u.get("username"), float(pct if pct is not None else 100), r.get("video_url")])
         if status != "accepted":
             continue
         if u.get("id") is None:
@@ -469,11 +463,54 @@ def level_records(lvl_id):
         out.append([str(u["id"]), u.get("username"), u.get("country"),
                     float(pct if pct is not None else 100), r.get("video_url")])
     with lock:
-        cache[str(lvl_id)] = {"total": total, "at": time.time(), "recs": out, "wait": wait, "st": st_count}
-        waiting_raw[str(lvl_id)] = wait
+        cache[str(lvl_id)] = {"total": total, "at": time.time(), "recs": out}
+    return out
+
+
+def user_waiting(uid):
+    """Записи игрока в статусе waiting: GET user/record/list?user_id=<id>&limit=50&offset=...
+    Возвращает [[ID уровня, процент, видео], ...]. Кешируется на --waiting-ttl секунд."""
+    key = "w" + str(uid)
+    c = cache.get(key)
+    if c and time.time() - c["at"] < args.waiting_ttl:
+        with lock:
+            for st, n in (c.get("st") or {}).items():
+                status_seen[st] = status_seen.get(st, 0) + n
+        return c["wait"]
+    wait, st_count, offset = [], {}, 0
+    while True:
+        try:
+            d = get_json(f"{DL}user/record/list?user_id={uid}&limit=50&offset={offset}").get("data") or {}
+        except urllib.error.HTTPError as e:
+            if e.code in (400, 404):  # такого игрока на глобале нет
+                break
+            raise
+        recs = d.get("records") or []
+        for r in recs:
+            status = str(r.get("status") or "accepted").lower()
+            st_count[status] = st_count.get(status, 0) + 1
+            lvl = (r.get("level") or {}).get("id")
+            if status in WAITING_STATUSES and lvl is not None:
+                pct = r.get("percent")
+                wait.append([str(lvl), float(pct if pct is not None else 100), r.get("video_url")])
+        offset += len(recs)
+        if not recs or offset >= int(d.get("total_count") or 0):
+            break
+    with lock:
+        cache[key] = {"at": time.time(), "wait": wait, "st": st_count}
         for st, n in st_count.items():
             status_seen[st] = status_seen.get(st, 0) + n
-    return out
+    return wait
+
+
+def load_waiting(result, accounts_of):
+    """Качает waiting-записи по каждому аккаунту глобала у игроков рейтинга и кладёт их в waiting_raw."""
+    uids = sorted({str(a) for r in result for a in accounts_of(r["id"])["dl"]})
+    print(f"\nЗаписи waiting: запрашиваю аккаунтов глобала {len(uids)}")
+    res = run_tasks([(u,) for u in uids], lambda it: user_waiting(it[0]), "игроков (waiting)")
+    for (uid,), wait in res:
+        for lvl, pct, video in wait or []:
+            waiting_raw.setdefault(lvl, []).append([uid, None, pct, video])
 
 
 def verifier_of(lvl):
@@ -1142,6 +1179,7 @@ def main():
         r["rank"] = i  # место во всём рейтинге; фильтр по очкам его не меняет
 
     if args.waiting:
+        load_waiting(result, accounts_of)
         save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals)
 
     # Фильтр по очкам (меньше = лучше): оставляем игроков с очками от --min-score до --max-score
