@@ -1,3 +1,5525 @@
 {
- "players": {}
+ "players": {
+  "5527": {
+   "nick": "Andreya6",
+   "rank": 12,
+   "accounts_global": [
+    "5527"
+   ],
+   "accounts": {
+    "5527": [
+     {
+      "level_id": "3226",
+      "level": "Thinking Space II",
+      "percent": 100.0,
+      "cost": 4.0,
+      "top_place": 1,
+      "video": "https://youtu.be/QvHlxBy2t1g?si=AIJNAHVSiOnIK8bI"
+     },
+     {
+      "level_id": "3320",
+      "level": "Penumbral",
+      "percent": 100.0,
+      "cost": 22.0,
+      "top_place": 3,
+      "video": "https://youtu.be/mLOGmrN61-Q?si=1gVoZT92qkU8Ikmb"
+     }
+    ]
+   }
+  },
+  "13458": {
+   "nick": "Vorten",
+   "rank": 13,
+   "accounts_global": [
+    "13458"
+   ],
+   "accounts": {
+    "13458": [
+     {
+      "level_id": "3404",
+      "level": "The Bloop",
+      "percent": 100.0,
+      "cost": 16.0,
+      "top_place": 3,
+      "video": "https://youtu.be/slcKw9ub8H4?si=ytTBKb212Q7Jw0Bp"
+     }
+    ]
+   }
+  },
+  "11811": {
+   "nick": "XaLVaL",
+   "rank": 41,
+   "accounts_global": [
+    "11811"
+   ],
+   "accounts": {
+    "11811": [
+     {
+      "level_id": "2653",
+      "level": "Silent clubstep",
+      "percent": 100.0,
+      "cost": 21.0,
+      "top_place": 1,
+      "video": "https://youtu.be/33sv6cHiZow"
+     },
+     {
+      "level_id": "2660",
+      "level": "Tidal Wave",
+      "percent": 67.0,
+      "cost": 25.29,
+      "top_place": 2,
+      "video": "https://youtu.be/Ak1eY-Zy2qM"
+     },
+     {
+      "level_id": "2684",
+      "level": "Nullscapes",
+      "percent": 54.0,
+      "cost": 39.22,
+      "top_place": 6,
+      "video": "https://youtu.be/DdLoX_-wywE"
+     }
+    ]
+   }
+  },
+  "8973": {
+   "nick": "clubflocked",
+   "rank": 124,
+   "accounts_global": [
+    "8973"
+   ],
+   "accounts": {
+    "8973": [
+     {
+      "level_id": "3226",
+      "level": "Thinking Space II",
+      "percent": 65.0,
+      "cost": 16.0,
+      "top_place": 1,
+      "video": "https://youtu.be/fuYmzNpv6GI?si=0cLEB09hsI3Oj2yO"
+     }
+    ]
+   }
+  },
+  "21168": {
+   "nick": "FoJoTaigne",
+   "rank": 188,
+   "accounts_global": [
+    "21168"
+   ],
+   "accounts": {
+    "21168": [
+     {
+      "level_id": "3061",
+      "level": "Sevvend Clubstep",
+      "percent": 100.0,
+      "cost": 84.0,
+      "top_place": 6,
+      "video": "https://youtu.be/WuiBzi4UNs4?si=MHg5N7ZKinbWuSz-"
+     }
+    ]
+   }
+  },
+  "16542": {
+   "nick": "Timy",
+   "rank": 237,
+   "accounts_global": [
+    "16542"
+   ],
+   "accounts": {
+    "16542": [
+     {
+      "level_id": "3449",
+      "level": "Azure Flare",
+      "percent": 66.0,
+      "cost": 72.88,
+      "top_place": 4,
+      "video": "https://www.youtube.com/watch?v=fjWlRsZsJNA"
+     }
+    ]
+   }
+  },
+  "18540": {
+   "nick": "TheRealLennyFeus",
+   "rank": 260,
+   "accounts_global": [
+    "18540"
+   ],
+   "accounts": {
+    "18540": [
+     {
+      "level_id": "1981",
+      "level": "Saul Goodman",
+      "percent": 100.0,
+      "cost": 76.0,
+      "top_place": 4,
+      "video": "https://youtu.be/-oalUvetbjE?si=HCZ-SYNXmadhlO4q"
+     },
+     {
+      "level_id": "2513",
+      "level": "MINUSdry",
+      "percent": 100.0,
+      "cost": 77.0,
+      "top_place": 4,
+      "video": "https://youtu.be/fgWHhZ5vblQ?si=w5iqHQ-75c88vc98"
+     }
+    ]
+   }
+  },
+  "42525": {
+   "nick": "berth",
+   "rank": 381,
+   "accounts_global": [
+    "42525"
+   ],
+   "accounts": {
+    "42525": [
+     {
+      "level_id": "2660",
+      "level": "Tidal Wave",
+      "percent": 100.0,
+      "cost": 8.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=nos98UnvC2o"
+     },
+     {
+      "level_id": "3444",
+      "level": "Shadow Of The Past",
+      "percent": 83.0,
+      "cost": 153.68,
+      "top_place": 5,
+      "video": "https://www.youtube.com/watch?v=58nDUc3q_jk"
+     }
+    ]
+   }
+  },
+  "18661": {
+   "nick": "AvainPortti",
+   "rank": 433,
+   "accounts_global": [
+    "18661"
+   ],
+   "accounts": {
+    "18661": [
+     {
+      "level_id": "2358",
+      "level": "SARYYX NEVER CLEAR",
+      "percent": 100.0,
+      "cost": 110.0,
+      "top_place": 5,
+      "video": "https://youtu.be/hAZEfQqjOIM?si=7G52Lo4rQQChozki"
+     }
+    ]
+   }
+  },
+  "13462": {
+   "nick": "Bleamer",
+   "rank": 513,
+   "accounts_global": [
+    "13462"
+   ],
+   "accounts": {
+    "13462": [
+     {
+      "level_id": "2685",
+      "level": "The Yangire",
+      "percent": 100.0,
+      "cost": 109.0,
+      "top_place": 4,
+      "video": "https://youtu.be/vMkla9KYsJw"
+     }
+    ]
+   }
+  },
+  "26780": {
+   "nick": "Nizelix",
+   "rank": 543,
+   "accounts_global": [
+    "26780"
+   ],
+   "accounts": {
+    "26780": [
+     {
+      "level_id": "3061",
+      "level": "Sevvend Clubstep",
+      "percent": 100.0,
+      "cost": 84.0,
+      "top_place": 3,
+      "video": "https://youtu.be/elbgjEUtfhQ"
+     },
+     {
+      "level_id": "2656",
+      "level": "Acheron",
+      "percent": 59.0,
+      "cost": 123.37,
+      "top_place": 4,
+      "video": "https://youtu.be/OZF-y8xu-ZM?si=XEZXBPWJ2NUBBUYn"
+     }
+    ]
+   }
+  },
+  "45": {
+   "nick": "Syro",
+   "rank": 553,
+   "accounts_global": [
+    "45"
+   ],
+   "accounts": {
+    "45": [
+     {
+      "level_id": "2024",
+      "level": "Bloodlust",
+      "percent": 100.0,
+      "cost": 297.0,
+      "top_place": 6,
+      "video": "https://youtu.be/JJ9dHIJRdO8?si=O-u1k9_uJlMaWrdR"
+     }
+    ]
+   }
+  },
+  "20649": {
+   "nick": "Spoken04",
+   "rank": 635,
+   "accounts_global": [
+    "20649"
+   ],
+   "accounts": {
+    "20649": [
+     {
+      "level_id": "1706",
+      "level": "Abyss of Darkness",
+      "percent": 82.0,
+      "cost": 83.14,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=LEi5x5XqiFw"
+     }
+    ]
+   }
+  },
+  "35482": {
+   "nick": "F1sss",
+   "rank": 650,
+   "accounts_global": [
+    "35482"
+   ],
+   "accounts": {
+    "35482": [
+     {
+      "level_id": "2222",
+      "level": "Verdant Landscape",
+      "percent": 100.0,
+      "cost": 154.0,
+      "top_place": 4,
+      "video": "https://www.youtube.com/watch?v=3kGwIbgPkWM&t"
+     }
+    ]
+   }
+  },
+  "4387": {
+   "nick": "Timkik",
+   "rank": 673,
+   "accounts_global": [
+    "4387"
+   ],
+   "accounts": {
+    "4387": [
+     {
+      "level_id": "2050",
+      "level": "poocubed",
+      "percent": 100.0,
+      "cost": 72.0,
+      "top_place": 1,
+      "video": "https://youtu.be/BHQETUyinp0"
+     },
+     {
+      "level_id": "2563",
+      "level": "ORDINARY",
+      "percent": 100.0,
+      "cost": 114.0,
+      "top_place": 4,
+      "video": "https://youtu.be/Bb3d5E-ccgk?si=hAlEznGkPxAaiIf0"
+     }
+    ]
+   }
+  },
+  "27721": {
+   "nick": "ItzOguzok",
+   "rank": 733,
+   "accounts_global": [
+    "27721"
+   ],
+   "accounts": {
+    "27721": [
+     {
+      "level_id": "1706",
+      "level": "Abyss of Darkness",
+      "percent": 76.0,
+      "cost": 90.58,
+      "top_place": 2,
+      "video": "https://youtu.be/JMOM1voaeoI?si=XUIwY7CROc-HdUph"
+     },
+     {
+      "level_id": "2700",
+      "level": "BPATA MPAKA",
+      "percent": 100.0,
+      "cost": 140.0,
+      "top_place": 5,
+      "video": "https://youtu.be/jIx4K3TTvFw?si=G-h-RVUokVBKOeWo"
+     },
+     {
+      "level_id": "2287",
+      "level": "Promethean",
+      "percent": 100.0,
+      "cost": 225.0,
+      "top_place": 6,
+      "video": "https://youtu.be/96nsHItvkOw?si=z9iJ9LIIuOhjNzRO"
+     }
+    ]
+   }
+  },
+  "17620": {
+   "nick": "солесоселовелей",
+   "rank": 750,
+   "accounts_global": [
+    "17620"
+   ],
+   "accounts": {
+    "17620": [
+     {
+      "level_id": "2657",
+      "level": "Tunnel of Despair",
+      "percent": 81.0,
+      "cost": 95.76,
+      "top_place": 2,
+      "video": "https://youtu.be/BBXOlo4YWho?si=ZuWPsJGbcIJnQh-6"
+     }
+    ]
+   }
+  },
+  "14699": {
+   "nick": "bunvee",
+   "rank": 761,
+   "accounts_global": [
+    "14699"
+   ],
+   "accounts": {
+    "14699": [
+     {
+      "level_id": "1754",
+      "level": "Tartarus",
+      "percent": 100.0,
+      "cost": 138.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=cfDQWrAnMrY"
+     }
+    ]
+   }
+  },
+  "21715": {
+   "nick": "t0xx",
+   "rank": 770,
+   "accounts_global": [
+    "21715"
+   ],
+   "accounts": {
+    "21715": [
+     {
+      "level_id": "1740",
+      "level": "Oblivion",
+      "percent": 100.0,
+      "cost": 156.0,
+      "top_place": 5,
+      "video": "https://www.youtube.com/watch?v=2TduN55p-74"
+     },
+     {
+      "level_id": "2655",
+      "level": "KOCMOC",
+      "percent": 68.0,
+      "cost": 171.58,
+      "top_place": 5,
+      "video": "https://www.youtube.com/watch?v=7EiYwaSotTU"
+     }
+    ]
+   }
+  },
+  "45958": {
+   "nick": "Icanplayz",
+   "rank": 797,
+   "accounts_global": [
+    "45958"
+   ],
+   "accounts": {
+    "45958": [
+     {
+      "level_id": "2660",
+      "level": "Tidal Wave",
+      "percent": 100.0,
+      "cost": 8.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=CLTRhWDda_0"
+     }
+    ]
+   }
+  },
+  "1675": {
+   "nick": "Tsumiki Miniwa",
+   "rank": 807,
+   "accounts_global": [
+    "1675"
+   ],
+   "accounts": {
+    "1675": [
+     {
+      "level_id": "2657",
+      "level": "Tunnel of Despair",
+      "percent": 100.0,
+      "cost": 37.0,
+      "top_place": 1,
+      "video": "https://youtu.be/NL5PJ7TkmGk"
+     }
+    ]
+   }
+  },
+  "17731": {
+   "nick": "hyperboll",
+   "rank": 822,
+   "accounts_global": [
+    "17731"
+   ],
+   "accounts": {
+    "17731": [
+     {
+      "level_id": "1733",
+      "level": "UNKNOWN",
+      "percent": 100.0,
+      "cost": 142.0,
+      "top_place": 4,
+      "video": "https://youtu.be/Qb1bzEppVFw?si=npX-3qZDwRWgicSh"
+     }
+    ]
+   }
+  },
+  "22817": {
+   "nick": "dvleakkk",
+   "rank": 856,
+   "accounts_global": [
+    "22817"
+   ],
+   "accounts": {
+    "22817": [
+     {
+      "level_id": "3061",
+      "level": "Sevvend Clubstep",
+      "percent": 100.0,
+      "cost": 84.0,
+      "top_place": 2,
+      "video": "https://youtu.be/XF0kaGJwP8Y?si=WXkbUrJYGarAtKif"
+     }
+    ]
+   }
+  },
+  "14400": {
+   "nick": "ZeykerGD",
+   "rank": 880,
+   "accounts_global": [
+    "14400"
+   ],
+   "accounts": {
+    "14400": [
+     {
+      "level_id": "1748",
+      "level": "Slaughterhouse",
+      "percent": 79.0,
+      "cost": 114.02,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=n442OaagxoM"
+     }
+    ]
+   }
+  },
+  "30588": {
+   "nick": "Vallufinland",
+   "rank": 900,
+   "accounts_global": [
+    "30588"
+   ],
+   "accounts": {
+    "30588": [
+     {
+      "level_id": "2653",
+      "level": "Silent clubstep",
+      "percent": 54.0,
+      "cost": 62.05,
+      "top_place": 1,
+      "video": "https://youtu.be/-_MWXbMfFlI"
+     }
+    ]
+   }
+  },
+  "27236": {
+   "nick": "graam",
+   "rank": 908,
+   "accounts_global": [
+    "27236"
+   ],
+   "accounts": {
+    "27236": [
+     {
+      "level_id": "2418",
+      "level": "Solar Flare",
+      "percent": 100.0,
+      "cost": 92.0,
+      "top_place": 2,
+      "video": "https://youtu.be/8MIR8-6S5R4"
+     },
+     {
+      "level_id": "3351",
+      "level": "Thinking Space II (Legacy)",
+      "percent": 78.0,
+      "cost": 126.42,
+      "top_place": 2,
+      "video": "https://youtu.be/4WMgAU47_A8"
+     },
+     {
+      "level_id": "1740",
+      "level": "Oblivion",
+      "percent": 100.0,
+      "cost": 156.0,
+      "top_place": 4,
+      "video": "https://youtu.be/0aR6O6c5VSk"
+     }
+    ]
+   }
+  },
+  "20016": {
+   "nick": "cold",
+   "rank": 930,
+   "accounts_global": [
+    "20016"
+   ],
+   "accounts": {
+    "20016": [
+     {
+      "level_id": "2656",
+      "level": "Acheron",
+      "percent": 100.0,
+      "cost": 36.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=ji_-61LD3_E"
+     },
+     {
+      "level_id": "2563",
+      "level": "ORDINARY",
+      "percent": 100.0,
+      "cost": 114.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=QZcOPhhacek"
+     }
+    ]
+   }
+  },
+  "5781": {
+   "nick": "ViZeris",
+   "rank": 949,
+   "accounts_global": [
+    "5781"
+   ],
+   "accounts": {
+    "5781": [
+     {
+      "level_id": "1788",
+      "level": "THE ROCK HOUSE",
+      "percent": 100.0,
+      "cost": 175.0,
+      "top_place": 5,
+      "video": "https://youtu.be/cCk-VNOueKY?si=x37tua-eeY_haLzd"
+     }
+    ]
+   }
+  },
+  "3801": {
+   "nick": "JustBloody",
+   "rank": 955,
+   "accounts_global": [
+    "3801"
+   ],
+   "accounts": {
+    "3801": [
+     {
+      "level_id": "2050",
+      "level": "poocubed",
+      "percent": 100.0,
+      "cost": 72.0,
+      "top_place": 1,
+      "video": "https://youtu.be/-86xw_gZCxo?is=0a_4uieUiWaCbdVT"
+     },
+     {
+      "level_id": "3061",
+      "level": "Sevvend Clubstep",
+      "percent": 100.0,
+      "cost": 84.0,
+      "top_place": 1,
+      "video": "https://youtu.be/z_WuRSZQWNc"
+     }
+    ]
+   }
+  },
+  "5782": {
+   "nick": "Falaet",
+   "rank": 984,
+   "accounts_global": [
+    "5782"
+   ],
+   "accounts": {
+    "5782": [
+     {
+      "level_id": "2458",
+      "level": "Crackhead Circles",
+      "percent": 100.0,
+      "cost": 197.0,
+      "top_place": 6,
+      "video": "https://youtu.be/SkdKdZQsrFI?si=a1j4S_wBKlUSGlGD"
+     }
+    ]
+   }
+  },
+  "15561": {
+   "nick": "Redad",
+   "rank": 1041,
+   "accounts_global": [
+    "15561"
+   ],
+   "accounts": {
+    "15561": [
+     {
+      "level_id": "2296",
+      "level": "Renevant",
+      "percent": 100.0,
+      "cost": 229.0,
+      "top_place": 6,
+      "video": "https://www.youtube.com/watch?v=nlltBwy8_9E"
+     }
+    ]
+   }
+  },
+  "20289": {
+   "nick": "Pe3oHaHc",
+   "rank": 1095,
+   "accounts_global": [
+    "20289",
+    "8688"
+   ],
+   "accounts": {
+    "20289": [
+     {
+      "level_id": "2372",
+      "level": "COMBUSTION",
+      "percent": 100.0,
+      "cost": 86.0,
+      "top_place": 1,
+      "video": "https://youtu.be/tPaRHonYj3k?si=FE4gfaRFEzAWYnAp"
+     },
+     {
+      "level_id": "2854",
+      "level": "Collapse",
+      "percent": 100.0,
+      "cost": 94.0,
+      "top_place": 1,
+      "video": "https://youtu.be/gUbQWvP7Pgk?si=WWlo5a7yCcAN-Ye3"
+     }
+    ]
+   }
+  },
+  "21129": {
+   "nick": "forewad",
+   "rank": 1115,
+   "accounts_global": [
+    "21129"
+   ],
+   "accounts": {
+    "21129": [
+     {
+      "level_id": "3094",
+      "level": "Operation Evolution",
+      "percent": 100.0,
+      "cost": 102.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=zlk_51YoV6Y"
+     }
+    ]
+   }
+  },
+  "27585": {
+   "nick": "LogDog13",
+   "rank": 1135,
+   "accounts_global": [
+    "27585"
+   ],
+   "accounts": {
+    "27585": [
+     {
+      "level_id": "3302",
+      "level": "chrome hearts",
+      "percent": 100.0,
+      "cost": 200.0,
+      "top_place": 5,
+      "video": "https://youtu.be/XBdzABvpvqI?si=a4Uke4gyK4vDIONX"
+     }
+    ]
+   }
+  },
+  "58522": {
+   "nick": "ooma",
+   "rank": 1184,
+   "accounts_global": [
+    "58522"
+   ],
+   "accounts": {
+    "58522": [
+     {
+      "level_id": "1748",
+      "level": "Slaughterhouse",
+      "percent": 66.0,
+      "cost": 146.79,
+      "top_place": 3,
+      "video": "https://youtu.be/1EPn-1lCvNM"
+     }
+    ]
+   }
+  },
+  "19107": {
+   "nick": "EgorEk",
+   "rank": 1193,
+   "accounts_global": [
+    "19107"
+   ],
+   "accounts": {
+    "19107": [
+     {
+      "level_id": "2656",
+      "level": "Acheron",
+      "percent": 100.0,
+      "cost": 36.0,
+      "top_place": 1,
+      "video": "https://youtu.be/lAAF3hAUeTs"
+     }
+    ]
+   }
+  },
+  "5563": {
+   "nick": "Pozzitif_",
+   "rank": 1217,
+   "accounts_global": [
+    "5563"
+   ],
+   "accounts": {
+    "5563": [
+     {
+      "level_id": "2707",
+      "level": "Judgement Knights",
+      "percent": 100.0,
+      "cost": 196.0,
+      "top_place": 4,
+      "video": "https://www.youtube.com/watch?v=rPRNh4z1uI4"
+     }
+    ]
+   }
+  },
+  "29486": {
+   "nick": "ItzKrit",
+   "rank": 1292,
+   "accounts_global": [
+    "29486"
+   ],
+   "accounts": {
+    "29486": [
+     {
+      "level_id": "3432",
+      "level": "Wild Roses",
+      "percent": 50.0,
+      "cost": 241.77,
+      "top_place": 5,
+      "video": "https://youtu.be/iW3ElCFz130"
+     }
+    ]
+   }
+  },
+  "8695": {
+   "nick": "blessedandro",
+   "rank": 1303,
+   "accounts_global": [
+    "8695"
+   ],
+   "accounts": {
+    "8695": [
+     {
+      "level_id": "2236",
+      "level": "The Golden",
+      "percent": 100.0,
+      "cost": 152.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=WUU3Qdjd1aA"
+     },
+     {
+      "level_id": "2707",
+      "level": "Judgement Knights",
+      "percent": 100.0,
+      "cost": 196.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=-cexaaoCTOE"
+     },
+     {
+      "level_id": "3126",
+      "level": "IRIS",
+      "percent": 100.0,
+      "cost": 207.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=a7qJWbbcMSw"
+     },
+     {
+      "level_id": "1725",
+      "level": "Widestep",
+      "percent": 100.0,
+      "cost": 212.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=btSsCMl0esE"
+     },
+     {
+      "level_id": "2296",
+      "level": "Renevant",
+      "percent": 100.0,
+      "cost": 229.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=xKlQuNnDMsU"
+     }
+    ]
+   }
+  },
+  "6620": {
+   "nick": "Naiut",
+   "rank": 1350,
+   "accounts_global": [
+    "6620"
+   ],
+   "accounts": {
+    "6620": [
+     {
+      "level_id": "1746",
+      "level": "Aerial Gleam",
+      "percent": 100.0,
+      "cost": 180.0,
+      "top_place": 3,
+      "video": "https://youtu.be/lpRzyrHmdKk"
+     }
+    ]
+   }
+  },
+  "12473": {
+   "nick": "vollord",
+   "rank": 1375,
+   "accounts_global": [
+    "12473"
+   ],
+   "accounts": {
+    "12473": [
+     {
+      "level_id": "1591",
+      "level": "Trueffet",
+      "percent": 100.0,
+      "cost": 182.0,
+      "top_place": 3,
+      "video": "https://youtu.be/df_1I8L9cJQ"
+     },
+     {
+      "level_id": "3228",
+      "level": "Hazard Duty Pay",
+      "percent": 61.0,
+      "cost": 247.82,
+      "top_place": 5,
+      "video": "https://youtu.be/df_1I8L9cJQ"
+     }
+    ]
+   }
+  },
+  "18903": {
+   "nick": "z0rty",
+   "rank": 1416,
+   "accounts_global": [
+    "18903"
+   ],
+   "accounts": {
+    "18903": [
+     {
+      "level_id": "2843",
+      "level": "The Plunge",
+      "percent": 100.0,
+      "cost": 105.0,
+      "top_place": 1,
+      "video": "https://youtu.be/pDYJiCjShF8?si=m87kJXKkBY6vHgmY"
+     },
+     {
+      "level_id": "1733",
+      "level": "UNKNOWN",
+      "percent": 100.0,
+      "cost": 142.0,
+      "top_place": 1,
+      "video": "https://youtu.be/QDDEFCL05CY?si=Y3CnAIiOWvDxjlUW"
+     }
+    ]
+   }
+  },
+  "19570": {
+   "nick": "danyache192",
+   "rank": 1436,
+   "accounts_global": [
+    "19570"
+   ],
+   "accounts": {
+    "19570": [
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 5,
+      "video": "https://youtu.be/YmI2rhLWZ6k"
+     }
+    ]
+   }
+  },
+  "4964": {
+   "nick": "Zlonik",
+   "rank": 1453,
+   "accounts_global": [
+    "4964"
+   ],
+   "accounts": {
+    "4964": [
+     {
+      "level_id": "2563",
+      "level": "ORDINARY",
+      "percent": 83.0,
+      "cost": 271.14,
+      "top_place": 6,
+      "video": "https://youtu.be/ZvQ9_WYtcOk"
+     }
+    ]
+   }
+  },
+  "19612": {
+   "nick": "Neiro",
+   "rank": 1472,
+   "accounts_global": [
+    "19612"
+   ],
+   "accounts": {
+    "19612": [
+     {
+      "level_id": "2307",
+      "level": "Crimson Planet",
+      "percent": 100.0,
+      "cost": 239.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=6cmiqNvrRQU"
+     }
+    ]
+   }
+  },
+  "6619": {
+   "nick": "forza",
+   "rank": 1475,
+   "accounts_global": [
+    "6619"
+   ],
+   "accounts": {
+    "6619": [
+     {
+      "level_id": "2656",
+      "level": "Acheron",
+      "percent": 82.0,
+      "cost": 86.99,
+      "top_place": 2,
+      "video": "https://youtu.be/W5Znx-jy6ho?si=qbwjD1Tr7Cz1lZHk"
+     },
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 3,
+      "video": "https://youtu.be/_iU9JQRDI5Y?si=cdip5U1TIvKhg1Qz"
+     }
+    ]
+   }
+  },
+  "42893": {
+   "nick": "vscreenz",
+   "rank": 1476,
+   "accounts_global": [
+    "42893"
+   ],
+   "accounts": {
+    "42893": [
+     {
+      "level_id": "1853",
+      "level": "qoUEO",
+      "percent": 100.0,
+      "cost": 241.0,
+      "top_place": 3,
+      "video": "https://youtu.be/MB8OTMHm9lc"
+     },
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 3,
+      "video": "https://youtu.be/_6z0DRxtxHE"
+     }
+    ]
+   }
+  },
+  "6565": {
+   "nick": "EfzEnn",
+   "rank": 1527,
+   "accounts_global": [
+    "6565"
+   ],
+   "accounts": {
+    "6565": [
+     {
+      "level_id": "3061",
+      "level": "Sevvend Clubstep",
+      "percent": 100.0,
+      "cost": 84.0,
+      "top_place": 1,
+      "video": "https://youtu.be/4UZX4v47YCk"
+     },
+     {
+      "level_id": "2843",
+      "level": "The Plunge",
+      "percent": 100.0,
+      "cost": 105.0,
+      "top_place": 1,
+      "video": "https://youtu.be/dSo5K5coa_c?si=o1x3csklXYBWyjMu"
+     },
+     {
+      "level_id": "2537",
+      "level": "Climax",
+      "percent": 100.0,
+      "cost": 123.0,
+      "top_place": 1,
+      "video": "https://youtu.be/dxv5BMtsXUI?si=aEcwUYZxo3VOrLjU"
+     }
+    ]
+   }
+  },
+  "40966": {
+   "nick": "Korseee",
+   "rank": 1578,
+   "accounts_global": [
+    "40966"
+   ],
+   "accounts": {
+    "40966": [
+     {
+      "level_id": "2024",
+      "level": "Bloodlust",
+      "percent": 100.0,
+      "cost": 297.0,
+      "top_place": 5,
+      "video": "https://youtu.be/KGzvZYf8m0A?si=eVzw295jvLkJE2rL"
+     }
+    ]
+   }
+  },
+  "16829": {
+   "nick": "avudn",
+   "rank": 1604,
+   "accounts_global": [
+    "16829"
+   ],
+   "accounts": {
+    "16829": [
+     {
+      "level_id": "1591",
+      "level": "Trueffet",
+      "percent": 100.0,
+      "cost": 182.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=NqPpCKpKN28"
+     }
+    ]
+   }
+  },
+  "8884": {
+   "nick": "GouQou",
+   "rank": 1621,
+   "accounts_global": [
+    "8884"
+   ],
+   "accounts": {
+    "8884": [
+     {
+      "level_id": "3286",
+      "level": "IMPERIAL",
+      "percent": 100.0,
+      "cost": 183.0,
+      "top_place": 3,
+      "video": "https://youtu.be/qOdp97U9-fI?si=NFeI2lSiW9LtTbBW"
+     },
+     {
+      "level_id": "2458",
+      "level": "Crackhead Circles",
+      "percent": 100.0,
+      "cost": 197.0,
+      "top_place": 3,
+      "video": "https://youtu.be/eQIHAR3vn0E?si=OhxpCxRY-VkcklQA"
+     }
+    ]
+   }
+  },
+  "19219": {
+   "nick": "V3ncho",
+   "rank": 1625,
+   "accounts_global": [
+    "19219"
+   ],
+   "accounts": {
+    "19219": [
+     {
+      "level_id": "3353",
+      "level": "ROCKBOTTOM",
+      "percent": 100.0,
+      "cost": 190.0,
+      "top_place": 3,
+      "video": "https://youtu.be/0DN5mfg_ld4"
+     }
+    ]
+   }
+  },
+  "37616": {
+   "nick": "trips",
+   "rank": 1629,
+   "accounts_global": [
+    "37616"
+   ],
+   "accounts": {
+    "37616": [
+     {
+      "level_id": "2296",
+      "level": "Renevant",
+      "percent": 100.0,
+      "cost": 229.0,
+      "top_place": 4,
+      "video": "https://www.youtube.com/watch?v=Iu8HH09Cql0"
+     }
+    ]
+   }
+  },
+  "17785": {
+   "nick": "zRendy",
+   "rank": 1648,
+   "accounts_global": [
+    "17785"
+   ],
+   "accounts": {
+    "17785": [
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 4,
+      "video": "https://youtu.be/66Sos8IPpcs?si=YicI1rVOcjaDzrHz"
+     },
+     {
+      "level_id": "2307",
+      "level": "Crimson Planet",
+      "percent": 100.0,
+      "cost": 239.0,
+      "top_place": 4,
+      "video": "https://youtu.be/66Sos8IPpcs?si=YicI1rVOcjaDzrHz"
+     }
+    ]
+   }
+  },
+  "9590": {
+   "nick": "romaloxxx",
+   "rank": 1746,
+   "accounts_global": [
+    "9590"
+   ],
+   "accounts": {
+    "9590": [
+     {
+      "level_id": "2707",
+      "level": "Judgement Knights",
+      "percent": 100.0,
+      "cost": 196.0,
+      "top_place": 3,
+      "video": "https://youtu.be/IA28MzWrEX4?si=Ec7JKyISyRshMYg_"
+     }
+    ]
+   }
+  },
+  "22351": {
+   "nick": "W1lfyyy",
+   "rank": 1766,
+   "accounts_global": [
+    "22351"
+   ],
+   "accounts": {
+    "22351": [
+     {
+      "level_id": "1981",
+      "level": "Saul Goodman",
+      "percent": 100.0,
+      "cost": 76.0,
+      "top_place": 1,
+      "video": "https://youtu.be/D4rUVRfb4xw"
+     },
+     {
+      "level_id": "1788",
+      "level": "THE ROCK HOUSE",
+      "percent": 100.0,
+      "cost": 175.0,
+      "top_place": 3,
+      "video": "https://youtu.be/yGRcQUuP9qo"
+     },
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 3,
+      "video": "https://youtu.be/tg9iFEr5z-Y"
+     }
+    ]
+   }
+  },
+  "24400": {
+   "nick": "1nsani1ty",
+   "rank": 1767,
+   "accounts_global": [
+    "24400"
+   ],
+   "accounts": {
+    "24400": [
+     {
+      "level_id": "2237",
+      "level": "Cognition",
+      "percent": 100.0,
+      "cost": 244.0,
+      "top_place": 3,
+      "video": "https://youtu.be/Zg17Oty1E80"
+     },
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 3,
+      "video": "https://youtu.be/P_Svmo28onk"
+     }
+    ]
+   }
+  },
+  "20231": {
+   "nick": "Hafkyy",
+   "rank": 1803,
+   "accounts_global": [
+    "20231"
+   ],
+   "accounts": {
+    "20231": [
+     {
+      "level_id": "1915",
+      "level": "The Wonder of You",
+      "percent": 100.0,
+      "cost": 137.0,
+      "top_place": 1,
+      "video": "https://youtu.be/xYzVQgt8E-c?si=qffddiDXLnxSwJRx"
+     }
+    ]
+   }
+  },
+  "6384": {
+   "nick": "mafioznik",
+   "rank": 1808,
+   "accounts_global": [
+    "6384"
+   ],
+   "accounts": {
+    "6384": [
+     {
+      "level_id": "2202",
+      "level": "Twilight",
+      "percent": 100.0,
+      "cost": 270.0,
+      "top_place": 4,
+      "video": "https://youtu.be/A0I_9Mqc1e0"
+     }
+    ]
+   }
+  },
+  "35542": {
+   "nick": "expiredcheese",
+   "rank": 1809,
+   "accounts_global": [
+    "35542"
+   ],
+   "accounts": {
+    "35542": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 4,
+      "video": "https://youtu.be/Nxv3pjBvJ6M?si=xdvNji2jXPzx_dLB"
+     }
+    ]
+   }
+  },
+  "7147": {
+   "nick": "Kenarium",
+   "rank": 1829,
+   "accounts_global": [
+    "7147"
+   ],
+   "accounts": {
+    "7147": [
+     {
+      "level_id": "1586",
+      "level": "Esfera",
+      "percent": 100.0,
+      "cost": 201.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=8pdRA-L42ao"
+     }
+    ]
+   }
+  },
+  "21596": {
+   "nick": "Azura",
+   "rank": 1839,
+   "accounts_global": [
+    "21596"
+   ],
+   "accounts": {
+    "21596": [
+     {
+      "level_id": "2050",
+      "level": "poocubed",
+      "percent": 100.0,
+      "cost": 72.0,
+      "top_place": 1,
+      "video": "https://youtu.be/LqoKW44hJ9s?si=yT6G8BNvKBQKBUTh"
+     },
+     {
+      "level_id": "3061",
+      "level": "Sevvend Clubstep",
+      "percent": 100.0,
+      "cost": 84.0,
+      "top_place": 1,
+      "video": "https://youtu.be/levqBfGqqy4?si=3SPrdaSc8CQ9M0vy"
+     },
+     {
+      "level_id": "1754",
+      "level": "Tartarus",
+      "percent": 100.0,
+      "cost": 138.0,
+      "top_place": 1,
+      "video": "https://youtu.be/c0fZDhyEWps?si=TYhtZb4jPk4fw2kU"
+     }
+    ]
+   }
+  },
+  "8224": {
+   "nick": "nightmarri",
+   "rank": 1893,
+   "accounts_global": [
+    "8224"
+   ],
+   "accounts": {
+    "8224": [
+     {
+      "level_id": "2024",
+      "level": "Bloodlust",
+      "percent": 100.0,
+      "cost": 297.0,
+      "top_place": 6,
+      "video": "https://youtu.be/xokZvEn9I2s?si=Hm6461V13BSXCec5"
+     }
+    ]
+   }
+  },
+  "23154": {
+   "nick": "skymate",
+   "rank": 1980,
+   "accounts_global": [
+    "23154"
+   ],
+   "accounts": {
+    "23154": [
+     {
+      "level_id": "3353",
+      "level": "ROCKBOTTOM",
+      "percent": 100.0,
+      "cost": 190.0,
+      "top_place": 3,
+      "video": "https://youtu.be/iGYSVZAwOCQ"
+     }
+    ]
+   }
+  },
+  "19796": {
+   "nick": "Llinthro",
+   "rank": 2038,
+   "accounts_global": [
+    "19796"
+   ],
+   "accounts": {
+    "19796": [
+     {
+      "level_id": "3432",
+      "level": "Wild Roses",
+      "percent": 100.0,
+      "cost": 62.0,
+      "top_place": 1,
+      "video": "https://youtu.be/0i-BFp0JYKE?si=kRo3PO4vgmy-ptYs"
+     }
+    ]
+   }
+  },
+  "3232": {
+   "nick": "angyedz",
+   "rank": 2057,
+   "accounts_global": [
+    "3232"
+   ],
+   "accounts": {
+    "3232": [
+     {
+      "level_id": "1732",
+      "level": "Sakupen Circles",
+      "percent": 100.0,
+      "cost": 65.0,
+      "top_place": 1,
+      "video": "https://youtu.be/UA2NNIKiE7Q?si=3fp02hetZIcUgNj4"
+     }
+    ]
+   }
+  },
+  "8415": {
+   "nick": "xdxdxd",
+   "rank": 2069,
+   "accounts_global": [
+    "8415"
+   ],
+   "accounts": {
+    "8415": [
+     {
+      "level_id": "2050",
+      "level": "poocubed",
+      "percent": 100.0,
+      "cost": 72.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=6eiV9ZfW5aM"
+     },
+     {
+      "level_id": "3061",
+      "level": "Sevvend Clubstep",
+      "percent": 100.0,
+      "cost": 84.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=GFRX0T7PRKU"
+     },
+     {
+      "level_id": "2537",
+      "level": "Climax",
+      "percent": 100.0,
+      "cost": 123.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=WMS7nJXHk6w"
+     },
+     {
+      "level_id": "1756",
+      "level": "The Rupture",
+      "percent": 100.0,
+      "cost": 292.0,
+      "top_place": 6,
+      "video": "https://www.youtube.com/watch?v=IdjdLaY8jTs"
+     }
+    ]
+   }
+  },
+  "26874": {
+   "nick": "Sovushka990",
+   "rank": 2122,
+   "accounts_global": [
+    "26874"
+   ],
+   "accounts": {
+    "26874": [
+     {
+      "level_id": "3438",
+      "level": "Skystrike",
+      "percent": 100.0,
+      "cost": 99.0,
+      "top_place": 1,
+      "video": "https://youtu.be/5oMTpmkJhiM"
+     }
+    ]
+   }
+  },
+  "637": {
+   "nick": "Kvazze14",
+   "rank": 2125,
+   "accounts_global": [
+    "637"
+   ],
+   "accounts": {
+    "637": [
+     {
+      "level_id": "2656",
+      "level": "Acheron",
+      "percent": 61.0,
+      "cost": 119.08,
+      "top_place": 1,
+      "video": "https://youtu.be/TDL_KXdnT74?si=DZty8tmyxOiHyAcz"
+     }
+    ]
+   }
+  },
+  "951": {
+   "nick": "Фанат Абстракта",
+   "rank": 2180,
+   "accounts_global": [
+    "951"
+   ],
+   "accounts": {
+    "951": [
+     {
+      "level_id": "2685",
+      "level": "The Yangire",
+      "percent": 100.0,
+      "cost": 109.0,
+      "top_place": 1,
+      "video": "https://youtu.be/R1CIWlS6U6o?si=JJr07o-U5Lrjr-AZ"
+     },
+     {
+      "level_id": "2236",
+      "level": "The Golden",
+      "percent": 100.0,
+      "cost": 152.0,
+      "top_place": 1,
+      "video": "https://youtu.be/U3bOxwf5xlo?si=EvcjDtu7YNJrlUy-"
+     }
+    ]
+   }
+  },
+  "21519": {
+   "nick": "sinist3rsilence",
+   "rank": 2255,
+   "accounts_global": [
+    "21519"
+   ],
+   "accounts": {
+    "21519": [
+     {
+      "level_id": "1740",
+      "level": "Oblivion",
+      "percent": 100.0,
+      "cost": 156.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=o4DKQFRpY24"
+     },
+     {
+      "level_id": "2867",
+      "level": "A Wolf At the Door",
+      "percent": 100.0,
+      "cost": 298.0,
+      "top_place": 6,
+      "video": "https://www.youtube.com/watch?v=4EiRAx_xcKE"
+     }
+    ]
+   }
+  },
+  "19309": {
+   "nick": "Raqoo",
+   "rank": 2267,
+   "accounts_global": [
+    "19309"
+   ],
+   "accounts": {
+    "19309": [
+     {
+      "level_id": "1725",
+      "level": "Widestep",
+      "percent": 100.0,
+      "cost": 212.0,
+      "top_place": 3,
+      "video": "https://youtu.be/xNPDdOOhfjo?si=zNWEKSsT5i6eMwZi"
+     }
+    ]
+   }
+  },
+  "13301": {
+   "nick": "nor1s",
+   "rank": 2272,
+   "accounts_global": [
+    "13301"
+   ],
+   "accounts": {
+    "13301": [
+     {
+      "level_id": "1981",
+      "level": "Saul Goodman",
+      "percent": 57.0,
+      "cost": 283.35,
+      "top_place": 4,
+      "video": "https://www.youtube.com/watch?v=IbIpSIA7tEs&t=4s"
+     }
+    ]
+   }
+  },
+  "34360": {
+   "nick": "ninshu18",
+   "rank": 2329,
+   "accounts_global": [
+    "34360"
+   ],
+   "accounts": {
+    "34360": [
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 4,
+      "video": "https://www.youtube.com/watch?v=6Y0Ob79na3Y"
+     }
+    ]
+   }
+  },
+  "19658": {
+   "nick": "Krabsik",
+   "rank": 2338,
+   "accounts_global": [
+    "19658"
+   ],
+   "accounts": {
+    "19658": [
+     {
+      "level_id": "1952",
+      "level": "Trotil",
+      "percent": 100.0,
+      "cost": 230.0,
+      "top_place": 3,
+      "video": "https://youtu.be/wnmQkQHrulU?si=Y8AQ-EWKQR5jWf3o"
+     }
+    ]
+   }
+  },
+  "24420": {
+   "nick": "TimezZaki",
+   "rank": 2342,
+   "accounts_global": [
+    "24420"
+   ],
+   "accounts": {
+    "24420": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 4,
+      "video": "https://www.youtube.com/watch?v=gJBJ6jjyVFA"
+     }
+    ]
+   }
+  },
+  "34156": {
+   "nick": "FURRAPURNA",
+   "rank": 2362,
+   "accounts_global": [
+    "34156"
+   ],
+   "accounts": {
+    "34156": [
+     {
+      "level_id": "3432",
+      "level": "Wild Roses",
+      "percent": 50.0,
+      "cost": 241.77,
+      "top_place": 3,
+      "video": "https://youtu.be/VFh_dNG3qP4"
+     }
+    ]
+   }
+  },
+  "14266": {
+   "nick": "OrangeStorm",
+   "rank": 2374,
+   "accounts_global": [
+    "14266"
+   ],
+   "accounts": {
+    "14266": [
+     {
+      "level_id": "2285",
+      "level": "Omega Interface",
+      "percent": 100.0,
+      "cost": 284.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=TPF7E1z49lU"
+     }
+    ]
+   }
+  },
+  "26503": {
+   "nick": "ryo",
+   "rank": 2403,
+   "accounts_global": [
+    "26503"
+   ],
+   "accounts": {
+    "26503": [
+     {
+      "level_id": "2485",
+      "level": "Firework",
+      "percent": 61.0,
+      "cost": 226.58,
+      "top_place": 2,
+      "video": "https://youtu.be/eZWCVChncq8?si=dBpJtXqSTBK69UzQ"
+     }
+    ]
+   }
+  },
+  "700": {
+   "nick": "koya",
+   "rank": 2428,
+   "accounts_global": [
+    "700"
+   ],
+   "accounts": {
+    "700": [
+     {
+      "level_id": "2236",
+      "level": "The Golden",
+      "percent": 100.0,
+      "cost": 152.0,
+      "top_place": 1,
+      "video": "https://youtu.be/BmH9AQ0qnKo"
+     },
+     {
+      "level_id": "1591",
+      "level": "Trueffet",
+      "percent": 100.0,
+      "cost": 182.0,
+      "top_place": 1,
+      "video": "https://youtu.be/xXv0nyPtpzI"
+     },
+     {
+      "level_id": "1578",
+      "level": "Thinking Space",
+      "percent": 100.0,
+      "cost": 223.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=1WcWYvDrjV0"
+     }
+    ]
+   }
+  },
+  "35575": {
+   "nick": "Kitgd29",
+   "rank": 2461,
+   "accounts_global": [
+    "35575"
+   ],
+   "accounts": {
+    "35575": [
+     {
+      "level_id": "2692",
+      "level": "Waterfall",
+      "percent": 100.0,
+      "cost": 139.0,
+      "top_place": 2,
+      "video": "https://youtu.be/MKyKkZwRLFk?si=K-yIPpZvjpNuMEVL"
+     },
+     {
+      "level_id": "2050",
+      "level": "poocubed",
+      "percent": 50.0,
+      "cost": 282.32,
+      "top_place": 3,
+      "video": "https://youtu.be/1tDLKWamZlQ?si=y0P_VEd2Ti8zmN5w"
+     }
+    ]
+   }
+  },
+  "33187": {
+   "nick": "fgoi",
+   "rank": 2466,
+   "accounts_global": [
+    "33187"
+   ],
+   "accounts": {
+    "33187": [
+     {
+      "level_id": "2264",
+      "level": "Edge of Destiny",
+      "percent": 100.0,
+      "cost": 90.0,
+      "top_place": 1,
+      "video": "https://youtu.be/l-a43ZRDzQs?si=ewfG7PKXlG0A6e5z"
+     },
+     {
+      "level_id": "1754",
+      "level": "Tartarus",
+      "percent": 100.0,
+      "cost": 138.0,
+      "top_place": 1,
+      "video": "https://youtu.be/cfZHIqnyoLQ"
+     },
+     {
+      "level_id": "1591",
+      "level": "Trueffet",
+      "percent": 100.0,
+      "cost": 182.0,
+      "top_place": 2,
+      "video": "https://youtu.be/QfvXFmLxmmc?si=lNZteYSGqOw3s_-q"
+     },
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 2,
+      "video": "https://youtu.be/C5bfMDmrcYM?si=62GTBa4_k_BoYChg"
+     },
+     {
+      "level_id": "2006",
+      "level": "RUST",
+      "percent": 100.0,
+      "cost": 256.0,
+      "top_place": 4,
+      "video": "https://youtu.be/6CsclPO_bhI"
+     }
+    ]
+   }
+  },
+  "21935": {
+   "nick": "Dougmale",
+   "rank": 2489,
+   "accounts_global": [
+    "21935"
+   ],
+   "accounts": {
+    "21935": [
+     {
+      "level_id": "2928",
+      "level": "Every End",
+      "percent": 52.0,
+      "cost": 69.19,
+      "top_place": 1,
+      "video": "https://youtu.be/XKrwirdd_qs"
+     }
+    ]
+   }
+  },
+  "6358": {
+   "nick": "DORF69",
+   "rank": 2565,
+   "accounts_global": [
+    "6358"
+   ],
+   "accounts": {
+    "6358": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 4,
+      "video": "https://www.youtube.com/watch?v=KdMwBLINLCk"
+     },
+     {
+      "level_id": "2150",
+      "level": "Escape Room",
+      "percent": 100.0,
+      "cost": 300.0,
+      "top_place": 5,
+      "video": "https://youtu.be/jkaLYIRWA6I"
+     }
+    ]
+   }
+  },
+  "3648": {
+   "nick": "sundown",
+   "rank": 2590,
+   "accounts_global": [
+    "3648"
+   ],
+   "accounts": {
+    "3648": [
+     {
+      "level_id": "2296",
+      "level": "Renevant",
+      "percent": 100.0,
+      "cost": 229.0,
+      "top_place": 2,
+      "video": "https://youtu.be/muXnHaQE7jA?si=kfqRGIJxdTanwp04"
+     },
+     {
+      "level_id": "2018",
+      "level": "Shardscapes",
+      "percent": 100.0,
+      "cost": 272.0,
+      "top_place": 3,
+      "video": "https://youtu.be/Uza-y34LZkk"
+     }
+    ]
+   }
+  },
+  "22288": {
+   "nick": "SUPERPACAN228",
+   "rank": 2599,
+   "accounts_global": [
+    "22288"
+   ],
+   "accounts": {
+    "22288": [
+     {
+      "level_id": "2707",
+      "level": "Judgement Knights",
+      "percent": 100.0,
+      "cost": 196.0,
+      "top_place": 2,
+      "video": "https://youtu.be/ol8EA5xaqAI?si=BYrLNRPtuA-Ibjhx"
+     },
+     {
+      "level_id": "2296",
+      "level": "Renevant",
+      "percent": 100.0,
+      "cost": 229.0,
+      "top_place": 2,
+      "video": "https://youtu.be/Pm2wdCFB1RM?si=IMyWOvK6ubNV9Y_Z"
+     },
+     {
+      "level_id": "1783",
+      "level": "Sky Shredder",
+      "percent": 100.0,
+      "cost": 232.0,
+      "top_place": 2,
+      "video": "https://youtu.be/VOGhbD85r-Y?si=pDMyO2KyB98A4GhU"
+     },
+     {
+      "level_id": "2024",
+      "level": "Bloodlust",
+      "percent": 100.0,
+      "cost": 297.0,
+      "top_place": 6,
+      "video": "https://youtu.be/TfRRRp7vu3g?si=WkUQzihwBxSJQTzK"
+     }
+    ]
+   }
+  },
+  "6942": {
+   "nick": "GMD_Zern0",
+   "rank": 2628,
+   "accounts_global": [
+    "6942"
+   ],
+   "accounts": {
+    "6942": [
+     {
+      "level_id": "2307",
+      "level": "Crimson Planet",
+      "percent": 100.0,
+      "cost": 239.0,
+      "top_place": 4,
+      "video": "https://youtu.be/fPX4RkC-OPY?si=PWqqqtvgduYEdpFa"
+     }
+    ]
+   }
+  },
+  "17106": {
+   "nick": "ItzGRUSHA",
+   "rank": 2667,
+   "accounts_global": [
+    "17106"
+   ],
+   "accounts": {
+    "17106": [
+     {
+      "level_id": "1981",
+      "level": "Saul Goodman",
+      "percent": 88.0,
+      "cost": 161.05,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=knqxzlCQa8I"
+     },
+     {
+      "level_id": "2535",
+      "level": "The Hallucination",
+      "percent": 81.0,
+      "cost": 178.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=Sc9FMRMHs-Y"
+     },
+     {
+      "level_id": "2050",
+      "level": "poocubed",
+      "percent": 60.0,
+      "cost": 235.89,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=cAkR5HaMnu4"
+     }
+    ]
+   }
+  },
+  "21973": {
+   "nick": "yellowEgg",
+   "rank": 2697,
+   "accounts_global": [
+    "21973"
+   ],
+   "accounts": {
+    "21973": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=AcXePEfIr10"
+     }
+    ]
+   }
+  },
+  "21789": {
+   "nick": "LINUXX",
+   "rank": 2708,
+   "accounts_global": [
+    "21789"
+   ],
+   "accounts": {
+    "21789": [
+     {
+      "level_id": "1915",
+      "level": "The Wonder of You",
+      "percent": 100.0,
+      "cost": 137.0,
+      "top_place": 1,
+      "video": "https://youtu.be/TeQZbnA5tVw?si=mbvuYzTEADF-0dd1"
+     },
+     {
+      "level_id": "2287",
+      "level": "Promethean",
+      "percent": 100.0,
+      "cost": 225.0,
+      "top_place": 3,
+      "video": "https://youtu.be/HMPNJ31-dFo?si=HY9FYlEznJQf6mxo"
+     }
+    ]
+   }
+  },
+  "3383": {
+   "nick": "APXNTEKTOP",
+   "rank": 2744,
+   "accounts_global": [
+    "3383"
+   ],
+   "accounts": {
+    "3383": [
+     {
+      "level_id": "1934",
+      "level": "walter white",
+      "percent": 87.0,
+      "cost": 223.58,
+      "top_place": 3,
+      "video": "https://youtu.be/64XDiEEv1c4?si=md67wsnzdBbDcvFr"
+     }
+    ]
+   }
+  },
+  "24093": {
+   "nick": "Mansotaro",
+   "rank": 2745,
+   "accounts_global": [
+    "24093"
+   ],
+   "accounts": {
+    "24093": [
+     {
+      "level_id": "2843",
+      "level": "The Plunge",
+      "percent": 100.0,
+      "cost": 105.0,
+      "top_place": 1,
+      "video": "https://youtu.be/xwuFfw4EMcc"
+     },
+     {
+      "level_id": "2236",
+      "level": "The Golden",
+      "percent": 100.0,
+      "cost": 152.0,
+      "top_place": 1,
+      "video": "https://youtu.be/Qr6CruIeJFg?si=hRBpzhiooPFKVaab"
+     },
+     {
+      "level_id": "2050",
+      "level": "poocubed",
+      "percent": 71.0,
+      "cost": 199.83,
+      "top_place": 2,
+      "video": "https://youtu.be/SdOiTdK6yj8"
+     },
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 3,
+      "video": "https://youtu.be/oH-MR4Z8n1s?si=abh3u394W_aG3-gE"
+     },
+     {
+      "level_id": "2202",
+      "level": "Twilight",
+      "percent": 100.0,
+      "cost": 270.0,
+      "top_place": 4,
+      "video": "https://youtu.be/YnTwYRfx7Hw?si=5iAM7nL27bHq07Gu"
+     }
+    ]
+   }
+  },
+  "30271": {
+   "nick": "zFreza",
+   "rank": 2764,
+   "accounts_global": [
+    "30271"
+   ],
+   "accounts": {
+    "30271": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 3,
+      "video": "https://youtu.be/Q-ydL4Y-1Uk"
+     }
+    ]
+   }
+  },
+  "7138": {
+   "nick": "KrisYa",
+   "rank": 2766,
+   "accounts_global": [
+    "7138"
+   ],
+   "accounts": {
+    "7138": [
+     {
+      "level_id": "2235",
+      "level": "Kenos",
+      "percent": 100.0,
+      "cost": 178.0,
+      "top_place": 2,
+      "video": "https://youtu.be/qNrU0GAL2U8"
+     }
+    ]
+   }
+  },
+  "9812": {
+   "nick": "Vaflya",
+   "rank": 2813,
+   "accounts_global": [
+    "9812"
+   ],
+   "accounts": {
+    "9812": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 4,
+      "video": "https://youtu.be/cGUFGfVs33A?is=AzplrapkDS2jgrW5"
+     }
+    ]
+   }
+  },
+  "34984": {
+   "nick": "merccry",
+   "rank": 2825,
+   "accounts_global": [
+    "34984"
+   ],
+   "accounts": {
+    "34984": [
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=7Vig-EtT3cg"
+     }
+    ]
+   }
+  },
+  "6257": {
+   "nick": "wezti",
+   "rank": 2872,
+   "accounts_global": [
+    "6257"
+   ],
+   "accounts": {
+    "6257": [
+     {
+      "level_id": "3354",
+      "level": "Trickshot",
+      "percent": 100.0,
+      "cost": 130.0,
+      "top_place": 1,
+      "video": "https://youtu.be/bApiWrnAFUA"
+     },
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=ZTxifZzB6v8"
+     },
+     {
+      "level_id": "2307",
+      "level": "Crimson Planet",
+      "percent": 100.0,
+      "cost": 239.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=VxVh4WC-1Z8"
+     },
+     {
+      "level_id": "2050",
+      "level": "poocubed",
+      "percent": 51.0,
+      "cost": 276.87,
+      "top_place": 3,
+      "video": "https://youtu.be/ZcBFrp6e_8Y"
+     }
+    ]
+   }
+  },
+  "3631": {
+   "nick": "wmcooler",
+   "rank": 2884,
+   "accounts_global": [
+    "3631"
+   ],
+   "accounts": {
+    "3631": [
+     {
+      "level_id": "2050",
+      "level": "poocubed",
+      "percent": 100.0,
+      "cost": 72.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=cmHmBRH_2TA"
+     },
+     {
+      "level_id": "1754",
+      "level": "Tartarus",
+      "percent": 100.0,
+      "cost": 138.0,
+      "top_place": 1,
+      "video": "https://youtu.be/OfISvrJXs8o?si=tOIJhVyWb6hZApJC"
+     },
+     {
+      "level_id": "2024",
+      "level": "Bloodlust",
+      "percent": 100.0,
+      "cost": 297.0,
+      "top_place": 5,
+      "video": "https://youtu.be/oeK5Mxh1vzs?si=sztWX3D1MA_f2B5k"
+     }
+    ]
+   }
+  },
+  "18651": {
+   "nick": "Zafsa",
+   "rank": 2895,
+   "accounts_global": [
+    "18651"
+   ],
+   "accounts": {
+    "18651": [
+     {
+      "level_id": "1923",
+      "level": "ETERNALtheory",
+      "percent": 92.0,
+      "cost": 219.43,
+      "top_place": 2,
+      "video": "https://youtu.be/HVqH5aREmD4?si=lmdsVlXRxuQDHQv4"
+     }
+    ]
+   }
+  },
+  "3723": {
+   "nick": "Deless100",
+   "rank": 2916,
+   "accounts_global": [
+    "3723"
+   ],
+   "accounts": {
+    "3723": [
+     {
+      "level_id": "2235",
+      "level": "Kenos",
+      "percent": 100.0,
+      "cost": 178.0,
+      "top_place": 1,
+      "video": "https://youtu.be/N01g3zO0wnE?si=GHdDqCxwH6EXvdMn"
+     }
+    ]
+   }
+  },
+  "18689": {
+   "nick": "StintlerGD",
+   "rank": 2917,
+   "accounts_global": [
+    "18689"
+   ],
+   "accounts": {
+    "18689": [
+     {
+      "level_id": "1690",
+      "level": "Jesse Pinkman",
+      "percent": 100.0,
+      "cost": 289.0,
+      "top_place": 4,
+      "video": "https://youtu.be/kWUwP7CK11E"
+     }
+    ]
+   }
+  },
+  "35989": {
+   "nick": "emirhanbanan",
+   "rank": 2918,
+   "accounts_global": [
+    "35989"
+   ],
+   "accounts": {
+    "35989": [
+     {
+      "level_id": "1732",
+      "level": "Sakupen Circles",
+      "percent": 100.0,
+      "cost": 65.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=SYb9R2UQMH4"
+     },
+     {
+      "level_id": "2689",
+      "level": "Checked Steam",
+      "percent": 100.0,
+      "cost": 141.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=w9ukT3Rut2M"
+     },
+     {
+      "level_id": "2544",
+      "level": "FACESHOPPING",
+      "percent": 100.0,
+      "cost": 250.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=Sh1pOT2L71c"
+     },
+     {
+      "level_id": "2018",
+      "level": "Shardscapes",
+      "percent": 100.0,
+      "cost": 272.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=8AtBSY-4AyY"
+     }
+    ]
+   }
+  },
+  "5814": {
+   "nick": "dibilizm",
+   "rank": 2937,
+   "accounts_global": [
+    "5814",
+    "53328"
+   ],
+   "accounts": {
+    "53328": [
+     {
+      "level_id": "2296",
+      "level": "Renevant",
+      "percent": 100.0,
+      "cost": 229.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=SPXBn9syDMA"
+     },
+     {
+      "level_id": "1981",
+      "level": "Saul Goodman",
+      "percent": 59.0,
+      "cost": 270.92,
+      "top_place": 2,
+      "video": "https://youtu.be/RQzQ7pOQugk"
+     },
+     {
+      "level_id": "2285",
+      "level": "Omega Interface",
+      "percent": 100.0,
+      "cost": 284.0,
+      "top_place": 3,
+      "video": "https://youtu.be/oZPc6mK_KK8"
+     }
+    ]
+   }
+  },
+  "6615": {
+   "nick": "ЧЁРНЫЙ ЗВЕРЬ",
+   "rank": 2951,
+   "accounts_global": [
+    "6615"
+   ],
+   "accounts": {
+    "6615": [
+     {
+      "level_id": "1591",
+      "level": "Trueffet",
+      "percent": 100.0,
+      "cost": 182.0,
+      "top_place": 1,
+      "video": "https://youtu.be/D1CAnJ0tUco?si=VX7e_ccsa9yOhEzH"
+     }
+    ]
+   }
+  },
+  "33743": {
+   "nick": "RMSXGD",
+   "rank": 2954,
+   "accounts_global": [
+    "33743"
+   ],
+   "accounts": {
+    "33743": [
+     {
+      "level_id": "1995",
+      "level": "Cold Sweat",
+      "percent": 100.0,
+      "cost": 224.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=T4mb477iReQ"
+     }
+    ]
+   }
+  },
+  "6975": {
+   "nick": "vercoo",
+   "rank": 2985,
+   "accounts_global": [
+    "6975",
+    "11714"
+   ],
+   "accounts": {
+    "6975": [
+     {
+      "level_id": "2236",
+      "level": "The Golden",
+      "percent": 100.0,
+      "cost": 152.0,
+      "top_place": 1,
+      "video": "https://youtu.be/tAVj0zv10Rk"
+     },
+     {
+      "level_id": "2458",
+      "level": "Crackhead Circles",
+      "percent": 100.0,
+      "cost": 197.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=x3xLO-X2O40"
+     },
+     {
+      "level_id": "1707",
+      "level": "SUPERHATEMEWORLD",
+      "percent": 100.0,
+      "cost": 248.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=wjVcLdmmLSA"
+     },
+     {
+      "level_id": "2304",
+      "level": "Amalgam",
+      "percent": 100.0,
+      "cost": 277.0,
+      "top_place": 4,
+      "video": "https://www.youtube.com/watch?v=d4i_L3U1CRo"
+     }
+    ]
+   }
+  },
+  "42845": {
+   "nick": "Pitbull",
+   "rank": 3012,
+   "accounts_global": [
+    "42845"
+   ],
+   "accounts": {
+    "42845": [
+     {
+      "level_id": "3353",
+      "level": "ROCKBOTTOM",
+      "percent": 100.0,
+      "cost": 190.0,
+      "top_place": 2,
+      "video": "https://youtu.be/ZukBcmUsY-I"
+     },
+     {
+      "level_id": "2050",
+      "level": "poocubed",
+      "percent": 50.0,
+      "cost": 282.32,
+      "top_place": 3,
+      "video": "https://youtu.be/YTbXBo2TTew"
+     }
+    ]
+   }
+  },
+  "14052": {
+   "nick": "Pulse",
+   "rank": 3018,
+   "accounts_global": [
+    "14052"
+   ],
+   "accounts": {
+    "14052": [
+     {
+      "level_id": "1578",
+      "level": "Thinking Space",
+      "percent": 100.0,
+      "cost": 223.0,
+      "top_place": 2,
+      "video": "https://youtu.be/tYvssc96yjA?si=OvefA8JZjazXTeG_"
+     },
+     {
+      "level_id": "2006",
+      "level": "RUST",
+      "percent": 100.0,
+      "cost": 256.0,
+      "top_place": 2,
+      "video": "https://youtu.be/yFlVvHAKQbo?si=BeKv0_t0Q63Y0SVg"
+     },
+     {
+      "level_id": "1551",
+      "level": "BarbarosFinaleFinale",
+      "percent": 100.0,
+      "cost": 288.0,
+      "top_place": 4,
+      "video": "https://youtu.be/yhg-VbQFDHM?si=vpKozuLaRI58eN5e"
+     }
+    ]
+   }
+  },
+  "30753": {
+   "nick": "Sherbet",
+   "rank": 3024,
+   "accounts_global": [
+    "30753"
+   ],
+   "accounts": {
+    "30753": [
+     {
+      "level_id": "1740",
+      "level": "Oblivion",
+      "percent": 100.0,
+      "cost": 156.0,
+      "top_place": 1,
+      "video": "https://youtu.be/v4Vcdu1ni3E?si=yC4qudbbnezzayiu"
+     }
+    ]
+   }
+  },
+  "18012": {
+   "nick": "Kr1ziz",
+   "rank": 3166,
+   "accounts_global": [
+    "18012"
+   ],
+   "accounts": {
+    "18012": [
+     {
+      "level_id": "1733",
+      "level": "UNKNOWN",
+      "percent": 100.0,
+      "cost": 142.0,
+      "top_place": 1,
+      "video": "https://youtu.be/YhDhF7oQiRg"
+     },
+     {
+      "level_id": "2236",
+      "level": "The Golden",
+      "percent": 100.0,
+      "cost": 152.0,
+      "top_place": 1,
+      "video": "https://youtu.be/imx7YFWQzLk"
+     },
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 2,
+      "video": "https://youtu.be/IkYowibF9XQ"
+     }
+    ]
+   }
+  },
+  "24861": {
+   "nick": "Tapxyhh",
+   "rank": 3173,
+   "accounts_global": [
+    "24861"
+   ],
+   "accounts": {
+    "24861": [
+     {
+      "level_id": "1707",
+      "level": "SUPERHATEMEWORLD",
+      "percent": 100.0,
+      "cost": 248.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=lVVAU6e93tE"
+     },
+     {
+      "level_id": "1732",
+      "level": "Sakupen Circles",
+      "percent": 67.0,
+      "cost": 253.23,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=vDFGjB_mgZo"
+     }
+    ]
+   }
+  },
+  "5827": {
+   "nick": "Sharix",
+   "rank": 3188,
+   "accounts_global": [
+    "5827"
+   ],
+   "accounts": {
+    "5827": [
+     {
+      "level_id": "2843",
+      "level": "The Plunge",
+      "percent": 100.0,
+      "cost": 105.0,
+      "top_place": 1,
+      "video": "https://youtu.be/YLfX45b64I4"
+     },
+     {
+      "level_id": "3286",
+      "level": "IMPERIAL",
+      "percent": 100.0,
+      "cost": 183.0,
+      "top_place": 1,
+      "video": "https://youtu.be/YlU7iLjgzWI?si=39AwWl3H6DvUfKwf"
+     },
+     {
+      "level_id": "1783",
+      "level": "Sky Shredder",
+      "percent": 100.0,
+      "cost": 232.0,
+      "top_place": 2,
+      "video": "https://youtu.be/J4t4WYkNL8A?si=gEZPFqUEw0IgdRUU"
+     },
+     {
+      "level_id": "2237",
+      "level": "Cognition",
+      "percent": 100.0,
+      "cost": 244.0,
+      "top_place": 4,
+      "video": "https://youtu.be/Ti2uQN9afHk?si=ynUx2TRwjv4TNfqd"
+     }
+    ]
+   }
+  },
+  "60132": {
+   "nick": "Ohdangzz",
+   "rank": 3232,
+   "accounts_global": [
+    "60132",
+    "14001"
+   ],
+   "accounts": {
+    "60132": [
+     {
+      "level_id": "3371",
+      "level": "BLITZ",
+      "percent": 100.0,
+      "cost": 210.0,
+      "top_place": 2,
+      "video": "https://youtu.be/FbplxUzZAVQ?si=vbGkl3mfFBbNsij0"
+     },
+     {
+      "level_id": "2307",
+      "level": "Crimson Planet",
+      "percent": 100.0,
+      "cost": 239.0,
+      "top_place": 2,
+      "video": "https://youtu.be/I6aECtJJzNg"
+     },
+     {
+      "level_id": "2711",
+      "level": "Rigel",
+      "percent": 100.0,
+      "cost": 262.0,
+      "top_place": 2,
+      "video": "https://youtu.be/ksP6ae15IhU"
+     }
+    ]
+   }
+  },
+  "20695": {
+   "nick": "owch44",
+   "rank": 3266,
+   "accounts_global": [
+    "20695"
+   ],
+   "accounts": {
+    "20695": [
+     {
+      "level_id": "2707",
+      "level": "Judgement Knights",
+      "percent": 100.0,
+      "cost": 196.0,
+      "top_place": 2,
+      "video": "https://youtu.be/lWopXZd9hr4"
+     }
+    ]
+   }
+  },
+  "6858": {
+   "nick": "iTwisster",
+   "rank": 3277,
+   "accounts_global": [
+    "6858"
+   ],
+   "accounts": {
+    "6858": [
+     {
+      "level_id": "1733",
+      "level": "UNKNOWN",
+      "percent": 100.0,
+      "cost": 142.0,
+      "top_place": 2,
+      "video": "https://youtu.be/AuPY2MhD7ec?si=dHO7Tdy9f-fUHBPK"
+     }
+    ]
+   }
+  },
+  "24820": {
+   "nick": "wDikiss",
+   "rank": 3278,
+   "accounts_global": [
+    "24820"
+   ],
+   "accounts": {
+    "24820": [
+     {
+      "level_id": "2656",
+      "level": "Acheron",
+      "percent": 96.0,
+      "cost": 73.59,
+      "top_place": 1,
+      "video": "https://youtu.be/t4V8xEhPbUk?si=55FKaaeSUqeeR5SH"
+     }
+    ]
+   }
+  },
+  "7607": {
+   "nick": "ItsStiv",
+   "rank": 3335,
+   "accounts_global": [
+    "7607"
+   ],
+   "accounts": {
+    "7607": [
+     {
+      "level_id": "1754",
+      "level": "Tartarus",
+      "percent": 100.0,
+      "cost": 138.0,
+      "top_place": 1,
+      "video": "https://youtu.be/l0URnW0gxHM"
+     }
+    ]
+   }
+  },
+  "22387": {
+   "nick": "Scabba",
+   "rank": 3345,
+   "accounts_global": [
+    "22387"
+   ],
+   "accounts": {
+    "22387": [
+     {
+      "level_id": "1578",
+      "level": "Thinking Space",
+      "percent": 100.0,
+      "cost": 223.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=74Bt3bCCKCU"
+     }
+    ]
+   }
+  },
+  "6023": {
+   "nick": "notexample",
+   "rank": 3368,
+   "accounts_global": [
+    "6023"
+   ],
+   "accounts": {
+    "6023": [
+     {
+      "level_id": "2304",
+      "level": "Amalgam",
+      "percent": 100.0,
+      "cost": 277.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=Z5K8GH-uInM"
+     }
+    ]
+   }
+  },
+  "24537": {
+   "nick": "angelictouch",
+   "rank": 3379,
+   "accounts_global": [
+    "24537"
+   ],
+   "accounts": {
+    "24537": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=zSWSJId77UU"
+     }
+    ]
+   }
+  },
+  "56922": {
+   "nick": "Pookowski",
+   "rank": 3413,
+   "accounts_global": [
+    "56922"
+   ],
+   "accounts": {
+    "56922": [
+     {
+      "level_id": "2449",
+      "level": "Zodiac",
+      "percent": 100.0,
+      "cost": 203.0,
+      "top_place": 2,
+      "video": "https://youtu.be/8pFVyhT-s8g"
+     },
+     {
+      "level_id": "2018",
+      "level": "Shardscapes",
+      "percent": 100.0,
+      "cost": 272.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=4TyGjJOhunM"
+     },
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=A3atWC2jHKQ"
+     }
+    ]
+   }
+  },
+  "32414": {
+   "nick": "Marcelo",
+   "rank": 3418,
+   "accounts_global": [
+    "32414"
+   ],
+   "accounts": {
+    "32414": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=Ixi0AdOMYL0"
+     }
+    ]
+   }
+  },
+  "9804": {
+   "nick": "LopikL",
+   "rank": 3435,
+   "accounts_global": [
+    "9804"
+   ],
+   "accounts": {
+    "9804": [
+     {
+      "level_id": "2854",
+      "level": "Collapse",
+      "percent": 100.0,
+      "cost": 94.0,
+      "top_place": 1,
+      "video": "https://youtu.be/vC_I6tI2gYA"
+     },
+     {
+      "level_id": "2296",
+      "level": "Renevant",
+      "percent": 100.0,
+      "cost": 229.0,
+      "top_place": 2,
+      "video": "https://youtu.be/sKKUVrrCEh0"
+     }
+    ]
+   }
+  },
+  "3803": {
+   "nick": "Kolibr1X",
+   "rank": 3468,
+   "accounts_global": [
+    "3803"
+   ],
+   "accounts": {
+    "3803": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 4,
+      "video": "https://youtu.be/hLaoM44dL6c?si=D8AJAQCxoTQMs0Fn"
+     }
+    ]
+   }
+  },
+  "19207": {
+   "nick": "stefan_19",
+   "rank": 3474,
+   "accounts_global": [
+    "19207"
+   ],
+   "accounts": {
+    "19207": [
+     {
+      "level_id": "2449",
+      "level": "Zodiac",
+      "percent": 100.0,
+      "cost": 203.0,
+      "top_place": 1,
+      "video": "https://youtu.be/imvslkVCHhg?si=Fv-xT2ntRF14C_zv"
+     }
+    ]
+   }
+  },
+  "37654": {
+   "nick": "Lukasta",
+   "rank": 3513,
+   "accounts_global": [
+    "37654"
+   ],
+   "accounts": {
+    "37654": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=MaAlHjSEd6Q"
+     }
+    ]
+   }
+  },
+  "32838": {
+   "nick": "ZETartic",
+   "rank": 3531,
+   "accounts_global": [
+    "32838"
+   ],
+   "accounts": {
+    "32838": [
+     {
+      "level_id": "2296",
+      "level": "Renevant",
+      "percent": 100.0,
+      "cost": 229.0,
+      "top_place": 2,
+      "video": "https://youtu.be/g-BeFCCOFFY?si=6mKbzftXNlfE8Izd"
+     }
+    ]
+   }
+  },
+  "48076": {
+   "nick": "ytkonos",
+   "rank": 3535,
+   "accounts_global": [
+    "48076"
+   ],
+   "accounts": {
+    "48076": [
+     {
+      "level_id": "1754",
+      "level": "Tartarus",
+      "percent": 100.0,
+      "cost": 138.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=NtIeUs3AaRc"
+     },
+     {
+      "level_id": "2304",
+      "level": "Amalgam",
+      "percent": 100.0,
+      "cost": 277.0,
+      "top_place": 2,
+      "video": "https://youtu.be/CnKQMa4mgBA"
+     }
+    ]
+   }
+  },
+  "23458": {
+   "nick": "frust",
+   "rank": 3649,
+   "accounts_global": [
+    "23458"
+   ],
+   "accounts": {
+    "23458": [
+     {
+      "level_id": "1952",
+      "level": "Trotil",
+      "percent": 100.0,
+      "cost": 230.0,
+      "top_place": 2,
+      "video": "https://youtu.be/pnSRA1tndho?si=_9xv5cJUB1C0Idxp&t=365"
+     },
+     {
+      "level_id": "2237",
+      "level": "Cognition",
+      "percent": 100.0,
+      "cost": 244.0,
+      "top_place": 2,
+      "video": "https://youtu.be/pnSRA1tndho?si=9nfm7xqFp7goDVUK&t=291"
+     }
+    ]
+   }
+  },
+  "30543": {
+   "nick": "BadburdGMD",
+   "rank": 3670,
+   "accounts_global": [
+    "30543"
+   ],
+   "accounts": {
+    "30543": [
+     {
+      "level_id": "2237",
+      "level": "Cognition",
+      "percent": 100.0,
+      "cost": 244.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=9g9xxht7kAI"
+     }
+    ]
+   }
+  },
+  "27036": {
+   "nick": "Izann",
+   "rank": 3683,
+   "accounts_global": [
+    "27036"
+   ],
+   "accounts": {
+    "27036": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=kceSRElZX0k"
+     }
+    ]
+   }
+  },
+  "35229": {
+   "nick": "Kaeme",
+   "rank": 3685,
+   "accounts_global": [
+    "35229"
+   ],
+   "accounts": {
+    "35229": [
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 2,
+      "video": "https://youtu.be/-S26Z1KH4Hc?si=ppcJhfIStR8SsmrL"
+     }
+    ]
+   }
+  },
+  "46284": {
+   "nick": "NoNe1",
+   "rank": 3746,
+   "accounts_global": [
+    "46284",
+    "8611"
+   ],
+   "accounts": {
+    "46284": [
+     {
+      "level_id": "1552",
+      "level": "NEUTRA",
+      "percent": 100.0,
+      "cost": 195.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=2uWBO7JqoFI&t=2s"
+     },
+     {
+      "level_id": "1690",
+      "level": "Jesse Pinkman",
+      "percent": 100.0,
+      "cost": 289.0,
+      "top_place": 4,
+      "video": "https://www.youtube.com/watch?v=U2-CGo_SMMI"
+     }
+    ]
+   }
+  },
+  "17759": {
+   "nick": "De1hnot",
+   "rank": 3764,
+   "accounts_global": [
+    "17759"
+   ],
+   "accounts": {
+    "17759": [
+     {
+      "level_id": "3427",
+      "level": "Sanctity",
+      "percent": 100.0,
+      "cost": 144.0,
+      "top_place": 1,
+      "video": "https://youtu.be/7H1c8Beh3i4?si=vJ-0U3EwRbKre0qW"
+     },
+     {
+      "level_id": "1746",
+      "level": "Aerial Gleam",
+      "percent": 100.0,
+      "cost": 180.0,
+      "top_place": 1,
+      "video": "https://youtu.be/SlorURe21t0?si=p3WdirxakvzThWOU"
+     },
+     {
+      "level_id": "2707",
+      "level": "Judgement Knights",
+      "percent": 100.0,
+      "cost": 196.0,
+      "top_place": 1,
+      "video": "https://youtu.be/BR-7PxYW7SI?si=iaP8K5KZpGkNmqDo"
+     }
+    ]
+   }
+  },
+  "29390": {
+   "nick": "Lunaa",
+   "rank": 3789,
+   "accounts_global": [
+    "29390"
+   ],
+   "accounts": {
+    "29390": [
+     {
+      "level_id": "1698",
+      "level": "Keres",
+      "percent": 100.0,
+      "cost": 215.0,
+      "top_place": 2,
+      "video": "https://youtu.be/t1JKfqhaQF4"
+     }
+    ]
+   }
+  },
+  "6597": {
+   "nick": "nar1x",
+   "rank": 3790,
+   "accounts_global": [
+    "6597",
+    "6595"
+   ],
+   "accounts": {
+    "6597": [
+     {
+      "level_id": "1893",
+      "level": "Henken",
+      "percent": 100.0,
+      "cost": 179.0,
+      "top_place": 2,
+      "video": "https://youtu.be/o9CQjg8sFUc"
+     },
+     {
+      "level_id": "2307",
+      "level": "Crimson Planet",
+      "percent": 100.0,
+      "cost": 239.0,
+      "top_place": 2,
+      "video": "https://youtu.be/OdM0EYicvoM"
+     }
+    ]
+   }
+  },
+  "6892": {
+   "nick": "exotium",
+   "rank": 3816,
+   "accounts_global": [
+    "6892"
+   ],
+   "accounts": {
+    "6892": [
+     {
+      "level_id": "2006",
+      "level": "RUST",
+      "percent": 100.0,
+      "cost": 256.0,
+      "top_place": 3,
+      "video": "https://youtu.be/FkALSQnbtfA?si=Uz0LOvfafsY2Q4Dp"
+     }
+    ]
+   }
+  },
+  "17561": {
+   "nick": "Qzerdd",
+   "rank": 3823,
+   "accounts_global": [
+    "17561"
+   ],
+   "accounts": {
+    "17561": [
+     {
+      "level_id": "1853",
+      "level": "qoUEO",
+      "percent": 100.0,
+      "cost": 241.0,
+      "top_place": 3,
+      "video": "https://youtu.be/qxMXtIfMChY?si=F3GK-WaVchzDyQVS"
+     },
+     {
+      "level_id": "2006",
+      "level": "RUST",
+      "percent": 100.0,
+      "cost": 256.0,
+      "top_place": 3,
+      "video": "https://youtu.be/_PiWi0rlGvY"
+     },
+     {
+      "level_id": "2024",
+      "level": "Bloodlust",
+      "percent": 100.0,
+      "cost": 297.0,
+      "top_place": 4,
+      "video": "https://youtu.be/vOKLg5QFJP4?si=s4lvJifnFM3Eecqg"
+     }
+    ]
+   }
+  },
+  "2011": {
+   "nick": "votoxgd",
+   "rank": 3861,
+   "accounts_global": [
+    "2011"
+   ],
+   "accounts": {
+    "2011": [
+     {
+      "level_id": "2006",
+      "level": "RUST",
+      "percent": 100.0,
+      "cost": 256.0,
+      "top_place": 2,
+      "video": "https://youtu.be/sQmChrmtZlY?si=-kTXewb8UATgQkZ5"
+     }
+    ]
+   }
+  },
+  "17714": {
+   "nick": "Nik1le24",
+   "rank": 3864,
+   "accounts_global": [
+    "17714"
+   ],
+   "accounts": {
+    "17714": [
+     {
+      "level_id": "1591",
+      "level": "Trueffet",
+      "percent": 100.0,
+      "cost": 182.0,
+      "top_place": 1,
+      "video": "https://youtu.be/x47MNCCXgu0?si=p6uYemnZ8Zn59T2m"
+     }
+    ]
+   }
+  },
+  "20303": {
+   "nick": "Vibrant",
+   "rank": 3865,
+   "accounts_global": [
+    "20303"
+   ],
+   "accounts": {
+    "20303": [
+     {
+      "level_id": "2418",
+      "level": "Solar Flare",
+      "percent": 79.0,
+      "cost": 223.59,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=3Y6fOc5t8fg"
+     }
+    ]
+   }
+  },
+  "8408": {
+   "nick": "Bulletz",
+   "rank": 3902,
+   "accounts_global": [
+    "8408"
+   ],
+   "accounts": {
+    "8408": [
+     {
+      "level_id": "1783",
+      "level": "Sky Shredder",
+      "percent": 100.0,
+      "cost": 232.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=X93jkh4wMSg&t=5s"
+     }
+    ]
+   }
+  },
+  "12334": {
+   "nick": "-ReimuHakurei-",
+   "rank": 3954,
+   "accounts_global": [
+    "12334"
+   ],
+   "accounts": {
+    "12334": [
+     {
+      "level_id": "2006",
+      "level": "RUST",
+      "percent": 100.0,
+      "cost": 256.0,
+      "top_place": 2,
+      "video": "https://youtu.be/-13WE-0RTMk"
+     },
+     {
+      "level_id": "3225",
+      "level": "NYUTOPIA",
+      "percent": 100.0,
+      "cost": 281.0,
+      "top_place": 3,
+      "video": "https://youtu.be/4ptq-Crh608"
+     },
+     {
+      "level_id": "1690",
+      "level": "Jesse Pinkman",
+      "percent": 100.0,
+      "cost": 289.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=k1rwcxpEghU"
+     }
+    ]
+   }
+  },
+  "8806": {
+   "nick": "F0xy1337",
+   "rank": 3978,
+   "accounts_global": [
+    "8806"
+   ],
+   "accounts": {
+    "8806": [
+     {
+      "level_id": "1732",
+      "level": "Sakupen Circles",
+      "percent": 100.0,
+      "cost": 65.0,
+      "top_place": 1,
+      "video": "https://youtu.be/jsz3Kv_Sp4w"
+     }
+    ]
+   }
+  },
+  "12632": {
+   "nick": "ilyas_karabas",
+   "rank": 3983,
+   "accounts_global": [
+    "12632"
+   ],
+   "accounts": {
+    "12632": [
+     {
+      "level_id": "3434",
+      "level": "l o v e",
+      "percent": 100.0,
+      "cost": 151.0,
+      "top_place": 1,
+      "video": "https://youtu.be/QuKE_p_Wlrg?si=kJTsZclc6f7Z-1fh"
+     }
+    ]
+   }
+  },
+  "19546": {
+   "nick": "L1kees",
+   "rank": 3990,
+   "accounts_global": [
+    "19546"
+   ],
+   "accounts": {
+    "19546": [
+     {
+      "level_id": "1952",
+      "level": "Trotil",
+      "percent": 100.0,
+      "cost": 230.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=8C3VCHhuUh4"
+     },
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=-1dWvZjgemk"
+     }
+    ]
+   }
+  },
+  "20405": {
+   "nick": "skiton98",
+   "rank": 3995,
+   "accounts_global": [
+    "20405"
+   ],
+   "accounts": {
+    "20405": [
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 2,
+      "video": "https://youtu.be/uXkPzVNUlOk"
+     }
+    ]
+   }
+  },
+  "22705": {
+   "nick": "Mvsvmune",
+   "rank": 4023,
+   "accounts_global": [
+    "22705"
+   ],
+   "accounts": {
+    "22705": [
+     {
+      "level_id": "1853",
+      "level": "qoUEO",
+      "percent": 100.0,
+      "cost": 241.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=gWjUzuWZDvE"
+     },
+     {
+      "level_id": "2237",
+      "level": "Cognition",
+      "percent": 100.0,
+      "cost": 244.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=mv0vsY_FGOE"
+     }
+    ]
+   }
+  },
+  "42416": {
+   "nick": "juic3yyy",
+   "rank": 4055,
+   "accounts_global": [
+    "42416"
+   ],
+   "accounts": {
+    "42416": [
+     {
+      "level_id": "2928",
+      "level": "Every End",
+      "percent": 66.0,
+      "cost": 54.32,
+      "top_place": 1,
+      "video": "https://youtu.be/PUvpQHh2T4w?is=Fc69Pg_cIvjdwHIC"
+     }
+    ]
+   }
+  },
+  "23187": {
+   "nick": "ExtraGMD",
+   "rank": 4064,
+   "accounts_global": [
+    "23187"
+   ],
+   "accounts": {
+    "23187": [
+     {
+      "level_id": "1952",
+      "level": "Trotil",
+      "percent": 100.0,
+      "cost": 230.0,
+      "top_place": 2,
+      "video": "https://youtu.be/X9jjMhY5zKw?si=H-BVgEi05SqSX1dU"
+     }
+    ]
+   }
+  },
+  "8813": {
+   "nick": "HeHeoH",
+   "rank": 4068,
+   "accounts_global": [
+    "8813"
+   ],
+   "accounts": {
+    "8813": [
+     {
+      "level_id": "2541",
+      "level": "Coral Cave",
+      "percent": 100.0,
+      "cost": 264.0,
+      "top_place": 3,
+      "video": "https://youtu.be/_fnD0r2bfVk?si=v9nGWG_95AaaxrHLhttps://youtu.be/_fnD0r2bfVk?si=v9nGWG_95AaaxrHL"
+     }
+    ]
+   }
+  },
+  "23034": {
+   "nick": "dakani",
+   "rank": 4069,
+   "accounts_global": [
+    "23034"
+   ],
+   "accounts": {
+    "23034": [
+     {
+      "level_id": "1788",
+      "level": "THE ROCK HOUSE",
+      "percent": 100.0,
+      "cost": 175.0,
+      "top_place": 1,
+      "video": "https://youtu.be/ZKVnSAqzZBA"
+     },
+     {
+      "level_id": "3353",
+      "level": "ROCKBOTTOM",
+      "percent": 100.0,
+      "cost": 190.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=4U5rMkeAk3g"
+     },
+     {
+      "level_id": "2307",
+      "level": "Crimson Planet",
+      "percent": 100.0,
+      "cost": 239.0,
+      "top_place": 2,
+      "video": "https://youtu.be/bjyRbzfPU_4"
+     },
+     {
+      "level_id": "1707",
+      "level": "SUPERHATEMEWORLD",
+      "percent": 100.0,
+      "cost": 248.0,
+      "top_place": 2,
+      "video": "https://youtu.be/JaOmIrZ0JFQ"
+     }
+    ]
+   }
+  },
+  "18764": {
+   "nick": "zCrystalGD",
+   "rank": 4077,
+   "accounts_global": [
+    "18764"
+   ],
+   "accounts": {
+    "18764": [
+     {
+      "level_id": "2202",
+      "level": "Twilight",
+      "percent": 100.0,
+      "cost": 270.0,
+      "top_place": 3,
+      "video": "https://youtu.be/MbPGH_Pc718"
+     },
+     {
+      "level_id": "2304",
+      "level": "Amalgam",
+      "percent": 100.0,
+      "cost": 277.0,
+      "top_place": 3,
+      "video": "https://youtu.be/uVGRgfjSpPs"
+     }
+    ]
+   }
+  },
+  "19474": {
+   "nick": "White",
+   "rank": 4086,
+   "accounts_global": [
+    "19474"
+   ],
+   "accounts": {
+    "19474": [
+     {
+      "level_id": "1748",
+      "level": "Slaughterhouse",
+      "percent": 59.0,
+      "cost": 171.82,
+      "top_place": 1,
+      "video": "https://youtu.be/Q6zAzbqE1_8?si=TnXPBZTzSxJkAjKe"
+     },
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 2,
+      "video": "https://youtu.be/QhuPj5FEEdM"
+     },
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 3,
+      "video": "https://youtu.be/7V6U8uAsX0Q"
+     }
+    ]
+   }
+  },
+  "5829": {
+   "nick": "Пингвин",
+   "rank": 4090,
+   "accounts_global": [
+    "5829"
+   ],
+   "accounts": {
+    "5829": [
+     {
+      "level_id": "2237",
+      "level": "Cognition",
+      "percent": 100.0,
+      "cost": 244.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=GrCp-Te3JzY&t=1s"
+     }
+    ]
+   }
+  },
+  "26762": {
+   "nick": "RayZ",
+   "rank": 4107,
+   "accounts_global": [
+    "26762"
+   ],
+   "accounts": {
+    "26762": [
+     {
+      "level_id": "2692",
+      "level": "Waterfall",
+      "percent": 100.0,
+      "cost": 139.0,
+      "top_place": 1,
+      "video": "https://youtu.be/XsfcZgS_fgo"
+     },
+     {
+      "level_id": "2236",
+      "level": "The Golden",
+      "percent": 100.0,
+      "cost": 152.0,
+      "top_place": 1,
+      "video": "https://youtu.be/v0a1TJZH5cs"
+     },
+     {
+      "level_id": "1783",
+      "level": "Sky Shredder",
+      "percent": 100.0,
+      "cost": 232.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=SKXsWAruNQo&lc=UgyRRgrk5eXx8NPxqSF4AaABAg"
+     },
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 3,
+      "video": "https://youtu.be/FTR1HCMYkUE"
+     }
+    ]
+   }
+  },
+  "7666": {
+   "nick": "Danikcopper",
+   "rank": 4114,
+   "accounts_global": [
+    "7666"
+   ],
+   "accounts": {
+    "7666": [
+     {
+      "level_id": "1952",
+      "level": "Trotil",
+      "percent": 100.0,
+      "cost": 230.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=JebphBeoi8o"
+     }
+    ]
+   }
+  },
+  "62425": {
+   "nick": "finlay",
+   "rank": 4132,
+   "accounts_global": [
+    "62425"
+   ],
+   "accounts": {
+    "62425": [
+     {
+      "level_id": "1578",
+      "level": "Thinking Space",
+      "percent": 100.0,
+      "cost": 223.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=K8LF2HcrhxM"
+     }
+    ]
+   }
+  },
+  "701": {
+   "nick": "Anti",
+   "rank": 4145,
+   "accounts_global": [
+    "701"
+   ],
+   "accounts": {
+    "701": [
+     {
+      "level_id": "2464",
+      "level": "Pandemonium",
+      "percent": 100.0,
+      "cost": 279.0,
+      "top_place": 3,
+      "video": "https://youtu.be/O941JE600WQ"
+     }
+    ]
+   }
+  },
+  "6458": {
+   "nick": "blightwastaken",
+   "rank": 4221,
+   "accounts_global": [
+    "6458"
+   ],
+   "accounts": {
+    "6458": [
+     {
+      "level_id": "1784",
+      "level": "Cosmic Cyclone",
+      "percent": 100.0,
+      "cost": 255.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=yv_jiBvYxi0"
+     }
+    ]
+   }
+  },
+  "31416": {
+   "nick": "vapidf",
+   "rank": 4247,
+   "accounts_global": [
+    "31416"
+   ],
+   "accounts": {
+    "31416": [
+     {
+      "level_id": "1578",
+      "level": "Thinking Space",
+      "percent": 100.0,
+      "cost": 223.0,
+      "top_place": 1,
+      "video": "https://youtu.be/aCWNgZfkEik"
+     }
+    ]
+   }
+  },
+  "18373": {
+   "nick": "GMD ChimiChanga",
+   "rank": 4249,
+   "accounts_global": [
+    "18373"
+   ],
+   "accounts": {
+    "18373": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 3,
+      "video": "https://youtu.be/WJ_yC3nysh8"
+     }
+    ]
+   }
+  },
+  "28479": {
+   "nick": "lezoulu_",
+   "rank": 4405,
+   "accounts_global": [
+    "28479"
+   ],
+   "accounts": {
+    "28479": [
+     {
+      "level_id": "3410",
+      "level": "NervHell",
+      "percent": 48.0,
+      "cost": 264.0,
+      "top_place": 2,
+      "video": "https://youtu.be/GNuo9F196gE"
+     }
+    ]
+   }
+  },
+  "7624": {
+   "nick": "Tir_Vir",
+   "rank": 4430,
+   "accounts_global": [
+    "7624"
+   ],
+   "accounts": {
+    "7624": [
+     {
+      "level_id": "2718",
+      "level": "Ascent",
+      "percent": 100.0,
+      "cost": 221.0,
+      "top_place": 1,
+      "video": "https://youtu.be/gmEl8rEbQ7g"
+     },
+     {
+      "level_id": "2296",
+      "level": "Renevant",
+      "percent": 100.0,
+      "cost": 229.0,
+      "top_place": 1,
+      "video": "https://youtu.be/-wZNEiq2Z9w"
+     }
+    ]
+   }
+  },
+  "12960": {
+   "nick": "FallGD",
+   "rank": 4447,
+   "accounts_global": [
+    "12960"
+   ],
+   "accounts": {
+    "12960": [
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 1,
+      "video": "https://youtu.be/aED56Tw00rw?si=zYo8IeyxG-0yANrC"
+     },
+     {
+      "level_id": "1690",
+      "level": "Jesse Pinkman",
+      "percent": 100.0,
+      "cost": 289.0,
+      "top_place": 3,
+      "video": "https://youtu.be/2j9Nzf42_TI?si=ozqBJ2lvHm7pbVlI"
+     }
+    ]
+   }
+  },
+  "17907": {
+   "nick": "ITZsaharoc",
+   "rank": 4453,
+   "accounts_global": [
+    "17907"
+   ],
+   "accounts": {
+    "17907": [
+     {
+      "level_id": "2307",
+      "level": "Crimson Planet",
+      "percent": 100.0,
+      "cost": 239.0,
+      "top_place": 2,
+      "video": "https://youtu.be/HLyb4M2C8ZM"
+     }
+    ]
+   }
+  },
+  "20050": {
+   "nick": "Bannyyy",
+   "rank": 4465,
+   "accounts_global": [
+    "20050"
+   ],
+   "accounts": {
+    "20050": [
+     {
+      "level_id": "2711",
+      "level": "Rigel",
+      "percent": 100.0,
+      "cost": 262.0,
+      "top_place": 2,
+      "video": "https://youtu.be/hbwBbLB856I"
+     }
+    ]
+   }
+  },
+  "31671": {
+   "nick": "gmdzeroxreal",
+   "rank": 4497,
+   "accounts_global": [
+    "31671"
+   ],
+   "accounts": {
+    "31671": [
+     {
+      "level_id": "3225",
+      "level": "NYUTOPIA",
+      "percent": 100.0,
+      "cost": 281.0,
+      "top_place": 3,
+      "video": "https://www.youtube.com/watch?v=bcGhN-idxGQ"
+     }
+    ]
+   }
+  },
+  "10287": {
+   "nick": "umlaut",
+   "rank": 4500,
+   "accounts_global": [
+    "10287"
+   ],
+   "accounts": {
+    "10287": [
+     {
+      "level_id": "1746",
+      "level": "Aerial Gleam",
+      "percent": 100.0,
+      "cost": 180.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=g31gRU8yBj0"
+     },
+     {
+      "level_id": "2392",
+      "level": "Ringy Paracosm",
+      "percent": 100.0,
+      "cost": 234.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=sjFaxSik8QU"
+     }
+    ]
+   }
+  },
+  "6466": {
+   "nick": "verblasse",
+   "rank": 4503,
+   "accounts_global": [
+    "6466"
+   ],
+   "accounts": {
+    "6466": [
+     {
+      "level_id": "1853",
+      "level": "qoUEO",
+      "percent": 100.0,
+      "cost": 241.0,
+      "top_place": 1,
+      "video": "https://youtu.be/NvfRblVdAD4?si=lgB5o-JCNsE1JZBf"
+     }
+    ]
+   }
+  },
+  "47535": {
+   "nick": "frythiefgaming",
+   "rank": 4561,
+   "accounts_global": [
+    "47535"
+   ],
+   "accounts": {
+    "47535": [
+     {
+      "level_id": "1853",
+      "level": "qoUEO",
+      "percent": 100.0,
+      "cost": 241.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=47kPlWBu9j4"
+     }
+    ]
+   }
+  },
+  "29015": {
+   "nick": "UnknowmyT",
+   "rank": 4712,
+   "accounts_global": [
+    "29015"
+   ],
+   "accounts": {
+    "29015": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://youtu.be/s1I7El8ixbU?si=cgz41QGEhgydjrY-"
+     }
+    ]
+   }
+  },
+  "28956": {
+   "nick": "fofaNN",
+   "rank": 4752,
+   "accounts_global": [
+    "28956"
+   ],
+   "accounts": {
+    "28956": [
+     {
+      "level_id": "1748",
+      "level": "Slaughterhouse",
+      "percent": 78.0,
+      "cost": 116.08,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=oT5x55k3gcw"
+     }
+    ]
+   }
+  },
+  "45147": {
+   "nick": "FloLink212",
+   "rank": 4755,
+   "accounts_global": [
+    "45147"
+   ],
+   "accounts": {
+    "45147": [
+     {
+      "level_id": "1952",
+      "level": "Trotil",
+      "percent": 100.0,
+      "cost": 230.0,
+      "top_place": 2,
+      "video": "https://youtu.be/jRE584lg7T8"
+     },
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://youtu.be/PNnweQOV_Q0?si=bcc4ZBCsXRWn9jYc"
+     }
+    ]
+   }
+  },
+  "27543": {
+   "nick": "stormixs",
+   "rank": 4774,
+   "accounts_global": [
+    "27543"
+   ],
+   "accounts": {
+    "27543": [
+     {
+      "level_id": "1740",
+      "level": "Oblivion",
+      "percent": 100.0,
+      "cost": 156.0,
+      "top_place": 1,
+      "video": "https://youtu.be/V-W5UnK2D6s?si=IHetPSRC2Axc1dJc"
+     }
+    ]
+   }
+  },
+  "21772": {
+   "nick": "Lokunin",
+   "rank": 4792,
+   "accounts_global": [
+    "21772"
+   ],
+   "accounts": {
+    "21772": [
+     {
+      "level_id": "2449",
+      "level": "Zodiac",
+      "percent": 100.0,
+      "cost": 203.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=oPhRT8eH2_g"
+     },
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=oDdTnL7gdsY"
+     }
+    ]
+   }
+  },
+  "32454": {
+   "nick": "mamakiwi",
+   "rank": 4833,
+   "accounts_global": [
+    "32454"
+   ],
+   "accounts": {
+    "32454": [
+     {
+      "level_id": "2050",
+      "level": "poocubed",
+      "percent": 67.0,
+      "cost": 211.58,
+      "top_place": 1,
+      "video": "https://youtu.be/sE1XHsUvuSA?si=gJaXBEc5RhKV1cL3"
+     }
+    ]
+   }
+  },
+  "3448": {
+   "nick": "ThEDetectus",
+   "rank": 4836,
+   "accounts_global": [
+    "3448"
+   ],
+   "accounts": {
+    "3448": [
+     {
+      "level_id": "2577",
+      "level": "Sonic Wave Infinity",
+      "percent": 100.0,
+      "cost": 134.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=OD1hHZqFSRQ"
+     }
+    ]
+   }
+  },
+  "19400": {
+   "nick": "Mewing",
+   "rank": 4843,
+   "accounts_global": [
+    "19400"
+   ],
+   "accounts": {
+    "19400": [
+     {
+      "level_id": "1591",
+      "level": "Trueffet",
+      "percent": 100.0,
+      "cost": 182.0,
+      "top_place": 1,
+      "video": "https://youtu.be/llxzBIs_0Zk"
+     },
+     {
+      "level_id": "2307",
+      "level": "Crimson Planet",
+      "percent": 100.0,
+      "cost": 239.0,
+      "top_place": 2,
+      "video": "https://youtu.be/fCcBe5C-kZQ"
+     }
+    ]
+   }
+  },
+  "29061": {
+   "nick": "spotty",
+   "rank": 4846,
+   "accounts_global": [
+    "29061"
+   ],
+   "accounts": {
+    "29061": [
+     {
+      "level_id": "1591",
+      "level": "Trueffet",
+      "percent": 100.0,
+      "cost": 182.0,
+      "top_place": 1,
+      "video": "https://youtu.be/kEXwHV4Faac?si=v4lsCS7LFlLLoSyf"
+     },
+     {
+      "level_id": "2024",
+      "level": "Bloodlust",
+      "percent": 100.0,
+      "cost": 297.0,
+      "top_place": 2,
+      "video": "https://youtu.be/jObhtAbSDK8?si=Wcbg9uOO6JAJ8Ti1"
+     }
+    ]
+   }
+  },
+  "29527": {
+   "nick": "AlexEyeGMD",
+   "rank": 4847,
+   "accounts_global": [
+    "29527"
+   ],
+   "accounts": {
+    "29527": [
+     {
+      "level_id": "2718",
+      "level": "Ascent",
+      "percent": 100.0,
+      "cost": 221.0,
+      "top_place": 1,
+      "video": "https://youtu.be/BtqDaxxhfO4?si=BekJsFqnBO8FdaKG"
+     }
+    ]
+   }
+  },
+  "17912": {
+   "nick": "ztlucky",
+   "rank": 4882,
+   "accounts_global": [
+    "17912"
+   ],
+   "accounts": {
+    "17912": [
+     {
+      "level_id": "1754",
+      "level": "Tartarus",
+      "percent": 100.0,
+      "cost": 138.0,
+      "top_place": 1,
+      "video": "https://youtu.be/he3wQfi7NMc?si=R2aQRNRUX-JzjSxb"
+     }
+    ]
+   }
+  },
+  "26005": {
+   "nick": "ClaiZyx",
+   "rank": 4924,
+   "accounts_global": [
+    "26005"
+   ],
+   "accounts": {
+    "26005": [
+     {
+      "level_id": "2372",
+      "level": "COMBUSTION",
+      "percent": 100.0,
+      "cost": 86.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=uRRU707TuCg"
+     }
+    ]
+   }
+  },
+  "34787": {
+   "nick": "S0lRAk",
+   "rank": 4930,
+   "accounts_global": [
+    "34787"
+   ],
+   "accounts": {
+    "34787": [
+     {
+      "level_id": "2449",
+      "level": "Zodiac",
+      "percent": 100.0,
+      "cost": 203.0,
+      "top_place": 1,
+      "video": "https://youtu.be/3mRcSAsMUMA"
+     },
+     {
+      "level_id": "1698",
+      "level": "Keres",
+      "percent": 100.0,
+      "cost": 215.0,
+      "top_place": 1,
+      "video": "https://youtu.be/Uvp6iTi6rd0"
+     }
+    ]
+   }
+  },
+  "6050": {
+   "nick": "anrekkk",
+   "rank": 4942,
+   "accounts_global": [
+    "6050"
+   ],
+   "accounts": {
+    "6050": [
+     {
+      "level_id": "2237",
+      "level": "Cognition",
+      "percent": 100.0,
+      "cost": 244.0,
+      "top_place": 2,
+      "video": "https://youtu.be/ATaHO6MqGfA?si=Xc4hH8FZgvrGrhcS"
+     }
+    ]
+   }
+  },
+  "1319": {
+   "nick": "Gappi",
+   "rank": 4957,
+   "accounts_global": [
+    "1319"
+   ],
+   "accounts": {
+    "1319": [
+     {
+      "level_id": "2237",
+      "level": "Cognition",
+      "percent": 100.0,
+      "cost": 244.0,
+      "top_place": 2,
+      "video": "https://youtu.be/INvSDi6d6qs"
+     }
+    ]
+   }
+  },
+  "5466": {
+   "nick": "ra1n1337",
+   "rank": 4959,
+   "accounts_global": [
+    "5466"
+   ],
+   "accounts": {
+    "5466": [
+     {
+      "level_id": "2658",
+      "level": "Through The Gates",
+      "percent": 93.0,
+      "cost": 157.83,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=6wC3oH0-zuU"
+     }
+    ]
+   }
+  },
+  "30621": {
+   "nick": "ShaquisGD",
+   "rank": 5008,
+   "accounts_global": [
+    "30621"
+   ],
+   "accounts": {
+    "30621": [
+     {
+      "level_id": "1706",
+      "level": "Abyss of Darkness",
+      "percent": 73.0,
+      "cost": 94.79,
+      "top_place": 1,
+      "video": "https://youtu.be/IUZA5enY8Fc"
+     },
+     {
+      "level_id": "1591",
+      "level": "Trueffet",
+      "percent": 100.0,
+      "cost": 182.0,
+      "top_place": 1,
+      "video": "https://youtu.be/nDP0ZiW6rnI"
+     }
+    ]
+   }
+  },
+  "7235": {
+   "nick": "DELL",
+   "rank": 5022,
+   "accounts_global": [
+    "7235"
+   ],
+   "accounts": {
+    "7235": [
+     {
+      "level_id": "1707",
+      "level": "SUPERHATEMEWORLD",
+      "percent": 100.0,
+      "cost": 248.0,
+      "top_place": 2,
+      "video": "https://youtu.be/NeYJbBvgask?si=NOrbruOiE020H2JX"
+     }
+    ]
+   }
+  },
+  "28952": {
+   "nick": "ItzFan",
+   "rank": 5023,
+   "accounts_global": [
+    "28952"
+   ],
+   "accounts": {
+    "28952": [
+     {
+      "level_id": "1732",
+      "level": "Sakupen Circles",
+      "percent": 100.0,
+      "cost": 65.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=WpYPJPXseNM"
+     }
+    ]
+   }
+  },
+  "1736": {
+   "nick": "zanx",
+   "rank": 5026,
+   "accounts_global": [
+    "1736"
+   ],
+   "accounts": {
+    "1736": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=243XfHeE9Bo"
+     }
+    ]
+   }
+  },
+  "33261": {
+   "nick": "LtzTurtle",
+   "rank": 5086,
+   "accounts_global": [
+    "33261"
+   ],
+   "accounts": {
+    "33261": [
+     {
+      "level_id": "2843",
+      "level": "The Plunge",
+      "percent": 100.0,
+      "cost": 105.0,
+      "top_place": 1,
+      "video": "https://youtu.be/Ch4j_1vKLOg"
+     }
+    ]
+   }
+  },
+  "10097": {
+   "nick": "kocheryzhka",
+   "rank": 5088,
+   "accounts_global": [
+    "10097"
+   ],
+   "accounts": {
+    "10097": [
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 1,
+      "video": "https://youtu.be/SqYPXiedRyA?si=kOGFS7OkPy973RCK"
+     },
+     {
+      "level_id": "1756",
+      "level": "The Rupture",
+      "percent": 100.0,
+      "cost": 292.0,
+      "top_place": 2,
+      "video": "https://youtu.be/utMj93v6apQ?si=OpBqDzP1dj_skYGE"
+     }
+    ]
+   }
+  },
+  "55939": {
+   "nick": "yulan0731",
+   "rank": 5104,
+   "accounts_global": [
+    "55939"
+   ],
+   "accounts": {
+    "55939": [
+     {
+      "level_id": "3126",
+      "level": "IRIS",
+      "percent": 100.0,
+      "cost": 207.0,
+      "top_place": 1,
+      "video": "https://youtu.be/5ZTB2A5F67g"
+     },
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://youtu.be/KC5syCKgT7A"
+     }
+    ]
+   }
+  },
+  "20985": {
+   "nick": "BetterCallDmitrik",
+   "rank": 5126,
+   "accounts_global": [
+    "20985"
+   ],
+   "accounts": {
+    "20985": [
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 1,
+      "video": "https://youtu.be/rorieCQuhEI?si=1YsTuky13b21I7uF"
+     },
+     {
+      "level_id": "2307",
+      "level": "Crimson Planet",
+      "percent": 100.0,
+      "cost": 239.0,
+      "top_place": 1,
+      "video": "https://youtu.be/kiNYe0DPBWs?si=kAAYbvrqbPl7Y4m7"
+     },
+     {
+      "level_id": "2513",
+      "level": "MINUSdry",
+      "percent": 56.0,
+      "cost": 269.5,
+      "top_place": 2,
+      "video": "https://youtu.be/9AJxN9ygrXg?si=AUS8HERmAALvj2s7"
+     }
+    ]
+   }
+  },
+  "17910": {
+   "nick": "TermitGMD",
+   "rank": 5127,
+   "accounts_global": [
+    "17910"
+   ],
+   "accounts": {
+    "17910": [
+     {
+      "level_id": "1733",
+      "level": "UNKNOWN",
+      "percent": 100.0,
+      "cost": 142.0,
+      "top_place": 1,
+      "video": "https://youtu.be/BQyvM4_05A8?si=hsfdPXbEv95hxnoF"
+     },
+     {
+      "level_id": "1591",
+      "level": "Trueffet",
+      "percent": 100.0,
+      "cost": 182.0,
+      "top_place": 1,
+      "video": "https://youtu.be/SFvqLXKjUWE?si=wc3FN98v7BgNTYFu"
+     },
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 1,
+      "video": "https://youtu.be/B7s_n76WjRk?si=m67KTD7erSUsb83-"
+     },
+     {
+      "level_id": "1707",
+      "level": "SUPERHATEMEWORLD",
+      "percent": 100.0,
+      "cost": 248.0,
+      "top_place": 2,
+      "video": "https://youtu.be/RWxEeIqiYQ0?si=PjH7xxOOO89LBxMR"
+     },
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://youtu.be/v8hs3-Pua1Y?si=cefl5mXpoazNEMbL"
+     },
+     {
+      "level_id": "2050",
+      "level": "poocubed",
+      "percent": 50.0,
+      "cost": 282.32,
+      "top_place": 2,
+      "video": "https://youtu.be/HNANLsG_qKU?si=nVZc0Rt2MfSg2buW"
+     },
+     {
+      "level_id": "1690",
+      "level": "Jesse Pinkman",
+      "percent": 100.0,
+      "cost": 289.0,
+      "top_place": 2,
+      "video": "https://youtu.be/E1hcmfDun7c?si=oxpxqJc1w6CMZRFx"
+     }
+    ]
+   }
+  },
+  "17950": {
+   "nick": "rocky",
+   "rank": 5135,
+   "accounts_global": [
+    "17950"
+   ],
+   "accounts": {
+    "17950": [
+     {
+      "level_id": "1733",
+      "level": "UNKNOWN",
+      "percent": 100.0,
+      "cost": 142.0,
+      "top_place": 1,
+      "video": "https://youtu.be/n41FpjuwOFo?si=izWf9MbaVok0MB5i"
+     }
+    ]
+   }
+  },
+  "6732": {
+   "nick": "Gopher289",
+   "rank": 5137,
+   "accounts_global": [
+    "6732"
+   ],
+   "accounts": {
+    "6732": [
+     {
+      "level_id": "1707",
+      "level": "SUPERHATEMEWORLD",
+      "percent": 100.0,
+      "cost": 248.0,
+      "top_place": 2,
+      "video": "https://www.youtube.com/watch?v=5XQO95Knux8"
+     }
+    ]
+   }
+  },
+  "25260": {
+   "nick": "realforz_ogyzok358",
+   "rank": 5139,
+   "accounts_global": [
+    "25260"
+   ],
+   "accounts": {
+    "25260": [
+     {
+      "level_id": "1740",
+      "level": "Oblivion",
+      "percent": 100.0,
+      "cost": 156.0,
+      "top_place": 1,
+      "video": "https://youtu.be/nFEjFS04D2M?si=Mv3F8Fc9h5cO_-jK"
+     },
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 1,
+      "video": "https://youtu.be/ic__7N7Rrxk?si=U6QWY2QuRrd9X0Ei"
+     }
+    ]
+   }
+  },
+  "8165": {
+   "nick": "Festr",
+   "rank": 5154,
+   "accounts_global": [
+    "8165"
+   ],
+   "accounts": {
+    "8165": [
+     {
+      "level_id": "1952",
+      "level": "Trotil",
+      "percent": 100.0,
+      "cost": 230.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=pRm0uJkR96c"
+     }
+    ]
+   }
+  },
+  "29816": {
+   "nick": "nbobs",
+   "rank": 5159,
+   "accounts_global": [
+    "29816"
+   ],
+   "accounts": {
+    "29816": [
+     {
+      "level_id": "3353",
+      "level": "ROCKBOTTOM",
+      "percent": 100.0,
+      "cost": 190.0,
+      "top_place": 1,
+      "video": "https://youtu.be/aYoO1XC9qsc?si=l7a8BXOfzsKjyxLm"
+     }
+    ]
+   }
+  },
+  "34092": {
+   "nick": "KillerClean",
+   "rank": 5168,
+   "accounts_global": [
+    "34092"
+   ],
+   "accounts": {
+    "34092": [
+     {
+      "level_id": "3061",
+      "level": "Sevvend Clubstep",
+      "percent": 100.0,
+      "cost": 84.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=DcE9gSygdpE"
+     }
+    ]
+   }
+  },
+  "24776": {
+   "nick": "BoobaGD",
+   "rank": 5172,
+   "accounts_global": [
+    "24776"
+   ],
+   "accounts": {
+    "24776": [
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 1,
+      "video": "https://youtu.be/cUC0qhpMhEA?si=DVUFECIClwZaaxdz"
+     }
+    ]
+   }
+  },
+  "25135": {
+   "nick": "TarLomS",
+   "rank": 5173,
+   "accounts_global": [
+    "25135"
+   ],
+   "accounts": {
+    "25135": [
+     {
+      "level_id": "2449",
+      "level": "Zodiac",
+      "percent": 100.0,
+      "cost": 203.0,
+      "top_place": 1,
+      "video": "https://youtu.be/BzgFkzCRybo?si=ImqTwOc6nLouaHoz"
+     }
+    ]
+   }
+  },
+  "26429": {
+   "nick": "disasterpiece",
+   "rank": 5183,
+   "accounts_global": [
+    "26429"
+   ],
+   "accounts": {
+    "26429": [
+     {
+      "level_id": "3061",
+      "level": "Sevvend Clubstep",
+      "percent": 100.0,
+      "cost": 84.0,
+      "top_place": 1,
+      "video": "https://youtu.be/PRQabSsROHc?si=7ojtxGwuapybNj8R"
+     }
+    ]
+   }
+  },
+  "31996": {
+   "nick": "Zorexb",
+   "rank": 5186,
+   "accounts_global": [
+    "31996"
+   ],
+   "accounts": {
+    "31996": [
+     {
+      "level_id": "2024",
+      "level": "Bloodlust",
+      "percent": 100.0,
+      "cost": 297.0,
+      "top_place": 2,
+      "video": "https://youtu.be/1LRJZVluCBc?si=vDtToWzD7pfvhRYl"
+     }
+    ]
+   }
+  },
+  "27660": {
+   "nick": "el1ot",
+   "rank": 5284,
+   "accounts_global": [
+    "27660"
+   ],
+   "accounts": {
+    "27660": [
+     {
+      "level_id": "2577",
+      "level": "Sonic Wave Infinity",
+      "percent": 100.0,
+      "cost": 134.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=-ZWQyeD-Kb0"
+     }
+    ]
+   }
+  },
+  "7992": {
+   "nick": "robl",
+   "rank": 5496,
+   "accounts_global": [
+    "7992"
+   ],
+   "accounts": {
+    "7992": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://youtu.be/zzK8M_dYvXw?si=elKWTqEXsNtGGMP3"
+     }
+    ]
+   }
+  },
+  "202": {
+   "nick": "ayonqie",
+   "rank": 5500,
+   "accounts_global": [
+    "202"
+   ],
+   "accounts": {
+    "202": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://youtu.be/rF_hluLofFw"
+     }
+    ]
+   }
+  },
+  "2266": {
+   "nick": "Sbadnub",
+   "rank": 5520,
+   "accounts_global": [
+    "2266"
+   ],
+   "accounts": {
+    "2266": [
+     {
+      "level_id": "2711",
+      "level": "Rigel",
+      "percent": 100.0,
+      "cost": 262.0,
+      "top_place": 1,
+      "video": "https://youtu.be/4j1MDEBnkSc?si=kSzbaiM0kkvPAdGw"
+     }
+    ]
+   }
+  },
+  "19550": {
+   "nick": "myrhh",
+   "rank": 5538,
+   "accounts_global": [
+    "19550"
+   ],
+   "accounts": {
+    "19550": [
+     {
+      "level_id": "2285",
+      "level": "Omega Interface",
+      "percent": 100.0,
+      "cost": 284.0,
+      "top_place": 2,
+      "video": "https://youtu.be/1-9D72ORfnc?si=LuReHWv2Uz8ExfQx"
+     }
+    ]
+   }
+  },
+  "5822": {
+   "nick": "Sendigor",
+   "rank": 5542,
+   "accounts_global": [
+    "5822"
+   ],
+   "accounts": {
+    "5822": [
+     {
+      "level_id": "3432",
+      "level": "Wild Roses",
+      "percent": 63.0,
+      "cost": 180.76,
+      "top_place": 1,
+      "video": "https://youtu.be/f3Nl6z_FeqY"
+     }
+    ]
+   }
+  },
+  "28821": {
+   "nick": "Neon_",
+   "rank": 5563,
+   "accounts_global": [
+    "28821",
+    "15450",
+    "15720"
+   ],
+   "accounts": {
+    "28821": [
+     {
+      "level_id": "2307",
+      "level": "Crimson Planet",
+      "percent": 100.0,
+      "cost": 239.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=e8cQCLaOZRE"
+     },
+     {
+      "level_id": "2024",
+      "level": "Bloodlust",
+      "percent": 100.0,
+      "cost": 297.0,
+      "top_place": 2,
+      "video": "https://youtu.be/jUBLFFi2TUM"
+     }
+    ]
+   }
+  },
+  "23921": {
+   "nick": "Spr1Tezz",
+   "rank": 5572,
+   "accounts_global": [
+    "23921"
+   ],
+   "accounts": {
+    "23921": [
+     {
+      "level_id": "2236",
+      "level": "The Golden",
+      "percent": 100.0,
+      "cost": 152.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=c8UZbjJf2kE&pp=0gcJCSsMAYcqIYzv"
+     }
+    ]
+   }
+  },
+  "5682": {
+   "nick": "Monster_G",
+   "rank": 5579,
+   "accounts_global": [
+    "5682"
+   ],
+   "accounts": {
+    "5682": [
+     {
+      "level_id": "1704",
+      "level": "Cobwebs",
+      "percent": 100.0,
+      "cost": 276.0,
+      "top_place": 2,
+      "video": "https://youtu.be/devzyf16-AY"
+     }
+    ]
+   }
+  },
+  "6788": {
+   "nick": "Krendy",
+   "rank": 5722,
+   "accounts_global": [
+    "6788"
+   ],
+   "accounts": {
+    "6788": [
+     {
+      "level_id": "1591",
+      "level": "Trueffet",
+      "percent": 100.0,
+      "cost": 182.0,
+      "top_place": 1,
+      "video": "https://youtu.be/2yqjsBW0QkY?si=cGfqIfBpgSii5uk8"
+     }
+    ]
+   }
+  },
+  "6979": {
+   "nick": "Uzes",
+   "rank": 5732,
+   "accounts_global": [
+    "6979"
+   ],
+   "accounts": {
+    "6979": [
+     {
+      "level_id": "1733",
+      "level": "UNKNOWN",
+      "percent": 97.0,
+      "cost": 284.0,
+      "top_place": 2,
+      "video": "https://youtu.be/ONIVg2zpTZ8?si=7upKRUN8ToZnZ7vN"
+     }
+    ]
+   }
+  },
+  "21728": {
+   "nick": "Kyokigd",
+   "rank": 5735,
+   "accounts_global": [
+    "21728"
+   ],
+   "accounts": {
+    "21728": [
+     {
+      "level_id": "1591",
+      "level": "Trueffet",
+      "percent": 100.0,
+      "cost": 182.0,
+      "top_place": 1,
+      "video": "https://youtu.be/CJpS4TPmMUE?si=AhJboXZYKS26yhQa"
+     },
+     {
+      "level_id": "1981",
+      "level": "Saul Goodman",
+      "percent": 55.0,
+      "cost": 296.83,
+      "top_place": 2,
+      "video": "https://youtu.be/9Y0R-qjKmtU?si=cDG9MxQSdmENgAKA"
+     }
+    ]
+   }
+  },
+  "11502": {
+   "nick": "LopyGd",
+   "rank": 5737,
+   "accounts_global": [
+    "11502"
+   ],
+   "accounts": {
+    "11502": [
+     {
+      "level_id": "3286",
+      "level": "IMPERIAL",
+      "percent": 100.0,
+      "cost": 183.0,
+      "top_place": 1,
+      "video": "https://youtu.be/zHiCug_qJfY?si=8SyE07_OAcxdXS6k"
+     }
+    ]
+   }
+  },
+  "12420": {
+   "nick": "NEiZER",
+   "rank": 5741,
+   "accounts_global": [
+    "12420"
+   ],
+   "accounts": {
+    "12420": [
+     {
+      "level_id": "2285",
+      "level": "Omega Interface",
+      "percent": 100.0,
+      "cost": 284.0,
+      "top_place": 2,
+      "video": "https://youtu.be/PJsX63cC4YU?si=g8XloPnXtu0didvh"
+     }
+    ]
+   }
+  },
+  "44679": {
+   "nick": "Ayu",
+   "rank": 5744,
+   "accounts_global": [
+    "44679"
+   ],
+   "accounts": {
+    "44679": [
+     {
+      "level_id": "1952",
+      "level": "Trotil",
+      "percent": 100.0,
+      "cost": 230.0,
+      "top_place": 1,
+      "video": "https://youtu.be/OrBj6Jze3to?si=eS33oK-WYsS9_bxE"
+     }
+    ]
+   }
+  },
+  "32247": {
+   "nick": "Versij",
+   "rank": 5745,
+   "accounts_global": [
+    "32247"
+   ],
+   "accounts": {
+    "32247": [
+     {
+      "level_id": "3110",
+      "level": "Galeforce",
+      "percent": 100.0,
+      "cost": 218.0,
+      "top_place": 1,
+      "video": "https://youtu.be/zF_N1aS9g2M"
+     }
+    ]
+   }
+  },
+  "31962": {
+   "nick": "artoos",
+   "rank": 5747,
+   "accounts_global": [
+    "31962"
+   ],
+   "accounts": {
+    "31962": [
+     {
+      "level_id": "3353",
+      "level": "ROCKBOTTOM",
+      "percent": 100.0,
+      "cost": 190.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=uTVxiKxD4BU"
+     },
+     {
+      "level_id": "2296",
+      "level": "Renevant",
+      "percent": 100.0,
+      "cost": 229.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=1RFjgnWzgTY&t=15s"
+     }
+    ]
+   }
+  },
+  "7572": {
+   "nick": "1_Eugene0",
+   "rank": 5835,
+   "accounts_global": [
+    "7572"
+   ],
+   "accounts": {
+    "7572": [
+     {
+      "level_id": "2458",
+      "level": "Crackhead Circles",
+      "percent": 100.0,
+      "cost": 197.0,
+      "top_place": 1,
+      "video": "https://youtu.be/T73vhCh115M"
+     }
+    ]
+   }
+  },
+  "19733": {
+   "nick": "Svinushnik",
+   "rank": 5848,
+   "accounts_global": [
+    "19733"
+   ],
+   "accounts": {
+    "19733": [
+     {
+      "level_id": "2237",
+      "level": "Cognition",
+      "percent": 100.0,
+      "cost": 244.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=5vO-vsk8GvM"
+     }
+    ]
+   }
+  },
+  "17848": {
+   "nick": "Ocarena",
+   "rank": 5849,
+   "accounts_global": [
+    "17848"
+   ],
+   "accounts": {
+    "17848": [
+     {
+      "level_id": "2541",
+      "level": "Coral Cave",
+      "percent": 100.0,
+      "cost": 264.0,
+      "top_place": 1,
+      "video": "https://youtu.be/iGKY-IC9I4Y?si=SjWNvhWDgr9N-rfS"
+     }
+    ]
+   }
+  },
+  "6729": {
+   "nick": "kyokuu",
+   "rank": 5851,
+   "accounts_global": [
+    "6729"
+   ],
+   "accounts": {
+    "6729": [
+     {
+      "level_id": "1563",
+      "level": "shimmer",
+      "percent": 100.0,
+      "cost": 238.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=7TlvDral2TE"
+     },
+     {
+      "level_id": "2237",
+      "level": "Cognition",
+      "percent": 100.0,
+      "cost": 244.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=MdSJtVkQ7S8"
+     }
+    ]
+   }
+  },
+  "31315": {
+   "nick": "471rr",
+   "rank": 5903,
+   "accounts_global": [
+    "31315"
+   ],
+   "accounts": {
+    "31315": [
+     {
+      "level_id": "2692",
+      "level": "Waterfall",
+      "percent": 100.0,
+      "cost": 139.0,
+      "top_place": 1,
+      "video": "https://youtu.be/h96S7IPyga8?si=RyXVIoVyPpQvo5Qj"
+     },
+     {
+      "level_id": "2305",
+      "level": "Lucid Nightmares",
+      "percent": 100.0,
+      "cost": 260.0,
+      "top_place": 1,
+      "video": "https://youtu.be/ahOulAQ1tIM?si=730O7-30F80i-FEY"
+     }
+    ]
+   }
+  },
+  "19481": {
+   "nick": "4aVik",
+   "rank": 5907,
+   "accounts_global": [
+    "19481"
+   ],
+   "accounts": {
+    "19481": [
+     {
+      "level_id": "2237",
+      "level": "Cognition",
+      "percent": 100.0,
+      "cost": 244.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=8isxrJT94XY"
+     }
+    ]
+   }
+  },
+  "31711": {
+   "nick": "PandelExista",
+   "rank": 5969,
+   "accounts_global": [
+    "31711"
+   ],
+   "accounts": {
+    "31711": [
+     {
+      "level_id": "2449",
+      "level": "Zodiac",
+      "percent": 100.0,
+      "cost": 203.0,
+      "top_place": 1,
+      "video": "https://youtu.be/bBU-0KdRQ2s"
+     }
+    ]
+   }
+  },
+  "12316": {
+   "nick": "ArtVelN",
+   "rank": 5972,
+   "accounts_global": [
+    "12316"
+   ],
+   "accounts": {
+    "12316": [
+     {
+      "level_id": "2150",
+      "level": "Escape Room",
+      "percent": 100.0,
+      "cost": 300.0,
+      "top_place": 2,
+      "video": "https://youtu.be/6zIPrJfV99I"
+     }
+    ]
+   }
+  },
+  "19425": {
+   "nick": "Catphy",
+   "rank": 5973,
+   "accounts_global": [
+    "19425"
+   ],
+   "accounts": {
+    "19425": [
+     {
+      "level_id": "2296",
+      "level": "Renevant",
+      "percent": 100.0,
+      "cost": 229.0,
+      "top_place": 1,
+      "video": "https://youtu.be/IzI88hhKf-M?si=GRDJSBKh6qHtRnRd"
+     }
+    ]
+   }
+  },
+  "34894": {
+   "nick": "Obsidian",
+   "rank": 5977,
+   "accounts_global": [
+    "34894"
+   ],
+   "accounts": {
+    "34894": [
+     {
+      "level_id": "2692",
+      "level": "Waterfall",
+      "percent": 100.0,
+      "cost": 139.0,
+      "top_place": 1,
+      "video": "https://youtu.be/65xkFaL-rAQ?si=3E6B8jj_io1PwGM9"
+     },
+     {
+      "level_id": "1591",
+      "level": "Trueffet",
+      "percent": 100.0,
+      "cost": 182.0,
+      "top_place": 1,
+      "video": "https://youtu.be/8Rp1g0uThto?si=0xGeZ_NNRsUarxTr"
+     }
+    ]
+   }
+  },
+  "22727": {
+   "nick": "ItzKotyara",
+   "rank": 5986,
+   "accounts_global": [
+    "22727"
+   ],
+   "accounts": {
+    "22727": [
+     {
+      "level_id": "2237",
+      "level": "Cognition",
+      "percent": 100.0,
+      "cost": 244.0,
+      "top_place": 1,
+      "video": "https://youtu.be/Bbpjd1juNPg?si=NCk-HPVAuXGha4Cs"
+     },
+     {
+      "level_id": "2050",
+      "level": "poocubed",
+      "percent": 50.0,
+      "cost": 282.32,
+      "top_place": 1,
+      "video": "https://youtu.be/HZW8XKjAItA?si=E_fIAiW2bxCMHN0t"
+     }
+    ]
+   }
+  },
+  "61070": {
+   "nick": "Samimi",
+   "rank": 5990,
+   "accounts_global": [
+    "61070"
+   ],
+   "accounts": {
+    "61070": [
+     {
+      "level_id": "2018",
+      "level": "Shardscapes",
+      "percent": 100.0,
+      "cost": 272.0,
+      "top_place": 1,
+      "video": "https://www.youtube.com/watch?v=nDQw9b3Rcjo"
+     }
+    ]
+   }
+  }
+ }
 }
