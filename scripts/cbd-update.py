@@ -125,12 +125,6 @@ def git(*a, check=True):
 RECORDS_FILES = ("missing_achievements.json", "missing_achievements_with_nicks.json")
 
 
-def cb_sort_key(key):
-    """Ключи с числовым ID по возрастанию, остальные после них."""
-    head = str(key).split(" — ", 1)[0].strip()
-    return (0, int(head), "") if head.isdigit() else (1, 0, head)
-
-
 def convert_records(src, dst, mapping):
     """missing_achievements*.json: наши ID игроков -> ID CoreBoard (ключ 'ID' или 'ID — ник').
     Игрока, которого в карте нет, оставляем под нашим ID, чтобы не потерять записи (и предупреждаем)."""
@@ -146,7 +140,7 @@ def convert_records(src, dst, mapping):
             converted[cb_id + sep + rest] = records
     with open(dst, "w", encoding="utf-8") as f:
         f.write('{\n  "users": {\n')
-        items = sorted(converted.items(), key=lambda item: cb_sort_key(item[0]))
+        items = list(converted.items())  # порядок как в compare: по очкам игрока
         for i, (key, records) in enumerate(items):
             f.write(f'    {json.dumps(key, ensure_ascii=False)}: [\n')
             for j, record in enumerate(records):
