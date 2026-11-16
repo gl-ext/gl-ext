@@ -71,6 +71,23 @@ jobs:
             python scripts/cbd-update.py --commit $CBD_ARGS
           fi
 
+      # Промежуточные файлы запуска (gdr.txt, cbd.txt и вся папка cbd-update с gdr_not_in_cbd.txt и т.д.)
+      # в репозиторий не коммитятся. Чтобы их посмотреть, скачай артефакт "debug-files" на странице запуска:
+      # Actions -> нужный запуск -> внизу раздел Artifacts.
+      - name: Upload debug files
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-files
+          path: |
+            scripts/gdr.txt
+            scripts/cbd.txt
+            scripts/cbd.json
+            scripts/cbd_ids.json
+            scripts/cbd-update/
+          if-no-files-found: ignore
+          retention-days: 3
+
       # Сохраняем и после сбоя, и если запуск не уложился в timeout-minutes (при таймауте задание считается
       # отменённым, и !cancelled() его пропустил бы: кеш пропал бы, и следующий запуск начал бы всё заново).
       - name: Save gd-rating cache
