@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T19:28:22.756Z",
+  "generated": "2026-11-16T20:20:38.617Z",
   "users": {
     "2": [
       [2656,36,"Acheron",94,"",null,null,null,"my_extras",159.25,0]
@@ -35,7 +35,7 @@
       [2656,36,"Acheron",76,"",null,null,null,"my_extras",127.75,0]
     ],
     "3115": [
-      [3430,51,"ace",86,"",null,null,null,"my_extras",117.19,0]
+      [3430,51,"ace",100,"",null,null,null,"my_extras",272,0]
     ],
     "3232": [
       [1732,65,"Sakupen Circles",100,"",null,null,null,"my_extras",160,0]
@@ -321,9 +321,6 @@
     "14137": [
       [1706,34,"Abyss of Darkness",77,"",null,null,null,"my_extras",130.87,0]
     ],
-    "14206": [
-      [3401,97,"Make Paul Dance",100,"",null,null,null,"my_extras",58,0]
-    ],
     "14211": [
       [2656,36,"Acheron",89,"",86,null,null,"my_extras",150.5,145.25]
     ],
@@ -442,7 +439,7 @@
       [2050,72,"poocubed",100,"",69,null,null,"my_extras",104,36.4]
     ],
     "17526": [
-      [3096,35,"Defeated Circles",84,"",null,null,null,"my_extras",146.39,0]
+      [3096,35,"Defeated Circles",87,"",null,null,null,"my_extras",151.11,0]
     ],
     "17620": [
       [2657,37,"Tunnel of Despair",92,"",null,null,null,"my_extras",149.86,0]
