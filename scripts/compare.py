@@ -49,6 +49,9 @@ parser.add_argument("--id-map", default="",
 parser.add_argument("--cbd-ids", default="",
                     help="JSON ник -> ID игрока на CoreBoard (делает coreboard-parse.py, когда в ссылках на игроков появятся ID). "
                          "По умолчанию cbd_ids.json рядом с файлом --cbd, если он есть. ID с сайта главнее coreboard_id_map.json")
+parser.add_argument("--include-absent", action="store_true",
+                    help="in-cbd-not-in-gdr: игроки CoreBoard, которых НЕТ в gdr совсем, но чей ID нашёлся "
+                         "(gdr-ids.json или coreboard_id_map.json), сравниваются с пустым gdr: все их записи попадают в результат")
 parser.add_argument("--out-dir", default="compare",
                     help="папка для всех создаваемых файлов (создаётся сама, рядом с тем местом, "
                          "откуда запущен скрипт). По умолчанию compare. Чтобы писать в текущую папку: --out-dir .")
@@ -337,6 +340,7 @@ nick_to_id = {
 # источников. Нет ни того, ни другого: ключи JSON наши.
 cb_id_by_nick = {}   # нормализованный ник cbd -> ID CoreBoard (с сайта)
 gdr_by_cb_id = {}    # ID CoreBoard -> наш ID (карта)
+gdr_by_map_nick = {} # нормализованный ник из карты -> наш ID (запасной вариант, если ника нет в gdr-ids.json)
 cb_id_by_gdr = {}    # наш ID (нормализованный) -> ID CoreBoard (карта)
 max_cb_id = 0
 
@@ -372,6 +376,8 @@ if os.path.exists(id_map_file):
                 max_cb_id = max(max_cb_id, int(cb_id))
                 gdr_id = row.get("gdr_id") if isinstance(row, dict) else None
                 if gdr_id:
+                    if row.get("nick"):
+                        gdr_by_map_nick.setdefault(normalize_nick(str(row["nick"])), normalize_id(gdr_id))
                     gdr_by_cb_id[cb_id] = normalize_id(gdr_id)
                     cb_id_by_gdr[normalize_id(gdr_id)] = cb_id
     except (OSError, ValueError, AttributeError) as error:
@@ -558,6 +564,8 @@ def read_players(filename, id_in_line, invalid_filename):
                 player_id = gdr_by_cb_id.get(site_id) if site_id else None
                 if not player_id:
                     player_id = nick_to_id.get(normalize_nick(nick))
+                if not player_id:  # ника нет в gdr-ids.json: пробуем coreboard_id_map.json
+                    player_id = gdr_by_map_nick.get(normalize_nick(nick))
 
                 if not player_id:
                     stats["missing_id"] += 1
@@ -676,10 +684,19 @@ lower_score = 0
 players_with_missing = 0
 
 # Сравниваем только игроков, которые есть в обоих файлах.
+# Игроки cbd, которых нет в gdr совсем, но чей ID нашёлся (gdr-ids.json или coreboard_id_map.json): сравниваем
+# с пустым gdr, чтобы все их записи попали в результат (иначе они пропадали бы из my_extras при пересборке).
+# Игроки без найденного ID (ключ "nick:...") по-прежнему не трогаются.
+absent_ids = set()
+if args.include_absent and args.mode == "in-cbd-not-in-gdr":
+    absent_ids = {i for i in ids_only_in_1 if not i.startswith(NICK_KEY_PREFIX)}
+    print(f"Игроков cbd с известным ID, но без записи в gdr: {len(absent_ids)}")
+
 # В порядке очков (от меньшего к большему, при равных очках как в файле): в этом порядке игроки лягут в JSON.
-for player_id in sorted(common_ids, key=lambda i: (players1[i]["score"], players1[i]["order"])):
+for player_id in sorted(common_ids | absent_ids, key=lambda i: (players1[i]["score"], players1[i]["order"])):
     p1 = players1[player_id]
-    p2 = players2[player_id]
+    # у отсутствующего в gdr игрока очки считаем бесконечными, чтобы проверка "очки меньше" его пропустила
+    p2 = players2.get(player_id) or {"score": float("inf"), "achievements": {}}
 
     checked += 1
 
