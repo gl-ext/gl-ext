@@ -8,7 +8,7 @@
   2. mobile-levels.py          -> mobile/levels_mobile.json    (уровни, T, t и свои ID уровней)
   3. mobile-rating.py --ids    -> gdr.txt, gdr_videos.json     (наш рейтинг по WML; ники из cbd -> WML-ID в ids_mobile.json)
      mobile-id-map.py          -> mobile/coreboard_id_map.json (ID игрока на CoreBoard -> ник и WML-ID, как у ПК доски)
-  4. compare in-cbd-not-in-gdr -> mobile/my_extras.json        (что есть на CoreBoard, а у нас нет; пересобирается целиком)
+  4. compare in-cbd-not-in-gdr -> mobile/my_extras.json        (что есть на CoreBoard, а на WML нет; сравнение с gdr_wml.txt, без экстрас)
   5. compare in-gdr-not-in-cbd -> mobile/cbd/                  (что есть у нас, а на CoreBoard нет, с видео из WML):
        missing_achievements.json, missing_achievements_with_nicks.json, missing_players.json, commands.txt
   6. с --commit коммитит и пушит всё из mobile/ (только эти файлы, промежуточные в репозиторий не попадают).
@@ -238,14 +238,14 @@ def commit_and_push(message, files):
 
 def main():
     py = sys.executable
-    cbd_txt, gdr_txt = HERE / "cbd.txt", HERE / "gdr.txt"
+    cbd_txt, gdr_txt, gdr_wml_txt = HERE / "cbd.txt", HERE / "gdr.txt", HERE / "gdr_wml.txt"
 
     # 1-3. данные
     if not args.skip_fetch:
         run([py, HERE / "coreboard-parse.py", "all", "-r", "-o", "cbd.json"], "CoreBoard: мобильный основной топ + Топ РК -> cbd.txt")
         run([py, HERE / "mobile-levels.py"], "CoreBoard: мобильные уровни -> levels_mobile.json")
         run([py, HERE / "mobile-rating.py", "--ids", "--check-cbd", cbd_txt], "Наш рейтинг по WML -> gdr.txt")
-    for f in (cbd_txt, gdr_txt):
+    for f in (cbd_txt, gdr_txt, gdr_wml_txt):
         if not f.exists() or f.stat().st_size == 0:
             sys.exit(f"Нет файла {f.name} (или он пустой). Останавливаюсь.")
 
@@ -261,7 +261,7 @@ def main():
     # 4. CoreBoard -> my_extras.json
     work = HERE / "cbd-update-extras"
     shutil.rmtree(work, ignore_errors=True)
-    run([py, HERE / "compare.py", "in-cbd-not-in-gdr", "--cbd", cbd_txt, "--gdr", gdr_txt,
+    run([py, HERE / "compare.py", "in-cbd-not-in-gdr", "--cbd", cbd_txt, "--gdr", gdr_wml_txt,
          "--out-dir", work, "--include-absent", *extra], "compare: in-cbd-not-in-gdr")
     found = read_json(work / "missing_achievements.json", None)
     if found is None:
