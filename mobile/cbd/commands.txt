@@ -51,12 +51,12 @@
 /try Belw, Zodiac 56%
 
 Видео: WML
-/fulladd L3gend, Bloodlust, https://www.youtube.com/watch?v=1RBhkJ_LRYQ
-/try L3gend, Bloodlust
-
-Видео: WML
 /fulladd Zekki, Zodiac 58%, https://www.youtube.com/watch?v=hoRsongEQoA
 /try Zekki, Zodiac 58%
+
+Видео: WML
+/fulladd L3gend, Bloodlust, https://www.youtube.com/watch?v=1RBhkJ_LRYQ
+/try L3gend, Bloodlust
 
 Видео: WML
 /fulladd paranoia, aether, https://www.youtube.com/watch?v=fa1oA0lnrOA
