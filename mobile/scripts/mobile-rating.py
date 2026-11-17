@@ -16,8 +16,10 @@ CoreBoard, ID = ID аккаунта на WML. Пропавших из cbd он �
   {"название на WML": "название на CoreBoard"}.
 
 Результат (в папку scripts/):
-  gdr.txt          строки как у gd-rating.py с ID в [скобках]: "5) 🇵🇱 ник (Уровень, Уровень 88%) - 14.18 [12345]"
+  gdr.txt          итоговый рейтинг (WML + my_extras.json), строки как у gd-rating.py с ID в [скобках]:
+                   "5) 🇵🇱 ник (Уровень, Уровень 88%) - 14.18 [12345]"
   gdr.json         то же полностью (записи с ID уровней)
+  gdr_wml.txt      тот же рейтинг только по WML, без my_extras (по нему compare.py ищет, чего у нас не хватает)
   gdr_videos.json  {ID игрока: {ID уровня: [процент, ссылка]}}: видео для команд /fulladd
   mobile_levels_not_found.txt  названия уровней WML, которым не нашлось пары в levels_mobile.json
 
@@ -279,20 +281,19 @@ def line_short(r):
     return f"{r['rank']}) {flag(r['country'])} {r['name']} ({', '.join(parts)}) - {r['score']:.2f}{tail}"
 
 
-print(f"\nИгроков в рейтинге: {len(result)}\n")
-for r in result[: args.show]:
+print(f"\nИгроков в рейтинге: {len(full)} (только по WML: {len(result)})\n")
+for r in full[: args.show]:
     print(line_short(r))
 
-(OUT / "gdr.txt").write_text("\n".join(line_short(r) for r in result), "utf-8")
-(OUT / "gdr.json").write_text(json.dumps([{**r, "score": round(r["score"], 2)} for r in result],
+# gdr.txt = итоговый рейтинг (WML + my_extras). gdr_wml.txt = только WML: по нему compare.py пересобирает my_extras.json
+(OUT / "gdr.txt").write_text("\n".join(line_short(r) for r in full), "utf-8")
+(OUT / "gdr.json").write_text(json.dumps([{**r, "score": round(r["score"], 2)} for r in full],
                                          ensure_ascii=False, indent=1), "utf-8")
+(OUT / "gdr_wml.txt").write_text("\n".join(line_short(r) for r in result), "utf-8")
 vids = {r["id"]: {rec["key"]: [rec["percent"], rec["video"]] for rec in r["records"] if rec["key"] and rec["video"]}
-        for r in result}
+        for r in full}
 (OUT / "gdr_videos.json").write_text(json.dumps({k: v for k, v in vids.items() if v}, ensure_ascii=False), "utf-8")
-(OUT / "gdr_full.txt").write_text("\n".join(line_short(r) for r in full), "utf-8")
-(OUT / "gdr_full.json").write_text(json.dumps([{**r, "score": round(r["score"], 2)} for r in full],
-                                              ensure_ascii=False, indent=1), "utf-8")
-print(f"\nЗаписано: {OUT / 'gdr.txt'} (только WML), gdr_full.txt и gdr_full.json (WML + my_extras), gdr.json, gdr_videos.json")
+print(f"\nЗаписано: {OUT / 'gdr.txt'} (WML + my_extras), gdr_wml.txt (только WML), gdr.json, gdr_videos.json")
 
 # ---------- проверка формулы по очкам CoreBoard ----------
 if args.check_cbd:
