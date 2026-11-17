@@ -814,7 +814,9 @@ if args.mode == "in-gdr-not-in-cbd":
     # (в порядке рейтинга gdr). Если игрок уже есть в карте (а на CoreBoard его нет), он сохраняет свой ID.
     # Мобильная доска: нумерация новых игроков начинается со следующего номера после числа игроков в cbd (в cbd 200 игроков:
     # новые получают 201, 202, ...). Занятые ID (уже выданные в карте или найденные на сайте) пропускаются.
-    next_cb_id = len(players2) + 1
+    # Карта (mobile-id-map.py) нумерует игроков cbd подряд, без пропусков: новые идут сразу за её последним ID. Карты нет:
+    # за числом игроков в cbd.
+    next_cb_id = (max([int(k) for k in gdr_by_cb_id if k.isdigit()] or [0]) or len(players2)) + 1
     used_cb_ids = set(cb_id_by_gdr.values()) | set(cb_id_by_nick.values())
     unmapped_cbd = [p for pid, p in players2.items() if pid.startswith(NICK_KEY_PREFIX)]
     unmapped_cbd_nicks = {normalize_nick(p["nick"]) for p in unmapped_cbd if p["nick"]}
@@ -913,7 +915,7 @@ if args.mode == "in-gdr-not-in-cbd":
             json.dump(gdr_to_cb, f, ensure_ascii=False, indent=1)
     if cb_id_by_gdr or cb_id_by_nick:
         print(f"ID CoreBoard: сопоставлено игроков {len(gdr_to_cb)} из {len(common_ids)}; "
-              f"новым игрокам выдано ID {len(new_players)} (начиная с {len(players2) + 1})")
+              f"новым игрокам выдано ID {len(new_players)} ")
     with open(SKIPPED_PLAYERS_FILE, "w", encoding="utf-8") as f:
         f.write("\n".join(skipped_players) + ("\n" if skipped_players else ""))
 
