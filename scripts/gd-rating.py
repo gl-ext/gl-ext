@@ -63,6 +63,8 @@ p.add_argument("--waiting", action="store_true",
                help="записать waiting_records.json: непринятые записи глобала (статус waiting), которые вошли бы в топ-N игрока")
 p.add_argument("--waiting-ttl", dest="waiting_ttl", type=int, default=3 * 3600,
                help="секунд, пока список waiting-записей игрока в кеше считается свежим")
+p.add_argument("--waiting-max-score", dest="waiting_max_score", type=float, default=250,
+               help="в waiting-файлы попадают только игроки, у которых ПОСЛЕ принятия всех waiting-записей очков меньше этого")
 p.add_argument("--min-score", dest="min_score", type=float, default=None,
                help="показывать игроков с очками не меньше этого (меньше = лучше)")
 p.add_argument("--max-score", dest="max_score", type=float, default=None,
@@ -867,6 +869,12 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, o
         recs.sort(key=lambda r: (r[0], r[1]))
         return recs[:N]
 
+    def person_score(best):
+        """Очки человека по набору его лучших записей: так же, как в result (топ-N, недостающие добираются cap)."""
+        fs = [r[0] for r in top_of(best)]
+        fs += [args.cap] * (N - len(fs))
+        return geo_mean(fs)
+
     by_person = {}  # главный ID человека -> {ID аккаунта глобала: [(ID уровня, ник, процент, видео)]}
     for lvl_id, recs in waiting_raw.items():
         if lvl_id not in meta:
@@ -893,7 +901,9 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, o
         return best
 
     # person -> {"nick", "rank", "new": [(уровень, процент, видео)]}
-    people = {}
+    people = {}       # у них очков меньше порога и БЕЗ waiting -> обычные waiting_records*.json
+    only_waiting = {}  # у них меньше порога только С waiting (без него >= порога) -> waiting_new_players.json
+    skipped_high = 0   # даже с waiting очков не меньше порога: никуда не попадают
     for person, accs in by_person.items():
         base = dict(best_by.get(person, {}))
         for k, pct in extras_all.get(person, {}).items():  # лучшее из всего, включая my_extras
@@ -909,9 +919,22 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, o
                     new.append((lvl_id, pct, video))
         if not new:
             continue
+        # Очки, которые получатся, если принять ВСЕ waiting-записи сразу (лучшая запись на уровень).
+        final_best = dict(base)
+        for lvl_id, (pct, _link) in pick_best(new).items():
+            final_best[lvl_id] = max(final_best.get(lvl_id, -1), pct)
+        final_score = person_score(final_best)
+        if final_score >= args.waiting_max_score:
+            skipped_high += 1
+            continue
         nick = (info.get(person) or (None, None))[0] or next(
             (n for items in accs.values() for _, n, _, _ in items if n), person)
-        people[person] = {"nick": nick, "rank": ranks.get(person), "new": new}
+        entry = {"nick": nick, "rank": ranks.get(person), "new": new,
+                 "final_best": final_best, "final_score": final_score}
+        if person_score(base) < args.waiting_max_score:
+            people[person] = entry
+        else:
+            only_waiting[person] = entry
 
     order = sorted(people, key=lambda u: (people[u]["rank"] is None, people[u]["rank"] or 0, u))
 
@@ -943,7 +966,31 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, o
         write(HERE / fname, build(with_nicks))
     n_rec = sum(len(r) for r in build(False).values())
     print(f"waiting_records.json и waiting_records_with_nicks.json: игроков {len(people)}, новых записей {n_rec} "
-          f"(топ-{N}, больше всех имеющихся)")
+          f"(топ-{N}, больше всех имеющихся; очков с waiting меньше {args.waiting_max_score:g})")
+
+    # waiting_new_players.json: игроки, которые набирают меньше порога ТОЛЬКО с waiting-записями.
+    # Формат как у missing_players.json, но ключ пока наш ID: ID CoreBoard и уникальные ники выдаёт cbd-update.py
+    # (там известен последний ID из missing_players.json). Записи: итоговый топ-N игрока, сначала самые сложные;
+    # ссылка есть у waiting-записей (видео из заявки), у уже принятых записей её нет.
+    new_players = {}
+    for person in sorted(only_waiting, key=lambda u: (only_waiting[u]["final_score"], u)):
+        e = only_waiting[person]
+        links = pick_best(e["new"])  # уровень -> (процент, ссылка)
+        records = []
+        for _f, _special, k, pct in top_of(e["final_best"]):
+            w = links.get(k)
+            records.append([meta[k]["name"], fmt_pct(pct), w[1] if w and w[0] == pct else ""])
+        new_players[person] = {"nick": e["nick"], "country_code": (info.get(person) or (None, None))[1] or None,
+                               "gdr_id": person, "records": records}
+    lines = ['{', '  "users": {']
+    items = list(new_players.items())
+    for i, (key, val) in enumerate(items):
+        lines.append(f"    {json.dumps(key, ensure_ascii=False)}: {json.dumps(val, ensure_ascii=False)}"
+                     + ("," if i < len(items) - 1 else ""))
+    lines += ['  }', '}', '']
+    (HERE / "waiting_new_players.json").write_text("\n".join(lines), "utf-8")
+    print(f"waiting_new_players.json: игроков {len(new_players)} (меньше {args.waiting_max_score:g} только с waiting). "
+          f"Не прошли порог даже с waiting: {skipped_high}")
 
 
 def main():
