@@ -201,12 +201,12 @@ def get_html(path):
     return text
 
 
-# Адреса страниц сайта: основной топ - main/board, Топ РК - main/board/rc.
+# Адреса страниц сайта (новая версия CoreBoard):
+# Основной топ - main/board, Топ РК - main/board/rc, Профиль игрока - main/board/player/{id}
 # (Список уровней - main/levels, его скачивает sync-extras.py, здесь он не разбирается.)
 ALIASES = {"world": "main/board", "w": "main/board", "board": "main/board", "rc": "main/board/rc"}
 # короткие имена для файлов: путь страницы -> кусок имени (cbd_w, cbd_rc)
-# Старые адреса (main/world, main/rc) оставлены, чтобы имена файлов не менялись, если их передать вручную.
-SHORT = {"main/board": "w", "main/board/rc": "rc", "main/world": "w", "main/rc": "rc"}
+SHORT = {"main/board": "w", "main/board/rc": "rc"}
 
 
 def short_name(path):
