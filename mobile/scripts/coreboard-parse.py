@@ -201,10 +201,11 @@ def get_html(path):
     return text
 
 
-# МОБИЛЬНАЯ ВЕРСИЯ: основной топ мобильной доски лежит по адресу mobile/world (вместо main/world)
-ALIASES = {"world": "mobile/world", "w": "mobile/world"}
+# МОБИЛЬНАЯ ВЕРСИЯ: основной топ мобильной доски лежит по адресу mobile/world (вместо main/world), Топ РК по адресу mobile/rc
+# (если у Топа РК мобильной доски другой адрес, поправь здесь)
+ALIASES = {"world": "mobile/world", "w": "mobile/world", "rc": "mobile/rc"}
 # короткие имена для файлов: путь страницы -> кусок имени (cbd_w, cbd_rc)
-SHORT = {"mobile/world": "w"}
+SHORT = {"mobile/world": "w", "mobile/rc": "rc"}
 
 
 def short_name(path):
