@@ -3770,3 +3770,8 @@
     общие каналы: https://www.youtube.com/@GrenadeofTacos
     поглощено: pc2284 (GrenadeofTacos), аккаунты: {'pointercrate': [2284]}
 
+===== 2026-11-17 13:38:09 UTC: склеено групп 1, поглощено записей 1 =====
+СКЛЕЕНО В 62640 (iCharlieGD)
+    общие каналы: https://www.youtube.com/@iCharlieGD
+    поглощено: wml4787 (iCharlieGD), аккаунты: {'wml': [4787]}
+
