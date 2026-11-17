@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T14:49:50.584Z",
+  "generated": "2026-11-17T15:46:18.461Z",
   "users": {
     "2": [
       [2656,36,"Acheron",94,"",null,null,null,"my_extras",159.25,0]
@@ -712,6 +712,9 @@
       [1754,138,"Tartarus",100,"",null,null,null,"my_extras",17,0],
       [1591,182,"Trueffet",100,"",null,null,null,"my_extras",3.4,0],
       [1563,238,"shimmer",100,"",null,null,null,"my_extras",1.4,0]
+    ],
+    "33417": [
+      [2659,30,"Avernus",77,"",null,null,null,"my_extras",141.18,0]
     ],
     "34092": [
       [3061,84,"Sevvend Clubstep",100,"",null,null,null,"my_extras",71,0]
