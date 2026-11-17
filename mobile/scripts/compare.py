@@ -810,9 +810,12 @@ def unique_nick(player_id, nick):
 
 
 if args.mode == "in-gdr-not-in-cbd":
-    # Новым игрокам CoreBoard-ID даём по порядку, начиная со следующего за самым большим (на сайте или в coreboard_id_map.json)
+    # Новым игрокам CoreBoard-ID даём по порядку, начиная со следующего после числа игроков в cbd
     # (в порядке рейтинга gdr). Если игрок уже есть в карте (а на CoreBoard его нет), он сохраняет свой ID.
-    next_cb_id = max_cb_id + 1
+    # Мобильная доска: нумерация новых игроков начинается со следующего номера после числа игроков в cbd (в cbd 200 игроков:
+    # новые получают 201, 202, ...). Занятые ID (уже выданные в карте или найденные на сайте) пропускаются.
+    next_cb_id = len(players2) + 1
+    used_cb_ids = set(cb_id_by_gdr.values()) | set(cb_id_by_nick.values())
     unmapped_cbd = [p for pid, p in players2.items() if pid.startswith(NICK_KEY_PREFIX)]
     unmapped_cbd_nicks = {normalize_nick(p["nick"]) for p in unmapped_cbd if p["nick"]}
 
@@ -873,6 +876,8 @@ if args.mode == "in-gdr-not-in-cbd":
         if cb_id_by_gdr or cb_id_by_nick:
             key = cb_id_by_gdr.get(normalize_id(player_id))
             if key is None or key in new_players:
+                while str(next_cb_id) in used_cb_ids or str(next_cb_id) in new_players:
+                    next_cb_id += 1
                 key = str(next_cb_id)
                 next_cb_id += 1
         else:
@@ -908,7 +913,7 @@ if args.mode == "in-gdr-not-in-cbd":
             json.dump(gdr_to_cb, f, ensure_ascii=False, indent=1)
     if cb_id_by_gdr or cb_id_by_nick:
         print(f"ID CoreBoard: сопоставлено игроков {len(gdr_to_cb)} из {len(common_ids)}; "
-              f"новым игрокам выдано ID {len(new_players)}")
+              f"новым игрокам выдано ID {len(new_players)} (начиная с {len(players2) + 1})")
     with open(SKIPPED_PLAYERS_FILE, "w", encoding="utf-8") as f:
         f.write("\n".join(skipped_players) + ("\n" if skipped_players else ""))
 
