@@ -12,7 +12,7 @@ class WML(PageSource):
     prefix = "wml"    # игрок без глобала получает ключ wml<id>
     tag = "WML"       # метка [WML] в рейтинге
     short = "wml"     # gdr_gl_wml.txt
-    rev = 2           # ревизия разбора страницы игрока. 2: блок «Created» (созданные уровни) больше не читается
+    rev = 3           # ревизия разбора страницы игрока. 2: блок «Created» больше не читается. 3: у рекорда сохраняется место уровня (pos)
 
     def display_nick(self, nick):
         return site.strip_clan(nick) or nick  # '[67] Kristage' -> 'Kristage'
@@ -51,8 +51,28 @@ class WML(PageSource):
         if data is None:
             raise RuntimeError("в ответе нет панели игрока")
         return {"country": data.get("country") or None,
-                "records": [{"level": r["level"], "percent": r["percent"], "video": r.get("video")}
+                "records": [{"level": r["level"], "percent": r["percent"], "video": r.get("video"), "pos": r.get("pos")}
                             for r in data["records"]]}
+
+    def fetch(self, store, workers=3, log=print):
+        """Как у всех листов, плюс: если в WML два уровня с одним названием (например, Pandemonium),
+        рекорды на нижнем из них не учитываются (он не тот уровень, что в глобале)."""
+        data = super().fetch(store, workers, log)
+        if not data:
+            return data
+        cut = site.duplicate_cutoffs((r["l"], r.get("pos")) for r in data["records"])
+        if cut:
+            dropped = {}
+            kept = []
+            for r in data["records"]:
+                if site.is_lower_duplicate(cut, r["l"], r.get("pos")):
+                    n = site.normalize(r["l"])
+                    dropped[n] = dropped.get(n, 0) + 1
+                else:
+                    kept.append(r)
+            data["records"] = kept
+            site.report_duplicates(cut, dropped, log)
+        return data
 
 
 register(WML())
