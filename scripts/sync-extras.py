@@ -78,8 +78,6 @@ LEVELS_UA = "gl-ext-top6"
 IDS_RAW = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/gdr-ids.json"
 LEVELS_RAW = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/levels_tp.json"
 GLOBAL_API = "https://api.demonlist.org/level/classic/list"
-NUM = r"\d+(?:\.\d+)?"
-LEVEL_RE = re.compile(r"^(.*?) \(T=(" + NUM + r"), t=(" + NUM + r")\)$")
 
 
 def find_script(*names):
@@ -158,10 +156,10 @@ def fetch_global_levels():
 
 
 def parse_levels(page, old):
-    """Разбирает страницу /main/levels. Возвращает список (key, запись) в порядке файла.
+    """Разбирает страницу /main/levels (новая версия CoreBoard - таблицы). Возвращает список (key, запись) в порядке файла.
 
-    Основные уровни: <li id="level-N">Имя (T=99, t=66)</li>  -> place = N.
-    Алиасы:          <li>Имя = Уровень (T=97, t=47)</li>      -> ключ "xИмя", place берётся у «Уровня».
+    Основные уровни: таблица <tr id="level-N"><td class="rank">N</td><td>Name</td><td>List%</td><td>Ending%</td></tr>
+    Специальные уровни: вторая таблица <tr><td>Special name</td><td class="rank">N</td><td>Level</td><td>List%</td><td>Ending%</td></tr>
     ID уровня на странице нет (ключ - ID уровня в глобале, api.demonlist.org). Для каждого уровня:
       1) ищем в глобале уровень с ТАКИМ ЖЕ НАЗВАНИЕМ. Он один - берём его ID (если старый ID был другим,
          пишем в лог, что исправили). Само по себе место для этого не используется: стоит в глобале
@@ -179,12 +177,22 @@ def parse_levels(page, old):
     id2name, name2ids, id2place, place2id = gl if gl else ({}, {}, {}, {})
 
     main = []  # (place, name, T, t)
-    for m in re.finditer(r'<li id="level-(\d+)">(.*?)</li>', page, re.S):
-        mm = LEVEL_RE.match(_clean(m.group(2)))
-        if not mm:
-            print(f"  пропускаю нераспознанную строку level-{m.group(1)}: {_clean(m.group(2))!r}")
+    # Новый формат: <tr id="level-N"><td class="rank">N</td><td>Name</td><td>List%</td><td>Ending%</td></tr>
+    for m in re.finditer(r'<tr id="level-(\d+)">(.*?)</tr>', page, re.S):
+        cells = re.findall(r'<td[^>]*>(.*?)</td>', m.group(2), re.S)
+        if len(cells) < 4:
             continue
-        main.append((int(m.group(1)), mm.group(1), _num(mm.group(2)), _num(mm.group(3))))
+        place = int(cells[0].strip())
+        name = _clean(cells[1])
+        list_pct = _clean(cells[2])
+        ending_pct = _clean(cells[3])
+        # List percent = T, Ending percent = t
+        try:
+            T = float(list_pct)
+            t = float(ending_pct)
+        except ValueError:
+            continue
+        main.append((place, name, T, t))
     main.sort()
     name2place = {name: place for place, name, _, _ in main}
 
@@ -233,19 +241,30 @@ def parse_levels(page, old):
     out = [(key, {"place": place, "name": name, "T": T, "t": t})
            for i, (place, name, T, t, key, weak) in enumerate(rows) if i in accepted]
 
+    # Специальные уровни (алиасы): вторая таблица
+    # <tr><td>Special name</td><td class="rank">N</td><td>Level</td><td>List%</td><td>Ending%</td></tr>
     n_alias = 0
-    for m in re.finditer(r"<li>(.*?)</li>", page, re.S):
-        mm = LEVEL_RE.match(_clean(m.group(1)))
-        if not mm or " = " not in mm.group(1):
-            continue
-        body, T, t = mm.group(1), _num(mm.group(2)), _num(mm.group(3))
-        for i in [x.start() for x in re.finditer(" = ", body)]:
-            alias, like = body[:i], body[i + 3:]
-            if like in name2place:
-                out.append(("x" + alias, {"name": alias, "like": like, "place": name2place[like],
-                                          "T": T, "t": t}))
+    special_table = re.search(r'<h2>Special levels</h2>.*?(<table>.*?</table>)', page, re.S)
+    if special_table:
+        table_html = special_table.group(1)
+        for m in re.finditer(r'<tr>(.*?)</tr>', table_html, re.S):
+            cells = re.findall(r'<td[^>]*>(.*?)</td>', m.group(1), re.S)
+            if len(cells) < 5:
+                continue
+            special_name = _clean(cells[0])
+            place = int(_clean(cells[1]))
+            level_name = _clean(cells[2])
+            list_pct = _clean(cells[3])
+            ending_pct = _clean(cells[4])
+            if level_name in name2place:
+                try:
+                    T = float(list_pct)
+                    t = float(ending_pct)
+                except ValueError:
+                    continue
+                out.append(("x" + special_name, {"name": special_name, "like": level_name, "place": name2place[level_name],
+                                                  "T": T, "t": t}))
                 n_alias += 1
-                break
 
     if gl:
         confirmed = len(out) - len(fixed) - len(new_names) - len(unverified) - len(renamed)
