@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17T04:39:40.621Z",
+ "generated": "2026-11-17T05:41:05.654Z",
  "users": [
   {
    "place": 1,
@@ -7,8 +7,8 @@
    "id": "16498",
    "name": "Zoink",
    "country": "United-States",
-   "points": 20673.14,
-   "basePoints": 20673.14
+   "points": 21433.14,
+   "basePoints": 21433.14
   },
   {
    "place": 2,
@@ -17,7 +17,7 @@
    "name": "wPopoff",
    "country": "United-States",
    "points": 16097.72,
-   "basePoints": 15337.72
+   "basePoints": 16097.72
   },
   {
    "place": 3,
