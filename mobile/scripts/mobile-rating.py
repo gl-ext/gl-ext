@@ -143,6 +143,11 @@ for r in data["records"]:
     if pct > cur.get(k, (-1, None))[0]:
         cur[k] = (pct, site.normalize_link(r["v"]) if r.get("v") else "")
 print(f"Игроков WML: {len(data['players'])}, записей: {len(data['records'])}")
+with_place = sum(1 for r in data["records"] if r.get("pl"))
+print(f"  записей с местом уровня на WML: {with_place} из {len(data['records'])}")
+if with_place < len(data["records"]) * 0.9:
+    print("  ВНИМАНИЕ: у большинства записей нет места уровня. Одинаковые названия (два Pandemonium) не различить и они выпадут. "
+          "Проверь, что обновлены wml.py, list_wml.py, lists_core.py (rev = 3 в list_wml.py) и что кеш wmlcache.json перекачался.")
 if index.stats:
     print("  названия найдены: " + ", ".join(f"{k} {v}" for k, v in index.stats.items()))
 if unresolved:
