@@ -1,11 +1,11 @@
 {
   "users": {
-    "2818": {"nick": "노들나루", "country_code": "KR", "gdr_id": "pc57197", "records": [["CHIL", 100, ""], ["Gaggatrondra", 100, ""], ["NEUTRA", 100, ""]]},
-    "2819": {"nick": "AzielGD", "country_code": "MX", "gdr_id": "pc63321", "records": [["LIMBO", 100, ""], ["Renevant", 100, ""], ["Shardscapes", 100, ""]]},
-    "2820": {"nick": "레고로화성가기", "country_code": "KR", "gdr_id": "pc65068", "records": [["azure blast", 100, ""], ["Axinie", 100, ""], ["Zodiac", 100, ""]]},
-    "2821": {"nick": "평범한sa람", "country_code": "KR", "gdr_id": "pc69295", "records": [["Solar Flare", 100, ""]]},
-    "2822": {"nick": "단어", "country_code": null, "gdr_id": "pc71845", "records": [["Solar Flare", 100, ""]]},
-    "2823": {"nick": "Edenyx", "country_code": "RU", "gdr_id": "7345", "records": [["Abyss of Darkness", 62, ""], ["RUTHLESS", 100, ""]]},
-    "2824": {"nick": "晴声-Syphoyo", "country_code": "CN", "gdr_id": "pc65784", "records": [["LIMBO", 100, ""]]}
+    "2827": {"nick": "노들나루", "country_code": "KR", "gdr_id": "pc57197", "records": [["CHIL", 100, ""], ["Gaggatrondra", 100, ""], ["NEUTRA", 100, ""]]},
+    "2828": {"nick": "AzielGD", "country_code": "MX", "gdr_id": "pc63321", "records": [["LIMBO", 100, ""], ["Renevant", 100, ""], ["Shardscapes", 100, ""]]},
+    "2829": {"nick": "레고로화성가기", "country_code": "KR", "gdr_id": "pc65068", "records": [["azure blast", 100, ""], ["Axinie", 100, ""], ["Zodiac", 100, ""]]},
+    "2830": {"nick": "평범한sa람", "country_code": "KR", "gdr_id": "pc69295", "records": [["Solar Flare", 100, ""]]},
+    "2831": {"nick": "단어", "country_code": null, "gdr_id": "pc71845", "records": [["Solar Flare", 100, ""]]},
+    "2832": {"nick": "Edenyx", "country_code": "RU", "gdr_id": "7345", "records": [["Abyss of Darkness", 62, ""], ["RUTHLESS", 100, ""]]},
+    "2833": {"nick": "晴声-Syphoyo", "country_code": "CN", "gdr_id": "pc65784", "records": [["LIMBO", 100, ""]]}
   }
 }
