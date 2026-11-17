@@ -4,13 +4,13 @@
 Страницы отдают всю таблицу прямо в HTML, поэтому хватает одного запроса на страницу.
 
 Запуск:
-  python coreboard_parse.py              основной топ (world, можно коротко w)
-  python coreboard_parse.py rc           Топ РК
+  python coreboard_parse.py              основной топ (/main/board; world, board или w)
+  python coreboard_parse.py rc           Топ РК (/main/board/rc)
   python coreboard_parse.py world rc     оба топа, каждый в своём файле
   python coreboard_parse.py all          оба топа, объединённые в один файл (cbd.json)
   python coreboard_parse.py -f x.html    разобрать сохранённый файл, ничего не качать
   python coreboard_parse.py -r           скачать заново, даже если файл свежий
-Вместо world и rc можно написать путь страницы сайта, например main/rc.
+Вместо world и rc можно написать путь страницы сайта, например main/board/rc.
 
 Результат: cbd_w.json (основной топ), cbd_rc.json (Топ РК), cbd.json (оба топа вместе).
 Рядом с каждым .json лежит .txt (cbd_w.txt, cbd_rc.txt, cbd.txt) в формате строк gd-rating:
@@ -21,7 +21,7 @@
 
 ID игроков. Пока ссылки на игроков идут по нику (/main/world/player/SerVax), ID нет: поле "id" пустое, а
 сопоставление с нашим рейтингом идёт по нику, как раньше. Когда автор сайта заменит ник в ссылке на ID
-(/main/world/player/123), он подхватится сам: ID берётся из последней части ссылки, если это число.
+(.../player/123), он подхватится сам: ID берётся из последней части ссылки, если это число.
 CSV от автора (--csv table.csv) тоже даёт ID. В cbd.txt (его читает compare.py) ID НЕ пишется: формат файла
 прежний. ID лежат в cbd.json (поле "id") и в cbd_ids.json (ник -> ID).
 Слово No в списке рекордов значит "уровня нет" и в записи не попадает; всё остальное (в том числе
@@ -120,7 +120,7 @@ def parse_records(raw):
 
 
 def id_from_href(href):
-    """/main/world/player/123 -> "123"; ссылка по нику (/main/world/player/SerVax) -> None."""
+    """Ссылка вида .../player/123 -> "123"; ссылка по нику (.../player/SerVax) -> None."""
     if not href:
         return None
     path = href.split("?", 1)[0].split("#", 1)[0].rstrip("/")
@@ -201,11 +201,12 @@ def get_html(path):
     return text
 
 
-# МОБИЛЬНАЯ ВЕРСИЯ (новая версия CoreBoard):
-# Основной топ мобильной доски - mobile/board, Топ РК - mobile/board/rc
-ALIASES = {"world": "mobile/board", "w": "mobile/board", "rc": "mobile/board/rc"}
+# Адреса страниц сайта (новая версия CoreBoard):
+# Основной топ - main/board, Топ РК - main/board/rc, Профиль игрока - main/board/player/{id}
+# (Список уровней - main/levels, его скачивает sync-extras.py, здесь он не разбирается.)
+ALIASES = {"world": "main/board", "w": "main/board", "board": "main/board", "rc": "main/board/rc"}
 # короткие имена для файлов: путь страницы -> кусок имени (cbd_w, cbd_rc)
-SHORT = {"mobile/board": "w", "mobile/board/rc": "rc"}
+SHORT = {"main/board": "w", "main/board/rc": "rc"}
 
 
 def short_name(path):
