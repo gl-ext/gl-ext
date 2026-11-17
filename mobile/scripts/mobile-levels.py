@@ -52,7 +52,6 @@ WML_LEVEL_URLS = [WML_SITE + "/api/v2/demons/listed/?limit=100&after={after}",
 UA = "gl-ext-top6"
 
 NUM = r"\d+(?:\.\d+)?"
-LEVEL_RE = re.compile(r"^(.*?) \(T=(" + NUM + r"), t=(" + NUM + r")\)$")
 PAREN_RE = re.compile(r"\([^()]*\)")
 
 
@@ -102,25 +101,44 @@ def http_get(url):
 def parse_cb(page):
     """-> (main, aliases). main: [(place, name, T, t)] по месту, aliases: [(alias, like, T, t)]."""
     main = []
-    for m in re.finditer(r'<li id="level-(\d+)">(.*?)</li>', page, re.S):
-        mm = LEVEL_RE.match(_clean(m.group(2)))
-        if not mm:
-            print(f"  CoreBoard: пропускаю нераспознанную строку level-{m.group(1)}: {_clean(m.group(2))!r}")
+    # Новый формат: <tr id="level-N"><td class="rank">N</td><td>Name</td><td>List%</td><td>Ending%</td></tr>
+    for m in re.finditer(r'<tr id="level-(\d+)">(.*?)</tr>', page, re.S):
+        cells = re.findall(r'<td[^>]*>(.*?)</td>', m.group(2), re.S)
+        if len(cells) < 4:
             continue
-        main.append((int(m.group(1)), mm.group(1), _num(mm.group(2)), _num(mm.group(3))))
+        place = int(cells[0].strip())
+        name = _clean(cells[1])
+        list_pct = _clean(cells[2])
+        ending_pct = _clean(cells[3])
+        try:
+            T = float(list_pct)
+            t = float(ending_pct)
+        except ValueError:
+            continue
+        main.append((place, name, T, t))
     main.sort()
     names = {name for _, name, _, _ in main}
     aliases = []
-    for m in re.finditer(r"<li>(.*?)</li>", page, re.S):
-        mm = LEVEL_RE.match(_clean(m.group(1)))
-        if not mm or " = " not in mm.group(1):
-            continue
-        body, T, t = mm.group(1), _num(mm.group(2)), _num(mm.group(3))
-        for i in [x.start() for x in re.finditer(" = ", body)]:
-            alias, like = body[:i], body[i + 3:]
+    # Специальные уровни (алиасы): вторая таблица
+    special_table = re.search(r'<h2>Special levels</h2>.*?(<table>.*?</table>)', page, re.S)
+    if special_table:
+        table_html = special_table.group(1)
+        for m in re.finditer(r'<tr>(.*?)</tr>', table_html, re.S):
+            cells = re.findall(r'<td[^>]*>(.*?)</td>', m.group(1), re.S)
+            if len(cells) < 5:
+                continue
+            alias = _clean(cells[0])
+            place = int(_clean(cells[1]))
+            like = _clean(cells[2])
+            list_pct = _clean(cells[3])
+            ending_pct = _clean(cells[4])
             if like in names:
+                try:
+                    T = float(list_pct)
+                    t = float(ending_pct)
+                except ValueError:
+                    continue
                 aliases.append((alias, like, T, t))
-                break
     return main, aliases
 
 
