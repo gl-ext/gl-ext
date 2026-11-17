@@ -1,8 +1,4 @@
 Видео: WML
-/fulladd MrPOATAN, Pandemonium (Cersia), https://www.youtube.com/watch?v=wMo8Y569-mk
-/try MrPOATAN, Pandemonium (Cersia)
-
-Видео: WML
 /fulladd GdFl01, shimmer 88%, https://www.youtube.com/watch?v=auSXb7bHqdk
 /try GdFl01, shimmer 88%
 
@@ -25,10 +21,6 @@
 Видео: WML
 /fulladd GatoGeometrico9, Bausha Vortex, https://www.youtube.com/watch?v=viyz1mobxlU
 /try GatoGeometrico9, Bausha Vortex
-
-Видео: WML
-/fulladd Zekki, Zodiac 58%, https://www.youtube.com/watch?v=hoRsongEQoA
-/try Zekki, Zodiac 58%
 
 Видео: WML
 /fulladd Kl4Dzvrr, Cognition 97%, https://www.youtube.com/watch?v=3fIS1rqbhzM
@@ -61,6 +53,10 @@
 Видео: WML
 /fulladd L3gend, Bloodlust, https://www.youtube.com/watch?v=1RBhkJ_LRYQ
 /try L3gend, Bloodlust
+
+Видео: WML
+/fulladd Zekki, Zodiac 58%, https://www.youtube.com/watch?v=hoRsongEQoA
+/try Zekki, Zodiac 58%
 
 Видео: WML
 /fulladd paranoia, aether, https://www.youtube.com/watch?v=fa1oA0lnrOA
@@ -103,13 +99,9 @@
 /try zyphyr77, Sapphire Angel
 
 Видео: WML
-/fulladd SILVER062, Erebus, https://www.youtube.com/watch?v=cD5cOXBiVDc
-/try SILVER062, Erebus
-
-Видео: WML
-/fulladd Cymmer, Erebus, https://www.youtube.com/watch?v=tyOsv8pXQi0
-/try Cymmer, Erebus
-
-Видео: WML
 /fulladd t, BuTiTi III, https://www.youtube.com/watch?v=e3lCIpTABQY
 /try t, BuTiTi III
+
+Видео: WML
+/fulladd SILVER062, ErebuS (Platnuu), https://www.youtube.com/watch?v=cD5cOXBiVDc
+/try SILVER062, ErebuS (Platnuu)

@@ -1,8 +1,5 @@
 {
   "users": {
-    "425 — MrPOATAN": [
-      ["Pandemonium (Cersia)", 100, "Pandemonium (Cersia)", "https://www.youtube.com/watch?v=wMo8Y569-mk"]
-    ],
     "347 — GdFl01": [
       ["shimmer", 88, "shimmer", "https://www.youtube.com/watch?v=auSXb7bHqdk"]
     ],
@@ -18,9 +15,6 @@
     ],
     "2753 — GatoGeometrico9": [
       ["Bausha Vortex", 100, "Bausha Vortex", "https://www.youtube.com/watch?v=viyz1mobxlU"]
-    ],
-    "3075 — Zekki": [
-      ["Zodiac", 58, "Zodiac", "https://www.youtube.com/watch?v=hoRsongEQoA"]
     ],
     "439 — Kl4Dzvrr": [
       ["Cognition", 97, "Cognition", "https://www.youtube.com/watch?v=3fIS1rqbhzM"]
@@ -45,6 +39,9 @@
     ],
     "482 — L3gend": [
       ["Bloodlust", 100, "Bloodlust", "https://www.youtube.com/watch?v=1RBhkJ_LRYQ"]
+    ],
+    "3075 — Zekki": [
+      ["Zodiac", 58, "Zodiac", "https://www.youtube.com/watch?v=hoRsongEQoA"]
     ],
     "169 — paranoia": [
       ["aether", 100, "aether", "https://www.youtube.com/watch?v=fa1oA0lnrOA"]
@@ -74,14 +71,11 @@
     "677 — zyphyr77": [
       ["Sapphire Angel", 100, "Sapphire Angel", "https://www.youtube.com/watch?v=6KvyRlEGhOE"]
     ],
-    "2647 — SILVER062": [
-      ["Erebus", 100, "Erebus", "https://www.youtube.com/watch?v=cD5cOXBiVDc"]
-    ],
-    "865 — Cymmer": [
-      ["Erebus", 100, "Erebus", "https://www.youtube.com/watch?v=tyOsv8pXQi0"]
-    ],
     "1016 — t": [
       ["BuTiTi III", 100, "BuTiTi III", "https://www.youtube.com/watch?v=e3lCIpTABQY"]
+    ],
+    "2647 — SILVER062": [
+      ["ErebuS (Platnuu)", 100, "ErebuS (Platnuu)", "https://www.youtube.com/watch?v=cD5cOXBiVDc"]
     ]
   }
 }
