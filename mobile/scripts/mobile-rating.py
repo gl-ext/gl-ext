@@ -127,11 +127,13 @@ best_by, videos, unresolved = {}, {}, {}
 found = {}
 for r in data["records"]:
     name = r["l"]
-    if name not in found:
-        found[name] = index.find(name)
-    k = found[name]
+    fk = (name, r.get("pl"))
+    if fk not in found:
+        found[fk] = index.find(name, r.get("pl"))
+    k = found[fk]
     if k is None:
-        unresolved[name] = unresolved.get(name, 0) + 1
+        label = f"{name} (#{r['pl']})" if r.get("pl") else name
+        unresolved[label] = unresolved.get(label, 0) + 1
         continue
     pct = float(r["p"])
     if pct <= 0:

@@ -74,6 +74,7 @@ class LevelIndex:
         self._exact_amb = set()               # точное название указывает на разные уровни: не угадываем
         self._fold = _Layer(normalize)
         self._loose = _Layer(loose)
+        self._by_place = {}                   # место на WML -> (ключ, название на WML)
         self.stats = Counter()
 
     def _add(self, name, key, origin, priority=False):
@@ -86,15 +87,17 @@ class LevelIndex:
         self._fold.add(name, entry)
         self._loose.add(name, entry)
 
-    def add_wml(self, wml_name, key):
-        """Название уровня на WML, уже сопоставленное с CoreBoard (поле wml_name в levels_mobile.json). Вызывать ПЕРВЫМ."""
+    def add_wml(self, wml_name, key, place=None):
+        """Название уровня на WML, уже сопоставленное с CoreBoard (поля wml_name и wml в levels_mobile.json). Вызывать ПЕРВЫМ."""
         self._add(wml_name, key, ORIGIN_TP)
+        if place is not None:
+            self._by_place[int(place)] = (str(key), wml_name)
 
     def add_tp(self, tp_levels):
         """tp_levels: словарь levels из levels_mobile.json: ключ -> {"name": ..., "wml_name": ...}."""
         for key, e in (tp_levels or {}).items():
             if e.get("wml_name"):
-                self.add_wml(e["wml_name"], key)
+                self.add_wml(e["wml_name"], key, e.get("wml"))
         for key, e in (tp_levels or {}).items():
             self._add(e.get("name"), key, ORIGIN_TP)
 
@@ -107,7 +110,14 @@ class LevelIndex:
         for key, name in (extra or {}).items():
             self._add(name, key, ORIGIN_SPECIAL)
 
-    def find(self, name):
+    def find(self, name, place=None):
+        """place: место уровня на WML из записи игрока. Если по этому месту в списке стоит уровень с тем же названием
+        (скобки не читаются), это он, даже когда название повторяется (два "Pandemonium": #39 и #191)."""
+        if place is not None:
+            hit = self._by_place.get(int(place))
+            if hit and loose(hit[1]) == loose(name):
+                self.stats[ORIGIN_TP] += 1
+                return hit[0]
         if exact(name) in self._exact_amb:
             return None
         hit = self._exact.get(exact(name)) or self._fold.get(name) or self._loose.get(name)

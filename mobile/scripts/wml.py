@@ -207,6 +207,7 @@ def parse_panel(page):
                 "level": html.unescape(c["name"]).strip(),
                 "percent": int(c["pct"]) if c["pct"] is not None else 100,
                 "video": html.unescape(c["video"]).strip(),
+                "place": int(c["pos"]),   # место уровня на WML (#39 в чипе): различает уровни с одним названием
             })
 
     cc = COUNTRY.search(pane)

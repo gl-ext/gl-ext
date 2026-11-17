@@ -50,7 +50,7 @@ class Source:
     def fetch(self, store, workers=3, log=print):
         """Возвращает None (лист недоступен) или данные в едином виде:
         {"players": {id: {"n": ник, "r": место, "c": страна}},
-         "records": [{"a": id игрока, "l": название уровня, "p": процент, "v": видео, "i": игровой ID уровня или None}]}
+         "records": [{"a": id игрока, "l": название уровня, "p": процент, "v": видео, "i": игровой ID уровня или None, "pl": место уровня на листе или None}]}
         Названия уровней в ключи переводит тот, кто использует данные (levels.py), а не лист."""
         raise NotImplementedError
 
@@ -106,7 +106,7 @@ class PageSource(Source):
             try:
                 data = self.player(p["id"])
                 entry = {"at": time.time(), "ver": p.get("version"), "rev": self.rev, "c": data.get("country"),
-                         "recs": [[r["level"], r["percent"], r.get("video")] for r in data["records"]]}
+                         "recs": [[r["level"], r["percent"], r.get("video"), r.get("place")] for r in data["records"]]}
                 store.put(key, entry)
                 self.downloaded += 1
                 return p, entry
@@ -159,8 +159,10 @@ class PageSource(Source):
             if e is None:
                 continue
             players[p["id"]] = {"n": p["nick"], "r": p.get("rank"), "c": e.get("c")}
-            for level, percent, video in e["recs"]:
-                records.append({"a": p["id"], "l": level, "p": percent, "v": video, "i": None})
+            for rec in e["recs"]:
+                level, percent, video = rec[0], rec[1], rec[2]
+                place = rec[3] if len(rec) > 3 else None   # место уровня на листе, если сайт его отдаёт
+                records.append({"a": p["id"], "l": level, "p": percent, "v": video, "i": None, "pl": place})
         log(f"  {self.name}: игроков {len(players)}, записей {len(records)}")
         return {"players": players, "records": records}
 

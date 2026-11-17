@@ -12,7 +12,7 @@ class WML(PageSource):
     prefix = "wml"    # игрок без глобала получает ключ wml<id>
     tag = "WML"       # метка [WML] в рейтинге
     short = "wml"     # gdr_gl_wml.txt
-    rev = 2           # ревизия разбора страницы игрока. 2: блок «Created» (созданные уровни) больше не читается
+    rev = 3           # ревизия разбора страницы игрока. 2: блок «Created» больше не читается. 3: у рекорда сохраняется место уровня на WML
 
     def display_nick(self, nick):
         return site.strip_clan(nick) or nick  # '[67] Kristage' -> 'Kristage'
@@ -51,7 +51,7 @@ class WML(PageSource):
         if data is None:
             raise RuntimeError("в ответе нет панели игрока")
         return {"country": data.get("country") or None,
-                "records": [{"level": r["level"], "percent": r["percent"], "video": r.get("video")}
+                "records": [{"level": r["level"], "percent": r["percent"], "video": r.get("video"), "place": r.get("place")}
                             for r in data["records"]]}
 
 
