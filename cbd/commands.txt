@@ -11,8 +11,16 @@
 /try ejgpsyched, Trickshot
 
 Видео: Pointercrate
+/fulladd 1ssky, Slaughterhouse 82%, https://www.youtube.com/watch?v=9HI59gDtrjk
+/try 1ssky, Slaughterhouse 82%
+
+Видео: Pointercrate
 /fulladd Arouvis, The Plunge, https://www.youtube.com/watch?v=x87JHzJqJxU
 /try Arouvis, The Plunge
+
+Видео: Pointercrate
+/fulladd manuelmeep, Slaughterhouse 76%, https://www.youtube.com/watch?v=o9k7_StC-wE
+/try manuelmeep, Slaughterhouse 76%
 
 Видео: Pointercrate
 /fulladd medbum, Pinnacle of Life, https://www.youtube.com/watch?v=1vjWeJPOD9g
