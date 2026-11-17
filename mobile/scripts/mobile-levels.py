@@ -12,6 +12,8 @@ ID уровня = название уровня на CoreBoard (без "x"). А�
        - иначе ищем этот уровень WML в списке CoreBoard сверху вниз (среди ещё не занятых) -> пара;
        - не нашли -> уровень остаётся без ID, в пары не попадает, попадает в отчёт;
   4. идём дальше к следующему уровню WML.
+  Название, которое в топе встречается больше одного раза, сравнивается с другим таким же: первый сверху на WML = первый сверху на
+  CoreBoard, второй = второй (при разном числе повторов берётся ближайший по месту, не выше предыдущего). Это идёт в отчёт.
   Если нужно вручную связать названия, которые пишутся по-разному: mobile/level_aliases.json {"название на WML": "название на CoreBoard"}.
 
 Файлы:
@@ -63,6 +65,15 @@ def norm(s):
             break
         s = t
     return re.sub(r"\s+", " ", s).strip().casefold()
+
+
+def _strip_parens(s):
+    while True:
+        t = PAREN_RE.sub(" ", s)
+        if t == s:
+            break
+        s = t
+    return re.sub(r"\s+", " ", s).strip()
 
 
 def _num(s):
@@ -165,29 +176,52 @@ def fetch_wml(limit):
 # ---------- сопоставление ----------
 def align(wml, cb, aliases_map):
     """wml: [(место, название)], cb: [(место, название, T, t)] (оба по порядку).
-    Возвращает (pairs, wml_no_id, cb_no_pair, shifts): pairs {индекс cb: индекс wml}."""
+    Возвращает (pairs, wml_no_id, cb_no_pair, shifts, dups): pairs {индекс cb: индекс wml}.
+
+    Название, которое встречается в топе больше одного раза (на WML или на CoreBoard, скобки не читаются), не ищется «первое
+    попавшееся»: уровни с таким названием сравниваются между собой по порядку. Первый сверху на WML = первый сверху на CoreBoard,
+    второй = второй. Если число повторов разное, берётся свободный уровень CoreBoard с ближайшим местом, не выше пары предыдущего
+    повтора. Остальные названия (одиночные): то же название на той же позиции, иначе поиск сверху вниз."""
     cb_norm = [norm(r[1]) for r in cb]
+    target = [norm(aliases_map.get(norm(n), n)) for _, n in wml]
+    wml_occ, cb_occ = {}, {}
+    for i, t in enumerate(target):
+        wml_occ.setdefault(t, []).append(i)
+    for j, n in enumerate(cb_norm):
+        cb_occ.setdefault(n, []).append(j)
+
     used = set()
-    pairs, wml_no_id, shifts = {}, [], []
+    pairs, wml_no_id, shifts, dups = {}, [], [], []
     for i, (wplace, wname) in enumerate(wml):
-        target = norm(aliases_map.get(norm(wname), wname))
+        t = target[i]
+        free = [k for k in cb_occ.get(t, []) if k not in used]
         j = None
-        if i < len(cb) and i not in used and cb_norm[i] == target:
-            j = i                                         # на этой же позиции то же название
-        else:
-            for k, n in enumerate(cb_norm):               # иначе ищем сверху вниз среди свободных
-                if k not in used and n == target:
-                    j = k
-                    break
+        if len(wml_occ[t]) > 1 or len(cb_occ.get(t, [])) > 1:
+            rank = wml_occ[t].index(i)
+            same_count = len(wml_occ[t]) == len(cb_occ.get(t, []))
+            if same_count and cb_occ[t][rank] in free:
+                j = cb_occ[t][rank]                              # k-й повтор на WML = k-й повтор на CoreBoard
+            elif free:
+                prev = [pairs_inv for pairs_inv in (jj for jj, ii in pairs.items() if target[ii] == t)]
+                low = max(prev) if prev else -1                  # не выше пары предыдущего повтора
+                cands = [k for k in free if k > low] or free
+                tn = re.sub(r"\s+", " ", aliases_map.get(norm(wname), wname)).strip()
+                j = min(cands, key=lambda k: (abs(cb[k][0] - wplace), _strip_parens(cb[k][1]) != tn, k))
             if j is not None:
-                shifts.append(f"WML {wplace}. {wname} -> CoreBoard {cb[j][0]}. {cb[j][1]}")
+                dups.append(f"WML {wplace}. {wname} -> CoreBoard {cb[j][0]}. {cb[j][1]} "
+                            f"(название повторяется: WML {len(wml_occ[t])}, CoreBoard {len(cb_occ.get(t, []))}, сопоставлено по позиции)")
+        elif i < len(cb) and i not in used and cb_norm[i] == t:
+            j = i                                                # на этой же позиции то же название
+        elif free:
+            j = free[0]                                          # иначе сверху вниз среди свободных
+            shifts.append(f"WML {wplace}. {wname} -> CoreBoard {cb[j][0]}. {cb[j][1]}")
         if j is None:
             wml_no_id.append((wplace, wname))
             continue
         used.add(j)
         pairs[j] = i
     cb_no_pair = [cb[j] for j in range(len(cb)) if j not in used]
-    return pairs, wml_no_id, cb_no_pair, shifts
+    return pairs, wml_no_id, cb_no_pair, shifts, dups
 
 
 def save(entries, path):
@@ -244,16 +278,21 @@ def main():
     aliases_map = {norm(k): v for k, v in al.items()}
 
     # 3. сопоставление
-    pairs, wml_no_id, cb_no_pair, shifts = align(wml, cb, aliases_map)
+    pairs, wml_no_id, cb_no_pair, shifts, dups = align(wml, cb, aliases_map)
 
-    entries = []
+    entries, taken_keys, same_names = [], set(), []
     for j, (place, name, T, t) in enumerate(cb):
         e = {"place": place, "name": name, "T": T, "t": t}
         if j in pairs:
             e["wml"], e["wml_name"] = wml[pairs[j]][0], wml[pairs[j]][1]
         else:
             e["wml"], e["wml_name"] = None, None
-        entries.append((name, e))   # ID = название на CoreBoard
+        key = name                  # ID = название на CoreBoard
+        if key in taken_keys:       # два уровня с совсем одинаковым названием на CoreBoard: второму ID "Название #место"
+            key = f"{name} #{place}"
+            same_names.append(f"CoreBoard {place}. {name} -> ID {key!r}")
+        taken_keys.add(key)
+        entries.append((key, e))
     place_of = {name: place for place, name, _, _ in cb}
     for alias, like, T, t in aliases:
         entries.append(("x" + alias, {"name": alias, "like": like, "place": place_of[like], "T": T, "t": t}))
@@ -266,6 +305,11 @@ def main():
     rep += [f"  CoreBoard {p}. {n}" for p, n, _, _ in cb_no_pair]
     rep.append(f"Позиции не совпали, пару нашли поиском сверху вниз: {len(shifts)}")
     rep += [f"  {s}" for s in shifts]
+    rep.append(f"Повторяющиеся названия, сопоставлены по позиции (уровень выше / ниже): {len(dups)}")
+    rep += [f"  {s}" for s in dups]
+    if same_names:
+        rep.append(f"Одинаковые названия на CoreBoard (ID второго с #места): {len(same_names)}")
+        rep += [f"  {s}" for s in same_names]
     text = "\n".join(rep) + "\n"
     print(text if len(text) < 6000 else text[:6000] + "...\n(полный отчёт в mobile_levels_report.txt)")
 
