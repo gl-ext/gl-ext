@@ -51,6 +51,7 @@ ap.add_argument("--show", type=int, default=30, help="сколько игрок�
 ap.add_argument("--ids", action="store_true", help="добавлять ID игрока в конец строки (нужно для compare.py)")
 ap.add_argument("--list-conc", type=int, default=3, help="сколько страниц игроков WML качать одновременно")
 ap.add_argument("--list-ttl", type=int, default=7 * 86400, help="секунд, пока страница игрока считается свежей")
+ap.add_argument("--extras", default=str(DATA / "my_extras.json"), help="my_extras.json: записи CoreBoard, которых нет на WML; идут в gdr_full.*")
 ap.add_argument("--check-cbd", default="", help="файл cbd.txt: сверить наши очки с очками CoreBoard")
 ap.add_argument("--out-dir", default=str(HERE), help="куда писать gdr.txt и остальное (по умолчанию scripts/)")
 args = ap.parse_args()
@@ -206,30 +207,65 @@ else:
             print("    " + c)
 
 # ---------- очки ----------
-result = []
-for uid, best in best_by.items():
-    pl = data["players"].get(uid)
-    if not pl:
-        continue
-    recs = []
-    for k, (pct, video) in best.items():
-        lv = meta.get(k)
-        if not lv:
+def rate(bests):
+    """bests: {WML-ID игрока: {ключ уровня: (процент, видео)}} -> список игроков с очками и местами."""
+    out = []
+    for uid, best in bests.items():
+        pl = data["players"].get(uid)
+        if not pl:
             continue
-        f = score(lv["place"], pct, lv["T"], lv["t"])
-        if f is not None and f <= args.cap:
-            recs.append({"level": lv["name"], "key": k, "place": lv["place"], "percent": pct, "f": f, "video": video})
-    if not recs:
+        recs = []
+        for k, (pct, video) in best.items():
+            lv = meta.get(k)
+            if not lv:
+                continue
+            f = score(lv["place"], pct, lv["T"], lv["t"])
+            if f is not None and f <= args.cap:
+                recs.append({"level": lv["name"], "key": k, "place": lv["place"], "percent": pct, "f": f, "video": video})
+        if not recs:
+            continue
+        recs.sort(key=lambda r: r["f"])
+        top = recs[:N]
+        while len(top) < N:
+            top.append({"level": "-", "key": None, "place": None, "percent": None, "f": args.cap, "video": ""})
+        out.append({"id": uid, "name": src.display_nick(pl["n"]) or pl["n"], "country": pl.get("c"),
+                    "score": geo_mean([r["f"] for r in top]), "records": top})
+    out.sort(key=lambda r: (r["score"], int(r["id"]) if r["id"].isdigit() else 0))
+    for i, r in enumerate(out, 1):
+        r["rank"] = i
+    return out
+
+
+result = rate(best_by)          # только WML: по нему compare.py пересобирает my_extras.json (иначе получится замкнутый круг)
+
+# ---------- my_extras.json: записи, которые есть на CoreBoard, а на WML нет ----------
+# ID игрока в my_extras.json = его WML-ID. Запись добавляется (или заменяет, если процент выше) к записям WML, и тогда очки игрока
+# совпадают с CoreBoard. Без экстрас такой игрок остаётся с недобранными записями (очки выше, в топ не попадает).
+extras_users = (read_json(args.extras, {}) or {}).get("users", {}) if args.extras else {}
+best_full = {u: dict(b) for u, b in best_by.items()}
+ex_applied, ex_skipped, ex_players = 0, [], set()
+for uid, rows in extras_users.items():
+    uid = str(uid)
+    if uid not in data["players"]:
+        ex_skipped.append(f"{uid}: игрока нет на WML")
         continue
-    recs.sort(key=lambda r: r["f"])
-    top = recs[:N]
-    while len(top) < N:
-        top.append({"level": "-", "key": None, "place": None, "percent": None, "f": args.cap, "video": ""})
-    result.append({"id": uid, "name": src.display_nick(pl["n"]) or pl["n"], "country": pl.get("c"),
-                   "score": geo_mean([r["f"] for r in top]), "records": top})
-result.sort(key=lambda r: (r["score"], int(r["id"]) if r["id"].isdigit() else 0))
-for i, r in enumerate(result, 1):
-    r["rank"] = i
+    for row in rows:
+        if not isinstance(row, list) or len(row) < 2:
+            continue
+        k, pct = str(row[0]), float(row[1])
+        video = site.normalize_link(row[2]) if len(row) > 2 and row[2] else ""
+        if k not in meta:
+            ex_skipped.append(f"{uid}: уровня {k} нет в levels_mobile.json")
+            continue
+        cur = best_full.setdefault(uid, {})
+        if pct > cur.get(k, (-1, None))[0]:
+            cur[k] = (pct, video)
+            ex_applied += 1
+            ex_players.add(uid)
+full = rate(best_full)          # WML + экстрас: итоговый рейтинг
+print(f"my_extras.json: записей добавлено {ex_applied} у {len(ex_players)} игроков, пропущено {len(ex_skipped)}")
+for line in ex_skipped[:5]:
+    print("  " + line)
 
 
 def line_short(r):
@@ -253,7 +289,10 @@ for r in result[: args.show]:
 vids = {r["id"]: {rec["key"]: [rec["percent"], rec["video"]] for rec in r["records"] if rec["key"] and rec["video"]}
         for r in result}
 (OUT / "gdr_videos.json").write_text(json.dumps({k: v for k, v in vids.items() if v}, ensure_ascii=False), "utf-8")
-print(f"\nЗаписано: {OUT / 'gdr.txt'}, gdr.json, gdr_videos.json")
+(OUT / "gdr_full.txt").write_text("\n".join(line_short(r) for r in full), "utf-8")
+(OUT / "gdr_full.json").write_text(json.dumps([{**r, "score": round(r["score"], 2)} for r in full],
+                                              ensure_ascii=False, indent=1), "utf-8")
+print(f"\nЗаписано: {OUT / 'gdr.txt'} (только WML), gdr_full.txt и gdr_full.json (WML + my_extras), gdr.json, gdr_videos.json")
 
 # ---------- проверка формулы по очкам CoreBoard ----------
 if args.check_cbd:
@@ -263,7 +302,7 @@ if args.check_cbd:
         m = row.match(line)
         if m:
             cb.setdefault(levelsearch.normalize(m.group(1)), float(m.group(2)))
-    ours = {levelsearch.normalize(r["name"]): r for r in result}
+    ours = {levelsearch.normalize(r["name"]): r for r in full}   # сверяем итоговый рейтинг (WML + my_extras)
     pairs = [(ours[k], cb[k]) for k in cb if k in ours]
     ok = sum(1 for r, c in pairs if abs(r["score"] - c) <= 0.01)
     print(f"\nСверка с CoreBoard: ников совпало {len(pairs)} из {len(cb)}, очки сходятся (±0.01) у {ok}")
