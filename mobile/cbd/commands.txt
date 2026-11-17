@@ -3,6 +3,10 @@
 /try GdFl01, shimmer 88%
 
 Видео: WML
+/fulladd Coheton, Shutdown, https://www.youtube.com/watch?v=bHLZo6rwboI
+/try Coheton, Shutdown
+
+Видео: WML
 /fulladd Noxop, Yatagarasu, https://www.youtube.com/watch?v=HDLkKbi7e_A
 /try Noxop, Yatagarasu
 
@@ -11,12 +15,20 @@
 /try v1nt, shimmer 94%
 
 Видео: WML
+/fulladd DashY, kowareta, https://www.youtube.com/watch?v=hcorzdx9L0w
+/try DashY, kowareta
+
+Видео: WML
 /fulladd itzsalty, Kuzureta, https://www.youtube.com/watch?v=UuuOlAbMVec
 /try itzsalty, Kuzureta
 
 Видео: WML
 /fulladd itzsalty, Sky Shredder 60%, https://www.youtube.com/watch?v=PVk8ySlvzx8
 /try itzsalty, Sky Shredder 60%
+
+Видео: WML
+/fulladd vowtz, Auditory Breaker, https://www.youtube.com/watch?v=Bb6kWDrFNok
+/try vowtz, Auditory Breaker
 
 Видео: WML
 /fulladd GatoGeometrico9, Bausha Vortex, https://www.youtube.com/watch?v=viyz1mobxlU
@@ -57,6 +69,10 @@
 Видео: WML
 /fulladd L3gend, Bloodlust, https://www.youtube.com/watch?v=1RBhkJ_LRYQ
 /try L3gend, Bloodlust
+
+Видео: WML
+/fulladd TeoZin, Blade of Justice, https://www.youtube.com/watch?v=vSfqd1MYBcY
+/try TeoZin, Blade of Justice
 
 Видео: WML
 /fulladd paranoia, aether, https://www.youtube.com/watch?v=fa1oA0lnrOA
@@ -101,6 +117,14 @@
 Видео: WML
 /fulladd t, BuTiTi III, https://www.youtube.com/watch?v=e3lCIpTABQY
 /try t, BuTiTi III
+
+Видео: WML
+/fulladd MRZoom, CHROMA II, https://www.youtube.com/watch?v=3Kmt5XtPtvw
+/try MRZoom, CHROMA II
+
+Видео: WML
+/fulladd minelo, distraught, https://www.youtube.com/watch?v=SzH_9e1ahos
+/try minelo, distraught
 
 Видео: WML
 /fulladd SILVER062, ErebuS (Platnuu), https://www.youtube.com/watch?v=cD5cOXBiVDc
