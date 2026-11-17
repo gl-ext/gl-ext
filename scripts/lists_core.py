@@ -50,7 +50,8 @@ class Source:
     def fetch(self, store, workers=3, log=print):
         """Возвращает None (лист недоступен) или данные в едином виде:
         {"players": {id: {"n": ник, "r": место, "c": страна}},
-         "records": [{"a": id игрока, "l": название уровня, "p": процент, "v": видео, "i": игровой ID уровня или None}]}
+         "records": [{"a": id игрока, "l": название уровня, "p": процент, "v": видео, "i": игровой ID уровня или None,
+                      "pos": место уровня в листе или None (необязательно)}]}
         Названия уровней в ключи переводит тот, кто использует данные (levels.py), а не лист."""
         raise NotImplementedError
 
@@ -71,7 +72,7 @@ class PageSource(Source):
         raise NotImplementedError
 
     def player(self, pid):
-        """-> {"country": код страны или None, "records": [{"level": название, "percent": число, "video": ссылка или None}]}.
+        """-> {"country": код страны или None, "records": [{"level": название, "percent": число, "video": ссылка или None, "pos": место уровня или None}]}.
         Исключение = сбой (повторим позже, пока возьмём старый кеш игрока)."""
         raise NotImplementedError
 
@@ -106,7 +107,7 @@ class PageSource(Source):
             try:
                 data = self.player(p["id"])
                 entry = {"at": time.time(), "ver": p.get("version"), "rev": self.rev, "c": data.get("country"),
-                         "recs": [[r["level"], r["percent"], r.get("video")] for r in data["records"]]}
+                         "recs": [[r["level"], r["percent"], r.get("video"), r.get("pos")] for r in data["records"]]}
                 store.put(key, entry)
                 self.downloaded += 1
                 return p, entry
@@ -159,8 +160,9 @@ class PageSource(Source):
             if e is None:
                 continue
             players[p["id"]] = {"n": p["nick"], "r": p.get("rank"), "c": e.get("c")}
-            for level, percent, video in e["recs"]:
-                records.append({"a": p["id"], "l": level, "p": percent, "v": video, "i": None})
+            for level, percent, video, *rest in e["recs"]:  # 4-й элемент (место уровня в листе) есть не у всех листов
+                records.append({"a": p["id"], "l": level, "p": percent, "v": video, "i": None,
+                                "pos": rest[0] if rest else None})
         log(f"  {self.name}: игроков {len(players)}, записей {len(records)}")
         return {"players": players, "records": records}
 
