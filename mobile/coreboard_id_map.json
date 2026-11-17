@@ -24,7 +24,7 @@
   "gdr_id": "402"
  },
  "7": {
-  "nick": "Maxdash",
+  "nick": "MaxDash",
   "gdr_id": "2"
  },
  "8": {
@@ -120,7 +120,7 @@
   "gdr_id": "396"
  },
  "31": {
-  "nick": "ikkyseen",
+  "nick": "Ikkyseen",
   "gdr_id": "3988"
  },
  "32": {
@@ -380,7 +380,7 @@
   "gdr_id": "2510"
  },
  "96": {
-  "nick": "NiQsaIL",
+  "nick": "NiQSaIL",
   "gdr_id": "350"
  },
  "97": {
@@ -586,5 +586,89 @@
  "147": {
   "nick": "JustCoal",
   "gdr_id": "736"
+ },
+ "152": {
+  "nick": "nizelix",
+  "gdr_id": "753"
+ },
+ "156": {
+  "nick": "Gilza",
+  "gdr_id": "533"
+ },
+ "161": {
+  "nick": "Bouro",
+  "gdr_id": "3120"
+ },
+ "166": {
+  "nick": "afina",
+  "gdr_id": "424"
+ },
+ "173": {
+  "nick": "siaxid",
+  "gdr_id": "294"
+ },
+ "174": {
+  "nick": "Quilinz",
+  "gdr_id": "296"
+ },
+ "175": {
+  "nick": "moondrop",
+  "gdr_id": "3717"
+ },
+ "183": {
+  "nick": "Vergus",
+  "gdr_id": "2066"
+ },
+ "190": {
+  "nick": "vkrz",
+  "gdr_id": "977"
+ },
+ "196": {
+  "nick": "meyv",
+  "gdr_id": "1953"
+ },
+ "197": {
+  "nick": "BleskGD",
+  "gdr_id": "1618"
+ },
+ "199": {
+  "nick": "BENeNsik",
+  "gdr_id": "2163"
+ },
+ "200": {
+  "nick": "Lotus",
+  "gdr_id": "2342"
+ },
+ "201": {
+  "nick": "Triggor",
+  "gdr_id": "1023"
+ },
+ "202": {
+  "nick": "BananBee",
+  "gdr_id": "1015"
+ },
+ "219": {
+  "nick": "Tuhupolko",
+  "gdr_id": "737"
+ },
+ "226": {
+  "nick": "HyperYtiuk",
+  "gdr_id": "2611"
+ },
+ "227": {
+  "nick": "AC9I",
+  "gdr_id": "530"
+ },
+ "232": {
+  "nick": "Egrik_GD",
+  "gdr_id": "1902"
+ },
+ "236": {
+  "nick": "Erog",
+  "gdr_id": "2617"
+ },
+ "245": {
+  "nick": "truegaymer",
+  "gdr_id": "2064"
  }
 }

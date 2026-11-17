@@ -105,3 +105,11 @@
 Видео: WML
 /fulladd SILVER062, ErebuS (Platnuu), https://www.youtube.com/watch?v=cD5cOXBiVDc
 /try SILVER062, ErebuS (Platnuu)
+
+Видео: WML
+/fulladd Gilza, Fever Dream 61%, https://www.youtube.com/watch?v=GjYdgmg-ccE
+/try Gilza, Fever Dream 61%
+
+Видео: WML
+/fulladd BleskGD, Edelweiss, https://www.youtube.com/watch?v=uM7S0hLbIAA
+/try BleskGD, Edelweiss
