@@ -1,6 +1,3 @@
-/fulladd Florned, Acheron 98%,
-/try Florned, Acheron 98%
-
 Видео: Pointercrate
 /fulladd Dice88, The Catacombs, https://www.youtube.com/watch?v=tTMH06jP1qg
 /try Dice88, The Catacombs
@@ -32,10 +29,6 @@
 Видео: Pointercrate
 /fulladd Acacia, UNKNOWN, https://www.youtube.com/watch?v=6T3vj-Z_-LU
 /try Acacia, UNKNOWN
-
-Видео: Pointercrate
-/fulladd Eskimi, Slaughterhouse 75%, https://www.youtube.com/watch?v=NB184aNJt3I
-/try Eskimi, Slaughterhouse 75%
 
 Видео: Pointercrate
 /fulladd Decin, The Golden, https://www.youtube.com/watch?v=w37CTHN4uxg
