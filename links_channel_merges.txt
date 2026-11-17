@@ -3775,3 +3775,8 @@
     общие каналы: https://www.youtube.com/@iCharlieGD
     поглощено: wml4787 (iCharlieGD), аккаунты: {'wml': [4787]}
 
+===== 2026-11-17 19:44:43 UTC: склеено групп 1, поглощено записей 1 =====
+СКЛЕЕНО В 39446 (Aaaapex)
+    общие каналы: https://www.youtube.com/@ApexGMD15
+    поглощено: pc73261 (Aaaapex), аккаунты: {'pointercrate': [73261]}
+
