@@ -114,6 +114,57 @@ def pick(d, *keys):
 
 
 # =========================
+# Одноимённые уровни в WML (например, два Pandemonium)
+# =========================
+# Наш поиск уровня идёт по названию и всегда даёт ОДИН уровень (тот, что выше и совпадает с глобалом).
+# Если в WML два уровня с таким названием, рекорд на нижнем нельзя засчитывать: он не про тот уровень.
+# Какой из двух у игрока, видно по месту в списке (#pos в панели игрока): выше = меньше число.
+DUP_GAP = 15        # места одного названия ближе друг к другу считаются одним уровнем (список за неделю чуть сдвигается)
+DUP_NAMES = None    # None = проверять все повторяющиеся названия; или множество, например {"pandemonium"}
+
+
+def duplicate_cutoffs(pairs):
+    """pairs: (название, место) всех рекордов. Возвращает {название: (последнее место верхнего уровня,
+    места верхнего, места нижних)} только для названий, под которыми в WML нашлось несколько уровней."""
+    by_name, shown = {}, {}
+    for name, pos in pairs:
+        if pos is None:
+            continue
+        n = normalize(name)
+        by_name.setdefault(n, set()).add(int(pos))
+        shown.setdefault(n, name)
+    cut = {}
+    for n, places in by_name.items():
+        if DUP_NAMES is not None and n not in {normalize(x) for x in DUP_NAMES}:
+            continue
+        places = sorted(places)
+        upper = [places[0]]
+        for p in places[1:]:
+            if p - upper[-1] > DUP_GAP:
+                break
+            upper.append(p)
+        lower = places[len(upper):]
+        if lower:
+            cut[n] = (upper[-1], upper, lower, shown[n])
+    return cut
+
+
+def is_lower_duplicate(cut, name, pos):
+    """True, если рекорд на нижнем из одноимённых уровней (его не учитываем). Без места рекорд остаётся."""
+    if pos is None:
+        return False
+    c = cut.get(normalize(name))
+    return bool(c) and int(pos) > c[0]
+
+
+def report_duplicates(cut, dropped, log=print):
+    for n, (_end, upper, lower, shown) in sorted(cut.items()):
+        log(f"  WML: одноимённые уровни {shown!r}: учитываю #{upper[0]}"
+            + (f"..#{upper[-1]}" if upper[-1] != upper[0] else "")
+            + f", не учитываю нижний (#{', #'.join(map(str, lower))}); отброшено записей: {dropped.get(n, 0)}")
+
+
+# =========================
 # Шаг 1. Топ игроков
 # =========================
 
@@ -207,6 +258,7 @@ def parse_panel(page):
                 "level": html.unescape(c["name"]).strip(),
                 "percent": int(c["pct"]) if c["pct"] is not None else 100,
                 "video": html.unescape(c["video"]).strip(),
+                "pos": int(c["pos"]),  # место уровня в списке WML (нужно, чтобы отличить одноимённые уровни)
             })
 
     cc = COUNTRY.search(pane)
@@ -312,6 +364,8 @@ def save_json(filename, users):
 def convert(players, nick_to_id, resolver):
     """Возвращает (users, users_nicks, not_found, no_id). Игроки идут от верха топа до низа."""
     users, users_nicks, not_found, no_id, name_cache = {}, {}, {}, [], {}
+    cut = duplicate_cutoffs((r["level"], r.get("pos")) for p in players for r in p.get("records", []))
+    dropped = {}
 
     for p in sorted(players, key=lambda x: (x.get("rank") is None, x.get("rank") or 0)):
         wml_nick = p.get("nick") or ""
@@ -324,6 +378,9 @@ def convert(players, nick_to_id, resolver):
         best = {}  # ID уровня -> (процент, название, ссылка): по уровню остаётся лучший процент
         for r in p.get("records", []):
             name = r["level"]
+            if is_lower_duplicate(cut, name, r.get("pos")):
+                dropped[normalize(name)] = dropped.get(normalize(name), 0) + 1
+                continue
             if name not in name_cache:
                 name_cache[name] = resolver.find(name)
             level_id = name_cache[name]
@@ -340,6 +397,7 @@ def convert(players, nick_to_id, resolver):
             users.setdefault(gid, []).extend([[lid, pct, link] for lid, (pct, _n, link) in rows])
             users_nicks.setdefault(f"{gid} — {clean}", []).extend(
                 [[lid, pct, n, link] for lid, (pct, n, link) in rows])
+    report_duplicates(cut, dropped)
     return users, users_nicks, not_found, no_id
 
 
