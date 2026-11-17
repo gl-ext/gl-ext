@@ -416,10 +416,7 @@ for level_id, data in levels_data.items():
     if not name:
         continue
 
-    if str(level_id).startswith("x"):
-        output_id = str(level_id)
-    else:
-        output_id = int(level_id)
+    output_id = str(level_id)   # мобильная версия: ID уровня = название на CoreBoard ("x..." у алиасов)
 
     normalized_name = normalize(name)
 

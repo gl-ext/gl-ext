@@ -13,8 +13,14 @@ ORIGIN_TP, ORIGIN_SPECIAL, ORIGIN_GLOBAL = "levels_mobile.json", "алиасы",
 
 
 def normalize(name):
-    """Название для сравнения: без лишних пробелов и без учёта регистра."""
-    return re.sub(r"\s+", " ", str(name or "").strip()).casefold()
+    """Название для сравнения: без круглых скобок (и их содержимого), без лишних пробелов, без учёта регистра."""
+    s = str(name or "")
+    while True:
+        t = re.sub(r"\([^()]*\)", " ", s)
+        if t == s:
+            break
+        s = t
+    return re.sub(r"\s+", " ", s).strip().casefold()
 
 
 class LevelIndex:
