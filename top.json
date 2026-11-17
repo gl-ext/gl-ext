@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17T17:46:07.616Z",
+ "generated": "2026-11-17T18:37:13.754Z",
  "users": [
   {
    "place": 1,
@@ -121,6 +121,15 @@
   {
    "place": 14,
    "oldPlace": 12,
+   "id": "15566",
+   "name": "weyolll3",
+   "country": "Spain",
+   "points": 5508.17,
+   "basePoints": 5508.17
+  },
+  {
+   "place": 15,
+   "oldPlace": 13,
    "id": "14197",
    "name": "Sharkified",
    "country": "United-States",
@@ -128,22 +137,13 @@
    "basePoints": 5467.55
   },
   {
-   "place": 15,
-   "oldPlace": 13,
+   "place": 16,
+   "oldPlace": 14,
    "id": "14433",
    "name": "Thnnder",
    "country": "United-States",
    "points": 5445.22,
    "basePoints": 5445.22
-  },
-  {
-   "place": 16,
-   "oldPlace": 14,
-   "id": "15566",
-   "name": "weyolll3",
-   "country": "Spain",
-   "points": 5300.17,
-   "basePoints": 5300.17
   },
   {
    "place": 17,
@@ -184,20 +184,20 @@
   {
    "place": 21,
    "oldPlace": 21,
+   "id": "16572",
+   "name": "Doggie",
+   "country": "United-States",
+   "points": 4622.1,
+   "basePoints": 4622.1
+  },
+  {
+   "place": 22,
+   "oldPlace": 22,
    "id": "14521",
    "name": "xmercurylamp",
    "country": "Brazil",
    "points": 4551.08,
    "basePoints": 4551.08
-  },
-  {
-   "place": 22,
-   "oldPlace": 22,
-   "id": "16572",
-   "name": "Doggie",
-   "country": "United-States",
-   "points": 4494.1,
-   "basePoints": 4494.1
   },
   {
    "place": 23,
