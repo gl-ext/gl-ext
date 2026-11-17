@@ -138,10 +138,10 @@ def attach_videos_and_commands(out):
     blocks, no_video = [], []
     for key, records in nicks.items():
         gdr_id, _, nick = key.partition(" — ")
-        for rec in records:  # [ID уровня, процент, название]
+        for rec in records:  # [ID уровня, процент] -> [ID уровня, процент, ссылка]; название не дублируем: ID и есть название
             link = video_of(gdr_id.strip(), rec[0], rec[1])
-            rec[:] = rec[:3] + [link]
-            lv_name = (levels.get(str(rec[0])) or {}).get("name") or rec[2]
+            rec[:] = rec[:2] + [link]
+            lv_name = (levels.get(str(rec[0])) or {}).get("name") or str(rec[0])
             shown = lv_name if float(rec[1]) == 100 else f"{lv_name} {rec[1]}%"
             lines = ([f"Видео: WML"] if link else []) + \
                     [f"/fulladd {nick.strip()}, {shown}, {link}".rstrip(), f"/try {nick.strip()}, {shown}"]
@@ -156,13 +156,11 @@ def attach_videos_and_commands(out):
     (out / "commands.txt").write_text("\n\n".join(blocks) + ("\n" if blocks else ""), "utf-8")
     (out / "missing_video_links.txt").write_text("\n".join(no_video) + ("\n" if no_video else ""), "utf-8")
 
-    # новые игроки: ссылка только у ПЕРВОЙ записи (как в основной доске)
+    # новые игроки: видео в missing_players.json нет совсем, записи [ID уровня, процент]
     players = read_json(out / "missing_players.json", {"users": {}}).get("users", {})
     for info in players.values():
-        for i, rec in enumerate(info.get("records", [])):
-            while len(rec) < 3:
-                rec.append("")
-            rec[2] = video_of(info.get("gdr_id"), rec[0], rec[1]) if i == 0 else ""
+        for rec in info.get("records", []):
+            rec[:] = rec[:2]
     with open(out / "missing_players.json", "w", encoding="utf-8") as f:
         f.write('{\n  "users": {\n')
         items = list(players.items())

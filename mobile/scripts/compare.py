@@ -737,10 +737,10 @@ for player_id in sorted(common_ids | absent_ids, key=lambda i: (players1[i]["sco
             ""
         ])
 
+        # название уровня второй раз не пишем: ID уровня и есть его название на CoreBoard
         records_with_names.append([
             level_id,
-            achievement["percent"],
-            achievement["name"]
+            achievement["percent"]
         ])
 
     if records_without_names:
@@ -755,7 +755,7 @@ for player_id in sorted(common_ids | absent_ids, key=lambda i: (players1[i]["sco
 # Только в режиме in-gdr-not-in-cbd. Берём игроков gdr, которых нет в cbd, с очками меньше
 # --new-max-score (по умолчанию 250), для ВСЕХ стран. Результат: missing_players.json
 #   {"users": {"<ID>": {"nick": "Ник", "country_code": "US",
-#                       "gdr_id": "<наш ID>", "records": [[ID уровня, процент, ссылка], ...]}}}
+#                       "gdr_id": "<наш ID>", "records": [[ID уровня, процент], ...]}}}
 # ID-ключ: если есть ID CoreBoard (сайт или coreboard_id_map.json), это НОВЫЕ ID по порядку после самого большого;
 # иначе наш ID (глобал, pcN или wmlN). Наш ID всегда лежит в gdr_id. Ссылки на видео дописывает add-video-links.py.
 # Игрок НЕ попадает в файл (а пишется в missing_players_skipped.txt с причиной), если:
@@ -842,7 +842,7 @@ if args.mode == "in-gdr-not-in-cbd":
                 continue
             if found_in != "levels_tp.json":
                 levels_found_elsewhere[achievement["name"]] = (level_id, found_in)
-            records.append([level_id, achievement["percent"], ""])
+            records.append([level_id, achievement["percent"]])   # без видео: у новых игроков его в файле нет
 
         if unresolved or not records:
             skipped_players.append(f"{player_id} | {nick} | {p1['score']} | не найден уровень: {', '.join(unresolved) or 'нет записей'}")
