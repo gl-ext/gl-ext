@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18T11:25:48.254Z",
+  "generated": "2026-11-18T12:21:25.505Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -22,9 +22,6 @@
     "396": [
       [3449,26,"Azure Flare",52,"",null,null,null,"my_extras",107.67,0]
     ],
-    "637": [
-      [2656,35,"Acheron",61,"",null,null,null,"my_extras",102.71,0]
-    ],
     "700": [
       [2236,152,"The Golden",100,"",77,null,null,"my_extras",4.6,1.78],
       [1591,182,"Trueffet",100,"",null,null,null,"my_extras",3.4,0],
@@ -37,17 +34,11 @@
     "1491": [
       [2843,105,"The Plunge",87,"",null,null,null,"my_extras",21.25,0]
     ],
-    "1675": [
-      [2657,37,"Tunnel of Despair",100,"",64,null,null,"my_extras",332,85.31]
-    ],
     "1857": [
       [3412,24,"Ultra Paracosm",40,"",null,null,null,"my_extras",100.65,0]
     ],
     "2080": [
       [2656,35,"Acheron",76,"",null,null,null,"my_extras",129.27,0]
-    ],
-    "3115": [
-      [3430,51,"ace",100,"",null,null,null,"my_extras",272,0]
     ],
     "3232": [
       [1732,65,"Sakupen Circles",100,"",null,null,null,"my_extras",160,0]
@@ -116,10 +107,6 @@
     "5469": [
       [2656,35,"Acheron",89,"",null,null,null,"my_extras",152.29,0],
       [1963,87,"Deadlier Clubstep",64,"",null,null,null,"my_extras",21.34,0]
-    ],
-    "5527": [
-      [3226,4,"Thinking Space II",100,"",null,null,null,"my_extras",880,0],
-      [3320,22,"Penumbral",100,"",null,null,null,"my_extras",392,0]
     ],
     "5531": [
       [2660,8,"Tidal Wave",74,"",null,null,null,"my_extras",255.35,0]
@@ -216,7 +203,6 @@
       [3351,41,"Thinking Space II",100,"",null,null,null,"my_extras",316,0]
     ],
     "6619": [
-      [2656,35,"Acheron",82,"",null,null,null,"my_extras",139.9,0],
       [2050,72,"poocubed",100,"",54,null,null,"my_extras",104,28.6],
       [1563,238,"shimmer",100,"",null,null,null,"my_extras",1.4,0]
     ],
@@ -347,18 +333,12 @@
     "13301": [
       [1981,76,"Saul Goodman",57,"",null,null,null,"my_extras",21.07,0]
     ],
-    "13458": [
-      [3404,16,"The Bloop",100,"",null,null,null,"my_extras",480,0]
-    ],
     "13462": [
       [2685,109,"The Yangire",100,"",null,null,null,"my_extras",46,0]
     ],
     "13506": [
       [2976,5,"Amethyst",69,"",null,null,null,"my_extras",313.22,0],
       [3409,7,"Green Bullet",91,"",null,null,null,"my_extras",352.36,0]
-    ],
-    "13661": [
-      [2653,21,"Silent clubstep",100,"",null,null,null,"my_extras",396,0]
     ],
     "13662": [
       [1706,33,"Abyss of Darkness",90,"",null,null,null,"my_extras",156.98,0]
@@ -519,9 +499,6 @@
     "16532": [
       [1706,33,"Abyss of Darkness",76,"",null,null,null,"my_extras",130.5,0]
     ],
-    "16542": [
-      [3449,26,"Azure Flare",66,"",null,null,null,"my_extras",131.6,0]
-    ],
     "16544": [
       [1748,44,"Slaughterhouse",95,"",63,null,null,"my_extras",144.59,85.27],
       [2535,78,"The Hallucination",68,"",null,null,null,"my_extras",27.45,0]
@@ -577,7 +554,7 @@
       [3096,34,"Defeated Circles",87,"",null,null,null,"my_extras",152.89,0]
     ],
     "17620": [
-      [2657,37,"Tunnel of Despair",92,"",null,null,null,"my_extras",149.86,0]
+      [2657,37,"Tunnel of Despair",92,"",81,null,null,"my_extras",149.86,124.5]
     ],
     "17731": [
       [1733,142,"UNKNOWN",100,"",null,null,null,"my_extras",13,0]
@@ -643,9 +620,6 @@
     "19066": [
       [1724,38,"Kyouki",98,"",null,null,null,"my_extras",162.36,0]
     ],
-    "19107": [
-      [2656,35,"Acheron",100,"",null,null,null,"my_extras",340,0]
-    ],
     "19207": [
       [2449,203,"Zodiac",100,"",null,null,null,"my_extras",2.6,0]
     ],
@@ -702,7 +676,6 @@
       [2854,94,"Collapse",100,"",null,null,null,"my_extras",61,0]
     ],
     "20649": [
-      [1706,33,"Abyss of Darkness",82,"",null,null,null,"my_extras",141.85,0],
       [2656,35,"Acheron",72,"",null,null,null,"my_extras",122.19,0],
       [1748,44,"Slaughterhouse",75,"",null,null,null,"my_extras",107.51,0]
     ],
@@ -852,7 +825,6 @@
       [3302,200,"chrome hearts",100,"",null,null,null,"my_extras",3,0]
     ],
     "27721": [
-      [1706,33,"Abyss of Darkness",76,"",62,null,null,"my_extras",130.5,104.02],
       [2700,140,"BPATA MPAKA",100,"",null,null,null,"my_extras",15,0]
     ],
     "28737": [
@@ -918,9 +890,6 @@
     "35482": [
       [2222,154,"Verdant Landscape",100,"",null,null,null,"my_extras",4.6,0]
     ],
-    "35510": [
-      [2655,48,"KOCMOC",76,"",null,null,null,"my_extras",96.69,0]
-    ],
     "35575": [
       [2050,72,"poocubed",50,"",null,null,null,"my_extras",26.52,0],
       [3061,84,"Sevvend Clubstep",72,"",null,null,null,"my_extras",24.09,0],
@@ -959,7 +928,6 @@
       [1706,33,"Abyss of Darkness",76,"",null,null,null,"my_extras",130.5,0]
     ],
     "42525": [
-      [2660,8,"Tidal Wave",100,"",94,null,null,"my_extras",720,339.07],
       [3444,63,"Shadow Of The Past",83,"",null,null,null,"my_extras",66.67,0]
     ],
     "42845": [
@@ -969,9 +937,6 @@
     ],
     "45796": [
       [3320,22,"Penumbral",92,"",null,null,null,"my_extras",181.09,0]
-    ],
-    "45958": [
-      [2660,8,"Tidal Wave",100,"",68,null,null,"my_extras",720,230.23]
     ],
     "49631": [
       [2659,30,"Avernus",79,"",null,null,null,"my_extras",144.71,0]

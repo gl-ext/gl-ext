@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-18T11:25:48.254Z",
+ "generated": "2026-11-18T12:21:25.505Z",
  "users": [
   {
    "place": 1,
@@ -48,21 +48,21 @@
   },
   {
    "place": 6,
-   "oldPlace": 6,
-   "id": "13458",
-   "name": "Vorten",
-   "country": "Russia",
-   "points": 7324.73,
-   "basePoints": 6844.73
-  },
-  {
-   "place": 7,
    "oldPlace": 7,
    "id": "13506",
    "name": "SerVax",
    "country": "Ukraine",
    "points": 7149.18,
    "basePoints": 6483.6
+  },
+  {
+   "place": 7,
+   "oldPlace": 6,
+   "id": "13458",
+   "name": "Vorten",
+   "country": "Russia",
+   "points": 6844.73,
+   "basePoints": 6844.73
   },
   {
    "place": 8,
@@ -75,24 +75,6 @@
   },
   {
    "place": 9,
-   "oldPlace": 10,
-   "id": "13661",
-   "name": "kloone",
-   "country": "Finland",
-   "points": 6062.97,
-   "basePoints": 5666.97
-  },
-  {
-   "place": 10,
-   "oldPlace": 19,
-   "id": "5527",
-   "name": "Andreya6",
-   "country": "Russia",
-   "points": 5963.79,
-   "basePoints": 4691.79
-  },
-  {
-   "place": 11,
    "oldPlace": 9,
    "id": "13508",
    "name": "w3rty",
@@ -101,7 +83,16 @@
    "basePoints": 5908.91
   },
   {
-   "place": 12,
+   "place": 10,
+   "oldPlace": 10,
+   "id": "13661",
+   "name": "kloone",
+   "country": "Finland",
+   "points": 5666.97,
+   "basePoints": 5666.97
+  },
+  {
+   "place": 11,
    "oldPlace": 15,
    "id": "16551",
    "name": "Rediio",
@@ -110,7 +101,7 @@
    "basePoints": 5295.73
   },
   {
-   "place": 13,
+   "place": 12,
    "oldPlace": 11,
    "id": "14541",
    "name": "eastshark",
@@ -119,7 +110,7 @@
    "basePoints": 5641.94
   },
   {
-   "place": 14,
+   "place": 13,
    "oldPlace": 12,
    "id": "15566",
    "name": "weyolll3",
@@ -128,7 +119,7 @@
    "basePoints": 5508.17
   },
   {
-   "place": 15,
+   "place": 14,
    "oldPlace": 13,
    "id": "14197",
    "name": "Sharkified",
@@ -137,7 +128,7 @@
    "basePoints": 5467.55
   },
   {
-   "place": 16,
+   "place": 15,
    "oldPlace": 14,
    "id": "14433",
    "name": "Thnnder",
@@ -146,7 +137,7 @@
    "basePoints": 5445.22
   },
   {
-   "place": 17,
+   "place": 16,
    "oldPlace": 16,
    "id": "26548",
    "name": "dovvin_",
@@ -155,7 +146,7 @@
    "basePoints": 4930.02
   },
   {
-   "place": 18,
+   "place": 17,
    "oldPlace": 18,
    "id": "14452",
    "name": "Cookie",
@@ -164,7 +155,7 @@
    "basePoints": 4832.11
   },
   {
-   "place": 19,
+   "place": 18,
    "oldPlace": 20,
    "id": "5564",
    "name": "roze [GD]",
@@ -173,13 +164,22 @@
    "basePoints": 4629.35
   },
   {
-   "place": 20,
+   "place": 19,
    "oldPlace": 17,
    "id": "22114",
    "name": "Bacon",
    "country": "Kazakhstan",
    "points": 4852.48,
    "basePoints": 4852.48
+  },
+  {
+   "place": 20,
+   "oldPlace": 19,
+   "id": "5527",
+   "name": "Andreya6",
+   "country": "Russia",
+   "points": 4691.79,
+   "basePoints": 4691.79
   },
   {
    "place": 21,
