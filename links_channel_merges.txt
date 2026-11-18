@@ -3797,3 +3797,8 @@
     общие каналы: https://www.youtube.com/@LuGD-y4o
     поглощено: wml2662 (luerickOdestruidor), аккаунты: {'wml': [2662]}
 
+===== 2026-11-18 07:45:13 UTC: склеено групп 1, поглощено записей 1 =====
+СКЛЕЕНО В 3613 (kaven16)
+    общие каналы: https://www.youtube.com/@kavengmd
+    поглощено: wml5426 (kaven), аккаунты: {'wml': [5426]}
+
