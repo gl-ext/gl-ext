@@ -1,4 +1,4 @@
-name: auto-update
+dname: auto-update
 
 # Один workflow на оба обновления:
 #   1. sync-extras.py: что есть в CoreBoard, а у нас нет  -> my_extras.json, levels_tp.json
