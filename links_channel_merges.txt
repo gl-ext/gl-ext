@@ -3802,3 +3802,24 @@
     общие каналы: https://www.youtube.com/@kavengmd
     поглощено: wml5426 (kaven), аккаунты: {'wml': [5426]}
 
+===== 2026-11-18 13:46:09 UTC: склеено групп 5, поглощено записей 5 =====
+СКЛЕЕНО В 31716 (Medvedka)
+    общие каналы: https://www.youtube.com/@medvedkaGMD
+    поглощено: pc73262 (medvedka), аккаунты: {'pointercrate': [73262]}
+
+СКЛЕЕНО В 34692 (SoftLock)
+    общие каналы: https://www.youtube.com/@SoftLockk
+    поглощено: pc66783 (SoftLock), аккаунты: {'pointercrate': [66783]}
+
+СКЛЕЕНО В 62718 (MatteoKun)
+    общие каналы: https://www.youtube.com/@MatteoKun
+    поглощено: pc50886 (MatteoKun), аккаунты: {'pointercrate': [50886]}
+
+СКЛЕЕНО В 63790 (vaskiat)
+    общие каналы: https://www.youtube.com/@Vaskiat
+    поглощено: pc56333 (Vaskiat), аккаунты: {'pointercrate': [56333]}
+
+СКЛЕЕНО В 65831 (humptwe)
+    общие каналы: https://www.youtube.com/@humptwe
+    поглощено: pc59386 (humptwe), аккаунты: {'pointercrate': [59386]}
+
