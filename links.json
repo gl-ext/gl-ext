@@ -76105,7 +76105,8 @@
     },
     "channels": {
       "youtube": [
-        "https://www.youtube.com/@TypicalGMD"
+        "https://www.youtube.com/@TypicalGMD",
+        "https://www.youtube.com/@Typical-GD9430"
       ]
     }
   },
@@ -112956,7 +112957,8 @@
     "other_lists": {
       "pointercrate": [],
       "wml": [
-        2464
+        2464,
+        5208
       ]
     },
     "channels": {
@@ -141352,7 +141354,9 @@
     "_name": "IliassGD",
     "other_lists": {
       "pointercrate": [],
-      "wml": []
+      "wml": [
+        5437
+      ]
     },
     "channels": {
       "youtube": [
@@ -144943,7 +144947,9 @@
     "_name": "Hiter",
     "other_lists": {
       "pointercrate": [],
-      "wml": []
+      "wml": [
+        5432
+      ]
     },
     "channels": {
       "youtube": [
@@ -166153,7 +166159,9 @@
     "_name": "Jolty246",
     "other_lists": {
       "pointercrate": [],
-      "wml": []
+      "wml": [
+        1996
+      ]
     },
     "channels": {
       "youtube": [
@@ -376159,6 +376167,113 @@
     "channels": {
       "youtube": [
         "https://www.youtube.com/@wexxlerr"
+      ]
+    }
+  },
+  "wml5198": {
+    "_name": "NeonSR",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": [
+        5198
+      ]
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@NeonSR"
+      ]
+    }
+  },
+  "wml5199": {
+    "_name": "skelly3628",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": [
+        5199
+      ]
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@skelly3628"
+      ]
+    }
+  },
+  "wml5200": {
+    "_name": "Kvazz",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": [
+        5200
+      ]
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@Kvazz-Prod"
+      ]
+    }
+  },
+  "wml5202": {
+    "_name": "BxnjitaGD",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": [
+        5202
+      ]
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@BxnjitaGD"
+      ]
+    }
+  },
+  "wml5203": {
+    "_name": "SuperRunnerJake",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": [
+        5203
+      ]
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@hongqueduong5136"
+      ]
+    }
+  },
+  "wml5209": {
+    "_name": "B93",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": [
+        5209
+      ]
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@B93-gd"
+      ]
+    }
+  },
+  "wml5434": {
+    "_name": "Beutex",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": [
+        5434
+      ]
+    }
+  },
+  "wml5435": {
+    "_name": "GMD DIMORPHISM",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": [
+        5435
+      ]
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@GMDDIMORPHISM"
       ]
     }
   }
