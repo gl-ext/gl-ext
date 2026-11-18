@@ -1,11 +1,11 @@
-dname: auto-update
+name: auto-update
 
 # Один workflow на оба обновления:
 #   1. sync-extras.py: что есть в CoreBoard, а у нас нет  -> my_extras.json, levels_tp.json
 #   2. cbd-update.py:  что есть у нас, а в CoreBoard нет  -> cbd/ (missing_achievements, with_nicks, commands)
 # Старый sync-extras.yml нужно удалить, иначе sync-extras будет запускаться дважды.
 
-on:
+Don:
   workflow_dispatch:
     inputs:
       extras_args:
