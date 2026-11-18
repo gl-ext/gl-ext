@@ -5,7 +5,7 @@ name: mobile-auto-update
 # Один шаг делает всё: топ CoreBoard -> уровни -> рейтинг по WML -> my_extras.json (чего нет у нас) -> cbd/ (чего нет у них).
 # Этот файл должен лежать именно в .github/workflows/: GitHub не запускает workflow из других папок.
 
-on:
+don:
   workflow_dispatch:
     inputs:
       update_args:
