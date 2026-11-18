@@ -3780,3 +3780,20 @@
     общие каналы: https://www.youtube.com/@ApexGMD15
     поглощено: pc73261 (Aaaapex), аккаунты: {'pointercrate': [73261]}
 
+===== 2026-11-18 01:40:44 UTC: склеено групп 4, поглощено записей 4 =====
+СКЛЕЕНО В 7625 (Nick2k4)
+    общие каналы: https://www.youtube.com/@gipernickel7779
+    поглощено: wml2113 (Giper Nickel), аккаунты: {'wml': [2113]}
+
+СКЛЕЕНО В 45178 (wedro)
+    общие каналы: https://www.youtube.com/@wondroros
+    поглощено: wml5424 (Wondroros), аккаунты: {'wml': [5424]}
+
+СКЛЕЕНО В 62685 (Romario)
+    общие каналы: https://www.youtube.com/@RomarioGMD
+    поглощено: wml5154 (Romario), аккаунты: {'wml': [5154]}
+
+СКЛЕЕНО В 62688 (LuerickOdestruidor)
+    общие каналы: https://www.youtube.com/@LuGD-y4o
+    поглощено: wml2662 (luerickOdestruidor), аккаунты: {'wml': [2662]}
+

@@ -63328,7 +63328,9 @@
     "_name": "Nick2k4",
     "other_lists": {
       "pointercrate": [],
-      "wml": []
+      "wml": [
+        2113
+      ]
     },
     "channels": {
       "youtube": [
@@ -139113,7 +139115,8 @@
     },
     "channels": {
       "youtube": [
-        "https://www.youtube.com/@Tettriii"
+        "https://www.youtube.com/@Tettriii",
+        "https://www.youtube.com/@Tettri"
       ]
     }
   },
@@ -152037,7 +152040,9 @@
     "_name": "wedro",
     "other_lists": {
       "pointercrate": [],
-      "wml": []
+      "wml": [
+        5424
+      ]
     },
     "channels": {
       "youtube": [
@@ -360870,6 +360875,11 @@
         73186
       ],
       "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@g4nn1."
+      ]
     }
   },
   "pc73187": {
@@ -368439,20 +368449,6 @@
       ]
     }
   },
-  "wml2662": {
-    "_name": "luerickOdestruidor",
-    "other_lists": {
-      "pointercrate": [],
-      "wml": [
-        2662
-      ]
-    },
-    "channels": {
-      "youtube": [
-        "https://www.youtube.com/@LuGD-y4o"
-      ]
-    }
-  },
   "wml2664": {
     "_name": "Sheiden562",
     "other_lists": {
@@ -374131,20 +374127,6 @@
       ]
     }
   },
-  "wml5154": {
-    "_name": "Romario",
-    "other_lists": {
-      "pointercrate": [],
-      "wml": [
-        5154
-      ]
-    },
-    "channels": {
-      "youtube": [
-        "https://www.youtube.com/@RomarioGMD"
-      ]
-    }
-  },
   "wml5156": {
     "_name": "GDAmoK",
     "other_lists": {
@@ -375881,6 +375863,170 @@
     "channels": {
       "youtube": [
         "https://www.youtube.com/@-anchous-"
+      ]
+    }
+  },
+  "22523": {
+    "_name": "TJdemonlist",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@TJplaysGD"
+      ]
+    }
+  },
+  "34660": {
+    "_name": "GRM",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@GRM_RCGD"
+      ]
+    }
+  },
+  "37117": {
+    "_name": "Itachips",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@zkiriito"
+      ]
+    }
+  },
+  "61750": {
+    "_name": "Veriyon",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@Veriyon_osu"
+      ]
+    }
+  },
+  "62679": {
+    "_name": "andromedagmd",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@zetshunagmd"
+      ]
+    }
+  },
+  "62683": {
+    "_name": "tostsevdalisi",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@karniyariktenceresi"
+      ]
+    }
+  },
+  "62685": {
+    "_name": "Romario",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": [
+        5154
+      ]
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@RomarioGMD"
+      ]
+    }
+  },
+  "62688": {
+    "_name": "LuerickOdestruidor",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": [
+        2662
+      ]
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@LuGD-y4o"
+      ]
+    }
+  },
+  "62689": {
+    "_name": "Zqpez",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@zqpez-x7g"
+      ]
+    }
+  },
+  "62697": {
+    "_name": "SleightOfFist",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@SleightOfFist"
+      ]
+    }
+  },
+  "62699": {
+    "_name": "Sigeonpex95",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@JanFeistauer-k95"
+      ]
+    }
+  },
+  "wml5423": {
+    "_name": "solikkk",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": [
+        5423
+      ]
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@Saul_Goodman521"
+      ]
+    }
+  },
+  "wml5425": {
+    "_name": "Nitrolex",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": [
+        5425
+      ]
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@nitrolex5613"
       ]
     }
   }
