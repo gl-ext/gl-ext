@@ -314575,6 +314575,11 @@
         63877
       ],
       "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@RoundRascalBee"
+      ]
     }
   },
   "pc63879": {
@@ -334016,7 +334021,8 @@
     "_name": "[FROM TEMU] Cursed_FR",
     "other_lists": {
       "pointercrate": [
-        67565
+        67565,
+        72918
       ],
       "wml": []
     },
@@ -359460,15 +359466,6 @@
       "wml": []
     }
   },
-  "pc72918": {
-    "_name": "[FROM TEMU] doggie_FR",
-    "other_lists": {
-      "pointercrate": [
-        72918
-      ],
-      "wml": []
-    }
-  },
   "pc72924": {
     "_name": "TheGaming100",
     "other_lists": {
@@ -365568,7 +365565,8 @@
     },
     "channels": {
       "youtube": [
-        "https://www.youtube.com/@pikyfloo5301"
+        "https://www.youtube.com/@pikyfloo5301",
+        "https://www.youtube.com/@piky2k"
       ]
     }
   },
@@ -376395,6 +376393,48 @@
     "other_lists": {
       "pointercrate": [
         73378
+      ],
+      "wml": []
+    }
+  },
+  "62750": {
+    "_name": "acseeej",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@Jascjw"
+      ]
+    }
+  },
+  "62756": {
+    "_name": "Nacholido",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@ignaciovargas7921"
+      ]
+    }
+  },
+  "pc73384": {
+    "_name": "Carlex26",
+    "other_lists": {
+      "pointercrate": [
+        73384
+      ],
+      "wml": []
+    }
+  },
+  "pc73385": {
+    "_name": "Titan",
+    "other_lists": {
+      "pointercrate": [
+        73385
       ],
       "wml": []
     }

@@ -3833,3 +3833,8 @@
     общие каналы: https://www.youtube.com/@JoelGDDM8
     поглощено: wml2097 (JoelGDDM8), аккаунты: {'wml': [2097]}
 
+===== 2026-11-19 07:52:35 UTC: склеено групп 1, поглощено записей 1 =====
+СКЛЕЕНО В pc67565 ([FROM TEMU] Cursed_FR)
+    общие каналы: https://www.youtube.com/@FROMTEMUDoggie_FR
+    поглощено: pc72918 ([FROM TEMU] doggie_FR), аккаунты: {'pointercrate': [72918]}
+
