@@ -1,12 +1,8 @@
 {
   "users": {
-    "2832": {"nick": "humptwe2", "country_code": "US", "gdr_id": "65831", "records": [["Silent clubstep", 100, ""], ["UNKNOWN", 100, ""], ["Shardscapes", 100, ""], ["Escape Room", 100, ""]]},
-    "2833": {"nick": "Slushegd", "country_code": null, "gdr_id": "61128", "records": [["Solar Flare", 100, ""], ["The Golden", 100, ""], ["Graceful", 100, ""], ["Renevant", 100, ""], ["Lucid Nightmares", 100, ""]]},
-    "2834": {"nick": "vaskiat2", "country_code": "CO", "gdr_id": "63790", "records": [["Slaughterhouse", 100, ""]]},
-    "2835": {"nick": "berthh", "country_code": null, "gdr_id": "64735", "records": [["KOCMOC", 100, ""]]},
-    "2836": {"nick": "Averyowo", "country_code": null, "gdr_id": "pc73270", "records": [["Sakupen Circles", 100, ""]]},
-    "2837": {"nick": "galavydog", "country_code": null, "gdr_id": "pc66556", "records": [["Waterfall", 100, ""], ["The Golden", 100, ""]]},
-    "2838": {"nick": "krodite", "country_code": "CA", "gdr_id": "pc70163", "records": [["Tartarus", 100, ""], ["Henken", 100, ""]]},
-    "2839": {"nick": "MrBananas", "country_code": null, "gdr_id": "pc73277", "records": [["LIMBO", 100, ""]]}
+    "2837": {"nick": "humptwe2", "country_code": "US", "gdr_id": "65831", "records": [["Silent clubstep", 100, ""], ["UNKNOWN", 100, ""], ["Shardscapes", 100, ""], ["Escape Room", 100, ""]]},
+    "2838": {"nick": "Slushegd", "country_code": null, "gdr_id": "61128", "records": [["Solar Flare", 100, ""], ["The Golden", 100, ""], ["Graceful", 100, ""], ["Renevant", 100, ""], ["Lucid Nightmares", 100, ""]]},
+    "2839": {"nick": "vaskiat2", "country_code": "CO", "gdr_id": "63790", "records": [["Slaughterhouse", 100, ""]]},
+    "2840": {"nick": "berthh", "country_code": null, "gdr_id": "64735", "records": [["KOCMOC", 100, ""]]}
   }
 }
