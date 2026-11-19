@@ -1,6 +1,5 @@
 {
   "users": {
-    "2839": {"nick": "3ghin5", "country_code": "CN", "gdr_id": "pc62586", "records": [["Slaughterhouse", 75, ""], ["Oblivion", 100, ""], ["Thinking Space", 100, ""], ["Cognition", 100, ""], ["Lucid Nightmares", 100, ""], ["RUTHLESS", 100, ""]]},
-    "2840": {"nick": "Edenyx", "country_code": "RU", "gdr_id": "7345", "records": [["Abyss of Darkness", 62, ""], ["RUTHLESS", 100, ""]]}
+    "2839": {"nick": "Edenyx", "country_code": "RU", "gdr_id": "7345", "records": [["Abyss of Darkness", 62, ""], ["RUTHLESS", 100, ""]]}
   }
 }
