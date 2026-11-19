@@ -828,8 +828,6 @@ if args.mode == "in-gdr-not-in-cbd":
             lv = levels_data.get(str(record[0])) or {}
             try:
                 place, T, t, c = float(lv["place"]), float(lv["T"]), float(lv["t"]), float(record[1])
-                if T < t:  # столбцы List%/Ending% перепутаны: как в gd-rating, меняем местами
-                    T, t = t, T
                 if c >= 100:
                     f = place
                 elif not (t < T) or c < t or c <= 0:
