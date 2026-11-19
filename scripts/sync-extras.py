@@ -185,10 +185,10 @@ def parse_levels(page, old):
         name = _clean(cells[1])
         list_pct = _clean(cells[2])
         ending_pct = _clean(cells[3])
-        # List percent = T, Ending percent = t
+        # Столбец List percent (первый) = t, Ending percent (второй) = T. Формула требует T > t: на T% запись стоит 2h, на t% 4h.
         try:
-            T = float(list_pct)
-            t = float(ending_pct)
+            t = float(list_pct)
+            T = float(ending_pct)
         except ValueError:
             continue
         main.append((place, name, T, t))
@@ -257,8 +257,8 @@ def parse_levels(page, old):
             ending_pct = _clean(cells[4])
             if level_name in name2place:
                 try:
-                    T = float(list_pct)
-                    t = float(ending_pct)
+                    t = float(list_pct)      # как в основной таблице: List percent = t, Ending percent = T
+                    T = float(ending_pct)
                 except ValueError:
                     continue
                 out.append(("x" + special_name, {"name": special_name, "like": level_name, "place": name2place[level_name],
@@ -564,7 +564,13 @@ def main():
     # защита: теперь файл перезаписывается целиком, поэтому считаем ВСЕ изменения, а не только новые
     if changes > args.max and not args.force:
         if levels_changed:
-            print("levels_tp.json уже записан, но не закоммичен (my_extras.json упёрся в лимит).")
+            # levels_tp.json не зависит от my_extras: коммитим его отдельно. Иначе правка T/t никогда не попадёт на GitHub,
+            # рейтинг будет и дальше считаться по старым значениям, и лимит срабатывал бы на каждом запуске.
+            if args.commit and not args.dry_run:
+                print("my_extras.json упёрся в лимит, но levels_tp.json обновлён: коммичу только его.")
+                commit_and_push("levels_tp обновлён (авто, CoreBoard); my_extras не тронут: лимит --max", [LEVELS])
+            else:
+                print("levels_tp.json уже записан, но не закоммичен (my_extras.json упёрся в лимит).")
         sys.exit(f"Изменений {changes}, больше лимита --max {args.max}. my_extras.json не записан. "
                  f"Если это нормально, запусти с --force (или подними --max).")
     if args.dry_run:
