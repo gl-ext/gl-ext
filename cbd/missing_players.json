@@ -1,8 +1,8 @@
 {
   "users": {
-    "2837": {"nick": "humptwe2", "country_code": "US", "gdr_id": "65831", "records": [["Silent clubstep", 100, ""], ["UNKNOWN", 100, ""], ["Shardscapes", 100, ""], ["Escape Room", 100, ""]]},
-    "2838": {"nick": "Slushegd", "country_code": null, "gdr_id": "61128", "records": [["Solar Flare", 100, ""], ["The Golden", 100, ""], ["Graceful", 100, ""], ["Renevant", 100, ""], ["Lucid Nightmares", 100, ""]]},
-    "2839": {"nick": "vaskiat2", "country_code": "CO", "gdr_id": "63790", "records": [["Slaughterhouse", 100, ""]]},
-    "2840": {"nick": "berthh", "country_code": null, "gdr_id": "64735", "records": [["KOCMOC", 100, ""]]}
+    "2839": {"nick": "humptwe2", "country_code": "US", "gdr_id": "65831", "records": [["Silent clubstep", 100, ""], ["UNKNOWN", 100, ""], ["Shardscapes", 100, ""], ["Escape Room", 100, ""]]},
+    "2840": {"nick": "Slushegd", "country_code": null, "gdr_id": "61128", "records": [["Solar Flare", 100, ""], ["The Golden", 100, ""], ["Graceful", 100, ""], ["Renevant", 100, ""], ["Lucid Nightmares", 100, ""]]},
+    "2841": {"nick": "vaskiat2", "country_code": "CO", "gdr_id": "63790", "records": [["Slaughterhouse", 100, ""]]},
+    "2842": {"nick": "berthh", "country_code": null, "gdr_id": "64735", "records": [["KOCMOC", 100, ""]]}
   }
 }
