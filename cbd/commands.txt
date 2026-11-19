@@ -18,22 +18,6 @@
 /fulladd proxo, Saul Goodman 71%, https://www.youtube.com/watch?v=1-jL0hGtnZM
 /try proxo, Saul Goodman 71%
 
-Видео: Pointercrate
-/fulladd Polaris, Cognition, https://www.youtube.com/watch?v=Psgk73kJmBs
-/try Polaris, Cognition
-
-Видео: Pointercrate
-/fulladd Polaris, Lucid Nightmares, https://www.youtube.com/watch?v=Lam7eJgI0y4
-/try Polaris, Lucid Nightmares
-
-Видео: Pointercrate
-/fulladd Polaris, RUTHLESS, https://www.youtube.com/watch?v=1dKUu4M-2Xw
-/try Polaris, RUTHLESS
-
-Видео: Pointercrate
-/fulladd Polaris, Thinking Space, https://www.youtube.com/watch?v=s6ZJcWTf2EA
-/try Polaris, Thinking Space
-
 Видео: GlobalList
 /fulladd dibilizm, Cobwebs, https://www.youtube.com/watch?v=ni6G6Yf8tWg
 /try dibilizm, Cobwebs
