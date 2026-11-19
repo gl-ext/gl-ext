@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19T12:57:47.888Z",
+  "generated": "2026-11-19T14:16:18.201Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -655,7 +655,8 @@
       [2050,72,"poocubed",57,"",null,null,null,"my_extras",30.16,0]
     ],
     "23817": [
-      [3299,14,"Sakupen circles",66,"",null,null,null,"my_extras",130,0]
+      [3299,14,"Sakupen circles",66,"",null,null,null,"my_extras",130,0],
+      [1707,248,"SUPERHATEMEWORLD",100,"",null,null,null,"my_extras",1,0]
     ],
     "24093": [
       [2050,72,"poocubed",71,"",null,null,null,"my_extras",37.44,0],
@@ -883,6 +884,9 @@
       [3371,210,"BLITZ",100,"",null,null,null,"my_extras",2.6,0],
       [2307,239,"Crimson Planet",100,"",null,null,null,"my_extras",1.4,0],
       [2711,262,"Rigel",100,"",null,null,null,"my_extras",0.99,0]
+    ],
+    "63790": [
+      [2660,8,"Tidal Wave",84,"",78,null,null,"my_extras",297.21,272.09]
     ],
     "64612": [
       [2684,11,"Nullscapes",63,"",null,null,null,"my_extras",185.6,0],
