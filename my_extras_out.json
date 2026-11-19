@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19T06:41:54.587Z",
+  "generated": "2026-11-19T08:00:43.478Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -338,7 +338,7 @@
       [1704,276,"Cobwebs",100,"",null,null,null,"my_extras",0.98,0]
     ],
     "10153": [
-      [1748,44,"Slaughterhouse",92,"",null,null,null,"my_extras",139.02,0]
+      [1748,44,"Slaughterhouse",100,"",null,null,null,"my_extras",304,0]
     ],
     "10433": [
       [2656,35,"Acheron",72,"",61,null,null,"my_extras",122.19,102.71]
@@ -398,7 +398,8 @@
     ],
     "14052": [
       [1578,223,"Thinking Space",100,"",null,null,null,"my_extras",1.8,0],
-      [2006,256,"RUST",100,"",null,null,null,"my_extras",0.99,0]
+      [2006,256,"RUST",100,"",null,null,null,"my_extras",0.99,0],
+      [1551,288,"BarbarosFinaleFinale",100,"",null,null,null,"my_extras",0.97,0]
     ],
     "14137": [
       [1706,33,"Abyss of Darkness",77,"",null,null,null,"my_extras",132.39,0]
@@ -647,6 +648,9 @@
     "17731": [
       [1733,142,"UNKNOWN",100,"",null,null,null,"my_extras",13,0]
     ],
+    "17738": [
+      [1934,96,"walter white",100,"",null,null,null,"my_extras",59,0]
+    ],
     "17759": [
       [3427,144,"Sanctity",100,"",null,null,null,"my_extras",11,0],
       [1746,180,"Aerial Gleam",100,"",null,null,null,"my_extras",3.8,0],
@@ -676,7 +680,7 @@
       [3275,23,"Subsuming Vortex",80,"",null,null,null,"my_extras",139.79,0]
     ],
     "18311": [
-      [2656,35,"Acheron",72,"",null,null,null,"my_extras",122.19,0],
+      [2656,35,"Acheron",100,"",null,null,null,"my_extras",340,0],
       [1748,44,"Slaughterhouse",79,"",null,null,null,"my_extras",114.93,0]
     ],
     "18316": [
@@ -1080,6 +1084,9 @@
     "36180": [
       [1748,44,"Slaughterhouse",86,"",null,null,null,"my_extras",127.9,0],
       [3125,59,"Snowbound",82,"",null,null,null,"my_extras",84.78,0]
+    ],
+    "36698": [
+      [2926,242,"ta1LSD0ll",100,"",null,null,null,"my_extras",1,0]
     ],
     "37616": [
       [2296,229,"Renevant",100,"",null,null,null,"my_extras",1.8,0]
