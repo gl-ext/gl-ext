@@ -1547,15 +1547,52 @@ def move_pc_entry(result, pc_key, key):
                 lst.append(link)
 
 
-def update_id_map(moved, path=os.path.join(ROOT, "coreboard_id_map.json")):
-    """В coreboard_id_map.json у игрока без глобала в поле gdr_id стоит ID вида \"pc59696\". Когда у него
-    появился глобал, меняем его на настоящий ID. Правим текст точечно (файл не перезаписываем целиком,
-    чтобы не менялось форматирование), и только значения ключа gdr_id: ники и ID CoreBoard не трогаем.
-    moved = {\"pc59696\": \"12345\"}. Возвращает, сколько ID заменено."""
-    if not moved or not os.path.exists(path):
-        return 0
+def sync_id_map(result, path=os.path.join(ROOT, "coreboard_id_map.json")):
+    """В coreboard_id_map.json у игрока без глобала в поле gdr_id стоит ID вида \"pc59696\" (или \"wml5\").
+    Когда у него появился глобал, меняем его на ключ глобала. Сверяем карту с ИТОГОВЫМ result (после всех
+    склеек, в том числе по общим каналам), а не с тем, что произошло в этом запуске: так поправляются и те
+    игроки, у которых глобал появился давно. Правим текст точечно (файл целиком не переписываем, форматирование
+    не меняется), только значения gdr_id: ники и ID CoreBoard не трогаем.
+    Если новый ключ глобала уже стоит в карте у другой записи (игрок заведён дважды), ничего не меняем,
+    пишем в отчёт. Возвращает (сколько ID заменено, список строк для отчёта)."""
+    if not os.path.exists(path):
+        return 0, []
     with open(path, encoding="utf-8") as f:
         text = f.read()
+    try:
+        id_map = json.loads(text)
+    except ValueError:
+        return 0, [f"{path}: не читается как JSON, карту не трогаю"]
+
+    # (лист, номер аккаунта) -> ключи записей links.json, где этот аккаунт лежит
+    holders = defaultdict(set)
+    for key, entry in result.items():
+        for name, accs in (entry.get(OTHER) or {}).items():
+            for acc in accs or []:
+                holders[(name, str(acc))].add(str(key))
+
+    in_map = {str(v.get("gdr_id")) for v in id_map.values() if isinstance(v, dict)}
+    moved, report = {}, []
+    for cb_id, info in id_map.items():
+        gid = str(info.get("gdr_id", "")) if isinstance(info, dict) else ""
+        if not gid or gid in result or L.is_global(gid):
+            continue  # у игрока по-прежнему своя запись или в карте уже глобал
+        src, rest = L.key_parts(gid)
+        if not src:
+            continue
+        keys = {k for k in holders.get((src.name, rest), ()) if L.is_global(k)}
+        if len(keys) != 1:
+            if len(keys) > 1:
+                report.append(f"{cb_id} ({info.get('nick')}): {gid} лежит сразу у нескольких глобалов {sorted(keys)}, не меняю")
+            continue
+        new = next(iter(keys))
+        if new in in_map:
+            report.append(f"{cb_id} ({info.get('nick')}): {gid} -> {new}, но {new} уже есть в карте у другой записи, не меняю")
+            continue
+        moved[gid] = new
+        in_map.add(new)
+        report.append(f"{cb_id} ({info.get('nick')}): {gid} -> {new}")
+
     changed = 0
     for old, new in moved.items():
         text, n = re.subn(r'("gdr_id"\s*:\s*)"' + re.escape(old) + r'"',
@@ -1566,7 +1603,7 @@ def update_id_map(moved, path=os.path.join(ROOT, "coreboard_id_map.json")):
         with open(tmp, "w", encoding="utf-8", newline="") as f:
             f.write(text)
         os.replace(tmp, path)
-    return changed
+    return changed, report
 
 
 def apply_account_rules(result, rules, resolve):
@@ -2023,12 +2060,6 @@ def main():
             else:  # ничего не добавилось, пустую запись не создаём
                 del result[key]
 
-    if pc_moved:
-        fixed_ids = update_id_map({k: v for k, v in pc_moved.items()})
-        print(f"  игроков без глобала, у которых он появился: {len(pc_moved)}; ID заменено в coreboard_id_map.json: {fixed_ids}")
-        for old_key, new_key in sorted(pc_moved.items()):
-            print(f"    {old_key} -> {new_key}")
-
     # ---- Все остальные аккаунты ----
     # 1) Каждый аккаунт глобала получает запись, даже если Pointercrate у него нет.
     dl_all = {}  # id -> ник
@@ -2140,6 +2171,12 @@ def main():
 
     # Один и тот же канал у разных записей: это один человек, склеиваем
     absorbed, merged_groups, global_shared = merge_by_channels(result, rules, resolve)
+
+    # Карта ID CoreBoard: у кого глобал появился (в этом запуске или раньше), меняем pc... на настоящий ID
+    fixed_ids, id_report = sync_id_map(result)
+    print(f"  coreboard_id_map.json: ID заменено {fixed_ids}")
+    for line in id_report:
+        print("    " + line)
 
     save_tmp = OUT + ".tmp"
     with open(save_tmp, "w", encoding="utf-8") as f:
