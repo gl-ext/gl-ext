@@ -1,43 +1,51 @@
 Видео: Pointercrate
-/fulladd Dice88, The Catacombs, https://www.youtube.com/watch?v=tTMH06jP1qg
-/try Dice88, The Catacombs
+/fulladd mancersito, The Catacombs, https://www.youtube.com/watch?v=hAzOJPJ9Jy8
+/try mancersito, The Catacombs
 
 Видео: Pointercrate
-/fulladd hazel, COMBUSTION, https://www.youtube.com/watch?v=-Q7Cxp0ETqo
-/try hazel, COMBUSTION
+/fulladd Alemao, UNKNOWN, https://www.youtube.com/watch?v=QajWzqiGHOg
+/try Alemao, UNKNOWN
 
 Видео: Pointercrate
-/fulladd hazel, Gaggatrondra, https://www.youtube.com/watch?v=2NlnzNMDxe0
-/try hazel, Gaggatrondra
+/fulladd Krystalline, KOSETSU, https://www.youtube.com/watch?v=IOKcmYRGWPo
+/try Krystalline, KOSETSU
 
 Видео: Pointercrate
-/fulladd hazel, Midnight, https://www.youtube.com/watch?v=wKcqMhBaROc
-/try hazel, Midnight
+/fulladd BooKnQuiL, Sanctity, https://www.youtube.com/watch?v=mIUy6OGFnrY
+/try BooKnQuiL, Sanctity
 
 Видео: Pointercrate
-/fulladd hazel, poocubed, https://www.youtube.com/watch?v=jN0H5yhbKqU
-/try hazel, poocubed
+/fulladd Cork, Tartarus, https://www.youtube.com/watch?v=iXRe2PZzGJw
+/try Cork, Tartarus
+
+Видео: GlobalList (статус: waiting)
+/fulladd M0Mo0o, The Wonder of You, https://www.youtube.com/watch?v=VJrnZE4fask
+/try M0Mo0o, The Wonder of You
 
 Видео: Pointercrate
-/fulladd hazel, Saul Goodman, https://www.youtube.com/watch?v=oc4ukX3-q6I
-/try hazel, Saul Goodman
+/fulladd infin1ty111, Sevvend Clubstep, https://www.youtube.com/watch?v=deuR5YeT2Lg
+/try infin1ty111, Sevvend Clubstep
 
 Видео: Pointercrate
-/fulladd hazel, Sevvend Clubstep, https://www.youtube.com/watch?v=SmWOsW5l274
-/try hazel, Sevvend Clubstep
+/fulladd dectwi, ORDINARY, https://www.youtube.com/watch?v=V-__H6nPc2Y
+/try dectwi, ORDINARY
 
 Видео: Pointercrate
-/fulladd NoctaXI, Firework, https://www.youtube.com/watch?v=ffOV9bUGYWo
-/try NoctaXI, Firework
+/fulladd styxx, paranoia, https://www.youtube.com/watch?v=zRt9D4GUWl0
+/try styxx, paranoia
 
 Видео: Pointercrate
-/fulladd Alexinho, Solar Flare, https://www.youtube.com/watch?v=d5NPUM2VX1I
-/try Alexinho, Solar Flare
+/fulladd Hexeract, poocubed, https://www.youtube.com/watch?v=FF6phKgR-ec
+/try Hexeract, poocubed
 
 Видео: Pointercrate
-/fulladd Acacia, UNKNOWN, https://www.youtube.com/watch?v=6T3vj-Z_-LU
-/try Acacia, UNKNOWN
+/fulladd Rastalennn, Firework, https://www.youtube.com/watch?v=JvnD2jxCBCI
+/try Rastalennn, Firework
 
 Видео: Pointercrate
-/fulladd Decin, The Golden, https://www.youtube.com/watch?v=w37CTHN4uxg
-/try Decin, The Golden
+/fulladd ItsAbe, paranoia, https://www.youtube.com/watch?v=_koOeM0n49s
+/try ItsAbe, paranoia
+
+Видео: Pointercrate
+/fulladd Shialaxy, NETWORK, https://www.youtube.com/watch?v=-WIgUepV-WM
+/try Shialaxy, NETWORK
