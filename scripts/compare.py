@@ -25,7 +25,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 # Файлы по умолчанию: cbd.txt (рейтинг CoreBoard, ники без ID) и gdr.txt (рейтинг
 # gd-rating.py, запущенный с --ids: ID записан в [скобках] в конце строки).
 # ID игроков всегда берутся из gdr, ники из cbd. Другие файлы: --cbd и --gdr.
-# Соответствие ник -> ID (gdr-ids.json) всегда скачивается с GitHub, локальный файл не читается.
+# Соответствие ник -> ID (coreboard_id_map.json) всегда читается локально, gdr-ids.json не используется.
 #
 # Команды /fulladd и /try здесь больше не создаются:
 # их делает add-video-links.py (он берёт missing_achievements.json отсюда).
@@ -51,8 +51,8 @@ parser.add_argument("--cbd-ids", default="",
                     help="JSON ник -> ID игрока на CoreBoard (делает coreboard-parse.py, когда в ссылках на игроков появятся ID). "
                          "По умолчанию cbd_ids.json рядом с файлом --cbd, если он есть. ID с сайта главнее coreboard_id_map.json")
 parser.add_argument("--include-absent", action="store_true",
-                    help="in-cbd-not-in-gdr: игроки CoreBoard, которых НЕТ в gdr совсем, но чей ID нашёлся "
-                         "(gdr-ids.json или coreboard_id_map.json), сравниваются с пустым gdr: все их записи попадают в результат")
+                     help="in-cbd-not-in-gdr: игроки CoreBoard, которых НЕТ в gdr совсем, но чей ID нашёлся "
+                          "(coreboard_id_map.json), сравниваются с пустым gdr: все их записи попадают в результат")
 parser.add_argument("--out-dir", default="compare",
                     help="папка для всех создаваемых файлов (создаётся сама, рядом с тем местом, "
                          "откуда запущен скрипт). По умолчанию compare. Чтобы писать в текущую папку: --out-dir .")
@@ -95,9 +95,7 @@ NICK_KEY_PREFIX = "nick:"
 
 API_TRIES = 4  # сколько раз пробовать запрос к API, прежде чем сдаться
 
-# gdr-ids.json (ник -> ID игрока) берётся только отсюда, локальный файл не используется
 LEVELS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/levels_tp.json"
-IDS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/gdr-ids.json"
 
 # Полный список уровней глобала (нужен, чтобы найти ID уровня по названию)
 GLOBAL_LIST_URL = "https://api.demonlist.org/level/classic/list?limit={limit}&offset={offset}"
@@ -310,26 +308,6 @@ def fetch_json(url):
 
 
 # =========================
-# Загружаем ID игроков (ник -> ID): gdr-ids.json ТОЛЬКО с GitHub
-# =========================
-
-print("gdr-ids.json: беру с GitHub (raw кешируется до ~5 минут после правки)")
-
-try:
-    raw_ids = fetch_json(IDS_URL)
-except Exception as error:
-    sys.exit(f"gdr-ids.json: не удалось загрузить с GitHub ({error}). Останавливаюсь.")
-
-if not isinstance(raw_ids, dict) or not raw_ids:
-    sys.exit("gdr-ids.json: с GitHub пришёл не словарь или пустой файл. Останавливаюсь.")
-
-nick_to_id = {
-    normalize_nick(nick): normalize_id(player_id)
-    for nick, player_id in raw_ids.items()
-}
-
-
-# =========================
 # ID игроков на CoreBoard
 # =========================
 # Два источника, ID С САЙТА ГЛАВНЕЕ:
@@ -337,11 +315,11 @@ nick_to_id = {
 #      Пока ссылки идут по нику, файла нет.
 #   2. coreboard_id_map.json ({"<ID>": {"nick", "gdr_id"}}) в корне репозитория: ID -> наш ID.
 # Если ID игрока на сайте есть в карте, игрок сопоставляется с gdr по ID (а не по нику). Без ID сайта работает
-# сопоставление по нику через gdr-ids.json, как раньше. Новым игрокам ID выдаются после самого большого из обоих
+# сопоставление по нику через coreboard_id_map.json. Новым игрокам ID выдаются после самого большого из обоих
 # источников. Нет ни того, ни другого: ключи JSON наши.
 cb_id_by_nick = {}   # нормализованный ник cbd -> ID CoreBoard (с сайта)
 gdr_by_cb_id = {}    # ID CoreBoard -> наш ID (карта)
-gdr_by_map_nick = {} # нормализованный ник из карты -> наш ID (запасной вариант, если ника нет в gdr-ids.json)
+gdr_by_map_nick = {} # нормализованный ник из карты -> наш ID (единственный источник для сопоставления по нику)
 map_nicks = {}       # нормализованный ник из карты -> множество наших ID (для проверки уникальности ника новых игроков)
 cb_id_by_gdr = {}    # наш ID (нормализованный) -> ID CoreBoard (карта)
 max_cb_id = 0
@@ -523,11 +501,11 @@ def read_players(filename, id_in_line, invalid_filename):
     Читает файл и возвращает (игроки, статистика).
 
     id_in_line=True  -> ID берём из [скобок] в конце строки.
-    id_in_line=False -> берём ник и ищем по нему ID в gdr-ids.json.
+    id_in_line=False -> берём ник и ищем по нему ID в coreboard_id_map.json.
                         Если ника там нет, строка НЕ считается некорректной:
                         игрок сохраняется с временным ключом "nick:<ник>",
                         который ни с кем не совпадёт (по нику игроки не сопоставляются,
-                        только через gdr-ids.json).
+                        только через coreboard_id_map.json).
 
     Игроки возвращаются словарём, где ключ - ID игрока.
     В каждом игроке есть "order" - номер его строки в файле
@@ -565,14 +543,12 @@ def read_players(filename, id_in_line, invalid_filename):
                 # ID с сайта главнее: если он есть в карте, игрок сопоставляется по нему, иначе по нику
                 site_id = cb_id_by_nick.get(normalize_nick(nick))
                 player_id = gdr_by_cb_id.get(site_id) if site_id else None
-                if not player_id:
-                    player_id = nick_to_id.get(normalize_nick(nick))
-                if not player_id:  # ника нет в gdr-ids.json: пробуем coreboard_id_map.json
+                if not player_id:  # ника нет в coreboard_id_map.json
                     player_id = gdr_by_map_nick.get(normalize_nick(nick))
 
                 if not player_id:
                     stats["missing_id"] += 1
-                    # Не невалидная строка: просто игрок без пары в gdr-ids.json
+                    # Не невалидная строка: просто игрока нет в coreboard_id_map.json
                     player_id = NICK_KEY_PREFIX + normalize_nick(nick)
 
         if score is None:
@@ -609,15 +585,15 @@ players1, stats1 = read_players(FILE1, FILE1_HAS_ID, INVALID_FILE1)
 players2, stats2 = read_players(FILE2, FILE2_HAS_ID, INVALID_FILE2)
 
 
-# Игроки cbd сопоставляются с gdr ТОЛЬКО через gdr-ids.json (ник -> ID).
-# Если ника из cbd нет в gdr-ids.json, у игрока остаётся временный ключ "nick:<ник>",
+# Игроки cbd сопоставляются с gdr ТОЛЬКО через coreboard_id_map.json (ник -> ID).
+# Если ника из cbd нет в coreboard_id_map.json, у игрока остаётся временный ключ "nick:<ник>",
 # он ни с кем не совпадает и в сравнение не попадает (виден только в *_not_in_*.txt).
 
 
 def get_nick(player_id):
     """
     Ник берём в первую очередь из файла БЕЗ ID в скобках
-    (из того, где ники нужны для сопоставления по gdr-ids.json).
+    (из того, где ники нужны для сопоставления по coreboard_id_map.json).
     Если там игрока нет, берём из другого файла.
     """
     # Если ID записан в 1-м файле, то файл с никами - 2-й, и наоборот
@@ -687,7 +663,7 @@ lower_score = 0
 players_with_missing = 0
 
 # Сравниваем только игроков, которые есть в обоих файлах.
-# Игроки cbd, которых нет в gdr совсем, но чей ID нашёлся (gdr-ids.json или coreboard_id_map.json): сравниваем
+# Игроки cbd, которых нет в gdr совсем, но чей ID нашёлся (coreboard_id_map.json): сравниваем
 # с пустым gdr, чтобы все их записи попали в результат (иначе они пропадали бы из my_extras при пересборке).
 # Игроки без найденного ID (ключ "nick:...") по-прежнему не трогаются.
 absent_ids = set()
@@ -824,7 +800,7 @@ if args.mode == "in-gdr-not-in-cbd":
         names = set(p1["achievements"])
 
         if normalize_nick(nick) in unmapped_cbd_nicks or normalize_nick(strip_clan_tags(nick)) in unmapped_cbd_nicks:
-            skipped_players.append(f"{player_id} | {nick} | {p1['score']} | такой ник уже есть в cbd, но не сопоставился по gdr-ids.json")
+            skipped_players.append(f"{player_id} | {nick} | {p1['score']} | такой ник уже есть в cbd, но не сопоставился по coreboard_id_map.json")
             continue
         twin = next((p for p in unmapped_cbd if len(names & set(p["achievements"])) >= SAME_LEVELS_MIN), None)
         if twin is not None:
@@ -852,6 +828,8 @@ if args.mode == "in-gdr-not-in-cbd":
             lv = levels_data.get(str(record[0])) or {}
             try:
                 place, T, t, c = float(lv["place"]), float(lv["T"]), float(lv["t"]), float(record[1])
+                if T < t:  # столбцы List%/Ending% перепутаны: как в gd-rating, меняем местами
+                    T, t = t, T
                 if c >= 100:
                     f = place
                 elif not (t < T) or c < t or c <= 0:
