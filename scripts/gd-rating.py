@@ -64,6 +64,9 @@ p.add_argument("--waiting", action="store_true",
                help="записать waiting_records.json: непринятые записи глобала (статус waiting), которые вошли бы в топ-N игрока")
 p.add_argument("--waiting-ttl", dest="waiting_ttl", type=int, default=3 * 3600,
                help="секунд, пока список waiting-записей игрока в кеше считается свежим")
+p.add_argument("--debug-waiting", dest="debug_waiting", default="",
+               help="ID игроков (через запятую): подробно показать, из чего собран их топ при проверке waiting "
+                    "(глобал / my_extras / итог) и почему каждая waiting-запись прошла или нет")
 p.add_argument("--waiting-max-score", dest="waiting_max_score", type=float, default=250,
                help="в waiting-файлы попадают только игроки, у которых ПОСЛЕ принятия всех waiting-записей очков меньше этого")
 p.add_argument("--min-score", dest="min_score", type=float, default=None,
@@ -909,15 +912,33 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, o
         base = dict(best_by.get(person, {}))
         for k, pct in extras_all.get(person, {}).items():  # лучшее из всего, включая my_extras
             base[k] = max(base.get(k, -1), pct)
+        dbg = person in {x.strip() for x in args.debug_waiting.split(",") if x.strip()}
+        if dbg:
+            ex_p = extras_all.get(person, {})
+            gd_p = best_by.get(person, {})
+            print(f"\n[debug waiting] {person} ({(info.get(person) or ('?',))[0]}): записей в рейтинге {len(gd_p)}, "
+                  f"в my_extras {len(ex_p)}; топ-{N} базы:")
+            for f_, _sp, k_, pct_ in top_of(base):
+                print(f"    {meta[k_]['name']:<28} {pct_:g}%   f={f_:.3f}   (gdr: {gd_p.get(k_, '-')}, my_extras: {ex_p.get(k_, '-')})")
+            lost = [k_ for k_ in ex_p if k_ not in meta]
+            if lost:
+                print(f"    ВНИМАНИЕ: уровни из my_extras, которых нет в meta (игнорируются): {lost}")
         new = []
         for acc, items in accs.items():
             for lvl_id, name, pct, video in items:
                 best = base.get(lvl_id)
+                lv_ = meta.get(lvl_id, {}).get("name", lvl_id)
                 if best is not None and pct <= best:  # равна или меньше того, что уже есть: ничего не добавляет
+                    if dbg:
+                        print(f"    waiting {lv_} {pct:g}%: уже есть {best:g}% -> пропуск")
                     continue
                 top = top_of({**base, lvl_id: pct})
                 if any(t[2] == lvl_id and t[3] == pct for t in top):  # попадает в топ-N
                     new.append((lvl_id, pct, video))
+                    if dbg:
+                        print(f"    waiting {lv_} {pct:g}%: попадает в топ-{N} (по одной)")
+                elif dbg:
+                    print(f"    waiting {lv_} {pct:g}%: в топ-{N} НЕ попадает")
         if not new:
             continue
         # Очки, которые получатся, если принять ВСЕ waiting-записи сразу (лучшая запись на уровень).
@@ -927,6 +948,10 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, o
         # Каждая запись выше проверялась ОТДЕЛЬНО (попала бы в топ-N, будь она одна). Если принять все сразу,
         # часть из них вытеснят друг друга: оставляем только те, что реально войдут в итоговый топ-N.
         final_top = {(t[2], t[3]) for t in top_of(final_best)}  # (ID уровня, процент)
+        if dbg:
+            for x in new:
+                if (x[0], x[1]) not in final_top:
+                    print(f"    waiting {meta[x[0]]['name']} {x[1]:g}%: вытеснена другими waiting -> убрана")
         new = [x for x in new if (x[0], x[1]) in final_top]
         if not new:
             continue
