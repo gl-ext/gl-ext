@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19T18:19:46.392Z",
+  "generated": "2026-11-19T19:30:24.344Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -303,10 +303,6 @@
     "10783": [
       [2485,64,"Firework",76,"",null,null,null,"my_extras",62.05,0],
       [2050,72,"poocubed",77,"",null,null,null,"my_extras",40.56,0]
-    ],
-    "11811": [
-      [2660,8,"Tidal Wave",67,"",null,null,null,"my_extras",226.05,0],
-      [2653,21,"Silent clubstep",100,"",null,null,null,"my_extras",396,0]
     ],
     "12473": [
       [3228,73,"Hazard Duty Pay",61,"",null,null,null,"my_extras",28.17,0],
@@ -824,9 +820,6 @@
     ],
     "36698": [
       [2926,242,"ta1LSD0ll",100,"",null,null,null,"my_extras",1,0]
-    ],
-    "37616": [
-      [2296,229,"Renevant",100,"",null,null,null,"my_extras",1.8,0]
     ],
     "40966": [
       [2024,297,"Bloodlust",100,"",null,null,null,"my_extras",0.97,0]

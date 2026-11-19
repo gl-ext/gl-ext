@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-19T18:19:46.392Z",
+ "generated": "2026-11-19T19:30:24.344Z",
  "users": [
   {
    "place": 1,
@@ -354,7 +354,7 @@
   },
   {
    "place": 40,
-   "oldPlace": 48,
+   "oldPlace": 49,
    "id": "14549",
    "name": "Whizkid05",
    "country": "United-Kingdom",
@@ -363,7 +363,7 @@
   },
   {
    "place": 41,
-   "oldPlace": 43,
+   "oldPlace": 44,
    "id": "14430",
    "name": "Cursed",
    "country": "United-Kingdom",
@@ -381,7 +381,16 @@
   },
   {
    "place": 43,
-   "oldPlace": 45,
+   "oldPlace": 41,
+   "id": "11811",
+   "name": "XaLVaL",
+   "country": "Russia",
+   "points": 3268.93,
+   "basePoints": 3268.93
+  },
+  {
+   "place": 44,
+   "oldPlace": 46,
    "id": "18046",
    "name": "ItzDexii",
    "country": "Ukraine",
@@ -389,8 +398,8 @@
    "basePoints": 2993
   },
   {
-   "place": 44,
-   "oldPlace": 41,
+   "place": 45,
+   "oldPlace": 42,
    "id": "4825",
    "name": "Tunax",
    "country": "Norway",
@@ -398,8 +407,8 @@
    "basePoints": 3240.13
   },
   {
-   "place": 45,
-   "oldPlace": 42,
+   "place": 46,
+   "oldPlace": 43,
    "id": "14192",
    "name": "donley",
    "country": "Canada",
@@ -407,17 +416,8 @@
    "basePoints": 3192.44
   },
   {
-   "place": 46,
-   "oldPlace": 67,
-   "id": "11811",
-   "name": "XaLVaL",
-   "country": "Russia",
-   "points": 3109.43,
-   "basePoints": 2487.38
-  },
-  {
    "place": 47,
-   "oldPlace": 44,
+   "oldPlace": 45,
    "id": "15864",
    "name": "MeQ8cNv43s6A",
    "country": "Japan",
@@ -426,7 +426,7 @@
   },
   {
    "place": 48,
-   "oldPlace": 49,
+   "oldPlace": 50,
    "id": "25791",
    "name": "Syrcx",
    "country": "Israel",
@@ -435,7 +435,7 @@
   },
   {
    "place": 49,
-   "oldPlace": 46,
+   "oldPlace": 47,
    "id": "14466",
    "name": "ProudGiraffe311",
    "country": "United-States",
@@ -444,7 +444,7 @@
   },
   {
    "place": 50,
-   "oldPlace": 50,
+   "oldPlace": 51,
    "id": "45796",
    "name": "Komet01",
    "country": "Poland",
