@@ -65,7 +65,7 @@ jobs:
             cache_list_*.json
           key: channels-${{ github.run_id }}
 
-      # Коммитим links.json и журнал склеек по общим каналам (он дописывается при каждой склейке,
+      # Коммитим links.json, карту ID CoreBoard и журнал склеек по общим каналам (он дописывается при каждой склейке,
       # поэтому должен жить в репозитории, иначе после запуска он пропадёт)
       - name: Commit links.json
         run: |
@@ -74,12 +74,14 @@ jobs:
           git add links.json
           # gdr-ids.json скрипт правит сам, когда у игрока без глобала появляется глобал (pc... -> настоящий ID)
           if [ -f gdr-ids.json ]; then git add gdr-ids.json; fi
+          # coreboard_id_map.json скрипт правит сам: у игрока, у которого появился глобал, gdr_id pc... меняется на настоящий ID
+          if [ -f coreboard_id_map.json ]; then git add coreboard_id_map.json; fi
           if [ -f links_channel_merges.txt ]; then git add links_channel_merges.txt; fi
           if git diff --cached --quiet; then
             echo "ничего не изменилось, коммитить нечего"
             exit 0
           fi
-          git commit -m "Auto: update links.json"
+          git commit -m "Auto: update links.json, coreboard_id_map.json"
           # Если ты правил файлы руками, пока шёл запуск, подтягиваем их перед отправкой
           git pull --rebase
           git push
