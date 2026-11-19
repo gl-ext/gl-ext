@@ -372,6 +372,27 @@ def load_my_extras_always(owner_of, canon):
     return out
 
 
+def load_board_records(owner_of, canon):
+    """Записи, которые уже лежат на корборде: missing_achievements.json ({"users": {ID: [[ID уровня, процент, ...]]}}).
+    Нужны для waiting: если запись (или лучшая) уже на корборде, в waiting её не пишем.
+    Возвращает {главный ID человека: {ID уровня: процент}}."""
+    raw = load_repo_json("missing_achievements.json").get("users", {})
+    out = {}
+    for uid, rows in raw.items():
+        uid = str(uid).split(" — ")[0].strip()
+        src, rest = L.key_parts(uid)
+        if src and owner_of(src.name, rest):
+            uid = owner_of(src.name, rest)
+        m = out.setdefault(canon(uid), {})
+        for r in rows:
+            if isinstance(r, list) and len(r) >= 2:
+                try:
+                    m[str(r[0])] = max(m.get(str(r[0]), -1), float(r[1]))
+                except (TypeError, ValueError):
+                    pass
+    return out
+
+
 def apply_cli_adds(best_by, info, canon):
     """Записи из --add ID_игрока:ID_уровня:процент. Применяются САМЫМИ ПОСЛЕДНИМИ,
     после склейки аккаунтов и после corrections.json, поэтому правки их не затрагивают.
@@ -889,6 +910,11 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, o
             by_person.setdefault(canon_id(uid), {}).setdefault(uid, []).append((lvl_id, name, pct, video))
 
     extras_all = load_my_extras_always(owner_of, canon_id)
+    # то, что уже есть на корборде, тоже считается имеющимся: такие записи в waiting не попадают
+    for person_, recs_ in load_board_records(owner_of, canon_id).items():
+        m_ = extras_all.setdefault(person_, {})
+        for k_, pct_ in recs_.items():
+            m_[k_] = max(m_.get(k_, -1), pct_)
     ranks = {r["id"]: r["rank"] for r in result}
 
     def fmt_pct(x):
