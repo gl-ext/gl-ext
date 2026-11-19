@@ -16,8 +16,11 @@ on:
         description: "Аргументы для cbd-update.py (например --no-videos, но тогда без коммита)"
         required: false
         default: ""
-  schedule:
-    - cron: "*/30 * * * *"
+  # Запускается только после того, как закончился make-links (сам по расписанию больше не идёт).
+  # Файл workflow должен лежать в основной ветке, иначе workflow_run не сработает.
+  workflow_run:
+    workflows: ["make-links"]   # должно совпадать с name: в make-links.yml
+    types: [completed]
 
 # Листы (WML и любые будущие), которые автообновление НЕ трогает (через запятую, пусто = все включены).
 # cbd-update.py берёт рейтинг с --src all, поэтому новый лист попадает в него сам: пока лист проверяется,
@@ -34,6 +37,8 @@ concurrency:
 
 jobs:
   build:
+    # После make-links идём только если он закончился успешно; ручной запуск работает как раньше
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
