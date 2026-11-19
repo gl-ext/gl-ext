@@ -3828,3 +3828,8 @@
     общие каналы: https://www.youtube.com/@AngelPlay-z
     поглощено: wml5208 (Angel Play), аккаунты: {'wml': [5208]}
 
+===== 2026-11-19 01:37:31 UTC: склеено групп 1, поглощено записей 1 =====
+СКЛЕЕНО В 8354 (JoelGDDM8)
+    общие каналы: https://www.youtube.com/@JoelGDDM8
+    поглощено: wml2097 (JoelGDDM8), аккаунты: {'wml': [2097]}
+
