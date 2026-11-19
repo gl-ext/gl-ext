@@ -920,6 +920,27 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, o
                   f"в my_extras {len(ex_p)}; топ-{N} базы:")
             for f_, _sp, k_, pct_ in top_of(base):
                 print(f"    {meta[k_]['name']:<28} {pct_:g}%   f={f_:.3f}   (gdr: {gd_p.get(k_, '-')}, my_extras: {ex_p.get(k_, '-')})")
+            top_keys_ = {t_[2] for t_ in top_of(base)}
+            rest_ = []
+            for k_, pct_ in sorted(base.items(), key=lambda kv: str(kv[0])):
+                if k_ in top_keys_:
+                    continue
+                lv_ = meta.get(k_)
+                if not lv_:
+                    rest_.append(f"    {k_}: {pct_:g}%   уровня нет в meta (игнорируется)")
+                    continue
+                f_ = score(lv_["place"], pct_, lv_["T"], lv_["t"])
+                if f_ is None:
+                    why_ = ("T не больше t, формула не работает" if not lv_["t"] < lv_["T"]
+                            else f"НЕ СЧИТАЕТСЯ: процент ниже минимума t={lv_['t']:g}")
+                elif f_ > args.cap:
+                    why_ = f"дороже cap ({f_:.1f} > {args.cap:g})"
+                else:
+                    why_ = f"не вошла в топ-{N} (f={f_:.1f})"
+                rest_.append(f"    {lv_['name']:<28} {pct_:g}%   место {lv_['place']:g}, T={lv_['T']:g}, t={lv_['t']:g}: {why_}")
+            if rest_:
+                print("    остальные записи базы (вне топ-%d):" % N)
+                print("\n".join(rest_))
             lost = [k_ for k_ in ex_p if k_ not in meta]
             if lost:
                 print(f"    ВНИМАНИЕ: уровни из my_extras, которых нет в meta (игнорируются): {lost}")
@@ -1038,11 +1059,20 @@ def main():
     tp = load_tp()
 
     meta, fallback = {}, 0
+    swapped = []  # уровни, у которых в levels_tp.json T < t (перепутаны столбцы на CoreBoard): разворачиваем
+
+    def fix_Tt(key, name, T, t):
+        """Формула требует T > t (T: процент, где запись стоит 2h, t: где 4h). Если в файле наоборот, меняем местами."""
+        if T < t:
+            swapped.append(f"{name} ({key}): T={T:g}, t={t:g}")
+            return t, T
+        return T, t
+
     for l in levels:
         k = str(l["id"])
         e = tp.get(k) or {}
         if e.get("T") and e.get("t"):
-            T, t = float(e["T"]), float(e["t"])
+            T, t = fix_Tt(k, e.get("name") or l["name"], float(e["T"]), float(e["t"]))
         else:
             T, t = 100.0, float(l["list_percent"])
             fallback += 1
@@ -1051,7 +1081,14 @@ def main():
                    "place": float(l["placement"]), "T": T, "t": t}
     for k, e in tp.items():
         if k.startswith("x") and e.get("T") and e.get("t"):
-            meta[k] = {"name": e["name"], "place": float(e["place"]), "T": float(e["T"]), "t": float(e["t"])}
+            T_, t_ = fix_Tt(k, e["name"], float(e["T"]), float(e["t"]))
+            meta[k] = {"name": e["name"], "place": float(e["place"]), "T": T_, "t": t_}
+    if swapped:
+        print(f"В levels_tp.json у {len(swapped)} уровней T меньше t, поменял местами (проверь столбцы List%/Ending% на CoreBoard):")
+        for line in swapped[:30]:
+            print("   ", line)
+        if len(swapped) > 30:
+            print(f"    ... и ещё {len(swapped) - 30}")
     if fallback:
         print(f"Уровней без T/t в levels_tp.json (запасные T=100, list_percent): {fallback}")
 
