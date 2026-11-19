@@ -847,8 +847,8 @@ def fmt_record(r):
 def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, owner_of):
     """waiting_records.json: для каждого человека с аккаунтом глобала (аккаунты из links.json и fix.json считаются его)
     все непринятые записи (статус waiting), которые, будь они приняты, попали бы в его топ-N лучших записей.
-    Запись считается подходящей, если она лучше принятой у человека на этом уровне (или принятой нет) и уровень остаётся
-    в его топ-N после добавления. Записи группируются по аккаунту глобала, с которого они поданы.
+    Запись считается подходящей, если она лучше принятой у человека на этом уровне (или принятой нет) и остаётся
+    в его топ-N после добавления ВСЕХ его waiting-записей сразу (а не только её одной). Записи группируются по аккаунту глобала, с которого они поданы.
     Сравнение идёт со ВСЕМИ записями человека: глобал, Pointercrate, другие листы и my_extras (его подгружаем всегда).
     Два файла в формате missing_achievements.json / missing_achievements_with_nicks.json ({"users": {...}}).
     В них только записи БОЛЬШЕ всех, что у человека уже есть (глобал, Pointercrate, другие листы, my_extras):
@@ -924,6 +924,12 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, o
         final_best = dict(base)
         for lvl_id, (pct, _link) in pick_best(new).items():
             final_best[lvl_id] = max(final_best.get(lvl_id, -1), pct)
+        # Каждая запись выше проверялась ОТДЕЛЬНО (попала бы в топ-N, будь она одна). Если принять все сразу,
+        # часть из них вытеснят друг друга: оставляем только те, что реально войдут в итоговый топ-N.
+        final_top = {(t[2], t[3]) for t in top_of(final_best)}  # (ID уровня, процент)
+        new = [x for x in new if (x[0], x[1]) in final_top]
+        if not new:
+            continue
         final_score = person_score(final_best)
         if final_score >= args.waiting_max_score:
             skipped_high += 1
