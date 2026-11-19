@@ -1,8 +1,10 @@
 {
   "users": {
-    "2839": {"nick": "humptwe2", "country_code": "US", "gdr_id": "65831", "records": [["Silent clubstep", 100, ""], ["UNKNOWN", 100, ""], ["Shardscapes", 100, ""], ["Escape Room", 100, ""]]},
-    "2840": {"nick": "Slushegd", "country_code": null, "gdr_id": "61128", "records": [["Solar Flare", 100, ""], ["The Golden", 100, ""], ["Graceful", 100, ""], ["Renevant", 100, ""], ["Lucid Nightmares", 100, ""]]},
-    "2841": {"nick": "vaskiat2", "country_code": "CO", "gdr_id": "63790", "records": [["Slaughterhouse", 100, ""]]},
-    "2842": {"nick": "berthh", "country_code": null, "gdr_id": "64735", "records": [["KOCMOC", 100, ""]]}
+    "2839": {"nick": "vaskiat2", "country_code": "CO", "gdr_id": "63790", "records": [["Tidal Wave", 78, ""], ["Slaughterhouse", 100, ""]]},
+    "2840": {"nick": "humptwe2", "country_code": "US", "gdr_id": "65831", "records": [["Silent clubstep", 100, ""], ["UNKNOWN", 100, ""], ["Shardscapes", 100, ""]]},
+    "2841": {"nick": "Slushegd", "country_code": null, "gdr_id": "61128", "records": [["Solar Flare", 100, ""], ["The Golden", 100, ""], ["Graceful", 100, ""], ["Renevant", 100, ""], ["Lucid Nightmares", 100, ""]]},
+    "2842": {"nick": "berthh", "country_code": null, "gdr_id": "64735", "records": [["KOCMOC", 100, ""]]},
+    "2843": {"nick": "Buba1482", "country_code": "PL", "gdr_id": "pc61620", "records": [["Slaughterhouse", 75, ""], ["Oblivion", 100, ""], ["Bloodlust", 100, ""]]},
+    "2844": {"nick": "Edenyx", "country_code": "RU", "gdr_id": "7345", "records": [["Abyss of Darkness", 62, ""], ["RUTHLESS", 100, ""]]}
   }
 }
