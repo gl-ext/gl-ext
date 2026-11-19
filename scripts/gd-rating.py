@@ -1059,20 +1059,11 @@ def main():
     tp = load_tp()
 
     meta, fallback = {}, 0
-    swapped = []  # уровни, у которых в levels_tp.json T < t (перепутаны столбцы на CoreBoard): разворачиваем
-
-    def fix_Tt(key, name, T, t):
-        """Формула требует T > t (T: процент, где запись стоит 2h, t: где 4h). Если в файле наоборот, меняем местами."""
-        if T < t:
-            swapped.append(f"{name} ({key}): T={T:g}, t={t:g}")
-            return t, T
-        return T, t
-
     for l in levels:
         k = str(l["id"])
         e = tp.get(k) or {}
         if e.get("T") and e.get("t"):
-            T, t = fix_Tt(k, e.get("name") or l["name"], float(e["T"]), float(e["t"]))
+            T, t = float(e["T"]), float(e["t"])
         else:
             T, t = 100.0, float(l["list_percent"])
             fallback += 1
@@ -1081,14 +1072,7 @@ def main():
                    "place": float(l["placement"]), "T": T, "t": t}
     for k, e in tp.items():
         if k.startswith("x") and e.get("T") and e.get("t"):
-            T_, t_ = fix_Tt(k, e["name"], float(e["T"]), float(e["t"]))
-            meta[k] = {"name": e["name"], "place": float(e["place"]), "T": T_, "t": t_}
-    if swapped:
-        print(f"В levels_tp.json у {len(swapped)} уровней T меньше t, поменял местами (проверь столбцы List%/Ending% на CoreBoard):")
-        for line in swapped[:30]:
-            print("   ", line)
-        if len(swapped) > 30:
-            print(f"    ... и ещё {len(swapped) - 30}")
+            meta[k] = {"name": e["name"], "place": float(e["place"]), "T": float(e["T"]), "t": float(e["t"])}
     if fallback:
         print(f"Уровней без T/t в levels_tp.json (запасные T=100, list_percent): {fallback}")
 
