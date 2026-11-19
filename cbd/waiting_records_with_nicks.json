@@ -1,17 +1,23 @@
-{{
+{
   "users": {
-    "35482 — F1sss": [
-      ["2854", 100, "Collapse"]
-    ],
     "27721 — ItzOguzok": [
       ["2287", 100, "Promethean"]
+    ],
+    "8695 — blessedandro": [
+      ["1749", 100, "Delta"]
     ],
     "39623 — Eskimi": [
       ["2711", 100, "Rigel"]
     ],
+    "36698 — Gd Waffled": [
+      ["2926", 100, "ta1LSD0ll"]
+    ],
     "42893 — vscreenz": [
       ["1704", 100, "Cobwebs"],
       ["1853", 100, "qoUEO"]
+    ],
+    "6349 — LaeNs": [
+      ["3286", 100, "IMPERIAL"]
     ],
     "40966 — Korseee": [
       ["2024", 100, "Bloodlust"]
@@ -21,6 +27,13 @@
     ],
     "37616 — trips": [
       ["2296", 100, "Renevant"]
+    ],
+    "34692 — SoftLock": [
+      ["1704", 100, "Cobwebs"],
+      ["1732", 100, "Sakupen Circles"]
+    ],
+    "26874 — Sovushka990": [
+      ["2535", 100, "The Hallucination"]
     ],
     "34360 — ninshu18": [
       ["1563", 100, "shimmer"],
@@ -59,6 +72,9 @@
     ],
     "35989 — emirhanbanan": [
       ["2018", 100, "Shardscapes"]
+    ],
+    "18012 — Kr1ziz": [
+      ["2563", 100, "ORDINARY"]
     ]
   }
 }
