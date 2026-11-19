@@ -50,8 +50,8 @@ p = argparse.ArgumentParser()
 p.add_argument("--src", default="global",
                help="pointercrate, " + ", ".join(LIST_SOURCES) + ", my_extras или all (через запятую)")
 p.add_argument("--n", type=int, default=6, help="сколько лучших записей берём")
-p.add_argument("--cap", type=float, default=300, help="макс. стоимость записи; недостающие добираются этим значением")
-p.add_argument("--cap-place", dest="cap_place", type=float, default=300, help="проверять уровни до этого места")
+p.add_argument("--cap", type=float, default=300, help="стоимость записи строго меньше этого значения; недостающие добираются им (уровень на месте cap не учитывается)")
+p.add_argument("--cap-place", dest="cap_place", type=float, default=300, help="проверять уровни выше этого места (само место cap не берётся)")
 p.add_argument("--levels", type=int, default=0, help="только первые N уровней (быстрый тест)")
 p.add_argument("--show", type=int, default=50, help="сколько игроков печатать")
 p.add_argument("--long", action="store_true", help="подробный вывод (по строке на запись)")
@@ -124,7 +124,7 @@ def load_paged(path, key, step, stop=None):
 def levels_past_cap(arr):
     """Страница отсортирована по месту и её последний уровень уже ниже порога - дальше не нужно."""
     pl = [float(l["placement"]) for l in arr]
-    return pl == sorted(pl) and pl[-1] > args.cap_place
+    return pl == sorted(pl) and pl[-1] >= args.cap_place
 
 
 # ---------- формула ----------
@@ -868,7 +868,7 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, o
             if not lv:
                 continue
             f = score(lv["place"], pct, lv["T"], lv["t"])
-            if f is not None and f <= args.cap:
+            if f is not None and f < args.cap:  # ровно cap (например, уровень на месте 300 со 100%) не учитывается
                 recs.append((f, k.startswith("x"), k, pct))
         recs.sort(key=lambda r: (r[0], r[1]))
         return recs[:N]
@@ -933,8 +933,8 @@ def save_waiting(meta, best_by, info, result, canon_id, accounts_of, removals, o
                 if f_ is None:
                     why_ = ("T не больше t, формула не работает" if not lv_["t"] < lv_["T"]
                             else f"НЕ СЧИТАЕТСЯ: процент ниже минимума t={lv_['t']:g}")
-                elif f_ > args.cap:
-                    why_ = f"дороже cap ({f_:.1f} > {args.cap:g})"
+                elif f_ >= args.cap:
+                    why_ = f"не дешевле cap ({f_:.1f} >= {args.cap:g})"
                 else:
                     why_ = f"не вошла в топ-{N} (f={f_:.1f})"
                 rest_.append(f"    {lv_['name']:<28} {pct_:g}%   место {lv_['place']:g}, T={lv_['T']:g}, t={lv_['t']:g}: {why_}")
@@ -1076,7 +1076,7 @@ def main():
     if fallback:
         print(f"Уровней без T/t в levels_tp.json (запасные T=100, list_percent): {fallback}")
 
-    top_levels = sorted((l for l in levels if float(l["placement"]) <= args.cap_place),
+    top_levels = sorted((l for l in levels if float(l["placement"]) < args.cap_place),
                         key=lambda l: float(l["placement"]))
     if args.levels:
         top_levels = top_levels[: args.levels]
@@ -1357,7 +1357,7 @@ def main():
             if not lv:
                 continue
             f = score(lv["place"], pct, lv["T"], lv["t"])
-            if f is not None and f <= args.cap:
+            if f is not None and f < args.cap:  # ровно cap не учитывается
                 recs.append({"level": lv["name"], "place": lv["place"], "percent": pct, "f": f,
                              "special": k.startswith("x"), "key": k})
         if not recs:
