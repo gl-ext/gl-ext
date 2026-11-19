@@ -20,7 +20,8 @@ my_extras.json этот скрипт не трогает.
                                    ID продолжаются после последнего в missing_players.json)
      Если добавлять в CoreBoard больше нечего, файлы в cbd/ обновятся на пустые.
 
-levels_tp.json и gdr-ids.json всегда скачиваются с GitHub (локальные копии не читаются).
+levels_tp.json всегда скачивается с GitHub (локальная копия не читается).
+gdr-ids.json больше не нужен: ники и ID игроков берутся только из coreboard_id_map.json.
 
 ID CoreBoard. Пока в ссылках на игроков сайта только ники, ID берутся из coreboard_id_map.json в корне репозитория
 ({"<ID>": {"nick": ..., "gdr_id": ...}}). Когда в ссылках появятся числовые ID, coreboard_parse.py
@@ -59,16 +60,11 @@ import re
 import shutil
 import subprocess
 import sys
-import tempfile
-import time
-import urllib.request
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent          # scripts/
 ROOT = HERE.parent                              # корень репозитория
 CBD_DIR = ROOT / "cbd"                          # сюда копируются результаты при --commit
-RAW = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/"
-UA = "gl-ext-top6"
 PUBLISHED = ("missing_achievements.json", "missing_achievements_with_nicks.json", "commands.txt",
              "missing_players.json")
 # Публикуется, только если файл появился в этом запуске (его делает gd-rating --waiting через sync-extras.py)
@@ -99,26 +95,6 @@ def run(cmd, what):
     r = subprocess.run([str(c) for c in cmd], cwd=HERE)
     if r.returncode != 0:
         sys.exit(f"Шаг «{what}» завершился с ошибкой (код {r.returncode}).")
-
-
-def download_github(name, dest, tries=4):
-    """Скачивает файл репозитория с GitHub и проверяет, что это непустой JSON-объект."""
-    last = None
-    for i in range(tries):
-        try:
-            req = urllib.request.Request(RAW + name, headers={"User-Agent": UA})
-            with urllib.request.urlopen(req, timeout=30) as r:
-                text = r.read().decode("utf-8")
-            data = json.loads(text)
-            if not isinstance(data, dict) or not data:
-                raise ValueError("пустой файл или не объект")
-            dest.write_text(text, "utf-8")
-            return
-        except Exception as e:
-            last = e
-            if i < tries - 1:
-                time.sleep(2 * (i + 1))
-    sys.exit(f"{name}: не удалось загрузить с GitHub ({last}). Останавливаюсь.")
 
 
 def git(*a, check=True):
@@ -294,11 +270,6 @@ def main():
                  "missing_players_with_waiting.json"):
         (out / name).unlink(missing_ok=True)
 
-    work = Path(tempfile.mkdtemp(prefix="cbd_update_"))
-    ids = work / "gdr-ids.json"
-    print("\ngdr-ids.json: беру с GitHub (levels_tp.json compare и add-video-links берут с GitHub сами; raw кешируется до ~5 минут)")
-    download_github("gdr-ids.json", ids)
-
     cmp_cmd = [sys.executable, cmp_script, "in-gdr-not-in-cbd", "--cbd", cbd_txt, "--gdr", gdr_txt,
                "--out-dir", out]
     if cbd_ids.exists():
@@ -325,7 +296,7 @@ def main():
 
     if total or new_players:
         # --prev-players: ссылки, уже найденные в опубликованном cbd/missing_players.json, заново не ищутся
-        run([sys.executable, avl_script, "--out-dir", out, "--ids", ids,
+        run([sys.executable, avl_script, "--out-dir", out, "--id-map", id_map,
              "--prev-players", CBD_DIR / "missing_players.json"],
             "Видео и команды (add-video-links)")
         if not (out / "commands.txt").exists():

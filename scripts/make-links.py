@@ -1547,17 +1547,19 @@ def move_pc_entry(result, pc_key, key):
                 lst.append(link)
 
 
-def update_gdr_ids(moved, path=os.path.join(ROOT, "gdr-ids.json")):
-    """В gdr-ids.json у игрока без глобала стоит ID вида \"pc59696\". Когда у него появился глобал,
-    меняем его на настоящий ID. Правим текст точечно: файл не перезаписываем целиком (в нём есть
-    повторяющиеся ключи, а json их бы склеил). moved = {\"pc59696\": \"12345\"}. Возвращает, сколько ID заменено."""
+def update_id_map(moved, path=os.path.join(ROOT, "coreboard_id_map.json")):
+    """В coreboard_id_map.json у игрока без глобала в поле gdr_id стоит ID вида \"pc59696\". Когда у него
+    появился глобал, меняем его на настоящий ID. Правим текст точечно (файл не перезаписываем целиком,
+    чтобы не менялось форматирование), и только значения ключа gdr_id: ники и ID CoreBoard не трогаем.
+    moved = {\"pc59696\": \"12345\"}. Возвращает, сколько ID заменено."""
     if not moved or not os.path.exists(path):
         return 0
     with open(path, encoding="utf-8") as f:
         text = f.read()
     changed = 0
     for old, new in moved.items():
-        text, n = re.subn(r'(:\s*)"' + re.escape(old) + r'"', lambda m: m.group(1) + '"' + new + '"', text)
+        text, n = re.subn(r'("gdr_id"\s*:\s*)"' + re.escape(old) + r'"',
+                          lambda m: m.group(1) + '"' + new + '"', text)
         changed += n
     if changed:
         tmp = path + ".tmp"
@@ -2022,8 +2024,8 @@ def main():
                 del result[key]
 
     if pc_moved:
-        fixed_ids = update_gdr_ids({k: v for k, v in pc_moved.items()})
-        print(f"  игроков без глобала, у которых он появился: {len(pc_moved)}; ID заменено в gdr-ids.json: {fixed_ids}")
+        fixed_ids = update_id_map({k: v for k, v in pc_moved.items()})
+        print(f"  игроков без глобала, у которых он появился: {len(pc_moved)}; ID заменено в coreboard_id_map.json: {fixed_ids}")
         for old_key, new_key in sorted(pc_moved.items()):
             print(f"    {old_key} -> {new_key}")
 

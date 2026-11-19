@@ -28,6 +28,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import levels as levelsearch  # поиск уровней по названию (общий для всех скриптов)
+import wml as site  # WML: загрузка списка уровней и ingame_id
 import lists_core as L  # реестр листов
 
 HERE = Path(__file__).resolve().parent
@@ -1122,17 +1123,44 @@ def main():
                 free_n += 1  # метку [тег] добавим при выводе
                 info[uid] = (nick, pl.get("c"))
         unresolved, found = {}, {}
+        st = {"id": 0, "name_nonglobal": 0, "other_level": 0}  # откуда нашёлся уровень (для записей с ID уровня)
+        skipped_other = {}  # название -> сколько записей пропущено: в глобале под этим ID другой уровень
+        skipped_cks = set()  # пары (название, ID), которые пропущены по этой причине
         for r in data["records"]:
             aid = str(r["a"])
             main_id = owner_of(src.name, aid)
             uid = main_id or src.prefix + aid
             name = r["l"]
-            if name not in found:  # поиск по названию делаем один раз на название
-                found[name] = by_ingame.get(str(r["i"])) if r.get("i") is not None else None
-                found[name] = found[name] or index.find(name)
-            k = found[name]
+            iid = r.get("i")
+            ck = (name, str(iid) if iid is not None else None)  # одно название может быть у разных уровней
+            if ck not in found:  # поиск делаем один раз на пару (название, ID)
+                if iid is None:
+                    found[ck] = index.find(name)  # лист не даёт ID уровней: ищем по названию
+                else:
+                    # Сравнение по ID: ingame_id уровня листа есть среди уровней глобала -> это он, название не важно
+                    k = by_ingame.get(str(iid))
+                    if k is not None:
+                        st["id"] += 1
+                    else:
+                        # ID в глобале нет. Название годится, только если оно ведёт на уровень вне глобала (ключ x...).
+                        # Если оно ведёт на уровень глобала (ключ из цифр), то это ДРУГОЙ уровень с тем же названием.
+                        k2 = index.find(name)
+                        if k2 is None:
+                            k = None
+                        elif str(k2).isdigit():
+                            st["other_level"] += 1
+                            skipped_cks.add(ck)
+                            k = None
+                        else:
+                            st["name_nonglobal"] += 1
+                            k = k2
+                    found[ck] = k
+            k = found[ck]
             if k is None:
-                unresolved[name] = unresolved.get(name, 0) + 1
+                if ck in skipped_cks:
+                    skipped_other[name] = skipped_other.get(name, 0) + 1  # другой уровень с тем же названием: не считаем и не ругаемся «не найден»
+                else:
+                    unresolved[name] = unresolved.get(name, 0) + 1
                 continue
             if main_id and is_removed(removals, main_id, r.get("v")):
                 removed_n += 1
@@ -1142,6 +1170,11 @@ def main():
             m[k] = max(m.get(k, -1), pct)
             pairs[(uid, k)] = max(pairs.get((uid, k), -1), pct)
             n_recs += 1
+        if any(r.get("i") is not None for r in data["records"]):
+            print(f"  {src.name}: уровней по ID глобала: {st['id']}, вне глобала по названию: {st['name_nonglobal']}, "
+                  f"пропущено (в глобале другой уровень с таким названием): {st['other_level']}")
+            for n, c in sorted(skipped_other.items(), key=lambda kv: -kv[1]):
+                print(f"    пропущено записей на {n!r}: {c}")
         print(f"Игроков {src.name} с линком в links.json: {linked_n}, без линка [{src.tag}]: {free_n}; записей: {n_recs}")
         if unresolved:
             top = sorted(unresolved.items(), key=lambda kv: -kv[1])[:10]

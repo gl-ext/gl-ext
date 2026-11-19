@@ -5,11 +5,11 @@ World Mobile List -> наш формат, всё в одном файле.
 Один запуск делает три шага:
   1. топ игроков (API сайта /api/v1/players/ranking/?after=N)          -> wml/wml_top.json
   2. рекорды каждого игрока (панель игрока, парсится из HTML)          -> wml/wml_records.jsonl
-  3. перевод в наш формат (ID игрока по gdr-ids.json, ID уровня по названию, сверху топа вниз):
+  3. перевод в наш формат (ID игрока по coreboard_id_map.json, ID уровня по названию, сверху топа вниз):
        wml/wml_achievements.json            {"users": {"ID": [[ID уровня, процент, "ссылка"], ...]}}
        wml/wml_achievements_with_nicks.json {"users": {"ID — ник": [[ID уровня, процент, "название", "ссылка"], ...]}}
        wml/wml_levels_not_found.txt         уровни, ID которых по названию не нашёлся
-       wml/wml_players_no_id.txt            игроки, которых нет в gdr-ids.json (в JSON не попадают)
+       wml/wml_players_no_id.txt            игроки, которых нет в coreboard_id_map.json (в JSON не попадают)
 
 Запуск:
   python wml.py                  всё сразу
@@ -20,6 +20,7 @@ World Mobile List -> наш формат, всё в одном файле.
   python wml.py --keep-banned    не выкидывать забаненных игроков (по умолчанию они пропускаются)
 
 Шаг 2 докачивается: если прервать, при новом запуске уже скачанные игроки пропускаются.
+Уровни WML сравниваются с глобалом по ID (ingame_id), а не только по названию.
 Нужен только Python, ничего устанавливать не надо.
 """
 import argparse
@@ -38,9 +39,16 @@ RANKING_URL = SITE + "/api/v1/players/ranking/?after={after}"   # по 50 игр
 PAGE_SIZE = 50
 # Панель игрока (лёгкий запрос, который сайт делает при клике на игрока, около 9 КБ вместо 42 КБ у всей страницы)
 PLAYER_URL = SITE + "/demonlist/statsviewer/pane/player/{id}"
+# Страница уровня. В адресе стоит МЕСТО уровня в списке (/demonlist/3 = третий), а не его внутренний ID на сайте
+# (у того же уровня в list-data может быть 1136): с внутренним ID откроется чужой уровень или 404.
+LEVEL_URL = SITE + "/demonlist/{pos}"
 
 LEVELS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/levels_tp.json"
-IDS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/gdr-ids.json"
+_HERE = os.path.dirname(os.path.abspath(__file__))
+# Карта игроков лежит в корне репозитория (папка выше scripts/), запасной вариант: рядом со скриптом
+ID_MAP_FILE = next((p for p in (os.path.join(os.path.dirname(_HERE), "coreboard_id_map.json"),
+                                os.path.join(_HERE, "coreboard_id_map.json")) if os.path.exists(p)),
+                   os.path.join(os.path.dirname(_HERE), "coreboard_id_map.json"))
 GLOBAL_LIST_URL = "https://api.demonlist.org/level/classic/list?limit={limit}&offset={offset}"
 
 API_TRIES = 4
@@ -54,15 +62,30 @@ API_TRIES = 4
 
 def http_get(url, timeout=30, json_accept=False):
     """GET с повторами (до API_TRIES раз). 404/403 и подобное не повторяются. Возвращает текст ответа."""
+    import ssl
+    import gzip
     last = None
     for attempt in range(1, API_TRIES + 1):
         try:
             # Язык принудительно английский: заголовки блоков ("Main list", "First victories") разбираются по ним
-            headers = {"User-Agent": "Mozilla/5.0", "Accept-Language": "en-US,en;q=0.9"}
+            headers = {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.9",
+                "Accept-Encoding": "gzip, deflate, br",
+                "Referer": "https://worldmobilelist.com/",
+            }
             if json_accept:
                 headers["Accept"] = "application/json"
-            with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=timeout) as r:
-                return r.read().decode("utf-8")
+            ctx = ssl.create_default_context()
+            ctx.check_hostname = False
+            ctx.verify_mode = ssl.CERT_NONE
+            with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=timeout, context=ctx) as r:
+                raw = r.read()
+            # Сервер может отдавать gzip-сжатое содержимое
+            if raw[:2] == b'\x1f\x8b':
+                raw = gzip.decompress(raw)
+            return raw.decode("utf-8")
         except urllib.error.HTTPError as e:
             if e.code < 500 and e.code != 429:
                 raise
@@ -121,6 +144,9 @@ def pick(d, *keys):
 # Какой из двух у игрока, видно по месту в списке (#pos в панели игрока): выше = меньше число.
 DUP_GAP = 15        # места одного названия ближе друг к другу считаются одним уровнем (список за неделю чуть сдвигается)
 DUP_NAMES = None    # None = проверять все повторяющиеся названия; или множество, например {"pandemonium"}
+
+# Кэш ingame_id уровней WML: id уровня на WML -> ingame_id (с data-copy на странице уровня WML)
+WML_LEVEL_INGAME_CACHE = os.path.join("wml", "wml_level_ingame_by_id.json")
 
 
 def duplicate_cutoffs(pairs):
@@ -258,13 +284,66 @@ def parse_panel(page):
                 "level": html.unescape(c["name"]).strip(),
                 "percent": int(c["pct"]) if c["pct"] is not None else 100,
                 "video": html.unescape(c["video"]).strip(),
-                "pos": int(c["pos"]),  # место уровня в списке WML (нужно, чтобы отличить одноимённые уровни)
+                "pos": int(c["pos"]),
             })
 
     cc = COUNTRY.search(pane)
     return {
         "nick": html.unescape(name.group(1)).strip() if name else "",
         "country": cc.group(1) if cc else "",
+        "records": records,
+    }
+
+
+# =========================
+# Страница УРОВНЯ (используется в list_wml.py)
+# =========================
+# Записи уровня лежат в <ol id="records"> целиком: те, что скрыты за кнопкой «Show all», тоже есть в HTML
+# (у них просто атрибут hidden), так что второй запрос не нужен.
+LEVEL_ID = re.compile(r'id="copy-id"[^>]*data-copy="(\d+)"')
+LEVEL_RECORDS = re.compile(r'<ol[^>]*id="records"[^>]*>(.*?)</ol>', re.S)
+LEVEL_ROW = re.compile(r'<li class="r rec[^"]*"[^>]*>(.*?)</li>', re.S)
+ROW_PLAYER = re.compile(r'<a class="r-main" href="/demonlist/player/(\d+)"[^>]*>\s*<b>(.*?)</b>', re.S)
+ROW_PERCENT = re.compile(r'<b class="tn">(\d+)%</b>')
+ROW_VIDEO = re.compile(r'<a class="rec-video" href="([^"]*)"')
+ROW_COUNTRY = re.compile(r'data-cc="([A-Z]{2})"')
+PAGE_TITLE = re.compile(r'<title>(.*?)</title>', re.S)
+LEVEL_FIRST = re.compile(r'id="by"[^>]*>.*?first beaten by\s*<a href="/demonlist/player/(\d+)"[^>]*>(.*?)</a>', re.S)
+
+
+def parse_level_page(page):
+    """Страница уровня WML -> {"ingame": ID уровня в игре или None,
+                               "first": {"id", "nick"} или None (кто прошёл первым),
+                               "records": [{"id": ID игрока на WML, "nick", "cc", "percent", "video"}]}.
+    Возвращает None, если это не страница уровня (нет ни кнопки с ID, ни блока записей)."""
+    m_id = LEVEL_ID.search(page)
+    m_rec = LEVEL_RECORDS.search(page)
+    if not m_id and not m_rec:
+        return None
+
+    records = []
+    for row in LEVEL_ROW.finditer(m_rec.group(1) if m_rec else ""):
+        body = row.group(1)
+        pl = ROW_PLAYER.search(body)
+        if not pl:
+            continue
+        pct = ROW_PERCENT.search(body)
+        vid = ROW_VIDEO.search(body)
+        cc = ROW_COUNTRY.search(body)
+        records.append({
+            "id": pl.group(1),
+            "nick": html.unescape(pl.group(2)).strip(),
+            "cc": cc.group(1) if cc else None,
+            "percent": int(pct.group(1)) if pct else 100,
+            "video": html.unescape(vid.group(1)).strip() if vid else None,
+        })
+
+    first = LEVEL_FIRST.search(page)
+    title = PAGE_TITLE.search(page)
+    return {
+        "title": html.unescape(title.group(1)).strip() if title else "",
+        "ingame": m_id.group(1) if m_id else None,
+        "first": {"id": first.group(1), "nick": html.unescape(first.group(2)).strip()} if first else None,
         "records": records,
     }
 
@@ -338,6 +417,86 @@ class LevelResolver:
         return int(key) if key.isdigit() else key
 
 
+def load_wml_level_cache():
+    """Кэш: id уровня на WML -> ingame_id."""
+    if os.path.exists(WML_LEVEL_INGAME_CACHE):
+        with open(WML_LEVEL_INGAME_CACHE, encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+def save_wml_level_cache(cache):
+    os.makedirs(os.path.dirname(WML_LEVEL_INGAME_CACHE), exist_ok=True)
+    with open(WML_LEVEL_INGAME_CACHE, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False, indent=1)
+
+
+def fetch_wml_level_list():
+    """Список уровней WML со страницы /demonlist/ в порядке списка: [(wml_level_id, название), ...]."""
+    page = http_get(SITE + "/demonlist/")
+    m = re.search(r'id="list-data" type="application/json">(.*?)</script>', page, re.S)
+    if not m:
+        print("  Не найден #list-data на странице списка WML")
+        return []
+    data = json.loads(m.group(1))
+    entries = [(str(e[0]), e[2]) for e in data.get("levels", [])]
+    print(f"  Уровней в списке WML: {len(entries)}")
+    return entries
+
+
+def make_wml_ctx(entries):
+    """Из списка WML: место -> (id, название) и название -> (id, название) (при повторе берётся верхний)."""
+    by_pos, by_name = {}, {}
+    for i, (wid, name) in enumerate(entries, 1):
+        by_pos[i] = (wid, name)
+        by_name.setdefault(normalize(name), (wid, name))
+    return {"by_pos": by_pos, "by_name": by_name, "ingame": {}}
+
+
+def locate_wml_level(ctx, name, pos):
+    """id уровня на WML для рекорда. Сначала по месту (#pos), если там то же название; иначе по названию.
+    Возвращает (wml_id или None, найден ли по месту)."""
+    if pos is not None:
+        e = ctx["by_pos"].get(int(pos))
+        if e and normalize(e[1]) == normalize(name):
+            return e[0], True
+    e = ctx["by_name"].get(normalize(name))
+    return (e[0], False) if e else (None, False)
+
+
+def fetch_wml_ingame_id(wml_level_id):
+    """Страница уровня WML -> ingame_id из data-copy."""
+    page = http_get(f"{SITE}/demonlist/{wml_level_id}")
+    m = re.search(r'id="copy-id"[^>]*data-copy="(\d+)"', page)
+    return m.group(1) if m else None
+
+
+def build_wml_ingame_cache(wml_ids):
+    """ingame_id для нужных уровней WML (по id уровня на WML). Скачанное сохраняется в кэш."""
+    cache = load_wml_level_cache()
+    todo = sorted(i for i in wml_ids if i not in cache)
+    if todo:
+        print(f"  Загружаю ingame_id для {len(todo)} уровней WML...")
+    try:
+        for i, wid in enumerate(todo, 1):
+            try:
+                iid = fetch_wml_ingame_id(wid)
+            except Exception as e:
+                print(f"    уровень WML {wid}: ОШИБКА {e}")
+                continue
+            if iid:
+                cache[wid] = iid
+            else:
+                print(f"    уровень WML {wid}: ingame_id на странице не найден")
+            if i % 20 == 0 or i == len(todo):
+                print(f"    {i}/{len(todo)}")
+            time.sleep(0.2)
+    finally:
+        if todo:
+            save_wml_level_cache(cache)
+    return cache
+
+
 def player_id_sort_key(player_key):
     """Числовые ID по возрастанию, затем pc-ID (как в compare.py)."""
     pid = str(player_key).split(" — ", 1)[0].strip().casefold()
@@ -361,11 +520,17 @@ def save_json(filename, users):
         f.write('  }\n}\n')
 
 
-def convert(players, nick_to_id, resolver):
-    """Возвращает (users, users_nicks, not_found, no_id). Игроки идут от верха топа до низа."""
+def convert(players, nick_to_id, resolver, wml_ctx, global_by_ingame, global_name_to_ingame):
+    """Возвращает (users, users_nicks, not_found, no_id, stats). Игроки идут от верха топа до низа.
+    Уровень сравнивается с глобалом по ID (ingame_id): если ingame_id уровня WML есть в глобале, это он и есть,
+    название значения не имеет. Если его в глобале нет, уровень ищется по названию (levels_tp.json и т.д.),
+    но только если одноимённого другого уровня в глобале нет."""
     users, users_nicks, not_found, no_id, name_cache = {}, {}, {}, [], {}
     cut = duplicate_cutoffs((r["level"], r.get("pos")) for p in players for r in p.get("records", []))
-    dropped = {}
+    dropped, skipped_ingame = {}, {}
+    stats = {"по ID в глобале": 0, "не в глобале, по названию": 0, "ingame_id WML неизвестен, по названию": 0,
+             "пропущено (другой уровень с тем же названием)": 0}
+    ingame = wml_ctx["ingame"]
 
     for p in sorted(players, key=lambda x: (x.get("rank") is None, x.get("rank") or 0)):
         wml_nick = p.get("nick") or ""
@@ -378,16 +543,46 @@ def convert(players, nick_to_id, resolver):
         best = {}  # ID уровня -> (процент, название, ссылка): по уровню остаётся лучший процент
         for r in p.get("records", []):
             name = r["level"]
-            if is_lower_duplicate(cut, name, r.get("pos")):
-                dropped[normalize(name)] = dropped.get(normalize(name), 0) + 1
-                continue
-            if name not in name_cache:
-                name_cache[name] = resolver.find(name)
-            level_id = name_cache[name]
-            if level_id is None:
-                nf = not_found.setdefault(name, [0, clean])
-                nf[0] += 1
-                continue
+            wml_lid, via_pos = locate_wml_level(wml_ctx, name, r.get("pos"))
+            wml_iid = ingame.get(wml_lid) if wml_lid else None
+
+            if wml_iid is not None and wml_iid in global_by_ingame:
+                global_level = global_by_ingame[wml_iid]
+                if global_level.get("name") == name:
+                    level_id = int(wml_iid)  # сравнение по ID: уровень есть в глобале под тем же названием
+                    stats["по ID в глобале"] += 1
+                else:
+                    # ingame_id есть в глобале, но под другим названием — другой уровень с тем же именем в WML
+                    skipped_ingame[name] = skipped_ingame.get(name, 0) + 1
+                    stats["пропущено (другой уровень с тем же названием)"] += 1
+                    continue
+            else:
+                if wml_iid is None:
+                    # ID не узнали (нет страницы/кнопки с ID): как раньше, по названию и месту в списке
+                    if not via_pos and is_lower_duplicate(cut, name, r.get("pos")):
+                        dropped[normalize(name)] = dropped.get(normalize(name), 0) + 1
+                        continue
+                    stats["ingame_id WML неизвестен, по названию"] += 1
+                else:
+                    g = global_name_to_ingame.get(name)
+                    if g is not None and g != wml_iid:        # в глобале под этим названием другой уровень
+                        skipped_ingame[name] = skipped_ingame.get(name, 0) + 1
+                        stats["пропущено (другой уровень с тем же названием)"] += 1
+                        continue
+                    stats["не в глобале, по названию"] += 1
+                if name not in name_cache:
+                    name_cache[name] = resolver.find(name)
+                level_id = name_cache[name]
+                if level_id is None:
+                    nf = not_found.setdefault(name, [0, clean])
+                    nf[0] += 1
+                    continue
+                # название нашло глобальный уровень с другим ID, чем у уровня WML: это не тот уровень
+                if wml_iid is not None and str(level_id) != wml_iid and str(level_id) in global_by_ingame:
+                    skipped_ingame[name] = skipped_ingame.get(name, 0) + 1
+                    stats["пропущено (другой уровень с тем же названием)"] += 1
+                    continue
+
             percent = int(r.get("percent", 100))
             if level_id not in best or percent > best[level_id][0]:
                 best[level_id] = (percent, name, normalize_link(r.get("video", "")))
@@ -398,18 +593,66 @@ def convert(players, nick_to_id, resolver):
             users_nicks.setdefault(f"{gid} — {clean}", []).extend(
                 [[lid, pct, n, link] for lid, (pct, n, link) in rows])
     report_duplicates(cut, dropped)
-    return users, users_nicks, not_found, no_id
+    for n, cnt in sorted(skipped_ingame.items(), key=lambda kv: -kv[1]):
+        print(f"  WML: пропущено записей на '{n}' (ID не совпал с глобалом): {cnt}")
+    return users, users_nicks, not_found, no_id, stats
+
+
+def load_nick_to_id():
+    """coreboard_id_map.json ({ID CoreBoard: {nick, gdr_id}}) -> {ник (нормализованный): наш ID (gdr_id)}."""
+    try:
+        with open(ID_MAP_FILE, encoding="utf-8") as f:
+            id_map = json.load(f)
+    except (OSError, ValueError) as error:
+        raise SystemExit(f"{ID_MAP_FILE}: не удалось прочитать ({error}). Останавливаюсь.")
+    nick_to_id = {}
+    for row in id_map.values():
+        if isinstance(row, dict) and row.get("nick") and row.get("gdr_id"):
+            nick_to_id.setdefault(normalize_nick(str(row["nick"])), str(row["gdr_id"]).strip().casefold())
+    return nick_to_id
 
 
 def step_convert(records, out_dir, by_rank):
     print("=== Шаг 3. Перевод в наш формат ===")
     print(f"Игроков с рекордами: {len(records)}")
-    print("gdr-ids.json и levels_tp.json: беру с GitHub (raw кешируется до ~5 минут после правки)")
-    raw_ids = get_json(IDS_URL)
-    nick_to_id = {normalize_nick(n): str(i).strip().casefold() for n, i in raw_ids.items()}
+    print(f"levels_tp.json: беру с GitHub (raw кешируется до ~5 минут после правки); игроки: {ID_MAP_FILE}")
+    nick_to_id = load_nick_to_id()
     resolver = LevelResolver(get_json(LEVELS_URL)["levels"])
 
-    users, users_nicks, not_found, no_id = convert(records, nick_to_id, resolver)
+    # 1. Список уровней WML (по порядку списка = по местам)
+    wml_ctx = make_wml_ctx(fetch_wml_level_list())
+
+    # 2. id уровней WML, которые встречаются в рекордах
+    needed, total, by_pos = set(), 0, 0
+    for p in records:
+        for r in p.get("records", []):
+            total += 1
+            lid, via_pos = locate_wml_level(wml_ctx, r["level"], r.get("pos"))
+            by_pos += via_pos
+            if lid:
+                needed.add(lid)
+    if total and by_pos / total < 0.9:
+        print(f"  ВНИМАНИЕ: по месту в списке совпало только {by_pos} из {total} рекордов "
+              f"(список WML успел сдвинуться или порядок в list-data другой), остальные ищутся по названию")
+
+    # 3. ingame_id этих уровней на WML (кэш в файле, докачивает недостающие)
+    wml_ctx["ingame"] = build_wml_ingame_cache(needed)
+
+    # 4. Глобал: ingame_id -> уровень, и название -> ingame_id
+    global_levels = levels.fetch_global_levels(get_json, GLOBAL_LIST_URL)
+    global_by_ingame, global_name_to_ingame = {}, {}
+    for l in global_levels:
+        iid = pick(l, "ingame_id", "id")
+        if iid is None:
+            continue
+        iid = str(iid)
+        global_by_ingame[iid] = l
+        if l.get("name") is not None:
+            global_name_to_ingame.setdefault(l["name"], iid)
+    print(f"  Уровней в глобале: {len(global_by_ingame)}")
+
+    users, users_nicks, not_found, no_id, stats = convert(
+        records, nick_to_id, resolver, wml_ctx, global_by_ingame, global_name_to_ingame)
 
     if not by_rank:
         users = dict(sorted(users.items(), key=lambda kv: player_id_sort_key(kv[0])))
@@ -425,8 +668,9 @@ def step_convert(records, out_dir, by_rank):
         f.write("\n".join(no_id) + ("\n" if no_id else ""))
 
     print(f"\nИгроков с рекордами в JSON: {len(users)}; записей: {sum(map(len, users.values()))}")
-    print(f"Игроков без ID в gdr-ids.json: {len(no_id)}")
+    print(f"Игроков без ID в coreboard_id_map.json: {len(no_id)}")
     print(f"Уровней, не найденных по названию: {len(not_found)}")
+    print("Как сопоставлены рекорды:", {k: v for k, v in stats.items() if v})
     print("Названия найдены:", {k: v for k, v in resolver.stats.items() if v})
     print(f"Файлы лежат в папке {out_dir}")
 

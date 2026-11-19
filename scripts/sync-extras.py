@@ -75,7 +75,6 @@ args = ap.parse_args()
 
 LEVELS_URL = "https://coreboard.pythonanywhere.com/main/levels"
 LEVELS_UA = "gl-ext-top6"
-IDS_RAW = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/gdr-ids.json"
 LEVELS_RAW = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/levels_tp.json"
 GLOBAL_API = "https://api.demonlist.org/level/classic/list"
 
@@ -517,7 +516,7 @@ def main():
 
     # 3. И сравнение
 
-    # --include-absent: игроки CoreBoard, которых нет в gdr совсем, но чей ID находится через gdr-ids.json или
+    # --include-absent: игроки CoreBoard, которых нет в gdr совсем, но чей ID находится через
     # coreboard_id_map.json, сравниваются с пустым gdr: их записи попадают в my_extras и не пропадают при пересборке
     cmp_cmd = [sys.executable, cmp_script, "in-cbd-not-in-gdr", "--cbd", cbd_txt, "--gdr", gdr_txt,
                "--out-dir", work, "--include-absent"]
@@ -535,14 +534,8 @@ def main():
     with_links = found
     if total and args.videos:
         avl_script = find_script("add-video-links.py", "add_video_links.py")
-        ids_file = work / "gdr-ids.json"
-        try:
-            req = urllib.request.Request(IDS_RAW, headers={"User-Agent": LEVELS_UA})
-            with urllib.request.urlopen(req, timeout=30) as r:
-                ids_file.write_bytes(r.read())
-        except Exception as e:
-            sys.exit(f"Не могу загрузить gdr-ids.json с GitHub ({e}). Останавливаюсь.")
-        run([sys.executable, avl_script, "--out-dir", work, "--ids", ids_file],
+        # ники для команд add-video-links берёт из coreboard_id_map.json (корень репозитория)
+        run([sys.executable, avl_script, "--out-dir", work],
             "Видео и команды (add-video-links)")
         vf = work / "missing_achievements_with_videos.json"
         if vf.exists():

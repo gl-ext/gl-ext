@@ -193,9 +193,24 @@ def get_html(path):
         print(f"{path}: беру сохранённую страницу {cache.name} (свежая, до {args.ttl} с)")
         return cache.read_text("utf-8")
     print(f"{path}: скачиваю {BASE + path}")
-    req = urllib.request.Request(BASE + path, headers={"User-Agent": "Mozilla/5.0 (gd-rating helper)"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        text = r.read().decode("utf-8")
+    req = urllib.request.Request(BASE + path, headers={
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Referer": "https://coreboard.pythonanywhere.com/",
+    })
+    import ssl
+    import gzip
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    with urllib.request.urlopen(req, timeout=60, context=ctx) as r:
+        raw = r.read()
+    # Сервер может отдавать gzip-сжатое содержимое
+    if raw[:2] == b'\x1f\x8b':
+        raw = gzip.decompress(raw)
+    text = raw.decode("utf-8")
     cache.write_text(text, "utf-8")
     time.sleep(1)  # не нагружаем бесплатный хостинг, если страниц несколько
     return text

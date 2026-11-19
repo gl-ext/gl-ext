@@ -1,4 +1,5 @@
 import argparse
+import html
 import json
 import re
 import sys
@@ -22,8 +23,10 @@ parser.add_argument("--out-dir", default="compare",
                     help="папка compare.py: оттуда берётся missing_achievements.json, "
                          "туда же пишутся все результаты (создаётся сама). По умолчанию compare. "
                          "Чтобы работать в текущей папке: --out-dir .")
-parser.add_argument("--ids", default="gdr-ids.json",
-                    help="файл с ID игроков (ник -> ID), нужен для команд. По умолчанию gdr-ids.json")
+parser.add_argument("--id-map", default="",
+                    help="coreboard_id_map.json ({ID CoreBoard: {nick, gdr_id}}): по нему в командах вместо нашего ID "
+                         "пишется ник CoreBoard. По умолчанию coreboard_id_map.json в корне репозитория "
+                         "(или рядом со скриптом)")
 parser.add_argument("--prev-players", default="",
                     help="прошлый опубликованный missing_players.json (cbd/missing_players.json): ссылки, уже найденные "
                          "в нём, берутся оттуда и заново не ищутся, так запуск каждые 30 минут не повторяет поиск")
@@ -40,7 +43,11 @@ SOURCES_FILE = str(OUT_DIR / "video_link_sources.txt")  # откуда взят�
 COMMANDS_FILE = str(OUT_DIR / "commands.txt")           # команды /fulladd и /try
 PLAYERS_FILE = str(OUT_DIR / "missing_players.json")    # новые игроки (делает compare.py); сюда дописываются ссылки
 PLAYERS_NOT_FOUND_FILE = str(OUT_DIR / "missing_players_video_links.txt")  # где видео не нашлось
-IDS_FILE = args.ids        # ник -> ID игрока (нужен для команд), лежит в текущей папке
+_HERE = Path(__file__).resolve().parent
+# Карта ищется в корне репозитория (папка выше scripts/), запасной вариант: рядом со скриптом
+ID_MAP_FILE = Path(args.id_map) if args.id_map else next(
+    (p for p in (_HERE.parent / "coreboard_id_map.json", _HERE / "coreboard_id_map.json") if p.exists()),
+    _HERE.parent / "coreboard_id_map.json")
 LEVELS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/levels_tp.json"  # названия уровней (нужны для команд), только GitHub
 
 # Особые названия уровней (ID в глобале -> как их писать в командах) лежат в levels.py, общем для всех
@@ -48,6 +55,7 @@ LEVELS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/main/levels_tp.jso
 SPECIAL_LEVEL_NAMES = levelsearch.SPECIAL_LEVEL_NAMES
 
 GLOBAL_API = "https://api.demonlist.org"
+DEMONLIST_LEVEL_URL = "https://demonlist.org/demonlist/level/{level_id}"
 POINTERCRATE_API = "https://pointercrate.com/api/v1"
 POINTERCRATE_DEMONS_API = "https://pointercrate.com/api/v2/demons"
 LINKS_URL = "https://raw.githubusercontent.com/gl-ext/gl-ext/refs/heads/main/links.json"
@@ -241,6 +249,29 @@ def get_global_level(level_id):
     return global_level_cache[level_id]
 
 
+def get_first_beaten_by(level_id):
+    """
+    Извлекает игрока «first beaten by» со страницы уровня на demonlist.org.
+    Возвращает (player_id, nick) или (None, None).
+    """
+    try:
+        url = DEMONLIST_LEVEL_URL.format(level_id=level_id)
+        response = session.get(url, timeout=TIMEOUT)
+        response.raise_for_status()
+        page = response.text
+    except Exception as error:
+        print(f"    Не удалось загрузить страницу уровня {level_id}: {error}")
+        return None, None
+
+    m = FIRST_BEATEN_RE.search(page)
+    if not m:
+        return None, None
+
+    player_id = m.group(1)
+    nick = html.unescape(re.sub(r"<[^>]+>", "", m.group(2))).strip()
+    return player_id, nick
+
+
 def find_global_video(user_id, level_id, percent):
     """
     Ищет видео рекорда на этот уровень И с этим процентом.
@@ -337,6 +368,18 @@ def find_global_video_any(player_id, level_id, percent):
             video = get_video(verification)
             if video and str(verification.get("user_id")) in accounts:
                 return video, "accepted"
+        except Exception as error:
+            first_error = first_error or error
+
+    # Дополнительная попытка: рекорд игрока, указанного в «first beaten by» на странице уровня
+    fb_id, fb_nick = get_first_beaten_by(level_id)
+    if fb_id:
+        try:
+            fb_accounts = global_accounts(fb_id)
+            for account in fb_accounts:
+                video, status = find_global_video(account, level_id, percent)
+                if video:
+                    return video, f"GlobalList (first beaten by {fb_nick})"
         except Exception as error:
             first_error = first_error or error
 
@@ -704,18 +747,20 @@ def normalize_id(player_id):
 
 
 def load_id_to_nick():
-    """Читает gdr-ids.json (ник -> ID) и переворачивает в {ID: ник}."""
+    """Читает coreboard_id_map.json ({ID CoreBoard: {nick, gdr_id}}) и делает {наш ID (gdr_id): ник CoreBoard}."""
     try:
-        with open(IDS_FILE, encoding="utf-8") as file:
-            raw_ids = json.load(file)
+        with open(ID_MAP_FILE, encoding="utf-8") as file:
+            id_map = json.load(file)
     except FileNotFoundError:
-        print(f"ВНИМАНИЕ: не найден {IDS_FILE}, в командах вместо ников будут ID")
+        print(f"ВНИМАНИЕ: не найден {ID_MAP_FILE}, в командах вместо ников будут ID")
         return {}
 
     id_to_nick = {}
-    for nick, player_id in raw_ids.items():
+    for row in id_map.values():
+        if not isinstance(row, dict) or not row.get("gdr_id") or not row.get("nick"):
+            continue
         # Если у одного ID несколько ников, берём первый.
-        id_to_nick.setdefault(normalize_id(player_id), nick)
+        id_to_nick.setdefault(normalize_id(row["gdr_id"]), row["nick"])
     return id_to_nick
 
 
@@ -792,6 +837,12 @@ YOUTUBE_ID_PATTERN = re.compile(
     r'([A-Za-z0-9_-]{11})'
 )
 
+# "first beaten by <a href="/demonlist/player/3988">ikkyseen</a>" на странице уровня demonlist.org
+FIRST_BEATEN_RE = re.compile(
+    r'first beaten by\s*<a[^>]*href="/demonlist/player/(\d+)"[^>]*>(.*?)</a>',
+    re.S | re.I
+)
+
 
 def normalize_link(link):
     """
@@ -823,7 +874,7 @@ def build_commands(command_records, id_to_nick, level_names):
     blocks = []
 
     for player_key, player_id, level_id, percent, link, site in command_records:
-        # Ник: сначала из gdr-ids.json, потом из ключа "ID — Ник", потом сам ID.
+        # Ник: сначала из coreboard_id_map.json, потом из ключа "ID — Ник", потом сам ID.
         nick = id_to_nick.get(normalize_id(player_id))
         if not nick and " — " in str(player_key):
             nick = str(player_key).split(" — ", 1)[1].strip()
