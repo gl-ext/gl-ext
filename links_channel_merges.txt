@@ -3843,3 +3843,8 @@
     общие каналы: https://www.youtube.com/@mir0nus
     поглощено: pc73291 (Mironus), аккаунты: {'pointercrate': [73291]}
 
+===== 2026-11-20 13:40:08 UTC: склеено групп 1, поглощено записей 1 =====
+СКЛЕЕНО В 2118 (Pagakis)
+    общие каналы: https://www.youtube.com/@Pagakisss
+    поглощено: pc73312 (Pagakis), аккаунты: {'pointercrate': [73312]}
+

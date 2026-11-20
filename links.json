@@ -49739,7 +49739,9 @@
   "2118": {
     "_name": "Pagakis",
     "other_lists": {
-      "pointercrate": [],
+      "pointercrate": [
+        73312
+      ],
       "wml": []
     },
     "channels": {
@@ -374426,15 +374428,6 @@
       "wml": []
     }
   },
-  "pc73312": {
-    "_name": "Pagakis",
-    "other_lists": {
-      "pointercrate": [
-        73312
-      ],
-      "wml": []
-    }
-  },
   "pc73313": {
     "_name": "xdandroo",
     "other_lists": {
@@ -374451,6 +374444,11 @@
         73314
       ],
       "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@notAkulic2"
+      ]
     }
   },
   "pc73315": {
@@ -376782,6 +376780,32 @@
     "other_lists": {
       "pointercrate": [
         73405
+      ],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@Aleeewew"
+      ]
+    }
+  },
+  "38938": {
+    "_name": "yanuuwu",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@yanuumania"
+      ]
+    }
+  },
+  "pc73406": {
+    "_name": "iangd",
+    "other_lists": {
+      "pointercrate": [
+        73406
       ],
       "wml": []
     }
