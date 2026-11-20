@@ -319,6 +319,7 @@
     "xblight": {"name": "blight", "like": "Natural Disaster", "place": 150, "T": 99.0, "t": 50.0},
     "xMETROPOLIS": {"name": "METROPOLIS", "like": "Acheron", "place": 35, "T": 93.0, "t": 60.0},
     "xFIBERGLASS": {"name": "FIBERGLASS", "like": "Kyouki", "place": 38, "T": 99.0, "t": 50.0},
-    "xSilent Acropolis": {"name": "Silent Acropolis", "like": "Thinking Space II", "place": 4, "T": 99.0, "t": 44.0}
+    "xSilent Acropolis": {"name": "Silent Acropolis", "like": "Thinking Space II", "place": 4, "T": 99.0, "t": 44.0},
+    "xWarCora": {"name": "WarCora", "like": "Quanteuse processing", "place": 13, "T": 98.0, "t": 38.0}
   }
 }
