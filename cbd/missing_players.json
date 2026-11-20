@@ -1,10 +1,4 @@
 {
   "users": {
-    "2840": {"nick": "GMDCOLA", "country_code": "IL", "gdr_id": "20321", "records": [["Firework", 100, ""], ["The Golden", 100, ""]]},
-    "2841": {"nick": "DreamzyGMD", "country_code": null, "gdr_id": "pc73258", "records": [["Sakupen Circles", 100, ""]]},
-    "2842": {"nick": "cbrown789", "country_code": null, "gdr_id": "pc72767", "records": [["Tartarus", 100, ""], ["KOCMOC", 73, ""]]},
-    "2843": {"nick": "Stoichiometry", "country_code": null, "gdr_id": "pc67961", "records": [["The Plunge", 100, ""], ["chrome hearts", 100, ""]]},
-    "2844": {"nick": "zabakovnik", "country_code": "CZ", "gdr_id": "21246", "records": [["Thinking Space II (Legacy)", 87, ""], ["Galeforce", 100, ""]]},
-    "2845": {"nick": "506D", "country_code": null, "gdr_id": "pc73268", "records": [["Solar Flare", 100, ""]]}
   }
 }
