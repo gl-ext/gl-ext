@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-20T19:07:22.362Z",
+  "generated": "2026-11-20T20:07:48.256Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -465,7 +465,7 @@
       [2050,72,"poocubed",100,"",69,null,null,"my_extras",104,36.4]
     ],
     "17526": [
-      [3096,34,"Defeated Circles",87,"",null,null,null,"my_extras",152.89,0]
+      [3096,34,"Defeated Circles",100,"",null,null,null,"my_extras",344,0]
     ],
     "17620": [
       [2657,37,"Tunnel of Despair",92,"",81,null,null,"my_extras",149.86,124.5]
@@ -639,7 +639,7 @@
       [2237,244,"Cognition",100,"",null,null,null,"my_extras",1,0]
     ],
     "23604": [
-      [2050,72,"poocubed",57,"",null,null,null,"my_extras",30.16,0]
+      [2050,72,"poocubed",83,"",null,null,null,"my_extras",43.68,0]
     ],
     "23817": [
       [3299,14,"Sakupen circles",66,"",null,null,null,"my_extras",130,0],
@@ -666,7 +666,7 @@
       [1704,276,"Cobwebs",100,"",null,null,null,"my_extras",0.98,0]
     ],
     "24820": [
-      [2656,35,"Acheron",96,"",null,null,null,"my_extras",164.69,0]
+      [2656,35,"Acheron",100,"",null,null,null,"my_extras",340,0]
     ],
     "24861": [
       [1732,65,"Sakupen Circles",70,"",null,null,null,"my_extras",44.85,0],
