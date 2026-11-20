@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-20T00:44:02.883Z",
+  "generated": "2026-11-20T01:55:09.528Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -11,7 +11,7 @@
       [2657,37,"Tunnel of Despair",69,"",null,null,null,"my_extras",96.83,0]
     ],
     "396": [
-      [3449,26,"Azure Flare",52,"",null,null,null,"my_extras",107.67,0]
+      [3449,26,"Azure Flare",53,"",null,null,null,"my_extras",109.38,0]
     ],
     "700": [
       [2236,152,"The Golden",100,"",77,null,null,"my_extras",4.6,1.78],
@@ -104,7 +104,7 @@
       [2660,8,"Tidal Wave",87,"",null,null,null,"my_extras",309.77,0]
     ],
     "5565": [
-      [3448,20,"Old Orochi",40,"",null,null,null,"my_extras",106.35,0]
+      [3448,20,"Old Orochi",55,"",null,null,null,"my_extras",130.16,0]
     ],
     "5596": [
       [2656,35,"Acheron",67,"",null,null,null,"my_extras",113.33,0]
@@ -186,8 +186,7 @@
       [1591,182,"Trueffet",100,"",null,null,null,"my_extras",3.4,0]
     ],
     "6617": [
-      [2653,21,"Silent clubstep",65,"",null,null,null,"my_extras",146.22,0],
-      [3351,41,"Thinking Space II",100,"",null,null,null,"my_extras",316,0]
+      [2653,21,"Silent clubstep",65,"",null,null,null,"my_extras",146.22,0]
     ],
     "6619": [
       [2050,72,"poocubed",100,"",54,null,null,"my_extras",104,28.6],
@@ -320,9 +319,6 @@
     "13301": [
       [1981,76,"Saul Goodman",57,"",null,null,null,"my_extras",21.07,0]
     ],
-    "13462": [
-      [2685,109,"The Yangire",100,"",null,null,null,"my_extras",46,0]
-    ],
     "13506": [
       [2976,5,"Amethyst",69,"",null,null,null,"my_extras",313.22,0],
       [3409,7,"Green Bullet",91,"",null,null,null,"my_extras",352.36,0]
@@ -398,9 +394,6 @@
     ],
     "14643": [
       [2688,67,"KOSETSU",83,"",null,null,null,"my_extras",58.6,0]
-    ],
-    "14699": [
-      [1754,138,"Tartarus",100,"",null,null,null,"my_extras",17,0]
     ],
     "14715": [
       [2873,25,"andromeda",72,"",null,null,null,"my_extras",134.24,0],
@@ -519,9 +512,6 @@
       [3226,4,"Thinking Space II",77,"",null,null,null,"my_extras",297.65,0],
       [2713,12,"BOOBAWAMBA",54,"",null,null,null,"my_extras",151.43,0]
     ],
-    "18661": [
-      [2358,110,"SARYYX NEVER CLEAR",100,"",null,null,null,"my_extras",45,0]
-    ],
     "18721": [
       [2653,21,"Silent clubstep",66,"",null,null,null,"my_extras",147.74,0]
     ],
@@ -639,9 +629,6 @@
     "23154": [
       [3353,190,"ROCKBOTTOM",100,"",null,null,null,"my_extras",3.4,0]
     ],
-    "23249": [
-      [3226,4,"Thinking Space II",82,"",null,null,null,"my_extras",330,0]
-    ],
     "23458": [
       [1952,230,"Trotil",100,"",null,null,null,"my_extras",1.8,0],
       [1563,238,"shimmer",100,"",null,null,null,"my_extras",1.4,0],
@@ -659,6 +646,9 @@
       [2843,105,"The Plunge",100,"",null,null,null,"my_extras",50,0],
       [2236,152,"The Golden",100,"",null,null,null,"my_extras",4.6,0],
       [1563,238,"shimmer",100,"",null,null,null,"my_extras",1.4,0]
+    ],
+    "24272": [
+      [2656,35,"Acheron",100,"",94,null,null,"my_extras",340,161.15]
     ],
     "24400": [
       [2237,244,"Cognition",100,"",null,null,null,"my_extras",1,0],
