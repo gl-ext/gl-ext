@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-21T06:40:38.200Z",
+  "generated": "2026-11-21T07:54:17.394Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -27,6 +27,10 @@
     ],
     "2080": [
       [2656,35,"Acheron",76,"",null,null,null,"my_extras",129.27,0]
+    ],
+    "3011": [
+      [2577,135,"Sonic Wave Infinity",100,"",null,null,null,"my_extras",20,0],
+      [1952,231,"Trotil",100,"",null,null,null,"my_extras",1.4,0]
     ],
     "3232": [
       [1732,66,"Sakupen Circles",100,"",null,null,null,"my_extras",152,0]
@@ -165,7 +169,8 @@
       [2264,91,"Edge of Destiny",79,"",null,null,null,"my_extras",24.56,0]
     ],
     "6358": [
-      [1704,277,"Cobwebs",100,"",null,null,null,"my_extras",0.98,0]
+      [1704,277,"Cobwebs",100,"",null,null,null,"my_extras",0.98,0],
+      [2304,278,"Amalgam",100,"",null,null,null,"my_extras",0.98,0]
     ],
     "6384": [
       [2202,271,"Twilight",100,"",null,null,null,"my_extras",0.98,0]
@@ -173,12 +178,16 @@
     "6455": [
       [2656,35,"Acheron",95,"",null,null,null,"my_extras",162.92,0]
     ],
+    "6542": [
+      [2307,240,"Crimson Planet",100,"",null,null,null,"my_extras",1.4,0]
+    ],
     "6565": [
       [2843,106,"The Plunge",100,"",65,null,null,"my_extras",49,14.09]
     ],
     "6597": [
       [1893,180,"Henken",100,"",null,null,null,"my_extras",3.8,0],
-      [2307,240,"Crimson Planet",100,"",null,null,null,"my_extras",1.4,0]
+      [2307,240,"Crimson Planet",100,"",null,null,null,"my_extras",1.4,0],
+      [2711,263,"Rigel",100,"",null,null,null,"my_extras",0.99,0]
     ],
     "6607": [
       [1748,45,"Slaughterhouse",81,"",null,null,null,"my_extras",117.07,0]
@@ -403,6 +412,9 @@
       [2873,25,"andromeda",72,"",null,null,null,"my_extras",134.24,0],
       [2656,35,"Acheron",98,"",null,null,null,"my_extras",168.23,0]
     ],
+    "14800": [
+      [2809,28,"Anathema",81,"",null,null,null,"my_extras",139.24,0]
+    ],
     "15022": [
       [2928,18,"Every End",82,"",null,null,null,"my_extras",181.84,0]
     ],
@@ -445,6 +457,10 @@
     "17043": [
       [2928,18,"Every End",61,"",null,null,null,"my_extras",134.69,0]
     ],
+    "17075": [
+      [1740,157,"Oblivion",100,"",null,null,null,"my_extras",4.6,0],
+      [1746,181,"Aerial Gleam",100,"",null,null,null,"my_extras",3.4,0]
+    ],
     "17106": [
       [2050,73,"poocubed",60,"",null,null,null,"my_extras",29.28,0],
       [1981,77,"Saul Goodman",88,"",null,null,null,"my_extras",34.23,0],
@@ -472,7 +488,8 @@
     ],
     "17714": [
       [2843,106,"The Plunge",73,"",null,null,null,"my_extras",16.54,0],
-      [1591,183,"Trueffet",100,"",null,null,null,"my_extras",3.4,0]
+      [1591,183,"Trueffet",100,"",null,null,null,"my_extras",3.4,0],
+      [1563,239,"shimmer",100,"",null,null,null,"my_extras",1.4,0]
     ],
     "17731": [
       [1733,143,"UNKNOWN",100,"",null,null,null,"my_extras",12,0]
@@ -522,6 +539,9 @@
     "18903": [
       [2843,106,"The Plunge",100,"",null,null,null,"my_extras",49,0],
       [1733,143,"UNKNOWN",100,"",null,null,null,"my_extras",12,0]
+    ],
+    "19006": [
+      [2692,140,"Waterfall",100,"",null,null,null,"my_extras",15,0]
     ],
     "19032": [
       [3320,22,"Penumbral",96,"",null,null,null,"my_extras",189.61,0],
@@ -584,6 +604,9 @@
     ],
     "21102": [
       [2050,73,"poocubed",50,"",null,null,null,"my_extras",24.48,0]
+    ],
+    "21108": [
+      [1995,225,"Cold Sweat",100,"",null,null,null,"my_extras",1.8,0]
     ],
     "21275": [
       [2050,73,"poocubed",83,"",null,null,null,"my_extras",40.32,0]
@@ -672,6 +695,9 @@
       [1732,66,"Sakupen Circles",70,"",null,null,null,"my_extras",42.61,0],
       [1707,249,"SUPERHATEMEWORLD",100,"",null,null,null,"my_extras",1,0]
     ],
+    "25076": [
+      [3401,98,"Make Paul Dance",100,"",null,null,null,"my_extras",57,0]
+    ],
     "25787": [
       [2873,25,"andromeda",73,"",null,null,null,"my_extras",136.3,0]
     ],
@@ -695,6 +721,9 @@
     "26550": [
       [2050,73,"poocubed",75,"",null,null,null,"my_extras",36.48,0]
     ],
+    "26708": [
+      [2435,275,"Ragnarok",100,"",null,null,null,"my_extras",0.98,0]
+    ],
     "26762": [
       [2692,140,"Waterfall",100,"",null,null,null,"my_extras",15,0],
       [2236,153,"The Golden",100,"",null,null,null,"my_extras",4.6,0],
@@ -704,6 +733,10 @@
     "26780": [
       [2656,35,"Acheron",59,"",null,null,null,"my_extras",99.17,0]
     ],
+    "26874": [
+      [2535,79,"The Hallucination",100,"",null,null,null,"my_extras",76,0],
+      [3438,100,"Skystrike",100,"",null,null,null,"my_extras",55,0]
+    ],
     "27236": [
       [3351,42,"Thinking Space II",78,"",null,null,null,"my_extras",103.16,0],
       [2418,93,"Solar Flare",100,"",65,null,null,"my_extras",62,20.67],
@@ -712,6 +745,12 @@
     "27585": [
       [2854,95,"Collapse",94,"",null,null,null,"my_extras",28.13,0],
       [3302,201,"chrome hearts",100,"",null,null,null,"my_extras",2.6,0]
+    ],
+    "27721": [
+      [2700,141,"BPATA MPAKA",100,"",null,null,null,"my_extras",14,0]
+    ],
+    "28952": [
+      [1732,66,"Sakupen Circles",100,"",null,null,null,"my_extras",152,0]
     ],
     "28956": [
       [1748,45,"Slaughterhouse",78,"",null,null,null,"my_extras",111.59,0]
@@ -783,6 +822,9 @@
     ],
     "34984": [
       [1563,239,"shimmer",100,"",null,null,null,"my_extras",1.4,0]
+    ],
+    "35450": [
+      [2928,18,"Every End",100,"",69,null,null,"my_extras",440,152.65]
     ],
     "35482": [
       [2222,155,"Verdant Landscape",100,"",null,null,null,"my_extras",4.6,0]
