@@ -3866,3 +3866,8 @@
     общие каналы: https://www.youtube.com/@mythicjargon
     поглощено: pc73305 (mythicjargon), аккаунты: {'pointercrate': [73305]}
 
+===== 2026-11-21 19:14:54 UTC: склеено групп 1, поглощено записей 1 =====
+СКЛЕЕНО В 66620 (Streamyy)
+    общие каналы: https://www.youtube.com/@streamy450
+    поглощено: pc39484 ([MSTRD] Streamy450), аккаунты: {'pointercrate': [39484, 39487]}
+
