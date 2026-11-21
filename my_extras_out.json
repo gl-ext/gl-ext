@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-21T12:43:05.520Z",
+  "generated": "2026-11-21T13:43:31.328Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -11,7 +11,7 @@
       [2657,38,"Tunnel of Despair",69,"",null,null,null,"my_extras",95.67,0]
     ],
     "396": [
-      [3449,26,"Azure Flare",53,"",null,null,null,"my_extras",109.38,0]
+      [3449,26,"Azure Flare",52,"",null,null,null,"my_extras",107.67,0]
     ],
     "700": [
       [2236,153,"The Golden",100,"",77,null,null,"my_extras",4.6,1.78],
@@ -21,6 +21,9 @@
     "951": [
       [2685,110,"The Yangire",100,"",null,null,null,"my_extras",45,0],
       [2236,153,"The Golden",100,"",null,null,null,"my_extras",4.6,0]
+    ],
+    "997": [
+      [3458,36,"METROPOLIS",100,"",null,null,null,"my_extras",336,0]
     ],
     "1491": [
       [2843,106,"The Plunge",87,"",null,null,null,"my_extras",20.83,0]
@@ -213,9 +216,6 @@
       [3278,13,"Quanteuse processing",72,"",49,null,null,"my_extras",203.73,147.27],
       [2653,21,"Silent clubstep",62,"",null,null,null,"my_extras",141.65,0]
     ],
-    "6789": [
-      [1732,66,"Sakupen Circles",68,"",null,null,null,"my_extras",40.3,0]
-    ],
     "6800": [
       [3061,85,"Sevvend Clubstep",89,"",null,null,null,"my_extras",30.83,0]
     ],
@@ -260,7 +260,7 @@
       [2050,73,"poocubed",92,"",null,null,null,"my_extras",44.64,0]
     ],
     "8053": [
-      [3320,22,"Penumbral",79,"",null,null,null,"my_extras",153.39,0]
+      [3320,22,"Penumbral",92,"",null,null,null,"my_extras",181.09,0]
     ],
     "8166": [
       [1750,47,"Deimos",60,"",null,null,null,"my_extras",79.79,0],
@@ -312,6 +312,9 @@
     "10783": [
       [2485,65,"Firework",76,"",null,null,null,"my_extras",59.09,0],
       [2050,73,"poocubed",77,"",null,null,null,"my_extras",37.44,0]
+    ],
+    "11811": [
+      [3226,4,"Thinking Space II",78,"",null,null,null,"my_extras",304.12,0]
     ],
     "12473": [
       [3228,74,"Hazard Duty Pay",61,"",null,null,null,"my_extras",25.83,0],
@@ -549,9 +552,6 @@
     ],
     "19066": [
       [1724,39,"Kyouki",98,"",null,null,null,"my_extras",160.38,0]
-    ],
-    "19207": [
-      [2449,204,"Zodiac",100,"",null,null,null,"my_extras",2.6,0]
     ],
     "19219": [
       [3353,191,"ROCKBOTTOM",100,"",null,null,null,"my_extras",3,0]
@@ -856,11 +856,8 @@
     "40966": [
       [2024,298,"Bloodlust",100,"",null,null,null,"my_extras",0.97,0]
     ],
-    "41349": [
-      [3226,4,"Thinking Space II",84,"",82,null,null,"my_extras",342.94,330]
-    ],
     "41363": [
-      [3226,4,"Thinking Space II",68,"",null,null,null,"my_extras",239.41,0]
+      [3226,4,"Thinking Space II",71,"",null,null,null,"my_extras",258.82,0]
     ],
     "42416": [
       [2928,18,"Every End",66,"",null,null,null,"my_extras",145.92,0]
@@ -870,16 +867,8 @@
       [1754,139,"Tartarus",95,"",null,null,null,"my_extras",7.69,0],
       [3353,191,"ROCKBOTTOM",100,"",null,null,null,"my_extras",3,0]
     ],
-    "42893": [
-      [1853,242,"qoUEO",100,"",null,null,null,"my_extras",1,0],
-      [1704,277,"Cobwebs",100,"",null,null,null,"my_extras",0.98,0]
-    ],
     "45796": [
       [3320,22,"Penumbral",92,"",null,null,null,"my_extras",181.09,0]
-    ],
-    "46284": [
-      [1552,196,"NEUTRA",100,"",null,null,null,"my_extras",3,0],
-      [1690,290,"Jesse Pinkman",100,"",null,null,null,"my_extras",0.97,0]
     ],
     "48076": [
       [1754,139,"Tartarus",100,"",null,null,null,"my_extras",16,0],
@@ -895,7 +884,7 @@
       [1578,224,"Thinking Space",100,"",null,null,null,"my_extras",1.8,0]
     ],
     "56287": [
-      [2660,8,"Tidal Wave",85,"",null,null,null,"my_extras",301.4,0]
+      [2660,8,"Tidal Wave",87,"",null,null,null,"my_extras",309.77,0]
     ],
     "56922": [
       [2449,204,"Zodiac",100,"",null,null,null,"my_extras",2.6,0],
