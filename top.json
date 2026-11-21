@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-21T01:00:46.038Z",
+ "generated": "2026-11-21T02:08:39.928Z",
  "users": [
   {
    "place": 1,
@@ -291,6 +291,15 @@
   },
   {
    "place": 33,
+   "oldPlace": 40,
+   "id": "51317",
+   "name": "Cryostazz",
+   "country": "France",
+   "points": 3601.65,
+   "basePoints": 3311.47
+  },
+  {
+   "place": 34,
    "oldPlace": 33,
    "id": "14436",
    "name": "Laniakea",
@@ -299,7 +308,7 @@
    "basePoints": 3569.81
   },
   {
-   "place": 34,
+   "place": 35,
    "oldPlace": 39,
    "id": "14440",
    "name": "Kaza",
@@ -308,7 +317,7 @@
    "basePoints": 3356.92
   },
   {
-   "place": 35,
+   "place": 36,
    "oldPlace": 34,
    "id": "16529",
    "name": "Albert",
@@ -317,7 +326,7 @@
    "basePoints": 3525.09
   },
   {
-   "place": 36,
+   "place": 37,
    "oldPlace": 35,
    "id": "14544",
    "name": "Hqmy",
@@ -326,7 +335,7 @@
    "basePoints": 3516.94
   },
   {
-   "place": 37,
+   "place": 38,
    "oldPlace": 36,
    "id": "14431",
    "name": "Axinity",
@@ -335,7 +344,7 @@
    "basePoints": 3453.47
   },
   {
-   "place": 38,
+   "place": 39,
    "oldPlace": 37,
    "id": "14445",
    "name": "Laysah",
@@ -344,7 +353,7 @@
    "basePoints": 3420.52
   },
   {
-   "place": 39,
+   "place": 40,
    "oldPlace": 38,
    "id": "14447",
    "name": "Abdieldevil",
@@ -353,7 +362,7 @@
    "basePoints": 3391.27
   },
   {
-   "place": 40,
+   "place": 41,
    "oldPlace": 49,
    "id": "14549",
    "name": "Whizkid05",
@@ -362,22 +371,13 @@
    "basePoints": 2955.77
   },
   {
-   "place": 41,
+   "place": 42,
    "oldPlace": 44,
    "id": "14430",
    "name": "Cursed",
    "country": "United-Kingdom",
    "points": 3336.97,
    "basePoints": 3078.15
-  },
-  {
-   "place": 42,
-   "oldPlace": 40,
-   "id": "51317",
-   "name": "Cryostazz",
-   "country": "France",
-   "points": 3311.47,
-   "basePoints": 3311.47
   },
   {
    "place": 43,
