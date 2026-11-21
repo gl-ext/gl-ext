@@ -6,12 +6,21 @@
 /fulladd Goanga, Firework, https://www.youtube.com/watch?v=yI_k6JHBv9E
 /try Goanga, Firework
 
-/fulladd oginn, Azure Flare 53%,
-/try oginn, Azure Flare 53%
+Видео: Pointercrate
+/fulladd Velocity, KOCMOC, https://www.youtube.com/watch?v=KRrU_ARNE6M
+/try Velocity, KOCMOC
+
+Видео: Pointercrate
+/fulladd sopa354, Haunted Ship, https://www.youtube.com/watch?v=zCS0RZOk8mI
+/try sopa354, Haunted Ship
 
 Видео: Pointercrate
 /fulladd vscreenz, poocubed 80%, https://www.youtube.com/watch?v=tZKPUBqsjGg
 /try vscreenz, poocubed 80%
+
+Видео: Pointercrate
+/fulladd waterduckthethird, Eyes in the Water, https://www.youtube.com/watch?v=qyPjpLwwMXM
+/try waterduckthethird, Eyes in the Water
 
 Видео: Pointercrate
 /fulladd BUNNYGRAM, Sonic Wave Infinity, https://www.youtube.com/watch?v=3hH3s4GLksg
