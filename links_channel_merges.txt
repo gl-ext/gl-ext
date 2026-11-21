@@ -3853,3 +3853,16 @@
     общие каналы: https://www.youtube.com/@%D0%BA%D1%83%D1%80%D0%BA%D1%83%D0%BC%D0%B0%D1%85%D0%B4
     поглощено: wml5398 (QrQma), аккаунты: {'wml': [5398]}
 
+===== 2026-11-21 01:38:59 UTC: склеено групп 3, поглощено записей 3 =====
+СКЛЕЕНО В 5466 (ra1n1337)
+    общие каналы: https://www.youtube.com/@ra1n1337gg
+    поглощено: pc73306 (ra1n1337), аккаунты: {'pointercrate': [73306]}
+
+СКЛЕЕНО В 29605 (clandd)
+    общие каналы: https://www.youtube.com/@clanddd
+    поглощено: pc73316 (clandd), аккаунты: {'pointercrate': [73316]}
+
+СКЛЕЕНО В 60709 (mythicjargon)
+    общие каналы: https://www.youtube.com/@mythicjargon
+    поглощено: pc73305 (mythicjargon), аккаунты: {'pointercrate': [73305]}
+
