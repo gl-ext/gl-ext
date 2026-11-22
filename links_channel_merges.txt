@@ -3871,3 +3871,12 @@
     общие каналы: https://www.youtube.com/@streamy450
     поглощено: pc39484 ([MSTRD] Streamy450), аккаунты: {'pointercrate': [39484, 39487]}
 
+===== 2026-11-22 07:39:30 UTC: склеено групп 2, поглощено записей 2 =====
+СКЛЕЕНО В 7293 (hoagy)
+    общие каналы: https://www.youtube.com/@MarlowReal
+    поглощено: wml5353 (marlow), аккаунты: {'wml': [5353]}
+
+СКЛЕЕНО В 46109 (Kvazz297)
+    общие каналы: https://www.youtube.com/@Kvazz-Prod
+    поглощено: wml5200 (Kvazz), аккаунты: {'wml': [5200]}
+
