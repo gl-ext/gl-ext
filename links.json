@@ -90834,7 +90834,9 @@
   "20955": {
     "_name": "Drkxxx",
     "other_lists": {
-      "pointercrate": [],
+      "pointercrate": [
+        73358
+      ],
       "wml": []
     },
     "channels": {
@@ -361574,6 +361576,11 @@
         73260
       ],
       "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@Carpenn08"
+      ]
     }
   },
   "8748": {
@@ -375747,15 +375754,6 @@
       "wml": []
     }
   },
-  "pc73358": {
-    "_name": "drkie",
-    "other_lists": {
-      "pointercrate": [
-        73358
-      ],
-      "wml": []
-    }
-  },
   "pc73359": {
     "_name": "Eradiae",
     "other_lists": {
@@ -375763,6 +375761,11 @@
         73359
       ],
       "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@Eradiae"
+      ]
     }
   },
   "pc73360": {
@@ -377844,6 +377847,108 @@
     "other_lists": {
       "pointercrate": [
         73440
+      ],
+      "wml": []
+    }
+  },
+  "56357": {
+    "_name": "Messi_mentality",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@messi_mentality_analdo_analiti"
+      ]
+    }
+  },
+  "62600": {
+    "_name": "rtksSs",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@rtksSs_gd"
+      ]
+    }
+  },
+  "63153": {
+    "_name": "Prostogamer",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@ProsstoGamer"
+      ]
+    }
+  },
+  "63532": {
+    "_name": "Paren",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@parencolontwo"
+      ]
+    }
+  },
+  "pc73442": {
+    "_name": "Vidanjor77e",
+    "other_lists": {
+      "pointercrate": [
+        73442
+      ],
+      "wml": []
+    }
+  },
+  "pc73443": {
+    "_name": "ChaosBlitz404",
+    "other_lists": {
+      "pointercrate": [
+        73443
+      ],
+      "wml": []
+    }
+  },
+  "pc73444": {
+    "_name": "Sleemy",
+    "other_lists": {
+      "pointercrate": [
+        73444
+      ],
+      "wml": []
+    }
+  },
+  "pc73445": {
+    "_name": "Walrussian",
+    "other_lists": {
+      "pointercrate": [
+        73445
+      ],
+      "wml": []
+    }
+  },
+  "pc73446": {
+    "_name": "LViZeris",
+    "other_lists": {
+      "pointercrate": [
+        73446
+      ],
+      "wml": []
+    }
+  },
+  "pc73449": {
+    "_name": "luaragmd",
+    "other_lists": {
+      "pointercrate": [
+        73449
       ],
       "wml": []
     }

@@ -3885,3 +3885,8 @@
     общие каналы: https://www.youtube.com/@ggDashy
     поглощено: pc73441 (ggDashy), аккаунты: {'pointercrate': [73441]}
 
+===== 2026-11-22 19:16:53 UTC: склеено групп 1, поглощено записей 1 =====
+СКЛЕЕНО В 20955 (Drkxxx)
+    общие каналы: https://www.youtube.com/@Drkxxx-w4s
+    поглощено: pc73358 (drkie), аккаунты: {'pointercrate': [73358]}
+
