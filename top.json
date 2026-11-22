@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-22T01:15:46.275Z",
+ "generated": "2026-11-22T02:21:34.655Z",
  "users": [
   {
    "place": 1,
@@ -426,15 +426,6 @@
   },
   {
    "place": 48,
-   "oldPlace": 50,
-   "id": "25791",
-   "name": "Syrcx",
-   "country": "Israel",
-   "points": 2999.13,
-   "basePoints": 2790.89
-  },
-  {
-   "place": 49,
    "oldPlace": 51,
    "id": "45796",
    "name": "Komet01",
@@ -443,13 +434,22 @@
    "basePoints": 2736.2
   },
   {
-   "place": 50,
+   "place": 49,
    "oldPlace": 47,
    "id": "14466",
    "name": "ProudGiraffe311",
    "country": "United-States",
    "points": 2905.63,
    "basePoints": 2905.63
+  },
+  {
+   "place": 50,
+   "oldPlace": 48,
+   "id": "14223",
+   "name": "Johnlikesdiamond",
+   "country": "United-States",
+   "points": 2887.55,
+   "basePoints": 2887.55
   }
  ]
 }

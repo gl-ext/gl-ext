@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-22T01:15:46.275Z",
+  "generated": "2026-11-22T02:21:34.655Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -305,9 +305,6 @@
       [2485,65,"Firework",100,"",null,null,null,"my_extras",160,0],
       [2296,231,"Renevant",100,"",null,null,null,"my_extras",1.4,0],
       [1704,278,"Cobwebs",100,"",null,null,null,"my_extras",0.98,0]
-    ],
-    "10153": [
-      [1748,45,"Slaughterhouse",100,"",null,null,null,"my_extras",300,0]
     ],
     "10783": [
       [2485,65,"Firework",76,"",null,null,null,"my_extras",59.09,0],
@@ -704,9 +701,6 @@
     "25787": [
       [2873,25,"andromeda",73,"",null,null,null,"my_extras",136.3,0]
     ],
-    "25791": [
-      [2659,30,"Avernus",100,"",83,null,null,"my_extras",360,151.76]
-    ],
     "26120": [
       [2692,140,"Waterfall",100,"",null,null,null,"my_extras",15,0],
       [1892,146,"Jigsaw",100,"",null,null,null,"my_extras",9,0],
@@ -855,9 +849,6 @@
     ],
     "36698": [
       [2926,244,"ta1LSD0ll",100,"",null,null,null,"my_extras",1,0]
-    ],
-    "40966": [
-      [2024,299,"Bloodlust",100,"",null,null,null,"my_extras",0.97,0]
     ],
     "41363": [
       [3226,4,"Thinking Space II",71,"",null,null,null,"my_extras",258.82,0]
