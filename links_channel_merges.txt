@@ -3880,3 +3880,8 @@
     общие каналы: https://www.youtube.com/@Kvazz-Prod
     поглощено: wml5200 (Kvazz), аккаунты: {'wml': [5200]}
 
+===== 2026-11-22 13:25:07 UTC: склеено групп 1, поглощено записей 1 =====
+СКЛЕЕНО В 39353 (ggDashy)
+    общие каналы: https://www.youtube.com/@ggDashy
+    поглощено: pc73441 (ggDashy), аккаунты: {'pointercrate': [73441]}
+
