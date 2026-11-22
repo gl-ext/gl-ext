@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-22T12:40:09.109Z",
+ "generated": "2026-11-22T13:41:25.825Z",
  "users": [
   {
    "place": 1,
@@ -219,15 +219,6 @@
   },
   {
    "place": 25,
-   "oldPlace": 29,
-   "id": "14462",
-   "name": "turtle",
-   "country": "United-States",
-   "points": 4121.65,
-   "basePoints": 3765.65
-  },
-  {
-   "place": 26,
    "oldPlace": 25,
    "id": "13505",
    "name": "loliklee",
@@ -236,7 +227,7 @@
    "basePoints": 4082.65
   },
   {
-   "place": 27,
+   "place": 26,
    "oldPlace": 26,
    "id": "5577",
    "name": "Serpentical",
@@ -245,7 +236,7 @@
    "basePoints": 3809.3
   },
   {
-   "place": 28,
+   "place": 27,
    "oldPlace": 27,
    "id": "18719",
    "name": "ChopBlox",
@@ -254,13 +245,22 @@
    "basePoints": 3788.66
   },
   {
-   "place": 29,
+   "place": 28,
    "oldPlace": 28,
    "id": "14485",
    "name": "PoCle",
    "country": "South-Korea",
    "points": 3774.57,
    "basePoints": 3774.57
+  },
+  {
+   "place": 29,
+   "oldPlace": 29,
+   "id": "14462",
+   "name": "turtle",
+   "country": "United-States",
+   "points": 3765.65,
+   "basePoints": 3765.65
   },
   {
    "place": 30,
