@@ -19,6 +19,10 @@
 /try Phantomm, Sinister Silence
 
 Видео: Pointercrate
+/fulladd Leidro, Solar Flare, https://www.youtube.com/watch?v=Mb9miz_88nA
+/try Leidro, Solar Flare
+
+Видео: Pointercrate
 /fulladd sopa354, Haunted Ship, https://www.youtube.com/watch?v=zCS0RZOk8mI
 /try sopa354, Haunted Ship
 
@@ -35,8 +39,16 @@
 /try Korseee, Aerial Gleam
 
 Видео: Pointercrate
+/fulladd Jayvian, Oblivion, https://www.youtube.com/watch?v=HZWrnS-xlUI
+/try Jayvian, Oblivion
+
+Видео: Pointercrate
 /fulladd BUNNYGRAM, Sonic Wave Infinity, https://www.youtube.com/watch?v=3hH3s4GLksg
 /try BUNNYGRAM, Sonic Wave Infinity
+
+Видео: Pointercrate
+/fulladd AndyIsCooler, Terminal Rampancy, https://www.youtube.com/watch?v=a0tNuzbNDnE
+/try AndyIsCooler, Terminal Rampancy
 
 Видео: Pointercrate
 /fulladd taro, KOCMOC 80%, https://www.youtube.com/watch?v=NvCXLRpyDrU
