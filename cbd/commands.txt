@@ -2,21 +2,48 @@
 /fulladd craig0, Thinking Space II 85%, https://www.youtube.com/watch?v=bZhqaahOp80
 /try craig0, Thinking Space II 85%
 
+/fulladd Ellie, Azure Flare,
+/try Ellie, Azure Flare
+
 Видео: Pointercrate
-/fulladd Goanga, Firework, https://www.youtube.com/watch?v=yI_k6JHBv9E
-/try Goanga, Firework
+/fulladd Ellie, Silent clubstep 65%, https://www.youtube.com/watch?v=3TNFZXYrUIY
+/try Ellie, Silent clubstep 65%
 
 Видео: Pointercrate
 /fulladd Velocity, KOCMOC, https://www.youtube.com/watch?v=KRrU_ARNE6M
 /try Velocity, KOCMOC
 
+/fulladd VERTOP, Avernus 87%,
+/try VERTOP, Avernus 87%
+
 Видео: Pointercrate
-/fulladd unwill, Penumbral 81%, https://www.youtube.com/watch?v=tYb9CqYOa18
-/try unwill, Penumbral 81%
+/fulladd Hollan, poocubed, https://www.youtube.com/watch?v=KCE9lYlKvMI
+/try Hollan, poocubed
+
+/fulladd Ablixa, Acheron 53%,
+/try Ablixa, Acheron 53%
 
 Видео: Pointercrate
 /fulladd Phantomm, Sinister Silence, https://www.youtube.com/watch?v=rQcHsfILxqE
 /try Phantomm, Sinister Silence
+
+/fulladd ralex, Nullscapes 76%,
+/try ralex, Nullscapes 76%
+
+/fulladd frol1k, Acheron 67%,
+/try frol1k, Acheron 67%
+
+/fulladd ItzTayfun, Acheron 86%,
+/try ItzTayfun, Acheron 86%
+
+/fulladd ItzTayfun, UNKNOWN 94%,
+/try ItzTayfun, UNKNOWN 94%
+
+/fulladd Drakanja, Slaughterhouse 60%,
+/try Drakanja, Slaughterhouse 60%
+
+/fulladd Pulsarishko, Edge of Destiny 82%,
+/try Pulsarishko, Edge of Destiny 82%
 
 Видео: Pointercrate
 /fulladd Leidro, Solar Flare, https://www.youtube.com/watch?v=Mb9miz_88nA
@@ -27,8 +54,8 @@
 /try sopa354, Haunted Ship
 
 Видео: Pointercrate
-/fulladd vscreenz, poocubed 80%, https://www.youtube.com/watch?v=tZKPUBqsjGg
-/try vscreenz, poocubed 80%
+/fulladd shrimmmmmmmmp, UNKNOWN, https://www.youtube.com/watch?v=9fviQBxvPdY
+/try shrimmmmmmmmp, UNKNOWN
 
 Видео: Pointercrate
 /fulladd waterduckthethird, Eyes in the Water, https://www.youtube.com/watch?v=qyPjpLwwMXM
@@ -43,8 +70,12 @@
 /try Jayvian, Oblivion
 
 Видео: Pointercrate
-/fulladd BUNNYGRAM, Sonic Wave Infinity, https://www.youtube.com/watch?v=3hH3s4GLksg
-/try BUNNYGRAM, Sonic Wave Infinity
+/fulladd rakhwomaninov, Haunted Ship, https://www.youtube.com/watch?v=PR5CU_xBBWc
+/try rakhwomaninov, Haunted Ship
+
+Видео: Pointercrate
+/fulladd Detrezo, Aerial Gleam, https://www.youtube.com/watch?v=1U0Us0dEzik
+/try Detrezo, Aerial Gleam
 
 Видео: Pointercrate
 /fulladd AndyIsCooler, Terminal Rampancy, https://www.youtube.com/watch?v=a0tNuzbNDnE
