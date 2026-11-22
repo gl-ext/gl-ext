@@ -1,6 +1,9 @@
 {
   "users": {
-    "1294": {"nick": "dantor", "country_code": "RU", "gdr_id": "6978", "records": [["Time Lapse", 100, ""], ["The Plunge", 82, ""], ["shimmer", 100, ""], ["Cognition", 100, ""], ["Shardscapes", 100, ""], ["Jesse Pinkman", 100, ""]]},
-    "2847": {"nick": "ggDashy", "country_code": "SE", "gdr_id": "39353", "records": [["LIMBO", 100, ""]]}
+    "1249": {"nick": "COBRA", "country_code": "UA", "gdr_id": "32954", "records": [["Silent clubstep", 50, ""]]},
+    "2847": {"nick": "Zenith797", "country_code": null, "gdr_id": "pc72229", "records": [["Coalescence", 100, ""], ["The Golden", 100, ""]]},
+    "2848": {"nick": "Nathan Gaming Pro", "country_code": "IE", "gdr_id": "pc66394", "records": [["Tartarus", 100, ""], ["CHIL", 82, ""]]},
+    "2849": {"nick": "wildpunto", "country_code": "VE", "gdr_id": "pc72501", "records": [["Tartarus", 100, ""], ["Aerial Gleam", 100, ""]]},
+    "2850": {"nick": "ggDashy", "country_code": "SE", "gdr_id": "39353", "records": [["LIMBO", 100, ""]]}
   }
 }

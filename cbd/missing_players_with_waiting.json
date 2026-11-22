@@ -1,5 +1,6 @@
 {
   "users": {
-    "2848": {"nick": "spotty2", "country_code": "Ukraine", "gdr_id": "29061", "records": [["Trueffet", 100, "https://youtu.be/kEXwHV4Faac?si=v4lsCS7LFlLLoSyf"], ["Zodiac", 100, "https://youtu.be/pA_u8_O3-us?si=FydhdVRnr_mlKaRP"], ["Trotil", 100, ""], ["Bloodlust", 100, "https://youtu.be/jObhtAbSDK8?si=Wcbg9uOO6JAJ8Ti1"]]}
+    "2851": {"nick": "MegaCatMan", "country_code": "United-States", "gdr_id": "30433", "records": [["Amethyst", 42, "https://youtu.be/9LyrOv5po_s"], ["KOCMOC", 82, ""]]},
+    "2852": {"nick": "spotty2", "country_code": "Ukraine", "gdr_id": "29061", "records": [["Trueffet", 100, "https://youtu.be/kEXwHV4Faac?si=v4lsCS7LFlLLoSyf"], ["Zodiac", 100, "https://youtu.be/pA_u8_O3-us?si=FydhdVRnr_mlKaRP"], ["Trotil", 100, ""], ["Bloodlust", 100, "https://youtu.be/jObhtAbSDK8?si=Wcbg9uOO6JAJ8Ti1"]]}
   }
 }

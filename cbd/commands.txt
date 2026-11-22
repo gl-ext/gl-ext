@@ -2,48 +2,49 @@
 /fulladd craig0, Thinking Space II 85%, https://www.youtube.com/watch?v=bZhqaahOp80
 /try craig0, Thinking Space II 85%
 
-/fulladd Ellie, Azure Flare,
-/try Ellie, Azure Flare
+Видео: Pointercrate
+/fulladd ekleraaa, Acheron 83%, https://www.youtube.com/watch?v=r0RDnFagM5I
+/try ekleraaa, Acheron 83%
+
+Видео: Pointercrate
+/fulladd navethes, Calibrate, https://www.youtube.com/watch?v=cxuk8yHN7S8
+/try navethes, Calibrate
+
+Видео: Pointercrate
+/fulladd Velocity, KOCMOC, https://www.youtube.com/watch?v=KRrU_ARNE6M
+/try Velocity, KOCMOC
 
 Видео: Pointercrate
 /fulladd Ellie, Silent clubstep 65%, https://www.youtube.com/watch?v=3TNFZXYrUIY
 /try Ellie, Silent clubstep 65%
 
 Видео: Pointercrate
-/fulladd Velocity, KOCMOC, https://www.youtube.com/watch?v=KRrU_ARNE6M
-/try Velocity, KOCMOC
-
-/fulladd VERTOP, Avernus 87%,
-/try VERTOP, Avernus 87%
-
-Видео: Pointercrate
 /fulladd Hollan, poocubed, https://www.youtube.com/watch?v=KCE9lYlKvMI
 /try Hollan, poocubed
-
-/fulladd Ablixa, Acheron 53%,
-/try Ablixa, Acheron 53%
 
 Видео: Pointercrate
 /fulladd Phantomm, Sinister Silence, https://www.youtube.com/watch?v=rQcHsfILxqE
 /try Phantomm, Sinister Silence
 
-/fulladd ralex, Nullscapes 76%,
-/try ralex, Nullscapes 76%
+Видео: Pointercrate
+/fulladd Musketor, KOSETSU, https://www.youtube.com/watch?v=71-auDxMLpk
+/try Musketor, KOSETSU
 
-/fulladd frol1k, Acheron 67%,
-/try frol1k, Acheron 67%
+Видео: Pointercrate
+/fulladd Will, Solar Flare, https://www.youtube.com/watch?v=kfo5h58vfO0
+/try Will, Solar Flare
 
-/fulladd ItzTayfun, Acheron 86%,
-/try ItzTayfun, Acheron 86%
+Видео: Pointercrate
+/fulladd DeadlockRC, Saul Goodman 70%, https://www.youtube.com/watch?v=tiks4_2BAIc
+/try DeadlockRC, Saul Goodman 70%
 
-/fulladd ItzTayfun, UNKNOWN 94%,
-/try ItzTayfun, UNKNOWN 94%
+Видео: Pointercrate
+/fulladd CowSlice, Sevvend Clubstep, https://www.youtube.com/watch?v=s5mfsXxbLig
+/try CowSlice, Sevvend Clubstep
 
-/fulladd Drakanja, Slaughterhouse 60%,
-/try Drakanja, Slaughterhouse 60%
-
-/fulladd Pulsarishko, Edge of Destiny 82%,
-/try Pulsarishko, Edge of Destiny 82%
+Видео: GlobalList
+/fulladd Pulsarishko, Promethean, https://www.youtube.com/watch?v=hzWYchs9XE8
+/try Pulsarishko, Promethean
 
 Видео: Pointercrate
 /fulladd Leidro, Solar Flare, https://www.youtube.com/watch?v=Mb9miz_88nA
@@ -62,16 +63,37 @@
 /try waterduckthethird, Eyes in the Water
 
 Видео: Pointercrate
+/fulladd ElectroLight7, Tartarus, https://www.youtube.com/watch?v=sRbhglaWemA
+/try ElectroLight7, Tartarus
+
+/fulladd NeRz1, poocubed 50%,
+/try NeRz1, poocubed 50%
+
+Видео: Pointercrate
 /fulladd Korseee, Aerial Gleam, https://www.youtube.com/watch?v=g3FAnuSs0TM
 /try Korseee, Aerial Gleam
+
+/fulladd wetwer, poocubed 95%,
+/try wetwer, poocubed 95%
+
+/fulladd niononi, Acheron 73%,
+/try niononi, Acheron 73%
 
 Видео: Pointercrate
 /fulladd Jayvian, Oblivion, https://www.youtube.com/watch?v=HZWrnS-xlUI
 /try Jayvian, Oblivion
 
 Видео: Pointercrate
+/fulladd Deforklift, Ultra Paracosm, https://www.youtube.com/watch?v=kXjU4WYz2lo
+/try Deforklift, Ultra Paracosm
+
+Видео: Pointercrate
 /fulladd rakhwomaninov, Haunted Ship, https://www.youtube.com/watch?v=PR5CU_xBBWc
 /try rakhwomaninov, Haunted Ship
+
+Видео: Pointercrate
+/fulladd CrystalDash, paranoia, https://www.youtube.com/watch?v=wwjojcKi77o
+/try CrystalDash, paranoia
 
 Видео: Pointercrate
 /fulladd Detrezo, Aerial Gleam, https://www.youtube.com/watch?v=1U0Us0dEzik
@@ -81,6 +103,15 @@
 /fulladd AndyIsCooler, Terminal Rampancy, https://www.youtube.com/watch?v=a0tNuzbNDnE
 /try AndyIsCooler, Terminal Rampancy
 
+/fulladd Saiyomi, Edge of Destiny 79%,
+/try Saiyomi, Edge of Destiny 79%
+
+/fulladd Saiyomi, Firework 55%,
+/try Saiyomi, Firework 55%
+
 Видео: Pointercrate
 /fulladd taro, KOCMOC 80%, https://www.youtube.com/watch?v=NvCXLRpyDrU
 /try taro, KOCMOC 80%
+
+/fulladd ioneix, Firework 96%,
+/try ioneix, Firework 96%
