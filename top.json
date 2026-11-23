@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-23T14:21:23.948Z",
+ "generated": "2026-11-23T15:34:14.391Z",
  "users": [
   {
    "place": 1,
@@ -102,7 +102,7 @@
   },
   {
    "place": 12,
-   "oldPlace": 16,
+   "oldPlace": 17,
    "id": "16551",
    "name": "Rediio",
    "country": "South-Korea",
@@ -156,21 +156,21 @@
   },
   {
    "place": 18,
+   "oldPlace": 16,
+   "id": "26548",
+   "name": "dovvin_",
+   "country": "Poland",
+   "points": 5280.43,
+   "basePoints": 5280.43
+  },
+  {
+   "place": 19,
    "oldPlace": 20,
    "id": "5564",
    "name": "roze [GD]",
    "country": "Russia",
    "points": 4902.12,
    "basePoints": 4592.35
-  },
-  {
-   "place": 19,
-   "oldPlace": 17,
-   "id": "26548",
-   "name": "dovvin_",
-   "country": "Poland",
-   "points": 4896.43,
-   "basePoints": 4896.43
   },
   {
    "place": 20,
