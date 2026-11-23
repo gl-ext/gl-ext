@@ -8,7 +8,7 @@ on:
       min_place:
         description: "Нижняя граница placement (если max пустой — это N и ниже, т.е. N+)"
         required: false
-        default: "1"
+        default: "301"
       max_place:
         description: "Верхняя граница placement (включительно), можно оставить пустым"
         required: false
@@ -22,7 +22,7 @@ on:
       min_scan:
         description: "Не останавливать перебор раньше этого user_id"
         required: false
-        default: "50000"
+        default: "65000"
       stop_after:
         description: "Сколько пустых id подряд = конец"
         required: false
@@ -54,7 +54,7 @@ on:
       commit_result:
         description: "Закоммитить результат в репозиторий (папка results/)"
         required: false
-        default: false
+        default: true
         type: boolean
 
 permissions:
