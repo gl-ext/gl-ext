@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-23T06:49:32.141Z",
+  "generated": "2026-11-23T08:24:27.599Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -154,6 +154,9 @@
     ],
     "6090": [
       [2656,35,"Acheron",100,"",null,null,null,"my_extras",340,0]
+    ],
+    "6192": [
+      [1732,66,"Sakupen Circles",100,"",68,null,null,"my_extras",152,40.3]
     ],
     "6257": [
       [2050,73,"poocubed",51,"",null,null,null,"my_extras",24.96,0],
@@ -372,7 +375,7 @@
       [1748,45,"Slaughterhouse",90,"",null,null,null,"my_extras",133.54,0]
     ],
     "14452": [
-      [2660,8,"Tidal Wave",84,"",57,null,null,"my_extras",297.21,184.19]
+      [2660,8,"Tidal Wave",100,"",57,null,null,"my_extras",720,184.19]
     ],
     "14460": [
       [2659,30,"Avernus",57,"",null,null,null,"my_extras",105.88,0]
@@ -775,6 +778,7 @@
       [1995,226,"Cold Sweat",100,"",null,null,null,"my_extras",1.8,0]
     ],
     "34092": [
+      [2485,65,"Firework",100,"",null,null,null,"my_extras",160,0],
       [3061,85,"Sevvend Clubstep",100,"",null,null,null,"my_extras",70,0]
     ],
     "34156": [

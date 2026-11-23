@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-23T06:49:32.141Z",
+ "generated": "2026-11-23T08:24:27.599Z",
  "users": [
   {
    "place": 1,
@@ -147,6 +147,15 @@
   },
   {
    "place": 17,
+   "oldPlace": 19,
+   "id": "14452",
+   "name": "Cookie",
+   "country": "United-States",
+   "points": 5306.32,
+   "basePoints": 4770.51
+  },
+  {
+   "place": 18,
    "oldPlace": 20,
    "id": "5564",
    "name": "roze [GD]",
@@ -155,22 +164,13 @@
    "basePoints": 4592.35
   },
   {
-   "place": 18,
+   "place": 19,
    "oldPlace": 17,
    "id": "26548",
    "name": "dovvin_",
    "country": "Poland",
    "points": 4896.43,
    "basePoints": 4896.43
-  },
-  {
-   "place": 19,
-   "oldPlace": 19,
-   "id": "14452",
-   "name": "Cookie",
-   "country": "United-States",
-   "points": 4883.53,
-   "basePoints": 4770.51
   },
   {
    "place": 20,
