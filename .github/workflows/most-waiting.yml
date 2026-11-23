@@ -37,6 +37,10 @@ on:
         description: "Параллельных запросов"
         required: false
         default: "16"
+      min_count:
+        description: "Выводить только игроков с N и более рекордами (1 = все)"
+        required: false
+        default: "1"
       top:
         description: "Оставить только N лучших игроков (0 = все)"
         required: false
@@ -76,14 +80,20 @@ jobs:
           END: ${{ inputs.end }}
           WORKERS: ${{ inputs.workers }}
           TOP: ${{ inputs.top }}
+          MIN_COUNT: ${{ inputs.min_count }}
           BASE_URL: ${{ inputs.base_url }}
         run: |
           mkdir -p results
-          NAME="most-waiting_${STATUS}_top${MIN_PLACE}${MAX_PLACE:+-$MAX_PLACE}${MAX_PLACE:-+}"
+          if [ -n "$MAX_PLACE" ]; then RANGE="top${MIN_PLACE}-${MAX_PLACE}"; else RANGE="top${MIN_PLACE}+"; fi
+          NAME="most-waiting_${STATUS}_${RANGE}"
+          # если задан диапазон id — добавляем его в имя, чтобы тестовый прогон не затирал полный
+          if [ "$END" != "0" ]; then NAME="${NAME}_id${START}-${END}"; elif [ "$START" != "1" ]; then NAME="${NAME}_id${START}+"; fi
+          if [ "$MIN_COUNT" != "1" ]; then NAME="${NAME}_min${MIN_COUNT}"; fi
           ARGS=("$MIN_PLACE")
           if [ -n "$MAX_PLACE" ]; then ARGS+=("$MAX_PLACE"); fi
           ARGS+=(--status "$STATUS" --min-scan "$MIN_SCAN" --stop-after "$STOP_AFTER"
                  --start "$START" --end "$END" --workers "$WORKERS" --out "results/$NAME")
+          if [ "$MIN_COUNT" != "1" ]; then ARGS+=(--min-count "$MIN_COUNT"); fi
           if [ "$TOP" != "0" ]; then ARGS+=(--top "$TOP"); fi
           if [ -n "$BASE_URL" ]; then ARGS+=(--base-url "$BASE_URL"); fi
           echo "python scripts/most-waiting.py ${ARGS[*]}"
@@ -103,5 +113,11 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add results/
           git diff --cached --quiet || git commit -m "most-waiting: update results"
-          git pull --rebase
-          git push
+          # до 5 попыток: если рядом закоммитил другой запуск — подтягиваем его изменения.
+          # -X theirs: при конфликте одинаковых файлов побеждает НАШ свежий результат
+          for i in 1 2 3 4 5; do
+            if git pull --rebase -X theirs && git push; then exit 0; fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((i * 5))
+          done
+          echo "Не удалось запушить результат" && exit 1
