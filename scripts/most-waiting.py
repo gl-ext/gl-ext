@@ -7,6 +7,7 @@ most_waiting.py — игроки Global Demonlist по убыванию числ
     python most_waiting.py 301             # топ 301 и ниже (301+)
     python most_waiting.py 151 300         # от топ 151 до топ 300
     python most_waiting.py 1 150 --status accepted
+    python most_waiting.py --start 1000 --end 2000   # быстрая проверка: только id 1000..2000
 
 Таблица лидеров не используется: user_id перебираются подряд (1, 2, 3, ...),
 для каждого вызывается user/record/list. Перебор заканчивается, когда подряд
@@ -122,6 +123,8 @@ def main():
     ap.add_argument("--min-scan", type=int, default=50000, help="не останавливаться раньше этого id (50000)")
     ap.add_argument("--stop-after", type=int, default=100, help="сколько пустых id подряд = конец (100)")
     ap.add_argument("--start", type=int, default=1, help="с какого id начать (1)")
+    ap.add_argument("--end", type=int, default=0,
+                    help="на каком id закончить, включительно (0 = без ограничения, идти до конца)")
     ap.add_argument("--workers", type=int, default=16, help="параллельных запросов (16)")
     ap.add_argument("--out", default="most_waiting", help="имя файла без расширения")
     ap.add_argument("--format", choices=["json", "txt", "both"], default="both")
@@ -136,6 +139,8 @@ def main():
     if hi is not None and hi < lo:
         sys.exit("max_place не может быть меньше min_place")
     range_label = f"top{lo}+" if hi is None else f"top{lo}-{hi}"
+    if args.end and args.end < args.start:
+        sys.exit("--end не может быть меньше --start")
 
     chunk = max(args.workers * 8, 64)
     results = []
@@ -148,8 +153,11 @@ def main():
 
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         while not finished:
-            ids = list(range(next_id, next_id + chunk))
-            next_id += chunk
+            last_id = next_id + chunk - 1
+            if args.end:
+                last_id = min(last_id, args.end)       # не выходим за --end
+            ids = list(range(next_id, last_id + 1))
+            next_id = last_id + 1
             futs = [(uid, pool.submit(scan_user, uid, args.status, lo, hi)) for uid in ids]
             for uid, fut in futs:                      # разбираем строго по порядку id
                 try:
@@ -173,6 +181,8 @@ def main():
                           file=sys.stderr)
                     finished = True
                     break
+            if args.end and next_id > args.end:        # весь диапазон пройден
+                finished = True
             print(f"  проверено {scanned} id (до {next_id - 1}), найдено игроков: {len(results)}, "
                   f"{time.time() - t0:.0f}с", file=sys.stderr)
 
