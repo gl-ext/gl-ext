@@ -303,7 +303,7 @@
     "xOld Abyss of Darkness": {"name": "Old Abyss of Darkness", "like": "Slaughterhouse", "place": 45, "T": 98.0, "t": 53.0},
     "xEndless Travel": {"name": "Endless Travel", "like": "Tartarus", "place": 139, "T": 99.0, "t": 47.0},
     "xTrue Innards": {"name": "True Innards", "like": "Firework", "place": 65, "T": 98.0, "t": 49.0},
-    "xEternal Silence": {"name": "Eternal Silence", "like": "Flamewall", "place": 6, "T": 98.0, "t": 27.0},
+    "xEternal Silence": {"name": "Eternal Silence", "like": "Flamewall", "place": 6, "T": 98.0, "t": 34.0},
     "xEscalator": {"name": "Escalator", "like": "BOOBAWAMBA", "place": 12, "T": 85.0, "t": 48.0},
     "xIT MEANS EVERYTHING": {"name": "IT MEANS EVERYTHING", "like": "Flamewall", "place": 6, "T": 97.0, "t": 47.0},
     "xTunnel of Serpent": {"name": "Tunnel of Serpent", "like": "Tidal Wave", "place": 8, "T": 87.0, "t": 44.0},
