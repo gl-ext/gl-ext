@@ -1,6 +1,8 @@
 name: most-waiting
 
 on:
+  schedule:
+    - cron: "41 */3 * * *"      # каждые 3 часа (в 00:41, 03:41, ... по UTC)
   workflow_dispatch:
     inputs:
       min_place:
@@ -58,6 +60,11 @@ on:
 permissions:
   contents: write
 
+# Если прошлый запуск ещё идёт, новый ждёт своей очереди, а не мешает ему
+concurrency:
+  group: most-waiting
+  cancel-in-progress: false
+
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -71,17 +78,17 @@ jobs:
 
       - name: Run scripts/most-waiting.py
         env:
-          MIN_PLACE: ${{ inputs.min_place }}
-          MAX_PLACE: ${{ inputs.max_place }}
-          STATUS: ${{ inputs.status }}
-          MIN_SCAN: ${{ inputs.min_scan }}
-          STOP_AFTER: ${{ inputs.stop_after }}
-          START: ${{ inputs.start }}
-          END: ${{ inputs.end }}
-          WORKERS: ${{ inputs.workers }}
-          TOP: ${{ inputs.top }}
-          MIN_COUNT: ${{ inputs.min_count }}
-          BASE_URL: ${{ inputs.base_url }}
+          MIN_PLACE: ${{ inputs.min_place || '1' }}
+          MAX_PLACE: ${{ inputs.max_place || '' }}
+          STATUS: ${{ inputs.status || 'waiting' }}
+          MIN_SCAN: ${{ inputs.min_scan || '50000' }}
+          STOP_AFTER: ${{ inputs.stop_after || '100' }}
+          START: ${{ inputs.start || '1' }}
+          END: ${{ inputs.end || '0' }}
+          WORKERS: ${{ inputs.workers || '16' }}
+          TOP: ${{ inputs.top || '0' }}
+          MIN_COUNT: ${{ inputs.min_count || '1' }}
+          BASE_URL: ${{ inputs.base_url || '' }}
         run: |
           mkdir -p results
           if [ -n "$MAX_PLACE" ]; then RANGE="top${MIN_PLACE}-${MAX_PLACE}"; else RANGE="top${MIN_PLACE}+"; fi
@@ -107,7 +114,7 @@ jobs:
           if-no-files-found: error
 
       - name: Commit result
-        if: ${{ inputs.commit_result }}
+        if: ${{ github.event_name == 'schedule' || inputs.commit_result }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
