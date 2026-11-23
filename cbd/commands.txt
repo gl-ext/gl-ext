@@ -43,12 +43,16 @@
 /try Hypa, LIMBO
 
 Видео: Pointercrate
-/fulladd Hexz, Firework, https://www.youtube.com/watch?v=Ovek8MO6_OU
-/try Hexz, Firework
-
-Видео: Pointercrate
 /fulladd Hollan, poocubed, https://www.youtube.com/watch?v=KCE9lYlKvMI
 /try Hollan, poocubed
+
+Видео: Pointercrate
+/fulladd Hexz, Aerial Gleam, https://www.youtube.com/watch?v=t3EBE6KKihA
+/try Hexz, Aerial Gleam
+
+Видео: Pointercrate
+/fulladd Hexz, Firework, https://www.youtube.com/watch?v=Ovek8MO6_OU
+/try Hexz, Firework
 
 Видео: Pointercrate
 /fulladd Phantomm, Sinister Silence, https://www.youtube.com/watch?v=rQcHsfILxqE
@@ -85,10 +89,6 @@
 Видео: Pointercrate
 /fulladd Leidro, Solar Flare, https://www.youtube.com/watch?v=Mb9miz_88nA
 /try Leidro, Solar Flare
-
-Видео: Pointercrate
-/fulladd sopa354, Haunted Ship, https://www.youtube.com/watch?v=zCS0RZOk8mI
-/try sopa354, Haunted Ship
 
 Видео: Pointercrate
 /fulladd shrimmmmmmmmp, UNKNOWN, https://www.youtube.com/watch?v=9fviQBxvPdY
