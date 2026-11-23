@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-23T18:39:19.717Z",
+ "generated": "2026-11-23T19:45:38.875Z",
  "users": [
   {
    "place": 1,
@@ -219,6 +219,15 @@
   },
   {
    "place": 25,
+   "oldPlace": 27,
+   "id": "18719",
+   "name": "ChopBlox",
+   "country": "Germany",
+   "points": 4132.66,
+   "basePoints": 3788.66
+  },
+  {
+   "place": 26,
    "oldPlace": 25,
    "id": "13505",
    "name": "loliklee",
@@ -227,22 +236,13 @@
    "basePoints": 4082.65
   },
   {
-   "place": 26,
+   "place": 27,
    "oldPlace": 26,
    "id": "5577",
    "name": "Serpentical",
    "country": "Unknown",
    "points": 3809.3,
    "basePoints": 3809.3
-  },
-  {
-   "place": 27,
-   "oldPlace": 27,
-   "id": "18719",
-   "name": "ChopBlox",
-   "country": "Germany",
-   "points": 3788.66,
-   "basePoints": 3788.66
   },
   {
    "place": 28,
