@@ -7,6 +7,7 @@ most_waiting.py — игроки Global Demonlist по убыванию числ
     python most_waiting.py 301             # топ 301 и ниже (301+)
     python most_waiting.py 151 300         # от топ 151 до топ 300
     python most_waiting.py 1 150 --status accepted
+    python most_waiting.py --min-count 10            # только игроки, у которых 10+ таких рекордов
     python most_waiting.py --start 1000 --end 2000   # быстрая проверка: только id 1000..2000
 
 Таблица лидеров не используется: user_id перебираются подряд (1, 2, 3, ...),
@@ -37,6 +38,10 @@ class NoSuchUser(Exception):
     """API ответил 400/404 — такого игрока нет."""
 
 
+class RateLimited(RuntimeError):
+    """API ответил 429 (слишком много запросов) на всех попытках."""
+
+
 def http_get(path, params=None, retries=5):
     url = f"{BASE_URL.rstrip('/')}/{path}"
     if params:
@@ -45,6 +50,7 @@ def http_get(path, params=None, retries=5):
     if API_TOKEN:
         headers["Authorization"] = API_TOKEN
     last = None
+    limited = False
     for attempt in range(retries):
         try:
             req = urllib.request.Request(url, headers=headers)
@@ -54,10 +60,20 @@ def http_get(path, params=None, retries=5):
             if e.code in (400, 404):
                 raise NoSuchUser(url) from None
             last = f"HTTP {e.code}"
-            time.sleep(1.5 * (attempt + 1))        # 429 / 5xx — подождать и повторить
+            if e.code == 429:
+                limited = True
+                ra = e.headers.get("Retry-After", "")
+                # сервер сам говорит, сколько ждать; если нет — ждём всё дольше
+                wait = int(ra) if ra.isdigit() else 5 * (attempt + 1)
+                time.sleep(min(wait, 60))
+            else:
+                limited = False
+                time.sleep(1.5 * (attempt + 1))    # 5xx — подождать и повторить
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as e:
             last = str(e)
             time.sleep(1.5 * (attempt + 1))
+    if limited:
+        raise RateLimited(f"{last} для {url}")
     raise RuntimeError(f"{last} для {url}")
 
 
@@ -125,9 +141,13 @@ def main():
     ap.add_argument("--start", type=int, default=1, help="с какого id начать (1)")
     ap.add_argument("--end", type=int, default=0,
                     help="на каком id закончить, включительно (0 = без ограничения, идти до конца)")
+    ap.add_argument("--retry-rounds", type=int, default=5,
+                    help="сколько раз повторно проверять id, которые не удалось проверить (5)")
     ap.add_argument("--workers", type=int, default=16, help="параллельных запросов (16)")
     ap.add_argument("--out", default="most_waiting", help="имя файла без расширения")
     ap.add_argument("--format", choices=["json", "txt", "both"], default="both")
+    ap.add_argument("--min-count", type=int, default=1,
+                    help="показывать игроков только с N и более подходящих рекордов (1 = все)")
     ap.add_argument("--top", type=int, default=0, help="оставить только N лучших игроков")
     args = ap.parse_args()
 
@@ -147,6 +167,7 @@ def main():
     empty_streak = 0
     scanned = 0
     errors_in_row = 0
+    failed = []                                        # id, которые не удалось проверить
     next_id = args.start
     finished = False
     t0 = time.time()
@@ -164,10 +185,12 @@ def main():
                     exists, recs = fut.result()
                     errors_in_row = 0
                 except Exception as e:
-                    errors_in_row += 1
-                    print(f"  ! id {uid}: {e}", file=sys.stderr)
-                    if errors_in_row >= 20:
-                        sys.exit("20 ошибок подряд — проверь --base-url / доступ к API")
+                    failed.append(uid)                 # запомним, проверим ещё раз в конце
+                    print(f"  ! id {uid}: {e} (проверю позже)", file=sys.stderr)
+                    if not isinstance(e, RateLimited): # 429 — не поломка, а просто «подожди»
+                        errors_in_row += 1
+                        if errors_in_row >= 20:
+                            sys.exit("20 ошибок подряд — проверь --base-url / доступ к API")
                     continue                           # ошибка не считается «пустым» id
                 scanned += 1
                 if exists:
@@ -186,6 +209,32 @@ def main():
             print(f"  проверено {scanned} id (до {next_id - 1}), найдено игроков: {len(results)}, "
                   f"{time.time() - t0:.0f}с", file=sys.stderr)
 
+        # повторная проверка id, которые не удалось проверить (429 и т.п.)
+        round_no = 0
+        while failed and round_no < args.retry_rounds:
+            round_no += 1
+            pause = 30 * round_no                      # каждый раз ждём дольше
+            print(f"Повтор {round_no}/{args.retry_rounds}: {len(failed)} id, пауза {pause}с",
+                  file=sys.stderr)
+            time.sleep(pause)
+            still_failed = []
+            futs = [(uid, pool.submit(scan_user, uid, args.status, lo, hi)) for uid in failed]
+            for uid, fut in futs:
+                try:
+                    exists, recs = fut.result()
+                except Exception:
+                    still_failed.append(uid)
+                    continue
+                if recs:
+                    results.append({"user_id": uid, "username": None, "count": len(recs), "records": recs})
+            failed = still_failed
+        if failed:
+            print(f"Не удалось проверить {len(failed)} id: {failed}", file=sys.stderr)
+
+        # оставляем только игроков, у которых рекордов не меньше --min-count
+        # (до запроса ников — так лишних запросов к API меньше)
+        results = [r for r in results if r["count"] >= args.min_count]
+
         # ники — только для тех, кто попал в результат
         for r, name in zip(results, pool.map(fetch_username, [r["user_id"] for r in results])):
             r["username"] = name
@@ -196,11 +245,13 @@ def main():
 
     if args.format in ("json", "both"):
         with open(f"{args.out}.json", "w", encoding="utf-8") as f:
-            json.dump({"status": args.status, "range": range_label, "players": results},
+            json.dump({"status": args.status, "range": range_label, "failed_ids": failed, "players": results},
                       f, ensure_ascii=False, indent=2)
 
     if args.format in ("txt", "both"):
         lines = [f"Рекорды со статусом '{args.status}', {range_label}", ""]
+        if failed:
+            lines += [f"НЕ проверены (ошибки API): {failed}", ""]
         for i, r in enumerate(results, 1):
             lines.append(f"{i}. {r['username']} (id {r['user_id']}) — {r['count']}")
             for rec in r["records"]:
