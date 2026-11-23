@@ -3895,3 +3895,12 @@
     общие каналы: https://www.youtube.com/@paaroe
     поглощено: pc73369 (paroe), аккаунты: {'pointercrate': [73369]}
 
+===== 2026-11-23 19:28:01 UTC: склеено групп 2, поглощено записей 2 =====
+СКЛЕЕНО В 46615 (TCCGrand)
+    общие каналы: https://www.youtube.com/@tccgrandofficial
+    поглощено: pc73345 (tccgramnd), аккаунты: {'pointercrate': [73345]}
+
+СКЛЕЕНО В 63354 (g4nn1)
+    общие каналы: https://www.youtube.com/@g4nn1.
+    поглощено: pc73186 (g4nn1), аккаунты: {'pointercrate': [73186]}
+
