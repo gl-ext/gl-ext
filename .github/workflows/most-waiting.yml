@@ -61,7 +61,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run most-waiting.py
+      - name: Run scripts/most-waiting.py
         env:
           MIN_PLACE: ${{ inputs.min_place }}
           MAX_PLACE: ${{ inputs.max_place }}
@@ -81,8 +81,8 @@ jobs:
                  --start "$START" --workers "$WORKERS" --out "results/$NAME")
           if [ "$TOP" != "0" ]; then ARGS+=(--top "$TOP"); fi
           if [ -n "$BASE_URL" ]; then ARGS+=(--base-url "$BASE_URL"); fi
-          echo "python most-waiting.py ${ARGS[*]}"
-          python -u most-waiting.py "${ARGS[@]}"
+          echo "python scripts/most-waiting.py ${ARGS[*]}"
+          python -u scripts/most-waiting.py "${ARGS[@]}"
 
       - name: Upload result
         uses: actions/upload-artifact@v4
