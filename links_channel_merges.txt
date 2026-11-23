@@ -3890,3 +3890,8 @@
     общие каналы: https://www.youtube.com/@Drkxxx-w4s
     поглощено: pc73358 (drkie), аккаунты: {'pointercrate': [73358]}
 
+===== 2026-11-23 01:41:21 UTC: склеено групп 1, поглощено записей 1 =====
+СКЛЕЕНО В pc59896 ([SUN] paroe)
+    общие каналы: https://www.youtube.com/@paaroe
+    поглощено: pc73369 (paroe), аккаунты: {'pointercrate': [73369]}
+
