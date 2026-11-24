@@ -23,6 +23,10 @@
 /try Liamkn08, KOCMOC 82%
 
 Видео: Pointercrate
+/fulladd Vink, Haunted Ship, https://www.youtube.com/watch?v=VEcF90PM1KQ
+/try Vink, Haunted Ship
+
+Видео: Pointercrate
 /fulladd Smapalt, Tartarus, https://www.youtube.com/watch?v=XWHoKCCYk-g
 /try Smapalt, Tartarus
 
