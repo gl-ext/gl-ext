@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-24T06:57:19.624Z",
+  "generated": "2026-11-24T08:24:42.349Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -342,12 +342,18 @@
     "13301": [
       [1981,77,"Saul Goodman",57,"",null,null,null,"my_extras",20.8,0]
     ],
+    "13502": [
+      [3199,6,"Flamewall",100,"",null,null,null,"my_extras",800,0]
+    ],
     "13506": [
       [2976,5,"Amethyst",69,"",null,null,null,"my_extras",313.22,0],
       [3409,7,"Green Bullet",91,"",null,null,null,"my_extras",352.36,0]
     ],
     "13662": [
       [1706,33,"Abyss of Darkness",90,"",null,null,null,"my_extras",156.98,0]
+    ],
+    "13712": [
+      [2535,79,"The Hallucination",100,"",null,null,null,"my_extras",76,0]
     ],
     "13809": [
       [1981,77,"Saul Goodman",100,"",null,null,null,"my_extras",78,0]
