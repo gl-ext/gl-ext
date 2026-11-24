@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-24T00:31:40.467Z",
+  "generated": "2026-11-24T01:58:10.766Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -155,7 +155,13 @@
     "5963": [
       [1748,45,"Slaughterhouse",64,"",null,null,null,"my_extras",85.98,0]
     ],
+    "6040": [
+      [3354,131,"Trickshot",100,"",null,null,null,"my_extras",24,0]
+    ],
     "6090": [
+      [2656,35,"Acheron",100,"",null,null,null,"my_extras",340,0]
+    ],
+    "6103": [
       [2656,35,"Acheron",100,"",null,null,null,"my_extras",340,0]
     ],
     "6192": [
@@ -378,9 +384,6 @@
     "14430": [
       [3226,4,"Thinking Space II",71,"",null,null,null,"my_extras",258.82,0]
     ],
-    "14435": [
-      [2873,25,"andromeda",100,"",null,null,null,"my_extras",380,0]
-    ],
     "14440": [
       [3429,10,"Antarctic Lights",66,"",null,null,null,"my_extras",182.14,0]
     ],
@@ -481,9 +484,6 @@
       [2656,35,"Acheron",83,"",58,null,null,"my_extras",141.67,97.4],
       [1748,45,"Slaughterhouse",75,"",null,null,null,"my_extras",106.1,0],
       [2050,73,"poocubed",100,"",69,null,null,"my_extras",96,33.6]
-    ],
-    "17526": [
-      [3096,34,"Defeated Circles",100,"",null,null,null,"my_extras",344,0]
     ],
     "17620": [
       [2657,38,"Tunnel of Despair",92,"",81,null,null,"my_extras",148.06,123]
@@ -769,9 +769,6 @@
     ],
     "32412": [
       [3226,4,"Thinking Space II",77,"",null,null,null,"my_extras",297.65,0]
-    ],
-    "32428": [
-      [1589,167,"Shukketsu",100,"",null,null,null,"my_extras",4.2,0]
     ],
     "32454": [
       [2050,73,"poocubed",100,"",null,null,null,"my_extras",96,0]

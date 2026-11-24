@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-24T00:31:40.467Z",
+ "generated": "2026-11-24T01:58:10.766Z",
  "users": [
   {
    "place": 1,
@@ -228,6 +228,15 @@
   },
   {
    "place": 26,
+   "oldPlace": 30,
+   "id": "6103",
+   "name": "Slaughter",
+   "country": "Canada",
+   "points": 4099.9,
+   "basePoints": 3759.9
+  },
+  {
+   "place": 27,
    "oldPlace": 25,
    "id": "13505",
    "name": "loliklee",
@@ -236,7 +245,7 @@
    "basePoints": 4082.65
   },
   {
-   "place": 27,
+   "place": 28,
    "oldPlace": 26,
    "id": "5577",
    "name": "Serpentical",
@@ -245,7 +254,7 @@
    "basePoints": 3809.3
   },
   {
-   "place": 28,
+   "place": 29,
    "oldPlace": 28,
    "id": "14485",
    "name": "PoCle",
@@ -254,22 +263,13 @@
    "basePoints": 3774.57
   },
   {
-   "place": 29,
+   "place": 30,
    "oldPlace": 29,
    "id": "14462",
    "name": "turtle",
    "country": "United-States",
    "points": 3765.65,
    "basePoints": 3765.65
-  },
-  {
-   "place": 30,
-   "oldPlace": 30,
-   "id": "6103",
-   "name": "Slaughter",
-   "country": "Canada",
-   "points": 3759.9,
-   "basePoints": 3759.9
   },
   {
    "place": 31,
