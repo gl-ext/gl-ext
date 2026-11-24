@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-24T12:44:22.526Z",
+  "generated": "2026-11-24T14:01:57.768Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -32,6 +32,7 @@
       [2656,35,"Acheron",76,"",null,null,null,"my_extras",129.27,0]
     ],
     "2383": [
+      [1754,139,"Tartarus",100,"",48,null,null,"my_extras",16,4.08],
       [2296,231,"Renevant",100,"",null,null,null,"my_extras",1.4,0]
     ],
     "3011": [
@@ -136,7 +137,7 @@
       [1788,176,"THE ROCK HOUSE",100,"",null,null,null,"my_extras",3.8,0]
     ],
     "5782": [
-      [2458,199,"Crackhead Circles",100,"",null,null,null,"my_extras",3,0]
+      [3286,185,"IMPERIAL",100,"",null,null,null,"my_extras",3.4,0]
     ],
     "5814": [
       [1981,77,"Saul Goodman",59,"",null,null,null,"my_extras",21.67,0],
@@ -366,6 +367,9 @@
     "14137": [
       [1706,33,"Abyss of Darkness",77,"",null,null,null,"my_extras",132.39,0]
     ],
+    "14197": [
+      [1706,33,"Abyss of Darkness",100,"",null,null,null,"my_extras",348,0]
+    ],
     "14211": [
       [2656,35,"Acheron",89,"",86,null,null,"my_extras",152.29,146.98]
     ],
@@ -485,6 +489,9 @@
     ],
     "17212": [
       [2656,35,"Acheron",72,"",61,null,null,"my_extras",122.19,102.71]
+    ],
+    "17282": [
+      [1733,143,"UNKNOWN",100,"",null,null,null,"my_extras",12,0]
     ],
     "17465": [
       [2656,35,"Acheron",83,"",58,null,null,"my_extras",141.67,97.4],

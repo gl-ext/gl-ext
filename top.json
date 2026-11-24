@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-24T12:44:22.526Z",
+ "generated": "2026-11-24T14:01:57.768Z",
  "users": [
   {
    "place": 1,
@@ -102,6 +102,15 @@
   },
   {
    "place": 12,
+   "oldPlace": 14,
+   "id": "14197",
+   "name": "Sharkified",
+   "country": "United-States",
+   "points": 5733.35,
+   "basePoints": 5385.35
+  },
+  {
+   "place": 13,
    "oldPlace": 17,
    "id": "16551",
    "name": "Rediio",
@@ -110,7 +119,7 @@
    "basePoints": 5213.64
   },
   {
-   "place": 13,
+   "place": 14,
    "oldPlace": 12,
    "id": "14541",
    "name": "eastshark",
@@ -119,22 +128,13 @@
    "basePoints": 5535.72
   },
   {
-   "place": 14,
+   "place": 15,
    "oldPlace": 13,
    "id": "15566",
    "name": "weyolll3",
    "country": "Spain",
    "points": 5453.76,
    "basePoints": 5453.76
-  },
-  {
-   "place": 15,
-   "oldPlace": 14,
-   "id": "14197",
-   "name": "Sharkified",
-   "country": "United-States",
-   "points": 5385.35,
-   "basePoints": 5385.35
   },
   {
    "place": 16,
