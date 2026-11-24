@@ -10434,55 +10434,6 @@
       ]
     },
     {
-      "user_id": 24386,
-      "username": "id 24386",
-      "count": 6,
-      "records": [
-        {
-          "record_id": 171473,
-          "level": "Astral Divinity",
-          "placement": 758,
-          "percent": 100,
-          "video_url": "https://youtu.be/yw5Ehuq_kEA?si=pFatdUTpZAM6cRdK"
-        },
-        {
-          "record_id": 171484,
-          "level": "Silentium Gradas",
-          "placement": 931,
-          "percent": 100,
-          "video_url": "https://youtu.be/el6y3UiN8Uk?si=g_e1AmFsu1OgVaBk"
-        },
-        {
-          "record_id": 171486,
-          "level": "Bloodbath",
-          "placement": 1080,
-          "percent": 100,
-          "video_url": "https://youtu.be/jYRntib3PKM?si=-ixy3RVo3hVnshXU"
-        },
-        {
-          "record_id": 171480,
-          "level": "Crowd Control",
-          "placement": 1521,
-          "percent": 100,
-          "video_url": "https://youtu.be/6Elx7ravWB8?si=OZosMSH7XPyUaGiF"
-        },
-        {
-          "record_id": 171475,
-          "level": "Broken Signal",
-          "placement": 1541,
-          "percent": 100,
-          "video_url": "https://youtu.be/vsowEKtGtOw?si=nEXbi3AzYx-8lgBf"
-        },
-        {
-          "record_id": 171485,
-          "level": "The Lost Existence",
-          "placement": 1624,
-          "percent": 100,
-          "video_url": "https://youtu.be/FOpq7CEN7Lc?si=BPZ6Ojrz-l9Q6ZS4"
-        }
-      ]
-    },
-    {
       "user_id": 24480,
       "username": "id 24480",
       "count": 6,
@@ -14539,6 +14490,48 @@
           "placement": 1674,
           "percent": 100,
           "video_url": "https://youtu.be/9ueTj8Ketto?si=TLRvJbE24szybuhq"
+        }
+      ]
+    },
+    {
+      "user_id": 34960,
+      "username": "id 34960",
+      "count": 5,
+      "records": [
+        {
+          "record_id": 174445,
+          "level": "GREFG",
+          "placement": 690,
+          "percent": 100,
+          "video_url": "https://youtu.be/4_WdHSOjgxc"
+        },
+        {
+          "record_id": 175116,
+          "level": "TUAPEKA",
+          "placement": 1448,
+          "percent": 100,
+          "video_url": "https://youtu.be/fchbNZJahoM"
+        },
+        {
+          "record_id": 180314,
+          "level": "Broken Signal",
+          "placement": 1541,
+          "percent": 100,
+          "video_url": "https://youtu.be/Q6a1z8YcFXo"
+        },
+        {
+          "record_id": 173266,
+          "level": "No Survivors",
+          "placement": 1712,
+          "percent": 100,
+          "video_url": "https://youtu.be/OcgMZgPq6fQ"
+        },
+        {
+          "record_id": 180113,
+          "level": "Through The Decay",
+          "placement": 1745,
+          "percent": 100,
+          "video_url": "https://youtu.be/VWfafFNz3CY"
         }
       ]
     },
@@ -18799,41 +18792,6 @@
       ]
     },
     {
-      "user_id": 34960,
-      "username": "id 34960",
-      "count": 4,
-      "records": [
-        {
-          "record_id": 174445,
-          "level": "GREFG",
-          "placement": 690,
-          "percent": 100,
-          "video_url": "https://youtu.be/4_WdHSOjgxc"
-        },
-        {
-          "record_id": 175116,
-          "level": "TUAPEKA",
-          "placement": 1448,
-          "percent": 100,
-          "video_url": "https://youtu.be/fchbNZJahoM"
-        },
-        {
-          "record_id": 173266,
-          "level": "No Survivors",
-          "placement": 1712,
-          "percent": 100,
-          "video_url": "https://youtu.be/OcgMZgPq6fQ"
-        },
-        {
-          "record_id": 180113,
-          "level": "Through The Decay",
-          "placement": 1745,
-          "percent": 100,
-          "video_url": "https://youtu.be/VWfafFNz3CY"
-        }
-      ]
-    },
-    {
       "user_id": 35938,
       "username": "id 35938",
       "count": 4,
@@ -21214,41 +21172,6 @@
       ]
     },
     {
-      "user_id": 63317,
-      "username": "id 63317",
-      "count": 4,
-      "records": [
-        {
-          "record_id": 171481,
-          "level": "BRUTAL",
-          "placement": 1723,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=nBB-sni72fo"
-        },
-        {
-          "record_id": 171483,
-          "level": "niwa",
-          "placement": 1725,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=fyarGn3KUmE"
-        },
-        {
-          "record_id": 171479,
-          "level": "Helios",
-          "placement": 1732,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=lDR6Zrixowg&t=8s"
-        },
-        {
-          "record_id": 171482,
-          "level": "Acu",
-          "placement": 1809,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=SDAkb9Stj30"
-        }
-      ]
-    },
-    {
       "user_id": 6358,
       "username": "id 6358",
       "count": 4,
@@ -22019,6 +21942,41 @@
       ]
     },
     {
+      "user_id": 65983,
+      "username": "id 65983",
+      "count": 4,
+      "records": [
+        {
+          "record_id": 178594,
+          "level": "EXPLICIT",
+          "placement": 928,
+          "percent": 100,
+          "video_url": "https://youtu.be/R1gHNY97IR4?si=W6O60ra0elJc0m7F"
+        },
+        {
+          "record_id": 178095,
+          "level": "Down Bass",
+          "placement": 1066,
+          "percent": 100,
+          "video_url": "https://youtu.be/KTUGz_P6xeA?si=jpcnLkZcvalo7dUY"
+        },
+        {
+          "record_id": 180319,
+          "level": "Bloodbath",
+          "placement": 1080,
+          "percent": 100,
+          "video_url": "https://youtu.be/VK_9kAMdm4c?si=0v8JA8cX043dNFRX"
+        },
+        {
+          "record_id": 178096,
+          "level": "Maybe Possibly Thing",
+          "placement": 1209,
+          "percent": 100,
+          "video_url": "https://youtu.be/ay56SbxnGh4?si=XWCeXMv2gtDBopIZ"
+        }
+      ]
+    },
+    {
       "user_id": 6620,
       "username": "id 6620",
       "count": 4,
@@ -22330,6 +22288,41 @@
           "placement": 1710,
           "percent": 100,
           "video_url": "https://youtu.be/_fDrqnQn2_k"
+        }
+      ]
+    },
+    {
+      "user_id": 66846,
+      "username": "id 66846",
+      "count": 4,
+      "records": [
+        {
+          "record_id": 180323,
+          "level": "The Flawless",
+          "placement": 1584,
+          "percent": 100,
+          "video_url": "https://youtu.be/F5nRB-D8ei8?si=MT9hRfW0RFAsQRdA"
+        },
+        {
+          "record_id": 180322,
+          "level": "Sweater Weather",
+          "placement": 1659,
+          "percent": 100,
+          "video_url": "https://youtu.be/rWj9kiC5Vng?si=RHlME5A-7em5nCCh"
+        },
+        {
+          "record_id": 180321,
+          "level": "Cataclysm",
+          "placement": 1710,
+          "percent": 100,
+          "video_url": "https://youtu.be/X7gzOMsvYxA?si=F7wi_XVeQOXgZq-K"
+        },
+        {
+          "record_id": 180320,
+          "level": "Acu",
+          "placement": 1809,
+          "percent": 100,
+          "video_url": "https://youtu.be/ZB3ddGsjPxo?si=1WoaZHDtSgKFnMkq"
         }
       ]
     },
@@ -25424,6 +25417,34 @@
           "placement": 1809,
           "percent": 100,
           "video_url": "https://youtu.be/9hZyVdAOL6w?is=C3CdSMGAQ9Fq9IaE"
+        }
+      ]
+    },
+    {
+      "user_id": 29614,
+      "username": "id 29614",
+      "count": 3,
+      "records": [
+        {
+          "record_id": 180317,
+          "level": "Sonic Wave Rebirth",
+          "placement": 484,
+          "percent": 100,
+          "video_url": "https://youtu.be/p-zRpRZr8a0"
+        },
+        {
+          "record_id": 180316,
+          "level": "Auditory Breaker",
+          "placement": 751,
+          "percent": 100,
+          "video_url": "https://youtu.be/p-zRpRZr8a0"
+        },
+        {
+          "record_id": 178593,
+          "level": "Carcano",
+          "placement": 967,
+          "percent": 100,
+          "video_url": "https://youtu.be/kL3AK0D3J5E"
         }
       ]
     },
@@ -31840,34 +31861,6 @@
       ]
     },
     {
-      "user_id": 65983,
-      "username": "id 65983",
-      "count": 3,
-      "records": [
-        {
-          "record_id": 178594,
-          "level": "EXPLICIT",
-          "placement": 928,
-          "percent": 100,
-          "video_url": "https://youtu.be/R1gHNY97IR4?si=W6O60ra0elJc0m7F"
-        },
-        {
-          "record_id": 178095,
-          "level": "Down Bass",
-          "placement": 1066,
-          "percent": 100,
-          "video_url": "https://youtu.be/KTUGz_P6xeA?si=jpcnLkZcvalo7dUY"
-        },
-        {
-          "record_id": 178096,
-          "level": "Maybe Possibly Thing",
-          "placement": 1209,
-          "percent": 100,
-          "video_url": "https://youtu.be/ay56SbxnGh4?si=XWCeXMv2gtDBopIZ"
-        }
-      ]
-    },
-    {
       "user_id": 65989,
       "username": "id 65989",
       "count": 3,
@@ -35961,7 +35954,7 @@
       "count": 2,
       "records": [
         {
-          "record_id": 180313,
+          "record_id": 180325,
           "level": "Catalyze",
           "placement": 586,
           "percent": 100,
@@ -37195,27 +37188,6 @@
       ]
     },
     {
-      "user_id": 31348,
-      "username": "id 31348",
-      "count": 2,
-      "records": [
-        {
-          "record_id": 171487,
-          "level": "Bloodbath",
-          "placement": 1080,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=HnFGhMyexgA"
-        },
-        {
-          "record_id": 171750,
-          "level": "Cataclysm",
-          "placement": 1710,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=XsnmOyqBthM"
-        }
-      ]
-    },
-    {
       "user_id": 31369,
       "username": "id 31369",
       "count": 2,
@@ -37951,6 +37923,27 @@
       ]
     },
     {
+      "user_id": 33907,
+      "username": "id 33907",
+      "count": 2,
+      "records": [
+        {
+          "record_id": 174674,
+          "level": "Bloodlust",
+          "placement": 299,
+          "percent": 100,
+          "video_url": "https://vt.tiktok.com/ZSpJ9aJCu/"
+        },
+        {
+          "record_id": 180328,
+          "level": "Quantum Processing",
+          "placement": 695,
+          "percent": 100,
+          "video_url": "https://vt.tiktok.com/ZSsFy2Gju/"
+        }
+      ]
+    },
+    {
       "user_id": 33968,
       "username": "id 33968",
       "count": 2,
@@ -38031,6 +38024,27 @@
           "placement": 1114,
           "percent": 100,
           "video_url": "https://youtu.be/VoydQQpbOQ8?si=-I3n0ak_GHfYLPgf"
+        }
+      ]
+    },
+    {
+      "user_id": 3424,
+      "username": "id 3424",
+      "count": 2,
+      "records": [
+        {
+          "record_id": 180087,
+          "level": "Sonic Wave",
+          "placement": 485,
+          "percent": 100,
+          "video_url": "https://www.youtube.com/watch?v=1PoOccktEtc"
+        },
+        {
+          "record_id": 180324,
+          "level": "Auditory Breaker",
+          "placement": 751,
+          "percent": 100,
+          "video_url": "https://www.youtube.com/watch?v=uVvy9V2ldSY"
         }
       ]
     },
@@ -42403,6 +42417,27 @@
       ]
     },
     {
+      "user_id": 55068,
+      "username": "id 55068",
+      "count": 2,
+      "records": [
+        {
+          "record_id": 177315,
+          "level": "aftermath",
+          "placement": 1114,
+          "percent": 100,
+          "video_url": "https://youtu.be/dIALKSdUJw8?si=3MAx2ngtVmhuJENx"
+        },
+        {
+          "record_id": 180326,
+          "level": "Forbidden Isle",
+          "placement": 1687,
+          "percent": 100,
+          "video_url": "https://youtu.be/KxcKKTIqRiQ?si=sXRzp-8Q1EqGB-AC"
+        }
+      ]
+    },
+    {
       "user_id": 55218,
       "username": "id 55218",
       "count": 2,
@@ -46221,6 +46256,27 @@
           "placement": 1725,
           "percent": 100,
           "video_url": "https://www.youtube.com/watch?v=JwlSM5dPUiA"
+        }
+      ]
+    },
+    {
+      "user_id": 6634,
+      "username": "id 6634",
+      "count": 2,
+      "records": [
+        {
+          "record_id": 156419,
+          "level": "Levigo",
+          "placement": 165,
+          "percent": 100,
+          "video_url": "https://youtu.be/m_hE52uy9vs?si=k-MtHyeKAAZTP4bP"
+        },
+        {
+          "record_id": 180315,
+          "level": "I Cry",
+          "placement": 755,
+          "percent": 100,
+          "video_url": "https://www.youtube.com/watch?v=Qj2XYCsNNxk"
         }
       ]
     },
@@ -53386,20 +53442,6 @@
       ]
     },
     {
-      "user_id": 29614,
-      "username": "id 29614",
-      "count": 1,
-      "records": [
-        {
-          "record_id": 178593,
-          "level": "Carcano",
-          "placement": 967,
-          "percent": 100,
-          "video_url": "https://youtu.be/kL3AK0D3J5E"
-        }
-      ]
-    },
-    {
       "user_id": 29617,
       "username": "id 29617",
       "count": 1,
@@ -54324,6 +54366,20 @@
       ]
     },
     {
+      "user_id": 31348,
+      "username": "id 31348",
+      "count": 1,
+      "records": [
+        {
+          "record_id": 171750,
+          "level": "Cataclysm",
+          "placement": 1710,
+          "percent": 100,
+          "video_url": "https://www.youtube.com/watch?v=XsnmOyqBthM"
+        }
+      ]
+    },
+    {
       "user_id": 31355,
       "username": "id 31355",
       "count": 1,
@@ -54418,6 +54474,20 @@
           "placement": 1009,
           "percent": 100,
           "video_url": "https://www.youtube.com/watch?v=HDaTrBzQ-YY"
+        }
+      ]
+    },
+    {
+      "user_id": 31579,
+      "username": "id 31579",
+      "count": 1,
+      "records": [
+        {
+          "record_id": 180330,
+          "level": "Allegiance",
+          "placement": 1593,
+          "percent": 100,
+          "video_url": "https://www.youtube.com/watch?v=nTiM1sIji3c"
         }
       ]
     },
@@ -55710,20 +55780,6 @@
       ]
     },
     {
-      "user_id": 33907,
-      "username": "id 33907",
-      "count": 1,
-      "records": [
-        {
-          "record_id": 174674,
-          "level": "Bloodlust",
-          "placement": 299,
-          "percent": 100,
-          "video_url": "https://vt.tiktok.com/ZSpJ9aJCu/"
-        }
-      ]
-    },
-    {
       "user_id": 33915,
       "username": "id 33915",
       "count": 1,
@@ -55916,20 +55972,6 @@
           "placement": 1080,
           "percent": 100,
           "video_url": "https://www.youtube.com/watch?v=qXznLt9WLpQ&t=6s"
-        }
-      ]
-    },
-    {
-      "user_id": 3424,
-      "username": "id 3424",
-      "count": 1,
-      "records": [
-        {
-          "record_id": 180087,
-          "level": "Sonic Wave",
-          "placement": 485,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=1PoOccktEtc"
         }
       ]
     },
@@ -63984,20 +64026,6 @@
       ]
     },
     {
-      "user_id": 55068,
-      "username": "id 55068",
-      "count": 1,
-      "records": [
-        {
-          "record_id": 177315,
-          "level": "aftermath",
-          "placement": 1114,
-          "percent": 100,
-          "video_url": "https://youtu.be/dIALKSdUJw8?si=3MAx2ngtVmhuJENx"
-        }
-      ]
-    },
-    {
       "user_id": 55070,
       "username": "id 55070",
       "count": 1,
@@ -64656,6 +64684,20 @@
       ]
     },
     {
+      "user_id": 56127,
+      "username": "id 56127",
+      "count": 1,
+      "records": [
+        {
+          "record_id": 180318,
+          "level": "Cognitive Capacity",
+          "placement": 1716,
+          "percent": 100,
+          "video_url": "https://1drv.ms/v/c/19d646e7f373f1e2/IQC3RNqlg1_FR7Sw-QLopLI3ARCzTwG41K1VCCdsqGsA5gs?e=rWrL3t"
+        }
+      ]
+    },
+    {
       "user_id": 56159,
       "username": "id 56159",
       "count": 1,
@@ -64694,6 +64736,20 @@
           "placement": 143,
           "percent": 100,
           "video_url": "https://youtu.be/EyyHAsH7394"
+        }
+      ]
+    },
+    {
+      "user_id": 56257,
+      "username": "id 56257",
+      "count": 1,
+      "records": [
+        {
+          "record_id": 180327,
+          "level": "Cat Planet",
+          "placement": 1171,
+          "percent": 100,
+          "video_url": "https://youtu.be/zJK0NxnYOxY?si=X6gopIOkkuU9dKrT"
         }
       ]
     },
@@ -75796,20 +75852,6 @@
           "placement": 722,
           "percent": 100,
           "video_url": "https://www.youtube.com/watch?v=iXQQFH0ADoE"
-        }
-      ]
-    },
-    {
-      "user_id": 6634,
-      "username": "id 6634",
-      "count": 1,
-      "records": [
-        {
-          "record_id": 156419,
-          "level": "Levigo",
-          "placement": 165,
-          "percent": 100,
-          "video_url": "https://youtu.be/m_hE52uy9vs?si=k-MtHyeKAAZTP4bP"
         }
       ]
     },
