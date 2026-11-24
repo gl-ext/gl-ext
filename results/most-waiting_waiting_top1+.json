@@ -7403,69 +7403,6 @@
       ]
     },
     {
-      "user_id": 63317,
-      "username": "id 63317",
-      "count": 8,
-      "records": [
-        {
-          "record_id": 171471,
-          "level": "Prismatic Haze",
-          "placement": 1055,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=tCWTKNdYeck"
-        },
-        {
-          "record_id": 171472,
-          "level": "Broken Signal",
-          "placement": 1541,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=WS-sHfANo-I&t=133s"
-        },
-        {
-          "record_id": 171476,
-          "level": "Sweater Weather",
-          "placement": 1659,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=Raw6zXSsLqo&t=5s"
-        },
-        {
-          "record_id": 171481,
-          "level": "BRUTAL",
-          "placement": 1723,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=nBB-sni72fo"
-        },
-        {
-          "record_id": 171483,
-          "level": "niwa",
-          "placement": 1725,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=fyarGn3KUmE"
-        },
-        {
-          "record_id": 171479,
-          "level": "Helios",
-          "placement": 1732,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=lDR6Zrixowg&t=8s"
-        },
-        {
-          "record_id": 171474,
-          "level": "Sephtis",
-          "placement": 1784,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=v4HrjKOhpDU"
-        },
-        {
-          "record_id": 171482,
-          "level": "Acu",
-          "placement": 1809,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=SDAkb9Stj30"
-        }
-      ]
-    },
-    {
       "user_id": 6355,
       "username": "id 6355",
       "count": 8,
@@ -7777,6 +7714,69 @@
           "placement": 1740,
           "percent": 100,
           "video_url": "https://youtu.be/GO_DUImRZic"
+        }
+      ]
+    },
+    {
+      "user_id": 66753,
+      "username": "id 66753",
+      "count": 8,
+      "records": [
+        {
+          "record_id": 180036,
+          "level": "Sakupen Hell",
+          "placement": 951,
+          "percent": 100,
+          "video_url": "https://youtu.be/FxhVuKA0SPs?si=Q_iUzokN8Q8sBsMF"
+        },
+        {
+          "record_id": 180039,
+          "level": "gravity",
+          "placement": 969,
+          "percent": 100,
+          "video_url": "https://youtu.be/7SVYZKprhFg?si=zPuSzkXZJINMUZ_u"
+        },
+        {
+          "record_id": 180038,
+          "level": "moment",
+          "placement": 1009,
+          "percent": 100,
+          "video_url": "https://youtu.be/zOvMIk2Oecc?si=spcHMvdrVw8J5G_a"
+        },
+        {
+          "record_id": 180309,
+          "level": "Cat Planet",
+          "placement": 1171,
+          "percent": 100,
+          "video_url": "https://youtu.be/-2beIm8mH1o?si=MiSCTHmMuY04M7A1"
+        },
+        {
+          "record_id": 180040,
+          "level": "Stellaluna",
+          "placement": 1562,
+          "percent": 100,
+          "video_url": "https://youtu.be/W9iKhaTM0wk?si=BYIwSHIMa4LGSnF6"
+        },
+        {
+          "record_id": 180043,
+          "level": "Sweater Weather",
+          "placement": 1659,
+          "percent": 100,
+          "video_url": "https://youtu.be/uJuDVhazwwo?si=1bjUvEyx-VzNwbAW"
+        },
+        {
+          "record_id": 180041,
+          "level": "Cataclysm",
+          "placement": 1710,
+          "percent": 100,
+          "video_url": "https://youtu.be/7Sl-OTQ_PDo?si=LjpAGOCrUFE6Udpt"
+        },
+        {
+          "record_id": 180042,
+          "level": "BRUTAL",
+          "placement": 1723,
+          "percent": 100,
+          "video_url": "https://youtu.be/HEpA4LV9iSs?si=3wEiWsIuI_bziW8e"
         }
       ]
     },
@@ -9583,62 +9583,6 @@
           "placement": 1779,
           "percent": 100,
           "video_url": "https://youtu.be/3ivljIgNk7A"
-        }
-      ]
-    },
-    {
-      "user_id": 66753,
-      "username": "id 66753",
-      "count": 7,
-      "records": [
-        {
-          "record_id": 180036,
-          "level": "Sakupen Hell",
-          "placement": 951,
-          "percent": 100,
-          "video_url": "https://youtu.be/FxhVuKA0SPs?si=Q_iUzokN8Q8sBsMF"
-        },
-        {
-          "record_id": 180039,
-          "level": "gravity",
-          "placement": 969,
-          "percent": 100,
-          "video_url": "https://youtu.be/7SVYZKprhFg?si=zPuSzkXZJINMUZ_u"
-        },
-        {
-          "record_id": 180038,
-          "level": "moment",
-          "placement": 1009,
-          "percent": 100,
-          "video_url": "https://youtu.be/zOvMIk2Oecc?si=spcHMvdrVw8J5G_a"
-        },
-        {
-          "record_id": 180040,
-          "level": "Stellaluna",
-          "placement": 1562,
-          "percent": 100,
-          "video_url": "https://youtu.be/W9iKhaTM0wk?si=BYIwSHIMa4LGSnF6"
-        },
-        {
-          "record_id": 180043,
-          "level": "Sweater Weather",
-          "placement": 1659,
-          "percent": 100,
-          "video_url": "https://youtu.be/uJuDVhazwwo?si=1bjUvEyx-VzNwbAW"
-        },
-        {
-          "record_id": 180041,
-          "level": "Cataclysm",
-          "placement": 1710,
-          "percent": 100,
-          "video_url": "https://youtu.be/7Sl-OTQ_PDo?si=LjpAGOCrUFE6Udpt"
-        },
-        {
-          "record_id": 180042,
-          "level": "BRUTAL",
-          "placement": 1723,
-          "percent": 100,
-          "video_url": "https://youtu.be/HEpA4LV9iSs?si=3wEiWsIuI_bziW8e"
         }
       ]
     },
@@ -15355,6 +15299,48 @@
       ]
     },
     {
+      "user_id": 48544,
+      "username": "id 48544",
+      "count": 5,
+      "records": [
+        {
+          "record_id": 180304,
+          "level": "RUST",
+          "placement": 258,
+          "percent": 100,
+          "video_url": "https://www.youtube.com/watch?v=I3AQHvCEnrU"
+        },
+        {
+          "record_id": 179325,
+          "level": "Jupiter My Favourite",
+          "placement": 285,
+          "percent": 100,
+          "video_url": "https://www.youtube.com/watch?v=VG-m1zLKOdM&t=34s"
+        },
+        {
+          "record_id": 179326,
+          "level": "Omega Interface",
+          "placement": 286,
+          "percent": 100,
+          "video_url": "https://www.youtube.com/watch?v=aKUPdDjqZwc&t=1s"
+        },
+        {
+          "record_id": 172160,
+          "level": "Jesse Pinkman",
+          "placement": 291,
+          "percent": 100,
+          "video_url": "https://www.youtube.com/watch?v=trceg42GQCM&t=25s"
+        },
+        {
+          "record_id": 172161,
+          "level": "Bloodlust",
+          "placement": 299,
+          "percent": 100,
+          "video_url": "https://www.youtube.com/watch?v=X3qRJB1Js4I&t=207s"
+        }
+      ]
+    },
+    {
       "user_id": 49154,
       "username": "id 49154",
       "count": 5,
@@ -19163,6 +19149,41 @@
       ]
     },
     {
+      "user_id": 37385,
+      "username": "id 37385",
+      "count": 4,
+      "records": [
+        {
+          "record_id": 180307,
+          "level": "Idols",
+          "placement": 1053,
+          "percent": 100,
+          "video_url": "https://youtu.be/sSgVuhF6uGo?si=wbd2dGSTTMxpB127"
+        },
+        {
+          "record_id": 180308,
+          "level": "Retention",
+          "placement": 1524,
+          "percent": 100,
+          "video_url": "https://youtu.be/FuVXpvl3-cc?si=x-xIsu2LqU0cArOV"
+        },
+        {
+          "record_id": 180306,
+          "level": "niwa",
+          "placement": 1725,
+          "percent": 100,
+          "video_url": "https://youtu.be/xErppRUf-Yw?si=1_GBprxBLP9Dp4KJ"
+        },
+        {
+          "record_id": 180305,
+          "level": "Acu",
+          "placement": 1809,
+          "percent": 100,
+          "video_url": "https://youtu.be/mRFdKWQ5CmI?si=0R0kAJE5QpGIyG1o"
+        }
+      ]
+    },
+    {
       "user_id": 37673,
       "username": "id 37673",
       "count": 4,
@@ -19929,41 +19950,6 @@
           "placement": 1852,
           "percent": 100,
           "video_url": "https://youtu.be/F1Vq8DLWCS0"
-        }
-      ]
-    },
-    {
-      "user_id": 48544,
-      "username": "id 48544",
-      "count": 4,
-      "records": [
-        {
-          "record_id": 179325,
-          "level": "Jupiter My Favourite",
-          "placement": 285,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=VG-m1zLKOdM&t=34s"
-        },
-        {
-          "record_id": 179326,
-          "level": "Omega Interface",
-          "placement": 286,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=aKUPdDjqZwc&t=1s"
-        },
-        {
-          "record_id": 172160,
-          "level": "Jesse Pinkman",
-          "placement": 291,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=trceg42GQCM&t=25s"
-        },
-        {
-          "record_id": 172161,
-          "level": "Bloodlust",
-          "placement": 299,
-          "percent": 100,
-          "video_url": "https://www.youtube.com/watch?v=X3qRJB1Js4I&t=207s"
         }
       ]
     },
@@ -21224,6 +21210,41 @@
           "placement": 1852,
           "percent": 100,
           "video_url": "https://www.youtube.com/watch?v=b5SYLmf77Ps"
+        }
+      ]
+    },
+    {
+      "user_id": 63317,
+      "username": "id 63317",
+      "count": 4,
+      "records": [
+        {
+          "record_id": 171481,
+          "level": "BRUTAL",
+          "placement": 1723,
+          "percent": 100,
+          "video_url": "https://www.youtube.com/watch?v=nBB-sni72fo"
+        },
+        {
+          "record_id": 171483,
+          "level": "niwa",
+          "placement": 1725,
+          "percent": 100,
+          "video_url": "https://www.youtube.com/watch?v=fyarGn3KUmE"
+        },
+        {
+          "record_id": 171479,
+          "level": "Helios",
+          "placement": 1732,
+          "percent": 100,
+          "video_url": "https://www.youtube.com/watch?v=lDR6Zrixowg&t=8s"
+        },
+        {
+          "record_id": 171482,
+          "level": "Acu",
+          "placement": 1809,
+          "percent": 100,
+          "video_url": "https://www.youtube.com/watch?v=SDAkb9Stj30"
         }
       ]
     },
@@ -27619,6 +27640,34 @@
       ]
     },
     {
+      "user_id": 41612,
+      "username": "id 41612",
+      "count": 3,
+      "records": [
+        {
+          "record_id": 180312,
+          "level": "Reanimate",
+          "placement": 1502,
+          "percent": 100,
+          "video_url": "https://youtu.be/cScKIehroz0?is=_nQcsFPkz6Xc3GpZ"
+        },
+        {
+          "record_id": 175247,
+          "level": "Sweater Weather",
+          "placement": 1659,
+          "percent": 100,
+          "video_url": "https://youtu.be/4rb-MCAFbvo?is=vWxKu6V0C3muYQp7"
+        },
+        {
+          "record_id": 177576,
+          "level": "Cataclysm",
+          "placement": 1710,
+          "percent": 100,
+          "video_url": "https://youtu.be/GkO7u-Xl4-A?is=TCkA8BSRnBNoljdk"
+        }
+      ]
+    },
+    {
       "user_id": 42049,
       "username": "id 42049",
       "count": 3,
@@ -29435,6 +29484,34 @@
           "placement": 1506,
           "percent": 100,
           "video_url": "https://www.youtube.com/watch?v=1nAGte-QKqQ"
+        }
+      ]
+    },
+    {
+      "user_id": 57520,
+      "username": "id 57520",
+      "count": 3,
+      "records": [
+        {
+          "record_id": 173329,
+          "level": "Stasis",
+          "placement": 1193,
+          "percent": 100,
+          "video_url": "https://youtu.be/rxj6he7wnvo?si=uW6f_9UL96mqDGZz"
+        },
+        {
+          "record_id": 180311,
+          "level": "All In",
+          "placement": 1199,
+          "percent": 100,
+          "video_url": "https://youtu.be/rSAC687s5Yg?si=_w0qp4_kfpQFtO3j"
+        },
+        {
+          "record_id": 173328,
+          "level": "Agen Wida",
+          "placement": 1206,
+          "percent": 100,
+          "video_url": "https://youtu.be/VisUIbRL2H4?si=pQSoSH4lEes7zP44"
         }
       ]
     },
@@ -35879,6 +35956,27 @@
       ]
     },
     {
+      "user_id": 26684,
+      "username": "id 26684",
+      "count": 2,
+      "records": [
+        {
+          "record_id": 180313,
+          "level": "Catalyze",
+          "placement": 586,
+          "percent": 100,
+          "video_url": "https://youtu.be/LCAzqCgspu8?si=Y5ZYkVrXtLRmlOoy"
+        },
+        {
+          "record_id": 172635,
+          "level": "Bloodbath",
+          "placement": 1080,
+          "percent": 100,
+          "video_url": "https://youtu.be/LCAzqCgspu8?si=Y5ZYkVrXtLRmlOoy"
+        }
+      ]
+    },
+    {
       "user_id": 26708,
       "username": "id 26708",
       "count": 2,
@@ -39785,27 +39883,6 @@
       ]
     },
     {
-      "user_id": 41612,
-      "username": "id 41612",
-      "count": 2,
-      "records": [
-        {
-          "record_id": 175247,
-          "level": "Sweater Weather",
-          "placement": 1659,
-          "percent": 100,
-          "video_url": "https://youtu.be/4rb-MCAFbvo?is=vWxKu6V0C3muYQp7"
-        },
-        {
-          "record_id": 177576,
-          "level": "Cataclysm",
-          "placement": 1710,
-          "percent": 100,
-          "video_url": "https://youtu.be/GkO7u-Xl4-A?is=TCkA8BSRnBNoljdk"
-        }
-      ]
-    },
-    {
       "user_id": 41621,
       "username": "id 41621",
       "count": 2,
@@ -43078,27 +43155,6 @@
           "placement": 262,
           "percent": 100,
           "video_url": "https://youtu.be/Z5S6cP47QGQ?si=jz_oJauMVEiZFaCM"
-        }
-      ]
-    },
-    {
-      "user_id": 57520,
-      "username": "id 57520",
-      "count": 2,
-      "records": [
-        {
-          "record_id": 173329,
-          "level": "Stasis",
-          "placement": 1193,
-          "percent": 100,
-          "video_url": "https://youtu.be/rxj6he7wnvo?si=uW6f_9UL96mqDGZz"
-        },
-        {
-          "record_id": 173328,
-          "level": "Agen Wida",
-          "placement": 1206,
-          "percent": 100,
-          "video_url": "https://youtu.be/VisUIbRL2H4?si=pQSoSH4lEes7zP44"
         }
       ]
     },
@@ -52042,20 +52098,6 @@
       ]
     },
     {
-      "user_id": 26684,
-      "username": "id 26684",
-      "count": 1,
-      "records": [
-        {
-          "record_id": 172635,
-          "level": "Bloodbath",
-          "placement": 1080,
-          "percent": 100,
-          "video_url": "https://youtu.be/LCAzqCgspu8?si=Y5ZYkVrXtLRmlOoy"
-        }
-      ]
-    },
-    {
       "user_id": 26692,
       "username": "id 26692",
       "count": 1,
@@ -55090,6 +55132,20 @@
           "placement": 1593,
           "percent": 100,
           "video_url": "https://www.youtube.com/watch?v=Q85oeyVDY-I"
+        }
+      ]
+    },
+    {
+      "user_id": 32826,
+      "username": "id 32826",
+      "count": 1,
+      "records": [
+        {
+          "record_id": 180310,
+          "level": "Auroral Ascent",
+          "placement": 712,
+          "percent": 100,
+          "video_url": "https://youtu.be/EjGwSg9ZRPk?si=uL0ZpG6dXANdw-pX"
         }
       ]
     },
@@ -59402,6 +59458,20 @@
           "placement": 1809,
           "percent": 100,
           "video_url": "https://youtu.be/iXuRT92x1ks?si=ksabE252N7NTV2es"
+        }
+      ]
+    },
+    {
+      "user_id": 43360,
+      "username": "id 43360",
+      "count": 1,
+      "records": [
+        {
+          "record_id": 180303,
+          "level": "Acu",
+          "placement": 1809,
+          "percent": 100,
+          "video_url": "https://youtube.com/watch?v=k-tnfb1fMlQ&si=k-OfMVnkPnhxp6B5"
         }
       ]
     },
