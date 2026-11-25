@@ -323,6 +323,7 @@
     "xAquamarine (ThePurgatory)": {"name": "Aquamarine (ThePurgatory)", "like": "Antarctic Lights", "place": 10, "T": 92.0, "t": 58.0},
     "xFiberglass": {"name": "Fiberglass", "like": "Kyouki", "place": 39, "T": 99.0, "t": 50.0},
     "xAngelicide": {"name": "Angelicide", "like": "GRIEF", "place": 1, "T": 99.0, "t": 48.0},
-    "xDIEbtch": {"name": "DIEbtch", "like": "Slaughterhouse", "place": 45, "T": 99.0, "t": 48.0}
+    "xDIEbtch": {"name": "DIEbtch", "like": "Slaughterhouse", "place": 45, "T": 99.0, "t": 48.0},
+    "xAbocto": {"name": "Abocto", "like": "Tartarus", "place": 139, "T": 99.0, "t": 50.0}
   }
 }
