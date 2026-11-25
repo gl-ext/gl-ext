@@ -317,13 +317,12 @@
     "xLost in Time 2": {"name": "Lost in Time 2", "like": "Master of Puppets", "place": 58, "T": 99.0, "t": 50.0},
     "xMarks": {"name": "Marks", "like": "Sinister Silence", "place": 125, "T": 99.0, "t": 50.0},
     "xblight": {"name": "blight", "like": "Natural Disaster", "place": 151, "T": 99.0, "t": 50.0},
-    "xFIBERGLASS": {"name": "FIBERGLASS", "like": "Kyouki", "place": 39, "T": 98.0, "t": 53.0},
     "xSilent Acropolis": {"name": "Silent Acropolis", "like": "Thinking Space II", "place": 4, "T": 99.0, "t": 44.0},
     "xWarCora": {"name": "WarCora", "like": "Quanteuse processing", "place": 13, "T": 98.0, "t": 38.0},
     "xAquamarine (ThePurgatory)": {"name": "Aquamarine (ThePurgatory)", "like": "Antarctic Lights", "place": 10, "T": 92.0, "t": 58.0},
-    "xFiberglass": {"name": "Fiberglass", "like": "Kyouki", "place": 39, "T": 99.0, "t": 50.0},
     "xAngelicide": {"name": "Angelicide", "like": "GRIEF", "place": 1, "T": 99.0, "t": 48.0},
     "xDIEbtch": {"name": "DIEbtch", "like": "Slaughterhouse", "place": 45, "T": 99.0, "t": 48.0},
-    "xAbocto": {"name": "Abocto", "like": "Tartarus", "place": 139, "T": 99.0, "t": 50.0}
+    "xAbocto": {"name": "Abocto", "like": "Tartarus", "place": 139, "T": 99.0, "t": 50.0},
+    "xFIBERGLASS": {"name": "FIBERGLASS", "like": "Kyouki", "place": 39, "T": 98.0, "t": 53.0}
   }
 }
