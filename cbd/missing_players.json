@@ -1,4 +1,7 @@
 {
   "users": {
+    "2863": {"nick": "4cocoya", "country_code": "US", "gdr_id": "57386", "records": [["Waterfall", 100, ""], ["Firework", 86, ""]]},
+    "2864": {"nick": "Kepta", "country_code": "MX", "gdr_id": "pc65809", "records": [["Slaughterhouse", 81, ""], ["Cold Sweat", 100, ""], ["RUST", 100, ""]]},
+    "2865": {"nick": "Cryyy", "country_code": "MX", "gdr_id": "19089", "records": [["Oblivion", 100, ""], ["shimmer", 100, ""], ["Cognition", 100, ""], ["Rigel", 100, ""]]}
   }
 }
