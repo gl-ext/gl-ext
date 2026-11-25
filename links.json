@@ -359759,6 +359759,11 @@
         72978
       ],
       "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@ShepsterGD"
+      ]
     }
   },
   "pc72979": {
@@ -376781,6 +376786,11 @@
         73406
       ],
       "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@Echodash13"
+      ]
     }
   },
   "1604": {
@@ -378794,6 +378804,63 @@
     "other_lists": {
       "pointercrate": [
         73475
+      ],
+      "wml": []
+    }
+  },
+  "40019": {
+    "_name": "vexumm",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@vexumm"
+      ]
+    }
+  },
+  "44154": {
+    "_name": "a4rulit",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@chuchep257"
+      ]
+    }
+  },
+  "63458": {
+    "_name": "Murqy",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@murqygmd"
+      ]
+    }
+  },
+  "63581": {
+    "_name": "MrDoner2456",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@doner-d7u"
+      ]
+    }
+  },
+  "pc73486": {
+    "_name": "AMETHYXXX",
+    "other_lists": {
+      "pointercrate": [
+        73486
       ],
       "wml": []
     }
