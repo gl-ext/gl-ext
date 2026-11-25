@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-25T19:07:28.545Z",
+  "generated": "2026-11-25T20:04:50.840Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -11,7 +11,7 @@
       [2657,38,"Tunnel of Despair",69,"",null,null,null,"my_extras",95.67,0]
     ],
     "396": [
-      [3449,26,"Azure Flare",52,"",null,null,null,"my_extras",107.67,0]
+      [3449,26,"Azure Flare",60,"",null,null,null,"my_extras",121.35,0]
     ],
     "700": [
       [2236,153,"The Golden",100,"",77,null,null,"my_extras",4.6,1.78],
@@ -32,8 +32,8 @@
       [2656,35,"Acheron",76,"",null,null,null,"my_extras",129.27,0]
     ],
     "2383": [
-      [1754,139,"Tartarus",100,"",48,null,null,"my_extras",16,4.08],
-      [2296,231,"Renevant",100,"",null,null,null,"my_extras",1.4,0]
+      [2418,93,"Solar Flare",100,"",48,null,null,"my_extras",62,15.5],
+      [1754,139,"Tartarus",100,"",48,null,null,"my_extras",16,4.08]
     ],
     "3011": [
       [2577,135,"Sonic Wave Infinity",100,"",null,null,null,"my_extras",20,0],
@@ -118,6 +118,7 @@
       [1706,33,"Abyss of Darkness",78,"",null,null,null,"my_extras",134.28,0]
     ],
     "5602": [
+      [2236,153,"The Golden",100,"",null,null,null,"my_extras",4.6,0],
       [1746,182,"Aerial Gleam",100,"",null,null,null,"my_extras",3.4,0]
     ],
     "5609": [
@@ -209,7 +210,7 @@
       [1591,184,"Trueffet",100,"",null,null,null,"my_extras",3.4,0]
     ],
     "6617": [
-      [2653,21,"Silent clubstep",65,"",null,null,null,"my_extras",146.22,0]
+      [3368,19,"Ashley Wave Trials",89,"",null,null,null,"my_extras",192.2,0]
     ],
     "6619": [
       [1563,240,"shimmer",100,"",null,null,null,"my_extras",1.4,0]
@@ -505,6 +506,7 @@
       [1934,97,"walter white",100,"",null,null,null,"my_extras",58,0]
     ],
     "17785": [
+      [2287,227,"Promethean",100,"",null,null,null,"my_extras",1.8,0],
       [1563,240,"shimmer",100,"",null,null,null,"my_extras",1.4,0],
       [2307,241,"Crimson Planet",100,"",null,null,null,"my_extras",1,0]
     ],
@@ -559,6 +561,7 @@
       [3353,192,"ROCKBOTTOM",100,"",null,null,null,"my_extras",3,0]
     ],
     "19309": [
+      [2083,102,"Mayhem",69,"",null,null,null,"my_extras",19.88,0],
       [1725,214,"Widestep",100,"",null,null,null,"my_extras",2.2,0]
     ],
     "19390": [
