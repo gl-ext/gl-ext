@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25T06:59:23.430Z",
+ "generated": "2026-11-25T08:32:07.256Z",
  "users": [
   {
    "place": 1,
@@ -291,15 +291,6 @@
   },
   {
    "place": 33,
-   "oldPlace": 40,
-   "id": "51317",
-   "name": "Cryostazz",
-   "country": "France",
-   "points": 3562.25,
-   "basePoints": 3272.07
-  },
-  {
-   "place": 34,
    "oldPlace": 41,
    "id": "11811",
    "name": "XaLVaL",
@@ -308,7 +299,7 @@
    "basePoints": 3240.53
   },
   {
-   "place": 35,
+   "place": 34,
    "oldPlace": 33,
    "id": "14436",
    "name": "Laniakea",
@@ -317,7 +308,7 @@
    "basePoints": 3502.32
   },
   {
-   "place": 36,
+   "place": 35,
    "oldPlace": 34,
    "id": "16529",
    "name": "Albert",
@@ -326,7 +317,7 @@
    "basePoints": 3480.67
   },
   {
-   "place": 37,
+   "place": 36,
    "oldPlace": 35,
    "id": "14544",
    "name": "Hqmy",
@@ -335,7 +326,7 @@
    "basePoints": 3464.17
   },
   {
-   "place": 38,
+   "place": 37,
    "oldPlace": 39,
    "id": "14440",
    "name": "Kaza",
@@ -344,7 +335,7 @@
    "basePoints": 3274.63
   },
   {
-   "place": 39,
+   "place": 38,
    "oldPlace": 36,
    "id": "14431",
    "name": "Axinity",
@@ -353,7 +344,7 @@
    "basePoints": 3418.86
   },
   {
-   "place": 40,
+   "place": 39,
    "oldPlace": 37,
    "id": "14445",
    "name": "Laysah",
@@ -362,7 +353,7 @@
    "basePoints": 3358.45
   },
   {
-   "place": 41,
+   "place": 40,
    "oldPlace": 38,
    "id": "14447",
    "name": "Abdieldevil",
@@ -371,7 +362,7 @@
    "basePoints": 3337.07
   },
   {
-   "place": 42,
+   "place": 41,
    "oldPlace": 44,
    "id": "14430",
    "name": "Cursed",
@@ -380,13 +371,22 @@
    "basePoints": 3031.13
   },
   {
-   "place": 43,
+   "place": 42,
    "oldPlace": 49,
    "id": "14549",
    "name": "Whizkid05",
    "country": "United-Kingdom",
    "points": 3286.49,
    "basePoints": 2874.32
+  },
+  {
+   "place": 43,
+   "oldPlace": 40,
+   "id": "51317",
+   "name": "Cryostazz",
+   "country": "France",
+   "points": 3272.07,
+   "basePoints": 3272.07
   },
   {
    "place": 44,
