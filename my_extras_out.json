@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-26T07:54:11.730Z",
+  "generated": "2026-11-26T18:03:53.163Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -100,7 +100,7 @@
       [1732,66,"Sakupen Circles",67,"",null,null,null,"my_extras",39.15,0]
     ],
     "5534": [
-      [2655,48,"KOCMOC",85,"",null,null,null,"my_extras",115.2,0]
+      [2655,47,"KOCMOC",85,"",null,null,null,"my_extras",116.8,0]
     ],
     "5563": [
       [2707,198,"Judgement Knights",100,"",null,null,null,"my_extras",3,0]
@@ -216,7 +216,7 @@
       [1563,240,"shimmer",100,"",null,null,null,"my_extras",1.4,0]
     ],
     "6620": [
-      [2655,48,"KOCMOC",76,"",66,null,null,"my_extras",96.69,76.11],
+      [2655,47,"KOCMOC",76,"",66,null,null,"my_extras",98.03,77.17],
       [1746,182,"Aerial Gleam",100,"",null,null,null,"my_extras",3.4,0]
     ],
     "6638": [
@@ -250,7 +250,7 @@
     ],
     "7043": [
       [1748,45,"Slaughterhouse",100,"",null,null,null,"my_extras",300,0],
-      [2655,48,"KOCMOC",82,"",null,null,null,"my_extras",109.03,0]
+      [2655,47,"KOCMOC",82,"",null,null,null,"my_extras",110.54,0]
     ],
     "7138": [
       [2235,179,"Kenos",100,"",null,null,null,"my_extras",3.8,0]
@@ -277,7 +277,7 @@
       [3320,22,"Penumbral",92,"",null,null,null,"my_extras",181.09,0]
     ],
     "8166": [
-      [1750,47,"Deimos",60,"",null,null,null,"my_extras",79.79,0]
+      [1750,51,"Deimos",60,"",null,null,null,"my_extras",74.33,0]
     ],
     "8224": [
       [2024,299,"Bloodlust",100,"",null,null,null,"my_extras",0.97,0]
@@ -337,7 +337,7 @@
       [2657,38,"Tunnel of Despair",93,"",null,null,null,"my_extras",150.33,0]
     ],
     "13163": [
-      [2655,48,"KOCMOC",93,"",null,null,null,"my_extras",131.66,0]
+      [2655,47,"KOCMOC",93,"",null,null,null,"my_extras",133.49,0]
     ],
     "13301": [
       [1981,77,"Saul Goodman",57,"",null,null,null,"my_extras",20.8,0]
@@ -409,7 +409,7 @@
       [1724,39,"Kyouki",98,"",null,null,null,"my_extras",160.38,0]
     ],
     "14520": [
-      [1750,47,"Deimos",87,"",null,null,null,"my_extras",125.63,0]
+      [1750,51,"Deimos",87,"",null,null,null,"my_extras",117.02,0]
     ],
     "14549": [
       [2684,11,"Nullscapes",83,"",null,null,null,"my_extras",243.6,0],
@@ -872,8 +872,8 @@
       [1754,139,"Tartarus",100,"",null,null,null,"my_extras",16,0],
       [2304,279,"Amalgam",100,"",null,null,null,"my_extras",0.98,0]
     ],
-    "54823": [
-      [1748,45,"Slaughterhouse",100,"",null,null,null,"my_extras",300,0]
+    "51317": [
+      [3409,7,"Green Bullet",78,"",null,null,null,"my_extras",307.45,0]
     ],
     "54876": [
       [1578,225,"Thinking Space",100,"",null,null,null,"my_extras",1.8,0]
