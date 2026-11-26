@@ -1,5 +1,6 @@
 {
   "users": {
-    "2867": {"nick": "Bloff", "country_code": null, "gdr_id": "pc72802", "records": [["The Wonder of You", 100, ""], ["The Golden", 100, ""]]}
+    "2867": {"nick": "Bloff", "country_code": null, "gdr_id": "pc72802", "records": [["The Wonder of You", 100, ""], ["The Golden", 100, ""]]},
+    "2868": {"nick": "fiyo", "country_code": "CA", "gdr_id": "49656", "records": [["The Golden", 100, ""], ["Verdant Landscape", 100, ""]]}
   }
 }
