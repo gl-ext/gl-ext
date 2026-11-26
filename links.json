@@ -378051,6 +378051,11 @@
         73450
       ],
       "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@xArthurXy"
+      ]
     }
   },
   "pc73451": {
@@ -379153,6 +379158,136 @@
     "other_lists": {
       "pointercrate": [
         73501
+      ],
+      "wml": []
+    }
+  },
+  "44936": {
+    "_name": "Legushon0k",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@LucaBinucciBusti"
+      ]
+    }
+  },
+  "61717": {
+    "_name": "Deksoon",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@deksoonbssss"
+      ]
+    }
+  },
+  "63299": {
+    "_name": "Violet Dog",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@violetdog4026"
+      ]
+    }
+  },
+  "63422": {
+    "_name": "beetrootdash",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@Beetrootdash"
+      ]
+    }
+  },
+  "63542": {
+    "_name": "R3L4PSED",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@equa4744"
+      ]
+    }
+  },
+  "63600": {
+    "_name": "ermeha",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@ermeha"
+      ]
+    }
+  },
+  "63617": {
+    "_name": "AndoGMD",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    }
+  },
+  "63618": {
+    "_name": "Akmal",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@a_9i7"
+      ]
+    }
+  },
+  "63624": {
+    "_name": "Nothinggd336",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@NothingGD336"
+      ]
+    }
+  },
+  "pc73502": {
+    "_name": "Anuru",
+    "other_lists": {
+      "pointercrate": [
+        73502
+      ],
+      "wml": []
+    }
+  },
+  "pc73503": {
+    "_name": "StarzBentley",
+    "other_lists": {
+      "pointercrate": [
+        73503
+      ],
+      "wml": []
+    }
+  },
+  "pc73504": {
+    "_name": "[FA] FooledAnchors",
+    "other_lists": {
+      "pointercrate": [
+        73504
       ],
       "wml": []
     }
