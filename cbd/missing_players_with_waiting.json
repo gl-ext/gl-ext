@@ -1,8 +1,8 @@
 {
   "users": {
-    "2869": {"nick": "MegaCatMan2", "country_code": "United-States", "gdr_id": "30433", "records": [["Amethyst", 52, "https://youtu.be/A5y3NaANBCg"], ["KOCMOC", 82, ""]]},
-    "2870": {"nick": "TeoFXC", "country_code": "Argentina", "gdr_id": "20890", "records": [["Climax", 100, "https://youtu.be/I6Ot4dsIFSA"], ["NEUTRA", 100, ""], ["Cognition", 100, ""]]},
-    "2871": {"nick": "rocky2", "country_code": "Belarus", "gdr_id": "17950", "records": [["UNKNOWN", 100, "https://youtu.be/n41FpjuwOFo?si=izWf9MbaVok0MB5i"], ["Sky Shredder", 100, "https://youtu.be/7JNUvCGdsus?si=P0IomJZjCSlxy6Qt"], ["Cognition", 100, ""], ["Cobwebs", 100, "https://youtu.be/UQHoRzm_AQQ?si=CkzNlZHLM6G9Gchb"]]},
-    "2872": {"nick": "spotty2", "country_code": "Ukraine", "gdr_id": "29061", "records": [["Trueffet", 100, "https://youtu.be/kEXwHV4Faac?si=v4lsCS7LFlLLoSyf"], ["Zodiac", 100, "https://youtu.be/pA_u8_O3-us?si=FydhdVRnr_mlKaRP"], ["Trotil", 100, ""], ["Bloodlust", 100, "https://youtu.be/jObhtAbSDK8?si=Wcbg9uOO6JAJ8Ti1"]]}
+    "2870": {"nick": "MegaCatMan2", "country_code": "United-States", "gdr_id": "30433", "records": [["Amethyst", 52, "https://youtu.be/A5y3NaANBCg"], ["KOCMOC", 82, ""]]},
+    "2871": {"nick": "TeoFXC", "country_code": "Argentina", "gdr_id": "20890", "records": [["Climax", 100, "https://youtu.be/I6Ot4dsIFSA"], ["NEUTRA", 100, ""], ["Cognition", 100, ""]]},
+    "2872": {"nick": "rocky2", "country_code": "Belarus", "gdr_id": "17950", "records": [["UNKNOWN", 100, "https://youtu.be/n41FpjuwOFo?si=izWf9MbaVok0MB5i"], ["Sky Shredder", 100, "https://youtu.be/7JNUvCGdsus?si=P0IomJZjCSlxy6Qt"], ["Cognition", 100, ""], ["Cobwebs", 100, "https://youtu.be/UQHoRzm_AQQ?si=CkzNlZHLM6G9Gchb"]]},
+    "2873": {"nick": "spotty2", "country_code": "Ukraine", "gdr_id": "29061", "records": [["Trueffet", 100, "https://youtu.be/kEXwHV4Faac?si=v4lsCS7LFlLLoSyf"], ["Zodiac", 100, "https://youtu.be/pA_u8_O3-us?si=FydhdVRnr_mlKaRP"], ["Trotil", 100, ""], ["Bloodlust", 100, "https://youtu.be/jObhtAbSDK8?si=Wcbg9uOO6JAJ8Ti1"]]}
   }
 }

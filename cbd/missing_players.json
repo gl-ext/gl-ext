@@ -1,6 +1,7 @@
 {
   "users": {
     "2867": {"nick": "Bloff", "country_code": null, "gdr_id": "pc72802", "records": [["The Wonder of You", 100, ""], ["The Golden", 100, ""]]},
-    "2868": {"nick": "fiyo", "country_code": "CA", "gdr_id": "49656", "records": [["The Golden", 100, ""], ["Verdant Landscape", 100, ""]]}
+    "2868": {"nick": "fiyo", "country_code": "CA", "gdr_id": "49656", "records": [["The Golden", 100, ""], ["Verdant Landscape", 100, ""]]},
+    "2869": {"nick": "realdanish", "country_code": "BA", "gdr_id": "2505", "records": [["The Hallucination", 69, ""], ["shimmer", 100, ""], ["qoUEO", 100, ""], ["RUST", 100, ""], ["Solar Flare", 69, ""], ["Omega Interface", 100, ""]]}
   }
 }
