@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27T01:44:49.563Z",
+  "generated": "2026-11-27T10:10:42.298Z",
   "users": {
     "2": [
       [2656,35,"Acheron",94,"",null,null,null,"my_extras",161.15,0]
@@ -243,7 +243,7 @@
       [2236,153,"The Golden",100,"",null,null,null,"my_extras",4.6,0],
       [2458,199,"Crackhead Circles",100,"",null,null,null,"my_extras",3,0],
       [1995,226,"Cold Sweat",100,"",null,null,null,"my_extras",1.8,0],
-      [1707,250,"SUPERHATEMEWORLD",100,"",null,null,null,"my_extras",1,0]
+      [1952,232,"Trotil",100,"",null,null,null,"my_extras",1.4,0]
     ],
     "7043": [
       [1748,45,"Slaughterhouse",100,"",null,null,null,"my_extras",300,0],
@@ -263,9 +263,6 @@
     ],
     "7787": [
       [2656,35,"Acheron",62,"",null,null,null,"my_extras",104.48,0]
-    ],
-    "7796": [
-      [1740,157,"Oblivion",100,"",null,null,null,"my_extras",4.6,0]
     ],
     "7939": [
       [2050,73,"poocubed",92,"",null,null,null,"my_extras",44.64,0]
@@ -678,9 +675,6 @@
       [2236,153,"The Golden",100,"",null,null,null,"my_extras",4.6,0],
       [1563,240,"shimmer",100,"",null,null,null,"my_extras",1.4,0]
     ],
-    "24272": [
-      [2656,35,"Acheron",100,"",94,null,null,"my_extras",340,161.15]
-    ],
     "24400": [
       [2237,246,"Cognition",100,"",null,null,null,"my_extras",1,0],
       [1704,278,"Cobwebs",100,"",null,null,null,"my_extras",0.98,0]
@@ -872,6 +866,9 @@
       [1754,139,"Tartarus",100,"",null,null,null,"my_extras",16,0],
       [2304,279,"Amalgam",100,"",null,null,null,"my_extras",0.98,0]
     ],
+    "49631": [
+      [2659,30,"Avernus",100,"",null,null,null,"my_extras",360,0]
+    ],
     "51317": [
       [3409,7,"Green Bullet",78,"",null,null,null,"my_extras",307.45,0]
     ],
@@ -901,7 +898,8 @@
       [2711,264,"Rigel",100,"",null,null,null,"my_extras",0.99,0]
     ],
     "63790": [
-      [2660,8,"Tidal Wave",84,"",78,null,null,"my_extras",297.21,272.09]
+      [2660,8,"Tidal Wave",84,"",78,null,null,"my_extras",297.21,272.09],
+      [2656,35,"Acheron",62,"",null,null,null,"my_extras",104.48,0]
     ],
     "64612": [
       [2684,11,"Nullscapes",63,"",null,null,null,"my_extras",185.6,0],
