@@ -1,22 +1,15 @@
-/fulladd Zoink, Heliopolis 85%,
-/try Zoink, Heliopolis 85%
-
 Видео: Pointercrate
 /fulladd craig0, Thinking Space II 85%, https://www.youtube.com/watch?v=bZhqaahOp80
 /try craig0, Thinking Space II 85%
 
 Видео: Pointercrate
-/fulladd audopi, Solar Flare, https://www.youtube.com/watch?v=6oTxkb_3wW8
-/try audopi, Solar Flare
+/fulladd spaceFL, Slaughterhouse, https://www.youtube.com/watch?v=Kin-oznk3mU
+/try spaceFL, Slaughterhouse
 
 Видео: Pointercrate
-/fulladd Freikz, Saul Goodman, https://www.youtube.com/watch?v=Ld1L1BpoDIM
-/try Freikz, Saul Goodman
+/fulladd Hexzo, Acheron, https://www.youtube.com/watch?v=a-xdwVvKliY
+/try Hexzo, Acheron
 
 Видео: Pointercrate
-/fulladd ghostball24, ORDINARY, https://www.youtube.com/watch?v=sO8HnEddKgw
-/try ghostball24, ORDINARY
-
-Видео: Pointercrate
-/fulladd Andre0997, Saul Goodman, https://www.youtube.com/watch?v=cqvk0VG0PJs
-/try Andre0997, Saul Goodman
+/fulladd Spiderwavee, The Plunge, https://www.youtube.com/watch?v=BJEAwa84n20
+/try Spiderwavee, The Plunge

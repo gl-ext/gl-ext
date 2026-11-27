@@ -1,6 +1,5 @@
 {
   "users": {
-    "2870": {"nick": "cf", "country_code": "FI", "gdr_id": "pc63134", "records": [["UNKNOWN", 100, ""], ["Oblivion", 100, ""], ["shimmer", 100, ""], ["Cobwebs", 100, ""]]},
-    "2871": {"nick": "Bloff", "country_code": null, "gdr_id": "pc72802", "records": [["The Wonder of You", 100, ""], ["The Golden", 100, ""]]}
+    "2874": {"nick": "Bloff", "country_code": null, "gdr_id": "pc72802", "records": [["The Wonder of You", 100, ""], ["The Golden", 100, ""]]}
   }
 }

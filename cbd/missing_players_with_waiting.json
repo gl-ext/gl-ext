@@ -1,8 +1,11 @@
 {
   "users": {
-    "2872": {"nick": "MegaCatMan2", "country_code": "United-States", "gdr_id": "30433", "records": [["Amethyst", 52, "https://youtu.be/A5y3NaANBCg"], ["KOCMOC", 82, ""]]},
-    "2873": {"nick": "TeoFXC2", "country_code": "Argentina", "gdr_id": "20890", "records": [["Climax", 100, "https://youtu.be/I6Ot4dsIFSA"], ["NEUTRA", 100, ""], ["Cognition", 100, ""]]},
-    "2874": {"nick": "rocky2", "country_code": "Belarus", "gdr_id": "17950", "records": [["UNKNOWN", 100, "https://youtu.be/n41FpjuwOFo?si=izWf9MbaVok0MB5i"], ["Sky Shredder", 100, "https://youtu.be/7JNUvCGdsus?si=P0IomJZjCSlxy6Qt"], ["Cognition", 100, ""], ["Cobwebs", 100, "https://youtu.be/UQHoRzm_AQQ?si=CkzNlZHLM6G9Gchb"]]},
-    "2875": {"nick": "spotty2", "country_code": "Ukraine", "gdr_id": "29061", "records": [["Trueffet", 100, "https://youtu.be/kEXwHV4Faac?si=v4lsCS7LFlLLoSyf"], ["Zodiac", 100, "https://youtu.be/pA_u8_O3-us?si=FydhdVRnr_mlKaRP"], ["Trotil", 100, ""], ["Bloodlust", 100, "https://youtu.be/jObhtAbSDK8?si=Wcbg9uOO6JAJ8Ti1"]]}
+    "2875": {"nick": "MegaCatMan2", "country_code": "United-States", "gdr_id": "30433", "records": [["Amethyst", 52, "https://youtu.be/A5y3NaANBCg"], ["KOCMOC", 82, ""]]},
+    "2876": {"nick": "Xakaro2", "country_code": "Russia", "gdr_id": "8027", "records": [["KOCMOC", 85, "https://youtu.be/d5cj21iSy8I"], ["The Golden", 100, ""], ["BarbarosFinaleFinale", 100, ""]]},
+    "2877": {"nick": "el1ot2", "country_code": "Russia", "gdr_id": "27660", "records": [["Sonic Wave Infinity", 100, "https://www.youtube.com/watch?v=-ZWQyeD-Kb0"], ["The Golden", 100, "https://youtu.be/EIjPSQrteT4"], ["SUPERHATEMEWORLD", 100, ""], ["Bloodlust", 100, ""]]},
+    "2878": {"nick": "TeoFXC2", "country_code": "Argentina", "gdr_id": "20890", "records": [["Climax", 100, "https://youtu.be/I6Ot4dsIFSA"], ["NEUTRA", 100, ""], ["Cognition", 100, ""]]},
+    "2879": {"nick": "ced168", "country_code": "Canada", "gdr_id": "20192", "records": [["walter white", 100, "https://youtu.be/dJU_S07SAFE"], ["shimmer", 100, ""], ["Bloodlust", 100, ""]]},
+    "2880": {"nick": "rocky2", "country_code": "Belarus", "gdr_id": "17950", "records": [["UNKNOWN", 100, "https://youtu.be/n41FpjuwOFo?si=izWf9MbaVok0MB5i"], ["Sky Shredder", 100, "https://youtu.be/7JNUvCGdsus?si=P0IomJZjCSlxy6Qt"], ["Cognition", 100, ""], ["Cobwebs", 100, "https://youtu.be/UQHoRzm_AQQ?si=CkzNlZHLM6G9Gchb"]]},
+    "2881": {"nick": "spotty2", "country_code": "Ukraine", "gdr_id": "29061", "records": [["Trueffet", 100, "https://youtu.be/kEXwHV4Faac?si=v4lsCS7LFlLLoSyf"], ["Zodiac", 100, "https://youtu.be/pA_u8_O3-us?si=FydhdVRnr_mlKaRP"], ["Trotil", 100, ""], ["Bloodlust", 100, "https://youtu.be/jObhtAbSDK8?si=Wcbg9uOO6JAJ8Ti1"]]}
   }
 }
