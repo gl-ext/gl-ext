@@ -2,37 +2,9 @@
 /fulladd craig0, Thinking Space II 85%, https://www.youtube.com/watch?v=bZhqaahOp80
 /try craig0, Thinking Space II 85%
 
-Видео: GlobalList
-/fulladd Zeronium, BRITNEY NO SCLEARS, https://www.youtube.com/watch?v=v3JW5H4SZ-8
-/try Zeronium, BRITNEY NO SCLEARS
-
-Видео: GlobalList
-/fulladd LuckyL4, BRITNEY NO SCLEARS, https://www.youtube.com/watch?v=EKVwLwAY6ao
-/try LuckyL4, BRITNEY NO SCLEARS
-
-Видео: Pointercrate
-/fulladd Franzy, BRITNEY NO SCLEARS, https://www.youtube.com/watch?v=wtG5mhes1qA
-/try Franzy, BRITNEY NO SCLEARS
-
-Видео: Pointercrate
-/fulladd vonic, BRITNEY NO SCLEARS, https://www.youtube.com/watch?v=Ydy6qo_Rm2M
-/try vonic, BRITNEY NO SCLEARS
-
-Видео: GlobalList
-/fulladd Scotchtape, BRITNEY NO SCLEARS, https://www.youtube.com/watch?v=ff_mQSXwjhU
-/try Scotchtape, BRITNEY NO SCLEARS
-
-Видео: GlobalList
-/fulladd Conical, BRITNEY NO SCLEARS, https://www.youtube.com/watch?v=BhgcFAdPMBU
-/try Conical, BRITNEY NO SCLEARS
-
 Видео: Pointercrate
 /fulladd sorrow, Trickshot, https://www.youtube.com/watch?v=xd7UuZuj92k
 /try sorrow, Trickshot
-
-Видео: Pointercrate
-/fulladd zsakos, Heavenly Sakupen, https://www.youtube.com/watch?v=JH7ZaBkuIWY
-/try zsakos, Heavenly Sakupen
 
 Видео: Pointercrate
 /fulladd Spiderwavee, The Plunge, https://www.youtube.com/watch?v=BJEAwa84n20
@@ -41,11 +13,3 @@
 Видео: GlobalList
 /fulladd zSkay, Renevant, https://www.youtube.com/watch?v=KWVnEh1PfbI
 /try zSkay, Renevant
-
-Видео: Pointercrate
-/fulladd chaseqwe, The Golden, https://www.youtube.com/watch?v=z7LEySRgMRc
-/try chaseqwe, The Golden
-
-Видео: Pointercrate
-/fulladd ex3nity, UNKNOWN, https://www.youtube.com/watch?v=RpwJNjbFugE
-/try ex3nity, UNKNOWN
