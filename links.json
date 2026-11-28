@@ -151531,7 +151531,8 @@
     },
     "channels": {
       "youtube": [
-        "https://www.youtube.com/@ZacAttack198"
+        "https://www.youtube.com/@ZacAttack198",
+        "https://www.youtube.com/@ZacAttack199GD"
       ]
     }
   },
@@ -312619,20 +312620,6 @@
       "wml": []
     }
   },
-  "pc63573": {
-    "_name": "zizo",
-    "other_lists": {
-      "pointercrate": [
-        63573
-      ],
-      "wml": []
-    },
-    "channels": {
-      "youtube": [
-        "https://www.youtube.com/@zizoloid"
-      ]
-    }
-  },
   "pc63576": {
     "_name": "Bread9881",
     "other_lists": {
@@ -360630,20 +360617,6 @@
       ]
     }
   },
-  "pc73145": {
-    "_name": "Deforklift",
-    "other_lists": {
-      "pointercrate": [
-        73145
-      ],
-      "wml": []
-    },
-    "channels": {
-      "youtube": [
-        "https://www.youtube.com/@deforklift"
-      ]
-    }
-  },
   "pc73146": {
     "_name": "Valsie",
     "other_lists": {
@@ -368433,20 +368406,6 @@
     "channels": {
       "youtube": [
         "https://www.youtube.com/@Styrophoamix"
-      ]
-    }
-  },
-  "wml2664": {
-    "_name": "Sheiden562",
-    "other_lists": {
-      "pointercrate": [],
-      "wml": [
-        2664
-      ]
-    },
-    "channels": {
-      "youtube": [
-        "https://www.youtube.com/@sheiden562"
       ]
     }
   },
@@ -379757,6 +379716,261 @@
     "other_lists": {
       "pointercrate": [
         73532
+      ],
+      "wml": []
+    }
+  },
+  "61977": {
+    "_name": "zizo",
+    "other_lists": {
+      "pointercrate": [
+        63573
+      ],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@zizoloid"
+      ]
+    }
+  },
+  "65350": {
+    "_name": "Deforklift",
+    "other_lists": {
+      "pointercrate": [
+        73145
+      ],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@deforklift"
+      ]
+    }
+  },
+  "52030": {
+    "_name": "galacaGMD",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@GalacaGMD"
+      ]
+    }
+  },
+  "57860": {
+    "_name": "spectralyplayer",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@kzxbrxsv_zxq"
+      ]
+    }
+  },
+  "59089": {
+    "_name": "va5rdy",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@Va5rdy"
+      ]
+    }
+  },
+  "63642": {
+    "_name": "noemosen",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@%D0%9F%D0%BB%D1%8E%D0%BD%D1%82%D0%B8%D1%88%D0%BA%D0%BE"
+      ]
+    }
+  },
+  "63689": {
+    "_name": "Anchoa",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@AJS8o-z3i"
+      ]
+    }
+  },
+  "63690": {
+    "_name": "Seanboy96",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@seanblume5948"
+      ]
+    }
+  },
+  "63699": {
+    "_name": "AsherReal",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@Asher_Real"
+      ]
+    }
+  },
+  "63707": {
+    "_name": "atole",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@lugi1915"
+      ]
+    }
+  },
+  "63755": {
+    "_name": "suncloudy73degrees",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@suncloudy73degrees"
+      ]
+    }
+  },
+  "64513": {
+    "_name": "DaliDay",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@DaliGD"
+      ]
+    }
+  },
+  "64648": {
+    "_name": "Glowclear",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@glowclearYT"
+      ],
+      "tiktok": [
+        "https://www.tiktok.com/@glowclear2"
+      ]
+    }
+  },
+  "64821": {
+    "_name": "sheiden562",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": [
+        2664
+      ]
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@sheiden562"
+      ]
+    }
+  },
+  "65197": {
+    "_name": "Maxilol4444",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@pasetero"
+      ]
+    }
+  },
+  "65727": {
+    "_name": "McRobin",
+    "other_lists": {
+      "pointercrate": [],
+      "wml": []
+    },
+    "channels": {
+      "youtube": [
+        "https://www.youtube.com/@McRobin06"
+      ]
+    }
+  },
+  "pc73534": {
+    "_name": "Olly-VR",
+    "other_lists": {
+      "pointercrate": [
+        73534
+      ],
+      "wml": []
+    }
+  },
+  "pc73535": {
+    "_name": "Glowclear",
+    "other_lists": {
+      "pointercrate": [
+        73535
+      ],
+      "wml": []
+    }
+  },
+  "pc73543": {
+    "_name": "Ksa8",
+    "other_lists": {
+      "pointercrate": [
+        73543
+      ],
+      "wml": []
+    }
+  },
+  "pc73544": {
+    "_name": "Blueboy90",
+    "other_lists": {
+      "pointercrate": [
+        73544
+      ],
+      "wml": []
+    }
+  },
+  "pc73545": {
+    "_name": "MrMeowser",
+    "other_lists": {
+      "pointercrate": [
+        73545
+      ],
+      "wml": []
+    }
+  },
+  "pc73552": {
+    "_name": "the worst player ever",
+    "other_lists": {
+      "pointercrate": [
+        73552
       ],
       "wml": []
     }
