@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27T19:28:57.433Z",
+ "generated": "2026-11-28T02:07:47.825Z",
  "users": [
   {
    "place": 1,
@@ -219,15 +219,6 @@
   },
   {
    "place": 25,
-   "oldPlace": 27,
-   "id": "18719",
-   "name": "ChopBlox",
-   "country": "Germany",
-   "points": 4143.66,
-   "basePoints": 3799.66
-  },
-  {
-   "place": 26,
    "oldPlace": 25,
    "id": "13505",
    "name": "loliklee",
@@ -236,8 +227,17 @@
    "basePoints": 4073.65
   },
   {
-   "place": 27,
+   "place": 26,
    "oldPlace": 26,
+   "id": "6103",
+   "name": "Slaughter",
+   "country": "Canada",
+   "points": 4065.9,
+   "basePoints": 4065.9
+  },
+  {
+   "place": 27,
+   "oldPlace": 27,
    "id": "5577",
    "name": "Serpentical",
    "country": "Unknown",
@@ -247,6 +247,15 @@
   {
    "place": 28,
    "oldPlace": 28,
+   "id": "18719",
+   "name": "ChopBlox",
+   "country": "Germany",
+   "points": 3799.66,
+   "basePoints": 3799.66
+  },
+  {
+   "place": 29,
+   "oldPlace": 29,
    "id": "14462",
    "name": "turtle",
    "country": "United-States",
@@ -254,22 +263,13 @@
    "basePoints": 3753.65
   },
   {
-   "place": 29,
-   "oldPlace": 29,
+   "place": 30,
+   "oldPlace": 30,
    "id": "14485",
    "name": "PoCle",
    "country": "South-Korea",
    "points": 3746.57,
    "basePoints": 3746.57
-  },
-  {
-   "place": 30,
-   "oldPlace": 30,
-   "id": "6103",
-   "name": "Slaughter",
-   "country": "Canada",
-   "points": 3725.9,
-   "basePoints": 3725.9
   },
   {
    "place": 31,
